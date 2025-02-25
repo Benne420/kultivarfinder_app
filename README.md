@@ -74,7 +74,7 @@ Falls ein manuelles Deployment nötig ist:
 ## 📩 **Kontakt & Feedback**
 
 Falls du Feedback oder Fragen hast, melde dich gerne:  
-📧 **E-Mail:** [dein.email@example.com](benedikt.blazeowsky@420pharma.eu)  
+📧 **E-Mail:** [Benne](mailto:benedikt.blazeowsky@420pharma.eu)  
 🐙 **GitHub:** [@Benne420](https://github.com/Benne420)
 
 ---
