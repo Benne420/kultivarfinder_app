@@ -68,7 +68,7 @@ export default function CannabisKultivarFinder() {
 
   return (
     <div className="container">
-      <h1>Cannabis-Kultivar Finder</h1>
+      <h1>Cannabis-Kultivar-Finder</h1>
       <p className="disclaimer">
         Die angegebenen medizinischen Wirkungen beziehen sich auf mögliche
         Effekte des dominantesten Terpens in der Blüte. Die Angaben sind
