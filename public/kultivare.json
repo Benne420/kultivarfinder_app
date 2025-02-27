@@ -152,13 +152,13 @@
       "entspannend"
     ]
   },
-  {
-    "name": "Rose Gold Runtz",
-    "thc": "22-30",
-    "cbd": "1%",
-    "terpen": "3.46",
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
-  },
+  //{
+  // "name": "Rose Gold Runtz",
+  //  "thc": "22-30",
+  //  "cbd": "1%",
+  //  "terpen": "3.46",
+  //  "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+  // },
   {
     "name": "Tigerz Eye",
     "thc": "20-33",
