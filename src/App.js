@@ -118,7 +118,9 @@ export default function CannabisKultivarFinder() {
                           {strain.name}
                         </button>
                       </td>
-                      <td>{strain.thc}</td>
+                      <td>
+                        <span className="thc-values">{strain.thc}</span>
+                      </td>
                       <td className="hidden-sm">{strain.cbd}</td>
                       <td className="hidden-sm">{strain.terpen}</td>
                     </tr>

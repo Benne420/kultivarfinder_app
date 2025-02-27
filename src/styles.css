@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 /* ================================================
    Globaler Reset & Basis
    ================================================ */
@@ -154,5 +154,8 @@ nav a:hover {
 @media (max-width: 768px) {
   body {
     margin: 20px;
+  }
+  .thc-values {
+    white-space: nowrap;
   }
 }
