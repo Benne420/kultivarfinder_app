@@ -1,197 +1,541 @@
 [
   {
-    "name": "Alien Mints",
-    "thc": "20-25",
-    "cbd": "1%",
-    "terpen": "2.68",
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+      "name": "Alien Mints",
+      "thc": "20-25%",
+      "cbd": "<1%",
+      "terpengehalt": "2.68%",
+      "terpenprofil": [
+          "β-Myrcen",
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "Humulen"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "neuroprotektiv"
+      ]
   },
   {
-    "name": "Bucket List",
-    "thc": "22-30",
-    "cbd": "1%",
-    "terpen": "2.71",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Bucket List",
+      "thc": "22-33%",
+      "cbd": "<1%",
+      "terpengehalt": "1.39%",
+      "terpenprofil": [
+          "β-Myrcen",
+          "D-Limonen",
+          "Caryophyllen",
+          "Humulen",
+          "Linalool"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Chemdog",
-    "thc": "18-22",
-    "cbd": "1%",
-    "terpen": "1.97",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Chemdog",
+      "thc": "18-27%",
+      "cbd": "<1%",
+      "terpengehalt": "1.40%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "β-Myrcen",
+          "D-Limonen",
+          "Humulen",
+          "Linalool"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Cinderella Kush",
-    "thc": "18-27",
-    "cbd": "1%",
-    "terpen": "1.76",
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ]
+      "name": "Cinderella Kush",
+      "thc": "18-27%",
+      "cbd": "<1%",
+      "terpengehalt": "1.76%",
+      "terpenprofil": [
+          "D-Limonen",
+          "Caryophyllen",
+          "β-Myrcen",
+          "Linalool",
+          "Guaiol"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "antioxidativ",
+          "antimykotisch",
+          "stresslösend"
+      ]
   },
   {
-    "name": "Frozen Lemon Mints",
-    "thc": "20-30",
-    "cbd": "1%",
-    "terpen": "2.55",
-    "wirkungen": ["entzündungshemmend", "unterstützt Wundheilung"]
+      "name": "Frozen Lemon Mints",
+      "thc": "20-33%",
+      "cbd": "<1%",
+      "terpengehalt": "2.55%",
+      "terpenprofil": [
+          "Terpinolen",
+          "Caryophyllen",
+          "β-Myrcen",
+          "D-Limonen",
+          "Linalool"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "unterstützt Wundheilung"
+      ]
   },
   {
-    "name": "Gastro Pop",
-    "thc": "22-30",
-    "cbd": "1%",
-    "terpen": "3.15",
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+      "name": "Gastro Pop",
+      "thc": "22-33%",
+      "cbd": "<1%",
+      "terpengehalt": "3.15%",
+      "terpenprofil": [
+          "β-Myrcen",
+          "Caryophyllen",
+          "Linalool",
+          "β-Ocimen",
+          "Selina-3,7(11)-dien"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "neuroprotektiv"
+      ]
   },
   {
-    "name": "GMO",
-    "thc": "27-33",
-    "cbd": "1%",
-    "terpen": "3.46",
-    "wirkungen": ["antioxidativ", "entzündungshemmend", "antimikrobiell"]
+      "name": "GG4",
+      "thc": "20-30%",
+      "cbd": "<1%",
+      "terpengehalt": "2.19%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "β-Myrcen",
+          "D-Limonen",
+          "Humulen",
+          "Bisabolol"
+      ],
+      "wirkungen": [
+          "stresslösend",
+          "schlaffördernd",
+          "schmerzstillend"
+      ]
   },
   {
-    "name": "GG4",
-    "thc": "20",
-    "cbd": "1%",
-    "terpen": "2.19",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "GMO",
+      "thc": "27-33%",
+      "cbd": "<1%",
+      "terpengehalt": "3.50%",
+      "terpenprofil": [
+          "Farnesen",
+          "β-Myrcen",
+          "Caryophyllen",
+          "D-Limonen",
+          "Humulen"
+      ],
+      "wirkungen": [
+          "antioxidativ",
+          "entzündungshemmend",
+          "antimikrobiell"
+      ]
   },
   {
-    "name": "Grape Face",
-    "thc": "20-27",
-    "cbd": "1%",
-    "terpen": "2.25",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Grape Face",
+      "thc": "20-27%",
+      "cbd": "<1%",
+      "terpengehalt": "2.25%",
+      "terpenprofil": [
+          "D-Limonen",
+          "β-Myrcen",
+          "Caryophyllen",
+          "Selina-4(15),7(11)-dien",
+          "Selina-3,7(11)-dien"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Ice Cream Cake Kush Mints",
-    "thc": "20-30",
-    "cbd": "1%",
-    "terpen": "1.55",
-    "wirkungen": ["analgetisch", "entspannend", "angstlösend", "krampflösend"]
+      "name": "Ice Cream Cake Kush Mints",
+      "thc": "20-33%",
+      "cbd": "<1%",
+      "terpengehalt": "1.34%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "Linalool",
+          "D-Limonen",
+          "Guaiol",
+          "Humulen"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entspannend",
+          "angstlösend",
+          "krampflösend"
+      ]
   },
   {
-    "name": "Jealousy",
-    "thc": "18-27",
-    "cbd": "1%",
-    "terpen": "1.96",
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ]
+      "name": "Jealousy",
+      "thc": "18-27%",
+      "cbd": "<1%",
+      "terpengehalt": "1.96%",
+      "terpenprofil": [
+          "D-Limonen",
+          "Caryophyllen",
+          "Linalool",
+          "β-Myrcen"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "antioxidativ",
+          "antimykotisch",
+          "stresslösend"
+      ]
   },
   {
-    "name": "Lavender Cake",
-    "thc": "16-25",
-    "cbd": "1%",
-    "terpen": "0.98",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Lavender Cake",
+      "thc": "16-25%",
+      "cbd": "<1%",
+      "terpengehalt": "0.98%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "Humulen",
+          "Linalool",
+          "Guaiol",
+          "α-Bisabolol"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Legendary Larry",
-    "thc": "18-27",
-    "cbd": "1%",
-    "terpen": "1.88",
-    "wirkungen": ["entzündungshemmend", "analgetisch"]
+      "name": "Legendary Larry",
+      "thc": "18-27%",
+      "cbd": "<1%",
+      "terpengehalt": "1.88%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "β-Myrcen",
+          "D-Limonen",
+          "Humulen",
+          "Farnesen"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "analgetisch"
+      ]
   },
   {
-    "name": "MAC1",
-    "thc": "20-25",
-    "cbd": "1%",
-    "terpen": "2.76",
-    "wirkungen": ["antioxidativ", "entzündungshemmend", "antimikrobiell"]
+      "name": "MAC 1",
+      "thc": "20-25%",
+      "cbd": "<1%",
+      "terpengehalt": "2.76%",
+      "terpenprofil": [
+          "Farnesen",
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "α-Pinen"
+      ],
+      "wirkungen": [
+          "antioxidativ",
+          "entzündungshemmend",
+          "antimikrobiell"
+      ]
   },
   {
-    "name": "Mellowz",
-    "thc": "18-25",
-    "cbd": "1%",
-    "terpen": "2.14",
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+      "name": "Mellowz",
+      "thc": "18-25%",
+      "cbd": "<1%",
+      "terpengehalt": "2.14%",
+      "terpenprofil": [
+          "β-Myrcen",
+          "Caryophyllen",
+          "Linalool",
+          "Selina-4(15),7(11)-dien",
+          "Selina-3,7(11)-dien"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "neuroprotektiv"
+      ]
   },
   {
-    "name": "Miracle Mints",
-    "thc": "22-30",
-    "cbd": "1%",
-    "terpen": "2.45",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Miracle Mints",
+      "thc": "22-33%",
+      "cbd": "<1%",
+      "terpengehalt": "2.45%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "D-Limonen",
+          "Humulen",
+          "Selina-3,7(11)-diene",
+          "α-Bisabolol"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Peach Chementine",
-    "thc": "22-36",
-    "cbd": "1%",
-    "terpen": "2.14",
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ]
+      "name": "Peach Chementine",
+      "thc": "20-36%",
+      "cbd": "<1%",
+      "terpengehalt": "2.14%",
+      "terpenprofil": [
+          "D-Limonen",
+          "Caryophyllen",
+          "β-Myrcen",
+          "Farnesen",
+          "Humulen"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "antioxidativ",
+          "antimykotisch",
+          "stresslösend"
+      ]
   },
   {
-    "name": "Plum Driver",
-    "thc": "22-27",
-    "cbd": "1%",
-    "terpen": "2.39",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Plum Driver",
+      "thc": "20-30%",
+      "cbd": "<1%",
+      "terpengehalt": "1.40%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "β-Myrcen",
+          "D-Limonen",
+          "Linalool",
+          "Humulen"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Rose Gold Pavé",
-    "thc": "22-33",
-    "cbd": "1%",
-    "terpen": "4.15",
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ]
+      "name": "Rose Gold Pavé",
+      "thc": "22-33%",
+      "cbd": "<1%",
+      "terpengehalt": "4.15%",
+      "terpenprofil": [
+          "D-Limonen",
+          "Caryophyllen",
+          "β-Myrcen",
+          "Linalool",
+          "Germacren B"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "antioxidativ",
+          "antimykotisch",
+          "stresslösend"
+      ]
   },
   {
-    "name": "Tigerz Eye",
-    "thc": "20-33",
-    "cbd": "1%",
-    "terpen": "1.96",
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+      "name": "Tigerz Eye",
+      "thc": "20-33%",
+      "cbd": "<1%",
+      "terpengehalt": "1.46%",
+      "terpenprofil": [
+          "β-Myrcen",
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "α-Pinen"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "neuroprotektiv"
+      ]
   },
   {
-    "name": "Tropicana Cookies",
-    "thc": "15-19",
-    "cbd": "1%",
-    "terpen": "1.29",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Tropicanna Cookies",
+      "thc": "15-22%",
+      "cbd": "<1%",
+      "terpengehalt": "1.29%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "Humulen",
+          "β-Myrcen"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Wedding Pop Triangle",
-    "thc": "22-30",
-    "cbd": "1%",
-    "terpen": "0.01",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Wedding Pop Triangle",
+      "thc": "20-25%",
+      "cbd": "<1%",
+      "terpengehalt": "1.00%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "Humulen",
+          "β-Myrcen"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Wedding Singer",
-    "thc": "22-30",
-    "cbd": "1%",
-    "terpen": "1.96",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Wedding Singer",
+      "thc": "22-33%",
+      "cbd": "<1%",
+      "terpengehalt": "1.17%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "Humulen",
+          "β-Myrcen"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Zookies",
-    "thc": "18-27",
-    "cbd": "1%",
-    "terpen": "0.64",
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+      "name": "Zookies",
+      "thc": "18-27%",
+      "cbd": "<1%",
+      "terpengehalt": "0.64%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "α-Bisabolol",
+          "Fenchol"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
   },
   {
-    "name": "Zour Apple",
-    "thc": "20-30",
-    "cbd": "1%",
-    "terpen": "1.78",
-    "wirkungen": ["entzündungshemmend", "unterstützt Wundheilung"]
+      "name": "Zour Apple",
+      "thc": "20-30%",
+      "cbd": "<1%",
+      "terpengehalt": "2.37%",
+      "terpenprofil": [
+          "Terpinolen",
+          "Caryophyllen",
+          "β-Myrcen",
+          "Humulen",
+          "β-Pinen"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "unterstützt Wundheilung"
+      ]
+  },
+  {
+      "name": "Tigerz Eye",
+      "thc": "20-33%",
+      "cbd": "<1%",
+      "terpengehalt": "1.46%",
+      "terpenprofil": [
+          "β-Myrcen",
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "α-Pinen"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "neuroprotektiv"
+      ]
+  },
+  {
+      "name": "Tropicanna Cookies",
+      "thc": "15-22%",
+      "cbd": "<1%",
+      "terpengehalt": "1.29%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "β-Myrcen",
+          "D-Limonen",
+          "Linalool",
+          "Humulen"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
+  },
+  {
+      "name": "Wedding Pop Triangle",
+      "thc": "20-25%",
+      "cbd": "<1%",
+      "terpengehalt": "1.00%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "β-Myrcen",
+          "D-Limonen",
+          "Linalool",
+          "Humulen"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
+  },
+  {
+      "name": "Wedding Singer",
+      "thc": "22-33%",
+      "cbd": "<1%",
+      "terpengehalt": "1.17%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "D-Limonen",
+          "Linalool",
+          "β-Myrcen",
+          "Humulen"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
+  },
+  {
+      "name": "Zookies",
+      "thc": "18-27%",
+      "cbd": "<1%",
+      "terpengehalt": "0.64%",
+      "terpenprofil": [
+          "Caryophyllen",
+          "Fenchol",
+          "D-Limonen",
+          "Linalool",
+          "α-Bisabolol"
+      ],
+      "wirkungen": [
+          "analgetisch",
+          "entzündungshemmend"
+      ]
+  },
+  {
+      "name": "Zour Apple",
+      "thc": "20-30%",
+      "cbd": "<1%",
+      "terpengehalt": "2.37%",
+      "terpenprofil": [
+          "Terpinolen",
+          "Caryophyllen",
+          "β-Myrcen",
+          "D-Limonen",
+          "β-Pinen"
+      ],
+      "wirkungen": [
+          "entzündungshemmend",
+          "unterstützt Wundheilung"
+      ]
   }
 ]
