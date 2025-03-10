@@ -15,28 +15,26 @@ const Button = ({ children, onClick, disabled }) => (
 );
 
 const wirkungen = [
-  "analgetisch",
-  "angstlösend",
-  "antimikrobiell",
-  "antimykotisch",
-  "antioxidativ",
-  "entspannend",
-  "entzündungshemmend",
-  "krampflösend",
-  "neuroprotektiv",
-  "unterstützt Wundheilung",
+  "analgetisch", "angstlösend", "antimikrobiell", "antimykotisch",
+  "antioxidativ", "entspannend", "entzündungshemmend", "krampflösend",
+  "neuroprotektiv", "unterstützt Wundheilung"
 ];
 
-const filterKultivare = (kultivare, selectedWirkungen) => {
+const terpene = [
+  "Caryophyllen", "D-Limonen", "β-Myrcen", "Linalool", "Humulen",
+  "Farnesen", "α-Bisabolol", "Guaiol"
+];
+
+const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
   return kultivare.filter((kultivar) =>
-    [...selectedWirkungen].every((wirkung) =>
-      kultivar.wirkungen.includes(wirkung)
-    )
+    [...selectedWirkungen].every((wirkung) => kultivar.wirkungen.includes(wirkung)) &&
+    [...selectedTerpene].every((terpen) => kultivar.terpenprofil.includes(terpen))
   );
 };
 
 export default function CannabisKultivarFinder() {
   const [selectedWirkungen, setSelectedWirkungen] = useState(new Set());
+  const [selectedTerpene, setSelectedTerpene] = useState(new Set());
   const [kultivare, setKultivare] = useState([]);
   const [quellen, setQuellen] = useState([]);
 
@@ -52,19 +50,19 @@ export default function CannabisKultivarFinder() {
       .catch((error) => console.error("Fehler beim Laden der Quellen:", error));
   }, []);
 
-  const toggleWirkung = (wirkung) => {
-    setSelectedWirkungen((prev) => {
+  const toggleSelection = (setSelected, selectedSet, item, maxSelection = 2) => {
+    setSelected((prev) => {
       const newSet = new Set(prev);
-      if (newSet.has(wirkung)) {
-        newSet.delete(wirkung);
-      } else if (newSet.size < 2) {
-        newSet.add(wirkung);
+      if (newSet.has(item)) {
+        newSet.delete(item);
+      } else if (newSet.size < maxSelection) {
+        newSet.add(item);
       }
       return newSet;
     });
   };
 
-  const filteredKultivare = filterKultivare(kultivare, selectedWirkungen);
+  const filteredKultivare = filterKultivare(kultivare, selectedWirkungen, selectedTerpene);
 
   return (
     <div className="container">
@@ -78,10 +76,16 @@ export default function CannabisKultivarFinder() {
       <p className="instruction">Wählen Sie bis zu zwei Wirkungen aus:</p>
       <div className="grid">
         {wirkungen.map((wirkung) => (
-          <Button key={wirkung} onClick={() => toggleWirkung(wirkung)}>
-            {[...selectedWirkungen].includes(wirkung)
-              ? `✓ ${wirkung}`
-              : wirkung}
+          <Button key={wirkung} onClick={() => toggleSelection(setSelectedWirkungen, selectedWirkungen, wirkung)}>
+            {[...selectedWirkungen].includes(wirkung) ? `✓ ${wirkung}` : wirkung}
+          </Button>
+        ))}
+      </div>
+      <p className="instruction">Wählen Sie bis zu zwei Terpene aus:</p>
+      <div className="grid">
+        {terpene.map((terpen) => (
+          <Button key={terpen} onClick={() => toggleSelection(setSelectedTerpene, selectedTerpene, terpen)}>
+            {[...selectedTerpene].includes(terpen) ? `✓ ${terpen}` : terpen}
           </Button>
         ))}
       </div>
@@ -104,15 +108,9 @@ export default function CannabisKultivarFinder() {
                     <tr key={strain.name}>
                       <td>
                         <button
-                          onClick={() =>
-                            window.open(
-                              `/datenblaetter/${strain.name.replace(
-                                /\s+/g,
-                                "_"
-                              )}.pdf`,
-                              "_blank"
-                            )
-                          }
+                          onClick={() => window.open(
+                            `/datenblaetter/${strain.name.replace(/\s+/g, "_")}.pdf`, "_blank"
+                          )}
                           className="link-button"
                         >
                           {strain.name}
@@ -129,7 +127,7 @@ export default function CannabisKultivarFinder() {
               </table>
             ) : (
               <p className="no-results">
-                Bitte wählen Sie Wirkungen aus, um passende Kultivare zu sehen.
+                Bitte wählen Sie Wirkungen und/oder Terpene aus, um passende Kultivare zu sehen.
               </p>
             )}
           </CardContent>
