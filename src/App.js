@@ -28,14 +28,14 @@ const wirkungen = [
 ];
 
 const terpene = [
+  "β-Myrcen",
   "Caryophyllen",
   "D-Limonen",
-  "β-Myrcen",
   "Linalool",
   "Humulen",
   "Farnesen",
-  "α-Bisabolol",
-  "Guaiol",
+  "Terpinolen",
+  "Fenchol",
 ];
 
 const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
