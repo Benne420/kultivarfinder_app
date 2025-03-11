@@ -1,36 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
-/* ================================================
-   Globaler Reset & Basis
-   ================================================ */
 * {
   box-sizing: border-box;
 }
-
-/* Root-Variablen */
 :root {
   --base-spacing: 1rem;
 }
-
-/* ================================================
-     Schriftarten einbinden
-     ================================================ */
 @font-face {
   font-family: "Montserrat";
   src: url("Montserrat-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Montserrat";
   src: url("Montserrat-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
-
-/* ================================================
-     Basis-Layout
-     ================================================ */
 body {
   font-family: "Montserrat", sans-serif;
   margin: 100px;
@@ -41,16 +27,11 @@ body {
   background-repeat: no-repeat;
   line-height: 1.6;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
-
-/* ================================================
-     Typografie
-     ================================================ */
 h1,
 h2,
 h3,
@@ -59,93 +40,68 @@ h5,
 h6 {
   margin-top: 0;
 }
-
 h1 {
   font-size: 44px;
   text-align: center;
 }
-
 h2 {
   font-size: 20px;
   text-align: center;
 }
-
 h3 {
   font-size: 18px;
 }
-
 h4 {
   font-size: 16px;
 }
-
 h5 {
   font-size: 14px;
 }
-
 h6 {
   font-size: 12px;
 }
-
 p {
   margin-bottom: var(--base-spacing);
 }
-
 ul {
   padding-inline-start: 20px;
 }
-
 code {
   font-size: 1.2em;
 }
-
-/* ================================================
-     Navigation
-     ================================================ */
 nav {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-bottom: var(--base-spacing);
 }
-
 nav a {
   color: inherit;
   text-decoration: none;
   transition: color 0.3s ease;
 }
-
 nav a:hover {
   color: #0056b3;
 }
-
-/* ================================================
-     Layout-Komponenten
-     ================================================ */
 .main-content {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
-
 .table-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
-
 .table {
   width: 100%;
   margin: auto;
   text-align: center;
 }
-
-/* Linksbündige Buttons für Kultivare */
 .table td:first-child {
   text-align: left;
 }
-
-/* Verhindert den Zeilenumbruch für THC-Werte */
 .thc-values {
   white-space: nowrap;
 }
@@ -155,9 +111,6 @@ nav a:hover {
   word-break: normal;
   hyphens: none;
 }
-/* ================================================
-     Responsive Design
-     ================================================ */
 @media (max-width: 768px) {
   body {
     margin: 20px;
@@ -168,9 +121,9 @@ nav a:hover {
   flex-wrap: wrap;
   gap: 20px;
 }
-
 .button {
-  flex: 1 1 150px; /* wachsen gleichmäßig, Basisbreite 150px */
+  flex: 1 1 150px;
   text-align: center;
-  padding: 10px;
+  padding: 10px 20px;
+  min-width: 150px;
 }
