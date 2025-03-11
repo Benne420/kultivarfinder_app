@@ -15,6 +15,7 @@ const Button = ({ children, onClick, disabled }) => (
 );
 
 const terpene = [
+  "Caryophyllen",
   "D-Limonen",
   "Farnesen",
   "Linalool",
@@ -25,6 +26,7 @@ const terpene = [
   "β-Myrcen",
   "β-Ocimen",
 ];
+
 const wirkungen = [
   "analgetisch",
   "angstlösend",
@@ -134,6 +136,7 @@ export default function CannabisKultivarFinder() {
                     <th>THC %</th>
                     <th className="hidden-sm">CBD %</th>
                     <th className="hidden-sm">Terpengehalt %</th>
+                    <th className="hidden-sm">Terpenprofil</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -159,7 +162,16 @@ export default function CannabisKultivarFinder() {
                         <span className="thc-values">{strain.thc}</span>
                       </td>
                       <td className="hidden-sm">{strain.cbd}</td>
-                      <td className="hidden-sm">{strain.terpen}</td>
+                      <td className="hidden-sm">
+                        {strain.terpengehalt ? strain.terpengehalt : "N/A"}
+                      </td>
+                      <td className="hidden-sm">
+                        <span className="terpene-values">
+                          {strain.terpenprofil
+                            ? strain.terpenprofil.join(", ")
+                            : "N/A"}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>

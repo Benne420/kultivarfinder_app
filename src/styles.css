@@ -51,7 +51,6 @@ body {
 /* ================================================
      Typografie
      ================================================ */
-/* Alle Überschriften: Margin oben entfernen */
 h1,
 h2,
 h3,
@@ -61,7 +60,6 @@ h6 {
   margin-top: 0;
 }
 
-/* Spezifische Überschriften */
 h1 {
   font-size: 44px;
   text-align: center;
@@ -88,7 +86,6 @@ h6 {
   font-size: 12px;
 }
 
-/* Absätze, Listen und Code */
 p {
   margin-bottom: var(--base-spacing);
 }
@@ -138,7 +135,7 @@ nav a:hover {
 }
 
 .table {
-  width: 80%; /* nach Bedarf anpassen */
+  width: 100%;
   margin: auto;
   text-align: center;
 }
@@ -148,14 +145,21 @@ nav a:hover {
   text-align: left;
 }
 
+/* Verhindert den Zeilenumbruch für THC-Werte */
+.thc-values {
+  white-space: nowrap;
+}
+.terpene-values {
+  white-space: nowrap !important;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
 /* ================================================
      Responsive Design
      ================================================ */
 @media (max-width: 768px) {
   body {
     margin: 20px;
-  }
-  .thc-values {
-    white-space: nowrap;
   }
 }
