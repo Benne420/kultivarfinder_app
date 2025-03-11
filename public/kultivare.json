@@ -52,7 +52,7 @@
     "thc": "20-30%",
     "cbd": "<1%",
     "terpengehalt": "2.19%",
-    "terpenprofil": ["Caryophyllen", "α-Humulen"],
+    "terpenprofil": ["β-Caryophyllen", "α-Humulen"],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
 },
 {
@@ -68,7 +68,7 @@
     "thc": "20-27%",
     "cbd": "<1%",
     "terpengehalt": "2.25%",
-    "terpenprofil": ["D-Limonen", "β-Myrcen"],
+    "terpenprofil": ["β-Caryophyllen", "β-Myrcen"],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
 },
 {
@@ -76,7 +76,7 @@
     "thc": "20-33%",
     "cbd": "<1%",
     "terpengehalt": "1.34%",
-    "terpenprofil": ["Limalool", "Trans-Caryophyllen"],
+    "terpenprofil": ["Linalool", "Trans-Caryophyllen"],
     "wirkungen": ["analgetisch", "entspannend", "angstlösend", "krampflösend"]
 },
 {
@@ -132,7 +132,7 @@
     "thc": "20-36%",
     "cbd": "<1%",
     "terpengehalt": "2.14%",
-    "terpenprofil": ["D-Limonen", "β-Caryophyllen"],
+    "terpenprofil": ["D-Limonen", "β-Myrcen"],
     "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"]
 },
 {
@@ -140,7 +140,7 @@
     "thc": "20-30%",
     "cbd": "<1%",
     "terpengehalt": "1.40%",
-    "terpenprofil": ["Caryophyllen", "β-Myrcen"],
+    "terpenprofil": ["Caryophyllen", "Linalool"],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
 },
 {

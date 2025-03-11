@@ -15,7 +15,6 @@ const Button = ({ children, onClick, disabled }) => (
 );
 
 const terpene = [
-  "Caryophyllen",
   "D-Limonen",
   "Farnesen",
   "Linalool",
@@ -26,7 +25,6 @@ const terpene = [
   "β-Myrcen",
   "β-Ocimen",
 ];
-
 const wirkungen = [
   "analgetisch",
   "angstlösend",
