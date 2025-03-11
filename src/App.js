@@ -14,6 +14,17 @@ const Button = ({ children, onClick, disabled }) => (
   </button>
 );
 
+const terpene = [
+  "β-Myrcen",
+  "Caryophyllen",
+  "D-Limonen",
+  "Linalool",
+  "Humulen",
+  "Farnesen",
+  "Terpinolen",
+  "Fenchol",
+];
+
 const wirkungen = [
   "analgetisch",
   "angstlösend",
@@ -27,25 +38,14 @@ const wirkungen = [
   "unterstützt Wundheilung",
 ];
 
-const terpene = [
-  "β-Myrcen",
-  "Caryophyllen",
-  "D-Limonen",
-  "Linalool",
-  "Humulen",
-  "Farnesen",
-  "Terpinolen",
-  "Fenchol",
-];
-
 const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
   return kultivare.filter(
     (kultivar) =>
-      [...selectedWirkungen].every((wirkung) =>
-        kultivar.wirkungen.includes(wirkung)
-      ) &&
       [...selectedTerpene].every((terpen) =>
         kultivar.terpenprofil.includes(terpen)
+      ) &&
+      [...selectedWirkungen].every((wirkung) =>
+        kultivar.wirkungen.includes(wirkung)
       )
   );
 };
@@ -54,18 +54,12 @@ export default function CannabisKultivarFinder() {
   const [selectedWirkungen, setSelectedWirkungen] = useState(new Set());
   const [selectedTerpene, setSelectedTerpene] = useState(new Set());
   const [kultivare, setKultivare] = useState([]);
-  const [quellen, setQuellen] = useState([]);
 
   useEffect(() => {
     fetch("/kultivare.json")
       .then((response) => response.json())
       .then((data) => setKultivare(data))
       .catch((error) => console.error("Fehler beim Laden der Daten:", error));
-
-    //    fetch("/quellen.json")
-    //      .then((response) => response.json())
-    //      .then((data) => setQuellen(data))
-    //      .catch((error) => console.error("Fehler beim Laden der Quellen:", error));
   }, []);
 
   const toggleSelection = (
@@ -100,6 +94,19 @@ export default function CannabisKultivarFinder() {
         lediglich ein Anhaltspunkt für die passende Produktauswahl durch das
         medizinische Fachpersonal und haben keinen Anspruch auf Vollständigkeit.
       </p>
+      <p className="instruction">Wählen Sie bis zu zwei Terpene aus:</p>
+      <div className="grid">
+        {terpene.map((terpen) => (
+          <Button
+            key={terpen}
+            onClick={() =>
+              toggleSelection(setSelectedTerpene, selectedTerpene, terpen)
+            }
+          >
+            {[...selectedTerpene].includes(terpen) ? `✓ ${terpen}` : terpen}
+          </Button>
+        ))}
+      </div>
       <p className="instruction">Wählen Sie bis zu zwei Wirkungen aus:</p>
       <div className="grid">
         {wirkungen.map((wirkung) => (
@@ -112,19 +119,6 @@ export default function CannabisKultivarFinder() {
             {[...selectedWirkungen].includes(wirkung)
               ? `✓ ${wirkung}`
               : wirkung}
-          </Button>
-        ))}
-      </div>
-      <p className="instruction">Wählen Sie bis zu zwei Terpene aus:</p>
-      <div className="grid">
-        {terpene.map((terpen) => (
-          <Button
-            key={terpen}
-            onClick={() =>
-              toggleSelection(setSelectedTerpene, selectedTerpene, terpen)
-            }
-          >
-            {[...selectedTerpene].includes(terpen) ? `✓ ${terpen}` : terpen}
           </Button>
         ))}
       </div>
