@@ -163,3 +163,14 @@ nav a:hover {
     margin: 20px;
   }
 }
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.button {
+  flex: 1 1 150px; /* wachsen gleichmäßig, Basisbreite 150px */
+  text-align: center;
+  padding: 10px;
+}
