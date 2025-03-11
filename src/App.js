@@ -15,14 +15,16 @@ const Button = ({ children, onClick, disabled }) => (
 );
 
 const terpene = [
+  "Caryophyllen",
+  "D-Limonen",
+  "Farnesen",
+  "Linalool",
+  "Terpinolen",
+  "Trans-Caryophyllen",
+  "α-Humulen",
   "β-Caryophyllen",
   "β-Myrcen",
-  "D-Limonen",
-  "Linalool",
-  "Humulen",
-  "Farnesen",
-  "Terpinolen",
-  "Fenchol",
+  "β-Ocimen",
 ];
 
 const wirkungen = [
@@ -36,7 +38,7 @@ const wirkungen = [
   "krampflösend",
   "neuroprotektiv",
   "unterstützt Wundheilung",
-];
+].sort();
 
 const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
   return kultivare.filter(
