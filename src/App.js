@@ -15,8 +15,8 @@ const Button = ({ children, onClick, disabled }) => (
 );
 
 const terpene = [
+  "β-Caryophyllen",
   "β-Myrcen",
-  "Caryophyllen",
   "D-Limonen",
   "Linalool",
   "Humulen",
