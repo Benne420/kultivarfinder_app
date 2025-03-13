@@ -2,9 +2,16 @@
   {
     "name": "Alien Mints",
     "thc": "20-25",
-    "cbd": "1%",
+    "cbd": "<1%",
     "terpen": "2.68",
     "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+  },
+  {
+    "name": "Bling Blaow",
+    "thc": "25-30",
+    "cbd": "<1%",
+    "terpen": "3.39",
+    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "entspannend"]
   },
   {
     "name": "Bucket List",
