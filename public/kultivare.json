@@ -1,5 +1,5 @@
 [
-{
+  {
     "name": "Alien Mints",
     "thc": "20-25%",
     "cbd": "<1%",
@@ -15,6 +15,14 @@
     "terpenprofil": ["β-Caryophyllen", "D-Limonen"],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
 },
+  {
+    "name": "Bling Blaow",
+    "thc": "25-30",
+    "cbd": "<1%",
+    "terpengehalt": "3.39",
+    "terpenprofil": ["D-Limonen", "Linalool"],
+    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "entspannend"]
+  },
 {
     "name": "Chemdog",
     "thc": "18-27%",
