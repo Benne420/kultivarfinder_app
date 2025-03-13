@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e1ee621c.css",
-    "main.js": "/static/js/main.6c1f0190.js",
+    "main.js": "/static/js/main.bdf62416.js",
     "static/media/F20_Pharma_Pattern-Hexagon_07.png": "/static/media/F20_Pharma_Pattern-Hexagon_07.3387901e5ab6aec04743.png",
     "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/Montserrat-Bold.ttf": "/static/media/Montserrat-Bold.079ca05d3ded9bc107ab.ttf",
@@ -13,10 +13,10 @@
     "static/media/montserrat-vietnamese-400-normal.woff2": "/static/media/montserrat-vietnamese-400-normal.8f3f4c99eb0eeb5990f1.woff2",
     "index.html": "/index.html",
     "main.e1ee621c.css.map": "/static/css/main.e1ee621c.css.map",
-    "main.6c1f0190.js.map": "/static/js/main.6c1f0190.js.map"
+    "main.bdf62416.js.map": "/static/js/main.bdf62416.js.map"
   },
   "entrypoints": [
     "static/css/main.e1ee621c.css",
-    "static/js/main.6c1f0190.js"
+    "static/js/main.bdf62416.js"
   ]
 }
