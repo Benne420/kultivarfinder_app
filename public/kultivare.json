@@ -7,14 +7,6 @@
     "terpenprofil": ["β-Myrcen", "β-Caryophyllen"],
     "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
 },
-{
-    "name": "Bucket List",
-    "thc": "22-33%",
-    "cbd": "<1%",
-    "terpengehalt": "1.39%",
-    "terpenprofil": ["β-Caryophyllen", "D-Limonen"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
-},
   {
     "name": "Bling Blaow",
     "thc": "25-30",
@@ -23,6 +15,14 @@
     "terpenprofil": ["D-Limonen", "Linalool"],
     "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "entspannend"]
   },
+{
+    "name": "Bucket List",
+    "thc": "22-33%",
+    "cbd": "<1%",
+    "terpengehalt": "1.39%",
+    "terpenprofil": ["β-Caryophyllen", "D-Limonen"],
+    "wirkungen": ["analgetisch", "entzündungshemmend"]
+},
 {
     "name": "Chemdog",
     "thc": "18-27%",
