@@ -14,6 +14,19 @@ const Button = ({ children, onClick, disabled }) => (
   </button>
 );
 
+const terpene = [
+  "Caryophyllen",
+  "D-Limonen",
+  "Farnesen",
+  "Linalool",
+  "Terpinolen",
+  "Trans-Caryophyllen",
+  "α-Humulen",
+  "β-Caryophyllen",
+  "β-Myrcen",
+  "β-Ocimen",
+];
+
 const wirkungen = [
   "analgetisch",
   "angstlösend",
@@ -25,60 +38,86 @@ const wirkungen = [
   "krampflösend",
   "neuroprotektiv",
   "unterstützt Wundheilung",
-];
+].sort();
 
-const filterKultivare = (kultivare, selectedWirkungen) => {
-  return kultivare.filter((kultivar) =>
-    [...selectedWirkungen].every((wirkung) =>
-      kultivar.wirkungen.includes(wirkung)
-    )
+const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
+  return kultivare.filter(
+    (kultivar) =>
+      [...selectedTerpene].every((terpen) =>
+        kultivar.terpenprofil.includes(terpen)
+      ) &&
+      [...selectedWirkungen].every((wirkung) =>
+        kultivar.wirkungen.includes(wirkung)
+      )
   );
 };
 
 export default function CannabisKultivarFinder() {
   const [selectedWirkungen, setSelectedWirkungen] = useState(new Set());
+  const [selectedTerpene, setSelectedTerpene] = useState(new Set());
   const [kultivare, setKultivare] = useState([]);
-  const [quellen, setQuellen] = useState([]);
 
   useEffect(() => {
     fetch("/kultivare.json")
       .then((response) => response.json())
       .then((data) => setKultivare(data))
       .catch((error) => console.error("Fehler beim Laden der Daten:", error));
-
-    fetch("/quellen.json")
-      .then((response) => response.json())
-      .then((data) => setQuellen(data))
-      .catch((error) => console.error("Fehler beim Laden der Quellen:", error));
   }, []);
 
-  const toggleWirkung = (wirkung) => {
-    setSelectedWirkungen((prev) => {
+  const toggleSelection = (
+    setSelected,
+    selectedSet,
+    item,
+    maxSelection = 2
+  ) => {
+    setSelected((prev) => {
       const newSet = new Set(prev);
-      if (newSet.has(wirkung)) {
-        newSet.delete(wirkung);
-      } else if (newSet.size < 2) {
-        newSet.add(wirkung);
+      if (newSet.has(item)) {
+        newSet.delete(item);
+      } else if (newSet.size < maxSelection) {
+        newSet.add(item);
       }
       return newSet;
     });
   };
 
-  const filteredKultivare = filterKultivare(kultivare, selectedWirkungen);
+  const filteredKultivare = filterKultivare(
+    kultivare,
+    selectedWirkungen,
+    selectedTerpene
+  );
 
   return (
     <div className="container">
-      <h1>Cannabis-Kultivar-Finder</h1>
+      <h1>Cannabis-Kultivarfinder</h1>
       <p className="disclaimer">
         Die angegebenen medizinischen Wirkungen beziehen sich auf mögliche
         Effekte des dominantesten Terpens in der Blüte. Die Angaben sind
         lediglich ein Anhaltspunkt für die passende Produktauswahl durch das
         medizinische Fachpersonal und haben keinen Anspruch auf Vollständigkeit.
       </p>
+      <p className="instruction">Wählen Sie bis zu zwei Terpene aus:</p>
+      <div className="grid">
+        {terpene.map((terpen) => (
+          <Button
+            key={terpen}
+            onClick={() =>
+              toggleSelection(setSelectedTerpene, selectedTerpene, terpen)
+            }
+          >
+            {[...selectedTerpene].includes(terpen) ? `✓ ${terpen}` : terpen}
+          </Button>
+        ))}
+      </div>
       <p className="instruction">Wählen Sie bis zu zwei Wirkungen aus:</p>
       <div className="grid">
         {wirkungen.map((wirkung) => (
-          <Button key={wirkung} onClick={() => toggleWirkung(wirkung)}>
+          <Button
+            key={wirkung}
+            onClick={() =>
+              toggleSelection(setSelectedWirkungen, selectedWirkungen, wirkung)
+            }
+          >
             {[...selectedWirkungen].includes(wirkung)
               ? `✓ ${wirkung}`
               : wirkung}
@@ -97,6 +136,7 @@ export default function CannabisKultivarFinder() {
                     <th>THC %</th>
                     <th className="hidden-sm">CBD %</th>
                     <th className="hidden-sm">Terpengehalt %</th>
+                    <th className="hidden-sm">Terpenprofil</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -118,16 +158,28 @@ export default function CannabisKultivarFinder() {
                           {strain.name}
                         </button>
                       </td>
-                      <td>{strain.thc}</td>
+                      <td>
+                        <span className="thc-values">{strain.thc}</span>
+                      </td>
                       <td className="hidden-sm">{strain.cbd}</td>
-                      <td className="hidden-sm">{strain.terpen}</td>
+                      <td className="hidden-sm">
+                        {strain.terpengehalt ? strain.terpengehalt : "N/A"}
+                      </td>
+                      <td className="hidden-sm">
+                        <span className="terpene-values">
+                          {strain.terpenprofil
+                            ? strain.terpenprofil.join(", ")
+                            : "N/A"}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             ) : (
               <p className="no-results">
-                Bitte wählen Sie Wirkungen aus, um passende Kultivare zu sehen.
+                Bitte wählen Sie Wirkungen und/oder Terpene aus, um passende
+                Kultivare zu sehen.
               </p>
             )}
           </CardContent>
