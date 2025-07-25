@@ -19,6 +19,7 @@ const terpene = [
   "D-Limonen",
   "Farnesen",
   "Linalool",
+  "Selinene",
   "Terpinolen",
   "Trans-Caryophyllen",
   "α-Humulen",
