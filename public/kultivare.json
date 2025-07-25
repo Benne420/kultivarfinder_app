@@ -6,10 +6,7 @@
     "terpengehalt": "2.68%",
     "terpenprofil": [
       "β-Myrcen",
-      "Caryophyllen",
-      "D-Limonen",
-      "Linalool",
-      "Humulen"
+      "Caryophyllen"
     ],
     "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
   },
@@ -20,10 +17,7 @@
     "terpengehalt": "3.64%",
     "terpenprofil": [
       "Germacren B",
-      "Selina-3,7(11)-dien",
-      "Linalool",
-      "Caryophyllen",
-      "D-Limonen"
+      "Selina-3,7(11)-dien"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -39,10 +33,7 @@
     "terpengehalt": "2.25%",
     "terpenprofil": [
       "Caryophyllen",
-      "Selina-4(15),7(11)-dien",
-      "Selina-3,7(11)-dien",
-      "D-Limonen",
-      "β-Myrcen"
+      "Selina-4(15),7(11)-dien"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -53,10 +44,7 @@
     "terpengehalt": "3.39%",
     "terpenprofil": [
       "D-Limonen",
-      "Linalool",
-      "Caryophyllen",
-      "β-Myrcen",
-      "Selina-3,7(11)-dien"
+      "Linalool"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -72,10 +60,7 @@
     "terpengehalt": "1.65%",
     "terpenprofil": [
       "Caryophyllen",
-      "Linalool",
-      "D-Limonen",
-      "Humulen",
-      "Fenchol"
+      "Linalool"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -86,10 +71,7 @@
     "terpengehalt": "1.39%",
     "terpenprofil": [
       "β-Myrcen",
-      "D-Limonen",
-      "Caryophyllen",
-      "Humulen",
-      "Linalool"
+      "D-Limonen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -100,10 +82,7 @@
     "terpengehalt": "1.40%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "Humulen",
-      "Linalool"
+      "β-Myrcen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -114,10 +93,7 @@
     "terpengehalt": "1.76%",
     "terpenprofil": [
       "D-Limonen",
-      "Caryophyllen",
-      "β-Myrcen",
-      "Linalool",
-      "Guaiol"
+      "Caryophyllen"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -133,10 +109,7 @@
     "terpengehalt": "3.341%",
     "terpenprofil": [
       "β-Myrcen",
-      "Trans-Caryophyllen",
-      "D-Limonen",
-      "Farnesen",
-      "α-Humulen"
+      "Trans-Caryophyllen"
     ],
     "wirkungen": ["antiinflammatorisch", "neuroprotektiv"]
   },
@@ -147,10 +120,7 @@
     "terpengehalt": "2.55%",
     "terpenprofil": [
       "Terpinolen",
-      "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "Linalool"
+      "Caryophyllen"
     ],
     "wirkungen": ["entzündungshemmend", "unterstützt Wundheilung"]
   },
@@ -161,10 +131,7 @@
     "terpengehalt": "3.15%",
     "terpenprofil": [
       "β-Myrcen",
-      "Caryophyllen",
-      "Linalool",
-      "β-Ocimen",
-      "Selina-3,7(11)-dien"
+      "Caryophyllen"
     ],
     "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
   },
@@ -175,10 +142,7 @@
     "terpengehalt": "2.19%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "Humulen",
-      "Bisabolol"
+      "β-Myrcen"
     ],
     "wirkungen": ["stresslösend", "schlaffördernd", "schmerzstillend"]
   },
@@ -189,10 +153,7 @@
     "terpengehalt": "3.50%",
     "terpenprofil": [
       "Farnesen",
-      "β-Myrcen",
-      "Caryophyllen",
-      "D-Limonen",
-      "Humulen"
+      "β-Myrcen"
     ],
     "wirkungen": ["antioxidativ", "entzündungshemmend", "antimikrobiell"]
   },
@@ -203,10 +164,7 @@
     "terpengehalt": "1.934%",
     "terpenprofil": [
       "Trans-Caryophyllen",
-      "Terpinolen",
-      "Farnesen",
-      "α-Humulen",
-      "D-Limonen"
+      "Terpinolen"
     ],
     "wirkungen": ["antiinflammatorisch", "analgetisch"]
   },
@@ -217,10 +175,7 @@
     "terpengehalt": "2.25%",
     "terpenprofil": [
       "D-Limonen",
-      "β-Myrcen",
-      "Caryophyllen",
-      "Selina-4(15),7(11)-dien",
-      "Selina-3,7(11)-dien"
+      "β-Myrcen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -231,10 +186,7 @@
     "terpengehalt": "1.34%",
     "terpenprofil": [
       "Caryophyllen",
-      "Linalool",
-      "D-Limonen",
-      "Guaiol",
-      "Humulen"
+      "Linalool"
     ],
     "wirkungen": ["analgetisch", "entspannend", "angstlösend", "krampflösend"]
   },
@@ -258,10 +210,7 @@
     "terpengehalt": "0.98%",
     "terpenprofil": [
       "Caryophyllen",
-      "Humulen",
-      "Linalool",
-      "Guaiol",
-      "α-Bisabolol"
+      "Humulen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -272,10 +221,7 @@
     "terpengehalt": "1.88%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "Humulen",
-      "Farnesen"
+      "β-Myrcen"
     ],
     "wirkungen": ["entzündungshemmend", "analgetisch"]
   },
@@ -286,10 +232,7 @@
     "terpengehalt": "1.082%",
     "terpenprofil": [
       "β-Pinen",
-      "α-Humulen",
-      "Linalool",
-      "D-Limonen",
-      "Trans-Caryophyllen"
+      "α-Humulen"
     ],
     "wirkungen": ["antiinflammatorisch", "analgetisch"]
   },
@@ -300,10 +243,7 @@
     "terpengehalt": "2.76%",
     "terpenprofil": [
       "Farnesen",
-      "Caryophyllen",
-      "D-Limonen",
-      "Linalool",
-      "α-Pinen"
+      "Caryophyllen"
     ],
     "wirkungen": ["antioxidativ", "entzündungshemmend", "antimikrobiell"]
   },
@@ -314,10 +254,7 @@
     "terpengehalt": "3.432%",
     "terpenprofil": [
       "Bulnesol",
-      "β-Caryophyllen",
-      "Linalool",
-      "β-Myrcen",
-      "D-Limonen"
+      "β-Caryophyllen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -333,10 +270,7 @@
     "terpengehalt": "2.14%",
     "terpenprofil": [
       "β-Myrcen",
-      "Caryophyllen",
-      "Linalool",
-      "Selina-4(15),7(11)-dien",
-      "Selina-3,7(11)-dien"
+      "Caryophyllen"
     ],
     "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
   },
@@ -347,10 +281,7 @@
     "terpengehalt": "2.45%",
     "terpenprofil": [
       "Caryophyllen",
-      "D-Limonen",
-      "Humulen",
-      "Selina-3,7(11)-diene",
-      "α-Bisabolol"
+      "D-Limonen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -361,10 +292,7 @@
     "terpengehalt": "2.315%",
     "terpenprofil": [
       "Farnesen",
-      "D-Limonen",
-      "α-Humulen",
-      "β-Myrcen",
-      "Trans-Caryophyllen"
+      "D-Limonen"
     ],
     "wirkungen": ["antiinflammatorisch", "analgetisch"]
   },
@@ -375,10 +303,7 @@
     "terpengehalt": "2.14%",
     "terpenprofil": [
       "D-Limonen",
-      "Caryophyllen",
-      "β-Myrcen",
-      "Farnesen",
-      "Humulen"
+      "Caryophyllen"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -394,10 +319,7 @@
     "terpengehalt": "1.40%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "Linalool",
-      "Humulen"
+      "β-Myrcen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -408,10 +330,7 @@
     "terpengehalt": "1.547%",
     "terpenprofil": [
       "D-Limonen",
-      "β-Myrcen",
-      "Linalool",
-      "β-Pinen",
-      "Trans-Caryophyllen"
+      "β-Myrcen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -427,10 +346,7 @@
     "terpengehalt": "4.15%",
     "terpenprofil": [
       "D-Limonen",
-      "Caryophyllen",
-      "β-Myrcen",
-      "Linalool",
-      "Germacren B"
+      "Caryophyllen"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -446,10 +362,7 @@
     "terpengehalt": "2.98%",
     "terpenprofil": [
       "β-Myrcen",
-      "Caryophyllen",
-      "α-Pinen",
-      "Selina-3,7(11)-dien",
-      "Humulen"
+      "Caryophyllen"
     ],
     "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
   },
@@ -460,10 +373,7 @@
     "terpengehalt": "2.569%",
     "terpenprofil": [
       "β-Myrcen",
-      "β-Caryophyllen",
-      "D-Limonen",
-      "Linalool",
-      "Humulen"
+      "β-Caryophyllen"
     ],
     "wirkungen": ["antiinflammatorisch", "neuroprotektiv"]
   },
@@ -474,10 +384,7 @@
     "terpengehalt": "0.98%",
     "terpenprofil": [
       "Humulen",
-      "α-Pinen",
-      "D-Limonen",
-      "Caryophyllen",
-      "β-Myrcen"
+      "α-Pinen"
     ],
     "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
   },
@@ -488,10 +395,7 @@
     "terpengehalt": "1.46%",
     "terpenprofil": [
       "β-Myrcen",
-      "Caryophyllen",
-      "D-Limonen",
-      "Linalool",
-      "α-Pinen"
+      "Caryophyllen"
     ],
     "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
   },
@@ -502,10 +406,7 @@
     "terpengehalt": "1.29%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "Linalool",
-      "Humulen"
+      "β-Myrcen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -516,10 +417,7 @@
     "terpengehalt": "2.553%",
     "terpenprofil": [
       "Farnesen",
-      "Trans-Caryophyllen",
-      "β-Myrcen",
-      "α-Humulen",
-      "D-Limonen"
+      "Trans-Caryophyllen"
     ],
     "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimikrobiell"]
   },
@@ -530,10 +428,7 @@
     "terpengehalt": "1.00%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "Linalool",
-      "Humulen"
+      "β-Myrcen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -544,10 +439,7 @@
     "terpengehalt": "1.17%",
     "terpenprofil": [
       "Caryophyllen",
-      "D-Limonen",
-      "Linalool",
-      "β-Myrcen",
-      "Humulen"
+      "D-Limonen"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -558,10 +450,7 @@
     "terpengehalt": "1.859%",
     "terpenprofil": [
       "β-Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "α-Humulen",
-      "Linalool"
+      "β-Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -577,10 +466,7 @@
     "terpengehalt": "0.64%",
     "terpenprofil": [
       "Caryophyllen",
-      "Fenchol",
-      "D-Limonen",
-      "Linalool",
-      "α-Bisabolol"
+      "Fenchol"
     ],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
@@ -591,10 +477,7 @@
     "terpengehalt": "2.37%",
     "terpenprofil": [
       "Terpinolen",
-      "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
-      "β-Pinen"
+      "Caryophyllen"
     ],
     "wirkungen": ["entzündungshemmend", "unterstützt Wundheilung"]
   }
