@@ -96,20 +96,20 @@
     "wirkungen": ["stresslösend", "schlaffördernd", "schmerzstillend"]
   },
   {
-    "name": "GMO",
-    "thc": "27-33%",
-    "cbd": "<1%",
-    "terpengehalt": "3.50%",
-    "terpenprofil": ["Farnesen", "β-Myrcen"],
-    "wirkungen": ["antioxidativ", "entzündungshemmend", "antimikrobiell"]
-  },
-  {
     "name": "Glaced Apricot Gelato",
     "thc": "18-33%",
     "cbd": "<1%",
     "terpengehalt": "1.934%",
     "terpenprofil": ["Trans-Caryophyllen", "Terpinolen"],
     "wirkungen": ["antiinflammatorisch", "analgetisch"]
+  },
+  {
+    "name": "GMO",
+    "thc": "27-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.50%",
+    "terpenprofil": ["Farnesen", "β-Myrcen"],
+    "wirkungen": ["antioxidativ", "entzündungshemmend", "antimikrobiell"]
   },
   {
     "name": "Grape Face",
