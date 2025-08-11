@@ -192,6 +192,14 @@
     "wirkungen": ["analgetisch", "entzündungshemmend"]
   },
   {
+    "name": "Modified Grapes",
+    "thc": "20-33%",
+    "cbd": "<1%",
+    "terpengehalt": "2.32%",
+    "terpenprofil": ["Trans-Caryophyllen", "β-Myrcen"],
+    "wirkungen": ["antiinflammatorisch", "analgetisch"]
+  },
+  {
     "name": "Peach Chementine",
     "thc": "20-36%",
     "cbd": "<1%",
