@@ -14,12 +14,65 @@ const Button = ({ children, onClick, disabled }) => (
   </button>
 );
 
+// --- Zusatz: Terpen-Wissensbasis für Tooltip/Modal ---
+const terpenInfo = {
+  "β-Myrcen": {
+    aliases: ["Myrcen"],
+    description:
+      "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
+  },
+  "β-Caryophyllen": {
+    aliases: ["Trans-Caryophyllen", "Caryophyllen"],
+    description:
+      "Sesquiterpen; pfeffrig-würzig. Bindet als einziger geläufiger Duftstoff direkt am CB2-Rezeptor (präklinische Evidenz).",
+  },
+  Caryophyllen: {
+    aliases: ["β-Caryophyllen", "Trans-Caryophyllen"],
+    description:
+      "Würzig-pfeffrig; in schwarzem Pfeffer, Nelke. Häufiges Hauptterpen in vielen Kultivaren.",
+  },
+  "Trans-Caryophyllen": {
+    aliases: ["β-Caryophyllen", "Caryophyllen"],
+    description:
+      "Geometrisches Isomer von Caryophyllen (trans). Charakteristisch pfeffrig-warm.",
+  },
+  "D-Limonen": {
+    aliases: ["Limonen"],
+    description:
+      "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
+  },
+  Terpinolen: {
+    aliases: [],
+    description:
+      "Monoterpen; frisch, kiefernartig mit blumigen Noten. In Apfel, Teebaum, Kreuzkümmel beschrieben.",
+  },
+  "β-Ocimen": {
+    aliases: ["Ocimen"],
+    description:
+      "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
+  },
+  "α-Humulen": {
+    aliases: ["Humulen"],
+    description:
+      "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
+  },
+  Farnesen: {
+    aliases: [],
+    description:
+      "Sesquiterpen-Familie; grün-apfelig, in Apfel- und Hopfenaromen. Subtyp-abhängige Profile.",
+  },
+  Linalool: {
+    aliases: [],
+    description:
+      "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
+  },
+};
+
 const terpene = [
   "Caryophyllen",
   "D-Limonen",
   "Farnesen",
   "Linalool",
-  "Selinene",
   "Terpinolen",
   "Trans-Caryophyllen",
   "α-Humulen",
@@ -53,10 +106,37 @@ const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
   );
 };
 
+// --- kleines, lib-freies Modal ---
+const Modal = ({ open, onClose, title, children }) => {
+  if (!open) return null;
+  return (
+    <div
+      className="modal-backdrop"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+    >
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <button
+          className="modal-close"
+          onClick={onClose}
+          aria-label="Dialog schließen"
+        >
+          ×
+        </button>
+        <h3 className="modal-title">{title}</h3>
+        <div className="modal-content">{children}</div>
+      </div>
+    </div>
+  );
+};
+
 export default function CannabisKultivarFinder() {
   const [selectedWirkungen, setSelectedWirkungen] = useState(new Set());
   const [selectedTerpene, setSelectedTerpene] = useState(new Set());
   const [kultivare, setKultivare] = useState([]);
+  const [terpenDialog, setTerpenDialog] = useState({ open: false, name: null });
 
   useEffect(() => {
     fetch("/kultivare.json")
@@ -88,8 +168,54 @@ export default function CannabisKultivarFinder() {
     selectedTerpene
   );
 
+  const openTerpenDialog = (name) => setTerpenDialog({ open: true, name });
+  const closeTerpenDialog = () => setTerpenDialog({ open: false, name: null });
+
+  const renderTerpenChips = (list) => {
+    if (!Array.isArray(list) || list.length === 0) return "N/A";
+    return (
+      <div className="terp-list" role="list" aria-label="Terpenprofil">
+        {list.map((t, idx) => (
+          <button
+            key={`${t}-${idx}`}
+            className="terp-chip"
+            onClick={() => openTerpenDialog(t)}
+            title={`Mehr Informationen zu ${t}`}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+    );
+  };
+
+  const activeInfo = terpenDialog.name
+    ? terpenInfo[terpenDialog.name] ||
+      // Fallback: versuche eine Alias-Zuordnung grob zu finden
+      Object.values(terpenInfo).find((v) =>
+        v.aliases?.includes(terpenDialog.name)
+      ) ||
+      null
+    : null;
+
   return (
     <div className="container">
+      {/* Inline-Ministyles für Chips & Modal (kann nach styles.css ausgelagert werden) */}
+      <style>{`
+        .terp-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+        .terp-chip {
+          border: 1px solid #cfd8dc; border-radius: 9999px; padding: 4px 10px; cursor: pointer;
+          background: #f7fafc; font-size: 12px; line-height: 1; white-space: nowrap;
+        }
+        .terp-chip:hover { background: #eef2f7; }
+        .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: grid; place-items: center; z-index: 50; }
+        .modal { background: #fff; max-width: 600px; width: 90%; border-radius: 12px; padding: 18px 20px 20px; position: relative; }
+        .modal-title { margin: 0 0 8px; text-align: left; font-size: 18px; }
+        .modal-close { position: absolute; top: 8px; right: 10px; border: none; background: transparent; font-size: 22px; cursor: pointer; }
+        .modal-content p { margin: 0.5rem 0; }
+        .modal-meta { font-size: 12px; color: #546e7a; }
+      `}</style>
+
       <h1>Cannabis-Kultivarfinder</h1>
       <p className="disclaimer">
         Die angegebenen medizinischen Wirkungen beziehen sich auf mögliche
@@ -167,11 +293,7 @@ export default function CannabisKultivarFinder() {
                         {strain.terpengehalt ? strain.terpengehalt : "N/A"}
                       </td>
                       <td className="hidden-sm">
-                        <span className="terpene-values">
-                          {strain.terpenprofil
-                            ? strain.terpenprofil.join(", ")
-                            : "N/A"}
-                        </span>
+                        {renderTerpenChips(strain.terpenprofil)}
                       </td>
                     </tr>
                   ))}
@@ -186,6 +308,32 @@ export default function CannabisKultivarFinder() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Terpen-Informationsdialog */}
+      <Modal
+        open={terpenDialog.open}
+        onClose={closeTerpenDialog}
+        title={terpenDialog.name || "Terpen"}
+      >
+        {terpenDialog.name ? (
+          <>
+            <p>
+              <strong>Synonyme:</strong>{" "}
+              {activeInfo?.aliases && activeInfo.aliases.length > 0
+                ? activeInfo.aliases.join(", ")
+                : "—"}
+            </p>
+            <p>
+              {activeInfo?.description ||
+                "Für dieses Terpen sind noch keine Detailinformationen hinterlegt."}
+            </p>
+            <p className="modal-meta">
+              Hinweis: Kurzinfos, keine medizinische Beratung. Terpenprofile
+              variieren je nach Charge &amp; Verarbeitung.
+            </p>
+          </>
+        ) : null}
+      </Modal>
     </div>
   );
 }
