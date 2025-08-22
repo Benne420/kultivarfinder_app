@@ -280,6 +280,14 @@
     "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimikrobiell"]
   },
   {
+    "name": "Waffle Truffle",
+    "thc": "18-27%",
+    "cbd": "<1%",
+    "terpengehalt": "1.859%",
+    "terpenprofil": ["β-Caryophyllen", "β-Myrcen"],
+    "wirkungen": ["analgetisch", "antiinflammatorisch", "anxiolytisch", "antidepressiv"]
+  },
+  {
     "name": "Wedding Pop Triangle",
     "thc": "20-25%",
     "cbd": "<1%",
@@ -294,14 +302,6 @@
     "terpengehalt": "1.17%",
     "terpenprofil": ["Caryophyllen", "β-Myrcen"],
     "wirkungen": ["analgetisch", "entzündungshemmend"]
-  },
-  {
-    "name": "Waffle Truffle",
-    "thc": "18-27%",
-    "cbd": "<1%",
-    "terpengehalt": "1.859%",
-    "terpenprofil": ["β-Caryophyllen", "β-Myrcen"],
-    "wirkungen": ["analgetisch", "antiinflammatorisch", "anxiolytisch", "antidepressiv"]
   },
   {
     "name": "Zookies",
