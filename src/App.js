@@ -230,9 +230,17 @@ export default function CannabisKultivarFinder() {
         .select-row select { width: 100%; padding: 10px; border: 1px solid #cfd8dc; border-radius: 8px; font-size: 14px; }
         .reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; }
         .reset-btn:hover { background: #eef2f7; }
-        .table-scroll { overflow-x: auto; }
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .table-container { overflow-x: auto; }
+        .table { width: 100%; }
+        .table th, .table td { white-space: normal; }
         @media (max-width: 768px) {
           .select-row { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+          /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil bleiben sichtbar */
+          .table thead th:nth-child(3), .table tbody td:nth-child(3),
+          .table thead th:nth-child(4), .table tbody td:nth-child(4) { display: none; }
         }
       `}</style>
 
@@ -355,7 +363,7 @@ export default function CannabisKultivarFinder() {
                         <td className="hidden-sm">
                           {strain.terpengehalt ? strain.terpengehalt : "N/A"}
                         </td>
-                        <td className="hidden-sm">
+                        <td className="hidden-sm terpenprofil-cell">
                           {renderTerpenChips(strain.terpenprofil)}
                         </td>
                       </tr>
