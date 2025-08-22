@@ -127,3 +127,30 @@ nav a:hover {
   padding: 10px 20px;
   min-width: 150px;
 }
+/* Verhindert Abschneiden und erlaubt horizontales Scrollen */
+.table-container,
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Tabelle füllt Breite */
+.table {
+  width: 100%;
+}
+
+/* Zellen dürfen umbrechen (verhindert horizontales „Aufblähen“) */
+.table th,
+.table td {
+  white-space: normal;
+}
+
+/* Auf sehr kleinen Screens: Spalten 3 (CBD) & 4 (Terpengehalt) verstecken */
+@media (max-width: 640px) {
+  .table thead th:nth-child(3),
+  .table tbody td:nth-child(3),
+  .table thead th:nth-child(4),
+  .table tbody td:nth-child(4) {
+    display: none;
+  }
+}
