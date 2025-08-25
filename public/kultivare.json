@@ -67,7 +67,7 @@
     "name": "Frosted Gumbo",
     "thc": "25-36%",
     "cbd": "<1%",
-    "terpengehalt": "3.341%",
+    "terpengehalt": "3.34%",
     "terpenprofil": ["β-Myrcen", "Trans-Caryophyllen"],
     "wirkungen": ["antiinflammatorisch", "neuroprotektiv"]
   },
@@ -99,7 +99,7 @@
     "name": "Glaced Apricot Gelato",
     "thc": "18-33%",
     "cbd": "<1%",
-    "terpengehalt": "1.934%",
+    "terpengehalt": "1.93%",
     "terpenprofil": ["Trans-Caryophyllen", "Terpinolen"],
     "wirkungen": ["antiinflammatorisch", "analgetisch"]
   },
@@ -155,7 +155,7 @@
     "name": "Lemon Cherry Gelato",
     "thc": "18-33%",
     "cbd": "<1%",
-    "terpengehalt": "1.082%",
+    "terpengehalt": "1.08%",
     "terpenprofil": ["Trans-Caryophyllen", "D-Limonen"],
     "wirkungen": ["antiinflammatorisch", "analgetisch"]
   },
@@ -171,7 +171,7 @@
     "name": "Masterpiece",
     "thc": "22-33%",
     "cbd": "<1%",
-    "terpengehalt": "3.432%",
+    "terpengehalt": "3.43%",
     "terpenprofil": ["D-Limonen", "β-Myrcen"],
     "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "stresslösend"]
   },
@@ -219,7 +219,7 @@
     "name": "Private Banana",
     "thc": "18-33%",
     "cbd": "<1%",
-    "terpengehalt": "1.547%",
+    "terpengehalt": "1.55%",
     "terpenprofil": ["Limonen", "β-Myrcen"],
     "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "stresslösend"]
   },
@@ -243,7 +243,7 @@
     "name": "Scoops",
     "thc": "20-27%",
     "cbd": "<1%",
-    "terpengehalt": "2.569%",
+    "terpengehalt": "2.57%",
     "terpenprofil": ["β-Myrcen", "β-Caryophyllen"],
     "wirkungen": ["antiinflammatorisch", "neuroprotektiv"]
   },
@@ -283,7 +283,7 @@
     "name": "Unicorn Cake",
     "thc": "20-33%",
     "cbd": "<1%",
-    "terpengehalt": "2.553%",
+    "terpengehalt": "2.55%",
     "terpenprofil": ["Farnesen", "Trans-Caryophyllen"],
     "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimikrobiell"]
   },
@@ -291,7 +291,7 @@
     "name": "Waffle Truffle",
     "thc": "18-27%",
     "cbd": "<1%",
-    "terpengehalt": "1.859%",
+    "terpengehalt": "1.86%",
     "terpenprofil": ["β-Caryophyllen", "Myrcen"],
     "wirkungen": ["analgetisch", "antiinflammatorisch", "anxiolytisch", "antidepressiv"]
   },
