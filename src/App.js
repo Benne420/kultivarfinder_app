@@ -84,13 +84,18 @@ const terpene = [
 const wirkungen = [
   "analgetisch",
   "angstlösend",
+  "antidepressiv",
+  "antiinflammatorisch",
   "antimikrobiell",
   "antimykotisch",
   "antioxidativ",
+  "anxiolytisch",
   "entspannend",
   "entzündungshemmend",
   "krampflösend",
   "neuroprotektiv",
+  "schlaffördernd",
+  "schmerzstillend",
   "stresslösend",
   "unterstützt Wundheilung",
 ].sort();
