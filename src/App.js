@@ -91,6 +91,7 @@ const wirkungen = [
   "entzündungshemmend",
   "krampflösend",
   "neuroprotektiv",
+  "stresslösend",
   "unterstützt Wundheilung",
 ].sort();
 
