@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -21,7 +20,7 @@ body {
   font-family: "Montserrat", sans-serif;
   margin: 100px;
   padding: 0;
-  background-image: url("/public/F20_Pharma_Pattern-Hexagon_07.png");
+  background-image: url("/F20_Pharma_Pattern-Hexagon_07.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
