@@ -66,6 +66,37 @@ const terpenInfo = {
     description:
       "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
   },
+  Selinen: {
+    aliases: [
+      "Selinene",
+      "α‑Selinen",
+      "β‑Selinen",
+      "δ‑Selinen",
+      "α-Selinene",
+      "beta-Selinene",
+      "delta-Selinene",
+      "α‑Selinene",
+      "β‑Selinene",
+      "δ‑Selinene",
+    ],
+    description:
+      "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
+  },
+  "α‑Selinen": {
+    aliases: ["α-Selinene", "alpha-Selinene", "α‑Selinene"],
+    description:
+      "Bicyclisches Sesquiterpen‑Isomer; holzig‑würzig, leicht hopfig. Vorkommen u. a. in Apiaceae (Sellerie, Petersilie) und Hopfen.",
+  },
+  "β‑Selinen": {
+    aliases: ["β-Selinene", "beta-Selinene", "β‑Selinene"],
+    description:
+      "Isomeres Sesquiterpen mit sellerie-/krautiger Note; Anteile variieren je nach Herkunft und Verarbeitung.",
+  },
+  "δ‑Selinen": {
+    aliases: ["δ-Selinene", "delta-Selinene", "δ‑Selinene"],
+    description:
+      "Weitere Selinen‑Variante; holzig‑krautig. In ätherischen Ölen verschiedener Gewürz‑ und Heilpflanzen beschrieben.",
+  },
 };
 
 const terpene = [
@@ -73,6 +104,7 @@ const terpene = [
   "D-Limonen",
   "Farnesen",
   "Linalool",
+  "Selinen",
   "Terpinolen",
   "Trans-Caryophyllen",
   "α-Humulen",
@@ -84,30 +116,45 @@ const terpene = [
 const wirkungen = [
   "analgetisch",
   "angstlösend",
-  "antidepressiv",
-  "antiinflammatorisch",
   "antimikrobiell",
   "antimykotisch",
   "antioxidativ",
-  "anxiolytisch",
   "entspannend",
   "entzündungshemmend",
   "krampflösend",
   "neuroprotektiv",
-  "schlaffördernd",
-  "schmerzstillend",
-  "stresslösend",
   "unterstützt Wundheilung",
 ].sort();
+
+// Hilfsfunktionen für alias-sensitives Matching (z. B. Caryophyllen/β-Caryophyllen/Trans-Caryophyllen, Selinen-Isomere)
+const getTerpenAliases = (name) => {
+  const info = terpenInfo[name];
+  if (!info) return [name];
+  const list = [name, ...(info.aliases || [])];
+  // Duplikate entfernen
+  return Array.from(new Set(list));
+};
+
+const kultivarHasSelectedTerpene = (kultivar, selectedTerpene) => {
+  const profile = Array.isArray(kultivar.terpenprofil)
+    ? kultivar.terpenprofil
+    : [];
+  // Für jeden ausgewählten Terpen-Namen muss es im Profil einen Eintrag geben,
+  // der entweder genau passt oder als Alias geführt ist
+  return [...selectedTerpene].every((sel) => {
+    const names = getTerpenAliases(sel);
+    return profile.some((p) => names.includes(p));
+  });
+};
 
 const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
   return kultivare.filter(
     (kultivar) =>
-      [...selectedTerpene].every((terpen) =>
-        kultivar.terpenprofil.includes(terpen)
-      ) &&
+      kultivarHasSelectedTerpene(kultivar, selectedTerpene) &&
       [...selectedWirkungen].every((wirkung) =>
-        kultivar.wirkungen.includes(wirkung)
+        Array.isArray(kultivar.wirkungen)
+          ? kultivar.wirkungen.includes(wirkung)
+          : false
       )
   );
 };
