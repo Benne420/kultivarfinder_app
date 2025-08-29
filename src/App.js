@@ -67,33 +67,22 @@ const terpenInfo = {
       "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
   },
   Selinen: {
-    aliases: [
-      "Selinene",
-      "α‑Selinen",
-      "β‑Selinen",
-      "δ‑Selinen",
-      "α-Selinene",
-      "beta-Selinene",
-      "delta-Selinene",
-      "α‑Selinene",
-      "β‑Selinene",
-      "δ‑Selinene",
-    ],
+    aliases: ["Selinene", "α‑Selinen", "β‑Selinen", "δ‑Selinen"],
     description:
-      "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
+      "Sammelbegriff für isomere bicyclische Sesquiterpene, darunter α-, β- und δ-Selinen. Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
   },
   "α‑Selinen": {
-    aliases: ["α-Selinene", "alpha-Selinene", "α‑Selinene"],
+    aliases: ["α-Selinene"],
     description:
       "Bicyclisches Sesquiterpen‑Isomer; holzig‑würzig, leicht hopfig. Vorkommen u. a. in Apiaceae (Sellerie, Petersilie) und Hopfen.",
   },
   "β‑Selinen": {
-    aliases: ["β-Selinene", "beta-Selinene", "β‑Selinene"],
+    aliases: ["β-Selinene"],
     description:
       "Isomeres Sesquiterpen mit sellerie-/krautiger Note; Anteile variieren je nach Herkunft und Verarbeitung.",
   },
   "δ‑Selinen": {
-    aliases: ["δ-Selinene", "delta-Selinene", "δ‑Selinene"],
+    aliases: ["δ-Selinene"],
     description:
       "Weitere Selinen‑Variante; holzig‑krautig. In ätherischen Ölen verschiedener Gewürz‑ und Heilpflanzen beschrieben.",
   },
