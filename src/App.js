@@ -202,6 +202,8 @@ export default function CannabisKultivarFinder() {
     setSelectedWirkungen(new Set([wirk1, wirk2].filter(Boolean)));
   }, [wirk1, wirk2]);
 
+  const showDiscontinued = false;
+
   const filteredKultivare = filterKultivare(
     kultivare,
     selectedWirkungen,
@@ -374,6 +376,7 @@ export default function CannabisKultivarFinder() {
                     <tr>
                       <th>Name</th>
                       <th>THC %</th>
+                      <th>Typ</th>
                       <th className="hidden-sm">CBD %</th>
                       <th className="hidden-sm">Terpengehalt %</th>
                       <th className="hidden-sm">Terpenprofil</th>
@@ -383,6 +386,7 @@ export default function CannabisKultivarFinder() {
                     {filteredKultivare.map((strain) => (
                       <tr key={strain.name}>
                         <td>
+                          <td>{strain.typ || "—"}</td>
                           <button
                             onClick={() =>
                               window.open(
