@@ -67,22 +67,33 @@ const terpenInfo = {
       "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
   },
   Selinen: {
-    aliases: ["Selinene", "α‑Selinen", "β‑Selinen", "δ‑Selinen"],
+    aliases: [
+      "Selinene",
+      "α‑Selinen",
+      "β‑Selinen",
+      "δ‑Selinen",
+      "α-Selinene",
+      "beta-Selinene",
+      "delta-Selinene",
+      "α‑Selinene",
+      "β‑Selinene",
+      "δ‑Selinene",
+    ],
     description:
-      "Sammelbegriff für isomere bicyclische Sesquiterpene, darunter α-, β- und δ-Selinen. Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
+      "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
   },
   "α‑Selinen": {
-    aliases: ["α-Selinene"],
+    aliases: ["α-Selinene", "alpha-Selinene", "α‑Selinene"],
     description:
       "Bicyclisches Sesquiterpen‑Isomer; holzig‑würzig, leicht hopfig. Vorkommen u. a. in Apiaceae (Sellerie, Petersilie) und Hopfen.",
   },
   "β‑Selinen": {
-    aliases: ["β-Selinene"],
+    aliases: ["β-Selinene", "beta-Selinene", "β‑Selinene"],
     description:
       "Isomeres Sesquiterpen mit sellerie-/krautiger Note; Anteile variieren je nach Herkunft und Verarbeitung.",
   },
   "δ‑Selinen": {
-    aliases: ["δ-Selinene"],
+    aliases: ["δ-Selinene", "delta-Selinene", "δ‑Selinene"],
     description:
       "Weitere Selinen‑Variante; holzig‑krautig. In ätherischen Ölen verschiedener Gewürz‑ und Heilpflanzen beschrieben.",
   },
@@ -201,8 +212,6 @@ export default function CannabisKultivarFinder() {
   useEffect(() => {
     setSelectedWirkungen(new Set([wirk1, wirk2].filter(Boolean)));
   }, [wirk1, wirk2]);
-
-  const showDiscontinued = false;
 
   const filteredKultivare = filterKultivare(
     kultivare,
@@ -376,17 +385,16 @@ export default function CannabisKultivarFinder() {
                     <tr>
                       <th>Name</th>
                       <th>THC %</th>
-                      <th>Typ</th>
                       <th className="hidden-sm">CBD %</th>
                       <th className="hidden-sm">Terpengehalt %</th>
                       <th className="hidden-sm">Terpenprofil</th>
+                      <th>Typ</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredKultivare.map((strain) => (
                       <tr key={strain.name}>
                         <td>
-                          <td>{strain.typ || "—"}</td>
                           <button
                             onClick={() =>
                               window.open(
@@ -411,6 +419,11 @@ export default function CannabisKultivarFinder() {
                         </td>
                         <td className="hidden-sm terpenprofil-cell">
                           {renderTerpenChips(strain.terpenprofil)}
+                        </td>
+                        <td>
+                          {strain.typ !== undefined && strain.typ !== null
+                            ? strain.typ
+                            : "N/A"}
                         </td>
                       </tr>
                     ))}
