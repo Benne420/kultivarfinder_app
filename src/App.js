@@ -131,7 +131,6 @@ const getTerpenAliases = (name) => {
   const info = terpenInfo[name];
   if (!info) return [name];
   const list = [name, ...(info.aliases || [])];
-  // Duplikate entfernen
   return Array.from(new Set(list));
 };
 
@@ -139,24 +138,58 @@ const kultivarHasSelectedTerpene = (kultivar, selectedTerpene) => {
   const profile = Array.isArray(kultivar.terpenprofil)
     ? kultivar.terpenprofil
     : [];
-  // Für jeden ausgewählten Terpen-Namen muss es im Profil einen Eintrag geben,
-  // der entweder genau passt oder als Alias geführt ist
   return [...selectedTerpene].every((sel) => {
     const names = getTerpenAliases(sel);
     return profile.some((p) => names.includes(p));
   });
 };
 
-const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
-  return kultivare.filter(
-    (kultivar) =>
-      kultivarHasSelectedTerpene(kultivar, selectedTerpene) &&
-      [...selectedWirkungen].every((wirkung) =>
-        Array.isArray(kultivar.wirkungen)
-          ? kultivar.wirkungen.includes(wirkung)
-          : false
-      )
-  );
+const isActive = (k) => {
+  const s = ((k && k.status) || "").toString().trim().toLowerCase();
+  if (!s) return true; // fehlender Status => als aktiv behandeln
+  return ![
+    "inaktiv",
+    "inactive",
+    "deaktiviert",
+    "disabled",
+    "archiviert",
+    "archived",
+  ].includes(s);
+};
+
+const mapTyp = (s) => {
+  const t = (s || "").toString().trim().toLowerCase();
+  if (t.includes("indica-domin")) return "indica-dominant";
+  if (t.includes("sativa-domin")) return "sativa-dominant";
+  if (t.includes("indica")) return "indica";
+  if (t.includes("sativa")) return "sativa";
+  return t;
+};
+
+const filterKultivare = (
+  kultivare,
+  selectedWirkungen,
+  selectedTerpene,
+  selectedTyp
+) => {
+  const targetTyp = mapTyp(selectedTyp);
+  return kultivare.filter(isActive).filter((kultivar) => {
+    if (
+      selectedTerpene.size &&
+      !kultivarHasSelectedTerpene(kultivar, selectedTerpene)
+    )
+      return false;
+    if (selectedWirkungen.size) {
+      if (!Array.isArray(kultivar.wirkungen)) return false;
+      if (![...selectedWirkungen].every((w) => kultivar.wirkungen.includes(w)))
+        return false;
+    }
+    if (targetTyp) {
+      const kt = mapTyp(kultivar.typ);
+      if (kt !== targetTyp) return false;
+    }
+    return true;
+  });
 };
 
 // --- kleines, lib-freies Modal ---
@@ -196,6 +229,7 @@ export default function CannabisKultivarFinder() {
   const [terp2, setTerp2] = useState("");
   const [wirk1, setWirk1] = useState("");
   const [wirk2, setWirk2] = useState("");
+  const [typ, setTyp] = useState("");
 
   useEffect(() => {
     fetch("/kultivare.json")
@@ -216,7 +250,8 @@ export default function CannabisKultivarFinder() {
   const filteredKultivare = filterKultivare(
     kultivare,
     selectedWirkungen,
-    selectedTerpene
+    selectedTerpene,
+    typ
   );
 
   const clearTerpene = () => {
@@ -368,6 +403,26 @@ export default function CannabisKultivarFinder() {
               ))}
             </select>
             <button className="reset-btn" onClick={clearWirkungen}>
+              Zurücksetzen
+            </button>
+          </div>
+        </div>
+        <div className="select-group">
+          <h3>Typ</h3>
+          <div className="select-row">
+            <select
+              value={typ}
+              onChange={(e) => setTyp(e.target.value)}
+              aria-label="Typ"
+            >
+              <option value="">— Alle Typen —</option>
+              <option value="Indica">Indica</option>
+              <option value="Indica-dominant">Indica-dominant</option>
+              <option value="Sativa">Sativa</option>
+              <option value="Sativa-dominant">Sativa-dominant</option>
+            </select>
+            <div></div>
+            <button className="reset-btn" onClick={() => setTyp("")}>
               Zurücksetzen
             </button>
           </div>
