@@ -155,25 +155,22 @@ const kultivarHasSelectedTerpene = (kultivar, selectedTerpene) => {
   });
 };
 
-const isActive = (k) => {
-  const s = ((k && k.status) || "").toString().trim().toLowerCase();
-  if (!s) return true; // fehlender Status => als aktiv behandeln
-  return ![
-    "inaktiv",
-    "inactive",
-    "deaktiviert",
-    "disabled",
-    "archiviert",
-    "archived",
-  ].includes(s);
+// Inaktive Datensätze robust ausfiltern
+const isStatusIncluded = (k, includeDisc) => {
+  var s = ((k && k.status) || "").toString().trim().toLowerCase();
+  if (s === "active") return true;
+  if (includeDisc && s === "discontinued") return true;
+  return false;
 };
+
+// "Nicht mehr im Verkauf"/ausgelistet etc. ausfiltern
 
 const mapTyp = (s) => {
   const t = (s || "").toString().trim().toLowerCase();
-  if (t.includes("indica-domin")) return "indica-dominant";
-  if (t.includes("sativa-domin")) return "sativa-dominant";
-  if (t.includes("indica")) return "indica";
-  if (t.includes("sativa")) return "sativa";
+  if (t.indexOf("indica-domin") !== -1) return "indica-dominant";
+  if (t.indexOf("sativa-domin") !== -1) return "sativa-dominant";
+  if (t.indexOf("indica") !== -1) return "indica";
+  if (t.indexOf("sativa") !== -1) return "sativa";
   return t;
 };
 
@@ -181,26 +178,35 @@ const filterKultivare = (
   kultivare,
   selectedWirkungen,
   selectedTerpene,
-  selectedTyp
+  selectedTyp,
+  includeDisc
 ) => {
   const targetTyp = mapTyp(selectedTyp);
-  return kultivare.filter(isActive).filter((kultivar) => {
-    if (
-      selectedTerpene.size &&
-      !kultivarHasSelectedTerpene(kultivar, selectedTerpene)
-    )
-      return false;
-    if (selectedWirkungen.size) {
-      if (!Array.isArray(kultivar.wirkungen)) return false;
-      if (![...selectedWirkungen].every((w) => kultivar.wirkungen.includes(w)))
+  return kultivare
+    .filter(function (k) {
+      return isStatusIncluded(k, includeDisc);
+    })
+    .filter((kultivar) => {
+      if (
+        selectedTerpene.size &&
+        !kultivarHasSelectedTerpene(kultivar, selectedTerpene)
+      )
         return false;
-    }
-    if (targetTyp) {
-      const kt = mapTyp(kultivar.typ);
-      if (kt !== targetTyp) return false;
-    }
-    return true;
-  });
+      if (selectedWirkungen.size) {
+        if (!Array.isArray(kultivar.wirkungen)) return false;
+        if (
+          ![...selectedWirkungen].every(
+            (w) => kultivar.wirkungen.indexOf(w) !== -1
+          )
+        )
+          return false;
+      }
+      if (targetTyp) {
+        const kt = mapTyp(kultivar.typ);
+        if (kt !== targetTyp) return false;
+      }
+      return true;
+    });
 };
 
 // --- kleines, lib-freies Modal ---
@@ -241,6 +247,7 @@ export default function CannabisKultivarFinder() {
   const [wirk1, setWirk1] = useState("");
   const [wirk2, setWirk2] = useState("");
   const [typ, setTyp] = useState("");
+  const [includeDiscontinued, setIncludeDiscontinued] = useState(false);
 
   useEffect(() => {
     fetch("/kultivare.json")
@@ -262,7 +269,8 @@ export default function CannabisKultivarFinder() {
     kultivare,
     selectedWirkungen,
     selectedTerpene,
-    typ
+    typ,
+    includeDiscontinued
   );
 
   const clearTerpene = () => {
@@ -347,6 +355,8 @@ export default function CannabisKultivarFinder() {
         /* Standard: Dropdown für Typ ausblenden, Buttons zeigen */
         .typ-select { display: none; }
 
+        .availability-toggle { display: flex; align-items: center; gap: 8px; }
+
         @media (max-width: 768px) {
           .select-row { grid-template-columns: 1fr; }
           /* Auf Mobile: Buttons ausblenden, Dropdown zeigen */
@@ -355,7 +365,7 @@ export default function CannabisKultivarFinder() {
         }
 
         @media (max-width: 640px) {
-          /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil/Typ bleiben sichtbar */
+          /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil bleiben sichtbar */
           .table thead th:nth-child(3), .table tbody td:nth-child(3),
           .table thead th:nth-child(4), .table tbody td:nth-child(4) { display: none; }
         }
@@ -398,7 +408,13 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearTerpene}>
+            <button
+              className="reset-btn"
+              onClick={() => {
+                setTerp1("");
+                setTerp2("");
+              }}
+            >
               Zurücksetzen
             </button>
           </div>
@@ -431,11 +447,19 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearWirkungen}>
+            <button
+              className="reset-btn"
+              onClick={() => {
+                setWirk1("");
+                setWirk2("");
+              }}
+            >
               Zurücksetzen
             </button>
           </div>
         </div>
+
+        {/* Typ: Buttons (Desktop) */}
         <div className="typ-button-group">
           <h3>Typ</h3>
           <div className="typ-row">
@@ -465,6 +489,7 @@ export default function CannabisKultivarFinder() {
           </div>
         </div>
 
+        {/* Typ: Fallback-Dropdown (Mobile) */}
         <div className="select-group typ-select">
           <h3>Typ</h3>
           <div className="select-row">
@@ -484,6 +509,19 @@ export default function CannabisKultivarFinder() {
               Zurücksetzen
             </button>
           </div>
+        </div>
+
+        {/* Verfügbarkeit */}
+        <div className="select-group">
+          <h3>Verfügbarkeit</h3>
+          <label className="availability-toggle">
+            <input
+              type="checkbox"
+              checked={includeDiscontinued}
+              onChange={(e) => setIncludeDiscontinued(e.target.checked)}
+            />
+            <span>Inaktive Kultivare mit einblenden</span>
+          </label>
         </div>
       </div>
 
