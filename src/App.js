@@ -520,7 +520,7 @@ export default function CannabisKultivarFinder() {
               checked={includeDiscontinued}
               onChange={(e) => setIncludeDiscontinued(e.target.checked)}
             />
-            <span>Nicht mehr im Verkauf anzeigen</span>
+            <span>Nicht mehr im Verkauf befindliche Blüten anzeigen</span>
           </label>
         </div>
       </div>
