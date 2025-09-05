@@ -332,7 +332,7 @@ export default function CannabisKultivarFinder() {
         .modal-meta { font-size: 12px; color: #546e7a; }
         .filters { display: grid; gap: 12px; margin: 16px 0 24px; }
         .select-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; }
-        .select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: left; }
+        .select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: center; }
         .select-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: center; }
         .select-row select { width: 100%; padding: 10px; border: 1px solid #cfd8dc; border-radius: 8px; font-size: 14px; }
         .reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; }
@@ -343,8 +343,8 @@ export default function CannabisKultivarFinder() {
         .table th, .table td { white-space: normal; }
 
         /* Typ Buttons + Tooltips (Desktop) */
-        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; }
-        .typ-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; }
+        .typ-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
         .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
         .typ-btn:hover { background: #f7faff; }
         .typ-btn.active { background: #e8f0fe; border-color: #90caf9; }
@@ -520,7 +520,7 @@ export default function CannabisKultivarFinder() {
               checked={includeDiscontinued}
               onChange={(e) => setIncludeDiscontinued(e.target.checked)}
             />
-            <span>Inaktive Kultivare mit einblenden</span>
+            <span>Nicht mehr im Verkauf anzeigen</span>
           </label>
         </div>
       </div>
