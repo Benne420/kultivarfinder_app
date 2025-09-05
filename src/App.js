@@ -99,6 +99,17 @@ const terpenInfo = {
   },
 };
 
+const typInfo = {
+  Indica:
+    "Ursprünglich für kompakt wachsende Pflanzen aus dem Hindukusch geprägt. Heute ist „Indica“ vor allem ein traditioneller Name ohne verlässliche Aussage über Wirkung oder Inhaltsstoffe.",
+  "Indica-dominant":
+    "Bezeichnung für Hybride mit überwiegend Indica-Merkmalen. Umgangssprachlich oft mit beruhigender Wirkung verbunden – wissenschaftlich aber nicht eindeutig belegt.",
+  Sativa:
+    "Historisch für hochwüchsige, schlanke Pflanzen aus tropischen Regionen verwendet. Der Begriff sagt nichts Sicheres über die chemische Zusammensetzung oder Wirkung aus.",
+  "Sativa-dominant":
+    "Hybride mit stärkerem Sativa-Einfluss. Im Narrativ oft als „aktivierend“ beschrieben – die tatsächliche Wirkung hängt jedoch von Cannabinoid- und Terpenprofilen ab.",
+};
+
 const terpene = [
   "Caryophyllen",
   "D-Limonen",
@@ -322,11 +333,29 @@ export default function CannabisKultivarFinder() {
         .table-container { overflow-x: auto; }
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
+
+        /* Typ Buttons + Tooltips (Desktop) */
+        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; }
+        .typ-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
+        .typ-btn:hover { background: #f7faff; }
+        .typ-btn.active { background: #e8f0fe; border-color: #90caf9; }
+        .has-tooltip { position: relative; display: inline-block; }
+        .tooltip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 8px 10px; border-radius: 8px; font-size: 12px; line-height: 1.3; max-width: 320px; width: max-content; box-shadow: 0 6px 20px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: opacity .15s ease; pointer-events: none; z-index: 10; }
+        .has-tooltip:hover .tooltip, .has-tooltip:focus-within .tooltip { opacity: 1; visibility: visible; }
+
+        /* Standard: Dropdown für Typ ausblenden, Buttons zeigen */
+        .typ-select { display: none; }
+
         @media (max-width: 768px) {
           .select-row { grid-template-columns: 1fr; }
+          /* Auf Mobile: Buttons ausblenden, Dropdown zeigen */
+          .typ-button-group { display: none; }
+          .typ-select { display: block; }
         }
+
         @media (max-width: 640px) {
-          /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil bleiben sichtbar */
+          /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil/Typ bleiben sichtbar */
           .table thead th:nth-child(3), .table tbody td:nth-child(3),
           .table thead th:nth-child(4), .table tbody td:nth-child(4) { display: none; }
         }
@@ -407,7 +436,36 @@ export default function CannabisKultivarFinder() {
             </button>
           </div>
         </div>
-        <div className="select-group">
+        <div className="typ-button-group">
+          <h3>Typ</h3>
+          <div className="typ-row">
+            {["Indica", "Indica-dominant", "Sativa", "Sativa-dominant"].map(
+              (t) => (
+                <span className="has-tooltip" key={`typbtn-${t}`}>
+                  <button
+                    type="button"
+                    className={`typ-btn ${
+                      mapTyp(typ) === mapTyp(t) ? "active" : ""
+                    }`}
+                    onClick={() => setTyp(mapTyp(typ) === mapTyp(t) ? "" : t)}
+                    aria-describedby={`tt-${t}`}
+                    title={typInfo[t]}
+                  >
+                    {mapTyp(typ) === mapTyp(t) ? `✓ ${t}` : t}
+                  </button>
+                  <span role="tooltip" id={`tt-${t}`} className="tooltip">
+                    {typInfo[t]}
+                  </span>
+                </span>
+              )
+            )}
+            <button className="reset-btn" onClick={() => setTyp("")}>
+              Alle
+            </button>
+          </div>
+        </div>
+
+        <div className="select-group typ-select">
           <h3>Typ</h3>
           <div className="select-row">
             <select
@@ -443,7 +501,6 @@ export default function CannabisKultivarFinder() {
                       <th className="hidden-sm">CBD %</th>
                       <th className="hidden-sm">Terpengehalt %</th>
                       <th className="hidden-sm">Terpenprofil</th>
-                      <th>Typ</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -474,11 +531,6 @@ export default function CannabisKultivarFinder() {
                         </td>
                         <td className="hidden-sm terpenprofil-cell">
                           {renderTerpenChips(strain.terpenprofil)}
-                        </td>
-                        <td>
-                          {strain.typ !== undefined && strain.typ !== null
-                            ? strain.typ
-                            : "N/A"}
                         </td>
                       </tr>
                     ))}
