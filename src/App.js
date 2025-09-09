@@ -67,25 +67,47 @@ const terpenInfo = {
       "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
   },
   Selinen: {
-    aliases: ["Selinene", "α‑Selinen", "β‑Selinen", "δ‑Selinen"],
+    aliases: [
+      "Selinene",
+      "α‑Selinen",
+      "β‑Selinen",
+      "δ‑Selinen",
+      "α-Selinene",
+      "beta-Selinene",
+      "delta-Selinene",
+      "α‑Selinene",
+      "β‑Selinene",
+      "δ‑Selinene",
+    ],
     description:
-      "Sammelbegriff für isomere bicyclische Sesquiterpene, darunter α-, β- und δ-Selinen. Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
+      "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
   },
   "α‑Selinen": {
-    aliases: ["α-Selinene"],
+    aliases: ["α-Selinene", "alpha-Selinene", "α‑Selinene"],
     description:
       "Bicyclisches Sesquiterpen‑Isomer; holzig‑würzig, leicht hopfig. Vorkommen u. a. in Apiaceae (Sellerie, Petersilie) und Hopfen.",
   },
   "β‑Selinen": {
-    aliases: ["β-Selinene"],
+    aliases: ["β-Selinene", "beta-Selinene", "β‑Selinene"],
     description:
       "Isomeres Sesquiterpen mit sellerie-/krautiger Note; Anteile variieren je nach Herkunft und Verarbeitung.",
   },
   "δ‑Selinen": {
-    aliases: ["δ-Selinene"],
+    aliases: ["δ-Selinene", "delta-Selinene", "δ‑Selinene"],
     description:
       "Weitere Selinen‑Variante; holzig‑krautig. In ätherischen Ölen verschiedener Gewürz‑ und Heilpflanzen beschrieben.",
   },
+};
+
+const typInfo = {
+  Indica:
+    "Ursprünglich für kompakt wachsende Pflanzen aus dem Hindukusch geprägt. Heute ist „Indica“ vor allem ein traditioneller Name ohne verlässliche Aussage über Wirkung oder Inhaltsstoffe.",
+  "Indica-dominant":
+    "Bezeichnung für Hybride mit überwiegend Indica-Merkmalen. Umgangssprachlich oft mit beruhigender Wirkung verbunden – wissenschaftlich aber nicht eindeutig belegt.",
+  Sativa:
+    "Historisch für hochwüchsige, schlanke Pflanzen aus tropischen Regionen verwendet. Der Begriff sagt nichts Sicheres über die chemische Zusammensetzung oder Wirkung aus.",
+  "Sativa-dominant":
+    "Hybride mit stärkerem Sativa-Einfluss. Im Narrativ oft als „aktivierend“ beschrieben – die tatsächliche Wirkung hängt jedoch von Cannabinoid- und Terpenprofilen ab.",
 };
 
 const terpene = [
@@ -120,7 +142,6 @@ const getTerpenAliases = (name) => {
   const info = terpenInfo[name];
   if (!info) return [name];
   const list = [name, ...(info.aliases || [])];
-  // Duplikate entfernen
   return Array.from(new Set(list));
 };
 
@@ -128,24 +149,64 @@ const kultivarHasSelectedTerpene = (kultivar, selectedTerpene) => {
   const profile = Array.isArray(kultivar.terpenprofil)
     ? kultivar.terpenprofil
     : [];
-  // Für jeden ausgewählten Terpen-Namen muss es im Profil einen Eintrag geben,
-  // der entweder genau passt oder als Alias geführt ist
   return [...selectedTerpene].every((sel) => {
     const names = getTerpenAliases(sel);
     return profile.some((p) => names.includes(p));
   });
 };
 
-const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
-  return kultivare.filter(
-    (kultivar) =>
-      kultivarHasSelectedTerpene(kultivar, selectedTerpene) &&
-      [...selectedWirkungen].every((wirkung) =>
-        Array.isArray(kultivar.wirkungen)
-          ? kultivar.wirkungen.includes(wirkung)
-          : false
+// Inaktive Datensätze robust ausfiltern
+const isStatusIncluded = (k, includeDisc) => {
+  var s = ((k && k.status) || "").toString().trim().toLowerCase();
+  if (s === "active") return true;
+  if (includeDisc && s === "discontinued") return true;
+  return false;
+};
+
+// "Nicht mehr im Verkauf"/ausgelistet etc. ausfiltern
+
+const mapTyp = (s) => {
+  const t = (s || "").toString().trim().toLowerCase();
+  if (t.indexOf("indica-domin") !== -1) return "indica-dominant";
+  if (t.indexOf("sativa-domin") !== -1) return "sativa-dominant";
+  if (t.indexOf("indica") !== -1) return "indica";
+  if (t.indexOf("sativa") !== -1) return "sativa";
+  return t;
+};
+
+const filterKultivare = (
+  kultivare,
+  selectedWirkungen,
+  selectedTerpene,
+  selectedTyp,
+  includeDisc
+) => {
+  const targetTyp = mapTyp(selectedTyp);
+  return kultivare
+    .filter(function (k) {
+      return isStatusIncluded(k, includeDisc);
+    })
+    .filter((kultivar) => {
+      if (
+        selectedTerpene.size &&
+        !kultivarHasSelectedTerpene(kultivar, selectedTerpene)
       )
-  );
+        return false;
+      if (selectedWirkungen.size) {
+        if (!Array.isArray(kultivar.wirkungen)) return false;
+        if (
+          ![...selectedWirkungen].every(
+            (w) => kultivar.wirkungen.indexOf(w) !== -1
+          )
+        )
+          return false;
+      }
+      if (targetTyp) {
+        const kt = mapTyp(kultivar.typ);
+        if (kt !== targetTyp) return false;
+      }
+      return true;
+    });
 };
 
 // --- kleines, lib-freies Modal ---
@@ -185,6 +246,8 @@ export default function CannabisKultivarFinder() {
   const [terp2, setTerp2] = useState("");
   const [wirk1, setWirk1] = useState("");
   const [wirk2, setWirk2] = useState("");
+  const [typ, setTyp] = useState("");
+  const [includeDiscontinued, setIncludeDiscontinued] = useState(false);
 
   useEffect(() => {
     fetch("/kultivare.json")
@@ -205,7 +268,9 @@ export default function CannabisKultivarFinder() {
   const filteredKultivare = filterKultivare(
     kultivare,
     selectedWirkungen,
-    selectedTerpene
+    selectedTerpene,
+    typ,
+    includeDiscontinued
   );
 
   const clearTerpene = () => {
@@ -267,7 +332,7 @@ export default function CannabisKultivarFinder() {
         .modal-meta { font-size: 12px; color: #546e7a; }
         .filters { display: grid; gap: 12px; margin: 16px 0 24px; }
         .select-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; }
-        .select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: left; }
+        .select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: center; }
         .select-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: center; }
         .select-row select { width: 100%; padding: 10px; border: 1px solid #cfd8dc; border-radius: 8px; font-size: 14px; }
         .reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; }
@@ -276,9 +341,29 @@ export default function CannabisKultivarFinder() {
         .table-container { overflow-x: auto; }
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
+
+        /* Typ Buttons + Tooltips (Desktop) */
+        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; }
+        .typ-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+        .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
+        .typ-btn:hover { background: #f7faff; }
+        .typ-btn.active { background: #e8f0fe; border-color: #90caf9; }
+        .has-tooltip { position: relative; display: inline-block; }
+        .tooltip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 8px 10px; border-radius: 8px; font-size: 12px; line-height: 1.3; max-width: 320px; width: max-content; box-shadow: 0 6px 20px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: opacity .15s ease; pointer-events: none; z-index: 10; }
+        .has-tooltip:hover .tooltip, .has-tooltip:focus-within .tooltip { opacity: 1; visibility: visible; }
+
+        /* Standard: Dropdown für Typ ausblenden, Buttons zeigen */
+        .typ-select { display: none; }
+
+        .availability-toggle { display: flex; align-items: center; gap: 8px; }
+
         @media (max-width: 768px) {
           .select-row { grid-template-columns: 1fr; }
+          /* Auf Mobile: Buttons ausblenden, Dropdown zeigen */
+          .typ-button-group { display: none; }
+          .typ-select { display: block; }
         }
+
         @media (max-width: 640px) {
           /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil bleiben sichtbar */
           .table thead th:nth-child(3), .table tbody td:nth-child(3),
@@ -323,7 +408,13 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearTerpene}>
+            <button
+              className="reset-btn"
+              onClick={() => {
+                setTerp1("");
+                setTerp2("");
+              }}
+            >
               Zurücksetzen
             </button>
           </div>
@@ -356,10 +447,81 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearWirkungen}>
+            <button
+              className="reset-btn"
+              onClick={() => {
+                setWirk1("");
+                setWirk2("");
+              }}
+            >
               Zurücksetzen
             </button>
           </div>
+        </div>
+
+        {/* Typ: Buttons (Desktop) */}
+        <div className="typ-button-group">
+          <h3>Typ</h3>
+          <div className="typ-row">
+            {["Indica", "Indica-dominant", "Sativa", "Sativa-dominant"].map(
+              (t) => (
+                <span className="has-tooltip" key={`typbtn-${t}`}>
+                  <button
+                    type="button"
+                    className={`typ-btn ${
+                      mapTyp(typ) === mapTyp(t) ? "active" : ""
+                    }`}
+                    onClick={() => setTyp(mapTyp(typ) === mapTyp(t) ? "" : t)}
+                    aria-describedby={`tt-${t}`}
+                    title={typInfo[t]}
+                  >
+                    {mapTyp(typ) === mapTyp(t) ? `✓ ${t}` : t}
+                  </button>
+                  <span role="tooltip" id={`tt-${t}`} className="tooltip">
+                    {typInfo[t]}
+                  </span>
+                </span>
+              )
+            )}
+            <button className="reset-btn" onClick={() => setTyp("")}>
+              Alle
+            </button>
+          </div>
+        </div>
+
+        {/* Typ: Fallback-Dropdown (Mobile) */}
+        <div className="select-group typ-select">
+          <h3>Typ</h3>
+          <div className="select-row">
+            <select
+              value={typ}
+              onChange={(e) => setTyp(e.target.value)}
+              aria-label="Typ"
+            >
+              <option value="">— Alle Typen —</option>
+              <option value="Indica">Indica</option>
+              <option value="Indica-dominant">Indica-dominant</option>
+              <option value="Sativa">Sativa</option>
+              <option value="Sativa-dominant">Sativa-dominant</option>
+            </select>
+            <div></div>
+            <button className="reset-btn" onClick={() => setTyp("")}>
+              Zurücksetzen
+            </button>
+          </div>
+        </div>
+
+        {/* Verfügbarkeit */}
+        <div className="select-group">
+          <h3>Verfügbarkeit</h3>
+          <label className="availability-toggle">
+            <input
+              type="checkbox"
+              checked={includeDiscontinued}
+              onChange={(e) => setIncludeDiscontinued(e.target.checked)}
+            />
+            <span>Nicht mehr im Verkauf befindliche Blüten einblenden</span>
+          </label>
         </div>
       </div>
 
