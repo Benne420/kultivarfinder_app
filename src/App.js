@@ -202,7 +202,9 @@ const filterKultivare = (
       return true;
     });
 };
-
+// Helfer: Pfad fürs Netzdiagramm (gleiches Schema wie Datenblätter)
+const radarPathSvg = (name) =>
+  `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
 // --- kleines, lib-freies Modal ---
 const Modal = ({ open, onClose, title, children }) => {
   if (!open) return null;
