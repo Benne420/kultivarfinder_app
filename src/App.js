@@ -573,39 +573,30 @@ export default function CannabisKultivarFinder() {
                       <th className="hidden-sm">CBD %</th>
                       <th className="hidden-sm">Terpengehalt %</th>
                       <th className="hidden-sm">Terpenprofil</th>
+                      {/* NEU: Eigene Spalte für die Diagramm-Buttons */}
+                      <th>Diagramm</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredKultivare.map((strain) => (
                       <tr key={strain.name}>
-                        {/* MODIFIZIERT: Die erste Zelle wurde komplett überarbeitet */}
+                        {/* MODIFIZIERT: Die erste Zelle enthält jetzt nur noch den Namen und das Bild */}
                         <td className="strain-cell">
-                          <div className="strain-name-wrapper">
-                            <button
-                              onClick={() =>
-                                window.open(
-                                  `/datenblaetter/${strain.name.replace(
-                                    /\s+/g,
-                                    "_"
-                                  )}.pdf`,
-                                  "_blank"
-                                )
-                              }
-                              className="link-button"
-                            >
-                              {strain.name}
-                            </button>
-                            <button
-                              className="toggle-radar-btn"
-                              onClick={() => toggleRadarVisibility(strain.name)}
-                            >
-                              {visibleRadars.has(strain.name)
-                                ? "Diagramm ausblenden"
-                                : "Diagramm anzeigen"}
-                            </button>
-                          </div>
+                          <button
+                            onClick={() =>
+                              window.open(
+                                `/datenblaetter/${strain.name.replace(
+                                  /\s+/g,
+                                  "_"
+                                )}.pdf`,
+                                "_blank"
+                              )
+                            }
+                            className="link-button"
+                          >
+                            {strain.name}
+                          </button>
 
-                          {/* Das Diagramm wird jetzt nur noch gerendert, wenn sein Name im 'visibleRadars'-Set ist */}
                           {visibleRadars.has(strain.name) && (
                             <img
                               className="radar-thumb"
@@ -646,6 +637,18 @@ export default function CannabisKultivarFinder() {
                         </td>
                         <td className="hidden-sm terpenprofil-cell">
                           {renderTerpenChips(strain.terpenprofil)}
+                        </td>
+
+                        {/* NEU: Eigene Tabellenzelle für den Button */}
+                        <td>
+                          <button
+                            className="toggle-radar-btn"
+                            onClick={() => toggleRadarVisibility(strain.name)}
+                          >
+                            {visibleRadars.has(strain.name)
+                              ? "Ausblenden"
+                              : "Anzeigen"}
+                          </button>
                         </td>
                       </tr>
                     ))}
