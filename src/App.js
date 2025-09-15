@@ -582,7 +582,7 @@ export default function CannabisKultivarFinder() {
                               window.open(radarPathSvg(strain.name), "_blank")
                             }
                           >
-                            Terpenprofil
+                            anzeigen
                           </button>
                         </td>
                       </tr>
