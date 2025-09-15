@@ -69,33 +69,33 @@ const terpenInfo = {
   Selinen: {
     aliases: [
       "Selinene",
-      "α‑Selinen",
-      "β‑Selinen",
-      "δ‑Selinen",
+      "α-Selinen",
+      "β-Selinen",
+      "δ-Selinen",
       "α-Selinene",
       "beta-Selinene",
       "delta-Selinene",
-      "α‑Selinene",
-      "β‑Selinene",
-      "δ‑Selinene",
+      "α-Selinene",
+      "β-Selinene",
+      "δ-Selinene",
     ],
     description:
-      "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
+      "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α-, β-, δ-Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen-, Muskat-, Koriander- und Hopfenölen; in Cannabis meist in geringen Anteilen.",
   },
-  "α‑Selinen": {
-    aliases: ["α-Selinene", "alpha-Selinene", "α‑Selinene"],
+  "α-Selinen": {
+    aliases: ["α-Selinene", "alpha-Selinene", "α-Selinene"],
     description:
-      "Bicyclisches Sesquiterpen‑Isomer; holzig‑würzig, leicht hopfig. Vorkommen u. a. in Apiaceae (Sellerie, Petersilie) und Hopfen.",
+      "Bicyclisches Sesquiterpen-Isomer; holzig-würzig, leicht hopfig. Vorkommen u. a. in Apiaceae (Sellerie, Petersilie) und Hopfen.",
   },
-  "β‑Selinen": {
-    aliases: ["β-Selinene", "beta-Selinene", "β‑Selinene"],
+  "β-Selinen": {
+    aliases: ["β-Selinene", "beta-Selinene", "β-Selinene"],
     description:
       "Isomeres Sesquiterpen mit sellerie-/krautiger Note; Anteile variieren je nach Herkunft und Verarbeitung.",
   },
-  "δ‑Selinen": {
-    aliases: ["δ-Selinene", "delta-Selinene", "δ‑Selinene"],
+  "δ-Selinen": {
+    aliases: ["δ-Selinene", "delta-Selinene", "δ-Selinene"],
     description:
-      "Weitere Selinen‑Variante; holzig‑krautig. In ätherischen Ölen verschiedener Gewürz‑ und Heilpflanzen beschrieben.",
+      "Weitere Selinen-Variante; holzig-krautig. In ätherischen Ölen verschiedener Gewürz- und Heilpflanzen beschrieben.",
   },
 };
 
@@ -137,7 +137,7 @@ const wirkungen = [
   "unterstützt Wundheilung",
 ].sort();
 
-// Hilfsfunktionen für alias-sensitives Matching (z. B. Caryophyllen/β-Caryophyllen/Trans-Caryophyllen, Selinen-Isomere)
+// Hilfsfunktionen für alias-sensitives Matching
 const getTerpenAliases = (name) => {
   const info = terpenInfo[name];
   if (!info) return [name];
@@ -163,8 +163,6 @@ const isStatusIncluded = (k, includeDisc) => {
   return false;
 };
 
-// "Nicht mehr im Verkauf"/ausgelistet etc. ausfiltern
-
 const mapTyp = (s) => {
   const t = (s || "").toString().trim().toLowerCase();
   if (t.indexOf("indica-domin") !== -1) return "indica-dominant";
@@ -183,9 +181,7 @@ const filterKultivare = (
 ) => {
   const targetTyp = mapTyp(selectedTyp);
   return kultivare
-    .filter(function (k) {
-      return isStatusIncluded(k, includeDisc);
-    })
+    .filter((k) => isStatusIncluded(k, includeDisc))
     .filter((kultivar) => {
       if (
         selectedTerpene.size &&
@@ -195,9 +191,7 @@ const filterKultivare = (
       if (selectedWirkungen.size) {
         if (!Array.isArray(kultivar.wirkungen)) return false;
         if (
-          ![...selectedWirkungen].every(
-            (w) => kultivar.wirkungen.indexOf(w) !== -1
-          )
+          ![...selectedWirkungen].every((w) => kultivar.wirkungen.includes(w))
         )
           return false;
       }
@@ -240,6 +234,13 @@ export default function CannabisKultivarFinder() {
   const [selectedTerpene, setSelectedTerpene] = useState(new Set());
   const [kultivare, setKultivare] = useState([]);
   const [terpenDialog, setTerpenDialog] = useState({ open: false, name: null });
+
+  // Radar-Modal (NEU)
+  const [imgModal, setImgModal] = useState({
+    open: false,
+    src: null,
+    alt: null,
+  });
 
   // Neue Zustände für Dropdowns (je 2 Optionen)
   const [terp1, setTerp1] = useState("");
@@ -288,6 +289,17 @@ export default function CannabisKultivarFinder() {
   const openTerpenDialog = (name) => setTerpenDialog({ open: true, name });
   const closeTerpenDialog = () => setTerpenDialog({ open: false, name: null });
 
+  // --- Radar: Hilfsfunktionen für automatische Pfade (SVG → PNG Fallback)
+  const slugify = (name) =>
+    name
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // Diakritika entfernen
+      .replace(/\s+/g, "_")
+      .replace(/[^A-Za-z0-9_.-]/g, ""); // sichere Dateinamen
+
+  const radarSrcSvg = (name) => `/netzdiagramme/${slugify(name)}.svg`;
+  const radarSrcPng = (name) => `/netzdiagramme/${slugify(name)}.png`;
+
   const renderTerpenChips = (list) => {
     if (!Array.isArray(list) || list.length === 0) return "N/A";
     return (
@@ -316,7 +328,7 @@ export default function CannabisKultivarFinder() {
 
   return (
     <div className="container">
-      {/* Inline-Ministyles für Chips, Modal und Mobile-Dropdowns */}
+      {/* Inline-Ministyles für Chips, Modal, Mobile-Dropdowns & Radar */}
       <style>{`
         .terp-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
         .terp-chip {
@@ -357,9 +369,15 @@ export default function CannabisKultivarFinder() {
 
         .availability-toggle { display: flex; align-items: center; gap: 8px; }
 
+        /* Radar-Thumb */
+        .radar-thumb {
+          display: block; margin-top: 6px; border-radius: 8px;
+          object-fit: cover; width: 180px; height: 180px;
+          border: 1px solid #e0e0e0; cursor: pointer;
+        }
+
         @media (max-width: 768px) {
           .select-row { grid-template-columns: 1fr; }
-          /* Auf Mobile: Buttons ausblenden, Dropdown zeigen */
           .typ-button-group { display: none; }
           .typ-select { display: block; }
         }
@@ -408,13 +426,7 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
-            <button
-              className="reset-btn"
-              onClick={() => {
-                setTerp1("");
-                setTerp2("");
-              }}
-            >
+            <button className="reset-btn" onClick={clearTerpene}>
               Zurücksetzen
             </button>
           </div>
@@ -447,13 +459,7 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
-            <button
-              className="reset-btn"
-              onClick={() => {
-                setWirk1("");
-                setWirk2("");
-              }}
-            >
+            <button className="reset-btn" onClick={clearWirkungen}>
               Zurücksetzen
             </button>
           </div>
@@ -559,7 +565,36 @@ export default function CannabisKultivarFinder() {
                           >
                             {strain.name}
                           </button>
+
+                          {/* Radar-Thumbnail automatisch aus public/netzdiagramme (SVG → PNG Fallback) */}
+                          <img
+                            className="radar-thumb"
+                            src={radarSrcSvg(strain.name)}
+                            alt={`Terpen-Netzdiagramm ${strain.name}`}
+                            loading="lazy"
+                            width="180"
+                            height="180"
+                            onClick={() =>
+                              setImgModal({
+                                open: true,
+                                src: radarSrcSvg(strain.name),
+                                alt: `Terpen-Netzdiagramm ${strain.name}`,
+                              })
+                            }
+                            onError={(e) => {
+                              // wenn SVG fehlt → PNG probieren; sonst ausblenden
+                              const triedPng =
+                                e.currentTarget.dataset.fallbackTried === "1";
+                              if (!triedPng) {
+                                e.currentTarget.dataset.fallbackTried = "1";
+                                e.currentTarget.src = radarSrcPng(strain.name);
+                              } else {
+                                e.currentTarget.style.display = "none";
+                              }
+                            }}
+                          />
                         </td>
+
                         <td>
                           <span className="thc-values">{strain.thc}</span>
                         </td>
@@ -609,6 +644,27 @@ export default function CannabisKultivarFinder() {
             </p>
           </>
         ) : null}
+      </Modal>
+
+      {/* Radar-Bild im Modal (Zoom) */}
+      <Modal
+        open={imgModal.open}
+        onClose={() => setImgModal({ open: false, src: null, alt: null })}
+        title={imgModal.alt || "Netzdiagramm"}
+      >
+        {imgModal.src && (
+          <img
+            src={imgModal.src}
+            alt={imgModal.alt || ""}
+            style={{ maxWidth: "100%", borderRadius: 12 }}
+            onError={(e) => {
+              // Im Modal ebenfalls PNG-Fallback versuchen
+              if (/\.svg$/i.test(imgModal.src)) {
+                e.currentTarget.src = imgModal.src.replace(/\.svg$/i, ".png");
+              }
+            }}
+          />
+        )}
       </Modal>
     </div>
   );
