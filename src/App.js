@@ -234,15 +234,16 @@ export default function CannabisKultivarFinder() {
   const [selectedTerpene, setSelectedTerpene] = useState(new Set());
   const [kultivare, setKultivare] = useState([]);
   const [terpenDialog, setTerpenDialog] = useState({ open: false, name: null });
-
-  // Radar-Modal (NEU)
   const [imgModal, setImgModal] = useState({
     open: false,
     src: null,
     alt: null,
   });
 
-  // Neue Zustände für Dropdowns (je 2 Optionen)
+  // NEU: Zustand, um die Sichtbarkeit der Netzdiagramme zu steuern
+  // Wir speichern die Namen der Kultivare, deren Diagramm offen ist, in einem Set.
+  const [visibleRadars, setVisibleRadars] = useState(new Set());
+
   const [terp1, setTerp1] = useState("");
   const [terp2, setTerp2] = useState("");
   const [wirk1, setWirk1] = useState("");
@@ -257,7 +258,6 @@ export default function CannabisKultivarFinder() {
       .catch((error) => console.error("Fehler beim Laden der Daten:", error));
   }, []);
 
-  // Auswahl-Logik: Dropdowns => Sets
   useEffect(() => {
     setSelectedTerpene(new Set([terp1, terp2].filter(Boolean)));
   }, [terp1, terp2]);
@@ -289,13 +289,26 @@ export default function CannabisKultivarFinder() {
   const openTerpenDialog = (name) => setTerpenDialog({ open: true, name });
   const closeTerpenDialog = () => setTerpenDialog({ open: false, name: null });
 
-  // --- Radar: Hilfsfunktionen für automatische Pfade (SVG → PNG Fallback)
+  // NEU: Funktion zum Umschalten der Diagramm-Sichtbarkeit
+  const toggleRadarVisibility = (strainName) => {
+    setVisibleRadars((prevVisibleRadars) => {
+      // Wir erstellen eine Kopie des Sets, um den Zustand nicht direkt zu verändern.
+      const newVisibleRadars = new Set(prevVisibleRadars);
+      if (newVisibleRadars.has(strainName)) {
+        newVisibleRadars.delete(strainName); // Wenn schon drin, entfernen (ausblenden)
+      } else {
+        newVisibleRadars.add(strainName); // Wenn nicht drin, hinzufügen (einblenden)
+      }
+      return newVisibleRadars;
+    });
+  };
+
   const slugify = (name) =>
     name
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") // Diakritika entfernen
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, "_")
-      .replace(/[^A-Za-z0-9_.-]/g, ""); // sichere Dateinamen
+      .replace(/[^A-Za-z0-9_.-]/g, "");
 
   const radarSrcSvg = (name) => `/netzdiagramme/${slugify(name)}.svg`;
   const radarSrcPng = (name) => `/netzdiagramme/${slugify(name)}.png`;
@@ -328,8 +341,9 @@ export default function CannabisKultivarFinder() {
 
   return (
     <div className="container">
-      {/* Inline-Ministyles für Chips, Modal, Mobile-Dropdowns & Radar */}
+      {/* MODIFIZIERT: Neue CSS-Klassen für den Toggle-Button hinzugefügt */}
       <style>{`
+        /* ... (alle bisherigen Styles bleiben unverändert) ... */
         .terp-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
         .terp-chip {
           border: 1px solid #cfd8dc; border-radius: 9999px; padding: 4px 10px; cursor: pointer;
@@ -353,8 +367,6 @@ export default function CannabisKultivarFinder() {
         .table-container { overflow-x: auto; }
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
-
-        /* Typ Buttons + Tooltips (Desktop) */
         .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; }
         .typ-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
         .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
@@ -363,32 +375,48 @@ export default function CannabisKultivarFinder() {
         .has-tooltip { position: relative; display: inline-block; }
         .tooltip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 8px 10px; border-radius: 8px; font-size: 12px; line-height: 1.3; max-width: 320px; width: max-content; box-shadow: 0 6px 20px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: opacity .15s ease; pointer-events: none; z-index: 10; }
         .has-tooltip:hover .tooltip, .has-tooltip:focus-within .tooltip { opacity: 1; visibility: visible; }
-
-        /* Standard: Dropdown für Typ ausblenden, Buttons zeigen */
         .typ-select { display: none; }
-
         .availability-toggle { display: flex; align-items: center; gap: 8px; }
-
-        /* Radar-Thumb */
         .radar-thumb {
-          display: block; margin-top: 6px; border-radius: 8px;
+          display: block; margin-top: 8px; border-radius: 8px;
           object-fit: cover; width: 180px; height: 180px;
           border: 1px solid #e0e0e0; cursor: pointer;
         }
+
+        /* --- NEUE STYLES --- */
+        .strain-cell { /* Die Tabellenzelle, die den Namen enthält */
+          vertical-align: top;
+        }
+        .strain-name-wrapper { /* Ein Container für Name und Button */
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap; /* Falls der Name lang ist */
+          gap: 10px; /* Abstand zwischen Name und Button */
+        }
+        .toggle-radar-btn { /* Der neue Button zum Ein-/Ausblenden */
+          border: 1px solid #b0bec5;
+          background: #f5f7f9;
+          border-radius: 6px;
+          padding: 4px 8px;
+          font-size: 12px;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+        .toggle-radar-btn:hover { background: #eef2f7; }
+        /* --- ENDE NEUE STYLES --- */
 
         @media (max-width: 768px) {
           .select-row { grid-template-columns: 1fr; }
           .typ-button-group { display: none; }
           .typ-select { display: block; }
         }
-
         @media (max-width: 640px) {
-          /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil bleiben sichtbar */
           .table thead th:nth-child(3), .table tbody td:nth-child(3),
           .table thead th:nth-child(4), .table tbody td:nth-child(4) { display: none; }
         }
       `}</style>
 
+      {/* ... (Rest der Filter-UI bleibt unverändert) ... */}
       <h1>Cannabis-Kultivarfinder</h1>
       <p className="disclaimer">
         Die angegebenen medizinischen Wirkungen beziehen sich auf mögliche
@@ -550,49 +578,63 @@ export default function CannabisKultivarFinder() {
                   <tbody>
                     {filteredKultivare.map((strain) => (
                       <tr key={strain.name}>
-                        <td>
-                          <button
-                            onClick={() =>
-                              window.open(
-                                `/datenblaetter/${strain.name.replace(
-                                  /\s+/g,
-                                  "_"
-                                )}.pdf`,
-                                "_blank"
-                              )
-                            }
-                            className="link-button"
-                          >
-                            {strain.name}
-                          </button>
-
-                          {/* Radar-Thumbnail automatisch aus public/netzdiagramme (SVG → PNG Fallback) */}
-                          <img
-                            className="radar-thumb"
-                            src={radarSrcSvg(strain.name)}
-                            alt={`Terpen-Netzdiagramm ${strain.name}`}
-                            loading="lazy"
-                            width="180"
-                            height="180"
-                            onClick={() =>
-                              setImgModal({
-                                open: true,
-                                src: radarSrcSvg(strain.name),
-                                alt: `Terpen-Netzdiagramm ${strain.name}`,
-                              })
-                            }
-                            onError={(e) => {
-                              // wenn SVG fehlt → PNG probieren; sonst ausblenden
-                              const triedPng =
-                                e.currentTarget.dataset.fallbackTried === "1";
-                              if (!triedPng) {
-                                e.currentTarget.dataset.fallbackTried = "1";
-                                e.currentTarget.src = radarSrcPng(strain.name);
-                              } else {
-                                e.currentTarget.style.display = "none";
+                        {/* MODIFIZIERT: Die erste Zelle wurde komplett überarbeitet */}
+                        <td className="strain-cell">
+                          <div className="strain-name-wrapper">
+                            <button
+                              onClick={() =>
+                                window.open(
+                                  `/datenblaetter/${strain.name.replace(
+                                    /\s+/g,
+                                    "_"
+                                  )}.pdf`,
+                                  "_blank"
+                                )
                               }
-                            }}
-                          />
+                              className="link-button"
+                            >
+                              {strain.name}
+                            </button>
+                            <button
+                              className="toggle-radar-btn"
+                              onClick={() => toggleRadarVisibility(strain.name)}
+                            >
+                              {visibleRadars.has(strain.name)
+                                ? "Diagramm ausblenden"
+                                : "Diagramm anzeigen"}
+                            </button>
+                          </div>
+
+                          {/* Das Diagramm wird jetzt nur noch gerendert, wenn sein Name im 'visibleRadars'-Set ist */}
+                          {visibleRadars.has(strain.name) && (
+                            <img
+                              className="radar-thumb"
+                              src={radarSrcSvg(strain.name)}
+                              alt={`Terpen-Netzdiagramm ${strain.name}`}
+                              loading="lazy"
+                              width="180"
+                              height="180"
+                              onClick={() =>
+                                setImgModal({
+                                  open: true,
+                                  src: radarSrcSvg(strain.name),
+                                  alt: `Terpen-Netzdiagramm ${strain.name}`,
+                                })
+                              }
+                              onError={(e) => {
+                                const triedPng =
+                                  e.currentTarget.dataset.fallbackTried === "1";
+                                if (!triedPng) {
+                                  e.currentTarget.dataset.fallbackTried = "1";
+                                  e.currentTarget.src = radarSrcPng(
+                                    strain.name
+                                  );
+                                } else {
+                                  e.currentTarget.style.display = "none";
+                                }
+                              }}
+                            />
+                          )}
                         </td>
 
                         <td>
