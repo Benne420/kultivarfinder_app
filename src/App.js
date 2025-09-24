@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import "@fontsource/montserrat";
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/700.css";
 import "./styles.css";
 
 const Card = ({ children }) => <div className="card">{children}</div>;

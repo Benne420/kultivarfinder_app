@@ -4,17 +4,19 @@
   "private": true,
   "dependencies": {
     "@fontsource/montserrat": "^4.5.0",
-    "@tailwindcss/vite": "^4.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.0",
-    "tailwindcss": "^4.0.9"
+    "react-scripts": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "source-map-explorer": "^2.5.3"
   },
   "browserslist": {
     "production": [
