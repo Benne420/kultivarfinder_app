@@ -9,6 +9,7 @@ body {
   margin: 100px;
   padding: 0;
   line-height: 1.6;
+  -webkit-tap-highlight-color: transparent;
 }
 .container {
   max-width: 1200px;
@@ -136,4 +137,50 @@ nav a:hover {
   .table tbody td:nth-child(4) {
     display: none;
   }
+}
+
+/* Mobile usability: finger-friendly tap targets and better defaults */
+:focus-visible {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+button,
+.button,
+.reset-btn,
+.link-button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 16px;
+  touch-action: manipulation;
+}
+select {
+  min-height: 44px;
+}
+
+/* Defer rendering of offscreen content for faster initial paint */
+.filters,
+.table-container {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px 600px;
+}
+
+/* Link-styled button for table entries */
+.link-button {
+  background: none;
+  border: none;
+  color: #1a73e8;
+  text-decoration: underline;
+  display: inline-block;
+  padding: 8px 4px;
+}
+.link-button:hover {
+  text-decoration: none;
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  h1 { font-size: 28px; }
+  h2 { font-size: 18px; }
+  .container { padding: 0 12px; }
+  input, select, button { font-size: 16px; }
 }
