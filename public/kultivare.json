@@ -310,6 +310,16 @@
     "status": "active"
   },
   {
+    "name": "Star Struck",
+    "thc": "22-30%",
+    "cbd": "<1%",
+    "terpengehalt": "3.26%",
+    "terpenprofil": ["β-Myrcen", "ɑ-Pinen"],
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Sativa-dominant",
+    "status": "active"
+  },
+  {
     "name": "Super Lemon G",
     "thc": "7%",
     "cbd": "7%",
@@ -387,6 +397,16 @@
     "terpenprofil": ["Caryophyllen", "β-Myrcen"],
     "wirkungen": ["analgetisch", "entzündungshemmend"],
     "typ": "Indica-dominant",
+    "status": "active"
+  },
+  {
+    "name": "Whiteout",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2.57%",
+    "terpenprofil": ["D-Limonen", "β-Myrcen"],
+    "wirkungen": ["analgetisch", "antiinflammatorisch", "anxiolytisch", "antidepressiv"],
+    "typ": "Sativa-dominant",
     "status": "active"
   },
   {
