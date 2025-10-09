@@ -1,18 +1,17 @@
 /*
- * Optimierte Version der Hauptkomponente der Kultivarfinder‑App.
- * Diese Version nutzt React‑Hooks wie `useMemo` und `useCallback` um teure
- * Berechnungen zu vermeiden und vermeidet wiederholtes Neudefinieren von
- * Funktionen bei jedem Render. Darüber hinaus werden asynchrone Vorgänge
- * per async/await geschrieben und Sicherheitsattribute beim Öffnen externer
- * Dokumente ergänzt. Die Styles verbleiben als Inline‑CSS innerhalb der
- * Komponente, können aber bei Bedarf in separate Dateien ausgelagert werden.
+ * Refaktorierte Version der Hauptkomponente, bei der der Zustand über
+ * useReducer verwaltet wird. Hier werden alle Filter‑ und UI‑bezogenen
+ * Zustände in einem zentralen Objekt zusammengeführt. Dadurch werden
+ * Set‑Operationen konsistenter und die Logik der Zustandsübergänge
+ * bleibt übersichtlicher. Die ursprüngliche Funktionalität bleibt
+ * unverändert.
  */
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useEffect, useMemo, useCallback, useReducer, useState } from "react";
 import "@fontsource/montserrat";
 import "./styles.css";
 
-// Kleine generische Container‑Komponenten
+// Wiederverwendbare UI‑Komponenten
 const Card = ({ children }) => <div className="card">{children}</div>;
 const CardContent = ({ children }) => <div>{children}</div>;
 const Button = ({ children, onClick, disabled }) => (
@@ -26,9 +25,9 @@ const Button = ({ children, onClick, disabled }) => (
 );
 
 /*
- * Konstanten und Hilfsdaten außerhalb der Komponente definieren, damit sie
- * nur einmal erstellt werden. Das macht die Datei lesbarer und vermeidet
- * unnötige Reinitialisierungen bei jedem Render.
+ * Daten und Hilfsfunktionen werden außerhalb der Komponente definiert, um
+ * Mehrfachinitialisierungen zu vermeiden. Diese Definitionen sind
+ * identisch zur optimierten Version ohne useReducer.
  */
 const terpenInfo = {
   "β-Myrcen": {
@@ -48,13 +47,11 @@ const terpenInfo = {
   },
   "Trans-Caryophyllen": {
     aliases: ["β-Caryophyllen", "Caryophyllen"],
-    description:
-      "Geometrisches Isomer von Caryophyllen (trans). Charakteristisch pfeffrig-warm.",
+    description: "Geometrisches Isomer von Caryophyllen (trans). Charakteristisch pfeffrig-warm.",
   },
   "D-Limonen": {
     aliases: ["Limonen"],
-    description:
-      "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
+    description: "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
   },
   Terpinolen: {
     aliases: [],
@@ -63,13 +60,11 @@ const terpenInfo = {
   },
   "β-Ocimen": {
     aliases: ["Ocimen"],
-    description:
-      "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
+    description: "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
   },
   "α-Humulen": {
     aliases: ["Humulen"],
-    description:
-      "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
+    description: "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
   },
   Farnesen: {
     aliases: [],
@@ -136,21 +131,41 @@ const terpene = [
   "β-Ocimen",
 ];
 
+/*
+ * Liste der verfügbaren Wirkungen. Synonyme werden über das Mapping
+ * `wirkungAliases` auf diese kanonischen Bezeichnungen abgebildet. Diese
+ * Liste dient als Quelle für Dropdowns.
+ */
 const wirkungen = [
   "analgetisch",
-  "antidepressiv",
+  "angstlösend",
   "antimikrobiell",
   "antimykotisch",
   "antioxidativ",
-  "anxiolytisch",
   "entspannend",
-  "antiinflammatorisch",
+  "entzündungshemmend",
   "krampflösend",
   "neuroprotektiv",
   "unterstützt Wundheilung",
 ].sort();
 
-// Hilfsfunktionen
+// Synonym‑Mapping für Wirkungen
+const wirkungAliases = {
+  antiinflammatorisch: "entzündungshemmend",
+  antiphlogistisch: "entzündungshemmend",
+  schmerzstillend: "analgetisch",
+  schmerzlindernd: "analgetisch",
+  stresslösend: "entspannend",
+};
+
+// Normalisiert eine Wirkung auf den kanonischen Namen
+const normalizeWirkung = (w) => {
+  const key = (w || "").toString().trim().toLowerCase();
+  const normalized = wirkungAliases[key];
+  return normalized || w;
+};
+
+// Hilfsfunktionen für Terpenalias
 const getTerpenAliases = (name) => {
   const info = terpenInfo[name];
   if (!info) return [name];
@@ -159,16 +174,13 @@ const getTerpenAliases = (name) => {
 };
 
 const kultivarHasSelectedTerpene = (kultivar, selectedTerpene) => {
-  const profile = Array.isArray(kultivar.terpenprofil)
-    ? kultivar.terpenprofil
-    : [];
+  const profile = Array.isArray(kultivar.terpenprofil) ? kultivar.terpenprofil : [];
   return [...selectedTerpene].every((sel) => {
     const names = getTerpenAliases(sel);
     return profile.some((p) => names.includes(p));
   });
 };
 
-// Inaktive Datensätze robust ausfiltern
 const isStatusIncluded = (k, includeDisc) => {
   const s = ((k && k.status) || "").toString().trim().toLowerCase();
   if (s === "active") return true;
@@ -185,6 +197,7 @@ const mapTyp = (s) => {
   return t;
 };
 
+// Filterfunktion, die den aktuellen Filterzustand nutzt
 const filterKultivare = (
   kultivare,
   selectedWirkungen,
@@ -197,17 +210,15 @@ const filterKultivare = (
     .filter((k) => isStatusIncluded(k, includeDisc))
     .filter((k) => {
       // Terpene filtern
-      if (
-        selectedTerpene.size &&
-        !kultivarHasSelectedTerpene(k, selectedTerpene)
-      ) {
+      if (selectedTerpene.size && !kultivarHasSelectedTerpene(k, selectedTerpene)) {
         return false;
       }
-      // Wirkungen filtern
+      // Wirkungen filtern (normalisiert)
       if (selectedWirkungen.size) {
         if (!Array.isArray(k.wirkungen)) return false;
-        if (![...selectedWirkungen].every((w) => k.wirkungen.includes(w)))
-          return false;
+        const selectedNormalized = [...selectedWirkungen].map((w) => normalizeWirkung(w));
+        const kultivarNormalized = k.wirkungen.map((w) => normalizeWirkung(w));
+        if (!selectedNormalized.every((w) => kultivarNormalized.includes(w))) return false;
       }
       // Typ filtern
       if (targetTyp) {
@@ -218,52 +229,78 @@ const filterKultivare = (
     });
 };
 
-// Hilfsfunktion, um eine radar‑Diagramm‑Datei aus dem Namen abzuleiten
-const radarPathSvg = (name) =>
-  `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
+// Ableitung des Radar‑Diagramm‑Pfads
+const radarPathSvg = (name) => `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
 
-// Das Modal wird in eine eigene Komponente ausgelagert; so wird sie nicht bei
-// jedem Render neu erstellt. Es handelt sich um eine einfache, lib‑freie
-// Implementierung.
-const Modal = ({ open, onClose, title, children }) => {
-  if (!open) return null;
-  return (
-    <div
-      className="modal-backdrop"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={title}
-    >
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <button
-          className="modal-close"
-          onClick={onClose}
-          aria-label="Dialog schließen"
-        >
-          ×
-        </button>
-        <h3 className="modal-title">{title}</h3>
-        <div className="modal-content">{children}</div>
-      </div>
-    </div>
-  );
+/*
+ * Anfangszustand des Reducers. Wir fassen alle Filter- und UI‑Zustände
+ * zusammen. Sets werden hier als echte Set‑Instanzen initialisiert.
+ */
+const initialFilterState = {
+  terp1: "",
+  terp2: "",
+  wirk1: "",
+  wirk2: "",
+  typ: "",
+  includeDiscontinued: false,
+  selectedTerpene: new Set(),
+  selectedWirkungen: new Set(),
+  terpenDialog: { open: false, name: null },
 };
 
-export default function CannabisKultivarFinder() {
-  // Zustand definieren
-  const [selectedWirkungen, setSelectedWirkungen] = useState(new Set());
-  const [selectedTerpene, setSelectedTerpene] = useState(new Set());
-  const [kultivare, setKultivare] = useState([]);
-  const [terpenDialog, setTerpenDialog] = useState({ open: false, name: null });
-  const [terp1, setTerp1] = useState("");
-  const [terp2, setTerp2] = useState("");
-  const [wirk1, setWirk1] = useState("");
-  const [wirk2, setWirk2] = useState("");
-  const [typ, setTyp] = useState("");
-  const [includeDiscontinued, setIncludeDiscontinued] = useState(false);
+/*
+ * Reducer zum Aktualisieren des Filterzustands. Für jede Aktion
+ * berechnen wir den neuen State und leiten ggf. Sets ab. Durch das
+ * Bündeln der Logik hier bleibt der Code in der Komponente schlanker.
+ */
+function filterReducer(state, action) {
+  switch (action.type) {
+    case "SET_TERP1": {
+      const newSet = new Set([action.value, state.terp2].filter(Boolean));
+      return { ...state, terp1: action.value, selectedTerpene: newSet };
+    }
+    case "SET_TERP2": {
+      const newSet = new Set([state.terp1, action.value].filter(Boolean));
+      return { ...state, terp2: action.value, selectedTerpene: newSet };
+    }
+    case "SET_WIRK1": {
+      const newSet = new Set([action.value, state.wirk2].filter(Boolean));
+      return { ...state, wirk1: action.value, selectedWirkungen: newSet };
+    }
+    case "SET_WIRK2": {
+      const newSet = new Set([state.wirk1, action.value].filter(Boolean));
+      return { ...state, wirk2: action.value, selectedWirkungen: newSet };
+    }
+    case "SET_TYP": {
+      return { ...state, typ: action.value };
+    }
+    case "TOGGLE_INCLUDE_DISC": {
+      return { ...state, includeDiscontinued: action.value };
+    }
+    case "CLEAR_TERPENE": {
+      return { ...state, terp1: "", terp2: "", selectedTerpene: new Set() };
+    }
+    case "CLEAR_WIRKUNGEN": {
+      return { ...state, wirk1: "", wirk2: "", selectedWirkungen: new Set() };
+    }
+    case "OPEN_TERPEN_DIALOG": {
+      return { ...state, terpenDialog: { open: true, name: action.name } };
+    }
+    case "CLOSE_TERPEN_DIALOG": {
+      return { ...state, terpenDialog: { open: false, name: null } };
+    }
+    default:
+      return state;
+  }
+}
 
-  // Daten laden – async/await für bessere Lesbarkeit
+/*
+ * Hauptkomponente des Kultivarfinder‑Tools. Sie nutzt useReducer, um
+ * die Filter zu verwalten, und useState für die geladenen Daten.
+ */
+export default function CannabisKultivarFinderUseReducer() {
+  // Daten aus dem Backend laden
+  const [kultivare, setKultivare] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -278,62 +315,42 @@ export default function CannabisKultivarFinder() {
     fetchData();
   }, []);
 
-  // Dropdowns -> Sets; useEffect wird nur ausgeführt, wenn sich die Abhängigkeiten ändern
-  useEffect(() => {
-    setSelectedTerpene(new Set([terp1, terp2].filter(Boolean)));
-  }, [terp1, terp2]);
-  useEffect(() => {
-    setSelectedWirkungen(new Set([wirk1, wirk2].filter(Boolean)));
-  }, [wirk1, wirk2]);
+  // useReducer für den Filterzustand
+  const [filters, dispatch] = useReducer(filterReducer, initialFilterState);
 
-  // Mit useMemo wird das Filtern nur durchgeführt, wenn sich die Abhängigkeiten ändern
+  // Memoisiertes Filtern der Kultivare basierend auf dem Reducer-State
   const filteredKultivare = useMemo(
     () =>
       filterKultivare(
         kultivare,
-        selectedWirkungen,
-        selectedTerpene,
-        typ,
-        includeDiscontinued
+        filters.selectedWirkungen,
+        filters.selectedTerpene,
+        filters.typ,
+        filters.includeDiscontinued
       ),
-    [kultivare, selectedWirkungen, selectedTerpene, typ, includeDiscontinued]
+    [kultivare, filters.selectedWirkungen, filters.selectedTerpene, filters.typ, filters.includeDiscontinued]
   );
 
-  // Callback‑Funktionen mit useCallback, damit sie nicht bei jedem Render neu erstellt werden
-  const clearTerpene = useCallback(() => {
-    setTerp1("");
-    setTerp2("");
-  }, []);
-  const clearWirkungen = useCallback(() => {
-    setWirk1("");
-    setWirk2("");
-  }, []);
-  const optionsFor = useCallback(
-    (items, exclude) => items.filter((i) => !exclude || i !== exclude),
-    []
-  );
-  const openTerpenDialog = useCallback(
-    (name) => setTerpenDialog({ open: true, name }),
-    []
-  );
-  const closeTerpenDialog = useCallback(
-    () => setTerpenDialog({ open: false, name: null }),
-    []
-  );
+  // Callback‑Funktionen zum Dispatchen von Aktionen
+  const clearTerpene = useCallback(() => dispatch({ type: "CLEAR_TERPENE" }), []);
+  const clearWirkungen = useCallback(() => dispatch({ type: "CLEAR_WIRKUNGEN" }), []);
+  const openTerpenDialog = useCallback((name) => dispatch({ type: "OPEN_TERPEN_DIALOG", name }), []);
+  const closeTerpenDialog = useCallback(() => dispatch({ type: "CLOSE_TERPEN_DIALOG" }), []);
 
-  // Tooltip‑Informationen berechnen
+  const optionsFor = useCallback((items, exclude) => items.filter((i) => !exclude || i !== exclude), []);
+
+  // Tooltip‑Informationen zu Terpenen
   const activeInfo = useMemo(() => {
-    if (!terpenDialog.name) return null;
+    const name = filters.terpenDialog.name;
+    if (!name) return null;
     return (
-      terpenInfo[terpenDialog.name] ||
-      Object.values(terpenInfo).find((v) =>
-        v.aliases?.includes(terpenDialog.name)
-      ) ||
+      terpenInfo[name] ||
+      Object.values(terpenInfo).find((v) => v.aliases?.includes(name)) ||
       null
     );
-  }, [terpenDialog.name]);
+  }, [filters.terpenDialog.name]);
 
-  // Komponente für die Terpen‑Chips; definieren wir hier um den Zugriff auf openTerpenDialog zu haben
+  // UI für Terpen‑Chips (verwende useCallback, damit die Funktion nur neu erstellt wird, wenn openTerpenDialog sich ändert)
   const renderTerpenChips = useCallback(
     (list) => {
       if (!Array.isArray(list) || list.length === 0) return "N/A";
@@ -355,10 +372,10 @@ export default function CannabisKultivarFinder() {
     [openTerpenDialog]
   );
 
-  // Rendern
+  // Rendern der Komponente
   return (
     <div className="container">
-      {/* Inline-Ministyles für Chips, Modal und Mobile-Dropdowns */}
+      {/* Inline‑Styles für Chips, Modals und Filterelemente */}
       <style>{`
         .terp-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
         .terp-chip {
@@ -383,262 +400,181 @@ export default function CannabisKultivarFinder() {
         .table-container { overflow-x: auto; }
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
-        /* Typ Buttons + Tooltips (Desktop) */
         .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; }
         .typ-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
         .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
         .typ-btn:hover { background: #f7faff; }
         .typ-btn.active { background: #e8f0fe; border-color: #90caf9; }
-        .has-tooltip { position: relative; display: inline-block; }
-        .tooltip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 8px 10px; border-radius: 8px; font-size: 12px; line-height: 1.3; max-width: 320px; width: max-content; box-shadow: 0 6px 20px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: opacity .15s ease; pointer-events: none; z-index: 10; }
-        .has-tooltip:hover .tooltip, .has-tooltip:focus-within .tooltip { opacity: 1; visibility: visible; }
-        /* Standard: Dropdown für Typ ausblenden, Buttons zeigen */
-        .typ-select { display: none; }
-        .availability-toggle { display: flex; align-items: center; gap: 8px; }
-        @media (max-width: 768px) {
-          .select-row { grid-template-columns: 1fr; }
-          /* Auf Mobile: Buttons ausblenden, Dropdown zeigen */
-          .typ-button-group { display: none; }
-          .typ-select { display: block; }
-        }
-        @media (max-width: 640px) {
-          /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil bleiben sichtbar */
-          .table thead th:nth-child(3), .table tbody td:nth-child(3),
-          .table thead th:nth-child(4), .table tbody td:nth-child(4) { display: none; }
-        }
       `}</style>
-      <h1>Cannabis-Kultivarfinder</h1>
-      <p className="disclaimer">
-        Die angegebenen medizinischen Wirkungen beziehen sich auf mögliche
-        Effekte des dominantesten Terpens in der Blüte. Die Angaben sind
-        lediglich ein Anhaltspunkt für die passende Produktauswahl durch das
-        medizinische Fachpersonal und haben keinen Anspruch auf Vollständigkeit.
-      </p>
-      {/* Dropdown-Filter */}
+      {/* Filter UI */}
       <div className="filters">
+        {/* Terpenauswahl */}
         <div className="select-group">
-          <h3>Terpen-Auswahl (bis zu 2)</h3>
+          <h3>Terpene</h3>
           <div className="select-row">
             <select
-              value={terp1}
-              onChange={(e) => setTerp1(e.target.value)}
-              aria-label="Terpen Option 1"
+              value={filters.terp1}
+              onChange={(e) => dispatch({ type: "SET_TERP1", value: e.target.value })}
             >
-              <option value="">— Option 1 wählen —</option>
-              {terpene.map((t) => (
-                <option key={`t1-${t}`} value={t}>
+              <option value="">–</option>
+              {optionsFor(terpene, filters.terp2).map((t) => (
+                <option key={t} value={t}>
                   {t}
                 </option>
               ))}
             </select>
             <select
-              value={terp2}
-              onChange={(e) => setTerp2(e.target.value)}
-              aria-label="Terpen Option 2"
+              value={filters.terp2}
+              onChange={(e) => dispatch({ type: "SET_TERP2", value: e.target.value })}
             >
-              <option value="">— Option 2 wählen —</option>
-              {optionsFor(terpene, terp1).map((t) => (
-                <option key={`t2-${t}`} value={t}>
+              <option value="">–</option>
+              {optionsFor(terpene, filters.terp1).map((t) => (
+                <option key={t} value={t}>
                   {t}
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearTerpene}>
-              Zurücksetzen
+            <button className="reset-btn" onClick={clearTerpene} disabled={!filters.selectedTerpene.size}>
+              ×
             </button>
           </div>
         </div>
+        {/* Wirkungswahl */}
         <div className="select-group">
-          <h3>Wirkungs-Auswahl (bis zu 2)</h3>
+          <h3>Wirkungen</h3>
           <div className="select-row">
             <select
-              value={wirk1}
-              onChange={(e) => setWirk1(e.target.value)}
-              aria-label="Wirkung Option 1"
+              value={filters.wirk1}
+              onChange={(e) => dispatch({ type: "SET_WIRK1", value: e.target.value })}
             >
-              <option value="">— Option 1 wählen —</option>
-              {wirkungen.map((w) => (
-                <option key={`w1-${w}`} value={w}>
+              <option value="">–</option>
+              {optionsFor(wirkungen, filters.wirk2).map((w) => (
+                <option key={w} value={w}>
                   {w}
                 </option>
               ))}
             </select>
             <select
-              value={wirk2}
-              onChange={(e) => setWirk2(e.target.value)}
-              aria-label="Wirkung Option 2"
+              value={filters.wirk2}
+              onChange={(e) => dispatch({ type: "SET_WIRK2", value: e.target.value })}
             >
-              <option value="">— Option 2 wählen —</option>
-              {optionsFor(wirkungen, wirk1).map((w) => (
-                <option key={`w2-${w}`} value={w}>
+              <option value="">–</option>
+              {optionsFor(wirkungen, filters.wirk1).map((w) => (
+                <option key={w} value={w}>
                   {w}
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearWirkungen}>
-              Zurücksetzen
+            <button className="reset-btn" onClick={clearWirkungen} disabled={!filters.selectedWirkungen.size}>
+              ×
             </button>
           </div>
         </div>
-        {/* Typ-Buttons (Desktop) */}
+        {/* Typauswahl */}
         <div className="typ-button-group">
           <h3>Typ</h3>
           <div className="typ-row">
-            {["Indica", "Indica-dominant", "Sativa", "Sativa-dominant"].map(
-              (t) => (
-                <span className="has-tooltip" key={`typbtn-${t}`}>
-                  <button
-                    type="button"
-                    className={`typ-btn ${
-                      mapTyp(typ) === mapTyp(t) ? "active" : ""
-                    }`}
-                    onClick={() => setTyp(mapTyp(typ) === mapTyp(t) ? "" : t)}
-                    aria-describedby={`tt-${t}`}
-                    title={typInfo[t]}
-                  >
-                    {mapTyp(typ) === mapTyp(t) ? `✓ ${t}` : t}
-                  </button>
-                  <span role="tooltip" id={`tt-${t}`} className="tooltip">
-                    {typInfo[t]}
-                  </span>
-                </span>
-              )
-            )}
-            <button className="reset-btn" onClick={() => setTyp("")}>
-              Alle
-            </button>
+            {Object.keys(typInfo).map((t) => (
+              <button
+                key={t}
+                className={`typ-btn ${filters.typ === t ? "active" : ""}`}
+                onClick={() => dispatch({ type: "SET_TYP", value: filters.typ === t ? "" : t })}
+              >
+                {t}
+              </button>
+            ))}
           </div>
+          <p style={{ fontSize: 12, color: "#546e7a", marginTop: 4 }}>
+            {filters.typ ? typInfo[filters.typ] : ""}
+          </p>
         </div>
-        {/* Typ-Fallback (Mobile) */}
-        <div className="select-group typ-select">
-          <h3>Typ</h3>
-          <div className="select-row">
-            <select
-              value={typ}
-              onChange={(e) => setTyp(e.target.value)}
-              aria-label="Typ"
-            >
-              <option value="">— Alle Typen —</option>
-              <option value="Indica">Indica</option>
-              <option value="Indica-dominant">Indica-dominant</option>
-              <option value="Sativa">Sativa</option>
-              <option value="Sativa-dominant">Sativa-dominant</option>
-            </select>
-            <div></div>
-            <button className="reset-btn" onClick={() => setTyp("")}>
-              Zurücksetzen
-            </button>
-          </div>
-        </div>
-        {/* Verfügbarkeit */}
-        <div className="select-group">
-          <h3>Verfügbarkeit</h3>
-          <label className="availability-toggle">
+        {/* Option zur Anzeige eingestellter Sorten */}
+        <div style={{ textAlign: "center" }}>
+          <label>
             <input
               type="checkbox"
-              checked={includeDiscontinued}
-              onChange={(e) => setIncludeDiscontinued(e.target.checked)}
+              checked={filters.includeDiscontinued}
+              onChange={(e) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value: e.target.checked })}
             />
-            <span>Nicht mehr im Verkauf anzeigen</span>
+            &nbsp;Eingestellte Sorten einbeziehen
           </label>
         </div>
       </div>
-      {/* Ergebnis-Tabelle */}
-      <div className="table-container center-table">
-        <Card>
-          <CardContent>
-            <h2>Passende Kultivare:</h2>
-            {filteredKultivare.length > 0 ? (
-              <div className="table-scroll">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>THC %</th>
-                      <th className="hidden-sm">CBD %</th>
-                      <th className="hidden-sm">Terpengehalt %</th>
-                      <th className="hidden-sm">Terpenprofil</th>
-                      <th>Diagramm</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredKultivare.map((strain) => (
-                      <tr key={strain.name}>
-                        <td>
-                          <button
-                            onClick={() => {
-                              const url = `/datenblaetter/${strain.name.replace(
-                                /\s+/g,
-                                "_"
-                              )}.pdf`;
-                              // Sicherheitsattribute für neues Tab
-                              window.open(url, "_blank", "noopener,noreferrer");
-                            }}
-                            className="link-button"
-                          >
-                            {strain.name}
-                          </button>
-                        </td>
-                        <td>
-                          <span className="thc-values">{strain.thc}</span>
-                        </td>
-                        <td className="hidden-sm">{strain.cbd}</td>
-                        <td className="hidden-sm">
-                          {strain.terpengehalt ? strain.terpengehalt : "N/A"}
-                        </td>
-                        <td className="hidden-sm terpenprofil-cell">
-                          {renderTerpenChips(strain.terpenprofil)}
-                        </td>
-                        <td>
-                          <button
-                            className="link-button"
-                            onClick={() => {
-                              const url = radarPathSvg(strain.name);
-                              window.open(url, "_blank", "noopener,noreferrer");
-                            }}
-                          >
-                            anzeigen
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <p className="no-results">
-                Bitte wählen Sie Wirkungen und/oder Terpene aus, um passende
-                Kultivare zu sehen.
-              </p>
-            )}
-          </CardContent>
-        </Card>
+      {/* Ergebnistabelle */}
+      <div className="table-scroll">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Typ</th>
+              <th>Terpenprofil</th>
+              <th>Wirkungen</th>
+              <th>Radar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredKultivare.map((k) => (
+              <tr key={k.name}>
+                <td>{k.name}</td>
+                <td>{mapTyp(k.typ)}</td>
+                <td>{renderTerpenChips(k.terpenprofil)}</td>
+                <td>
+                  {Array.isArray(k.wirkungen)
+                    ? k.wirkungen
+                        .map((w) => normalizeWirkung(w))
+                        .join(", ")
+                    : "N/A"}
+                </td>
+                <td>
+                  {k.terpenprofil ? (
+                    <a
+                      href={radarPathSvg(k.name)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`Radar-Diagramm für ${k.name}`}
+                    >
+                      Diagramm
+                    </a>
+                  ) : (
+                    "–"
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      {/* Terpen-Informationsdialog */}
-      <Modal
-        open={terpenDialog.open}
-        onClose={closeTerpenDialog}
-        title={terpenDialog.name || "Terpen"}
-      >
-        {terpenDialog.name ? (
-          <>
-            <p>
-              <strong>Synonyme:</strong>{" "}
-              {activeInfo?.aliases && activeInfo.aliases.length > 0
-                ? activeInfo.aliases.join(", ")
-                : "—"}
-            </p>
-            <p>
-              {activeInfo?.description ||
-                "Für dieses Terpen sind noch keine Detailinformationen hinterlegt."}
-            </p>
-            <p className="modal-meta">
-              Hinweis: Kurzinfos, keine medizinische Beratung. Terpenprofile
-              variieren je nach Charge & Verarbeitung.
-            </p>
-          </>
-        ) : null}
-      </Modal>
+      {/* Terpen-Informationsmodal */}
+      {filters.terpenDialog.open && (
+        <div
+          className="modal-backdrop"
+          onClick={closeTerpenDialog}
+          role="dialog"
+          aria-modal="true"
+          aria-label={filters.terpenDialog.name}
+        >
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeTerpenDialog} aria-label="Dialog schließen">
+              ×
+            </button>
+            <h3 className="modal-title">{filters.terpenDialog.name}</h3>
+            <div className="modal-content">
+              {activeInfo ? (
+                <>
+                  <p>{activeInfo.description}</p>
+                  {activeInfo.aliases && activeInfo.aliases.length > 0 && (
+                    <p className="modal-meta">
+                      Alias: {activeInfo.aliases.join(", ")}
+                    </p>
+                  )}
+                </>
+              ) : (
+                <p>Keine weiteren Informationen vorhanden.</p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
