@@ -134,12 +134,13 @@ const terpene = [
 
 const wirkungen = [
   "analgetisch",
-  "angstlösend",
+  "antidepressiv",
   "antimikrobiell",
   "antimykotisch",
   "antioxidativ",
+  "anxiolytisch",
   "entspannend",
-  "entzündungshemmend",
+  "antiinflammatorisch",
   "krampflösend",
   "neuroprotektiv",
   "unterstützt Wundheilung",
