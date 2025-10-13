@@ -217,12 +217,7 @@ const filterKultivare = (
       if (selectedWirkungen.size) {
         if (!Array.isArray(k.wirkungen)) return false;
         const selectedNormalized = [...selectedWirkungen].map((w) => normalizeWirkung(w));
-        // Use preprocessed normalizedWirkungen if available to avoid re-normalizing on each filter.
-        const kultivarNormalized = Array.isArray(k.normalizedWirkungen)
-          ? k.normalizedWirkungen
-          : Array.isArray(k.wirkungen)
-          ? k.wirkungen.map((w) => normalizeWirkung(w))
-          : [];
+        const kultivarNormalized = k.wirkungen.map((w) => normalizeWirkung(w));
         if (!selectedNormalized.every((w) => kultivarNormalized.includes(w))) return false;
       }
       // Typ filtern
@@ -312,19 +307,7 @@ export default function CannabisKultivarFinderUseReducer() {
         const response = await fetch("/kultivare.json");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        // Normalize Wirkungen once when loading data to avoid repeated processing later.
-        // Each kultivar gets a new property `normalizedWirkungen` which contains
-        // canonical effect names. This avoids repeatedly mapping over the wirkungen
-        // array in the filter function.
-        const normalized = Array.isArray(data)
-          ? data.map((k) => {
-              const normalizedWirkungen = Array.isArray(k.wirkungen)
-                ? k.wirkungen.map((w) => normalizeWirkung(w))
-                : [];
-              return { ...k, normalizedWirkungen };
-            })
-          : [];
-        setKultivare(normalized);
+        setKultivare(data);
       } catch (err) {
         console.error("Fehler beim Laden der Daten:", err);
       }
@@ -356,15 +339,6 @@ export default function CannabisKultivarFinderUseReducer() {
   const clearWirkungen = useCallback(() => dispatch({ type: "CLEAR_WIRKUNGEN" }), []);
   const openTerpenDialog = useCallback((name) => dispatch({ type: "OPEN_TERPEN_DIALOG", name }), []);
   const closeTerpenDialog = useCallback(() => dispatch({ type: "CLOSE_TERPEN_DIALOG" }), []);
-
-  // Memoized helpers to open and close the information dialog. Wrapping
-  // setInfoDialog in useCallback avoids recreating these functions on every render.
-  const showInfo = useCallback((cultivar) => {
-    setInfoDialog({ open: true, cultivar });
-  }, []);
-  const hideInfo = useCallback(() => {
-    setInfoDialog({ open: false, cultivar: null });
-  }, []);
 
   const optionsFor = useCallback((items, exclude) => items.filter((i) => !exclude || i !== exclude), []);
 
@@ -588,7 +562,7 @@ export default function CannabisKultivarFinderUseReducer() {
                         <td>
                           <button
                             className="link-button"
-                            onClick={() => showInfo(k)}
+                            onClick={() => setInfoDialog({ open: true, cultivar: k })}
                           >
                             Info
                           </button>
@@ -640,7 +614,7 @@ export default function CannabisKultivarFinderUseReducer() {
       {infoDialog.open && infoDialog.cultivar && (
         <div
           className="modal-backdrop"
-          onClick={hideInfo}
+          onClick={() => setInfoDialog({ open: false, cultivar: null })}
           role="dialog"
           aria-modal="true"
           aria-label={infoDialog.cultivar.name}
@@ -648,7 +622,7 @@ export default function CannabisKultivarFinderUseReducer() {
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <button
               className="modal-close"
-              onClick={hideInfo}
+              onClick={() => setInfoDialog({ open: false, cultivar: null })}
               aria-label="Dialog schließen"
             >
               ×
