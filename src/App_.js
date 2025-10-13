@@ -522,6 +522,7 @@ export default function CannabisKultivarFinderUseReducer() {
                       <th>Name</th>
                       <th>THC %</th>
                       <th className="hidden-sm">CBD %</th>
+                      <th className="hidden-sm">Terpengehalt %</th>
                       <th className="hidden-sm">Terpenprofil</th>
                       <th>Diagramm</th>
                       <th>Details</th>
@@ -545,6 +546,7 @@ export default function CannabisKultivarFinderUseReducer() {
                           <span className="thc-values">{k.thc || "N/A"}</span>
                         </td>
                         <td className="hidden-sm">{k.cbd || "N/A"}</td>
+                        <td className="hidden-sm">{k.terpengehalt || "N/A"}</td>
                         <td className="hidden-sm terpenprofil-cell">
                           {renderTerpenChips(k.terpenprofil)}
                         </td>
