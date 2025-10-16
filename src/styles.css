@@ -191,7 +191,11 @@ select {
   flex-wrap: wrap;
   gap: 6px;
   justify-content: center;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
 }
+.terp-item { margin: 0; }
 .terp-chip {
   border: 1px solid #cfd8dc;
   border-radius: 9999px;
@@ -250,3 +254,13 @@ select {
   .table thead th:nth-child(3), .table tbody td:nth-child(3),
   .table thead th:nth-child(4), .table tbody td:nth-child(4) { display: none; }
 }
+
+/* A11y helpers */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+.error-message { color: #b00020; }

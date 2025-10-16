@@ -17,6 +17,21 @@
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <div id="root"></div> <!-- WICHTIG! React braucht dieses Element -->
-</body>
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #1976d2;
+        color: #fff;
+        padding: 8px 12px;
+        z-index: 1000;
+        transform: translateY(-8px);
+        transition: top .2s ease;
+      }
+      .skip-link:focus { top: 8px; }
+    </style>
+  </body>
 </html>

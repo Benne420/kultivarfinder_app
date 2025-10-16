@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
 import "./styles.css";
@@ -91,27 +91,81 @@ const getPdfFileForName = (name) => {
   return `${name.replace(/\s+/g, "_")}.pdf`;
 };
 
-// --- kleines, lib-freies Modal ---
+// --- kleines, lib-freies, zugängliches Modal ---
 const Modal = ({ open, onClose, title, children }) => {
+  const dialogRef = useRef(null);
+  const closeBtnRef = useRef(null);
+  const previouslyFocusedRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      previouslyFocusedRef.current =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
+      // Fokus in den Dialog setzen
+      const timer = setTimeout(() => {
+        closeBtnRef.current?.focus();
+      }, 0);
+      return () => clearTimeout(timer);
+    } else if (previouslyFocusedRef.current) {
+      // Fokus zurücksetzen
+      previouslyFocusedRef.current.focus();
+      previouslyFocusedRef.current = null;
+    }
+  }, [open]);
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      onClose();
+      return;
+    }
+    if (e.key === "Tab") {
+      const root = dialogRef.current;
+      if (!root) return;
+      const focusable = root.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const isShift = e.shiftKey;
+      if (!isShift && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      } else if (isShift && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    }
+  };
+
   if (!open) return null;
   return (
-    <div
-      className="modal-backdrop"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={title}
-    >
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-backdrop" onClick={onClose}>
+      <div
+        ref={dialogRef}
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="terpen-dialog-title"
+        aria-describedby="terpen-dialog-desc"
+        id="terpen-info-dialog"
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={handleKeyDown}
+      >
         <button
+          ref={closeBtnRef}
           className="modal-close"
           onClick={onClose}
+          type="button"
           aria-label="Dialog schließen"
         >
           ×
         </button>
-        <h3 className="modal-title">{title}</h3>
-        <div className="modal-content">{children}</div>
+        <h3 className="modal-title" id="terpen-dialog-title">{title}</h3>
+        <div className="modal-content" id="terpen-dialog-desc">{children}</div>
       </div>
     </div>
   );
@@ -122,6 +176,8 @@ export default function CannabisKultivarFinder() {
   const [selectedTerpene, setSelectedTerpene] = useState(new Set());
   const [kultivare, setKultivare] = useState([]);
   const [terpenDialog, setTerpenDialog] = useState({ open: false, name: null });
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
 
   // Neue Zustände für Dropdowns (je 2 Optionen)
   const [terp1, setTerp1] = useState("");
@@ -133,7 +189,11 @@ export default function CannabisKultivarFinder() {
     fetch("/kultivare.json")
       .then((response) => response.json())
       .then((data) => setKultivare(data))
-      .catch((error) => console.error("Fehler beim Laden der Daten:", error));
+      .catch((error) => {
+        console.error("Fehler beim Laden der Daten:", error);
+        setLoadError("Daten konnten nicht geladen werden.");
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   // Optionen aus Daten ableiten (verhindert Inkonsistenzen)
@@ -189,18 +249,22 @@ export default function CannabisKultivarFinder() {
   const renderTerpenChips = (list) => {
     if (!Array.isArray(list) || list.length === 0) return "N/A";
     return (
-      <div className="terp-list" role="list" aria-label="Terpenprofil">
+      <ul className="terp-list" aria-label="Terpenprofil Liste">
         {list.map((t, idx) => (
-          <button
-            key={`${t}-${idx}`}
-            className="terp-chip"
-            onClick={() => openTerpenDialog(t)}
-            title={`Mehr Informationen zu ${t}`}
-          >
-            {t}
-          </button>
+          <li key={`${t}-${idx}`} className="terp-item">
+            <button
+              className="terp-chip"
+              onClick={() => openTerpenDialog(t)}
+              type="button"
+              title={`Mehr Informationen zu ${t}`}
+              aria-haspopup="dialog"
+              aria-controls="terpen-info-dialog"
+            >
+              {t}
+            </button>
+          </li>
         ))}
-      </div>
+      </ul>
     );
   };
 
@@ -212,8 +276,16 @@ export default function CannabisKultivarFinder() {
       null
     : null;
 
+  const resultsCount = filteredKultivare.length;
+
   return (
-    <div className="container">
+    <main
+      className="container"
+      id="main-content"
+      aria-hidden={terpenDialog.open || undefined}
+      inert={terpenDialog.open || undefined}
+      tabIndex={-1}
+    >
 
       <h1>Cannabis-Kultivarfinder</h1>
       <p className="disclaimer">
@@ -224,14 +296,21 @@ export default function CannabisKultivarFinder() {
       </p>
 
       {/* Dropdown-Filter */}
-      <div className="filters">
-        <div className="select-group">
-          <h3>Terpen-Auswahl (bis zu 2)</h3>
+      <div className="filters" role="region" aria-labelledby="filters-heading">
+        <h2 id="filters-heading" className="visually-hidden">
+          Filter auswählen
+        </h2>
+
+        <fieldset className="select-group" aria-labelledby="terpen-legend">
+          <legend id="terpen-legend">Terpen-Auswahl (bis zu 2)</legend>
           <div className="select-row">
+            <label className="visually-hidden" htmlFor="terp1-select">
+              Terpen Option 1
+            </label>
             <select
+              id="terp1-select"
               value={terp1}
               onChange={(e) => setTerp1(e.target.value)}
-              aria-label="Terpen Option 1"
             >
               <option value="">— Option 1 wählen —</option>
               {terpeneOptions.map((t) => (
@@ -240,10 +319,14 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
+
+            <label className="visually-hidden" htmlFor="terp2-select">
+              Terpen Option 2
+            </label>
             <select
+              id="terp2-select"
               value={terp2}
               onChange={(e) => setTerp2(e.target.value)}
-              aria-label="Terpen Option 2"
             >
               <option value="">— Option 2 wählen —</option>
               {optionsFor(terpeneOptions, terp1).map((t) => (
@@ -252,19 +335,27 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearTerpene}>
+            <button
+              className="reset-btn"
+              onClick={clearTerpene}
+              type="button"
+              aria-label="Terpen-Auswahl zurücksetzen"
+            >
               Zurücksetzen
             </button>
           </div>
-        </div>
+        </fieldset>
 
-        <div className="select-group">
-          <h3>Wirkungs-Auswahl (bis zu 2)</h3>
+        <fieldset className="select-group" aria-labelledby="wirkung-legend">
+          <legend id="wirkung-legend">Wirkungs-Auswahl (bis zu 2)</legend>
           <div className="select-row">
+            <label className="visually-hidden" htmlFor="wirk1-select">
+              Wirkung Option 1
+            </label>
             <select
+              id="wirk1-select"
               value={wirk1}
               onChange={(e) => setWirk1(e.target.value)}
-              aria-label="Wirkung Option 1"
             >
               <option value="">— Option 1 wählen —</option>
               {wirkungOptions.map((w) => (
@@ -273,10 +364,14 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
+
+            <label className="visually-hidden" htmlFor="wirk2-select">
+              Wirkung Option 2
+            </label>
             <select
+              id="wirk2-select"
               value={wirk2}
               onChange={(e) => setWirk2(e.target.value)}
-              aria-label="Wirkung Option 2"
             >
               <option value="">— Option 2 wählen —</option>
               {optionsFor(wirkungOptions, wirk1).map((w) => (
@@ -285,45 +380,73 @@ export default function CannabisKultivarFinder() {
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearWirkungen}>
+            <button
+              className="reset-btn"
+              onClick={clearWirkungen}
+              type="button"
+              aria-label="Wirkungs-Auswahl zurücksetzen"
+            >
               Zurücksetzen
             </button>
           </div>
-        </div>
+        </fieldset>
       </div>
 
       <div className="table-container center-table">
         <Card>
           <CardContent>
             <h2>Passende Kultivare:</h2>
-            {filteredKultivare.length > 0 ? (
+            {loadError ? (
+              <p role="alert" className="error-message">
+                {loadError}
+              </p>
+            ) : (
+              <p
+                className="results-count"
+                role="status"
+                aria-live="polite"
+                aria-busy={isLoading}
+              >
+                {isLoading
+                  ? "Laden…"
+                  : `${resultsCount} passende Kultivare gefunden.`}
+              </p>
+            )}
+            {!isLoading && filteredKultivare.length > 0 ? (
               <div className="table-scroll">
                 <table className="table">
+                  <caption className="visually-hidden">
+                    Tabelle der passenden Kultivare mit THC, CBD, Terpengehalt und Terpenprofil
+                  </caption>
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>THC %</th>
-                      <th className="hidden-sm">CBD %</th>
-                      <th className="hidden-sm">Terpengehalt %</th>
-                      <th className="hidden-sm">Terpenprofil</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">THC %</th>
+                      <th className="hidden-sm" scope="col">CBD %</th>
+                      <th className="hidden-sm" scope="col">Terpengehalt %</th>
+                      <th className="hidden-sm" scope="col">Terpenprofil</th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredKultivare.map((strain) => (
                       <tr key={strain.name}>
-                        <td>
-                          <button
-                            onClick={() => {
-                              const pdfPath = `/datenblaetter/${getPdfFileForName(
-                                strain.name
-                              )}`;
-                              window.open(encodeURI(pdfPath), "_blank");
-                            }}
+                        <th scope="row">
+                          <a
+                            href={encodeURI(
+                              `/datenblaetter/${getPdfFileForName(strain.name)}`
+                            )}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="link-button"
+                            aria-label={`Datenblatt für ${strain.name} in neuem Tab öffnen`}
+                            title={`Datenblatt für ${strain.name} öffnen`}
                           >
                             {strain.name}
-                          </button>
-                        </td>
+                            <span className="visually-hidden">
+                              (öffnet in neuem Tab)
+                            </span>
+                          </a>
+                        </th>
                         <td>
                           <span className="thc-values">{strain.thc}</span>
                         </td>
@@ -340,7 +463,7 @@ export default function CannabisKultivarFinder() {
                 </table>
               </div>
             ) : (
-              <p className="no-results">
+              <p className="no-results" role="status" aria-live="polite">
                 Bitte wählen Sie Wirkungen und/oder Terpene aus, um passende
                 Kultivare zu sehen.
               </p>
@@ -374,6 +497,6 @@ export default function CannabisKultivarFinder() {
           </>
         ) : null}
       </Modal>
-    </div>
+    </main>
   );
 }
