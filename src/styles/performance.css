@@ -1,0 +1,17 @@
+/* Performance optimizations */
+.filters,
+.table-container {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px 600px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize font loading */
+@font-face {
+  font-family: 'Montserrat';
+  font-display: swap;
+}

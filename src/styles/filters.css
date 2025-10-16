@@ -1,0 +1,33 @@
+/* Filter section styles */
+.filters {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.select-group {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 12px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-md);
+}
+
+.select-group h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  text-align: left;
+}
+
+.select-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Responsive filter layout */
+@media (max-width: 768px) {
+  .select-row {
+    grid-template-columns: 1fr;
+  }
+}
