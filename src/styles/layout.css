@@ -1,0 +1,57 @@
+/* Layout components */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.center-table {
+  /* Additional centering for table container */
+}
+
+/* Grid layouts */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    margin: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  
+  .container {
+    padding: 0 12px;
+  }
+  
+  input,
+  select,
+  button {
+    font-size: 16px;
+  }
+}

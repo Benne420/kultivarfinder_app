@@ -1,0 +1,94 @@
+/* Button components */
+.button {
+  flex: 1 1 150px;
+  text-align: center;
+  padding: 10px 20px;
+  min-width: 150px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 16px;
+  touch-action: manipulation;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-background);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.button:hover {
+  background: var(--color-background-secondary);
+}
+
+.button-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border-hover);
+  background: var(--color-background-tertiary);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 16px;
+  touch-action: manipulation;
+}
+
+.reset-btn:hover {
+  background: var(--color-background-secondary);
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  text-decoration: underline;
+  display: inline-block;
+  padding: 8px 4px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 16px;
+  touch-action: manipulation;
+}
+
+.link-button:hover {
+  text-decoration: none;
+}
+
+/* Card components */
+.card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Select components */
+select {
+  min-height: 44px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  background: var(--color-background);
+}
+
+/* Error states */
+.error-message {
+  color: var(--color-error);
+}
+
+/* Results count */
+.results-count {
+  font-weight: 500;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}

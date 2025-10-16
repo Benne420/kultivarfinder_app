@@ -1,0 +1,59 @@
+/* Modal styles */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--color-modal-backdrop);
+  display: grid;
+  place-items: center;
+  z-index: var(--z-modal);
+}
+
+.modal {
+  background: var(--color-background);
+  max-width: 600px;
+  width: 90%;
+  border-radius: var(--border-radius-lg);
+  padding: 18px 20px 20px;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+
+.modal-title {
+  margin: 0 0 8px;
+  text-align: left;
+  font-size: var(--font-size-lg);
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px 16px;
+  touch-action: manipulation;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--color-background-secondary);
+}
+
+.modal-close:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.modal-content p {
+  margin: 0.5rem 0;
+}
+
+.modal-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}

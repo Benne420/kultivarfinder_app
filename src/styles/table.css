@@ -1,0 +1,65 @@
+/* Table styles */
+.table {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.table td:first-child {
+  text-align: left;
+}
+
+.table th,
+.table td {
+  white-space: normal;
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.table th {
+  background: var(--color-background-secondary);
+  font-weight: 600;
+}
+
+.table tbody tr:hover {
+  background: var(--color-background-secondary);
+}
+
+/* Table scroll container */
+.table-container,
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table cell specific styles */
+.thc-values {
+  white-space: nowrap;
+}
+
+.terpene-values {
+  white-space: nowrap !important;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.terpenprofil-cell {
+  min-width: 200px;
+}
+
+/* Responsive table - hide columns on small screens */
+@media (max-width: 640px) {
+  .table thead th:nth-child(3),
+  .table tbody td:nth-child(3),
+  .table thead th:nth-child(4),
+  .table tbody td:nth-child(4) {
+    display: none;
+  }
+}
+
+/* Hidden on small screens utility class */
+.hidden-sm {
+  /* Applied via media query above */
+}

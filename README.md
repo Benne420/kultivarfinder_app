@@ -1,84 +1,96 @@
-# kultivarfinder_app another fine release by Benne
+# Cannabis Kultivar Finder
 
-Created with CodeSandbox
+Eine React-Anwendung zur Suche und Filterung von Cannabis-Kultivaren basierend auf Terpenen und Wirkungen.
 
-# 🌿 Kultivarfinder-App
+## Projektstruktur
 
-🚀 **Finde passende Cannabis-Kultivare basierend auf medizinischen Wirkungen.**  
-Diese Web-App hilft medizinischem Fachpersonal und Patienten, geeignete Cannabis-Kultivare basierend auf deren potenziellen Wirkungen zu filtern.
-
----
-
-## 🔥 **Funktionen**
-
-✅ Auswahl von bis zu **zwei Wirkungen** zur Filterung  
-✅ **Datenbank mit Kultivaren**, inklusive THC-, CBD- und Terpengehalt  
-✅ **Direkter Download von Datenblättern** als PDF  
-✅ **Dynamische Filterung** mit sofortiger Anzeige passender Kultivare  
-✅ Gehostet auf **Netlify** mit **automatischen Deployments über GitHub**
-
----
-
-## 🎯 **Technologien**
-
-- **React** (Frontend)
-- **JSON-Datenbank** für Kultivare
-- **Netlify** (Deployment)
-- **GitHub** (Versionierung)
-
-## 🚀 **Deployment**
-
-Die App wird **automatisch mit jeder Änderung auf GitHub auf Netlify neu deployed.**  
-Falls ein manuelles Deployment nötig ist:
-
-1. **Gehe ins Netlify-Dashboard**
-2. **Wähle dein Projekt aus**
-3. **Klicke auf „Trigger deploy“**
-
----
-
-## 🔗 **Live-Version**
-
-👉 [Hier geht’s zur Live-Version](https://420kultivarfinder.netlify.app/)
-
----
-
-## 📂 **Projektstruktur**
-
-```plaintext
-📦 kultivarfinder_app
- ┣ 📂 public/               # Statische Dateien (z. B. index.html, JSONs)
- ┃ ┣ 📜 index.html
- ┃ ┣ 📜 kultivare.json      # Datenbank mit allen Kultivaren
- ┃ ┣ 📜 quellen.json        # Quellenangaben
- ┃ ┗ 📂 datenblaetter/      # PDFs für jede Sorte
- ┣ 📂 src/                  # Hauptcode der App
- ┃ ┣ 📜 App.js              # Hauptkomponente
- ┃ ┣ 📜 index.js            # Einstiegspunkt der App
- ┃ ┗ 📜 styles.css          # Styles für die App
- ┣ 📜 package.json          # Abhängigkeiten & Scripts
- ┗ 📜 README.md             # Diese Datei!
+```
+src/
+├── components/           # Wiederverwendbare React-Komponenten
+│   ├── Button.js        # Button-Komponente mit Accessibility-Features
+│   ├── Card.js          # Card- und CardContent-Komponenten
+│   ├── FilterSection.js # Filter-Bereich für Terpene und Wirkungen
+│   ├── Modal.js         # Zugängliches Modal für Terpen-Informationen
+│   └── ResultsTable.js  # Tabelle für die Anzeige der Ergebnisse
+├── constants/           # Konstanten und statische Daten
+│   └── terpenInfo.js    # Terpen-Informationsdatenbank
+├── hooks/              # Custom React Hooks
+│   ├── useFilterOptions.js # Hook für Filter-Optionen
+│   ├── useFilterState.js   # Hook für Filter-Zustand
+│   └── useKultivareData.js # Hook für Datenladung
+├── styles/             # Organisierte CSS-Module
+│   ├── variables.css   # CSS Custom Properties
+│   ├── base.css        # Basis-Styles und Resets
+│   ├── layout.css      # Layout-Komponenten
+│   ├── components.css  # Komponenten-Styles
+│   ├── filters.css     # Filter-spezifische Styles
+│   ├── table.css       # Tabellen-Styles
+│   ├── terpene-chips.css # Terpen-Chip-Styles
+│   ├── modal.css       # Modal-Styles
+│   └── performance.css # Performance-Optimierungen
+├── utils/              # Utility-Funktionen
+│   └── filterUtils.js  # Filter- und PDF-Utility-Funktionen
+├── App.js              # Hauptkomponente
+├── index.js            # Einstiegspunkt
+└── styles.css          # CSS-Imports
 ```
 
----
+## Verbesserungen für Lesbarkeit
 
-## ✨ **To-Do / Weiterentwicklung**
+### 1. Komponenten-Extraktion
+- **Card & CardContent**: Wiederverwendbare Container-Komponenten
+- **Button**: Konsistente Button-Komponente mit Accessibility-Features
+- **FilterSection**: Eigenständige Filter-Komponente
+- **ResultsTable**: Getrennte Tabellen-Komponente mit Terpen-Chips
+- **Modal**: Zugängliches Modal mit Keyboard-Navigation
 
-- 🔹 Verbesserung der Benutzeroberfläche (UI/UX)
-- 🔹 Erweiterung der Datenbank um weitere Kultivare
-- 🔹 Mehrsprachige Unterstützung (Deutsch/Englisch)
-- 🔹 Integration einer API für Live-Daten
+### 2. Custom Hooks
+- **useKultivareData**: Datenladung und Fehlerbehandlung
+- **useFilterOptions**: Generierung von Filter-Optionen aus Daten
+- **useFilterState**: Verwaltung des Filter-Zustands
 
----
+### 3. Utility-Funktionen
+- **filterKultivare**: Filterlogik für Kultivare
+- **getPdfFileForName**: PDF-Dateinamen-Generierung
+- **getFilteredOptions**: Optionen-Filterung
 
-## 📩 **Kontakt & Feedback**
+### 4. CSS-Organisation
+- **Modulare Struktur**: Aufgeteilt in logische CSS-Module
+- **CSS Custom Properties**: Konsistente Design-Tokens
+- **Responsive Design**: Mobile-first Ansatz
+- **Accessibility**: Focus-Styles und Touch-Targets
 
-Falls du Feedback oder Fragen hast, melde dich gerne:  
-📧 **E-Mail:** [Benne](mailto:benedikt.blazeowsky@420pharma.eu)  
-🐙 **GitHub:** [@Benne420](https://github.com/Benne420)
+### 5. Dokumentation
+- **JSDoc-Kommentare**: Vollständige Funktionsdokumentation
+- **TypeScript-ähnliche Typen**: Präzise Parameter- und Rückgabetypen
+- **Klare Namenskonventionen**: Aussagekräftige Variablen- und Funktionsnamen
 
----
+## Verwendung
 
-**🔗 Lizenz:** MIT License – Nutzung & Weiterentwicklung erlaubt. 🎉
+```bash
+# Dependencies installieren
+npm install
 
----
+# Entwicklungsserver starten
+npm start
+
+# Produktions-Build erstellen
+npm run build
+```
+
+## Features
+
+- **Terpen-Filter**: Auswahl von bis zu 2 Terpenen
+- **Wirkungs-Filter**: Auswahl von bis zu 2 Wirkungen
+- **Responsive Design**: Optimiert für alle Bildschirmgrößen
+- **Accessibility**: WCAG-konforme Bedienung
+- **PDF-Integration**: Direkte Links zu Datenblättern
+- **Terpen-Informationen**: Detaillierte Terpen-Beschreibungen
+
+## Technische Details
+
+- **React 18**: Moderne React-Features
+- **CSS Custom Properties**: Konsistente Design-Tokens
+- **Custom Hooks**: Wiederverwendbare Logik
+- **Performance**: Content-Visibility und Lazy-Loading
+- **Accessibility**: ARIA-Labels und Keyboard-Navigation
