@@ -7,15 +7,19 @@
 
 .select-group {
   background: rgba(255, 255, 255, 0.8);
+  margin: 0;
   padding: 12px;
   border: 1px solid var(--color-border-light);
   border-radius: var(--border-radius-md);
 }
 
-.select-group h3 {
+.select-group legend {
   margin: 0 0 8px;
-  font-size: 16px;
-  text-align: left;
+  padding: 0;
+  width: 100%;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text-primary);
 }
 
 .select-row {
