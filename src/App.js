@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
 import "./styles.css";
@@ -69,32 +69,6 @@ const terpenInfo = {
   },
 };
 
-const terpene = [
-  "Caryophyllen",
-  "D-Limonen",
-  "Farnesen",
-  "Linalool",
-  "Terpinolen",
-  "Trans-Caryophyllen",
-  "α-Humulen",
-  "β-Caryophyllen",
-  "β-Myrcen",
-  "β-Ocimen",
-];
-
-const wirkungen = [
-  "analgetisch",
-  "angstlösend",
-  "antimikrobiell",
-  "antimykotisch",
-  "antioxidativ",
-  "entspannend",
-  "entzündungshemmend",
-  "krampflösend",
-  "neuroprotektiv",
-  "unterstützt Wundheilung",
-].sort();
-
 const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
   return kultivare.filter(
     (kultivar) =>
@@ -105,6 +79,16 @@ const filterKultivare = (kultivare, selectedWirkungen, selectedTerpene) => {
         kultivar.wirkungen.includes(wirkung)
       )
   );
+};
+
+// PDF-Dateinamen robust aus dem Sortennamen ableiten (inkl. Ausnahmen)
+const getPdfFileForName = (name) => {
+  const exceptions = {
+    "MAC 1": "MAC1.pdf",
+    "Tropicanna Cookies": "Tropicana_Cookies.pdf",
+  };
+  if (exceptions[name]) return exceptions[name];
+  return `${name.replace(/\s+/g, "_")}.pdf`;
 };
 
 // --- kleines, lib-freies Modal ---
@@ -152,6 +136,27 @@ export default function CannabisKultivarFinder() {
       .catch((error) => console.error("Fehler beim Laden der Daten:", error));
   }, []);
 
+  // Optionen aus Daten ableiten (verhindert Inkonsistenzen)
+  const terpeneOptions = useMemo(() => {
+    const all = new Set();
+    for (const item of kultivare) {
+      if (Array.isArray(item.terpenprofil)) {
+        for (const t of item.terpenprofil) all.add(t);
+      }
+    }
+    return Array.from(all).sort((a, b) => a.localeCompare(b));
+  }, [kultivare]);
+
+  const wirkungOptions = useMemo(() => {
+    const all = new Set();
+    for (const item of kultivare) {
+      if (Array.isArray(item.wirkungen)) {
+        for (const w of item.wirkungen) all.add(w);
+      }
+    }
+    return Array.from(all).sort((a, b) => a.localeCompare(b));
+  }, [kultivare]);
+
   // Auswahl-Logik: Dropdowns => Sets
   useEffect(() => {
     setSelectedTerpene(new Set([terp1, terp2].filter(Boolean)));
@@ -161,10 +166,9 @@ export default function CannabisKultivarFinder() {
     setSelectedWirkungen(new Set([wirk1, wirk2].filter(Boolean)));
   }, [wirk1, wirk2]);
 
-  const filteredKultivare = filterKultivare(
-    kultivare,
-    selectedWirkungen,
-    selectedTerpene
+  const filteredKultivare = useMemo(
+    () => filterKultivare(kultivare, selectedWirkungen, selectedTerpene),
+    [kultivare, selectedWirkungen, selectedTerpene]
   );
 
   const clearTerpene = () => {
@@ -210,40 +214,6 @@ export default function CannabisKultivarFinder() {
 
   return (
     <div className="container">
-      {/* Inline-Ministyles für Chips, Modal und Mobile-Dropdowns */}
-      <style>{`
-        .terp-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-        .terp-chip {
-          border: 1px solid #cfd8dc; border-radius: 9999px; padding: 4px 10px; cursor: pointer;
-          background: #f7fafc; font-size: 12px; line-height: 1; white-space: nowrap;
-        }
-        .terp-chip:hover { background: #eef2f7; }
-        .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: grid; place-items: center; z-index: 50; }
-        .modal { background: #fff; max-width: 600px; width: 90%; border-radius: 12px; padding: 18px 20px 20px; position: relative; }
-        .modal-title { margin: 0 0 8px; text-align: left; font-size: 18px; }
-        .modal-close { position: absolute; top: 8px; right: 10px; border: none; background: transparent; font-size: 22px; cursor: pointer; }
-        .modal-content p { margin: 0.5rem 0; }
-        .modal-meta { font-size: 12px; color: #546e7a; }
-        .filters { display: grid; gap: 12px; margin: 16px 0 24px; }
-        .select-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; }
-        .select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: left; }
-        .select-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: center; }
-        .select-row select { width: 100%; padding: 10px; border: 1px solid #cfd8dc; border-radius: 8px; font-size: 14px; }
-        .reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; }
-        .reset-btn:hover { background: #eef2f7; }
-        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .table-container { overflow-x: auto; }
-        .table { width: 100%; }
-        .table th, .table td { white-space: normal; }
-        @media (max-width: 768px) {
-          .select-row { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 640px) {
-          /* Spalten 3 (CBD) und 4 (Terpengehalt) ausblenden, Name/THC/Profil bleiben sichtbar */
-          .table thead th:nth-child(3), .table tbody td:nth-child(3),
-          .table thead th:nth-child(4), .table tbody td:nth-child(4) { display: none; }
-        }
-      `}</style>
 
       <h1>Cannabis-Kultivarfinder</h1>
       <p className="disclaimer">
@@ -264,7 +234,7 @@ export default function CannabisKultivarFinder() {
               aria-label="Terpen Option 1"
             >
               <option value="">— Option 1 wählen —</option>
-              {terpene.map((t) => (
+              {terpeneOptions.map((t) => (
                 <option key={`t1-${t}`} value={t}>
                   {t}
                 </option>
@@ -276,7 +246,7 @@ export default function CannabisKultivarFinder() {
               aria-label="Terpen Option 2"
             >
               <option value="">— Option 2 wählen —</option>
-              {optionsFor(terpene, terp1).map((t) => (
+              {optionsFor(terpeneOptions, terp1).map((t) => (
                 <option key={`t2-${t}`} value={t}>
                   {t}
                 </option>
@@ -297,7 +267,7 @@ export default function CannabisKultivarFinder() {
               aria-label="Wirkung Option 1"
             >
               <option value="">— Option 1 wählen —</option>
-              {wirkungen.map((w) => (
+              {wirkungOptions.map((w) => (
                 <option key={`w1-${w}`} value={w}>
                   {w}
                 </option>
@@ -309,7 +279,7 @@ export default function CannabisKultivarFinder() {
               aria-label="Wirkung Option 2"
             >
               <option value="">— Option 2 wählen —</option>
-              {optionsFor(wirkungen, wirk1).map((w) => (
+              {optionsFor(wirkungOptions, wirk1).map((w) => (
                 <option key={`w2-${w}`} value={w}>
                   {w}
                 </option>
@@ -343,15 +313,12 @@ export default function CannabisKultivarFinder() {
                       <tr key={strain.name}>
                         <td>
                           <button
-                            onClick={() =>
-                              window.open(
-                                `/datenblaetter/${strain.name.replace(
-                                  /\s+/g,
-                                  "_"
-                                )}.pdf`,
-                                "_blank"
-                              )
-                            }
+                            onClick={() => {
+                              const pdfPath = `/datenblaetter/${getPdfFileForName(
+                                strain.name
+                              )}`;
+                              window.open(encodeURI(pdfPath), "_blank");
+                            }}
                             className="link-button"
                           >
                             {strain.name}
