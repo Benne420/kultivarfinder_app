@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-::root {
+:root {
   --base-spacing: 1rem;
 }
 body {
@@ -183,4 +183,70 @@ select {
   h2 { font-size: 18px; }
   .container { padding: 0 12px; }
   input, select, button { font-size: 16px; }
+}
+
+/* Inline styles moved from App.js */
+.terp-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+.terp-chip {
+  border: 1px solid #cfd8dc;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  cursor: pointer;
+  background: #f7fafc;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.terp-chip:hover { background: #eef2f7; }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: grid;
+  place-items: center;
+  z-index: 50;
+}
+.modal {
+  background: #fff;
+  max-width: 600px;
+  width: 90%;
+  border-radius: 12px;
+  padding: 18px 20px 20px;
+  position: relative;
+}
+.modal-title { margin: 0 0 8px; text-align: left; font-size: 18px; }
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+.modal-content p { margin: 0.5rem 0; }
+.modal-meta { font-size: 12px; color: #546e7a; }
+
+.filters { display: grid; gap: 12px; margin: 16px 0 24px; }
+.select-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; }
+.select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: left; }
+.select-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: center; }
+.select-row select { width: 100%; padding: 10px; border: 1px solid #cfd8dc; border-radius: 8px; font-size: 14px; }
+.reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; }
+.reset-btn:hover { background: #eef2f7; }
+
+@media (max-width: 768px) {
+  .select-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  /* Keep 3rd & 4th columns hidden on very small screens */
+  .table thead th:nth-child(3), .table tbody td:nth-child(3),
+  .table thead th:nth-child(4), .table tbody td:nth-child(4) { display: none; }
 }
