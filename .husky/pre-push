@@ -1,6 +1,11 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Pfad zu Node hinzufügen (Windows)
+export PATH="$PATH:/c/Users/BenediktBlazeowsky/Downloads/node-v22.20.0-win-x64/node-v22.20.0-win-x64"
+
+echo "🔎 pre-commit: validate:data (offline)"
+npm run validate:data || { echo "❌ Daten-Validierung fehlgeschlagen"; exit 1; }
 echo "🌐 pre-push: validate:refs (online, Crossref)"
 # etwas langsamer, um Rate-Limits zu schonen
 SLOW_MS=300 npm run validate:refs
