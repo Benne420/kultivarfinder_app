@@ -306,6 +306,11 @@ function filterReducer(state, action) {
  * die Filter zu verwalten, und useState für die geladenen Daten.
  */
 export default function CannabisKultivarFinderUseReducer() {
+  // Hintergrundbild setzen
+  useEffect(() => {
+    document.body.style.backgroundImage = "url('/F20_Pharma_Pattern-Hexagon_07.png')";
+  }, []);
+
   // Daten aus dem Backend laden
   const [kultivare, setKultivare] = useState([]);
   useEffect(() => {
