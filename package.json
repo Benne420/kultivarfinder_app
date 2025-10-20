@@ -8,13 +8,17 @@
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.0"
   },
-
-    "scripts": {
-      "start": "react-scripts start",
-      "validate:data": "node scripts/validate-terpenes.mjs",
-      "build": "npm run validate:data && react-scripts build",
-      "test": "react-scripts test"
-    },
+  "scripts": {
+    "start": "react-scripts start",
+    "validate:data": "node scripts/validate-terpenes.mjs",
+    "validate:refs": "node scripts/validate-refs-online.mjs",
+    "build": "npm run validate:data && react-scripts build",
+    "test": "react-scripts test",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
