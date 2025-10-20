@@ -10,9 +10,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run validate:data && vite build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "validate:data": "node scripts/validate-terpenes.mjs",
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "browserslist": {
     "production": [

@@ -10,6 +10,8 @@
 import { useEffect, useMemo, useCallback, useReducer, useState } from "react";
 import "@fontsource/montserrat";
 import "./styles.css";
+import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
+import EntourageInfo from "./components/EntourageInfo";
 
 // Wiederverwendbare UI‑Komponenten
 const Card = ({ children }) => <div className="card">{children}</div>;
@@ -337,6 +339,9 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // Dialog für detaillierte Sorteninformationen (Name, THC, CBD, Terpengehalt, Wirkungen, Terpenprofil)
   const [infoDialog, setInfoDialog] = useState({ open: false, cultivar: null });
+  
+  // Zustand für das Terpen-Panel
+  const [terpenPanel, setTerpenPanel] = useState({ open: false, cultivar: null });
 
   // Memoisiertes Filtern der Kultivare basierend auf dem Reducer-State
   const filteredKultivare = useMemo(
@@ -364,6 +369,15 @@ export default function CannabisKultivarFinderUseReducer() {
   }, []);
   const hideInfo = useCallback(() => {
     setInfoDialog({ open: false, cultivar: null });
+  }, []);
+
+  // Callback-Funktionen für das Terpen-Panel
+  const showTerpenPanel = useCallback((cultivar) => {
+    setTerpenPanel({ open: true, cultivar });
+  }, []);
+  
+  const hideTerpenPanel = useCallback(() => {
+    setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
   const optionsFor = useCallback((items, exclude) => items.filter((i) => !exclude || i !== exclude), []);
@@ -404,6 +418,9 @@ export default function CannabisKultivarFinderUseReducer() {
   // Rendern der Komponente
   return (
     <div className="container">
+     <header className="header" aria-label="App-Kopfzeile">
+       <h1 className="appname">Kultivarfinder</h1>
+     </header>
       {/* Inline‑Styles für Chips, Modals und Filterelemente */}
       <style>{`
         .terp-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
@@ -441,6 +458,24 @@ export default function CannabisKultivarFinderUseReducer() {
           }
         }
       `}</style>
+      {/* HWG-Hinweis */}
+      <div style={{ 
+        backgroundColor: '#fff3cd', 
+        border: '1px solid #ffeaa7', 
+        borderRadius: '8px', 
+        padding: '12px', 
+        marginBottom: '16px',
+        fontSize: '14px',
+        color: '#856404'
+      }}>
+        <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information 
+        und ersetzt keine medizinische Beratung. Bei gesundheitlichen Fragen wenden Sie sich 
+        an einen Arzt oder Apotheker.
+      </div>
+
+      {/* Entourage-Info */}
+      <EntourageInfo />
+
       {/* Filter‑Bereich */}
       <div className="filters">
         {/* Terpenauswahl */}
@@ -551,6 +586,7 @@ export default function CannabisKultivarFinderUseReducer() {
                       <th className="hidden-sm">Terpenprofil</th>
                       <th>Diagramm</th>
                       <th>Details</th>
+                      <th>Terpene</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -591,6 +627,15 @@ export default function CannabisKultivarFinderUseReducer() {
                             onClick={() => showInfo(k)}
                           >
                             Info
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            className="link-button"
+                            onClick={() => showTerpenPanel(k)}
+                            title="Detaillierte Terpen-Wirkungen anzeigen"
+                          >
+                            Terpene
                           </button>
                         </td>
                       </tr>
@@ -668,6 +713,28 @@ export default function CannabisKultivarFinderUseReducer() {
                 <strong>Terpenprofil:</strong> {renderTerpenChips(infoDialog.cultivar.terpenprofil)}
               </p>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Terpen-Panel Modal */}
+      {terpenPanel.open && terpenPanel.cultivar && (
+        <div
+          className="modal-backdrop"
+          onClick={hideTerpenPanel}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}
+        >
+          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '800px', maxHeight: '90vh', overflow: 'auto' }}>
+            <button
+              className="modal-close"
+              onClick={hideTerpenPanel}
+              aria-label="Dialog schließen"
+            >
+              ×
+            </button>
+            <CultivarTerpenPanel cultivar={terpenPanel.cultivar} />
           </div>
         </div>
       )}
