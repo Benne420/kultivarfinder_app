@@ -1,0 +1,37 @@
+name: Validate References (Crossref)
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate-refs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci || npm i
+
+      - name: Validate data (offline)
+        run: npm run validate:data
+
+      - name: Validate references (online)
+        run: SLOW_MS=300 npm run validate:refs
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: references-online-report
+          path: reports/references-online-report.json
+
+

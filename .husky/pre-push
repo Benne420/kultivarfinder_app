@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🌐 pre-push: validate:refs (online, Crossref)"
+# etwas langsamer, um Rate-Limits zu schonen
+SLOW_MS=300 npm run validate:refs
+status=$?
+
+if [ $status -ne 0 ]; then
+  echo "❌ Referenz-Validierung meldet FAIL – Push abgebrochen."
+  exit $status
+fi
+
+echo "✅ Referenz-Validierung OK – Push wird fortgesetzt."
+
+

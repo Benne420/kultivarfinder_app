@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔎 pre-commit: validate:data (offline)"
+npm run validate:data
+status=$?
+
+if [ $status -ne 0 ]; then
+  echo "❌ Daten-Validierung fehlgeschlagen (validate:data). Commit abgebrochen."
+  exit $status
+fi
+
+# Optional: Lint/Format hier einhängen
+# npm run lint && npm run format
+
+echo "✅ pre-commit OK"
