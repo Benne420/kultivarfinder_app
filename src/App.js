@@ -562,6 +562,11 @@ export default function CannabisKultivarFinderUseReducer() {
           <p style={{ fontSize: 12, color: "#546e7a", marginTop: 4 }}>
             {filters.typ ? typInfo[filters.typ] : ""}
           </p>
+          {/* Neuer Info-Text */}
+  <div className="info-box" style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}>
+    <strong>Indica / Sativa – Was diese Begriffe (nicht) bedeuten:</strong><br />
+    Die Bezeichnungen Indica und Sativa stammen ursprünglich aus der Botanik und bezogen sich auf Wuchsform und Herkunft der Pflanzen. In der heutigen medizinischen Anwendung sagen sie jedoch nichts Verlässliches über Wirkung oder Inhaltsstoffe aus. Patient:innen bringen diese Begriffe oft aus dem Freizeitgebrauch mit („Indica macht müde“, „Sativa macht wach“), doch wissenschaftlich ist das nicht haltbar. Wirkung und Verträglichkeit hängen vom Zusammenspiel aus THC, CBD und Terpenen ab – nicht vom Namen. Deshalb wird in der medizinischen Versorgung zunehmend auf Cannabinoid- und Terpen­profile geachtet – unabhängig von alten Etiketten.
+  </div>
         </div>
         {/* Option zur Anzeige eingestellter Sorten */}
         <div style={{ textAlign: "center" }}>
