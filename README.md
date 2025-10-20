@@ -13,8 +13,11 @@ Diese Web-App hilft medizinischem Fachpersonal und Patienten, geeignete Cannabis
 
 ✅ Auswahl von bis zu **zwei Wirkungen** zur Filterung  
 ✅ **Datenbank mit Kultivaren**, inklusive THC-, CBD- und Terpengehalt  
+✅ **Detaillierte Terpen-Wirkungen** mit wissenschaftlichen Quellen  
+✅ **Entourage-Effekt Erklärung** und Kontextualisierung  
 ✅ **Direkter Download von Datenblättern** als PDF  
 ✅ **Dynamische Filterung** mit sofortiger Anzeige passender Kultivare  
+✅ **HWG-konforme Hinweise** für medizinische Anwendung  
 ✅ Gehostet auf **Netlify** mit **automatischen Deployments über GitHub**
 
 ---
@@ -50,15 +53,41 @@ Falls ein manuelles Deployment nötig ist:
  ┣ 📂 public/               # Statische Dateien (z. B. index.html, JSONs)
  ┃ ┣ 📜 index.html
  ┃ ┣ 📜 kultivare.json      # Datenbank mit allen Kultivaren
- ┃ ┣ 📜 quellen.json        # Quellenangaben
+ ┃ ┣ 📂 data/               # Terpen-Datenbanken
+ ┃ ┃ ┣ 📜 terpenes.json     # Detaillierte Terpen-Informationen
+ ┃ ┃ ┗ 📜 references.json   # Wissenschaftliche Quellen
  ┃ ┗ 📂 datenblaetter/      # PDFs für jede Sorte
  ┣ 📂 src/                  # Hauptcode der App
+ ┃ ┣ 📂 components/         # React-Komponenten
+ ┃ ┃ ┣ 📜 CultivarTerpenPanel.jsx  # Terpen-Wirkungen Panel
+ ┃ ┃ ┗ 📜 EntourageInfo.jsx        # Entourage-Effekt Info
  ┃ ┣ 📜 App.js              # Hauptkomponente
  ┃ ┣ 📜 index.js            # Einstiegspunkt der App
  ┃ ┗ 📜 styles.css          # Styles für die App
+ ┣ 📂 scripts/              # Build-Scripts
+ ┃ ┗ 📜 validate-terpenes.mjs # Datenvalidierung
  ┣ 📜 package.json          # Abhängigkeiten & Scripts
  ┗ 📜 README.md             # Diese Datei!
 ```
+
+## 🔬 **Neue Features (Branch: feature/terpen-panel)**
+
+### Terpen-Wirkungen Integration
+- **Detaillierte Terpen-Datenbank** mit wissenschaftlichen Quellen
+- **Wirkungsstärken** (schwach/mittel/stark) für jeden Effekt
+- **Mindestens 2 Quellen pro Wirkung** für wissenschaftliche Fundierung
+- **HWG-konforme Hinweise** für medizinische Anwendung
+
+### Entourage-Effekt
+- **Erklärung der synergistischen Wirkungen** zwischen Terpenen und Cannabinoiden
+- **Kontextualisierung** der komplexen Cannabis-Wirkungen
+- **Benutzerfreundliche Darstellung** wissenschaftlicher Konzepte
+
+### Technische Verbesserungen
+- **Validator-Script** für Datenintegrität (`npm run validate:data`)
+- **Automatische Validierung** vor jedem Build
+- **Minimalistische UI** ohne zusätzliche Libraries
+- **Barrierefreie Implementierung** mit ARIA-Labels
 
 ---
 

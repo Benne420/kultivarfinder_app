@@ -1,0 +1,211 @@
+[
+  {
+    "name": "β-Myrcen",
+    "aliases": ["Myrcen"],
+    "description": "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
+    "effects": [
+      {
+        "effect": "entspannend",
+        "strength": "mittel",
+        "sources": ["reference_1", "reference_2"]
+      },
+      {
+        "effect": "entzündungshemmend",
+        "strength": "schwach",
+        "sources": ["reference_3"]
+      }
+    ],
+    "aroma": "erdig, krautig, moschusartig",
+    "boilingPoint": "166-168°C"
+  },
+  {
+    "name": "β-Caryophyllen",
+    "aliases": ["Trans-Caryophyllen", "Caryophyllen"],
+    "description": "Sesquiterpen; pfeffrig-würzig. Bindet als einziger geläufiger Duftstoff direkt am CB2-Rezeptor (präklinische Evidenz).",
+    "effects": [
+      {
+        "effect": "analgetisch",
+        "strength": "mittel",
+        "sources": ["reference_1", "reference_4"]
+      },
+      {
+        "effect": "entzündungshemmend",
+        "strength": "stark",
+        "sources": ["reference_2", "reference_3"]
+      },
+      {
+        "effect": "angstlösend",
+        "strength": "schwach",
+        "sources": ["reference_5"]
+      }
+    ],
+    "aroma": "pfeffrig, würzig, warm",
+    "boilingPoint": "160°C"
+  },
+  {
+    "name": "D-Limonen",
+    "aliases": ["Limonen"],
+    "description": "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
+    "effects": [
+      {
+        "effect": "angstlösend",
+        "strength": "mittel",
+        "sources": ["reference_1", "reference_6"]
+      },
+      {
+        "effect": "antioxidativ",
+        "strength": "stark",
+        "sources": ["reference_2", "reference_7"]
+      },
+      {
+        "effect": "antimikrobiell",
+        "strength": "mittel",
+        "sources": ["reference_8"]
+      }
+    ],
+    "aroma": "zitrusartig, frisch, süß",
+    "boilingPoint": "176°C"
+  },
+  {
+    "name": "Linalool",
+    "aliases": [],
+    "description": "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
+    "effects": [
+      {
+        "effect": "entspannend",
+        "strength": "stark",
+        "sources": ["reference_1", "reference_9"]
+      },
+      {
+        "effect": "angstlösend",
+        "strength": "stark",
+        "sources": ["reference_2", "reference_10"]
+      },
+      {
+        "effect": "antimikrobiell",
+        "strength": "schwach",
+        "sources": ["reference_11"]
+      }
+    ],
+    "aroma": "blumig, lavendelartig, süß",
+    "boilingPoint": "198°C"
+  },
+  {
+    "name": "α-Humulen",
+    "aliases": ["Humulen"],
+    "description": "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
+    "effects": [
+      {
+        "effect": "entspannend",
+        "strength": "mittel",
+        "sources": ["reference_12", "reference_13"]
+      },
+      {
+        "effect": "entzündungshemmend",
+        "strength": "mittel",
+        "sources": ["reference_14"]
+      },
+      {
+        "effect": "antimikrobiell",
+        "strength": "schwach",
+        "sources": ["reference_15"]
+      }
+    ],
+    "aroma": "hopfig, herb, holzig",
+    "boilingPoint": "198°C"
+  },
+  {
+    "name": "Terpinolen",
+    "aliases": [],
+    "description": "Monoterpen; frisch, kiefernartig mit blumigen Noten. In Apfel, Teebaum, Kreuzkümmel beschrieben.",
+    "effects": [
+      {
+        "effect": "entspannend",
+        "strength": "mittel",
+        "sources": ["reference_16", "reference_17"]
+      },
+      {
+        "effect": "antioxidativ",
+        "strength": "schwach",
+        "sources": ["reference_18"]
+      },
+      {
+        "effect": "unterstützt Wundheilung",
+        "strength": "schwach",
+        "sources": ["reference_19"]
+      }
+    ],
+    "aroma": "frisch, kiefernartig, blumig",
+    "boilingPoint": "186°C"
+  },
+  {
+    "name": "β-Ocimen",
+    "aliases": ["Ocimen"],
+    "description": "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
+    "effects": [
+      {
+        "effect": "entspannend",
+        "strength": "schwach",
+        "sources": ["reference_20", "reference_21"]
+      },
+      {
+        "effect": "neuroprotektiv",
+        "strength": "schwach",
+        "sources": ["reference_22"]
+      }
+    ],
+    "aroma": "süß, krautig, holzig",
+    "boilingPoint": "176°C"
+  },
+  {
+    "name": "Farnesen",
+    "aliases": [],
+    "description": "Sesquiterpen-Familie; grün-apfelig, in Apfel- und Hopfenaromen. Subtyp-abhängige Profile.",
+    "effects": [
+      {
+        "effect": "antioxidativ",
+        "strength": "mittel",
+        "sources": ["reference_23", "reference_24"]
+      },
+      {
+        "effect": "antimikrobiell",
+        "strength": "mittel",
+        "sources": ["reference_25"]
+      },
+      {
+        "effect": "entzündungshemmend",
+        "strength": "schwach",
+        "sources": ["reference_26"]
+      }
+    ],
+    "aroma": "grün, apfelartig, frisch",
+    "boilingPoint": "124°C"
+  },
+  {
+    "name": "Selinen",
+    "aliases": [
+      "Selinene",
+      "α‑Selinen",
+      "β‑Selinen",
+      "δ‑Selinen",
+      "α-Selinene",
+      "beta-Selinene",
+      "delta-Selinene"
+    ],
+    "description": "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
+    "effects": [
+      {
+        "effect": "analgetisch",
+        "strength": "schwach",
+        "sources": ["reference_27", "reference_28"]
+      },
+      {
+        "effect": "entzündungshemmend",
+        "strength": "schwach",
+        "sources": ["reference_29"]
+      }
+    ],
+    "aroma": "holzig, würzig, sellerieartig",
+    "boilingPoint": "171°C"
+  }
+]
