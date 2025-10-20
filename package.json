@@ -8,15 +8,13 @@
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "npm run validate:data && vite build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "validate:data": "node scripts/validate-terpenes.mjs",
-    "dev": "vite",
-    "preview": "vite preview"
-  },
+
+    "scripts": {
+      "start": "react-scripts start",
+      "validate:data": "node scripts/validate-terpenes.mjs",
+      "build": "npm run validate:data && react-scripts build",
+      "test": "react-scripts test"
+    },
   "browserslist": {
     "production": [
       ">0.2%",
