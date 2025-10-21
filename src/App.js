@@ -624,78 +624,21 @@ export default function CannabisKultivarFinderUseReducer() {
             {filters.typ ? typInfo[filters.typ] : ""}
           </p>
           {/* Neuer Info-Text */}
-          <div
-            className="info-box"
-            style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}
-          >
-            <strong>
-              Indica / Sativa – Was diese Begriffe (nicht) bedeuten:
-            </strong>
-            <br />
-            Die Begriffe <em>Indica</em> und <em>Sativa</em> stammen aus der
-            Botanik, sagen aber heute
-            <strong>
-              {" "}
-              nichts Verlässliches über Wirkung oder Inhaltsstoffe
-            </strong>{" "}
-            aus. Studien zeigen, dass diese Etiketten weder genetische
-            Verwandtschaft noch chemische Profile zuverlässig erklären (Hazekamp
-            et al., 2016; Watts et al., 2021). Auch eine Analyse medizinischer
-            Sorten aus Deutschland ergab
-            <strong>
-              {" "}
-              keine konsistenten Terpen- oder Wirkstoffmuster entlang der Label
-            </strong>{" "}
-            (Herwig et al., 2024). Wirkung und Verträglichkeit hängen vom
-            Zusammenspiel aus THC, CBD und Terpenen ab – nicht vom Namen.
-            Deshalb setzt die medizinische Praxis zunehmend auf{" "}
-            <strong>analysierte Wirkstoffprofile statt Kategorien</strong>.
-            <br />
-            <br />
-            <strong>Quellen (APA-Stil):</strong>
-            <br />
-            Hazekamp, A., Tejkalová, K., & Papadimitriou, S. (2016).{" "}
-            <em>
-              Cannabis: From Cultivar to Chemovar II—A Metabolomics Approach to
-              Cannabis Classification.
-            </em>
-            Cannabis and Cannabinoid Research, 1(1), 202–215.{" "}
-            <a
-              href="https://doi.org/10.1089/can.2016.0017"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Link
-            </a>
-            <br />
-            Watts, S., et al. (2021).{" "}
-            <em>
-              Cannabis labelling is associated with genetic variation in terpene
-              synthase genes.
-            </em>
-            Nature Plants, 7(10), 1330–1334.{" "}
-            <a
-              href="https://doi.org/10.1038/s41477-021-01003-y"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Link
-            </a>
-            <br />
-            Herwig, N., et al. (2024).{" "}
-            <em>
-              Classification of Cannabis Strains Based on their Chemical
-              Fingerprint.
-            </em>
-            Cannabis and Cannabinoid Research.{" "}
-            <a
-              href="https://doi.org/10.1089/can.2024.0127"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Link
-            </a>
-          </div>
+         <div className="info-box" style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}>
+  Indica / Sativa – Was diese Begriffe (nicht) bedeuten:<br />
+  Die Begriffe Indica und Sativa stammen aus der Botanik, sagen aber heute nichts Verlässliches über Wirkung oder Inhaltsstoffe aus.
+  Studien zeigen, dass diese Etiketten weder genetische Verwandtschaft noch chemische Profile zuverlässig erklären (Hazekamp et al., 2016; Watts et al., 2021).
+  Auch eine Analyse medizinischer Sorten aus Deutschland ergab keine konsistenten Terpen- oder Wirkstoffmuster entlang der Label (Herwig et al., 2024).
+  Wirkung und Verträglichkeit hängen vom Zusammenspiel aus THC, CBD und Terpenen ab – nicht vom Namen.
+  Deshalb setzt die medizinische Praxis zunehmend auf analysierte Wirkstoffprofile statt Kategorien.<br /><br />
+  Quellen (APA-Stil):<br />
+  Hazekamp, A., Tejkalová, K., & Papadimitriou, S. (2016). Cannabis: From Cultivar to Chemovar II—A Metabolomics Approach to Cannabis Classification.
+  Cannabis and Cannabinoid Research, 1(1), 202–215. <a href="https://doi.org/10.1089/can.2016.0017" target="_blank" rel="noopener noreferrer">Link</a><br />
+  Watts, S., et al. (2021). Cannabis labelling is associated with genetic variation in terpene synthase genes.
+  Nature Plants, 7(10), 1330–1334. <a href="https://doi.org/10.1038/s41477-021-01003-y" target="_blank" rel="noopener noreferrer">Link</a><br />
+  Herwig, N., et al. (2024). Classification of Cannabis Strains Based on their Chemical Fingerprint.
+  Cannabis and Cannabinoid Research. <a href="https://doi.org/10.1089/can.2024.0127" target="_blank" rel="noopener noreferrer">Link</a>
+</div>
         </div>
         {/* Option zur Anzeige eingestellter Sorten */}
         <div style={{ textAlign: "center" }}>
