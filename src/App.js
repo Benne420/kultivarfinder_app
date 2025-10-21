@@ -521,7 +521,11 @@ export default function CannabisKultivarFinderUseReducer() {
 
       {/* Entourage-Info */}
       <EntourageInfo />
-
+      {/* Sortenähnlichkeit (Beta-Funktion) */}
+      <div style={{ marginBottom: 32 }}>
+        <h2>Sortenähnlichkeit (Beta)</h2>
+        <StrainSimilarity kultivare={kultivare} />
+      </div>
       {/* Filter‑Bereich */}
       <div className="filters">
         {/* Terpenauswahl */}
