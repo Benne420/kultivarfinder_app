@@ -10,6 +10,7 @@
 import { useEffect, useMemo, useCallback, useReducer, useState } from "react";
 import "@fontsource/montserrat";
 import "./styles.css";
+import StrainSimilarity from "./StrainSimilarity";
 import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
 import EntourageInfo from "./components/EntourageInfo";
 
