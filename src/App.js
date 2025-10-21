@@ -49,11 +49,13 @@ const terpenInfo = {
   },
   "Trans-Caryophyllen": {
     aliases: ["β-Caryophyllen", "Caryophyllen"],
-    description: "Geometrisches Isomer von Caryophyllen (trans). Charakteristisch pfeffrig-warm.",
+    description:
+      "Geometrisches Isomer von Caryophyllen (trans). Charakteristisch pfeffrig-warm.",
   },
   "D-Limonen": {
     aliases: ["Limonen"],
-    description: "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
+    description:
+      "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
   },
   Terpinolen: {
     aliases: [],
@@ -62,11 +64,13 @@ const terpenInfo = {
   },
   "β-Ocimen": {
     aliases: ["Ocimen"],
-    description: "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
+    description:
+      "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
   },
   "α-Humulen": {
     aliases: ["Humulen"],
-    description: "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
+    description:
+      "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
   },
   Farnesen: {
     aliases: [],
@@ -176,7 +180,9 @@ const getTerpenAliases = (name) => {
 };
 
 const kultivarHasSelectedTerpene = (kultivar, selectedTerpene) => {
-  const profile = Array.isArray(kultivar.terpenprofil) ? kultivar.terpenprofil : [];
+  const profile = Array.isArray(kultivar.terpenprofil)
+    ? kultivar.terpenprofil
+    : [];
   return [...selectedTerpene].every((sel) => {
     const names = getTerpenAliases(sel);
     return profile.some((p) => names.includes(p));
@@ -212,20 +218,26 @@ const filterKultivare = (
     .filter((k) => isStatusIncluded(k, includeDisc))
     .filter((k) => {
       // Terpene filtern
-      if (selectedTerpene.size && !kultivarHasSelectedTerpene(k, selectedTerpene)) {
+      if (
+        selectedTerpene.size &&
+        !kultivarHasSelectedTerpene(k, selectedTerpene)
+      ) {
         return false;
       }
       // Wirkungen filtern (normalisiert)
       if (selectedWirkungen.size) {
         if (!Array.isArray(k.wirkungen)) return false;
-        const selectedNormalized = [...selectedWirkungen].map((w) => normalizeWirkung(w));
+        const selectedNormalized = [...selectedWirkungen].map((w) =>
+          normalizeWirkung(w)
+        );
         // Use preprocessed normalizedWirkungen if available to avoid re-normalizing on each filter.
         const kultivarNormalized = Array.isArray(k.normalizedWirkungen)
           ? k.normalizedWirkungen
           : Array.isArray(k.wirkungen)
           ? k.wirkungen.map((w) => normalizeWirkung(w))
           : [];
-        if (!selectedNormalized.every((w) => kultivarNormalized.includes(w))) return false;
+        if (!selectedNormalized.every((w) => kultivarNormalized.includes(w)))
+          return false;
       }
       // Typ filtern
       if (targetTyp) {
@@ -237,7 +249,8 @@ const filterKultivare = (
 };
 
 // Ableitung des Radar‑Diagramm‑Pfads
-const radarPathSvg = (name) => `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
+const radarPathSvg = (name) =>
+  `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
 
 /*
  * Anfangszustand des Reducers. Wir fassen alle Filter- und UI‑Zustände
@@ -308,7 +321,8 @@ function filterReducer(state, action) {
 export default function CannabisKultivarFinderUseReducer() {
   // Hintergrundbild setzen
   useEffect(() => {
-    document.body.style.backgroundImage = "url('/F20_Pharma_Pattern-Hexagon_07.png')";
+    document.body.style.backgroundImage =
+      "url('/F20_Pharma_Pattern-Hexagon_07.png')";
   }, []);
 
   // Daten aus dem Backend laden
@@ -344,9 +358,12 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // Dialog für detaillierte Sorteninformationen (Name, THC, CBD, Terpengehalt, Wirkungen, Terpenprofil)
   const [infoDialog, setInfoDialog] = useState({ open: false, cultivar: null });
-  
+
   // Zustand für das Terpen-Panel
-  const [terpenPanel, setTerpenPanel] = useState({ open: false, cultivar: null });
+  const [terpenPanel, setTerpenPanel] = useState({
+    open: false,
+    cultivar: null,
+  });
 
   // Memoisiertes Filtern der Kultivare basierend auf dem Reducer-State
   const filteredKultivare = useMemo(
@@ -358,14 +375,32 @@ export default function CannabisKultivarFinderUseReducer() {
         filters.typ,
         filters.includeDiscontinued
       ),
-    [kultivare, filters.selectedWirkungen, filters.selectedTerpene, filters.typ, filters.includeDiscontinued]
+    [
+      kultivare,
+      filters.selectedWirkungen,
+      filters.selectedTerpene,
+      filters.typ,
+      filters.includeDiscontinued,
+    ]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen
-  const clearTerpene = useCallback(() => dispatch({ type: "CLEAR_TERPENE" }), []);
-  const clearWirkungen = useCallback(() => dispatch({ type: "CLEAR_WIRKUNGEN" }), []);
-  const openTerpenDialog = useCallback((name) => dispatch({ type: "OPEN_TERPEN_DIALOG", name }), []);
-  const closeTerpenDialog = useCallback(() => dispatch({ type: "CLOSE_TERPEN_DIALOG" }), []);
+  const clearTerpene = useCallback(
+    () => dispatch({ type: "CLEAR_TERPENE" }),
+    []
+  );
+  const clearWirkungen = useCallback(
+    () => dispatch({ type: "CLEAR_WIRKUNGEN" }),
+    []
+  );
+  const openTerpenDialog = useCallback(
+    (name) => dispatch({ type: "OPEN_TERPEN_DIALOG", name }),
+    []
+  );
+  const closeTerpenDialog = useCallback(
+    () => dispatch({ type: "CLOSE_TERPEN_DIALOG" }),
+    []
+  );
 
   // Memoized helpers to open and close the information dialog. Wrapping
   // setInfoDialog in useCallback avoids recreating these functions on every render.
@@ -380,12 +415,15 @@ export default function CannabisKultivarFinderUseReducer() {
   const showTerpenPanel = useCallback((cultivar) => {
     setTerpenPanel({ open: true, cultivar });
   }, []);
-  
+
   const hideTerpenPanel = useCallback(() => {
     setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
-  const optionsFor = useCallback((items, exclude) => items.filter((i) => !exclude || i !== exclude), []);
+  const optionsFor = useCallback(
+    (items, exclude) => items.filter((i) => !exclude || i !== exclude),
+    []
+  );
 
   // Tooltip‑Informationen zu Terpenen
   const activeInfo = useMemo(() => {
@@ -423,9 +461,9 @@ export default function CannabisKultivarFinderUseReducer() {
   // Rendern der Komponente
   return (
     <div className="container">
-     <header className="header" aria-label="App-Kopfzeile">
-       <h1 className="appname">Kultivarfinder</h1>
-     </header>
+      <header className="header" aria-label="App-Kopfzeile">
+        <h1 className="appname">Kultivarfinder</h1>
+      </header>
       {/* Inline‑Styles für Chips, Modals und Filterelemente */}
       <style>{`
         .terp-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
@@ -464,18 +502,20 @@ export default function CannabisKultivarFinderUseReducer() {
         }
       `}</style>
       {/* HWG-Hinweis */}
-      <div style={{ 
-        backgroundColor: '#fff3cd', 
-        border: '1px solid #ffeaa7', 
-        borderRadius: '8px', 
-        padding: '12px', 
-        marginBottom: '16px',
-        fontSize: '14px',
-        color: '#856404'
-      }}>
-        <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information 
-        und ersetzt keine medizinische Beratung. Bei gesundheitlichen Fragen wenden Sie sich 
-        an einen Arzt oder Apotheker.
+      <div
+        style={{
+          backgroundColor: "#fff3cd",
+          border: "1px solid #ffeaa7",
+          borderRadius: "8px",
+          padding: "12px",
+          marginBottom: "16px",
+          fontSize: "14px",
+          color: "#856404",
+        }}
+      >
+        <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der
+        allgemeinen Information und ersetzt keine medizinische Beratung. Bei
+        gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
       </div>
 
       {/* Entourage-Info */}
@@ -489,7 +529,9 @@ export default function CannabisKultivarFinderUseReducer() {
           <div className="select-row">
             <select
               value={filters.terp1}
-              onChange={(e) => dispatch({ type: "SET_TERP1", value: e.target.value })}
+              onChange={(e) =>
+                dispatch({ type: "SET_TERP1", value: e.target.value })
+              }
             >
               <option value="">–</option>
               {optionsFor(terpene, filters.terp2).map((t) => (
@@ -500,7 +542,9 @@ export default function CannabisKultivarFinderUseReducer() {
             </select>
             <select
               value={filters.terp2}
-              onChange={(e) => dispatch({ type: "SET_TERP2", value: e.target.value })}
+              onChange={(e) =>
+                dispatch({ type: "SET_TERP2", value: e.target.value })
+              }
             >
               <option value="">–</option>
               {optionsFor(terpene, filters.terp1).map((t) => (
@@ -509,7 +553,11 @@ export default function CannabisKultivarFinderUseReducer() {
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearTerpene} disabled={!filters.selectedTerpene.size}>
+            <button
+              className="reset-btn"
+              onClick={clearTerpene}
+              disabled={!filters.selectedTerpene.size}
+            >
               ×
             </button>
           </div>
@@ -520,7 +568,9 @@ export default function CannabisKultivarFinderUseReducer() {
           <div className="select-row">
             <select
               value={filters.wirk1}
-              onChange={(e) => dispatch({ type: "SET_WIRK1", value: e.target.value })}
+              onChange={(e) =>
+                dispatch({ type: "SET_WIRK1", value: e.target.value })
+              }
             >
               <option value="">–</option>
               {optionsFor(wirkungen, filters.wirk2).map((w) => (
@@ -531,7 +581,9 @@ export default function CannabisKultivarFinderUseReducer() {
             </select>
             <select
               value={filters.wirk2}
-              onChange={(e) => dispatch({ type: "SET_WIRK2", value: e.target.value })}
+              onChange={(e) =>
+                dispatch({ type: "SET_WIRK2", value: e.target.value })
+              }
             >
               <option value="">–</option>
               {optionsFor(wirkungen, filters.wirk1).map((w) => (
@@ -540,7 +592,11 @@ export default function CannabisKultivarFinderUseReducer() {
                 </option>
               ))}
             </select>
-            <button className="reset-btn" onClick={clearWirkungen} disabled={!filters.selectedWirkungen.size}>
+            <button
+              className="reset-btn"
+              onClick={clearWirkungen}
+              disabled={!filters.selectedWirkungen.size}
+            >
               ×
             </button>
           </div>
@@ -553,7 +609,12 @@ export default function CannabisKultivarFinderUseReducer() {
               <button
                 key={t}
                 className={`typ-btn ${filters.typ === t ? "active" : ""}`}
-                onClick={() => dispatch({ type: "SET_TYP", value: filters.typ === t ? "" : t })}
+                onClick={() =>
+                  dispatch({
+                    type: "SET_TYP",
+                    value: filters.typ === t ? "" : t,
+                  })
+                }
               >
                 {t}
               </button>
@@ -563,10 +624,78 @@ export default function CannabisKultivarFinderUseReducer() {
             {filters.typ ? typInfo[filters.typ] : ""}
           </p>
           {/* Neuer Info-Text */}
-  <div className="info-box" style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}>
-    <strong>Indica / Sativa – Was diese Begriffe (nicht) bedeuten:</strong><br />
-    Die Bezeichnungen Indica und Sativa stammen ursprünglich aus der Botanik und bezogen sich auf Wuchsform und Herkunft der Pflanzen. In der heutigen medizinischen Anwendung sagen sie jedoch nichts Verlässliches über Wirkung oder Inhaltsstoffe aus. Patient:innen bringen diese Begriffe oft aus dem Freizeitgebrauch mit („Indica macht müde“, „Sativa macht wach“), doch wissenschaftlich ist das nicht haltbar. Wirkung und Verträglichkeit hängen vom Zusammenspiel aus THC, CBD und Terpenen ab – nicht vom Namen. Deshalb wird in der medizinischen Versorgung zunehmend auf Cannabinoid- und Terpen­profile geachtet – unabhängig von alten Etiketten.
-  </div>
+          <div
+            className="info-box"
+            style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}
+          >
+            <strong>
+              Indica / Sativa – Was diese Begriffe (nicht) bedeuten:
+            </strong>
+            <br />
+            Die Begriffe <em>Indica</em> und <em>Sativa</em> stammen aus der
+            Botanik, sagen aber heute
+            <strong>
+              {" "}
+              nichts Verlässliches über Wirkung oder Inhaltsstoffe
+            </strong>{" "}
+            aus. Studien zeigen, dass diese Etiketten weder genetische
+            Verwandtschaft noch chemische Profile zuverlässig erklären (Hazekamp
+            et al., 2016; Watts et al., 2021). Auch eine Analyse medizinischer
+            Sorten aus Deutschland ergab
+            <strong>
+              {" "}
+              keine konsistenten Terpen- oder Wirkstoffmuster entlang der Label
+            </strong>{" "}
+            (Herwig et al., 2024). Wirkung und Verträglichkeit hängen vom
+            Zusammenspiel aus THC, CBD und Terpenen ab – nicht vom Namen.
+            Deshalb setzt die medizinische Praxis zunehmend auf{" "}
+            <strong>analysierte Wirkstoffprofile statt Kategorien</strong>.
+            <br />
+            <br />
+            <strong>Quellen (APA-Stil):</strong>
+            <br />
+            Hazekamp, A., Tejkalová, K., & Papadimitriou, S. (2016).{" "}
+            <em>
+              Cannabis: From Cultivar to Chemovar II—A Metabolomics Approach to
+              Cannabis Classification.
+            </em>
+            Cannabis and Cannabinoid Research, 1(1), 202–215.{" "}
+            <a
+              href="https://doi.org/10.1089/can.2016.0017"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Link
+            </a>
+            <br />
+            Watts, S., et al. (2021).{" "}
+            <em>
+              Cannabis labelling is associated with genetic variation in terpene
+              synthase genes.
+            </em>
+            Nature Plants, 7(10), 1330–1334.{" "}
+            <a
+              href="https://doi.org/10.1038/s41477-021-01003-y"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Link
+            </a>
+            <br />
+            Herwig, N., et al. (2024).{" "}
+            <em>
+              Classification of Cannabis Strains Based on their Chemical
+              Fingerprint.
+            </em>
+            Cannabis and Cannabinoid Research.{" "}
+            <a
+              href="https://doi.org/10.1089/can.2024.0127"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Link
+            </a>
+          </div>
         </div>
         {/* Option zur Anzeige eingestellter Sorten */}
         <div style={{ textAlign: "center" }}>
@@ -574,7 +703,12 @@ export default function CannabisKultivarFinderUseReducer() {
             <input
               type="checkbox"
               checked={filters.includeDiscontinued}
-              onChange={(e) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value: e.target.checked })}
+              onChange={(e) =>
+                dispatch({
+                  type: "TOGGLE_INCLUDE_DISC",
+                  value: e.target.checked,
+                })
+              }
             />
             &nbsp;Eingestellte Sorten einbeziehen
           </label>
@@ -605,7 +739,10 @@ export default function CannabisKultivarFinderUseReducer() {
                         <td>
                           <button
                             onClick={() => {
-                              const url = `/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`;
+                              const url = `/datenblaetter/${k.name.replace(
+                                /\s+/g,
+                                "_"
+                              )}.pdf`;
                               window.open(url, "_blank", "noopener,noreferrer");
                             }}
                             className="link-button"
@@ -669,7 +806,11 @@ export default function CannabisKultivarFinderUseReducer() {
           aria-label={filters.terpenDialog.name}
         >
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeTerpenDialog} aria-label="Dialog schließen">
+            <button
+              className="modal-close"
+              onClick={closeTerpenDialog}
+              aria-label="Dialog schließen"
+            >
               ×
             </button>
             <h3 className="modal-title">{filters.terpenDialog.name}</h3>
@@ -710,17 +851,30 @@ export default function CannabisKultivarFinderUseReducer() {
             </button>
             <h3 className="modal-title">{infoDialog.cultivar.name}</h3>
             <div className="modal-content">
-              <p><strong>Typ:</strong> {mapTyp(infoDialog.cultivar.typ)}</p>
-              <p><strong>THC:</strong> {infoDialog.cultivar.thc || "N/A"}</p>
-              <p><strong>CBD:</strong> {infoDialog.cultivar.cbd || "N/A"}</p>
-              <p><strong>Terpengehalt:</strong> {infoDialog.cultivar.terpengehalt || "N/A"}</p>
               <p>
-                <strong>Wirkungen:</strong> {Array.isArray(infoDialog.cultivar.wirkungen)
-                  ? infoDialog.cultivar.wirkungen.map((w) => normalizeWirkung(w)).join(", ")
+                <strong>Typ:</strong> {mapTyp(infoDialog.cultivar.typ)}
+              </p>
+              <p>
+                <strong>THC:</strong> {infoDialog.cultivar.thc || "N/A"}
+              </p>
+              <p>
+                <strong>CBD:</strong> {infoDialog.cultivar.cbd || "N/A"}
+              </p>
+              <p>
+                <strong>Terpengehalt:</strong>{" "}
+                {infoDialog.cultivar.terpengehalt || "N/A"}
+              </p>
+              <p>
+                <strong>Wirkungen:</strong>{" "}
+                {Array.isArray(infoDialog.cultivar.wirkungen)
+                  ? infoDialog.cultivar.wirkungen
+                      .map((w) => normalizeWirkung(w))
+                      .join(", ")
                   : "N/A"}
               </p>
               <p>
-                <strong>Terpenprofil:</strong> {renderTerpenChips(infoDialog.cultivar.terpenprofil)}
+                <strong>Terpenprofil:</strong>{" "}
+                {renderTerpenChips(infoDialog.cultivar.terpenprofil)}
               </p>
             </div>
           </div>
@@ -736,7 +890,11 @@ export default function CannabisKultivarFinderUseReducer() {
           aria-modal="true"
           aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}
         >
-          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '800px', maxHeight: '90vh', overflow: 'auto' }}>
+          <div
+            className="modal"
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: "800px", maxHeight: "90vh", overflow: "auto" }}
+          >
             <button
               className="modal-close"
               onClick={hideTerpenPanel}
