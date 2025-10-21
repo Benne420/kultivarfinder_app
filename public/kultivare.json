@@ -1,11 +1,13 @@
 [
   {
     "name": "Alien Mints",
-    "thc": "20-25%",
+    "thc": "20-27%",
     "cbd": "<1%",
     "terpengehalt": "2.68%",
     "terpenprofil": ["β-Myrcen", "β-Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Berlin Berries",
@@ -13,7 +15,9 @@
     "cbd": "<1%",
     "terpengehalt": "3.64%",
     "terpenprofil": ["D-Limonen", "Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimikrobiell", "stresslösend"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimikrobiell", "entspannend"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Black Triangle",
@@ -21,7 +25,9 @@
     "cbd": "<1%",
     "terpengehalt": "2.25%",
     "terpenprofil": ["β-Caryophyllen", "Selinene"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Bling Blaow",
@@ -29,7 +35,9 @@
     "cbd": "<1%",
     "terpengehalt": "3.39%",
     "terpenprofil": ["D-Limonen", "Linalool"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "entspannend"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Blue Dream",
@@ -37,7 +45,9 @@
     "cbd": "<1%",
     "terpengehalt": "1.65%",
     "terpenprofil": ["β-Caryophyllen", "Linalool"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Bucket List",
@@ -45,7 +55,9 @@
     "cbd": "<1%",
     "terpengehalt": "1.39%",
     "terpenprofil": ["β-Caryophyllen", "D-Limonen"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Sativa",
+    "status": "active" 
   },
   {
     "name": "Chemdog",
@@ -53,7 +65,9 @@
     "cbd": "<1%",
     "terpengehalt": "1.40%",
     "terpenprofil": ["β-Caryophyllen", "β-Myrcen"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Cinderella Kush",
@@ -61,15 +75,19 @@
     "cbd": "<1%",
     "terpengehalt": "1.76%",
     "terpenprofil": ["D-Limonen", "β-Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "entspannend"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Frosted Gumbo",
     "thc": "25-36%",
     "cbd": "<1%",
-    "terpengehalt": "3.341%",
+    "terpengehalt": "3.34%",
     "terpenprofil": ["β-Myrcen", "Trans-Caryophyllen"],
-    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"]
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Frozen Lemon Mints",
@@ -77,7 +95,9 @@
     "cbd": "<1%",
     "terpengehalt": "2.55%",
     "terpenprofil": ["Terpinolen", "β-Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "unterstützt Wundheilung"]
+    "wirkungen": ["antiinflammatorisch", "unterstützt Wundheilung"],
+    "typ": "Sativa-dominant",
+    "status": "active"
   },
   {
     "name": "Gastro Pop",
@@ -85,7 +105,9 @@
     "cbd": "<1%",
     "terpengehalt": "3.15%",
     "terpenprofil": ["β-Myrcen", "β-Ocimen"],
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "GG4",
@@ -93,15 +115,19 @@
     "cbd": "<1%",
     "terpengehalt": "2.19%",
     "terpenprofil": ["β-Caryophyllen", "Humulen"],
-    "wirkungen": ["stresslösend", "schlaffördernd", "schmerzstillend"]
+    "wirkungen": ["entspannend", "schlaffördernd", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Glaced Apricot Gelato",
     "thc": "18-33%",
     "cbd": "<1%",
-    "terpengehalt": "1.934%",
+    "terpengehalt": "1.93%",
     "terpenprofil": ["Trans-Caryophyllen", "Terpinolen"],
-    "wirkungen": ["antiinflammatorisch", "analgetisch"]
+    "wirkungen": ["antiinflammatorisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "GMO",
@@ -109,7 +135,9 @@
     "cbd": "<1%",
     "terpengehalt": "3.50%",
     "terpenprofil": ["Farnesen", "β-Myrcen"],
-    "wirkungen": ["antioxidativ", "entzündungshemmend", "antimikrobiell"]
+    "wirkungen": ["antioxidativ", "antiinflammatorisch", "antimikrobiell"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Grape Face",
@@ -117,7 +145,9 @@
     "cbd": "<1%",
     "terpengehalt": "2.25%",
     "terpenprofil": ["Caryophyllen", "Selinene"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Sativa-dominant",
+    "status": "active"
   },
   {
     "name": "Ice Cream Cake Kush Mints",
@@ -125,7 +155,9 @@
     "cbd": "<1%",
     "terpengehalt": "1.34%",
     "terpenprofil": ["Linalool", "Caryophyllen"],
-    "wirkungen": ["analgetisch", "entspannend", "angstlösend", "krampflösend"]
+    "wirkungen": ["analgetisch", "entspannend", "anxiolytisch", "krampflösend"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Jealousy",
@@ -133,7 +165,9 @@
     "cbd": "<1%",
     "terpengehalt": "1.96%",
     "terpenprofil": ["D-Limonen", "Trans-Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Lavender Cake",
@@ -141,7 +175,9 @@
     "cbd": "<1%",
     "terpengehalt": "0.98%",
     "terpenprofil": ["β-Caryophyllen", "Humulen"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Legendary Larry",
@@ -149,15 +185,19 @@
     "cbd": "<1%",
     "terpengehalt": "1.88%",
     "terpenprofil": ["Trans-Caryophyllen", "β-Myrcen"],
-    "wirkungen": ["entzündungshemmend", "analgetisch"]
+    "wirkungen": ["antiinflammatorisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Lemon Cherry Gelato",
     "thc": "18-33%",
     "cbd": "<1%",
-    "terpengehalt": "1.082%",
+    "terpengehalt": "1.08%",
     "terpenprofil": ["Trans-Caryophyllen", "D-Limonen"],
-    "wirkungen": ["antiinflammatorisch", "analgetisch"]
+    "wirkungen": ["antiinflammatorisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "MAC 1",
@@ -165,15 +205,19 @@
     "cbd": "<1%",
     "terpengehalt": "2.76%",
     "terpenprofil": ["Farnesen", "D-Limonen"],
-    "wirkungen": ["antioxidativ", "entzündungshemmend", "antimikrobiell"]
+    "wirkungen": ["antioxidativ", "antiinflammatorisch", "antimikrobiell"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Masterpiece",
     "thc": "22-33%",
     "cbd": "<1%",
-    "terpengehalt": "3.432%",
+    "terpengehalt": "3.43%",
     "terpenprofil": ["D-Limonen", "β-Myrcen"],
-    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "stresslösend"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Mellowz",
@@ -181,7 +225,9 @@
     "cbd": "<1%",
     "terpengehalt": "2.14%",
     "terpenprofil": ["β-Myrcen", "Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Miracle Mints",
@@ -189,7 +235,9 @@
     "cbd": "<1%",
     "terpengehalt": "2.45%",
     "terpenprofil": ["Selinene", "Caryophyllen"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Modified Grapes",
@@ -197,7 +245,9 @@
     "cbd": "<1%",
     "terpengehalt": "2.32%",
     "terpenprofil": ["Trans-Caryophyllen", "β-Myrcen"],
-    "wirkungen": ["antiinflammatorisch", "analgetisch"]
+    "wirkungen": ["antiinflammatorisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Peach Chementine",
@@ -205,7 +255,9 @@
     "cbd": "<1%",
     "terpengehalt": "2.14%",
     "terpenprofil": ["D-Limonen", "β-Myrcen"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Plum Driver",
@@ -213,15 +265,19 @@
     "cbd": "<1%",
     "terpengehalt": "1.40%",
     "terpenprofil": ["Caryophyllen", "Linalool"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Private Banana",
     "thc": "18-33%",
     "cbd": "<1%",
-    "terpengehalt": "1.547%",
+    "terpengehalt": "1.55%",
     "terpenprofil": ["Limonen", "β-Myrcen"],
-    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "stresslösend"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Rose Gold Pavé",
@@ -229,7 +285,9 @@
     "cbd": "<1%",
     "terpengehalt": "4.15%",
     "terpenprofil": ["D-Limonen", "Linalool"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "analgetisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Rose Gold Runtz",
@@ -237,15 +295,29 @@
     "cbd": "<1%",
     "terpengehalt": "2.98%",
     "terpenprofil": ["β-Myrcen", "Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Indica-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Scoops",
     "thc": "20-27%",
     "cbd": "<1%",
-    "terpengehalt": "2.569%",
+    "terpengehalt": "2.57%",
     "terpenprofil": ["β-Myrcen", "β-Caryophyllen"],
-    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"]
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Indica-dominant",
+    "status": "active"
+  },
+  {
+    "name": "Star Struck",
+    "thc": "22-30%",
+    "cbd": "<1%",
+    "terpengehalt": "3.26%",
+    "terpenprofil": ["β-Myrcen", "ɑ-Pinen"],
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Sativa-dominant",
+    "status": "active"
   },
   {
     "name": "Super Lemon G",
@@ -253,7 +325,9 @@
     "cbd": "7%",
     "terpengehalt": "0.98%",
     "terpenprofil": ["β-Myrcen", "Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Sativa-dominant",
+    "status": "active"
   },
   {
     "name": "Tigerz Eye",
@@ -261,31 +335,49 @@
     "cbd": "<1%",
     "terpengehalt": "1.46%",
     "terpenprofil": ["β-Myrcen", "Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "neuroprotektiv"]
+    "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
-    "name": "Tropicanna Cookies",
+    "name": "Triangle Octane",
+    "thc": "25-36%",
+    "cbd": "<1%",
+    "terpengehalt": "3.45%",
+    "terpenprofil": ["β-Myrcen", "Trans-Caryophyllen"],
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
+  }, 
+  {
+    "name": "Tropicana Cookies",
     "thc": "15-22%",
     "cbd": "<1%",
     "terpengehalt": "1.29%",
     "terpenprofil": ["Caryophyllen", "Linalool"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Sativa-dominant",
+    "status": "active"
   },
   {
     "name": "Unicorn Cake",
     "thc": "20-33%",
     "cbd": "<1%",
-    "terpengehalt": "2.553%",
+    "terpengehalt": "2.55%",
     "terpenprofil": ["Farnesen", "Trans-Caryophyllen"],
-    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimikrobiell"]
+    "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimikrobiell"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Waffle Truffle",
     "thc": "18-27%",
     "cbd": "<1%",
-    "terpengehalt": "1.859%",
+    "terpengehalt": "1.86%",
     "terpenprofil": ["β-Caryophyllen", "Myrcen"],
-    "wirkungen": ["analgetisch", "antiinflammatorisch", "anxiolytisch", "antidepressiv"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch", "anxiolytisch", "antidepressiv"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Wedding Pop Triangle",
@@ -293,7 +385,9 @@
     "cbd": "<1%",
     "terpengehalt": "1.00%",
     "terpenprofil": ["Caryophyllen", "Linalool"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Sativa-dominant",
+    "status": "active"
   },
   {
     "name": "Wedding Singer",
@@ -301,7 +395,19 @@
     "cbd": "<1%",
     "terpengehalt": "1.17%",
     "terpenprofil": ["Caryophyllen", "β-Myrcen"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
+  },
+  {
+    "name": "Whiteout",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2.00%",
+    "terpenprofil": ["D-Limonen", "β-Myrcen"],
+    "wirkungen": ["analgetisch", "antiinflammatorisch", "anxiolytisch", "antidepressiv"],
+    "typ": "Sativa-dominant",
+    "status": "active"
   },
   {
     "name": "Zookies",
@@ -309,7 +415,9 @@
     "cbd": "<1%",
     "terpengehalt": "0.64%",
     "terpenprofil": ["Caryophyllen", "Linalool"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"]
+    "wirkungen": ["analgetisch", "antiinflammatorisch"],
+    "typ": "Indica-dominant",
+    "status": "active"
   },
   {
     "name": "Zour Apple",
@@ -317,6 +425,11 @@
     "cbd": "<1%",
     "terpengehalt": "2.37%",
     "terpenprofil": ["Terpinolen", "Caryophyllen"],
-    "wirkungen": ["entzündungshemmend", "unterstützt Wundheilung"]
+    "wirkungen": ["antiinflammatorisch", "unterstützt Wundheilung"],
+    "typ": "Indica-dominant",
+    "status": "active"
   }
 ]
+
+
+

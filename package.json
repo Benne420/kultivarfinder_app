@@ -4,17 +4,20 @@
   "private": true,
   "dependencies": {
     "@fontsource/montserrat": "^4.5.0",
-    "@tailwindcss/vite": "^4.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.0",
-    "tailwindcss": "^4.0.9"
+    "react-scripts": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "validate:data": "node scripts/validate-terpenes.mjs",
+    "validate:refs": "node scripts/validate-refs-online.mjs",
+    "build": "npm run validate:data && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0"
   },
   "browserslist": {
     "production": [

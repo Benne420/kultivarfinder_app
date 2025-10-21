@@ -1,0 +1,470 @@
+{
+  "stats": {
+    "total": 29,
+    "checked": 29,
+    "ok": 14,
+    "warn": 15,
+    "fail": 0,
+    "noDoi": 0,
+    "skipped": 0
+  },
+  "issues": [
+    {
+      "id": "0",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.3389/fphar.2016.00381",
+      "localTitle": "Cannabis and the Endocannabinoid System: Therapeutic Potential and Future Directions",
+      "crossref": {
+        "title": "In vivo Evaluation of Two Thiazolidin-4-one Derivatives in High Sucrose Diet Fed Pre-diabetic Mice and Their Modulatory Effect on AMPK, Akt and p38 MAP Kinase in L6 Cells",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2016,
+        "container": "Frontiers in Pharmacology",
+        "publisher": "Frontiers Media SA",
+        "url": "https://doi.org/10.3389/fphar.2016.00381"
+      }
+    },
+    {
+      "id": "1",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1016/j.tplants.2017.03.014",
+      "localTitle": "The Cannabis Terpenes",
+      "crossref": {
+        "title": "Nanosheets for Delivery of Biomolecules into Plant Cells",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2017,
+        "container": "Trends in Plant Science",
+        "publisher": "Elsevier BV",
+        "url": "https://doi.org/10.1016/j.tplants.2017.03.014"
+      }
+    },
+    {
+      "id": "2",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1073/pnas.0803601105",
+      "localTitle": "Anti-inflammatory properties of terpenoids from cannabis",
+      "crossref": {
+        "title": "Beta-caryophyllene is a dietary cannabinoid",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2008,
+        "container": "Proceedings of the National Academy of Sciences",
+        "publisher": "Proceedings of the National Academy of Sciences",
+        "url": "https://doi.org/10.1073/pnas.0803601105"
+      }
+    },
+    {
+      "id": "3",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1073/pnas.0803601105",
+      "localTitle": "β-Caryophyllene is a dietary cannabinoid",
+      "crossref": {
+        "title": "Beta-caryophyllene is a dietary cannabinoid",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2008,
+        "container": "Proceedings of the National Academy of Sciences",
+        "publisher": "Proceedings of the National Academy of Sciences",
+        "url": "https://doi.org/10.1073/pnas.0803601105"
+      }
+    },
+    {
+      "id": "4",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1016/j.bbr.2012.05.048",
+      "localTitle": "Anxiolytic effects of β-caryophyllene in animal models",
+      "crossref": {
+        "title": "Intact and impaired executive abilities in the BTBR mouse model of autism",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2012,
+        "container": "Behavioural Brain Research",
+        "publisher": "Elsevier BV",
+        "url": "https://doi.org/10.1016/j.bbr.2012.05.048"
+      }
+    },
+    {
+      "id": "5",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1007/s002800050809",
+      "localTitle": "Limonene: A review of its pharmacological properties",
+      "crossref": {
+        "title": "Doxorubicin pharmacokinetics: the effect of abnormal liver biochemistry tests",
+        "subj": [],
+        "type": "journal-article",
+        "year": 1998,
+        "container": "Cancer Chemotherapy and Pharmacology",
+        "publisher": "Springer Science and Business Media LLC",
+        "url": "https://doi.org/10.1007/s002800050809"
+      }
+    },
+    {
+      "id": "6",
+      "level": "WARN",
+      "reason": "Crossref-Fehler: Crossref 404 for 10.1080/01635580902732406",
+      "doi": "10.1080/01635580902732406",
+      "ref": {
+        "id": "reference_7",
+        "title": "Antioxidant activity of limonene and its metabolites",
+        "authors": "Rabi, T., Bishayee, A.",
+        "journal": "Nutrition and Cancer",
+        "year": 2009,
+        "doi": "10.1080/01635580902732406",
+        "type": "peer_reviewed"
+      }
+    },
+    {
+      "id": "7",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1128/CMR.19.1.50-62.2006",
+      "localTitle": "Antimicrobial activity of limonene",
+      "crossref": {
+        "title": "<i>Melaleuca alternifolia</i>(Tea Tree) Oil: a Review of Antimicrobial and Other Medicinal Properties",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2006,
+        "container": "Clinical Microbiology Reviews",
+        "publisher": "American Society for Microbiology",
+        "url": "https://doi.org/10.1128/cmr.19.1.50-62.2006"
+      }
+    },
+    {
+      "id": "8",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1055/s-2002-33976",
+      "localTitle": "Linalool: A review of its pharmacological properties",
+      "crossref": {
+        "title": "MRI- and skull x-ray-based approaches to evaluate the position of deep brain stimulation electrode contacts - a technical note",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2002,
+        "container": "Zentralblatt für Neurochirurgie",
+        "publisher": "Georg Thieme Verlag KG",
+        "url": "https://doi.org/10.1055/s-2002-33976"
+      }
+    },
+    {
+      "id": "9",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1590/S0100-879X2010007500065",
+      "localTitle": "Anxiolytic-like effects of linalool",
+      "crossref": {
+        "title": "Identification of fungemia agents using the polymerase chain reaction and restriction fragment length polymorphism analysis",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2010,
+        "container": "Brazilian Journal of Medical and Biological Research",
+        "publisher": "FapUNIFESP (SciELO)",
+        "url": "https://doi.org/10.1590/s0100-879x2010007500065"
+      }
+    },
+    {
+      "id": "10",
+      "level": "WARN",
+      "reason": "Crossref-Fehler: Crossref 404 for 10.1016/S0024-3205(02)01534-1",
+      "doi": "10.1016/S0024-3205(02)01534-1",
+      "ref": {
+        "id": "reference_11",
+        "title": "Antimicrobial properties of linalool",
+        "authors": "Peana, A.T., D'Aquila, P.S., Panin, F., Serra, G., Pippia, P., Moretti, M.D.",
+        "journal": "Life Sciences",
+        "year": 2002,
+        "doi": "10.1016/S0024-3205(02)01534-1",
+        "type": "peer_reviewed"
+      }
+    },
+    {
+      "id": "11",
+      "level": "WARN",
+      "reason": "Crossref-Fehler: Crossref 404 for 10.1007/s11101-007-9045-6",
+      "doi": "10.1007/s11101-007-9045-6",
+      "ref": {
+        "id": "reference_12",
+        "title": "Humulene: A review of its biological activities",
+        "authors": "Legault, J., Pichette, A.",
+        "journal": "Phytochemistry Reviews",
+        "year": 2007,
+        "doi": "10.1007/s11101-007-9045-6",
+        "type": "peer_reviewed"
+      }
+    },
+    {
+      "id": "12",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1111/j.1476-5381.2011.01238.x",
+      "localTitle": "Sedative effects of α-humulene",
+      "crossref": {
+        "title": "Taming THC: potential cannabis synergy and phytocannabinoid‐terpenoid entourage effects",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2011,
+        "container": "British Journal of Pharmacology",
+        "publisher": "Wiley",
+        "url": "https://doi.org/10.1111/j.1476-5381.2011.01238.x"
+      }
+    },
+    {
+      "id": "13",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1016/j.ejphar.2007.01.029",
+      "localTitle": "Anti-inflammatory activity of α-humulene",
+      "crossref": {
+        "title": "Anti-inflammatory and analgesic effects of the sesquiterpene lactone budlein A in mice: Inhibition of cytokine production-dependent mechanism",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2007,
+        "container": "European Journal of Pharmacology",
+        "publisher": "Elsevier BV",
+        "url": "https://doi.org/10.1016/j.ejphar.2007.01.029"
+      }
+    },
+    {
+      "id": "14",
+      "level": "WARN",
+      "reason": "Keine Subjects; keine Domain-Keywords gefunden",
+      "doi": "10.1046/j.1439-0507.2001.00644.x",
+      "localTitle": "Antimicrobial activity of α-humulene",
+      "crossref": {
+        "title": "Case Reports. Secondary prophylaxis with liposomal amphotericin B after invasive aspergillosis following treatment for haematological malignancy",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2001,
+        "container": "Mycoses",
+        "publisher": "Wiley",
+        "url": "https://doi.org/10.1046/j.1439-0507.2001.00644.x"
+      }
+    },
+    {
+      "id": "15",
+      "level": "WARN",
+      "reason": "Crossref-Fehler: Crossref 404 for 10.1002/cbdv.201100155",
+      "doi": "10.1002/cbdv.201100155",
+      "ref": {
+        "id": "reference_16",
+        "title": "Terpinolene: A review of its pharmacological properties",
+        "authors": "Russo, E.B.",
+        "journal": "Chemical Biodiversity",
+        "year": 2011,
+        "doi": "10.1002/cbdv.201100155",
+        "type": "peer_reviewed"
+      }
+    },
+    {
+      "id": "16",
+      "level": "WARN",
+      "reason": "Crossref-Fehler: Crossref 404 for 10.1007/s11418-012-0728-6",
+      "doi": "10.1007/s11418-012-0728-6",
+      "ref": {
+        "id": "reference_17",
+        "title": "Sedative effects of terpinolene",
+        "authors": "Ito, K., Ito, M.",
+        "journal": "Journal of Natural Medicines",
+        "year": 2013,
+        "doi": "10.1007/s11418-012-0728-6",
+        "type": "peer_reviewed"
+      }
+    },
+    {
+      "id": "17",
+      "level": "WARN",
+      "reason": "Keine Subjects; keine Domain-Keywords gefunden",
+      "doi": "10.1177/1934578X1000500821",
+      "localTitle": "Antioxidant activity of terpinolene",
+      "crossref": {
+        "title": "Anthraquinones from the Roots of <i>Prismatomeris Tetrandra</i>",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2010,
+        "container": "Natural Product Communications",
+        "publisher": "SAGE Publications",
+        "url": "https://doi.org/10.1177/1934578x1000500821"
+      }
+    },
+    {
+      "id": "18",
+      "level": "WARN",
+      "reason": "Keine Subjects; keine Domain-Keywords gefunden",
+      "doi": "10.1111/j.1365-2672.2004.02167.x",
+      "localTitle": "Wound healing properties of terpinolene",
+      "crossref": {
+        "title": "In vitro water activity and pH dependence of mycelial growth and extracellular enzyme activities of Trichoderma strains with biocontrol potential*",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2004,
+        "container": "Journal of Applied Microbiology",
+        "publisher": "Oxford University Press (OUP)",
+        "url": "https://doi.org/10.1111/j.1365-2672.2004.02167.x"
+      }
+    },
+    {
+      "id": "19",
+      "level": "WARN",
+      "reason": "Keine Subjects; keine Domain-Keywords gefunden",
+      "doi": "10.1177/1934578X1100600922",
+      "localTitle": "β-Ocimene: A review of its biological activities",
+      "crossref": {
+        "title": "Amides from the Stems of <i>Cinnamomum burmannii</i>",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2011,
+        "container": "Natural Product Communications",
+        "publisher": "SAGE Publications",
+        "url": "https://doi.org/10.1177/1934578x1100600922"
+      }
+    },
+    {
+      "id": "20",
+      "level": "WARN",
+      "reason": "Keine Subjects; keine Domain-Keywords gefunden",
+      "doi": "10.1055/s-2002-33976",
+      "localTitle": "Relaxant effects of β-ocimene",
+      "crossref": {
+        "title": "MRI- and skull x-ray-based approaches to evaluate the position of deep brain stimulation electrode contacts - a technical note",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2002,
+        "container": "Zentralblatt für Neurochirurgie",
+        "publisher": "Georg Thieme Verlag KG",
+        "url": "https://doi.org/10.1055/s-2002-33976"
+      }
+    },
+    {
+      "id": "21",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1111/j.1476-5381.2011.01238.x",
+      "localTitle": "Neuroprotective effects of β-ocimene",
+      "crossref": {
+        "title": "Taming THC: potential cannabis synergy and phytocannabinoid‐terpenoid entourage effects",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2011,
+        "container": "British Journal of Pharmacology",
+        "publisher": "Wiley",
+        "url": "https://doi.org/10.1111/j.1476-5381.2011.01238.x"
+      }
+    },
+    {
+      "id": "22",
+      "level": "WARN",
+      "reason": "Keine Subjects; keine Domain-Keywords gefunden",
+      "doi": "10.1177/1934578X1100600923",
+      "localTitle": "Antioxidant properties of farnesene",
+      "crossref": {
+        "title": "Phenolic Composition, Antioxidant Capacity and Antibacterial Activity of Selected Irish Brassica Vegetables",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2011,
+        "container": "Natural Product Communications",
+        "publisher": "SAGE Publications",
+        "url": "https://doi.org/10.1177/1934578x1100600923"
+      }
+    },
+    {
+      "id": "23",
+      "level": "WARN",
+      "reason": "Keine Subjects; keine Domain-Keywords gefunden",
+      "doi": "10.1016/j.tplants.2017.03.014",
+      "localTitle": "Farnesene: A review of its biological activities",
+      "crossref": {
+        "title": "Nanosheets for Delivery of Biomolecules into Plant Cells",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2017,
+        "container": "Trends in Plant Science",
+        "publisher": "Elsevier BV",
+        "url": "https://doi.org/10.1016/j.tplants.2017.03.014"
+      }
+    },
+    {
+      "id": "24",
+      "level": "WARN",
+      "reason": "Keine Subjects; keine Domain-Keywords gefunden",
+      "doi": "10.1128/CMR.19.1.50-62.2006",
+      "localTitle": "Antimicrobial activity of farnesene",
+      "crossref": {
+        "title": "<i>Melaleuca alternifolia</i>(Tea Tree) Oil: a Review of Antimicrobial and Other Medicinal Properties",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2006,
+        "container": "Clinical Microbiology Reviews",
+        "publisher": "American Society for Microbiology",
+        "url": "https://doi.org/10.1128/cmr.19.1.50-62.2006"
+      }
+    },
+    {
+      "id": "25",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1073/pnas.0803601105",
+      "localTitle": "Anti-inflammatory effects of farnesene",
+      "crossref": {
+        "title": "Beta-caryophyllene is a dietary cannabinoid",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2008,
+        "container": "Proceedings of the National Academy of Sciences",
+        "publisher": "Proceedings of the National Academy of Sciences",
+        "url": "https://doi.org/10.1073/pnas.0803601105"
+      }
+    },
+    {
+      "id": "26",
+      "level": "WARN",
+      "reason": "Crossref-Fehler: Crossref 404 for 10.1002/cbdv.201100155",
+      "doi": "10.1002/cbdv.201100155",
+      "ref": {
+        "id": "reference_27",
+        "title": "Analgesic properties of selinene compounds",
+        "authors": "Russo, E.B.",
+        "journal": "Chemical Biodiversity",
+        "year": 2011,
+        "doi": "10.1002/cbdv.201100155",
+        "type": "peer_reviewed"
+      }
+    },
+    {
+      "id": "27",
+      "level": "WARN",
+      "reason": "Crossref-Fehler: Crossref 404 for 10.1007/s11101-007-9045-6",
+      "doi": "10.1007/s11101-007-9045-6",
+      "ref": {
+        "id": "reference_28",
+        "title": "Selinene: A review of its pharmacological properties",
+        "authors": "Legault, J., Pichette, A.",
+        "journal": "Phytochemistry Reviews",
+        "year": 2007,
+        "doi": "10.1007/s11101-007-9045-6",
+        "type": "peer_reviewed"
+      }
+    },
+    {
+      "id": "28",
+      "level": "OK",
+      "reason": "—",
+      "doi": "10.1016/j.ejphar.2007.01.029",
+      "localTitle": "Anti-inflammatory activity of selinene",
+      "crossref": {
+        "title": "Anti-inflammatory and analgesic effects of the sesquiterpene lactone budlein A in mice: Inhibition of cytokine production-dependent mechanism",
+        "subj": [],
+        "type": "journal-article",
+        "year": 2007,
+        "container": "European Journal of Pharmacology",
+        "publisher": "Elsevier BV",
+        "url": "https://doi.org/10.1016/j.ejphar.2007.01.029"
+      }
+    }
+  ]
+}

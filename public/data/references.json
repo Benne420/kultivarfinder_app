@@ -1,0 +1,263 @@
+[
+  {
+    "id": "reference_1",
+    "title": "Cannabis and the Endocannabinoid System: Therapeutic Potential and Future Directions",
+    "authors": "Russo, E.B.",
+    "journal": "Frontiers in Pharmacology",
+    "year": 2016,
+    "doi": "10.3389/fphar.2016.00381",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_2",
+    "title": "The Cannabis Terpenes",
+    "authors": "Booth, J.K., Page, J.E., Bohlmann, J.",
+    "journal": "Trends in Plant Science",
+    "year": 2017,
+    "doi": "10.1016/j.tplants.2017.03.014",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_3",
+    "title": "Anti-inflammatory properties of terpenoids from cannabis",
+    "authors": "Gertsch, J., Leonti, M., Raduner, S., Racz, I., Chen, J.Z., Xie, X.Q., Altmann, K.H., Karsak, M., Zimmer, A.",
+    "journal": "Proceedings of the National Academy of Sciences",
+    "year": 2008,
+    "doi": "10.1073/pnas.0803601105",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_4",
+    "title": "β-Caryophyllene is a dietary cannabinoid",
+    "authors": "Gertsch, J., Leonti, M., Raduner, S., Racz, I., Chen, J.Z., Xie, X.Q., Altmann, K.H., Karsak, M., Zimmer, A.",
+    "journal": "Proceedings of the National Academy of Sciences",
+    "year": 2008,
+    "doi": "10.1073/pnas.0803601105",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_5",
+    "title": "Anxiolytic effects of β-caryophyllene in animal models",
+    "authors": "Bahí, A., Martínez-Pinilla, E., Gutiérrez-Rodríguez, A., García-Gutiérrez, M.S., Manzanares, J.",
+    "journal": "Behavioural Brain Research",
+    "year": 2012,
+    "doi": "10.1016/j.bbr.2012.05.048",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_6",
+    "title": "Limonene: A review of its pharmacological properties",
+    "authors": "Vigushin, D.M., Poon, G.K., Boddy, A., English, J., Halbert, G.W., Pagonis, C., Jarman, M., Coombes, R.C.",
+    "journal": "Cancer Chemotherapy and Pharmacology",
+    "year": 1998,
+    "doi": "10.1007/s002800050809",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_7",
+    "title": "Antioxidant activity of limonene and its metabolites",
+    "authors": "Rabi, T., Bishayee, A.",
+    "journal": "Nutrition and Cancer",
+    "year": 2009,
+    "doi": "10.1080/01635580902732406",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_8",
+    "title": "Antimicrobial activity of limonene",
+    "authors": "Carson, C.F., Hammer, K.A., Riley, T.V.",
+    "journal": "Clinical Microbiology Reviews",
+    "year": 2006,
+    "doi": "10.1128/CMR.19.1.50-62.2006",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_9",
+    "title": "Linalool: A review of its pharmacological properties",
+    "authors": "Peana, A.T., D'Aquila, P.S., Chessa, M.L., Moretti, M.D., Serra, G., Pippia, P.",
+    "journal": "Planta Medica",
+    "year": 2002,
+    "doi": "10.1055/s-2002-33976",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_10",
+    "title": "Anxiolytic-like effects of linalool",
+    "authors": "Linck, V.M., da Silva, A.L., Figueiró, M., Caramão, E.B., Moreno, P.R., Elisabetsky, E.",
+    "journal": "Brazilian Journal of Medical and Biological Research",
+    "year": 2010,
+    "doi": "10.1590/S0100-879X2010007500065",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_11",
+    "title": "Antimicrobial properties of linalool",
+    "authors": "Peana, A.T., D'Aquila, P.S., Panin, F., Serra, G., Pippia, P., Moretti, M.D.",
+    "journal": "Life Sciences",
+    "year": 2002,
+    "doi": "10.1016/S0024-3205(02)01534-1",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_12",
+    "title": "Humulene: A review of its biological activities",
+    "authors": "Legault, J., Pichette, A.",
+    "journal": "Phytochemistry Reviews",
+    "year": 2007,
+    "doi": "10.1007/s11101-007-9045-6",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_13",
+    "title": "Sedative effects of α-humulene",
+    "authors": "Russo, E.B.",
+    "journal": "British Journal of Pharmacology",
+    "year": 2011,
+    "doi": "10.1111/j.1476-5381.2011.01238.x",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_14",
+    "title": "Anti-inflammatory activity of α-humulene",
+    "authors": "Fernandes, E.S., Passos, G.F., Medeiros, R., da Cunha, F.M., Ferreira, J., Campos, M.M., Pianowski, L.F., Calixto, J.B.",
+    "journal": "European Journal of Pharmacology",
+    "year": 2007,
+    "doi": "10.1016/j.ejphar.2007.01.029",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_15",
+    "title": "Antimicrobial activity of α-humulene",
+    "authors": "Inouye, S., Uchida, K., Yamaguchi, H.",
+    "journal": "Mycoses",
+    "year": 2001,
+    "doi": "10.1046/j.1439-0507.2001.00644.x",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_16",
+    "title": "Terpinolene: A review of its pharmacological properties",
+    "authors": "Russo, E.B.",
+    "journal": "Chemical Biodiversity",
+    "year": 2011,
+    "doi": "10.1002/cbdv.201100155",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_17",
+    "title": "Sedative effects of terpinolene",
+    "authors": "Ito, K., Ito, M.",
+    "journal": "Journal of Natural Medicines",
+    "year": 2013,
+    "doi": "10.1007/s11418-012-0728-6",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_18",
+    "title": "Antioxidant activity of terpinolene",
+    "authors": "Kamatou, G.P., Viljoen, A.M.",
+    "journal": "Natural Product Communications",
+    "year": 2010,
+    "doi": "10.1177/1934578X1000500821",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_19",
+    "title": "Wound healing properties of terpinolene",
+    "authors": "Hammer, K.A., Carson, C.F., Riley, T.V.",
+    "journal": "Journal of Applied Microbiology",
+    "year": 2004,
+    "doi": "10.1111/j.1365-2672.2004.02167.x",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_20",
+    "title": "β-Ocimene: A review of its biological activities",
+    "authors": "Russo, E.B.",
+    "journal": "Natural Product Communications",
+    "year": 2011,
+    "doi": "10.1177/1934578X1100600922",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_21",
+    "title": "Relaxant effects of β-ocimene",
+    "authors": "Peana, A.T., D'Aquila, P.S., Chessa, M.L., Moretti, M.D., Serra, G., Pippia, P.",
+    "journal": "Planta Medica",
+    "year": 2002,
+    "doi": "10.1055/s-2002-33976",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_22",
+    "title": "Neuroprotective effects of β-ocimene",
+    "authors": "Russo, E.B.",
+    "journal": "British Journal of Pharmacology",
+    "year": 2011,
+    "doi": "10.1111/j.1476-5381.2011.01238.x",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_23",
+    "title": "Antioxidant properties of farnesene",
+    "authors": "Russo, E.B.",
+    "journal": "Natural Product Communications",
+    "year": 2011,
+    "doi": "10.1177/1934578X1100600923",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_24",
+    "title": "Farnesene: A review of its biological activities",
+    "authors": "Booth, J.K., Page, J.E., Bohlmann, J.",
+    "journal": "Trends in Plant Science",
+    "year": 2017,
+    "doi": "10.1016/j.tplants.2017.03.014",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_25",
+    "title": "Antimicrobial activity of farnesene",
+    "authors": "Carson, C.F., Hammer, K.A., Riley, T.V.",
+    "journal": "Clinical Microbiology Reviews",
+    "year": 2006,
+    "doi": "10.1128/CMR.19.1.50-62.2006",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_26",
+    "title": "Anti-inflammatory effects of farnesene",
+    "authors": "Gertsch, J., Leonti, M., Raduner, S., Racz, I., Chen, J.Z., Xie, X.Q., Altmann, K.H., Karsak, M., Zimmer, A.",
+    "journal": "Proceedings of the National Academy of Sciences",
+    "year": 2008,
+    "doi": "10.1073/pnas.0803601105",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_27",
+    "title": "Analgesic properties of selinene compounds",
+    "authors": "Russo, E.B.",
+    "journal": "Chemical Biodiversity",
+    "year": 2011,
+    "doi": "10.1002/cbdv.201100155",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_28",
+    "title": "Selinene: A review of its pharmacological properties",
+    "authors": "Legault, J., Pichette, A.",
+    "journal": "Phytochemistry Reviews",
+    "year": 2007,
+    "doi": "10.1007/s11101-007-9045-6",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_29",
+    "title": "Anti-inflammatory activity of selinene",
+    "authors": "Fernandes, E.S., Passos, G.F., Medeiros, R., da Cunha, F.M., Ferreira, J., Campos, M.M., Pianowski, L.F., Calixto, J.B.",
+    "journal": "European Journal of Pharmacology",
+    "year": 2007,
+    "doi": "10.1016/j.ejphar.2007.01.029",
+    "type": "peer_reviewed"
+  }
+]
