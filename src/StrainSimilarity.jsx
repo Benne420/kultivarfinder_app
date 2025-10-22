@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function cosineSimilarity(a, b) {
   const uniqueKeys = Array.from(new Set([...a, ...b]));
@@ -15,37 +15,32 @@ function findSimilar(reference, allStrains) {
     .filter((s) => s.name !== reference.name)
     .map((s) => ({
       ...s,
-      similarity: cosineSimilarity(reference.terpenprofil, s.terpenprofil || []),
+      similarity: cosineSimilarity(
+        reference.terpenprofil || [],
+        s.terpenprofil || []
+      ),
     }))
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, 5);
 }
 
-export default function StrainSimilarity() {
-  const [data, setData] = useState([]);
+export default function StrainSimilarity({ kultivare }) {
   const [selectedName, setSelectedName] = useState("");
   const [alternatives, setAlternatives] = useState([]);
 
-  useEffect(() => {
-    fetch("/kultivare.json")
-      .then((res) => res.json())
-      .then(setData)
-      .catch(console.error);
-  }, []);
-
   const handleChange = (e) => {
-    const ref = data.find((k) => k.name === e.target.value);
+    const ref = kultivare.find((k) => k.name === e.target.value);
     setSelectedName(ref.name);
-    const similar = findSimilar(ref, data);
+    const similar = findSimilar(ref, kultivare);
     setAlternatives(similar);
   };
 
   return (
-    <div style={{ padding: 16, fontFamily: "Montserrat, sans-serif" }}>
+    <div style={{ padding: 16 }}>
       <label htmlFor="strain-select">Sorte auswählen:</label>
       <select id="strain-select" onChange={handleChange} value={selectedName}>
         <option value="">-- wählen --</option>
-        {data.map((s) => (
+        {kultivare.map((s) => (
           <option key={s.name} value={s.name}>
             {s.name}
           </option>
