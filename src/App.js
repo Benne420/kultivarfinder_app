@@ -12,6 +12,11 @@ import "@fontsource/montserrat";
 import "./styles.css";
 import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
 import EntourageInfo from "./components/EntourageInfo";
+import TerpeneChips from "./components/TerpeneChips";
+import FilterPanel from "./components/FilterPanel";
+import StrainTable from "./components/StrainTable";
+import DetailsModal from "./components/DetailsModal";
+import { normalize, normalizeWirkung, terpenInfo, getTerpenAliases } from "./utils/helpers";
 
 // Wiederverwendbare UI‑Komponenten
 const Card = ({ children }) => <div className="card">{children}</div>;
@@ -31,86 +36,6 @@ const Button = ({ children, onClick, disabled }) => (
  * Mehrfachinitialisierungen zu vermeiden. Diese Definitionen sind
  * identisch zur optimierten Version ohne useReducer.
  */
-const terpenInfo = {
-  "β-Myrcen": {
-    aliases: ["Myrcen"],
-    description:
-      "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
-  },
-  "β-Caryophyllen": {
-    aliases: ["Trans-Caryophyllen", "Caryophyllen"],
-    description:
-      "Sesquiterpen; pfeffrig-würzig. Bindet als einziger geläufiger Duftstoff direkt am CB2-Rezeptor (präklinische Evidenz).",
-  },
-  Caryophyllen: {
-    aliases: ["β-Caryophyllen", "Trans-Caryophyllen"],
-    description:
-      "Würzig-pfeffrig; in schwarzem Pfeffer, Nelke. Häufiges Hauptterpen in vielen Kultivaren.",
-  },
-  "Trans-Caryophyllen": {
-    aliases: ["β-Caryophyllen", "Caryophyllen"],
-    description:
-      "Geometrisches Isomer von Caryophyllen (trans). Charakteristisch pfeffrig-warm.",
-  },
-  "D-Limonen": {
-    aliases: ["Limonen"],
-    description:
-      "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
-  },
-  Terpinolen: {
-    aliases: [],
-    description:
-      "Monoterpen; frisch, kiefernartig mit blumigen Noten. In Apfel, Teebaum, Kreuzkümmel beschrieben.",
-  },
-  "β-Ocimen": {
-    aliases: ["Ocimen"],
-    description:
-      "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
-  },
-  "α-Humulen": {
-    aliases: ["Humulen"],
-    description:
-      "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
-  },
-  Farnesen: {
-    aliases: [],
-    description:
-      "Sesquiterpen-Familie; grün-apfelig, in Apfel- und Hopfenaromen. Subtyp-abhängige Profile.",
-  },
-  Linalool: {
-    aliases: [],
-    description:
-      "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
-  },
-  Selinen: {
-    aliases: [
-      "Selinene",
-      "α‑Selinen",
-      "β‑Selinen",
-      "δ‑Selinen",
-      "α-Selinene",
-      "beta-Selinene",
-      "delta-Selinene",
-    ],
-    description:
-      "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
-  },
-  "α‑Selinen": {
-    aliases: ["α-Selinene", "alpha-Selinene", "α‑Selinene"],
-    description:
-      "Bicyclisches Sesquiterpen‑Isomer; holzig‑würzig, leicht hopfig. Vorkommen u. a. in Apiaceae (Sellerie, Petersilie) und Hopfen.",
-  },
-  "β‑Selinen": {
-    aliases: ["β-Selinene", "beta-Selinene", "β‑Selinene"],
-    description:
-      "Isomeres Sesquiterpen mit sellerie-/krautiger Note; Anteile variieren je nach Herkunft und Verarbeitung.",
-  },
-  "δ‑Selinen": {
-    aliases: ["δ-Selinene", "delta-Selinene", "δ‑Selinene"],
-    description:
-      "Weitere Selinen‑Variante; holzig‑krautig. In ätherischen Ölen verschiedener Gewürz‑ und Heilpflanzen beschrieben.",
-  },
-};
 
 const typInfo = {
   Indica:
@@ -155,30 +80,7 @@ const wirkungen = [
   "unterstützt Wundheilung",
 ].sort();
 
-// Synonym‑Mapping für Wirkungen
-const wirkungAliases = {
-  antiinflammatorisch: "entzündungshemmend",
-  antiphlogistisch: "entzündungshemmend",
-  schmerzstillend: "analgetisch",
-  schmerzlindernd: "analgetisch",
-  stresslösend: "entspannend",
-};
-
-// Normalisiert eine Wirkung auf den kanonischen Namen
-const normalizeWirkung = (w) => {
-  const key = (w || "").toString().trim().toLowerCase();
-  const normalized = wirkungAliases[key];
-  return normalized || w;
-};
-
-// Hilfsfunktionen für Terpenalias
-const getTerpenAliases = (name) => {
-  const info = terpenInfo[name];
-  if (!info) return [name];
-  const list = [name, ...(info.aliases || [])];
-  return Array.from(new Set(list));
-};
-
+// kultivarHasSelectedTerpene uses getTerpenAliases from helpers
 const kultivarHasSelectedTerpene = (kultivar, selectedTerpene) => {
   const profile = Array.isArray(kultivar.terpenprofil)
     ? kultivar.terpenprofil
@@ -437,26 +339,9 @@ export default function CannabisKultivarFinderUseReducer() {
   }, [filters.terpenDialog.name]);
 
   // UI für Terpen‑Chips (verwende useCallback, damit die Funktion nur neu erstellt wird, wenn openTerpenDialog sich ändert)
-  const renderTerpenChips = useCallback(
-    (list) => {
-      if (!Array.isArray(list) || list.length === 0) return "N/A";
-      return (
-        <div className="terp-list" role="list" aria-label="Terpenprofil">
-          {list.map((t, idx) => (
-            <button
-              key={`${t}-${idx}`}
-              className="terp-chip"
-              onClick={() => openTerpenDialog(t)}
-              title={`Mehr Informationen zu ${t}`}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
-      );
-    },
-    [openTerpenDialog]
-  );
+  const renderTerpenChips = useCallback((list) => {
+    return <TerpeneChips list={list} onInfo={openTerpenDialog} />;
+  }, [openTerpenDialog]);
 
   // Rendern der Komponente
   return (
@@ -518,333 +403,26 @@ export default function CannabisKultivarFinderUseReducer() {
         gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
       </div>
 
-      {/* Entourage-Info */}
       <EntourageInfo />
+      <FilterPanel
+        filters={filters}
+        dispatch={dispatch}
+        terpene={terpene}
+        optionsFor={optionsFor}
+        wirkungen={wirkungen}
+        typInfo={typInfo}
+        clearTerpene={clearTerpene}
+        clearWirkungen={clearWirkungen}
+      />
+      <StrainTable strains={filteredKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
+      {/* Terpen Info modal remains handled in App via filters.terpenDialog */}
 
-      {/* Filter‑Bereich */}
-      <div className="filters">
-        {/* Terpenauswahl */}
-        <div className="select-group">
-          <h3>Terpene</h3>
-          <div className="select-row">
-            <select
-              value={filters.terp1}
-              onChange={(e) =>
-                dispatch({ type: "SET_TERP1", value: e.target.value })
-              }
-            >
-              <option value="">–</option>
-              {optionsFor(terpene, filters.terp2).map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-            <select
-              value={filters.terp2}
-              onChange={(e) =>
-                dispatch({ type: "SET_TERP2", value: e.target.value })
-              }
-            >
-              <option value="">–</option>
-              {optionsFor(terpene, filters.terp1).map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-            <button
-              className="reset-btn"
-              onClick={clearTerpene}
-              disabled={!filters.selectedTerpene.size}
-            >
-              ×
-            </button>
-          </div>
-        </div>
-        {/* Wirkungswahl */}
-        <div className="select-group">
-          <h3>Wirkungen</h3>
-          <div className="select-row">
-            <select
-              value={filters.wirk1}
-              onChange={(e) =>
-                dispatch({ type: "SET_WIRK1", value: e.target.value })
-              }
-            >
-              <option value="">–</option>
-              {optionsFor(wirkungen, filters.wirk2).map((w) => (
-                <option key={w} value={w}>
-                  {w}
-                </option>
-              ))}
-            </select>
-            <select
-              value={filters.wirk2}
-              onChange={(e) =>
-                dispatch({ type: "SET_WIRK2", value: e.target.value })
-              }
-            >
-              <option value="">–</option>
-              {optionsFor(wirkungen, filters.wirk1).map((w) => (
-                <option key={w} value={w}>
-                  {w}
-                </option>
-              ))}
-            </select>
-            <button
-              className="reset-btn"
-              onClick={clearWirkungen}
-              disabled={!filters.selectedWirkungen.size}
-            >
-              ×
-            </button>
-          </div>
-        </div>
-        {/* Typauswahl */}
-        <div className="typ-button-group">
-          <h3>Typ</h3>
-          <div className="typ-row">
-            {Object.keys(typInfo).map((t) => (
-              <button
-                key={t}
-                className={`typ-btn ${filters.typ === t ? "active" : ""}`}
-                onClick={() =>
-                  dispatch({
-                    type: "SET_TYP",
-                    value: filters.typ === t ? "" : t,
-                  })
-                }
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-          <p style={{ fontSize: 12, color: "#546e7a", marginTop: 4 }}>
-            {filters.typ ? typInfo[filters.typ] : ""}
-          </p>
-          {/* Neuer Info-Text */}
-         <div className="info-box" style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}>
-  Indica / Sativa – Was diese Begriffe (nicht) bedeuten:<br />
-  Die Begriffe Indica und Sativa stammen aus der Botanik, sagen aber heute nichts Verlässliches über Wirkung oder Inhaltsstoffe aus.
-  Studien zeigen, dass diese Etiketten weder genetische Verwandtschaft noch chemische Profile zuverlässig erklären (Hazekamp et al., 2016; Watts et al., 2021).
-  Auch eine Analyse medizinischer Sorten aus Deutschland ergab keine konsistenten Terpen- oder Wirkstoffmuster entlang der Label (Herwig et al., 2024).
-  Wirkung und Verträglichkeit hängen vom Zusammenspiel aus THC, CBD und Terpenen ab – nicht vom Namen.
-  Deshalb setzt die medizinische Praxis zunehmend auf analysierte Wirkstoffprofile statt Kategorien.<br /><br />
-  Quellen (APA-Stil):<br />
-  Hazekamp, A., Tejkalová, K., & Papadimitriou, S. (2016). Cannabis: From Cultivar to Chemovar II—A Metabolomics Approach to Cannabis Classification.
-  Cannabis and Cannabinoid Research, 1(1), 202–215. <a href="https://doi.org/10.1089/can.2016.0017" target="_blank" rel="noopener noreferrer">Link</a><br />
-  Watts, S., et al. (2021). Cannabis labelling is associated with genetic variation in terpene synthase genes.
-  Nature Plants, 7(10), 1330–1334. <a href="https://doi.org/10.1038/s41477-021-01003-y" target="_blank" rel="noopener noreferrer">Link</a><br />
-  Herwig, N., et al. (2024). Classification of Cannabis Strains Based on their Chemical Fingerprint.
-  Cannabis and Cannabinoid Research. <a href="https://doi.org/10.1089/can.2024.0127" target="_blank" rel="noopener noreferrer">Link</a>
-</div>
-        </div>
-        {/* Option zur Anzeige eingestellter Sorten */}
-        <div style={{ textAlign: "center" }}>
-          <label>
-            <input
-              type="checkbox"
-              checked={filters.includeDiscontinued}
-              onChange={(e) =>
-                dispatch({
-                  type: "TOGGLE_INCLUDE_DISC",
-                  value: e.target.checked,
-                })
-              }
-            />
-            &nbsp;Eingestellte Sorten einbeziehen
-          </label>
-        </div>
-      </div>
-      {/* Ergebnis‑Tabelle */}
-      <div className="table-container center-table">
-        <Card>
-          <CardContent>
-            <h2>Passende Kultivare:</h2>
-            {filteredKultivare.length > 0 ? (
-              <div className="table-scroll">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>THC %</th>
-                      <th className="hidden-sm">CBD %</th>
-                      <th className="hidden-sm">Terpenprofil</th>
-                      <th>Diagramm</th>
-                      <th>Details</th>
-                      <th>Terpene</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredKultivare.map((k) => (
-                      <tr key={k.name}>
-                        <td>
-                          <button
-                            onClick={() => {
-                              const url = `/datenblaetter/${k.name.replace(
-                                /\s+/g,
-                                "_"
-                              )}.pdf`;
-                              window.open(url, "_blank", "noopener,noreferrer");
-                            }}
-                            className="link-button"
-                          >
-                            {k.name}
-                          </button>
-                        </td>
-                        <td>
-                          <span className="thc-values">{k.thc || "N/A"}</span>
-                        </td>
-                        <td className="hidden-sm">{k.cbd || "N/A"}</td>
-                        <td className="hidden-sm terpenprofil-cell">
-                          {renderTerpenChips(k.terpenprofil)}
-                        </td>
-                        <td>
-                          <button
-                            className="link-button"
-                            onClick={() => {
-                              const url = radarPathSvg(k.name);
-                              window.open(url, "_blank", "noopener,noreferrer");
-                            }}
-                          >
-                            anzeigen
-                          </button>
-                        </td>
-                        <td>
-                          <button
-                            className="link-button"
-                            onClick={() => showInfo(k)}
-                          >
-                            Info
-                          </button>
-                        </td>
-                        <td>
-                          <button
-                            className="link-button"
-                            onClick={() => showTerpenPanel(k)}
-                            title="Detaillierte Terpen-Wirkungen anzeigen"
-                          >
-                            Terpene
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <p>Keine passenden Kultivare gefunden.</p>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-      {/* Terpen-Informationsmodal */}
-      {filters.terpenDialog.open && (
-        <div
-          className="modal-backdrop"
-          onClick={closeTerpenDialog}
-          role="dialog"
-          aria-modal="true"
-          aria-label={filters.terpenDialog.name}
-        >
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="modal-close"
-              onClick={closeTerpenDialog}
-              aria-label="Dialog schließen"
-            >
-              ×
-            </button>
-            <h3 className="modal-title">{filters.terpenDialog.name}</h3>
-            <div className="modal-content">
-              {activeInfo ? (
-                <>
-                  <p>{activeInfo.description}</p>
-                  {activeInfo.aliases && activeInfo.aliases.length > 0 && (
-                    <p className="modal-meta">
-                      Alias: {activeInfo.aliases.join(", ")}
-                    </p>
-                  )}
-                </>
-              ) : (
-                <p>Keine weiteren Informationen vorhanden.</p>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
 
-      {/* Info-Modal für detaillierte Sorteninformationen */}
-      {infoDialog.open && infoDialog.cultivar && (
-        <div
-          className="modal-backdrop"
-          onClick={hideInfo}
-          role="dialog"
-          aria-modal="true"
-          aria-label={infoDialog.cultivar.name}
-        >
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="modal-close"
-              onClick={hideInfo}
-              aria-label="Dialog schließen"
-            >
-              ×
-            </button>
-            <h3 className="modal-title">{infoDialog.cultivar.name}</h3>
-            <div className="modal-content">
-              <p>
-                <strong>Typ:</strong> {mapTyp(infoDialog.cultivar.typ)}
-              </p>
-              <p>
-                <strong>THC:</strong> {infoDialog.cultivar.thc || "N/A"}
-              </p>
-              <p>
-                <strong>CBD:</strong> {infoDialog.cultivar.cbd || "N/A"}
-              </p>
-              <p>
-                <strong>Terpengehalt:</strong>{" "}
-                {infoDialog.cultivar.terpengehalt || "N/A"}
-              </p>
-              <p>
-                <strong>Wirkungen:</strong>{" "}
-                {Array.isArray(infoDialog.cultivar.wirkungen)
-                  ? infoDialog.cultivar.wirkungen
-                      .map((w) => normalizeWirkung(w))
-                      .join(", ")
-                  : "N/A"}
-              </p>
-              <p>
-                <strong>Terpenprofil:</strong>{" "}
-                {renderTerpenChips(infoDialog.cultivar.terpenprofil)}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Terpen-Panel Modal */}
       {terpenPanel.open && terpenPanel.cultivar && (
-        <div
-          className="modal-backdrop"
-          onClick={hideTerpenPanel}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}
-        >
-          <div
-            className="modal"
-            onClick={(e) => e.stopPropagation()}
-            style={{ maxWidth: "800px", maxHeight: "90vh", overflow: "auto" }}
-          >
-            <button
-              className="modal-close"
-              onClick={hideTerpenPanel}
-              aria-label="Dialog schließen"
-            >
-              ×
-            </button>
+        <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>
+          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: "800px", maxHeight: "90vh", overflow: "auto" }}>
+            <button className="modal-close" onClick={hideTerpenPanel} aria-label="Dialog schließen">×</button>
             <CultivarTerpenPanel cultivar={terpenPanel.cultivar} />
           </div>
         </div>
