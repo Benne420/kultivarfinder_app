@@ -16,6 +16,7 @@ import TerpeneChips from "./components/TerpeneChips";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
 import DetailsModal from "./components/DetailsModal";
+import StrainSimilarity from "./components/StrainSimilarity";
 import { normalize, normalizeWirkung, terpenInfo, getTerpenAliases } from "./utils/helpers";
 
 // Wiederverwendbare UI‑Komponenten
@@ -415,8 +416,9 @@ export default function CannabisKultivarFinderUseReducer() {
         clearWirkungen={clearWirkungen}
       />
       <StrainTable strains={filteredKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
-      {/* Terpen Info modal remains handled in App via filters.terpenDialog */}
+      <StrainSimilarity kultivare={kultivare} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
 
+      {/* Terpen Info modal remains handled in App via filters.terpenDialog */}
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
 
       {terpenPanel.open && terpenPanel.cultivar && (

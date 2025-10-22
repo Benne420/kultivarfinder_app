@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import StrainTable from './components/StrainTable'; // Importiere StrainTable
 
 function cosineSimilarity(a, b) {
   const uniqueKeys = Array.from(new Set([...a, ...b]));
@@ -26,13 +27,13 @@ function findSimilar(reference, allStrains) {
 
 export default function StrainSimilarity({ kultivare }) {
   const [selectedName, setSelectedName] = useState("");
-  const [alternatives, setAlternatives] = useState([]);
+  const [similarStrains, setSimilarStrains] = useState([]);
 
   const handleChange = (e) => {
     const ref = kultivare.find((k) => k.name === e.target.value);
     setSelectedName(ref.name);
     const similar = findSimilar(ref, kultivare);
-    setAlternatives(similar);
+    setSimilarStrains(similar);
   };
 
   return (
@@ -47,16 +48,10 @@ export default function StrainSimilarity({ kultivare }) {
         ))}
       </select>
 
-      {alternatives.length > 0 && (
+      {similarStrains.length > 0 && (
         <div style={{ marginTop: 16 }}>
           <h4>Ähnliche Sorten (nach Terpenprofil):</h4>
-          <ul>
-            {alternatives.map((s) => (
-              <li key={s.name}>
-                {s.name} – Ähnlichkeit: {(s.similarity * 100).toFixed(1)}%
-              </li>
-            ))}
-          </ul>
+          <StrainTable strains={similarStrains} /> {/* Zeige die ähnlichen Strains in der Tabelle an */}
         </div>
       )}
     </div>
