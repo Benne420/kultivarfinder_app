@@ -39,12 +39,8 @@ const Button = ({ children, onClick, disabled }) => (
  */
 
 const typInfo = {
-  Indica:
-    "Ursprünglich für kompakt wachsende Pflanzen aus dem Hindukusch geprägt. Heute ist „Indica“ vor allem ein traditioneller Name ohne verlässliche Aussage über Wirkung oder Inhaltsstoffe.",
   "Indica-dominant":
     "Bezeichnung für Hybride mit überwiegend Indica-Merkmalen. Umgangssprachlich oft mit beruhigender Wirkung verbunden – wissenschaftlich aber nicht eindeutig belegt.",
-  Sativa:
-    "Historisch für hochwüchsige, schlanke Pflanzen aus tropischen Regionen verwendet. Der Begriff sagt nichts Sicheres über die chemische Zusammensetzung oder Wirkung aus.",
   "Sativa-dominant":
     "Hybride mit stärkerem Sativa-Einfluss. Im Narrativ oft als „aktivierend“ beschrieben – die tatsächliche Wirkung hängt jedoch von Cannabinoid- und Terpenprofilen ab.",
 };
