@@ -14,7 +14,6 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
             <th className="hidden-sm">CBD</th>
             <th className="hidden-sm">Terpenprofil</th>
             <th>Radar</th>
-            <th>Info</th>
             <th>Terpene</th>
           </tr>
         </thead>
@@ -52,11 +51,6 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
                   </button>
                 </td>
                 <td>
-                  <button className="link-button" onClick={() => showInfo(k)}>
-                    Info
-                  </button>
-                </td>
-                <td>
                   <button className="link-button" onClick={() => showTerpenPanel(k)} title="Detaillierte Terpen-Wirkungen anzeigen">
                     Terpene
                   </button>
@@ -65,7 +59,7 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
             ))
           ) : (
             <tr>
-              <td colSpan={7} style={{ textAlign: "center", padding: 12 }}>
+              <td colSpan={6} style={{ textAlign: "center", padding: 12 }}>
                 Keine Ergebnisse
               </td>
             </tr>
