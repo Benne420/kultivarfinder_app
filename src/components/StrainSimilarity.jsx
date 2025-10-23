@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import StrainTable from './components/StrainTable'; // Importiere StrainTable
+import StrainTable from './StrainTable'; // Importiere StrainTable
 
 function cosineSimilarity(a, b) {
   const uniqueKeys = Array.from(new Set([...a, ...b]));
