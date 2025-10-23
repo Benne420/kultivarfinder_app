@@ -75,15 +75,18 @@ export default function FilterPanel({
       <div className="typ-button-group">
         <h3>Typ</h3>
         <div className="typ-row">
-          {Object.keys(typInfo).map((t) => (
-            <button
-              key={t}
-              className={`typ-btn ${filters.typ === t ? "active" : ""}`}
-              onClick={() => dispatch({ type: "SET_TYP", value: filters.typ === t ? "" : t })}
-            >
-              {t}
-            </button>
-          ))}
+          {Object.keys(typInfo)
+            // entferne reine "Indica" / "Sativa" Buttons (exakte Bezeichnungen)
+            .filter((t) => !/^\s*(indica|sativa)\s*$/i.test(t))
+            .map((t) => (
+              <button
+                key={t}
+                className={`typ-btn ${filters.typ === t ? "active" : ""}`}
+                onClick={() => dispatch({ type: "SET_TYP", value: filters.typ === t ? "" : t })}
+              >
+                {t}
+              </button>
+            ))}
         </div>
         <p style={{ fontSize: 12, color: "#546e7a", marginTop: 4 }}>{filters.typ ? typInfo[filters.typ] : ""}</p>
         <div className="info-box" style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}>
