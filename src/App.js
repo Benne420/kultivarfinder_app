@@ -106,76 +106,9 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
       </table>
     </div>
   );
-}export default function StrainTable({ strains = [], showInfo = () => {}, showTerpenPanel = () => {} }) {
-  const radarPathSvg = (name) => `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
+}
 
-  return (
-    <div className="strain-table-wrapper">
-      <table className="strain-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>THC</th>
-            <th className="hidden-sm">CBD</th>
-            <th className="hidden-sm">Terpenprofil</th>
-            <th>Radar</th>
-            {/* Info-Spalte entfernt */}
-            <th>Terpene</th>
-          </tr>
-        </thead>
-        <tbody>
-          {strains && strains.length ? (
-            strains.map((k) => (
-              <tr key={k.name}>
-                <td>
-                  <button
-                    className="link-button"
-                    onClick={() => {
-                      const url = `/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`;
-                      window.open(url, "_blank", "noopener,noreferrer");
-                    }}
-                  >
-                    {k.name}
-                  </button>
-                </td>
-                <td>
-                  <span className="thc-values">{k.thc || "N/A"}</span>
-                </td>
-                <td className="hidden-sm">{k.cbd || "N/A"}</td>
-                <td className="hidden-sm terpenprofil-cell">
-                  <TerpeneChips list={k.terpenprofil || []} onInfo={() => showTerpenPanel(k)} />
-                </td>
-                <td>
-                  <button
-                    className="link-button"
-                    onClick={() => {
-                      const url = radarPathSvg(k.name);
-                      window.open(url, "_blank", "noopener,noreferrer");
-                    }}
-                  >
-                    anzeigen
-                  </button>
-                </td>
-                {/* Info-Button-Spalte entfernt */}
-                <td>
-                  <button className="link-button" onClick={() => showTerpenPanel(k)} title="Detaillierte Terpen-Wirkungen anzeigen">
-                    Terpene
-                  </button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan={6} style={{ textAlign: "center", padding: 12 }}>
-                Keine Ergebnisse
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
-}const typInfo = {
+const typInfo = {
   "Indica-dominant":
     "Hybride mit überwiegend Indica-Merkmalen, die ursprünglich für kompakt wachsende Pflanzen aus dem Hindukusch typisch waren. Umgangssprachlich oft mit beruhigender Wirkung verbunden – wissenschaftlich jedoch nicht verlässlich belegt. Die tatsächliche Wirkung hängt vom Cannabinoid- und Terpenprofil ab.",
   "Sativa-dominant":
