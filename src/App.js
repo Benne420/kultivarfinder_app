@@ -37,14 +37,12 @@ const Button = ({ children, onClick, disabled }) => (
  * Mehrfachinitialisierungen zu vermeiden. Diese Definitionen sind
  * identisch zur optimierten Version ohne useReducer.
  */
-
 const typInfo = {
   "Indica-dominant":
-    "Moderne Hybride mit genetischem Schwerpunkt auf Indica-Abstammung. Die Wirkung wird individuell durch das spezifische Verhältnis von Cannabinoiden und Terpenen bestimmt – nicht durch die Kategorisierung.",
+    "Hybride mit überwiegend Indica-Merkmalen, die ursprünglich für kompakt wachsende Pflanzen aus dem Hindukusch typisch waren. Umgangssprachlich oft mit beruhigender Wirkung verbunden – wissenschaftlich jedoch nicht verlässlich belegt. Die tatsächliche Wirkung hängt vom Cannabinoid- und Terpenprofil ab.",
   "Sativa-dominant":
-    "Moderne Hybride mit genetischem Schwerpunkt auf Sativa-Abstammung. Entscheidend für die therapeutische Wirkung ist das individuelle Cannabinoid- und Terpenprofil der jeweiligen Sorte.",
+    "Hybride mit stärkerem Sativa-Einfluss, wie er bei hochwüchsigen, schlanken Pflanzen aus tropischen Regionen vorkam. Im Narrativ oft als aktivierend beschrieben – die tatsächliche Wirkung lässt sich wissenschaftlich nicht am Namen festmachen, sondern ergibt sich aus Wirkstoff- und Terpenprofil.",
 };
-
 const terpene = [
   "Caryophyllen",
   "D-Limonen",
