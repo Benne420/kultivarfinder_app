@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import StrainTable from "./StrainTable";
+import StrainTable from "./components/StrainTable";
 
 /* helper: determine whether a strain is considered "active" (same logic as filters) */
 function isActiveStrain(s = {}) {
