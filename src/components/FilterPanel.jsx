@@ -108,7 +108,7 @@ export default function FilterPanel({
             <strong>analysierte Wirkstoffprofile statt Kategorien</strong>.
             <br />
             <br />
-            <strong>Quellen (APA-Stil):</strong>
+            <strong>Quellen:</strong>
             <br />
             Hazekamp, A., Tejkalová, K., & Papadimitriou, S. (2016).{" "}
             <em>
