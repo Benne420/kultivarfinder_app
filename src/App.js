@@ -14,7 +14,7 @@ import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
 import EntourageInfo from "./components/EntourageInfo";
 import TerpeneChips from "./components/TerpeneChips";
 import FilterPanel from "./components/FilterPanel";
-import StrainTable from "./components/StrainTable";
+import StrainTable from "./StrainTable";
 import DetailsModal from "./components/DetailsModal";
 import StrainSimilarity from "./components/StrainSimilarity";
 import { normalize, normalizeWirkung, terpenInfo, getTerpenAliases } from "./utils/helpers";
