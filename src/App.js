@@ -416,7 +416,7 @@ export default function CannabisKultivarFinderUseReducer() {
         clearWirkungen={clearWirkungen}
       />
       <StrainTable strains={filteredKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
-      <StrainSimilarity kultivare={kultivare} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
+      <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
 
       {/* Terpen Info modal remains handled in App via filters.terpenDialog */}
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
