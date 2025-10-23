@@ -388,6 +388,12 @@ export default function CannabisKultivarFinderUseReducer() {
         .reset-btn:hover { background: #eef2f7; }
         .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .table-container { overflow-x: auto; }
+
+        /* NEU: Tabelle zentrieren und maximale Breite setzen */
+        .strain-table-wrapper { display: flex; justify-content: center; width: 100%; margin: 0 auto; }
+        .strain-table { width: 100%; max-width: 1100px; border-collapse: collapse; }
+        .strain-table th, .strain-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
+
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
         .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; }
