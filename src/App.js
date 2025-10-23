@@ -268,6 +268,12 @@ export default function CannabisKultivarFinderUseReducer() {
     cultivar: null,
   });
 
+  // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
+  const [similarityResults, setSimilarityResults] = useState(null);
+  const handleApplySimilarity = useCallback((results) => {
+    setSimilarityResults(results && results.length ? results : null);
+  }, []);
+
   // Memoisiertes Filtern der Kultivare basierend auf dem Reducer-State
   const filteredKultivare = useMemo(
     () =>
@@ -285,6 +291,15 @@ export default function CannabisKultivarFinderUseReducer() {
       filters.typ,
       filters.includeDiscontinued,
     ]
+  );
+
+  // Falls du bereits ein memoisiertes filteredKultivare hast, benutze das.
+  // Beispiel: const filteredKultivare = useMemo(() => filterKultivare(...), [...deps]);
+
+  // NEW: displayedKultivare = similarity override falls gesetzt, sonst gefilterte Liste
+  const displayedKultivare = useMemo(
+    () => (similarityResults && similarityResults.length ? similarityResults : filteredKultivare),
+    [similarityResults, filteredKultivare]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen
@@ -415,7 +430,7 @@ export default function CannabisKultivarFinderUseReducer() {
         clearTerpene={clearTerpene}
         clearWirkungen={clearWirkungen}
       />
-      <StrainTable strains={filteredKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
+      <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
       <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
 
       {/* Terpen Info modal remains handled in App via filters.terpenDialog */}
