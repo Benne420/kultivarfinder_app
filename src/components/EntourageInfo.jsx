@@ -24,7 +24,7 @@ const EntourageInfo = () => {
 
       <div style={{ fontSize: "14px", lineHeight: "1.5", color: "#495057" }}>
         <p style={{ margin: "0 0 12px 0" }}>
-          Der <strong>Entourage-Effekt</strong> beschreibt die synergistische
+          Der <strong>Entourage-Effekt</strong> beschreibt die  mögliche synergistische
           Wirkung verschiedener Cannabis-Inhaltsstoffe, die zusammen eine andere
           Wirkung erzielen können als ihre Einzelkomponenten.
         </p>
