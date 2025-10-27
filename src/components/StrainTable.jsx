@@ -12,7 +12,7 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
             <th>Name</th>
             <th>THC</th>
             <th className="hidden-sm">CBD</th>
-            <th className="hidden-sm">Terpenprofil</th>
+            <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
             <th>Radar</th>
             <th>Terpene</th>
           </tr>
