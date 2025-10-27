@@ -36,10 +36,7 @@ const Button = ({ children, onClick, disabled }) => (
  * Daten und Hilfsfunktionen werden außerhalb der Komponente definiert, um
  * Mehrfachinitialisierungen zu vermeiden. Diese Definitionen sind
  * identisch zur optimierten Version ohne useReducer.
-
-
-*/
-
+ */
 const typInfo = {
   "Indica-dominant":
     "Hybride mit überwiegend Indica-Merkmalen, die ursprünglich für kompakt wachsende Pflanzen aus dem Hindukusch typisch waren. Umgangssprachlich oft mit beruhigender Wirkung verbunden – wissenschaftlich jedoch nicht verlässlich belegt. Die tatsächliche Wirkung hängt vom Cannabinoid- und Terpenprofil ab.",
