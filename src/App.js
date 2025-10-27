@@ -16,6 +16,7 @@ import TerpeneChips from "./components/TerpeneChips";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
 import DetailsModal from "./components/DetailsModal";
+import StrainSimilarity from "./components/StrainSimilarity";
 import { normalize, normalizeWirkung, terpenInfo, getTerpenAliases } from "./utils/helpers";
 
 // Wiederverwendbare UI‑Komponenten
@@ -36,18 +37,83 @@ const Button = ({ children, onClick, disabled }) => (
  * Mehrfachinitialisierungen zu vermeiden. Diese Definitionen sind
  * identisch zur optimierten Version ohne useReducer.
  */
+export default function StrainTable({ strains = [], showInfo = () => {}, showTerpenPanel = () => {} }) {
+  const radarPathSvg = (name) => `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
+
+  return (
+    <div className="strain-table-wrapper">
+      <table className="strain-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>THC</th>
+            <th className="hidden-sm">CBD</th>
+            <th className="hidden-sm">Terpenprofil</th>
+            <th>Radar</th>
+            {/* Info-Spalte entfernt */}
+            <th>Terpene</th>
+          </tr>
+        </thead>
+        <tbody>
+          {strains && strains.length ? (
+            strains.map((k) => (
+              <tr key={k.name}>
+                <td>
+                  <button
+                    className="link-button"
+                    onClick={() => {
+                      const url = `/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`;
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    }}
+                  >
+                    {k.name}
+                  </button>
+                </td>
+                <td>
+                  <span className="thc-values">{k.thc || "N/A"}</span>
+                </td>
+                <td className="hidden-sm">{k.cbd || "N/A"}</td>
+                <td className="hidden-sm terpenprofil-cell">
+                  <TerpeneChips list={k.terpenprofil || []} onInfo={() => showTerpenPanel(k)} />
+                </td>
+                <td>
+                  <button
+                    className="link-button"
+                    onClick={() => {
+                      const url = radarPathSvg(k.name);
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    }}
+                  >
+                    anzeigen
+                  </button>
+                </td>
+                {/* Info-Button-Spalte entfernt */}
+                <td>
+                  <button className="link-button" onClick={() => showTerpenPanel(k)} title="Detaillierte Terpen-Wirkungen anzeigen">
+                    Terpene
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={6} style={{ textAlign: "center", padding: 12 }}>
+                Keine Ergebnisse
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 const typInfo = {
-  Indica:
-    "Ursprünglich für kompakt wachsende Pflanzen aus dem Hindukusch geprägt. Heute ist „Indica“ vor allem ein traditioneller Name ohne verlässliche Aussage über Wirkung oder Inhaltsstoffe.",
   "Indica-dominant":
-    "Bezeichnung für Hybride mit überwiegend Indica-Merkmalen. Umgangssprachlich oft mit beruhigender Wirkung verbunden – wissenschaftlich aber nicht eindeutig belegt.",
-  Sativa:
-    "Historisch für hochwüchsige, schlanke Pflanzen aus tropischen Regionen verwendet. Der Begriff sagt nichts Sicheres über die chemische Zusammensetzung oder Wirkung aus.",
+    "Hybride mit überwiegend Indica-Merkmalen, die ursprünglich für kompakt wachsende Pflanzen aus dem Hindukusch typisch waren. Umgangssprachlich oft mit beruhigender Wirkung verbunden – wissenschaftlich jedoch nicht verlässlich belegt. Die tatsächliche Wirkung hängt vom Cannabinoid- und Terpenprofil ab.",
   "Sativa-dominant":
-    "Hybride mit stärkerem Sativa-Einfluss. Im Narrativ oft als „aktivierend“ beschrieben – die tatsächliche Wirkung hängt jedoch von Cannabinoid- und Terpenprofilen ab.",
+    "Hybride mit stärkerem Sativa-Einfluss, wie er bei hochwüchsigen, schlanken Pflanzen aus tropischen Regionen vorkam. Im Narrativ oft als aktivierend beschrieben – die tatsächliche Wirkung lässt sich wissenschaftlich nicht am Namen festmachen, sondern ergibt sich aus Wirkstoff- und Terpenprofil.",
 };
-
 const terpene = [
   "Caryophyllen",
   "D-Limonen",
@@ -267,6 +333,12 @@ export default function CannabisKultivarFinderUseReducer() {
     cultivar: null,
   });
 
+  // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
+  const [similarityResults, setSimilarityResults] = useState(null);
+  const handleApplySimilarity = useCallback((results) => {
+    setSimilarityResults(results && results.length ? results : null);
+  }, []);
+
   // Memoisiertes Filtern der Kultivare basierend auf dem Reducer-State
   const filteredKultivare = useMemo(
     () =>
@@ -284,6 +356,15 @@ export default function CannabisKultivarFinderUseReducer() {
       filters.typ,
       filters.includeDiscontinued,
     ]
+  );
+
+  // Falls du bereits ein memoisiertes filteredKultivare hast, benutze das.
+  // Beispiel: const filteredKultivare = useMemo(() => filterKultivare(...), [...deps]);
+
+  // NEW: displayedKultivare = similarity override falls gesetzt, sonst gefilterte Liste
+  const displayedKultivare = useMemo(
+    () => (similarityResults && similarityResults.length ? similarityResults : filteredKultivare),
+    [similarityResults, filteredKultivare]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen
@@ -372,6 +453,12 @@ export default function CannabisKultivarFinderUseReducer() {
         .reset-btn:hover { background: #eef2f7; }
         .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .table-container { overflow-x: auto; }
+
+        /* NEU: Tabelle zentrieren und maximale Breite setzen */
+        .strain-table-wrapper { display: flex; justify-content: center; width: 100%; margin: 0 auto; }
+        .strain-table { width: 100%; max-width: 1100px; border-collapse: collapse; }
+        .strain-table th, .strain-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
+
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
         .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; }
@@ -414,9 +501,10 @@ export default function CannabisKultivarFinderUseReducer() {
         clearTerpene={clearTerpene}
         clearWirkungen={clearWirkungen}
       />
-      <StrainTable strains={filteredKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
-      {/* Terpen Info modal remains handled in App via filters.terpenDialog */}
+      <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
+      <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
 
+      {/* Terpen Info modal remains handled in App via filters.terpenDialog */}
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
 
       {terpenPanel.open && terpenPanel.cultivar && (
