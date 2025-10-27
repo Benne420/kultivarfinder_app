@@ -387,6 +387,7 @@ export default function CannabisKultivarFinderUseReducer() {
         .strain-table-wrapper { display: flex; justify-content: center; width: 100%; margin: 0 auto; }
         .strain-table { width: 100%; max-width: 1100px; border-collapse: collapse; }
         .strain-table th, .strain-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
+        .strain-table th.terpenprofil-header, .strain-table td.terpenprofil-cell { text-align: center; }
 
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
