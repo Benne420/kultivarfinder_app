@@ -3,6 +3,9 @@ import TerpeneChips from "./TerpeneChips";
 
 export default function StrainTable({ strains = [], showInfo = () => {}, showTerpenPanel = () => {} }) {
   const radarPathSvg = (name) => `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
+  const hasSimilarityColumn = Array.isArray(strains)
+    ? strains.some((s) => typeof s?.similarity === "number" && !Number.isNaN(s.similarity))
+    : false;
 
   return (
     <div className="strain-table-wrapper">
@@ -10,6 +13,7 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
         <thead>
           <tr>
             <th>Name</th>
+            {hasSimilarityColumn && <th className="similarity-column">Übereinstimmung</th>}
             <th>THC</th>
             <th className="hidden-sm">CBD</th>
             <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
@@ -32,6 +36,13 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
                     {k.name}
                   </button>
                 </td>
+                {hasSimilarityColumn && (
+                  <td className="similarity-column">
+                    {typeof k.similarity === "number" && !Number.isNaN(k.similarity)
+                      ? `${Math.round(k.similarity * 100)}%`
+                      : "–"}
+                  </td>
+                )}
                 <td>
                   <span className="thc-values">{k.thc || "N/A"}</span>
                 </td>
@@ -59,7 +70,10 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
             ))
           ) : (
             <tr>
-              <td colSpan={6} style={{ textAlign: "center", padding: 12 }}>
+              <td
+                colSpan={hasSimilarityColumn ? 7 : 6}
+                style={{ textAlign: "center", padding: 12 }}
+              >
                 Keine Ergebnisse
               </td>
             </tr>

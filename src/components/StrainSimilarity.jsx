@@ -114,31 +114,16 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
         </button>
       </div>
 
-      <div style={{ marginTop: 16 }} aria-live="polite">
+      <div className="similarity-panel__status" aria-live="polite">
         {selectedName && similarStrains.length === 0 && (
-          <p style={{ margin: 0 }}>Keine ähnlichen Sorten gefunden.</p>
+          <p className="similarity-panel__hint">Keine ähnlichen Sorten gefunden.</p>
         )}
         {similarStrains.length > 0 && (
-          <>
-            <h4 style={{ margin: "0 0 8px" }}>Ähnliche Sorten (nach Terpenprofil)</h4>
-            <ol style={{ paddingLeft: "1.2rem", margin: 0 }}>
-              {similarStrains.map((s) => (
-                <li key={s.name} style={{ marginBottom: 4 }}>
-                  <span style={{ fontWeight: 600 }}>{s.name}</span>
-                  {typeof s.similarity === "number" && !Number.isNaN(s.similarity) && (
-                    <span style={{ marginLeft: 6, color: "#546e7a" }}>
-                      ({Math.round(s.similarity * 100)}% Übereinstimmung)
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ol>
-            <p style={{ marginTop: 8 }}>
-              Die oben aufgeführten Sorten werden in der Haupttabelle angezeigt.
-            </p>
-          </>
+          <p className="similarity-panel__hint">
+            Die Ergebnisse werden unterhalb in der Tabelle inklusive Übereinstimmungswert angezeigt.
+          </p>
         )}
       </div>
-  </section>
+    </section>
   );
 }
