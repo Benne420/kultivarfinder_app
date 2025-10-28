@@ -1,18 +1,14 @@
 import React from "react";
-import TerpeneChips from "./TerpeneChips";
 
 export default function FilterPanel({
   filters,
   dispatch,
-  terpeneOptions,
   wirkungen,
   typInfo,
   terpene,
   optionsFor,
   clearTerpene,
   clearWirkungen,
-  showTerpenPanel,
-  setIncludeDiscontinued,
 }) {
   return (
     <div className="filters">
