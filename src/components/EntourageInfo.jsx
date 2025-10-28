@@ -74,9 +74,29 @@ const EntourageInfo = () => {
         </div>
 
         <div style={{ marginTop: "12px", fontSize: "12px", color: "#6c757d" }}>
-          Quellen: Russo, E. B. (2011). <em>Taming THC</em>. Br J Pharmacol,
-          163(7), 1344–1364. Booth, J. K. et al. (2017). <em>Terpene synthases
-          from Cannabis sativa</em>. PLoS ONE, 12(3), e0173911.
+          Quellen:
+          <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
+            <li>
+              <a
+                href="https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Russo, E. B. (2011). <em>Taming THC</em>. Br J Pharmacol,
+                163(7), 1344–1364.
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://academic.oup.com/plphys/article/184/1/130/6117797?login=false"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Booth, J. K. et al. (2017). <em>Terpene synthases from Cannabis
+                sativa</em>. Plant Physiology, 184(1), 130–147.
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
