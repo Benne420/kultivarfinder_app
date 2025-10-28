@@ -42,7 +42,7 @@ function findSimilar(reference, allStrains, limit = 5) {
 
 export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
   const [selectedName, setSelectedName] = useState("");
-  const [feedback, setFeedback] = useState("");
+  const [similarStrains, setSimilarStrains] = useState([]);
 
   // only consider active strains for dropdown / comparisons
   const activeStrains = useMemo(() => kultivare.filter(isActiveStrain), [kultivare]);
