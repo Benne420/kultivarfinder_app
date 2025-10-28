@@ -386,7 +386,7 @@ export default function CannabisKultivarFinderUseReducer() {
         gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
       </div>
 
-      <EntourageInfo />
+      <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} />
       <FilterPanel
         filters={filters}
         dispatch={dispatch}
@@ -404,7 +404,7 @@ export default function CannabisKultivarFinderUseReducer() {
         </div>
       )}
       <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
-      <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
+      <EntourageInfo />
 
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
 
