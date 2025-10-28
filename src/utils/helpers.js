@@ -16,7 +16,7 @@ export const wirkungAliases = {
 export const normalizeWirkung = (w) => {
   const key = (w || "").toString().trim().toLowerCase();
   const normalized = wirkungAliases[key];
-  return normalized || w;
+  return normalized || key;
 };
 
 // Terpen information (kept here so other components can import)

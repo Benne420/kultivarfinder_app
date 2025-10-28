@@ -12,25 +12,11 @@ import "@fontsource/montserrat";
 import "./styles.css";
 import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
 import EntourageInfo from "./components/EntourageInfo";
-import TerpeneChips from "./components/TerpeneChips";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
 import DetailsModal from "./components/DetailsModal";
 import StrainSimilarity from "./components/StrainSimilarity";
-import { normalize, normalizeWirkung, terpenInfo, getTerpenAliases } from "./utils/helpers";
-
-// Wiederverwendbare UI‑Komponenten
-const Card = ({ children }) => <div className="card">{children}</div>;
-const CardContent = ({ children }) => <div>{children}</div>;
-const Button = ({ children, onClick, disabled }) => (
-  <button
-    onClick={onClick}
-    disabled={disabled}
-    className={`button ${disabled ? "button-disabled" : ""}`}
-  >
-    {children}
-  </button>
-);
+import { normalizeWirkung, getTerpenAliases } from "./utils/helpers";
 
 /*
  * Daten und Hilfsfunktionen werden außerhalb der Komponente definiert, um
@@ -162,7 +148,6 @@ const initialFilterState = {
   includeDiscontinued: false,
   selectedTerpene: new Set(),
   selectedWirkungen: new Set(),
-  terpenDialog: { open: false, name: null },
 };
 
 /*
@@ -200,12 +185,6 @@ function filterReducer(state, action) {
     case "CLEAR_WIRKUNGEN": {
       return { ...state, wirk1: "", wirk2: "", selectedWirkungen: new Set() };
     }
-    case "OPEN_TERPEN_DIALOG": {
-      return { ...state, terpenDialog: { open: true, name: action.name } };
-    }
-    case "CLOSE_TERPEN_DIALOG": {
-      return { ...state, terpenDialog: { open: false, name: null } };
-    }
     default:
       return state;
   }
@@ -218,8 +197,13 @@ function filterReducer(state, action) {
 export default function CannabisKultivarFinderUseReducer() {
   // Hintergrundbild setzen
   useEffect(() => {
+    const previousBackground = document.body.style.backgroundImage;
     document.body.style.backgroundImage =
       "url('/F20_Pharma_Pattern-Hexagon_07.png')";
+
+    return () => {
+      document.body.style.backgroundImage = previousBackground;
+    };
   }, []);
 
   // Daten aus dem Backend laden
@@ -312,15 +296,6 @@ export default function CannabisKultivarFinderUseReducer() {
     () => dispatch({ type: "CLEAR_WIRKUNGEN" }),
     []
   );
-  const openTerpenDialog = useCallback(
-    (name) => dispatch({ type: "OPEN_TERPEN_DIALOG", name }),
-    []
-  );
-  const closeTerpenDialog = useCallback(
-    () => dispatch({ type: "CLOSE_TERPEN_DIALOG" }),
-    []
-  );
-
   // Memoized helpers to open and close the information dialog. Wrapping
   // setInfoDialog in useCallback avoids recreating these functions on every render.
   const showInfo = useCallback((cultivar) => {
@@ -343,22 +318,6 @@ export default function CannabisKultivarFinderUseReducer() {
     (items, exclude) => items.filter((i) => !exclude || i !== exclude),
     []
   );
-
-  // Tooltip‑Informationen zu Terpenen
-  const activeInfo = useMemo(() => {
-    const name = filters.terpenDialog.name;
-    if (!name) return null;
-    return (
-      terpenInfo[name] ||
-      Object.values(terpenInfo).find((v) => v.aliases?.includes(name)) ||
-      null
-    );
-  }, [filters.terpenDialog.name]);
-
-  // UI für Terpen‑Chips (verwende useCallback, damit die Funktion nur neu erstellt wird, wenn openTerpenDialog sich ändert)
-  const renderTerpenChips = useCallback((list) => {
-    return <TerpeneChips list={list} onInfo={openTerpenDialog} />;
-  }, [openTerpenDialog]);
 
   // Rendern der Komponente
   return (
@@ -447,7 +406,6 @@ export default function CannabisKultivarFinderUseReducer() {
       <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
       <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
 
-      {/* Terpen Info modal remains handled in App via filters.terpenDialog */}
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
 
       {terpenPanel.open && terpenPanel.cultivar && (
