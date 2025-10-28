@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from "react";
-import StrainTable from "./StrainTable";
+import React, { useState, useMemo, useCallback } from "react";
 
 /* helper: determine whether a strain is considered "active" (same logic as filters) */
 function isActiveStrain(s = {}) {
@@ -43,59 +42,88 @@ function findSimilar(reference, allStrains, limit = 5) {
 
 export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
   const [selectedName, setSelectedName] = useState("");
-  const [similarStrains, setSimilarStrains] = useState([]);
+  const [feedback, setFeedback] = useState("");
 
   // only consider active strains for dropdown / comparisons
   const activeStrains = useMemo(() => kultivare.filter(isActiveStrain), [kultivare]);
+
+  const emitResults = useCallback(
+    (reference, results) => {
+      if (typeof onApplySimilar !== "function") return;
+      if (reference && Array.isArray(results) && results.length) {
+        onApplySimilar({ reference, results });
+        return;
+      }
+      onApplySimilar(null);
+    },
+    [onApplySimilar]
+  );
 
   const handleChange = (e) => {
     const name = e.target.value;
     setSelectedName(name);
     if (!name) {
-      setSimilarStrains([]);
-      if (typeof onApplySimilar === "function") onApplySimilar(null); // clear override
+      setFeedback("");
+      emitResults(null, []);
       return;
     }
     const ref = activeStrains.find(k => k.name === name);
     if (!ref) {
-      setSimilarStrains([]);
-      if (typeof onApplySimilar === "function") onApplySimilar(null);
+      setFeedback("");
+      emitResults(null, []);
       return;
     }
     const similar = findSimilar(ref, activeStrains);
-    setSimilarStrains(similar);
-    if (typeof onApplySimilar === "function") onApplySimilar(similar);
+    emitResults(ref, similar);
+    if (similar.length === 0) {
+      setFeedback(`Keine ähnlichen Sorten zu "${ref.name}" gefunden.`);
+    } else if (similar.length === 1) {
+      setFeedback(`1 ähnliche Sorte zu "${ref.name}" wird in der Tabelle angezeigt.`);
+    } else {
+      setFeedback(`${similar.length} ähnliche Sorten zu "${ref.name}" werden in der Tabelle angezeigt.`);
+    }
   };
 
   const handleClear = () => {
     setSelectedName("");
-    setSimilarStrains([]);
-    if (typeof onApplySimilar === "function") onApplySimilar(null);
+    setFeedback("");
+    emitResults(null, []);
   };
 
   return (
-    <div style={{ padding: 16 }}>
-      <label htmlFor="strain-select">Sorte auswählen (aktive Sorten):</label>
-      <select id="strain-select" onChange={handleChange} value={selectedName}>
-        <option value="">-- wählen --</option>
-        {activeStrains.map((s) => (
-          <option key={s.name} value={s.name}>
-            {s.name}
-          </option>
-        ))}
-      </select>
-
-      <div style={{ marginTop: 12 }}>
-        <button type="button" onClick={handleClear} disabled={!selectedName}>Clear similarity</button>
+    <section className="similarity-panel">
+      <h3 className="similarity-panel__title">Ähnliche Sorten finden</h3>
+      <div className="similarity-panel__controls">
+        <label className="similarity-panel__label" htmlFor="strain-select">
+          Sorte auswählen (nur aktive Sorten)
+        </label>
+        <select
+          id="strain-select"
+          className="similarity-panel__select"
+          onChange={handleChange}
+          value={selectedName}
+        >
+          <option value="">-- wählen --</option>
+          {activeStrains.map((s) => (
+            <option key={s.name} value={s.name}>
+              {s.name}
+            </option>
+          ))}
+        </select>
+        <button
+          type="button"
+          className="similarity-panel__clear"
+          onClick={handleClear}
+          disabled={!selectedName}
+        >
+          Clear similarity
+        </button>
       </div>
-
-      {similarStrains.length > 0 && (
-        <div style={{ marginTop: 16 }}>
-          <h4>Ähnliche Sorten (nach Terpenprofil)</h4>
-          {/* optional inline preview; main table is replaced via App callback */}
-          <StrainTable strains={similarStrains} />
-        </div>
-      )}
-    </div>
+      <p className="similarity-panel__hint" aria-live="polite">
+        {feedback
+          ? feedback
+          : "Die Ergebnisse werden direkt in der Haupttabelle angezeigt."}
+      </p>
+    </section>
   );
 }

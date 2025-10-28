@@ -263,9 +263,16 @@ export default function CannabisKultivarFinderUseReducer() {
   });
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
-  const [similarityResults, setSimilarityResults] = useState(null);
-  const handleApplySimilarity = useCallback((results) => {
-    setSimilarityResults(results && results.length ? results : null);
+  const [similarityContext, setSimilarityContext] = useState(null);
+  const handleApplySimilarity = useCallback((payload) => {
+    if (payload && Array.isArray(payload.results) && payload.results.length) {
+      setSimilarityContext({
+        referenceName: payload.reference?.name || payload.referenceName || "",
+        results: payload.results,
+      });
+      return;
+    }
+    setSimilarityContext(null);
   }, []);
 
   // Memoisiertes Filtern der Kultivare basierend auf dem Reducer-State
@@ -292,8 +299,8 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // NEW: displayedKultivare = similarity override falls gesetzt, sonst gefilterte Liste
   const displayedKultivare = useMemo(
-    () => (similarityResults && similarityResults.length ? similarityResults : filteredKultivare),
-    [similarityResults, filteredKultivare]
+    () => (similarityContext ? similarityContext.results : filteredKultivare),
+    [similarityContext, filteredKultivare]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen
@@ -387,6 +394,8 @@ export default function CannabisKultivarFinderUseReducer() {
         .strain-table-wrapper { display: flex; justify-content: center; width: 100%; margin: 0 auto; }
         .strain-table { width: 100%; max-width: 1100px; border-collapse: collapse; }
         .strain-table th, .strain-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
+        .strain-table th.terpenprofil-header, .strain-table td.terpenprofil-cell { text-align: center; }
+        .similarity-banner { background: #e3f2fd; border: 1px solid #90caf9; color: #0d47a1; border-radius: 8px; padding: 10px 12px; margin: 16px auto; max-width: 1100px; }
 
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
@@ -430,6 +439,12 @@ export default function CannabisKultivarFinderUseReducer() {
         clearTerpene={clearTerpene}
         clearWirkungen={clearWirkungen}
       />
+      {similarityContext && (
+        <div className="similarity-banner" role="status" aria-live="polite">
+          <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
+          {" "}angezeigt. Verwenden Sie „Clear similarity“, um zur gefilterten Ansicht zurückzukehren.
+        </div>
+      )}
       <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
       <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
 
