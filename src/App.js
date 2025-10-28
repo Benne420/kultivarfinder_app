@@ -410,8 +410,7 @@ export default function CannabisKultivarFinderUseReducer() {
       {similarityContext && (
         <div className="similarity-banner" role="status" aria-live="polite">
           <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
-          {" "}angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Clear similarity“,
-          um zur gefilterten Ansicht zurückzukehren.
+          {" "}angezeigt. Verwenden Sie „Clear similarity“, um zur gefilterten Ansicht zurückzukehren.
         </div>
       )}
       <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
