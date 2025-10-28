@@ -86,25 +86,27 @@ export default function FilterPanel({
         </div>
         <p style={{ fontSize: 12, color: "#546e7a", marginTop: 4 }}>{filters.typ ? typInfo[filters.typ] : ""}</p>
         <div className="info-box" style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}>
-          Indica / Sativa – Was diese Begriffe (nicht) bedeuten:<br />
+          <h4 style={{ margin: "0 0 8px", fontSize: 12, color: "#2c3840" }}>
+            Indica / Sativa – Was diese Begriffe (nicht) bedeuten
+          </h4>
           Die Begriffe <em>Indica</em> und <em>Sativa</em> stammen aus der
-            Botanik, sagen aber heute
-            <strong>
-              {" "}
-              nichts Verlässliches über Wirkung oder Inhaltsstoffe
-            </strong>{" "}
-            aus. Studien zeigen, dass diese Etiketten weder genetische
-            Verwandtschaft noch chemische Profile zuverlässig erklären (Hazekamp
-            et al., 2016; Watts et al., 2021). Auch eine Analyse medizinischer
-            Sorten aus Deutschland ergab
-            <strong>
-              {" "}
-              keine konsistenten Terpen- oder Wirkstoffmuster entlang der Label
-            </strong>{" "}
-            (Herwig et al., 2024). Wirkung und Verträglichkeit hängen vom
-            Zusammenspiel aus THC, CBD und Terpenen ab – nicht vom Namen.
-            Deshalb setzt die medizinische Praxis zunehmend auf{" "}
-            <strong>analysierte Wirkstoffprofile statt Kategorien</strong>.
+          Botanik, sagen aber heute
+          <strong>
+            {" "}
+            nichts Verlässliches über Wirkung oder Inhaltsstoffe
+          </strong>{" "}
+          aus. Studien zeigen, dass diese Etiketten weder genetische
+          Verwandtschaft noch chemische Profile zuverlässig erklären (Hazekamp
+          et al., 2016; Watts et al., 2021). Auch eine Analyse medizinischer
+          Sorten aus Deutschland ergab
+          <strong>
+            {" "}
+            keine konsistenten Terpen- oder Wirkstoffmuster entlang der Label
+          </strong>{" "}
+          (Herwig et al., 2024). Wirkung und Verträglichkeit hängen vom
+          Zusammenspiel aus THC, CBD und Terpenen ab – nicht vom Namen.
+          Deshalb setzt die medizinische Praxis zunehmend auf{" "}
+          <strong>analysierte Wirkstoffprofile statt Kategorien</strong>.
             <br />
             <br />
             <strong>Quellen:</strong>
