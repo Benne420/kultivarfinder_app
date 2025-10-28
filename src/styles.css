@@ -141,3 +141,60 @@ nav a:hover {
     display: none;
   }
 }
+
+.similarity-panel {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #fafafa;
+}
+
+.similarity-panel__title {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.similarity-panel__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.similarity-panel__label {
+  flex: 1 1 200px;
+  font-weight: 600;
+}
+
+.similarity-panel__select {
+  flex: 1 1 220px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #b0bec5;
+}
+
+.similarity-panel__clear {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #90a4ae;
+  background: #eceff1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.similarity-panel__clear:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.similarity-panel__clear:not(:disabled):hover {
+  background-color: #e0f2f1;
+}
+
+.similarity-panel__hint {
+  margin-top: 16px;
+  margin-bottom: 0;
+  color: #546e7a;
+}

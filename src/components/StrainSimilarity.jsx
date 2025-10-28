@@ -85,19 +85,33 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
   };
 
   return (
-    <div style={{ padding: 16 }}>
-      <label htmlFor="strain-select">Sorte auswählen (aktive Sorten):</label>
-      <select id="strain-select" onChange={handleChange} value={selectedName}>
-        <option value="">-- wählen --</option>
-        {activeStrains.map((s) => (
-          <option key={s.name} value={s.name}>
-            {s.name}
-          </option>
-        ))}
-      </select>
-
-      <div style={{ marginTop: 12 }}>
-        <button type="button" onClick={handleClear} disabled={!selectedName}>Clear similarity</button>
+    <section className="similarity-panel">
+      <h3 className="similarity-panel__title">Ähnliche Sorten finden</h3>
+      <div className="similarity-panel__controls">
+        <label className="similarity-panel__label" htmlFor="strain-select">
+          Sorte auswählen (nur aktive Sorten)
+        </label>
+        <select
+          id="strain-select"
+          className="similarity-panel__select"
+          onChange={handleChange}
+          value={selectedName}
+        >
+          <option value="">-- wählen --</option>
+          {activeStrains.map((s) => (
+            <option key={s.name} value={s.name}>
+              {s.name}
+            </option>
+          ))}
+        </select>
+        <button
+          type="button"
+          className="similarity-panel__clear"
+          onClick={handleClear}
+          disabled={!selectedName}
+        >
+          Clear similarity
+        </button>
       </div>
 
       <div style={{ marginTop: 16 }} aria-live="polite">
@@ -125,6 +139,6 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
           </>
         )}
       </div>
-    </div>
+  </section>
   );
 }
