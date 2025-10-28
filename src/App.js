@@ -249,10 +249,20 @@ export default function CannabisKultivarFinderUseReducer() {
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
   const [similarityContext, setSimilarityContext] = useState(null);
   const handleApplySimilarity = useCallback((payload) => {
-    if (payload && Array.isArray(payload.results) && payload.results.length) {
+    if (
+      payload &&
+      payload.reference &&
+      Array.isArray(payload.results) &&
+      payload.results.length
+    ) {
+      const referenceName = payload.reference?.name || payload.referenceName || "";
+      const referenceEntry = { ...payload.reference, similarity: 1 };
+      const filteredResults = payload.results.filter(
+        (result) => result && result.name !== referenceEntry.name
+      );
       setSimilarityContext({
-        referenceName: payload.reference?.name || payload.referenceName || "",
-        results: payload.results,
+        referenceName,
+        results: [referenceEntry, ...filteredResults],
       });
       return;
     }
@@ -386,7 +396,7 @@ export default function CannabisKultivarFinderUseReducer() {
         gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
       </div>
 
-      <EntourageInfo />
+      <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} />
       <FilterPanel
         filters={filters}
         dispatch={dispatch}
@@ -400,11 +410,12 @@ export default function CannabisKultivarFinderUseReducer() {
       {similarityContext && (
         <div className="similarity-banner" role="status" aria-live="polite">
           <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
-          {" "}angezeigt. Verwenden Sie „Clear similarity“, um zur gefilterten Ansicht zurückzukehren.
+          {" "}angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Clear similarity“,
+          um zur gefilterten Ansicht zurückzukehren.
         </div>
       )}
       <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
-      <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
+      <EntourageInfo />
 
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
 
