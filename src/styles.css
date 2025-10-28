@@ -146,8 +146,9 @@ nav a:hover {
   margin-top: 24px;
   padding: 16px;
   border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  background-color: #fafafa;
+  border-radius: 10px;
+  background: #ffffffcc;
+  box-shadow: 0 2px 6px rgba(55, 71, 79, 0.08);
 }
 
 .similarity-panel__title {
@@ -197,4 +198,13 @@ nav a:hover {
   margin-top: 16px;
   margin-bottom: 0;
   color: #546e7a;
+}
+
+.similarity-panel__status {
+  margin-top: 16px;
+}
+
+.strain-table .similarity-column {
+  text-align: right;
+  white-space: nowrap;
 }

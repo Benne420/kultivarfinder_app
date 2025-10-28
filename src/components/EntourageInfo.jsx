@@ -1,5 +1,28 @@
 import React from "react";
 
+const aspects = [
+  {
+    title: "Cannabinoid–Terpen–Synergie",
+    description:
+      "Terpene können die Wirkung von THC und CBD modulieren, z. B. durch Einfluss auf Rezeptoren oder Signalwege (Russo, 2011).",
+  },
+  {
+    title: "Pharmakokinetik",
+    description:
+      "Einige Terpene könnten die Aufnahme von Cannabinoiden verändern, etwa durch Beeinflussung der Zellmembranpermeabilität (Russo, 2011).",
+  },
+  {
+    title: "Wirkungsmodulation",
+    description:
+      "Kombinationen können Effekte verstärken oder abschwächen – z. B. Myrcen mit potenziell sedierender, Limonen mit stimmungsaufhellender Wirkung (Russo, 2011).",
+  },
+  {
+    title: "Sensorik",
+    description:
+      "Terpene bestimmen Aroma und Geschmack und können das subjektive Erleben beeinflussen (Booth et al., 2020).",
+  },
+];
+
 const EntourageInfo = () => {
   return (
     <div
@@ -34,27 +57,11 @@ const EntourageInfo = () => {
         <div style={{ marginBottom: "12px" }}>
           <strong>Wichtige Aspekte:</strong>
           <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
-            <li>
-              <strong>Cannabinoid–Terpen–Synergie:</strong> Terpene können die
-              Wirkung von THC und CBD modulieren, z. B. durch Einfluss auf
-              Rezeptoren oder Signalwege (Russo, 2011).
-            </li>
-            <li>
-              <strong>Pharmakokinetik:</strong> Einige Terpene könnten die
-              Aufnahme von Cannabinoiden verändern, etwa durch Beeinflussung der
-              Zellmembranpermeabilität (Russo, 2011).
-            </li>
-            <li>
-              <strong>Wirkungsmodulation:</strong> Kombinationen können Effekte
-              verstärken oder abschwächen – z. B. Myrcen mit potenziell
-              sedierender, Limonen mit stimmungsaufhellender Wirkung (Russo,
-              2011).
-            </li>
-            <li>
-              <strong>Sensorik:</strong> Terpene bestimmen Aroma und Geschmack
-              und können das subjektive Erleben beeinflussen (Booth et al.,
-              2017).
-            </li>
+            {aspects.map(({ title, description }) => (
+              <li key={title}>
+                <strong>{`${title}:`}</strong> {description}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -74,9 +81,30 @@ const EntourageInfo = () => {
         </div>
 
         <div style={{ marginTop: "12px", fontSize: "12px", color: "#6c757d" }}>
-          Quellen: Russo, E. B. (2011). <em>Taming THC</em>. Br J Pharmacol,
-          163(7), 1344–1364. Booth, J. K. et al. (2017). <em>Terpene synthases
-          from Cannabis sativa</em>. PLoS ONE, 12(3), e0173911.
+          Quellen:
+          <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
+            <li>
+              <a
+                href="https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Russo, E. B. (2011). <em>Taming THC</em>. Br J Pharmacol,
+                163(7), 1344–1364.
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/32591428/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Booth, J. K. et al. (2020). <em>Terpene Synthases and Terpene
+                Variation in Cannabis sativa</em>. Plant Physiology, 184(1),
+                130–147.
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
