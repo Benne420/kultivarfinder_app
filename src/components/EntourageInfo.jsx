@@ -24,32 +24,36 @@ const EntourageInfo = () => {
 
       <div style={{ fontSize: "14px", lineHeight: "1.5", color: "#495057" }}>
         <p style={{ margin: "0 0 12px 0" }}>
-          Der <strong>Entourage-Effekt</strong> beschreibt die synergistische
-          Wirkung verschiedener Cannabis-Inhaltsstoffe, die zusammen eine andere
-          Wirkung erzielen können als ihre Einzelkomponenten.
+          Der <strong>Entourage-Effekt</strong> beschreibt die mögliche
+          synergistische Wechselwirkung verschiedener Inhaltsstoffe der
+          Cannabispflanze – insbesondere Cannabinoide, Terpene und Flavonoide –,
+          die gemeinsam eine andere oder ausgewogenere Wirkung entfalten können
+          als ihre isolierten Einzelkomponenten.
         </p>
 
         <div style={{ marginBottom: "12px" }}>
           <strong>Wichtige Aspekte:</strong>
           <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
             <li>
-              <strong>Terpen-Cannabinoid-Synergie:</strong> Terpene können die
-              Wirkung von THC und CBD modulieren (Russo, 2011).
+              <strong>Cannabinoid–Terpen–Synergie:</strong> Terpene können die
+              Wirkung von THC und CBD modulieren, z. B. durch Einfluss auf
+              Rezeptoren oder Signalwege (Russo, 2011).
             </li>
             <li>
-              <strong>Bioverfügbarkeit:</strong> Manche Terpene verbessern die
-              Aufnahme von Cannabinoiden, indem sie z. B. die Permeabilität von
-              Zellmembranen beeinflussen (Russo, 2011).
+              <strong>Pharmakokinetik:</strong> Einige Terpene könnten die
+              Aufnahme von Cannabinoiden verändern, etwa durch Beeinflussung der
+              Zellmembranpermeabilität (Russo, 2011).
             </li>
             <li>
-              <strong>Wirkungsverstärkung:</strong> Kombinationen können
-              Wirkungen verstärken oder abschwächen, etwa Myrcen als sedierend
-              oder Limonen als stimmungsaufhellend (Russo, 2011).
+              <strong>Wirkungsmodulation:</strong> Kombinationen können Effekte
+              verstärken oder abschwächen – z. B. Myrcen mit potenziell
+              sedierender, Limonen mit stimmungsaufhellender Wirkung (Russo,
+              2011).
             </li>
             <li>
-              <strong>Geschmack und Aroma:</strong> Terpene prägen das
-              sensorische Erlebnis und tragen zur Gesamtwirkung bei (Booth et
-              al., 2017).
+              <strong>Sensorik:</strong> Terpene bestimmen Aroma und Geschmack
+              und können das subjektive Erleben beeinflussen (Booth et al.,
+              2017).
             </li>
           </ul>
         </div>
@@ -64,16 +68,15 @@ const EntourageInfo = () => {
             color: "#856404",
           }}
         >
-          <strong>Hinweis:</strong> Diese Informationen dienen der allgemeinen
-          Bildung und ersetzen keine medizinische Beratung. Bei gesundheitlichen
-          Fragen konsultieren Sie einen Arzt oder Apotheker.
+          <strong>Hinweis:</strong> Die beschriebenen Zusammenhänge sind
+          Gegenstand aktueller Forschung. Diese Informationen ersetzen keine
+          medizinische Beratung.
         </div>
 
         <div style={{ marginTop: "12px", fontSize: "12px", color: "#6c757d" }}>
-          Quellen: Russo, E. B. (2011). <em>Taming THC</em>. British Journal of
-          Pharmacology, 163(7), 1344–1364. Booth, J. K. et al. (2017).{" "}
-          <em>Terpene synthases from Cannabis sativa</em>. PLoS ONE, 12(3),
-          e0173911.
+          Quellen: Russo, E. B. (2011). <em>Taming THC</em>. Br J Pharmacol,
+          163(7), 1344–1364. Booth, J. K. et al. (2017). <em>Terpene synthases
+          from Cannabis sativa</em>. PLoS ONE, 12(3), e0173911.
         </div>
       </div>
     </div>
