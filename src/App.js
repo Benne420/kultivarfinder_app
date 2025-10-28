@@ -395,7 +395,6 @@ export default function CannabisKultivarFinderUseReducer() {
         .strain-table { width: 100%; max-width: 1100px; border-collapse: collapse; }
         .strain-table th, .strain-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
         .strain-table th.terpenprofil-header, .strain-table td.terpenprofil-cell { text-align: center; }
-        .similarity-banner { background: #e3f2fd; border: 1px solid #90caf9; color: #0d47a1; border-radius: 8px; padding: 10px 12px; margin: 16px auto; max-width: 1100px; }
 
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }

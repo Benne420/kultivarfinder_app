@@ -63,30 +63,24 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
     const name = e.target.value;
     setSelectedName(name);
     if (!name) {
-      setFeedback("");
+      setSimilarStrains([]);
       emitResults(null, []);
       return;
     }
     const ref = activeStrains.find(k => k.name === name);
     if (!ref) {
-      setFeedback("");
+      setSimilarStrains([]);
       emitResults(null, []);
       return;
     }
     const similar = findSimilar(ref, activeStrains);
+    setSimilarStrains(similar);
     emitResults(ref, similar);
-    if (similar.length === 0) {
-      setFeedback(`Keine ähnlichen Sorten zu "${ref.name}" gefunden.`);
-    } else if (similar.length === 1) {
-      setFeedback(`1 ähnliche Sorte zu "${ref.name}" wird in der Tabelle angezeigt.`);
-    } else {
-      setFeedback(`${similar.length} ähnliche Sorten zu "${ref.name}" werden in der Tabelle angezeigt.`);
-    }
   };
 
   const handleClear = () => {
     setSelectedName("");
-    setFeedback("");
+    setSimilarStrains([]);
     emitResults(null, []);
   };
 
@@ -119,11 +113,32 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
           Clear similarity
         </button>
       </div>
-      <p className="similarity-panel__hint" aria-live="polite">
-        {feedback
-          ? feedback
-          : "Die Ergebnisse werden direkt in der Haupttabelle angezeigt."}
-      </p>
-    </section>
+
+      <div style={{ marginTop: 16 }} aria-live="polite">
+        {selectedName && similarStrains.length === 0 && (
+          <p style={{ margin: 0 }}>Keine ähnlichen Sorten gefunden.</p>
+        )}
+        {similarStrains.length > 0 && (
+          <>
+            <h4 style={{ margin: "0 0 8px" }}>Ähnliche Sorten (nach Terpenprofil)</h4>
+            <ol style={{ paddingLeft: "1.2rem", margin: 0 }}>
+              {similarStrains.map((s) => (
+                <li key={s.name} style={{ marginBottom: 4 }}>
+                  <span style={{ fontWeight: 600 }}>{s.name}</span>
+                  {typeof s.similarity === "number" && !Number.isNaN(s.similarity) && (
+                    <span style={{ marginLeft: 6, color: "#546e7a" }}>
+                      ({Math.round(s.similarity * 100)}% Übereinstimmung)
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ol>
+            <p style={{ marginTop: 8 }}>
+              Die oben aufgeführten Sorten werden in der Haupttabelle angezeigt.
+            </p>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
