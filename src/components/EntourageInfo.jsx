@@ -95,12 +95,13 @@ const EntourageInfo = () => {
             </li>
             <li>
               <a
-                href="https://academic.oup.com/plphys/article/184/1/130/6117797?login=false"
+                href="https://pubmed.ncbi.nlm.nih.gov/32591428/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Booth, J. K. et al. (2020). <em>Terpene synthases from Cannabis
-                sativa</em>. Plant Physiology, 184(1), 130–147.
+                Booth, J. K. et al. (2020). <em>Terpene Synthases and Terpene
+                Variation in Cannabis sativa</em>. Plant Physiology, 184(1),
+                130–147.
               </a>
             </li>
           </ul>
