@@ -1,5 +1,28 @@
 import React from "react";
 
+const aspects = [
+  {
+    title: "Cannabinoid–Terpen–Synergie",
+    description:
+      "Terpene können die Wirkung von THC und CBD modulieren, z. B. durch Einfluss auf Rezeptoren oder Signalwege (Russo, 2011).",
+  },
+  {
+    title: "Pharmakokinetik",
+    description:
+      "Einige Terpene könnten die Aufnahme von Cannabinoiden verändern, etwa durch Beeinflussung der Zellmembranpermeabilität (Russo, 2011).",
+  },
+  {
+    title: "Wirkungsmodulation",
+    description:
+      "Kombinationen können Effekte verstärken oder abschwächen – z. B. Myrcen mit potenziell sedierender, Limonen mit stimmungsaufhellender Wirkung (Russo, 2011).",
+  },
+  {
+    title: "Sensorik",
+    description:
+      "Terpene bestimmen Aroma und Geschmack und können das subjektive Erleben beeinflussen (Booth et al., 2020).",
+  },
+];
+
 const EntourageInfo = () => {
   return (
     <div
@@ -34,57 +57,11 @@ const EntourageInfo = () => {
         <div style={{ marginBottom: "12px" }}>
           <strong>Wichtige Aspekte:</strong>
           <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
-            <li>
-              <strong>Cannabinoid–Terpen–Synergie:</strong> Terpene können die
-              Wirkung von THC und CBD modulieren, z. B. durch Einfluss auf
-              Rezeptoren oder Signalwege (
-              <a
-                href="https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Russo, 2011
-              </a>
-              ).
-            </li>
-            <li>
-              <strong>Pharmakokinetik:</strong> Einige Terpene könnten die
-              Aufnahme von Cannabinoiden verändern, etwa durch Beeinflussung der
-              Zellmembranpermeabilität (
-              <a
-                href="https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Russo, 2011
-              </a>
-              ).
-            </li>
-            <li>
-              <strong>Wirkungsmodulation:</strong> Kombinationen können Effekte
-              verstärken oder abschwächen – z. B. Myrcen mit potenziell
-              sedierender, Limonen mit stimmungsaufhellender Wirkung (
-              <a
-                href="https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Russo, 2011
-              </a>
-              ).
-            </li>
-            <li>
-              <strong>Sensorik:</strong> Terpene bestimmen Aroma und Geschmack
-              und können das subjektive Erleben beeinflussen (
-              <a
-                href="https://academic.oup.com/plphys/article/184/1/130/6117797?login=false"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Booth et al., 2017
-              </a>
-              ).
-            </li>
+            {aspects.map(({ title, description }) => (
+              <li key={title}>
+                <strong>{`${title}:`}</strong> {description}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -122,7 +99,7 @@ const EntourageInfo = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Booth, J. K. et al. (2017). <em>Terpene synthases from Cannabis
+                Booth, J. K. et al. (2020). <em>Terpene synthases from Cannabis
                 sativa</em>. Plant Physiology, 184(1), 130–147.
               </a>
             </li>

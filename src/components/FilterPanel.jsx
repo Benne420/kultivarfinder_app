@@ -87,7 +87,7 @@ export default function FilterPanel({
         <p style={{ fontSize: 12, color: "#546e7a", marginTop: 4 }}>{filters.typ ? typInfo[filters.typ] : ""}</p>
         <div className="info-box" style={{ fontSize: 11, color: "#39454d", marginTop: 8 }}>
           <h4 style={{ margin: "0 0 8px", fontSize: 12, color: "#2c3840" }}>
-            Indica / Sativa – Was diese Begriffe (nicht) bedeuten
+            Indica / Sativa – Was diese Begriffe (nicht) bedeuten:
           </h4>
           Die Begriffe <em>Indica</em> und <em>Sativa</em> stammen aus der
           Botanik, sagen aber heute
