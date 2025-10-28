@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from "react";
-import StrainTable from "./StrainTable";
+import React, { useState, useMemo, useCallback } from "react";
 
 /* helper: determine whether a strain is considered "active" (same logic as filters) */
 function isActiveStrain(s = {}) {
@@ -48,29 +47,41 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
   // only consider active strains for dropdown / comparisons
   const activeStrains = useMemo(() => kultivare.filter(isActiveStrain), [kultivare]);
 
+  const emitResults = useCallback(
+    (reference, results) => {
+      if (typeof onApplySimilar !== "function") return;
+      if (reference && Array.isArray(results) && results.length) {
+        onApplySimilar({ reference, results });
+        return;
+      }
+      onApplySimilar(null);
+    },
+    [onApplySimilar]
+  );
+
   const handleChange = (e) => {
     const name = e.target.value;
     setSelectedName(name);
     if (!name) {
       setSimilarStrains([]);
-      if (typeof onApplySimilar === "function") onApplySimilar(null); // clear override
+      emitResults(null, []);
       return;
     }
     const ref = activeStrains.find(k => k.name === name);
     if (!ref) {
       setSimilarStrains([]);
-      if (typeof onApplySimilar === "function") onApplySimilar(null);
+      emitResults(null, []);
       return;
     }
     const similar = findSimilar(ref, activeStrains);
     setSimilarStrains(similar);
-    if (typeof onApplySimilar === "function") onApplySimilar(similar);
+    emitResults(ref, similar);
   };
 
   const handleClear = () => {
     setSelectedName("");
     setSimilarStrains([]);
-    if (typeof onApplySimilar === "function") onApplySimilar(null);
+    emitResults(null, []);
   };
 
   return (
@@ -89,13 +100,31 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
         <button type="button" onClick={handleClear} disabled={!selectedName}>Clear similarity</button>
       </div>
 
-      {similarStrains.length > 0 && (
-        <div style={{ marginTop: 16 }}>
-          <h4>Ähnliche Sorten (nach Terpenprofil)</h4>
-          {/* optional inline preview; main table is replaced via App callback */}
-          <StrainTable strains={similarStrains} />
-        </div>
-      )}
+      <div style={{ marginTop: 16 }} aria-live="polite">
+        {selectedName && similarStrains.length === 0 && (
+          <p style={{ margin: 0 }}>Keine ähnlichen Sorten gefunden.</p>
+        )}
+        {similarStrains.length > 0 && (
+          <>
+            <h4 style={{ margin: "0 0 8px" }}>Ähnliche Sorten (nach Terpenprofil)</h4>
+            <ol style={{ paddingLeft: "1.2rem", margin: 0 }}>
+              {similarStrains.map((s) => (
+                <li key={s.name} style={{ marginBottom: 4 }}>
+                  <span style={{ fontWeight: 600 }}>{s.name}</span>
+                  {typeof s.similarity === "number" && !Number.isNaN(s.similarity) && (
+                    <span style={{ marginLeft: 6, color: "#546e7a" }}>
+                      ({Math.round(s.similarity * 100)}% Übereinstimmung)
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ol>
+            <p style={{ marginTop: 8 }}>
+              Die oben aufgeführten Sorten werden in der Haupttabelle angezeigt.
+            </p>
+          </>
+        )}
+      </div>
     </div>
   );
 }

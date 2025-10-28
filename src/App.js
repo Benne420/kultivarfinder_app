@@ -263,9 +263,16 @@ export default function CannabisKultivarFinderUseReducer() {
   });
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
-  const [similarityResults, setSimilarityResults] = useState(null);
-  const handleApplySimilarity = useCallback((results) => {
-    setSimilarityResults(results && results.length ? results : null);
+  const [similarityContext, setSimilarityContext] = useState(null);
+  const handleApplySimilarity = useCallback((payload) => {
+    if (payload && Array.isArray(payload.results) && payload.results.length) {
+      setSimilarityContext({
+        referenceName: payload.reference?.name || payload.referenceName || "",
+        results: payload.results,
+      });
+      return;
+    }
+    setSimilarityContext(null);
   }, []);
 
   // Memoisiertes Filtern der Kultivare basierend auf dem Reducer-State
@@ -292,8 +299,8 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // NEW: displayedKultivare = similarity override falls gesetzt, sonst gefilterte Liste
   const displayedKultivare = useMemo(
-    () => (similarityResults && similarityResults.length ? similarityResults : filteredKultivare),
-    [similarityResults, filteredKultivare]
+    () => (similarityContext ? similarityContext.results : filteredKultivare),
+    [similarityContext, filteredKultivare]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen
@@ -431,6 +438,12 @@ export default function CannabisKultivarFinderUseReducer() {
         clearTerpene={clearTerpene}
         clearWirkungen={clearWirkungen}
       />
+      {similarityContext && (
+        <div className="similarity-banner" role="status" aria-live="polite">
+          <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
+          {" "}angezeigt. Verwenden Sie „Clear similarity“, um zur gefilterten Ansicht zurückzukehren.
+        </div>
+      )}
       <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
       <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} /> {/* Füge die StrainSimilarity-Komponente hinzu */}
 
