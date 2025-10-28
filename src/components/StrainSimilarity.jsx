@@ -125,6 +125,6 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
           </>
         )}
       </div>
-    </div>
+    </section> 
   );
 }
