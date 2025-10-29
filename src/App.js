@@ -16,6 +16,7 @@ import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
 import DetailsModal from "./components/DetailsModal";
 import StrainSimilarity from "./components/StrainSimilarity";
+import TypFilter from "./components/TypFilter";
 import { normalizeWirkung, getTerpenAliases } from "./utils/helpers";
 
 /*
@@ -375,8 +376,8 @@ export default function CannabisKultivarFinderUseReducer() {
 
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
-        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; }
-        .typ-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
+        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; margin: 8px 0; }
+        .typ-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; justify-content: center; }
         .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
         .typ-btn:hover { background: #f7faff; }
         .typ-btn.active { background: #e8f0fe; border-color: #90caf9; }
@@ -405,12 +406,12 @@ export default function CannabisKultivarFinderUseReducer() {
       </div>
 
       <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} />
+      <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
       <FilterPanel
         filters={filters}
         dispatch={dispatch}
         terpene={terpene}
         wirkungen={wirkungen}
-        typInfo={typInfo}
         clearTerpene={clearTerpene}
         clearWirkungen={clearWirkungen}
       />
