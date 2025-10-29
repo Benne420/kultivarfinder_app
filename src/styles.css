@@ -290,6 +290,12 @@ nav a:hover {
   font-weight: 600;
 }
 
+.similarity-panel__description {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #546e7a;
+}
+
 .similarity-panel__select {
   flex: 1 1 220px;
   padding: 8px;
