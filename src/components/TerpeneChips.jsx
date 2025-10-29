@@ -1,5 +1,4 @@
 import React from "react";
-import { getTerpenAliases } from "../utils/helpers";
 
 export default function TerpeneChips({ list = [], onInfo }) {
   if (!Array.isArray(list) || list.length === 0) return "N/A";
