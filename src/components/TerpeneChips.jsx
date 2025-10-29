@@ -6,6 +6,7 @@ export default function TerpeneChips({ list = [], onInfo }) {
         <li key={`${t}-${idx}`}>
           <button
             className="terp-chip"
+            type="button"
             onClick={() => onInfo?.(t)}
             title={`Mehr Informationen zu ${t}`}
           >
