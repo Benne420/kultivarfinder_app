@@ -106,11 +106,12 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
         </select>
         <button
           type="button"
-          className="similarity-panel__clear"
+          className="reset-btn similarity-panel__clear"
           onClick={handleClear}
           disabled={!selectedName}
+          aria-label="Ähnlichkeitssuche zurücksetzen"
         >
-          Clear similarity
+          ×
         </button>
       </div>
 

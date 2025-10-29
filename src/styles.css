@@ -299,21 +299,12 @@ nav a:hover {
 
 .similarity-panel__clear {
   flex: 0 0 auto;
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #90a4ae;
-  background: #eceff1;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  align-self: flex-start;
 }
 
 .similarity-panel__clear:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.similarity-panel__clear:not(:disabled):hover {
-  background-color: #e0f2f1;
 }
 
 .similarity-panel__hint {
