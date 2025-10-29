@@ -1,42 +1,141 @@
 import React from "react";
 
+const slugify = (prefix, value) =>
+  `${prefix}-${value}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const MultiSelectDropdown = ({
+  headingId,
+  label,
+  options,
+  selectedSet,
+  onToggle,
+  optionPrefix,
+}) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef(null);
+
+  const selectedItems = React.useMemo(
+    () => Array.from(selectedSet.values()),
+    [selectedSet]
+  );
+
+  const summary = React.useMemo(() => {
+    if (!selectedItems.length) {
+      return "Alle anzeigen";
+    }
+
+    if (selectedItems.length <= 2) {
+      return selectedItems.join(", ");
+    }
+
+    return `${selectedItems.length} ausgewählt`;
+  }, [selectedItems]);
+
+  React.useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen]);
+
+  const toggleOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  return (
+    <div className="multi-select-dropdown" ref={dropdownRef}>
+      <button
+        type="button"
+        className="multi-select-dropdown__trigger"
+        aria-expanded={isOpen}
+        aria-controls={`${headingId}-options`}
+        onClick={toggleOpen}
+      >
+        <span className="multi-select-dropdown__label">{label}</span>
+        <span className="multi-select-dropdown__summary">{summary}</span>
+        <span className="multi-select-dropdown__chevron" aria-hidden="true">
+          ▾
+        </span>
+      </button>
+      {isOpen ? (
+        <div
+          id={`${headingId}-options`}
+          className="multi-select-dropdown__panel"
+          role="group"
+          aria-labelledby={headingId}
+        >
+          <div className="multi-select">
+            {options.map((option) => {
+              const id = slugify(optionPrefix, option);
+              const isChecked = selectedSet.has(option);
+              return (
+                <label key={option} htmlFor={id} className="multi-select__option">
+                  <input
+                    id={id}
+                    type="checkbox"
+                    value={option}
+                    checked={isChecked}
+                    onChange={() => onToggle(option)}
+                  />
+                  <span>{option}</span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+};
+
 export default function FilterPanel({
   filters,
   dispatch,
   wirkungen,
   typInfo,
   terpene,
-  optionsFor,
   clearTerpene,
   clearWirkungen,
 }) {
+  const handleTerpeneToggle = (value) =>
+    dispatch({ type: "TOGGLE_TERPENE", value });
+  const handleWirkungToggle = (value) =>
+    dispatch({ type: "TOGGLE_WIRKUNG", value });
+
   return (
     <div className="filters">
       <div className="select-group">
-        <h3>Terpene</h3>
-        <div className="select-row">
-          <select
-            value={filters.terp1}
-            onChange={(e) => dispatch({ type: "SET_TERP1", value: e.target.value })}
-          >
-            <option value="">–</option>
-            {optionsFor(terpene, filters.terp2).map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-          <select
-            value={filters.terp2}
-            onChange={(e) => dispatch({ type: "SET_TERP2", value: e.target.value })}
-          >
-            <option value="">–</option>
-            {optionsFor(terpene, filters.terp1).map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
+        <h3 id="terpene-heading">Terpene</h3>
+        <div className="select-row select-row--with-reset">
+          <MultiSelectDropdown
+            headingId="terpene-heading"
+            label="Terpene auswählen"
+            options={terpene}
+            selectedSet={filters.selectedTerpene}
+            onToggle={handleTerpeneToggle}
+            optionPrefix="terpene"
+          />
           <button
             type="button"
             className="reset-btn"
@@ -50,24 +149,16 @@ export default function FilterPanel({
       </div>
 
       <div className="select-group">
-        <h3>Wirkungen</h3>
-        <div className="select-row">
-          <select value={filters.wirk1} onChange={(e) => dispatch({ type: "SET_WIRK1", value: e.target.value })}>
-            <option value="">–</option>
-            {optionsFor(wirkungen, filters.wirk2).map((w) => (
-              <option key={w} value={w}>
-                {w}
-              </option>
-            ))}
-          </select>
-          <select value={filters.wirk2} onChange={(e) => dispatch({ type: "SET_WIRK2", value: e.target.value })}>
-            <option value="">–</option>
-            {optionsFor(wirkungen, filters.wirk1).map((w) => (
-              <option key={w} value={w}>
-                {w}
-              </option>
-            ))}
-          </select>
+        <h3 id="wirkungen-heading">Wirkungen</h3>
+        <div className="select-row select-row--with-reset">
+          <MultiSelectDropdown
+            headingId="wirkungen-heading"
+            label="Wirkungen auswählen"
+            options={wirkungen}
+            selectedSet={filters.selectedWirkungen}
+            onToggle={handleWirkungToggle}
+            optionPrefix="wirkung"
+          />
           <button
             type="button"
             className="reset-btn"

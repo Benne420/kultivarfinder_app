@@ -140,10 +140,6 @@ const radarPathSvg = (name) =>
  * zusammen. Sets werden hier als echte Set‑Instanzen initialisiert.
  */
 const initialFilterState = {
-  terp1: "",
-  terp2: "",
-  wirk1: "",
-  wirk2: "",
   typ: "",
   includeDiscontinued: false,
   selectedTerpene: new Set(),
@@ -157,21 +153,23 @@ const initialFilterState = {
  */
 function filterReducer(state, action) {
   switch (action.type) {
-    case "SET_TERP1": {
-      const newSet = new Set([action.value, state.terp2].filter(Boolean));
-      return { ...state, terp1: action.value, selectedTerpene: newSet };
+    case "TOGGLE_TERPENE": {
+      const next = new Set(state.selectedTerpene);
+      if (next.has(action.value)) {
+        next.delete(action.value);
+      } else {
+        next.add(action.value);
+      }
+      return { ...state, selectedTerpene: next };
     }
-    case "SET_TERP2": {
-      const newSet = new Set([state.terp1, action.value].filter(Boolean));
-      return { ...state, terp2: action.value, selectedTerpene: newSet };
-    }
-    case "SET_WIRK1": {
-      const newSet = new Set([action.value, state.wirk2].filter(Boolean));
-      return { ...state, wirk1: action.value, selectedWirkungen: newSet };
-    }
-    case "SET_WIRK2": {
-      const newSet = new Set([state.wirk1, action.value].filter(Boolean));
-      return { ...state, wirk2: action.value, selectedWirkungen: newSet };
+    case "TOGGLE_WIRKUNG": {
+      const next = new Set(state.selectedWirkungen);
+      if (next.has(action.value)) {
+        next.delete(action.value);
+      } else {
+        next.add(action.value);
+      }
+      return { ...state, selectedWirkungen: next };
     }
     case "SET_TYP": {
       return { ...state, typ: action.value };
@@ -180,10 +178,10 @@ function filterReducer(state, action) {
       return { ...state, includeDiscontinued: action.value };
     }
     case "CLEAR_TERPENE": {
-      return { ...state, terp1: "", terp2: "", selectedTerpene: new Set() };
+      return { ...state, selectedTerpene: new Set() };
     }
     case "CLEAR_WIRKUNGEN": {
-      return { ...state, wirk1: "", wirk2: "", selectedWirkungen: new Set() };
+      return { ...state, selectedWirkungen: new Set() };
     }
     default:
       return state;
@@ -324,11 +322,6 @@ export default function CannabisKultivarFinderUseReducer() {
     setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
-  const optionsFor = useCallback(
-    (items, exclude) => items.filter((i) => !exclude || i !== exclude),
-    []
-  );
-
   // Rendern der Komponente
   return (
     <div className="container">
@@ -360,8 +353,12 @@ export default function CannabisKultivarFinderUseReducer() {
         .filters { display: grid; gap: 12px; margin: 16px 0 24px; }
         .select-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; }
         .select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: center; }
-        .select-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: center; }
-        .select-row select { width: 100%; padding: 10px; border: 1px solid #cfd8dc; border-radius: 8px; font-size: 14px; }
+        .select-row { display: flex; gap: 12px; align-items: flex-start; }
+        .select-row--with-reset .reset-btn { align-self: flex-start; }
+        .multi-select { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; width: 100%; }
+        .multi-select__option { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid #cfd8dc; border-radius: 9999px; background: #f7fafc; font-size: 13px; line-height: 1.3; }
+        .multi-select__option input { accent-color: #546e7a; }
+        .multi-select__option:focus-within { outline: 2px solid #90caf9; outline-offset: 2px; }
         .reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; }
         .reset-btn:hover { background: #eef2f7; }
         .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -409,7 +406,6 @@ export default function CannabisKultivarFinderUseReducer() {
         filters={filters}
         dispatch={dispatch}
         terpene={terpene}
-        optionsFor={optionsFor}
         wirkungen={wirkungen}
         typInfo={typInfo}
         clearTerpene={clearTerpene}
