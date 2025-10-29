@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function TerpeneChips({ list = [], onInfo }) {
   if (!Array.isArray(list) || list.length === 0) return "N/A";
   return (
