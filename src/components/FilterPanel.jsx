@@ -6,6 +6,109 @@ const slugify = (prefix, value) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
+const MultiSelectDropdown = ({
+  headingId,
+  label,
+  options,
+  selectedSet,
+  onToggle,
+  optionPrefix,
+}) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef(null);
+
+  const selectedItems = React.useMemo(
+    () => Array.from(selectedSet.values()),
+    [selectedSet]
+  );
+
+  const summary = React.useMemo(() => {
+    if (!selectedItems.length) {
+      return "Alle anzeigen";
+    }
+
+    if (selectedItems.length <= 2) {
+      return selectedItems.join(", ");
+    }
+
+    return `${selectedItems.length} ausgewählt`;
+  }, [selectedItems]);
+
+  React.useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen]);
+
+  const toggleOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  return (
+    <div className="multi-select-dropdown" ref={dropdownRef}>
+      <button
+        type="button"
+        className="multi-select-dropdown__trigger"
+        aria-expanded={isOpen}
+        aria-controls={`${headingId}-options`}
+        onClick={toggleOpen}
+      >
+        <span className="multi-select-dropdown__label">{label}</span>
+        <span className="multi-select-dropdown__summary">{summary}</span>
+        <span className="multi-select-dropdown__chevron" aria-hidden="true">
+          ▾
+        </span>
+      </button>
+      {isOpen ? (
+        <div
+          id={`${headingId}-options`}
+          className="multi-select-dropdown__panel"
+          role="group"
+          aria-labelledby={headingId}
+        >
+          <div className="multi-select">
+            {options.map((option) => {
+              const id = slugify(optionPrefix, option);
+              const isChecked = selectedSet.has(option);
+              return (
+                <label key={option} htmlFor={id} className="multi-select__option">
+                  <input
+                    id={id}
+                    type="checkbox"
+                    value={option}
+                    checked={isChecked}
+                    onChange={() => onToggle(option)}
+                  />
+                  <span>{option}</span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+};
+
 export default function FilterPanel({
   filters,
   dispatch,
@@ -25,27 +128,14 @@ export default function FilterPanel({
       <div className="select-group">
         <h3 id="terpene-heading">Terpene</h3>
         <div className="select-row select-row--with-reset">
-          <div
-            className="multi-select"
-            role="group"
-            aria-labelledby="terpene-heading"
-          >
-            {terpene.map((t) => {
-              const id = slugify("terpene", t);
-              return (
-                <label key={t} htmlFor={id} className="multi-select__option">
-                  <input
-                    id={id}
-                    type="checkbox"
-                    value={t}
-                    checked={filters.selectedTerpene.has(t)}
-                    onChange={() => handleTerpeneToggle(t)}
-                  />
-                  <span>{t}</span>
-                </label>
-              );
-            })}
-          </div>
+          <MultiSelectDropdown
+            headingId="terpene-heading"
+            label="Terpene auswählen"
+            options={terpene}
+            selectedSet={filters.selectedTerpene}
+            onToggle={handleTerpeneToggle}
+            optionPrefix="terpene"
+          />
           <button
             type="button"
             className="reset-btn"
@@ -61,27 +151,14 @@ export default function FilterPanel({
       <div className="select-group">
         <h3 id="wirkungen-heading">Wirkungen</h3>
         <div className="select-row select-row--with-reset">
-          <div
-            className="multi-select"
-            role="group"
-            aria-labelledby="wirkungen-heading"
-          >
-            {wirkungen.map((w) => {
-              const id = slugify("wirkung", w);
-              return (
-                <label key={w} htmlFor={id} className="multi-select__option">
-                  <input
-                    id={id}
-                    type="checkbox"
-                    value={w}
-                    checked={filters.selectedWirkungen.has(w)}
-                    onChange={() => handleWirkungToggle(w)}
-                  />
-                  <span>{w}</span>
-                </label>
-              );
-            })}
-          </div>
+          <MultiSelectDropdown
+            headingId="wirkungen-heading"
+            label="Wirkungen auswählen"
+            options={wirkungen}
+            selectedSet={filters.selectedWirkungen}
+            onToggle={handleWirkungToggle}
+            optionPrefix="wirkung"
+          />
           <button
             type="button"
             className="reset-btn"
