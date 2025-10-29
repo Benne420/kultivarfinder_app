@@ -337,7 +337,15 @@ export default function CannabisKultivarFinderUseReducer() {
       </header>
       {/* Inline‑Styles für Chips, Modals und Filterelemente */}
       <style>{`
-        .terp-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+        .terp-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          justify-content: center;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
         .terp-chip {
           border: 1px solid #cfd8dc; border-radius: 9999px; padding: 4px 10px; cursor: pointer;
           background: #f7fafc; font-size: 12px; line-height: 1; white-space: nowrap;
