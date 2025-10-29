@@ -86,19 +86,17 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
 
   return (
     <section className="similarity-panel">
-      <h3 className="similarity-panel__title">Ähnliche Sorten finden</h3>
+      <h3 className="similarity-panel__title">Ähnliche Sorte finden</h3>
       <div className="similarity-panel__controls">
-        <label className="similarity-panel__label" htmlFor="strain-select">
-          Sorte auswählen
-        </label>
         <select
           id="strain-select"
           className="similarity-panel__select"
           onChange={handleChange}
           value={selectedName}
           aria-describedby="strain-select-description"
+          aria-label="Sorte wählen"
         >
-          <option value="">-- wählen --</option>
+          <option value="">Sorte wählen</option>
           {activeStrains.map((s) => (
             <option key={s.name} value={s.name}>
               {s.name}

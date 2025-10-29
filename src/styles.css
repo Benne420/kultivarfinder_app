@@ -276,6 +276,7 @@ nav a:hover {
 .similarity-panel__title {
   margin: 0 0 12px;
   font-size: 18px;
+  text-align: center;
 }
 
 .similarity-panel__controls {
@@ -283,11 +284,7 @@ nav a:hover {
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-}
-
-.similarity-panel__label {
-  flex: 1 1 200px;
-  font-weight: 600;
+  justify-content: center;
 }
 
 .similarity-panel__description {
@@ -297,7 +294,7 @@ nav a:hover {
 }
 
 .similarity-panel__select {
-  flex: 1 1 220px;
+  flex: 0 1 260px;
   padding: 8px;
   border-radius: 6px;
   border: 1px solid #b0bec5;
