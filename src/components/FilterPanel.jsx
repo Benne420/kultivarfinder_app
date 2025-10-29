@@ -141,7 +141,7 @@ export default function FilterPanel({
             className="reset-btn"
             onClick={clearTerpene}
             disabled={!filters.selectedTerpene.size}
-            aria-label="Terpen-Auswahl zurücksetzen"
+            aria-label="Terpenfilter zurücksetzen"
           >
             ×
           </button>
@@ -164,7 +164,7 @@ export default function FilterPanel({
             className="reset-btn"
             onClick={clearWirkungen}
             disabled={!filters.selectedWirkungen.size}
-            aria-label="Wirkungs-Auswahl zurücksetzen"
+            aria-label="Wirkungsfilter zurücksetzen"
           >
             ×
           </button>
