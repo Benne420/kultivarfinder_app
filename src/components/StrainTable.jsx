@@ -18,7 +18,6 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
             <th className="hidden-sm">CBD</th>
             <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
             <th>Radar</th>
-            <th>Terpene</th>
           </tr>
         </thead>
         <tbody>
@@ -61,17 +60,12 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
                     anzeigen
                   </button>
                 </td>
-                <td>
-                  <button className="link-button" onClick={() => showTerpenPanel(k)} title="Detaillierte Terpen-Wirkungen anzeigen">
-                    Terpene
-                  </button>
-                </td>
               </tr>
             ))
           ) : (
             <tr>
               <td
-                colSpan={hasSimilarityColumn ? 7 : 6}
+                colSpan={hasSimilarityColumn ? 6 : 5}
                 style={{ textAlign: "center", padding: 12 }}
               >
                 Keine Ergebnisse
