@@ -196,11 +196,14 @@ export default function CannabisKultivarFinderUseReducer() {
   // Hintergrundbild setzen
   useEffect(() => {
     const previousBackground = document.body.style.backgroundImage;
+    const previousTitle = document.title;
     document.body.style.backgroundImage =
       "url('/F20_Pharma_Pattern-Hexagon_07.png')";
+    document.title = "Four20 Index";
 
     return () => {
       document.body.style.backgroundImage = previousBackground;
+      document.title = previousTitle;
     };
   }, []);
 
@@ -326,7 +329,7 @@ export default function CannabisKultivarFinderUseReducer() {
   return (
     <div className="container">
       <header className="header" aria-label="App-Kopfzeile">
-        <h1 className="appname">Kultivarfinder</h1>
+        <h1 className="appname">Four20 Index</h1>
       </header>
       {/* Inline‑Styles für Chips, Modals und Filterelemente */}
       <style>{`
