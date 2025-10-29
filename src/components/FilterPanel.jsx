@@ -1,42 +1,51 @@
 import React from "react";
 
+const slugify = (prefix, value) =>
+  `${prefix}-${value}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 export default function FilterPanel({
   filters,
   dispatch,
   wirkungen,
   typInfo,
   terpene,
-  optionsFor,
   clearTerpene,
   clearWirkungen,
 }) {
+  const handleTerpeneToggle = (value) =>
+    dispatch({ type: "TOGGLE_TERPENE", value });
+  const handleWirkungToggle = (value) =>
+    dispatch({ type: "TOGGLE_WIRKUNG", value });
+
   return (
     <div className="filters">
       <div className="select-group">
-        <h3>Terpene</h3>
-        <div className="select-row">
-          <select
-            value={filters.terp1}
-            onChange={(e) => dispatch({ type: "SET_TERP1", value: e.target.value })}
+        <h3 id="terpene-heading">Terpene</h3>
+        <div className="select-row select-row--with-reset">
+          <div
+            className="multi-select"
+            role="group"
+            aria-labelledby="terpene-heading"
           >
-            <option value="">–</option>
-            {optionsFor(terpene, filters.terp2).map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-          <select
-            value={filters.terp2}
-            onChange={(e) => dispatch({ type: "SET_TERP2", value: e.target.value })}
-          >
-            <option value="">–</option>
-            {optionsFor(terpene, filters.terp1).map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
+            {terpene.map((t) => {
+              const id = slugify("terpene", t);
+              return (
+                <label key={t} htmlFor={id} className="multi-select__option">
+                  <input
+                    id={id}
+                    type="checkbox"
+                    value={t}
+                    checked={filters.selectedTerpene.has(t)}
+                    onChange={() => handleTerpeneToggle(t)}
+                  />
+                  <span>{t}</span>
+                </label>
+              );
+            })}
+          </div>
           <button
             type="button"
             className="reset-btn"
@@ -50,24 +59,29 @@ export default function FilterPanel({
       </div>
 
       <div className="select-group">
-        <h3>Wirkungen</h3>
-        <div className="select-row">
-          <select value={filters.wirk1} onChange={(e) => dispatch({ type: "SET_WIRK1", value: e.target.value })}>
-            <option value="">–</option>
-            {optionsFor(wirkungen, filters.wirk2).map((w) => (
-              <option key={w} value={w}>
-                {w}
-              </option>
-            ))}
-          </select>
-          <select value={filters.wirk2} onChange={(e) => dispatch({ type: "SET_WIRK2", value: e.target.value })}>
-            <option value="">–</option>
-            {optionsFor(wirkungen, filters.wirk1).map((w) => (
-              <option key={w} value={w}>
-                {w}
-              </option>
-            ))}
-          </select>
+        <h3 id="wirkungen-heading">Wirkungen</h3>
+        <div className="select-row select-row--with-reset">
+          <div
+            className="multi-select"
+            role="group"
+            aria-labelledby="wirkungen-heading"
+          >
+            {wirkungen.map((w) => {
+              const id = slugify("wirkung", w);
+              return (
+                <label key={w} htmlFor={id} className="multi-select__option">
+                  <input
+                    id={id}
+                    type="checkbox"
+                    value={w}
+                    checked={filters.selectedWirkungen.has(w)}
+                    onChange={() => handleWirkungToggle(w)}
+                  />
+                  <span>{w}</span>
+                </label>
+              );
+            })}
+          </div>
           <button
             type="button"
             className="reset-btn"
