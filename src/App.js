@@ -16,6 +16,7 @@ import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
 import DetailsModal from "./components/DetailsModal";
 import StrainSimilarity from "./components/StrainSimilarity";
+import TypFilter from "./components/TypFilter";
 import { normalizeWirkung, getTerpenAliases } from "./utils/helpers";
 
 /*
@@ -405,12 +406,12 @@ export default function CannabisKultivarFinderUseReducer() {
       </div>
 
       <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} />
+      <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
       <FilterPanel
         filters={filters}
         dispatch={dispatch}
         terpene={terpene}
         wirkungen={wirkungen}
-        typInfo={typInfo}
         clearTerpene={clearTerpene}
         clearWirkungen={clearWirkungen}
       />
