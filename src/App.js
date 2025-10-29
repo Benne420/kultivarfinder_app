@@ -376,7 +376,7 @@ export default function CannabisKultivarFinderUseReducer() {
 
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
-        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; }
+        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; margin: 16px 0; }
         .typ-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; }
         .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
         .typ-btn:hover { background: #f7faff; }
