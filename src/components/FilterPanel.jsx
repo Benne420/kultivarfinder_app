@@ -37,7 +37,13 @@ export default function FilterPanel({
               </option>
             ))}
           </select>
-          <button className="reset-btn" onClick={clearTerpene} disabled={!filters.selectedTerpene.size}>
+          <button
+            type="button"
+            className="reset-btn"
+            onClick={clearTerpene}
+            disabled={!filters.selectedTerpene.size}
+            aria-label="Terpen-Auswahl zurücksetzen"
+          >
             ×
           </button>
         </div>
@@ -62,7 +68,13 @@ export default function FilterPanel({
               </option>
             ))}
           </select>
-          <button className="reset-btn" onClick={clearWirkungen} disabled={!filters.selectedWirkungen.size}>
+          <button
+            type="button"
+            className="reset-btn"
+            onClick={clearWirkungen}
+            disabled={!filters.selectedWirkungen.size}
+            aria-label="Wirkungs-Auswahl zurücksetzen"
+          >
             ×
           </button>
         </div>
