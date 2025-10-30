@@ -32,10 +32,25 @@ function cosineSimilarity(a = [], b = []) {
 
 function findSimilar(reference, allStrains, limit = 5) {
   if (!reference) return [];
-  const refTerps = reference.terpenprofil || reference.terpenprofile || reference.terpenes || [];
+  const refTerps =
+    reference.normalizedTerpenprofil ||
+    reference.terpenprofil ||
+    reference.terpenprofile ||
+    reference.terpenes ||
+    [];
   return allStrains
     .filter(s => s.name !== reference.name)
-    .map(s => ({ ...s, similarity: cosineSimilarity(refTerps, s.terpenprofil || s.terpenprofile || s.terpenes || []) }))
+    .map(s => ({
+      ...s,
+      similarity: cosineSimilarity(
+        refTerps,
+        s.normalizedTerpenprofil ||
+          s.terpenprofil ||
+          s.terpenprofile ||
+          s.terpenes ||
+          []
+      ),
+    }))
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, limit);
 }

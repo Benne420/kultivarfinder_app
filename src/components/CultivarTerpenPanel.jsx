@@ -1,44 +1,68 @@
 import React, { useState, useEffect } from 'react';
+import { useTerpeneContext } from '../context/TerpeneContext';
+import { mapTerpeneToCanonical } from '../utils/helpers';
 
 const CultivarTerpenPanel = ({ cultivar }) => {
-  const [terpenes, setTerpenes] = useState([]);
+  const { terpenes: contextTerpenes, aliasLookup } = useTerpeneContext();
+  const [terpenes, setTerpenes] = useState(() =>
+    Array.isArray(contextTerpenes) ? contextTerpenes : []
+  );
   const [references, setReferences] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        const [terpenesRes, referencesRes] = await Promise.all([
-          fetch('/data/terpenes.json'),
-          fetch('/data/references.json')
-        ]);
+    let isMounted = true;
 
-        if (!terpenesRes.ok || !referencesRes.ok) {
-          throw new Error('Fehler beim Laden der Terpen-Daten');
+    const loadData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        let terpenesData = contextTerpenes;
+        if (!Array.isArray(terpenesData) || terpenesData.length === 0) {
+          const terpenesRes = await fetch('/data/terpenes.json');
+          if (!terpenesRes.ok) {
+            throw new Error(`Terpen-Daten HTTP ${terpenesRes.status}`);
+          }
+          terpenesData = await terpenesRes.json();
         }
 
-        const [terpenesData, referencesData] = await Promise.all([
-          terpenesRes.json(),
-          referencesRes.json()
-        ]);
+        const referencesRes = await fetch('/data/references.json');
+        if (!referencesRes.ok) {
+          throw new Error(`Referenz-Daten HTTP ${referencesRes.status}`);
+        }
+        const referencesData = await referencesRes.json();
 
-        setTerpenes(terpenesData);
+        if (!isMounted) return;
+        setTerpenes(Array.isArray(terpenesData) ? terpenesData : []);
         setReferences(referencesData);
-        setLoading(false);
       } catch (err) {
-        setError(err.message);
-        setLoading(false);
+        if (!isMounted) return;
+        setError(err instanceof Error ? err.message : 'Unbekannter Fehler');
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     loadData();
-  }, []);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [contextTerpenes]);
 
   const getTerpenInfo = (terpenName) => {
-    return terpenes.find(t => 
-      t.name === terpenName || 
-      (t.aliases && t.aliases.includes(terpenName))
+    if (!Array.isArray(terpenes)) return undefined;
+    const canonical = mapTerpeneToCanonical(terpenName, aliasLookup);
+    return (
+      terpenes.find((t) => t.name === canonical) ||
+      terpenes.find(
+        (t) =>
+          t.name === terpenName ||
+          (Array.isArray(t.aliases) && t.aliases.includes(terpenName))
+      )
     );
   };
 
