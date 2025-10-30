@@ -16,6 +16,36 @@ export const normalizeWirkung = (w) => {
 const normalizeTerpeneKey = (value) =>
   (value || "").toString().trim().toLowerCase();
 
+const terpeneSortReplacements = new Map([
+  ["ɑ", "a"],
+  ["α", "a"],
+  ["β", "b"],
+  ["γ", "g"],
+  ["δ", "d"],
+]);
+
+const terpeneSortKey = (value) => {
+  const input = (value || "").toString();
+  if (!input) return "";
+  const replaced = Array.from(input)
+    .map((char) => {
+      const lower = char.toLowerCase();
+      return (
+        terpeneSortReplacements.get(char) ||
+        terpeneSortReplacements.get(lower) ||
+        lower
+      );
+    })
+    .join("");
+  return replaced
+    .normalize("NFKD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase();
+};
+
+export const sortTerpeneNames = (names = []) =>
+  [...names].sort((a, b) => terpeneSortKey(a).localeCompare(terpeneSortKey(b), "de"));
+
 export const createTerpeneAliasLookup = (terpenes = []) => {
   const canonicalByKey = new Map();
   const variantsByCanonical = new Map();
