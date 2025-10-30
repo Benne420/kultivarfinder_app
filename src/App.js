@@ -31,15 +31,16 @@ const typInfo = {
     "Hybride mit stärkerem Sativa-Einfluss, wie er bei hochwüchsigen, schlanken Pflanzen aus tropischen Regionen vorkam. Im Narrativ oft als aktivierend beschrieben – die tatsächliche Wirkung lässt sich wissenschaftlich nicht am Namen festmachen, sondern ergibt sich aus Wirkstoff- und Terpenprofil.",
 };
 const terpene = [
+  "ɑ-Pinen",
+  "α-Humulen",
+  "β-Myrcen",
+  "β-Ocimen",
   "Caryophyllen",
   "D-Limonen",
   "Farnesen",
   "Linalool",
   "Selinen",
-  "Terpinolen",
-  "α-Humulen",
-  "β-Myrcen",
-  "β-Ocimen",
+  "Terpinolen"
 ];
 
 /*
@@ -475,5 +476,6 @@ export default function CannabisKultivarFinderUseReducer() {
     </div>
   );
 }
+
 
 
