@@ -127,7 +127,6 @@ nav a:hover {
 .filters .multi-select-dropdown__trigger {
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -147,6 +146,15 @@ nav a:hover {
   border-color: #90caf9;
   box-shadow: 0 0 0 3px rgba(144, 202, 249, 0.25);
   outline: none;
+}
+
+.filters .multi-select-dropdown__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
 }
 
 .filters .multi-select-dropdown__label {
@@ -172,8 +180,8 @@ nav a:hover {
   font-size: 18px;
   line-height: 1;
   color: #90a4ae;
-  margin-left: 0;
-  align-self: center;
+  margin-left: 4px;
+  flex-shrink: 0;
 }
 
 .filters .multi-select-dropdown__panel {

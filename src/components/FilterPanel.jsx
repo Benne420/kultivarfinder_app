@@ -85,8 +85,10 @@ const MultiSelectDropdown = ({
         aria-controls={`${headingId}-options`}
         onClick={toggleOpen}
       >
-        <span className="multi-select-dropdown__label">{label}</span>
-        <span className="multi-select-dropdown__summary">{summary}</span>
+        <span className="multi-select-dropdown__text">
+          <span className="multi-select-dropdown__label">{label}</span>
+          <span className="multi-select-dropdown__summary">{summary}</span>
+        </span>
         <span className="multi-select-dropdown__chevron" aria-hidden="true">
           ▾
         </span>
