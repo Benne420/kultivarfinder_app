@@ -15,6 +15,7 @@ import EntourageInfo from "./components/EntourageInfo";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
 import DetailsModal from "./components/DetailsModal";
+import RadarModal from "./components/RadarModal";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
 import { normalizeWirkung, getTerpenAliases } from "./utils/helpers";
@@ -129,10 +130,6 @@ const filterKultivare = (
       return true;
     });
 };
-
-// Ableitung des Radar‑Diagramm‑Pfads
-const radarPathSvg = (name) =>
-  `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
 
 /*
  * Anfangszustand des Reducers. Wir fassen alle Filter- und UI‑Zustände
@@ -306,6 +303,7 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // Dialog für detaillierte Sorteninformationen (Name, THC, CBD, Terpengehalt, Wirkungen, Terpenprofil)
   const [infoDialog, setInfoDialog] = useState({ open: false, cultivar: null });
+  const [radarDialog, setRadarDialog] = useState({ open: false, cultivar: null });
 
   // Zustand für das Terpen-Panel
   const [terpenPanel, setTerpenPanel] = useState({
@@ -380,6 +378,14 @@ export default function CannabisKultivarFinderUseReducer() {
   }, []);
   const hideInfo = useCallback(() => {
     setInfoDialog({ open: false, cultivar: null });
+  }, []);
+
+  const showRadar = useCallback((cultivar) => {
+    setRadarDialog({ open: true, cultivar });
+  }, []);
+
+  const hideRadar = useCallback(() => {
+    setRadarDialog({ open: false, cultivar: null });
   }, []);
 
   // Callback-Funktionen für das Terpen-Panel
@@ -505,11 +511,13 @@ export default function CannabisKultivarFinderUseReducer() {
           strains={displayedKultivare}
           showInfo={showInfo}
           showTerpenPanel={showTerpenPanel}
+          showRadar={showRadar}
         />
       )}
       <EntourageInfo />
 
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
+      <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
 
       {terpenPanel.open && terpenPanel.cultivar && (
         <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>

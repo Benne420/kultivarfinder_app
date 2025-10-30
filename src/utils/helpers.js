@@ -108,4 +108,7 @@ export const getTerpenAliases = (name) => {
   return Array.from(new Set(list));
 };
 
+export const radarPathSvg = (name) =>
+  `/netzdiagramme/${(name || "").toString().replace(/\s+/g, "_")}.svg`;
+
 export default null;
