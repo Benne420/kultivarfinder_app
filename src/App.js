@@ -23,6 +23,7 @@ import {
   normalizeWirkung,
   createTerpeneAliasLookup,
   mapTerpeneToCanonical,
+  sortTerpeneNames,
 } from "./utils/helpers";
 
 /*
@@ -36,7 +37,7 @@ const typInfo = {
   "Sativa-dominant":
     "Hybride mit stärkerem Sativa-Einfluss, wie er bei hochwüchsigen, schlanken Pflanzen aus tropischen Regionen vorkam. Im Narrativ oft als aktivierend beschrieben – die tatsächliche Wirkung lässt sich wissenschaftlich nicht am Namen festmachen, sondern ergibt sich aus Wirkstoff- und Terpenprofil.",
 };
-const defaultTerpeneOptions = [
+const defaultTerpeneOptions = sortTerpeneNames([
   "ɑ-Pinen",
   "α-Humulen",
   "β-Myrcen",
@@ -46,8 +47,8 @@ const defaultTerpeneOptions = [
   "Farnesen",
   "Linalool",
   "Selinen",
-  "Terpinolen"
-].sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
+  "Terpinolen",
+]);
 
 /*
  * Liste der verfügbaren Wirkungen. Synonyme werden über das Mapping
@@ -305,9 +306,9 @@ export default function CannabisKultivarFinderUseReducer() {
 
         const canonicalTerpenes = aliasLookup?.variantsByCanonical;
         if (canonicalTerpenes instanceof Map && canonicalTerpenes.size) {
-          const sortedTerpenes = [...canonicalTerpenes.keys()].sort((a, b) =>
-            a.localeCompare(b, "de", { sensitivity: "base" })
-          );
+          const sortedTerpenes = sortTerpeneNames([
+            ...canonicalTerpenes.keys(),
+          ]);
           setTerpeneOptions(sortedTerpenes);
         } else {
           setTerpeneOptions(defaultTerpeneOptions);
