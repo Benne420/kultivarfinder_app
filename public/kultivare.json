@@ -57,7 +57,7 @@
     "terpenprofil": ["Caryophyllen", "D-Limonen"],
     "wirkungen": ["analgetisch", "antiinflammatorisch"],
     "typ": "Sativa",
-    "status": "discontinued"
+    "status": "acitve"
   },
   {
     "name": "Chemdog",
@@ -67,7 +67,7 @@
     "terpenprofil": ["Caryophyllen", "β-Myrcen"],
     "wirkungen": ["analgetisch", "antiinflammatorisch"],
     "typ": "Indica-dominant",
-    "status": "discontinued"
+    "status": "active"
   },
   {
     "name": "Cinderella Kush",
@@ -287,7 +287,7 @@
     "terpenprofil": ["D-Limonen", "Linalool"],
     "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "analgetisch"],
     "typ": "Indica-dominant",
-    "status": "discontinued"
+    "status": "active"
   },
   {
     "name": "Rose Gold Runtz",
@@ -337,7 +337,7 @@
     "terpenprofil": ["β-Myrcen", "Caryophyllen"],
     "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
     "typ": "Indica-dominant",
-    "status": "discontinued"
+    "status": "active"
   },
   {
     "name": "Triangle Octane",
@@ -430,6 +430,7 @@
     "status": "active"
   }
 ]
+
 
 
 
