@@ -248,8 +248,12 @@ export default function CannabisKultivarFinderUseReducer() {
   // Daten aus dem Backend laden
   const [kultivare, setKultivare] = useState([]);
   const [availableWirkungen, setAvailableWirkungen] = useState(defaultWirkungen);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const response = await fetch("/kultivare.json");
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -287,6 +291,11 @@ export default function CannabisKultivarFinderUseReducer() {
         );
       } catch (err) {
         console.error("Fehler beim Laden der Daten:", err);
+        setError(err instanceof Error ? err.message : "Unbekannter Fehler");
+        setKultivare([]);
+        setAvailableWirkungen(defaultWirkungen);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -437,6 +446,9 @@ export default function CannabisKultivarFinderUseReducer() {
         .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
         .typ-btn:hover { background: #f7faff; }
         .typ-btn.active { background: #e8f0fe; border-color: #90caf9; }
+        .status { margin: 16px auto; max-width: 720px; padding: 12px 16px; border-radius: 10px; font-size: 15px; text-align: center; }
+        .status--loading { background: #f1f8ff; border: 1px solid #90caf9; color: #0d47a1; }
+        .status--error { background: #ffebee; border: 1px solid #ef9a9a; color: #b71c1c; }
         /* Kleine Screens: Spalten mit der Klasse hidden-sm ausblenden */
         @media (max-width: 640px) {
           .hidden-sm {
@@ -478,7 +490,23 @@ export default function CannabisKultivarFinderUseReducer() {
           um zur gefilterten Ansicht zurückzukehren.
         </div>
       )}
-      <StrainTable strains={displayedKultivare} showInfo={showInfo} showTerpenPanel={showTerpenPanel} />
+      {loading && (
+        <div className="status status--loading" role="status" aria-live="polite">
+          Daten werden geladen …
+        </div>
+      )}
+      {error && !loading && (
+        <div className="status status--error" role="alert">
+          Beim Laden der Daten ist ein Fehler aufgetreten: {error}
+        </div>
+      )}
+      {!loading && !error && (
+        <StrainTable
+          strains={displayedKultivare}
+          showInfo={showInfo}
+          showTerpenPanel={showTerpenPanel}
+        />
+      )}
       <EntourageInfo />
 
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
