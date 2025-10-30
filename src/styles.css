@@ -201,6 +201,10 @@ nav a:hover {
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+.filters .select-group > h3 {
+  text-align: center;
+}
+
 .filters .multi-select__option:hover {
   background: #eef2f7;
   border-color: #b0bec5;
