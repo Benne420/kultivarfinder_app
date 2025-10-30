@@ -36,7 +36,7 @@ const typInfo = {
   "Sativa-dominant":
     "Hybride mit stärkerem Sativa-Einfluss, wie er bei hochwüchsigen, schlanken Pflanzen aus tropischen Regionen vorkam. Im Narrativ oft als aktivierend beschrieben – die tatsächliche Wirkung lässt sich wissenschaftlich nicht am Namen festmachen, sondern ergibt sich aus Wirkstoff- und Terpenprofil.",
 };
-const terpene = [
+const defaultTerpeneOptions = [
   "ɑ-Pinen",
   "α-Humulen",
   "β-Myrcen",
