@@ -2,24 +2,24 @@ import React from "react";
 
 const aspects = [
   {
-    title: "Cannabinoid–Terpen–Synergie",
+    title: "Cannabinoid–Terpen–Interaktionen",
     description:
-      "Terpene können die Wirkung von THC und CBD modulieren, z. B. durch Einfluss auf Rezeptoren oder Signalwege (Russo, 2011).",
+      "Terpene wie Linalool, β-Pinen oder α-Humulen zeigen in präklinischen Modellen cannabimimetische Eigenschaften und können Cannabinoidwirkungen modulieren (LaVigne et al., 2021).",
   },
   {
-    title: "Pharmakokinetik",
+    title: "Pharmakologische Modulation",
     description:
-      "Einige Terpene könnten die Aufnahme von Cannabinoiden verändern, etwa durch Beeinflussung der Zellmembranpermeabilität (Russo, 2011).",
+      "Terpene besitzen eigene Wirkmechanismen – etwa über GABA-, Adenosin- oder TRP-Kanäle – und könnten Bioverfügbarkeit sowie Rezeptorbindung von Cannabinoiden beeinflussen (André et al., 2024).",
   },
   {
-    title: "Wirkungsmodulation",
+    title: "Klinische Evidenz",
     description:
-      "Kombinationen können Effekte verstärken oder abschwächen – z. B. Myrcen mit potenziell sedierender, Limonen mit stimmungsaufhellender Wirkung (Russo, 2011).",
+      "Beobachtungen legen nahe, dass CBD-reiche Vollextrakte eine stärkere Wirksamkeit und ein günstigeres Nebenwirkungsprofil zeigen könnten als isoliertes CBD (Pamplona et al., 2018).",
   },
   {
-    title: "Sensorik",
+    title: "Aktueller Forschungsstand",
     description:
-      "Terpene bestimmen Aroma und Geschmack und können das subjektive Erleben beeinflussen (Booth et al., 2020).",
+      "Systematische Übersichtsarbeiten betonen, dass bislang keine kontrollierten klinischen Studien eine generalisierbare Synergie belegen (Christensen et al., 2023).",
   },
 ];
 
@@ -47,11 +47,12 @@ const EntourageInfo = () => {
 
       <div style={{ fontSize: "14px", lineHeight: "1.5", color: "#495057" }}>
         <p style={{ margin: "0 0 12px 0" }}>
-          Der <strong>Entourage-Effekt</strong> beschreibt die mögliche
-          synergistische Wechselwirkung verschiedener Inhaltsstoffe der
-          Cannabispflanze – insbesondere Cannabinoide, Terpene und Flavonoide –,
-          die gemeinsam eine andere oder ausgewogenere Wirkung entfalten können
-          als ihre isolierten Einzelkomponenten.
+          Der sogenannte <strong>Entourage-Effekt</strong> beschreibt die
+          potenziell synergistische Wechselwirkung verschiedener Inhaltsstoffe
+          der Cannabispflanze – insbesondere Cannabinoide, Terpene und
+          Flavonoide –, die gemeinsam eine andere oder ausgewogenere
+          pharmakologische Wirkung entfalten könnten als isolierte
+          Einzelkomponenten.
         </p>
 
         <div style={{ marginBottom: "12px" }}>
@@ -65,6 +66,13 @@ const EntourageInfo = () => {
           </ul>
         </div>
 
+        <p style={{ margin: "0 0 12px 0" }}>
+          Die Hypothese des Entourage-Effekts wurde 2011 von Ethan B. Russo
+          umfassend beschrieben und postuliert eine molekulare Synergie zwischen
+          Terpenen und Cannabinoiden. Sie ist wissenschaftlich einflussreich,
+          wurde bisher jedoch nicht klinisch validiert (Russo, 2011).
+        </p>
+
         <div
           style={{
             padding: "8px 12px",
@@ -75,8 +83,8 @@ const EntourageInfo = () => {
             color: "#856404",
           }}
         >
-          <strong>Hinweis:</strong> Die beschriebenen Zusammenhänge sind
-          Gegenstand aktueller Forschung. Diese Informationen ersetzen keine
+          <strong>Rechtlicher Hinweis:</strong> Diese Informationen dienen der
+          allgemeinen wissenschaftlichen Orientierung und ersetzen keine
           medizinische Beratung.
         </div>
 
@@ -85,23 +93,47 @@ const EntourageInfo = () => {
           <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
             <li>
               <a
-                href="https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x"
+                href="https://www.frontiersin.org/articles/10.3389/fneur.2018.00759/full"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Russo, E. B. (2011). <em>Taming THC</em>. Br J Pharmacol,
-                163(7), 1344–1364.
+                Pamplona, F. A. et al. (2018). Front Neurol, 9, 759.
               </a>
             </li>
             <li>
               <a
-                href="https://pubmed.ncbi.nlm.nih.gov/32591428/"
+                href="https://www.nature.com/articles/s41598-021-89133-9"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Booth, J. K. et al. (2020). <em>Terpene Synthases and Terpene
-                Variation in Cannabis sativa</em>. Plant Physiology, 184(1),
-                130–147.
+                LaVigne, J. E. et al. (2021). Sci Rep, 11, 9481.
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.mdpi.com/2227-9059/11/8/2110"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Christensen, C. et al. (2023). Biomedicines, 11(8), 2110.
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.mdpi.com/1424-8247/17/11/1543"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                André, R. et al. (2024). Pharmaceuticals, 17(11), 1543.
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Russo, E. B. (2011). Br J Pharmacol, 163(7), 1344–1364.
               </a>
             </li>
           </ul>
