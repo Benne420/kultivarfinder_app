@@ -94,9 +94,9 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
           onChange={handleChange}
           value={selectedName}
           aria-describedby="strain-select-description"
-          aria-label="Sorte wählen"
+          aria-label="Ähnliche Sorte auswählen"
         >
-          <option value="">Sorte wählen</option>
+          <option value="" disabled hidden></option>
           {activeStrains.map((s) => (
             <option key={s.name} value={s.name}>
               {s.name}
