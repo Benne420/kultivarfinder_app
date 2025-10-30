@@ -102,7 +102,7 @@ const EntourageInfo = () => {
             </li>
             <li>
               <a
-                href="https://www.nature.com/articles/s41598-021-89133-9"
+                href="https://www.nature.com/articles/s41598-021-87740-8"
                 target="_blank"
                 rel="noopener noreferrer"
               >
