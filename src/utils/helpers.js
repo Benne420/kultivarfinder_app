@@ -1,9 +1,3 @@
-// Utility helpers extracted from App.js to reduce redundancy and improve reuse
-export const normalize = (s) => {
-  const key = (s || "").toString().trim().toLowerCase();
-  return key;
-};
-
 // Mapping of common aliases for effects (Wirkungen)
 export const wirkungAliases = {
   antiinflammatorisch: "entzündungshemmend",
@@ -110,5 +104,3 @@ export const getTerpenAliases = (name) => {
 
 export const radarPathSvg = (name) =>
   `/netzdiagramme/${(name || "").toString().replace(/\s+/g, "_")}.svg`;
-
-export default null;
