@@ -37,9 +37,7 @@ const terpene = [
   "Linalool",
   "Selinen",
   "Terpinolen",
-  "Trans-Caryophyllen",
   "α-Humulen",
-  "β-Caryophyllen",
   "β-Myrcen",
   "β-Ocimen",
 ];
@@ -477,4 +475,5 @@ export default function CannabisKultivarFinderUseReducer() {
     </div>
   );
 }
+
 
