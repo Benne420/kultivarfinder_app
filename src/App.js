@@ -47,7 +47,7 @@ const defaultTerpeneOptions = [
   "Linalool",
   "Selinen",
   "Terpinolen"
-];
+].sort((a, b) => a.localeCompare(b, "de", { sensitivity: "base" }));
 
 /*
  * Liste der verfügbaren Wirkungen. Synonyme werden über das Mapping
