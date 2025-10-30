@@ -1,8 +1,8 @@
 import React from "react";
 import TerpeneChips from "./TerpeneChips";
+import { radarPathSvg } from "../utils/helpers";
 
 export default function StrainTable({ strains = [], showInfo = () => {}, showTerpenPanel = () => {} }) {
-  const radarPathSvg = (name) => `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
   const hasSimilarityColumn = Array.isArray(strains)
     ? strains.some((s) => typeof s?.similarity === "number" && !Number.isNaN(s.similarity))
     : false;
