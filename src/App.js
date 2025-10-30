@@ -67,27 +67,34 @@ const defaultWirkungen = [
 ].sort();
 
 const getCanonicalTerpeneProfile = (kultivar, aliasLookup) => {
-  if (!kultivar) return [];
+  if (!kultivar) return new Set();
   if (Array.isArray(kultivar.normalizedTerpenprofil)) {
-    return kultivar.normalizedTerpenprofil;
+    return new Set(kultivar.normalizedTerpenprofil);
   }
   if (!Array.isArray(kultivar.terpenprofil)) {
-    return [];
+    return new Set();
   }
-  const canonical = kultivar.terpenprofil
-    .map((name) => mapTerpeneToCanonical(name, aliasLookup))
-    .filter(Boolean);
-  return Array.from(new Set(canonical));
+  const canonicalSet = new Set();
+  kultivar.terpenprofil.forEach((name) => {
+    const canonical = mapTerpeneToCanonical(name, aliasLookup);
+    if (canonical) {
+      canonicalSet.add(canonical);
+    }
+  });
+  return canonicalSet;
 };
 
 const kultivarHasSelectedTerpene = (kultivar, selectedTerpene, aliasLookup) => {
   if (!selectedTerpene || selectedTerpene.size === 0) return true;
-  const profileSet = new Set(getCanonicalTerpeneProfile(kultivar, aliasLookup));
+  const profileSet = getCanonicalTerpeneProfile(kultivar, aliasLookup);
   if (!profileSet.size) return false;
-  return [...selectedTerpene].every((sel) => {
+  for (const sel of selectedTerpene) {
     const canonical = mapTerpeneToCanonical(sel, aliasLookup);
-    return canonical ? profileSet.has(canonical) : false;
-  });
+    if (!canonical || !profileSet.has(canonical)) {
+      return false;
+    }
+  }
+  return true;
 };
 
 const isStatusIncluded = (k, includeDisc) => {
@@ -109,16 +116,12 @@ const mapTyp = (s) => {
 // Filterfunktion, die den aktuellen Filterzustand nutzt
 const filterKultivare = (
   kultivare,
-  selectedWirkungen,
+  selectedNormalized,
   selectedTerpene,
-  selectedTyp,
+  targetTyp,
   includeDisc,
   aliasLookup
 ) => {
-  const targetTyp = mapTyp(selectedTyp);
-  const selectedNormalized = selectedWirkungen.size
-    ? [...selectedWirkungen].map(normalizeWirkung)
-    : null;
   return kultivare
     .filter((k) => isStatusIncluded(k, includeDisc))
     .filter((k) => {
@@ -130,7 +133,7 @@ const filterKultivare = (
         return false;
       }
       // Wirkungen filtern (normalisiert)
-      if (selectedNormalized) {
+      if (selectedNormalized && selectedNormalized.length) {
         if (!Array.isArray(k.wirkungen)) return false;
         // Use preprocessed normalizedWirkungen if available to avoid re-normalizing on each filter.
         const kultivarNormalized = Array.isArray(k.normalizedWirkungen)
@@ -138,8 +141,11 @@ const filterKultivare = (
           : Array.isArray(k.wirkungen)
           ? k.wirkungen.map((w) => normalizeWirkung(w))
           : [];
-        if (!selectedNormalized.every((w) => kultivarNormalized.includes(w)))
-          return false;
+        for (const w of selectedNormalized) {
+          if (!kultivarNormalized.includes(w)) {
+            return false;
+          }
+        }
       }
       // Typ filtern
       if (targetTyp) {
@@ -364,6 +370,19 @@ export default function CannabisKultivarFinderUseReducer() {
   // useReducer für den Filterzustand
   const [filters, dispatch] = useReducer(filterReducer, initialFilterState);
 
+  const targetTyp = useMemo(() => mapTyp(filters.typ), [filters.typ]);
+  const selectedNormalized = useMemo(() => {
+    if (!filters.selectedWirkungen.size) return null;
+    const normalized = [];
+    filters.selectedWirkungen.forEach((wirkung) => {
+      const value = normalizeWirkung(wirkung);
+      if (value) {
+        normalized.push(value);
+      }
+    });
+    return normalized;
+  }, [filters.selectedWirkungen]);
+
   // Dialog für detaillierte Sorteninformationen (Name, THC, CBD, Terpengehalt, Wirkungen, Terpenprofil)
   const [infoDialog, setInfoDialog] = useState({ open: false, cultivar: null });
   const [radarDialog, setRadarDialog] = useState({ open: false, cultivar: null });
@@ -402,17 +421,17 @@ export default function CannabisKultivarFinderUseReducer() {
     () =>
       filterKultivare(
         kultivare,
-        filters.selectedWirkungen,
+        selectedNormalized,
         filters.selectedTerpene,
-        filters.typ,
+        targetTyp,
         filters.includeDiscontinued,
         terpeneLookup
       ),
     [
       kultivare,
-      filters.selectedWirkungen,
+      selectedNormalized,
       filters.selectedTerpene,
-      filters.typ,
+      targetTyp,
       filters.includeDiscontinued,
       terpeneLookup,
     ]
