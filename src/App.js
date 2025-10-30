@@ -130,10 +130,6 @@ const filterKultivare = (
     });
 };
 
-// Ableitung des Radar‑Diagramm‑Pfads
-const radarPathSvg = (name) =>
-  `/netzdiagramme/${name.replace(/\s+/g, "_")}.svg`;
-
 /*
  * Anfangszustand des Reducers. Wir fassen alle Filter- und UI‑Zustände
  * zusammen. Sets werden hier als echte Set‑Instanzen initialisiert.
