@@ -15,7 +15,6 @@ export default function DetailsModal({ infoDialog, hideInfo }) {
           <p><strong>CBD:</strong> {cultivar.cbd || "N/A"}</p>
           <p><strong>Terpengehalt:</strong> {cultivar.terpengehalt || "N/A"}</p>
           <p><strong>Wirkungen:</strong> {Array.isArray(cultivar.wirkungen) ? cultivar.wirkungen.map((w) => normalizeWirkung(w)).join(", ") : "N/A"}</p>
-          <p><strong>Terpenprofil:</strong> {/* Terpene rendered by parent via TerpeneChips */}</p>
         </div>
       </div>
     </div>

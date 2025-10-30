@@ -18,6 +18,7 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
             <th className="hidden-sm">CBD</th>
             <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
             <th>Radar</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
@@ -25,24 +26,17 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
             strains.map((k) => (
               <tr key={k.name}>
                 <td>
-                  <div className="strain-name-actions">
-                    <a
-                      className="link-button"
-                      href={`/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {k.name}
-                    </a>
-                    <button
-                      type="button"
-                      className="link-button strain-details-button"
-                      onClick={() => showInfo(k)}
-                      aria-label={`${k.name} Details anzeigen`}
-                    >
-                      Details
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    className="link-button"
+                    onClick={() => {
+                      const url = `/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`;
+                      window.open(url, "_blank", "noopener,noreferrer");
+                    }}
+                    aria-label={`${k.name} Datenblatt anzeigen`}
+                  >
+                    {k.name}
+                  </button>
                 </td>
                 {hasSimilarityColumn && (
                   <td className="similarity-column">
@@ -65,6 +59,18 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
                       const url = radarPathSvg(k.name);
                       window.open(url, "_blank", "noopener,noreferrer");
                     }}
+                    type="button"
+                    aria-label={`${k.name} Radar anzeigen`}
+                  >
+                    anzeigen
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    className="link-button"
+                    onClick={() => showInfo(k)}
+                    aria-label={`${k.name} Details anzeigen`}
                   >
                     anzeigen
                   </button>
@@ -74,7 +80,7 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
           ) : (
             <tr>
               <td
-                colSpan={hasSimilarityColumn ? 6 : 5}
+                colSpan={hasSimilarityColumn ? 7 : 6}
                 style={{ textAlign: "center", padding: 12 }}
               >
                 Keine Ergebnisse
