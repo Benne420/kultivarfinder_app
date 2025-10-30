@@ -127,15 +127,17 @@ nav a:hover {
 .filters .multi-select-dropdown__trigger {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content: center;
+  gap: 8px;
   padding: 10px 14px;
   border: 1px solid #cfd8dc;
   border-radius: 9999px;
   background: #ffffff;
   color: #263238;
   font-size: 14px;
+  text-align: center;
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -149,22 +151,29 @@ nav a:hover {
 
 .filters .multi-select-dropdown__label {
   font-weight: 600;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .filters .multi-select-dropdown__summary {
-  margin-left: auto;
+  margin-left: 0;
   font-size: 13px;
   color: #546e7a;
+  display: block;
+  text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 100%;
 }
 
 .filters .multi-select-dropdown__chevron {
-  flex: 0 0 auto;
   font-size: 18px;
   line-height: 1;
   color: #90a4ae;
+  margin-left: 0;
+  align-self: center;
 }
 
 .filters .multi-select-dropdown__panel {
@@ -254,13 +263,8 @@ nav a:hover {
 
 @media (max-width: 768px) {
   .filters .multi-select-dropdown__trigger {
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .filters .multi-select-dropdown__summary {
-    width: 100%;
-    text-align: left;
+    padding: 10px 12px;
+    gap: 4px;
   }
 
   .filters .multi-select-dropdown__panel {
