@@ -147,6 +147,31 @@ const initialFilterState = {
   selectedWirkungen: new Set(),
 };
 
+const toSet = (value) => {
+  if (value instanceof Set) {
+    return new Set(value);
+  }
+  if (Array.isArray(value)) {
+    return new Set(value.filter(Boolean));
+  }
+  if (value == null || value === "") {
+    return new Set();
+  }
+  return new Set([value]);
+};
+
+const areSetsEqual = (a, b) => {
+  if (a === b) return true;
+  if (!a || !b) return false;
+  if (a.size !== b.size) return false;
+  for (const value of a.values()) {
+    if (!b.has(value)) {
+      return false;
+    }
+  }
+  return true;
+};
+
 /*
  * Reducer zum Aktualisieren des Filterzustands. Für jede Aktion
  * berechnen wir den neuen State und leiten ggf. Sets ab. Durch das
@@ -163,12 +188,26 @@ function filterReducer(state, action) {
       }
       return { ...state, selectedTerpene: next };
     }
+    case "SET_TERPENE_VALUES": {
+      const next = toSet(action.value);
+      if (areSetsEqual(next, state.selectedTerpene)) {
+        return state;
+      }
+      return { ...state, selectedTerpene: next };
+    }
     case "TOGGLE_WIRKUNG": {
       const next = new Set(state.selectedWirkungen);
       if (next.has(action.value)) {
         next.delete(action.value);
       } else {
         next.add(action.value);
+      }
+      return { ...state, selectedWirkungen: next };
+    }
+    case "SET_WIRKUNG_VALUES": {
+      const next = toSet(action.value);
+      if (areSetsEqual(next, state.selectedWirkungen)) {
+        return state;
       }
       return { ...state, selectedWirkungen: next };
     }

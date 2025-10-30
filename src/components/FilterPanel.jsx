@@ -10,12 +10,25 @@ const MultiSelectDropdown = ({
   headingId,
   label,
   options,
-  selectedSet,
-  onToggle,
+  selectedValues,
+  onChange,
   optionPrefix,
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef(null);
+
+  const selectedSet = React.useMemo(() => {
+    if (selectedValues instanceof Set) {
+      return selectedValues;
+    }
+    if (Array.isArray(selectedValues)) {
+      return new Set(selectedValues);
+    }
+    if (selectedValues == null) {
+      return new Set();
+    }
+    return new Set([selectedValues]);
+  }, [selectedValues]);
 
   const selectedItems = React.useMemo(
     () => Array.from(selectedSet.values()),
@@ -96,7 +109,16 @@ const MultiSelectDropdown = ({
                     type="checkbox"
                     value={option}
                     checked={isChecked}
-                    onChange={() => onToggle(option)}
+                    onChange={() => {
+                      if (typeof onChange !== "function") return;
+                      const next = new Set(selectedSet);
+                      if (next.has(option)) {
+                        next.delete(option);
+                      } else {
+                        next.add(option);
+                      }
+                      onChange(next);
+                    }}
                   />
                   <span>{option}</span>
                 </label>
@@ -117,10 +139,10 @@ export default function FilterPanel({
   clearTerpene,
   clearWirkungen,
 }) {
-  const handleTerpeneToggle = (value) =>
-    dispatch({ type: "TOGGLE_TERPENE", value });
-  const handleWirkungToggle = (value) =>
-    dispatch({ type: "TOGGLE_WIRKUNG", value });
+  const handleTerpeneChange = (nextSet) =>
+    dispatch({ type: "SET_TERPENE_VALUES", value: nextSet });
+  const handleWirkungChange = (nextSet) =>
+    dispatch({ type: "SET_WIRKUNG_VALUES", value: nextSet });
 
   return (
     <div className="filters">
@@ -131,8 +153,8 @@ export default function FilterPanel({
             headingId="terpene-heading"
             label="Terpene auswählen"
             options={terpene}
-            selectedSet={filters.selectedTerpene}
-            onToggle={handleTerpeneToggle}
+            selectedValues={filters.selectedTerpene}
+            onChange={handleTerpeneChange}
             optionPrefix="terpene"
           />
           <button
@@ -154,8 +176,8 @@ export default function FilterPanel({
             headingId="wirkungen-heading"
             label="Wirkungen auswählen"
             options={wirkungen}
-            selectedSet={filters.selectedWirkungen}
-            onToggle={handleWirkungToggle}
+            selectedValues={filters.selectedWirkungen}
+            onChange={handleWirkungChange}
             optionPrefix="wirkung"
           />
           <button
