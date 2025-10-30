@@ -96,6 +96,9 @@ const filterKultivare = (
   includeDisc
 ) => {
   const targetTyp = mapTyp(selectedTyp);
+  const selectedNormalized = selectedWirkungen.size
+    ? [...selectedWirkungen].map(normalizeWirkung)
+    : null;
   return kultivare
     .filter((k) => isStatusIncluded(k, includeDisc))
     .filter((k) => {
@@ -107,11 +110,8 @@ const filterKultivare = (
         return false;
       }
       // Wirkungen filtern (normalisiert)
-      if (selectedWirkungen.size) {
+      if (selectedNormalized) {
         if (!Array.isArray(k.wirkungen)) return false;
-        const selectedNormalized = [...selectedWirkungen].map((w) =>
-          normalizeWirkung(w)
-        );
         // Use preprocessed normalizedWirkungen if available to avoid re-normalizing on each filter.
         const kultivarNormalized = Array.isArray(k.normalizedWirkungen)
           ? k.normalizedWirkungen
