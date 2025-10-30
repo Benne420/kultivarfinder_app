@@ -2,7 +2,12 @@ import React from "react";
 import TerpeneChips from "./TerpeneChips";
 import { radarPathSvg } from "../utils/helpers";
 
-export default function StrainTable({ strains = [], showInfo = () => {}, showTerpenPanel = () => {} }) {
+export default function StrainTable({
+  strains = [],
+  showInfo = () => {},
+  showTerpenPanel = () => {},
+  showRadar = () => {},
+}) {
   const hasSimilarityColumn = Array.isArray(strains)
     ? strains.some((s) => typeof s?.similarity === "number" && !Number.isNaN(s.similarity))
     : false;
@@ -55,10 +60,7 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
                 <td>
                   <button
                     className="link-button"
-                    onClick={() => {
-                      const url = radarPathSvg(k.name);
-                      window.open(url, "_blank", "noopener,noreferrer");
-                    }}
+                    onClick={() => showRadar(k)}
                     type="button"
                     aria-label={`${k.name} Radar anzeigen`}
                   >
