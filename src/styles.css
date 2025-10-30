@@ -265,7 +265,7 @@ nav a:hover {
 }
 
 .similarity-panel {
-  margin-top: 24px;
+  margin: 24px 0 12px;
   padding: 16px;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -291,6 +291,7 @@ nav a:hover {
   margin: 8px 0 0;
   font-size: 13px;
   color: #546e7a;
+  text-align: center;
 }
 
 .similarity-panel__select {
