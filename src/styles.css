@@ -291,6 +291,7 @@ nav a:hover {
   margin: 8px 0 0;
   font-size: 13px;
   color: #546e7a;
+  text-align: center;
 }
 
 .similarity-panel__select {
