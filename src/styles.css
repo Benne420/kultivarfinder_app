@@ -103,10 +103,22 @@ nav a:hover {
     margin: 20px;
   }
 }
+
 .grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.filters {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 420px);
+  margin: 12px auto 24px;
+}
+
+.filters .select-group {
+  width: 100%;
 }
 
 .filters .select-row {
@@ -281,12 +293,18 @@ nav a:hover {
 }
 
 .similarity-panel {
-  margin: 24px 0 12px;
+  width: min(100%, 420px);
+  margin: 12px auto;
   padding: 16px;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   background: #ffffffcc;
   box-shadow: 0 2px 6px rgba(55, 71, 79, 0.08);
+}
+
+.typ-button-group {
+  width: min(100%, 420px);
+  margin: 12px auto;
 }
 
 .similarity-panel__title {
