@@ -57,7 +57,7 @@
     "terpenprofil": ["Caryophyllen", "D-Limonen"],
     "wirkungen": ["analgetisch", "antiinflammatorisch"],
     "typ": "Sativa",
-    "status": "acitve"
+    "status": "active"
   },
   {
     "name": "Chemdog",
@@ -430,6 +430,7 @@
     "status": "active"
   }
 ]
+
 
 
 
