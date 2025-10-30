@@ -25,15 +25,24 @@ export default function StrainTable({ strains = [], showInfo = () => {}, showTer
             strains.map((k) => (
               <tr key={k.name}>
                 <td>
-                  <button
-                    className="link-button"
-                    onClick={() => {
-                      const url = `/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`;
-                      window.open(url, "_blank", "noopener,noreferrer");
-                    }}
-                  >
-                    {k.name}
-                  </button>
+                  <div className="strain-name-actions">
+                    <a
+                      className="link-button"
+                      href={`/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {k.name}
+                    </a>
+                    <button
+                      type="button"
+                      className="link-button strain-details-button"
+                      onClick={() => showInfo(k)}
+                      aria-label={`${k.name} Details anzeigen`}
+                    >
+                      Details
+                    </button>
+                  </div>
                 </td>
                 {hasSimilarityColumn && (
                   <td className="similarity-column">
