@@ -18,7 +18,12 @@ import DetailsModal from "./components/DetailsModal";
 import RadarModal from "./components/RadarModal";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
-import { normalizeWirkung, getTerpenAliases } from "./utils/helpers";
+import { TerpeneContext } from "./context/TerpeneContext";
+import {
+  normalizeWirkung,
+  createTerpeneAliasLookup,
+  mapTerpeneToCanonical,
+} from "./utils/helpers";
 
 /*
  * Daten und Hilfsfunktionen werden außerhalb der Komponente definiert, um
@@ -62,15 +67,35 @@ const defaultWirkungen = [
   "unterstützt Wundheilung",
 ].sort();
 
-// kultivarHasSelectedTerpene uses getTerpenAliases from helpers
-const kultivarHasSelectedTerpene = (kultivar, selectedTerpene) => {
-  const profile = Array.isArray(kultivar.terpenprofil)
-    ? kultivar.terpenprofil
-    : [];
-  return [...selectedTerpene].every((sel) => {
-    const names = getTerpenAliases(sel);
-    return profile.some((p) => names.includes(p));
+const getCanonicalTerpeneProfile = (kultivar, aliasLookup) => {
+  if (!kultivar) return new Set();
+  if (Array.isArray(kultivar.normalizedTerpenprofil)) {
+    return new Set(kultivar.normalizedTerpenprofil);
+  }
+  if (!Array.isArray(kultivar.terpenprofil)) {
+    return new Set();
+  }
+  const canonicalSet = new Set();
+  kultivar.terpenprofil.forEach((name) => {
+    const canonical = mapTerpeneToCanonical(name, aliasLookup);
+    if (canonical) {
+      canonicalSet.add(canonical);
+    }
   });
+  return canonicalSet;
+};
+
+const kultivarHasSelectedTerpene = (kultivar, selectedTerpene, aliasLookup) => {
+  if (!selectedTerpene || selectedTerpene.size === 0) return true;
+  const profileSet = getCanonicalTerpeneProfile(kultivar, aliasLookup);
+  if (!profileSet.size) return false;
+  for (const sel of selectedTerpene) {
+    const canonical = mapTerpeneToCanonical(sel, aliasLookup);
+    if (!canonical || !profileSet.has(canonical)) {
+      return false;
+    }
+  }
+  return true;
 };
 
 const isStatusIncluded = (k, includeDisc) => {
@@ -92,27 +117,24 @@ const mapTyp = (s) => {
 // Filterfunktion, die den aktuellen Filterzustand nutzt
 const filterKultivare = (
   kultivare,
-  selectedWirkungen,
+  selectedNormalized,
   selectedTerpene,
-  selectedTyp,
-  includeDisc
+  targetTyp,
+  includeDisc,
+  aliasLookup
 ) => {
-  const targetTyp = mapTyp(selectedTyp);
-  const selectedNormalized = selectedWirkungen.size
-    ? [...selectedWirkungen].map(normalizeWirkung)
-    : null;
   return kultivare
     .filter((k) => isStatusIncluded(k, includeDisc))
     .filter((k) => {
       // Terpene filtern
       if (
         selectedTerpene.size &&
-        !kultivarHasSelectedTerpene(k, selectedTerpene)
+        !kultivarHasSelectedTerpene(k, selectedTerpene, aliasLookup)
       ) {
         return false;
       }
       // Wirkungen filtern (normalisiert)
-      if (selectedNormalized) {
+      if (selectedNormalized && selectedNormalized.length) {
         if (!Array.isArray(k.wirkungen)) return false;
         // Use preprocessed normalizedWirkungen if available to avoid re-normalizing on each filter.
         const kultivarNormalized = Array.isArray(k.normalizedWirkungen)
@@ -120,8 +142,11 @@ const filterKultivare = (
           : Array.isArray(k.wirkungen)
           ? k.wirkungen.map((w) => normalizeWirkung(w))
           : [];
-        if (!selectedNormalized.every((w) => kultivarNormalized.includes(w)))
-          return false;
+        for (const w of selectedNormalized) {
+          if (!kultivarNormalized.includes(w)) {
+            return false;
+          }
+        }
       }
       // Typ filtern
       if (targetTyp) {
@@ -246,6 +271,9 @@ export default function CannabisKultivarFinderUseReducer() {
   // Daten aus dem Backend laden
   const [kultivare, setKultivare] = useState([]);
   const [availableWirkungen, setAvailableWirkungen] = useState(defaultWirkungen);
+  const [terpeneOptions, setTerpeneOptions] = useState(defaultTerpeneOptions);
+  const [terpeneLookup, setTerpeneLookup] = useState(null);
+  const [terpeneMetadata, setTerpeneMetadata] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   useEffect(() => {
@@ -253,19 +281,57 @@ export default function CannabisKultivarFinderUseReducer() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch("/kultivare.json");
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        // Normalize Wirkungen once when loading data to avoid repeated processing later.
-        // Each kultivar gets a new property `normalizedWirkungen` which contains
-        // canonical effect names. This avoids repeatedly mapping over the wirkungen
-        // array in the filter function.
-        const normalized = Array.isArray(data)
-          ? data.map((k) => {
+        const [kultivarResponse, terpeneResponse] = await Promise.all([
+          fetch("/kultivare.json"),
+          fetch("/data/terpenes.json"),
+        ]);
+
+        if (!kultivarResponse.ok) {
+          throw new Error(`Kultivare HTTP ${kultivarResponse.status}`);
+        }
+        if (!terpeneResponse.ok) {
+          throw new Error(`Terpene HTTP ${terpeneResponse.status}`);
+        }
+
+        const [kultivarData, terpenesData] = await Promise.all([
+          kultivarResponse.json(),
+          terpeneResponse.json(),
+        ]);
+
+        const terpenes = Array.isArray(terpenesData) ? terpenesData : [];
+        setTerpeneMetadata(terpenes);
+        const aliasLookup = createTerpeneAliasLookup(terpenes);
+        setTerpeneLookup(aliasLookup);
+
+        const canonicalTerpenes = aliasLookup?.variantsByCanonical;
+        if (canonicalTerpenes instanceof Map && canonicalTerpenes.size) {
+          const sortedTerpenes = [...canonicalTerpenes.keys()].sort((a, b) =>
+            a.localeCompare(b, "de", { sensitivity: "base" })
+          );
+          setTerpeneOptions(sortedTerpenes);
+        } else {
+          setTerpeneOptions(defaultTerpeneOptions);
+        }
+
+        const normalized = Array.isArray(kultivarData)
+          ? kultivarData.map((k) => {
               const normalizedWirkungen = Array.isArray(k.wirkungen)
                 ? k.wirkungen.map((w) => normalizeWirkung(w))
                 : [];
-              return { ...k, normalizedWirkungen };
+              const normalizedTerpenprofil = Array.isArray(k.terpenprofil)
+                ? Array.from(
+                    new Set(
+                      k.terpenprofil
+                        .map((name) => mapTerpeneToCanonical(name, aliasLookup))
+                        .filter(Boolean)
+                    )
+                  )
+                : [];
+              return {
+                ...k,
+                normalizedWirkungen,
+                normalizedTerpenprofil,
+              };
             })
           : [];
         setKultivare(normalized);
@@ -292,6 +358,9 @@ export default function CannabisKultivarFinderUseReducer() {
         setError(err instanceof Error ? err.message : "Unbekannter Fehler");
         setKultivare([]);
         setAvailableWirkungen(defaultWirkungen);
+        setTerpeneOptions(defaultTerpeneOptions);
+        setTerpeneLookup(null);
+        setTerpeneMetadata([]);
       } finally {
         setLoading(false);
       }
@@ -301,6 +370,19 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // useReducer für den Filterzustand
   const [filters, dispatch] = useReducer(filterReducer, initialFilterState);
+
+  const targetTyp = useMemo(() => mapTyp(filters.typ), [filters.typ]);
+  const selectedNormalized = useMemo(() => {
+    if (!filters.selectedWirkungen.size) return null;
+    const normalized = [];
+    filters.selectedWirkungen.forEach((wirkung) => {
+      const value = normalizeWirkung(wirkung);
+      if (value) {
+        normalized.push(value);
+      }
+    });
+    return normalized;
+  }, [filters.selectedWirkungen]);
 
   // Dialog für detaillierte Sorteninformationen (Name, THC, CBD, Terpengehalt, Wirkungen, Terpenprofil)
   const [infoDialog, setInfoDialog] = useState({ open: false, cultivar: null });
@@ -340,17 +422,19 @@ export default function CannabisKultivarFinderUseReducer() {
     () =>
       filterKultivare(
         kultivare,
-        filters.selectedWirkungen,
+        selectedNormalized,
         filters.selectedTerpene,
-        filters.typ,
-        filters.includeDiscontinued
+        targetTyp,
+        filters.includeDiscontinued,
+        terpeneLookup
       ),
     [
       kultivare,
-      filters.selectedWirkungen,
+      selectedNormalized,
       filters.selectedTerpene,
-      filters.typ,
+      targetTyp,
       filters.includeDiscontinued,
+      terpeneLookup,
     ]
   );
 
@@ -361,6 +445,14 @@ export default function CannabisKultivarFinderUseReducer() {
   const displayedKultivare = useMemo(
     () => (similarityContext ? similarityContext.results : filteredKultivare),
     [similarityContext, filteredKultivare]
+  );
+
+  const terpeneContextValue = useMemo(
+    () => ({
+      terpenes: terpeneMetadata,
+      aliasLookup: terpeneLookup,
+    }),
+    [terpeneMetadata, terpeneLookup]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen
@@ -400,7 +492,8 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // Rendern der Komponente
   return (
-    <div className="container">
+    <TerpeneContext.Provider value={terpeneContextValue}>
+      <div className="container">
       <header className="header" aria-label="App-Kopfzeile">
         <h1 className="appname">Four20 Index</h1>
       </header>
@@ -485,7 +578,7 @@ export default function CannabisKultivarFinderUseReducer() {
       <FilterPanel
         filters={filters}
         dispatch={dispatch}
-        terpene={terpene}
+        terpene={terpeneOptions}
         wirkungen={availableWirkungen}
         clearTerpene={clearTerpene}
         clearWirkungen={clearWirkungen}
@@ -528,7 +621,8 @@ export default function CannabisKultivarFinderUseReducer() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </TerpeneContext.Provider>
   );
 }
 

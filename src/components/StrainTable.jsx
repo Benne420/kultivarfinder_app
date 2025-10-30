@@ -55,7 +55,15 @@ export default function StrainTable({
                 </td>
                 <td className="hidden-sm">{k.cbd || "N/A"}</td>
                 <td className="hidden-sm terpenprofil-cell">
-                  <TerpeneChips list={k.terpenprofil || []} onInfo={() => showTerpenPanel(k)} />
+                  <TerpeneChips
+                    list={
+                      Array.isArray(k.normalizedTerpenprofil) &&
+                      k.normalizedTerpenprofil.length
+                        ? k.normalizedTerpenprofil
+                        : k.terpenprofil || []
+                    }
+                    onInfo={() => showTerpenPanel(k)}
+                  />
                 </td>
                 <td>
                   <button

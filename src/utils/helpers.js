@@ -1,9 +1,3 @@
-// Utility helpers extracted from App.js to reduce redundancy and improve reuse
-export const normalize = (s) => {
-  const key = (s || "").toString().trim().toLowerCase();
-  return key;
-};
-
 // Mapping of common aliases for effects (Wirkungen)
 export const wirkungAliases = {
   antiinflammatorisch: "entzündungshemmend",
@@ -19,96 +13,43 @@ export const normalizeWirkung = (w) => {
   return normalized || key;
 };
 
-// Terpen information (kept here so other components can import)
-export const terpenInfo = {
-  "β-Myrcen": {
-    aliases: ["Myrcen"],
-    description:
-      "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
-  },
-  "β-Caryophyllen": {
-    aliases: ["Trans-Caryophyllen", "Caryophyllen"],
-    description:
-      "Sesquiterpen; pfeffrig-würzig. Bindet als einziger geläufiger Duftstoff direkt am CB2-Rezeptor (präklinische Evidenz).",
-  },
-  Caryophyllen: {
-    aliases: ["β-Caryophyllen", "Trans-Caryophyllen"],
-    description:
-      "Würzig-pfeffrig; in schwarzem Pfeffer, Nelke. Häufiges Hauptterpen in vielen Kultivaren.",
-  },
-  "Trans-Caryophyllen": {
-    aliases: ["β-Caryophyllen", "Caryophyllen"],
-    description:
-      "Geometrisches Isomer von Caryophyllen (trans). Charakteristisch pfeffrig-warm.",
-  },
-  "D-Limonen": {
-    aliases: ["Limonen"],
-    description:
-      "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
-  },
-  Terpinolen: {
-    aliases: [],
-    description:
-      "Monoterpen; frisch, kiefernartig mit blumigen Noten. In Apfel, Teebaum, Kreuzkümmel beschrieben.",
-  },
-  "β-Ocimen": {
-    aliases: ["Ocimen"],
-    description:
-      "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
-  },
-  "α-Humulen": {
-    aliases: ["Humulen"],
-    description:
-      "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
-  },
-  Farnesen: {
-    aliases: [],
-    description:
-      "Sesquiterpen-Familie; grün-apfelig, in Apfel- und Hopfenaromen. Subtyp-abhängige Profile.",
-  },
-  Linalool: {
-    aliases: [],
-    description:
-      "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
-  },
-  Selinen: {
-    aliases: [
-      "Selinene",
-      "α‑Selinen",
-      "β‑Selinen",
-      "δ‑Selinen",
-      "α-Selinene",
-      "beta-Selinene",
-      "delta-Selinene",
-    ],
-    description:
-      "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen‑, Muskat‑, Koriander‑ und Hopfenölen; in Cannabis meist in geringen Anteilen.",
-  },
-  "α‑Selinen": {
-    aliases: ["α-Selinene", "alpha-Selinene", "α‑Selinene"],
-    description:
-      "Bicyclisches Sesquiterpen‑Isomer; holzig‑würzig, leicht hopfig. Vorkommen u. a. in Apiaceae (Sellerie, Petersilie) und Hopfen.",
-  },
-  "β‑Selinen": {
-    aliases: ["β-Selinene", "beta-Selinene", "β‑Selinene"],
-    description:
-      "Isomeres Sesquiterpen mit sellerie-/krautiger Note; Anteile variieren je nach Herkunft und Verarbeitung.",
-  },
-  "δ‑Selinen": {
-    aliases: ["δ-Selinene", "delta-Selinene", "δ‑Selinene"],
-    description:
-      "Weitere Selinen‑Variante; holzig‑krautig. In ätherischen Ölen verschiedener Gewürz‑ und Heilpflanzen beschrieben.",
-  },
+const normalizeTerpeneKey = (value) =>
+  (value || "").toString().trim().toLowerCase();
+
+export const createTerpeneAliasLookup = (terpenes = []) => {
+  const canonicalByKey = new Map();
+  const variantsByCanonical = new Map();
+
+  terpenes.forEach((entry) => {
+    if (!entry) return;
+    const canonical = (entry.name || "").toString().trim();
+    if (!canonical) return;
+    const canonicalKey = normalizeTerpeneKey(canonical);
+    const existingSet = variantsByCanonical.get(canonical) || new Set();
+    existingSet.add(canonical);
+    variantsByCanonical.set(canonical, existingSet);
+    canonicalByKey.set(canonicalKey, canonical);
+
+    const aliases = Array.isArray(entry.aliases) ? entry.aliases : [];
+    aliases.forEach((alias) => {
+      const normalizedAlias = (alias || "").toString().trim();
+      if (!normalizedAlias) return;
+      existingSet.add(normalizedAlias);
+      canonicalByKey.set(normalizeTerpeneKey(normalizedAlias), canonical);
+    });
+  });
+
+  return { canonicalByKey, variantsByCanonical };
 };
 
-export const getTerpenAliases = (name) => {
-  const info = terpenInfo[name];
-  if (!info) return [name];
-  const list = [name, ...(info.aliases || [])];
-  return Array.from(new Set(list));
+export const mapTerpeneToCanonical = (name, lookup) => {
+  const value = (name || "").toString().trim();
+  if (!value) return "";
+  if (lookup && lookup.canonicalByKey instanceof Map) {
+    return lookup.canonicalByKey.get(normalizeTerpeneKey(value)) || value;
+  }
+  return value;
 };
 
 export const radarPathSvg = (name) =>
   `/netzdiagramme/${(name || "").toString().replace(/\s+/g, "_")}.svg`;
-
-export default null;
