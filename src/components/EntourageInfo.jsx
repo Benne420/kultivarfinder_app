@@ -111,7 +111,7 @@ const EntourageInfo = () => {
             </li>
             <li>
               <a
-                href="https://www.mdpi.com/2227-9059/11/8/2110"
+                href="https://pubmed.ncbi.nlm.nih.gov/37626819/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
