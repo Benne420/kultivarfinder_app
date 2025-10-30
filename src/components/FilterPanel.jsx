@@ -147,7 +147,7 @@ export default function FilterPanel({
     dispatch({ type: "SET_WIRKUNG_VALUES", value: nextSet });
 
   return (
-    <div className="filters">
+    <div className="filter-card filters">
       <div className="select-group">
         <h3 id="terpene-heading">Terpene</h3>
         <div className="select-row select-row--with-reset">

@@ -100,7 +100,7 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
   };
 
   return (
-    <section className="similarity-panel">
+    <section className="filter-card similarity-panel">
       <h3 id="similarity-panel-title" className="similarity-panel__title">
         Ähnliche Sorte finden
       </h3>

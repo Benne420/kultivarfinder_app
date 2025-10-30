@@ -520,29 +520,33 @@ export default function CannabisKultivarFinderUseReducer() {
         .modal-close { position: absolute; top: 8px; right: 10px; border: none; background: transparent; font-size: 22px; cursor: pointer; }
         .modal-content p { margin: 0.5rem 0; }
         .modal-meta { font-size: 12px; color: #546e7a; }
-        .filters { display: grid; gap: 12px; width: min(100%, 420px); margin: 12px auto 24px; }
-        .select-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; width: 100%; }
+        .filters-layout { width: min(100%, var(--content-max-width)); margin: 0 auto 32px; display: grid; gap: 16px; }
+        @media (min-width: 1024px) {
+          .filters-layout { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+        }
+        .filter-card { background: #ffffffcc; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 6px rgba(55,71,79,0.08); padding: 16px; }
+        .filters { display: grid; gap: 16px; width: 100%; align-content: flex-start; height: 100%; }
+        .select-group { background: #f7f9fb; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; width: 100%; }
         .select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: center; }
-        .select-row { display: flex; gap: 12px; align-items: flex-start; }
+        .select-row { display: flex; gap: 12px; align-items: flex-start; justify-content: center; }
         .select-row--with-reset .reset-btn { align-self: flex-start; }
         .multi-select { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; width: 100%; }
         .multi-select__option { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid #cfd8dc; border-radius: 9999px; background: #f7fafc; font-size: 13px; line-height: 1.3; }
         .multi-select__option input { accent-color: #546e7a; }
         .multi-select__option:focus-within { outline: 2px solid #90caf9; outline-offset: 2px; }
-        .reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; }
-        .reset-btn:hover { background: #eef2f7; }
+        .reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; line-height: 1; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .reset-btn:hover:not(:disabled) { background: #eef2f7; }
+        .reset-btn:disabled { opacity: 0.6; cursor: not-allowed; }
         .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .table-container { overflow-x: auto; }
-
-        /* NEU: Tabelle zentrieren und maximale Breite setzen */
-        .strain-table-wrapper { display: flex; justify-content: center; width: 100%; margin: 0 auto; }
-        .strain-table { width: 100%; max-width: 1100px; border-collapse: collapse; }
+        .strain-table-wrapper { width: min(100%, var(--content-max-width)); margin: 0 auto 40px; overflow-x: auto; }
+        .strain-table { width: 100%; border-collapse: collapse; }
         .strain-table th, .strain-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
         .strain-table th.terpenprofil-header, .strain-table td.terpenprofil-cell { text-align: center; }
-
         .table { width: 100%; }
         .table th, .table td { white-space: normal; }
-        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; margin: 12px auto; width: min(100%, 420px); }
+        .similarity-panel { display: flex; flex-direction: column; gap: 16px; }
+        .typ-button-group { display: flex; flex-direction: column; gap: 12px; text-align: center; }
         .typ-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; justify-content: center; }
         .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
         .typ-btn:hover { background: #f7faff; }
@@ -574,16 +578,21 @@ export default function CannabisKultivarFinderUseReducer() {
         gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
       </div>
 
-      <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} />
-      <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
-      <FilterPanel
-        filters={filters}
-        dispatch={dispatch}
-        terpene={terpeneOptions}
-        wirkungen={availableWirkungen}
-        clearTerpene={clearTerpene}
-        clearWirkungen={clearWirkungen}
-      />
+      <div className="filters-layout">
+        <StrainSimilarity
+          kultivare={kultivare}
+          onApplySimilar={handleApplySimilarity}
+        />
+        <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+        <FilterPanel
+          filters={filters}
+          dispatch={dispatch}
+          terpene={terpeneOptions}
+          wirkungen={availableWirkungen}
+          clearTerpene={clearTerpene}
+          clearWirkungen={clearWirkungen}
+        />
+      </div>
       {similarityContext && (
         <div className="similarity-banner" role="status" aria-live="polite">
           <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>

@@ -5,7 +5,7 @@ export default function TypFilter({ typ, dispatch, typInfo }) {
   const infoContentId = "typ-info-content";
 
   return (
-    <div className="typ-button-group">
+    <div className="filter-card typ-button-group">
       <h3>Typ</h3>
       <div className="typ-row">
         {Object.keys(typInfo)
