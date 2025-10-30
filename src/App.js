@@ -48,7 +48,7 @@ const terpene = [
  * `wirkungAliases` auf diese kanonischen Bezeichnungen abgebildet. Diese
  * Liste dient als Quelle für Dropdowns.
  */
-const wirkungen = [
+const defaultWirkungen = [
   "analgetisch",
   "angstlösend",
   "antimikrobiell",
@@ -248,6 +248,7 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // Daten aus dem Backend laden
   const [kultivare, setKultivare] = useState([]);
+  const [availableWirkungen, setAvailableWirkungen] = useState(defaultWirkungen);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -267,6 +268,24 @@ export default function CannabisKultivarFinderUseReducer() {
             })
           : [];
         setKultivare(normalized);
+
+        const wirkungSet = new Set();
+        normalized.forEach((cultivar) => {
+          if (Array.isArray(cultivar.normalizedWirkungen)) {
+            cultivar.normalizedWirkungen.forEach((wirkung) => {
+              if (wirkung) {
+                wirkungSet.add(wirkung);
+              }
+            });
+          }
+        });
+
+        const wirkungList = [...wirkungSet].sort((a, b) =>
+          a.localeCompare(b, "de", { sensitivity: "base" })
+        );
+        setAvailableWirkungen(
+          wirkungList.length ? wirkungList : defaultWirkungen
+        );
       } catch (err) {
         console.error("Fehler beim Laden der Daten:", err);
       }
@@ -449,7 +468,7 @@ export default function CannabisKultivarFinderUseReducer() {
         filters={filters}
         dispatch={dispatch}
         terpene={terpene}
-        wirkungen={wirkungen}
+        wirkungen={availableWirkungen}
         clearTerpene={clearTerpene}
         clearWirkungen={clearWirkungen}
       />
