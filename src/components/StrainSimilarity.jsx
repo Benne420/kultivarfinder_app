@@ -134,7 +134,7 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
       </div>
 
       <p id="strain-select-description" className="similarity-panel__description">
-        Nur verfügbare Sorten anzeigen
+        Nur verfügbare Sorten werden angezeigt
       </p>
 
       <div className="similarity-panel__status" aria-live="polite">
