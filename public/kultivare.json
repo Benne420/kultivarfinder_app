@@ -71,7 +71,7 @@
   },
   {
     "name": "Cinderella Kush",
-    "thc": "18-27%",
+    "thc": "22-27%",
     "cbd": "<1%",
     "terpengehalt": "1.76%",
     "terpenprofil": ["D-Limonen", "Caryophyllen"],
@@ -81,7 +81,7 @@
   },
   {
     "name": "Frosted Gumbo",
-    "thc": "25-36%",
+    "thc": "27-30%",
     "cbd": "<1%",
     "terpengehalt": "3.34%",
     "terpenprofil": ["β-Myrcen", "Caryophyllen"],
@@ -91,7 +91,7 @@
   },
   {
     "name": "Frozen Lemon Mints",
-    "thc": "20-33%",
+    "thc": "25-30%",
     "cbd": "<1%",
     "terpengehalt": "2.55%",
     "terpenprofil": ["Terpinolen", "Caryophyllen"],
@@ -101,7 +101,7 @@
   },
   {
     "name": "Gastro Pop",
-    "thc": "22-33%",
+    "thc": "27-33%",
     "cbd": "<1%",
     "terpengehalt": "3.15%",
     "terpenprofil": ["β-Myrcen", "β-Ocimen"],
@@ -111,7 +111,7 @@
   },
   {
     "name": "GG4",
-    "thc": "20-30%",
+    "thc": "20-25%",
     "cbd": "<1%",
     "terpengehalt": "2.19%",
     "terpenprofil": ["Caryophyllen", "Humulen"],
@@ -121,7 +121,7 @@
   },
   {
     "name": "Glaced Apricot Gelato",
-    "thc": "18-33%",
+    "thc": "18-22%",
     "cbd": "<1%",
     "terpengehalt": "1.93%",
     "terpenprofil": ["Caryophyllen", "Terpinolen"],
@@ -141,7 +141,7 @@
   },
   {
     "name": "Grape Face",
-    "thc": "20-27%",
+    "thc": "20-25%",
     "cbd": "<1%",
     "terpengehalt": "2.25%",
     "terpenprofil": ["Caryophyllen", "Selinene"],
@@ -151,7 +151,7 @@
   },
   {
     "name": "Ice Cream Cake Kush Mints",
-    "thc": "20-33%",
+    "thc": "25-33%",
     "cbd": "<1%",
     "terpengehalt": "1.34%",
     "terpenprofil": ["Linalool", "Caryophyllen"],
@@ -191,7 +191,7 @@
   },
   {
     "name": "Lemon Cherry Gelato",
-    "thc": "18-33%",
+    "thc": "16-22%",
     "cbd": "<1%",
     "terpengehalt": "1.08%",
     "terpenprofil": ["Caryophyllen", "D-Limonen"],
@@ -211,7 +211,7 @@
   },
   {
     "name": "Masterpiece",
-    "thc": "22-33%",
+    "thc": "27-33%",
     "cbd": "<1%",
     "terpengehalt": "3.43%",
     "terpenprofil": ["D-Limonen", "β-Myrcen"],
@@ -241,7 +241,7 @@
   },
   {
     "name": "Modified Grapes",
-    "thc": "20-33%",
+    "thc": "27-33%",
     "cbd": "<1%",
     "terpengehalt": "2.32%",
     "terpenprofil": ["Caryophyllen", "β-Myrcen"],
@@ -251,7 +251,7 @@
   },
   {
     "name": "Peach Chementine",
-    "thc": "20-36%",
+    "thc": "25-33%",
     "cbd": "<1%",
     "terpengehalt": "2.14%",
     "terpenprofil": ["D-Limonen", "β-Myrcen"],
@@ -261,7 +261,7 @@
   },
   {
     "name": "Plum Driver",
-    "thc": "20-30%",
+    "thc": "20-25%",
     "cbd": "<1%",
     "terpengehalt": "1.40%",
     "terpenprofil": ["Caryophyllen", "Linalool"],
@@ -271,7 +271,7 @@
   },
   {
     "name": "Private Banana",
-    "thc": "18-33%",
+    "thc": "18-22%",
     "cbd": "<1%",
     "terpengehalt": "1.55%",
     "terpenprofil": ["Limonen", "β-Myrcen"],
@@ -301,7 +301,7 @@
   },
   {
     "name": "Scoops",
-    "thc": "20-27%",
+    "thc": "22-27%",
     "cbd": "<1%",
     "terpengehalt": "2.57%",
     "terpenprofil": ["β-Myrcen", "Caryophyllen"],
@@ -311,7 +311,7 @@
   },
   {
     "name": "Star Struck",
-    "thc": "22-30%",
+    "thc": "22-27%",
     "cbd": "<1%",
     "terpengehalt": "3.26%",
     "terpenprofil": ["β-Myrcen", "ɑ-Pinen"],
@@ -341,7 +341,7 @@
   },
   {
     "name": "Triangle Octane",
-    "thc": "25-36%",
+    "thc": "27-33%",
     "cbd": "<1%",
     "terpengehalt": "3.45%",
     "terpenprofil": ["β-Myrcen", "Caryophyllen"],
@@ -351,7 +351,7 @@
   }, 
   {
     "name": "Tropicana Cookies",
-    "thc": "15-22%",
+    "thc": "14-22%",
     "cbd": "<1%",
     "terpengehalt": "1.29%",
     "terpenprofil": ["Caryophyllen", "Linalool"],
@@ -361,7 +361,7 @@
   },
   {
     "name": "Unicorn Cake",
-    "thc": "20-33%",
+    "thc": "22-33%",
     "cbd": "<1%",
     "terpengehalt": "2.55%",
     "terpenprofil": ["Farnesen", "Caryophyllen"],
@@ -371,7 +371,7 @@
   },
   {
     "name": "Waffle Truffle",
-    "thc": "18-27%",
+    "thc": "22-27%",
     "cbd": "<1%",
     "terpengehalt": "1.86%",
     "terpenprofil": ["Caryophyllen", "Myrcen"],
@@ -391,7 +391,7 @@
   },
   {
     "name": "Wedding Singer",
-    "thc": "22-33%",
+    "thc": "25-30%",
     "cbd": "<1%",
     "terpengehalt": "1.17%",
     "terpenprofil": ["Caryophyllen", "β-Myrcen"],
@@ -401,7 +401,7 @@
   },
   {
     "name": "Whiteout",
-    "thc": "18-30%",
+    "thc": "20-27%",
     "cbd": "<1%",
     "terpengehalt": "2.00%",
     "terpenprofil": ["D-Limonen", "β-Myrcen"],
@@ -411,7 +411,7 @@
   },
   {
     "name": "Zookies",
-    "thc": "18-27%",
+    "thc": "20-25%",
     "cbd": "<1%",
     "terpengehalt": "0.64%",
     "terpenprofil": ["Caryophyllen", "Linalool"],
@@ -421,7 +421,7 @@
   },
   {
     "name": "Zour Apple",
-    "thc": "20-30%",
+    "thc": "20-25%",
     "cbd": "<1%",
     "terpengehalt": "2.37%",
     "terpenprofil": ["Terpinolen", "Caryophyllen"],
@@ -430,6 +430,7 @@
     "status": "active"
   }
 ]
+
 
 
 
