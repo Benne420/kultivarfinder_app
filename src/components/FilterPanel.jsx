@@ -192,12 +192,6 @@ export default function FilterPanel({
         </div>
       </div>
 
-      <div style={{ textAlign: "center" }}>
-        <label>
-          <input type="checkbox" checked={filters.includeDiscontinued} onChange={(e) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value: e.target.checked })} />
-          &nbsp;Nicht mehr verfügbare Sorten anzeigen
-        </label>
-      </div>
     </div>
   );
 }
