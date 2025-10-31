@@ -11,7 +11,7 @@ import { useEffect, useMemo, useCallback, useReducer, useRef, useState } from "r
 import "@fontsource/montserrat";
 import "./styles.css";
 import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
-import EntourageInfo from "./components/EntourageInfo";
+import EntourageInfoModal from "./components/EntourageInfoModal";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
 import DetailsModal from "./components/DetailsModal";
@@ -439,6 +439,7 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
   const [similarityContext, setSimilarityContext] = useState(null);
+  const [isEntourageModalOpen, setIsEntourageModalOpen] = useState(false);
   const handleApplySimilarity = useCallback((payload) => {
     if (
       payload &&
@@ -539,6 +540,14 @@ export default function CannabisKultivarFinderUseReducer() {
     setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
+  const openEntourageModal = useCallback(() => {
+    setIsEntourageModalOpen(true);
+  }, []);
+
+  const closeEntourageModal = useCallback(() => {
+    setIsEntourageModalOpen(false);
+  }, []);
+
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
@@ -596,6 +605,16 @@ export default function CannabisKultivarFinderUseReducer() {
           Beim Laden der Daten ist ein Fehler aufgetreten: {error}
         </div>
       )}
+      <div style={{ display: "flex", justifyContent: "flex-end", margin: "16px 0" }}>
+        <button
+          type="button"
+          onClick={openEntourageModal}
+          aria-haspopup="dialog"
+          aria-expanded={isEntourageModalOpen}
+        >
+          Mehr zum Entourage-Effekt
+        </button>
+      </div>
       {!loading && !error && (
         <StrainTable
           strains={displayedKultivare}
@@ -604,10 +623,11 @@ export default function CannabisKultivarFinderUseReducer() {
           showRadar={showRadar}
         />
       )}
-      <EntourageInfo />
 
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
       <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
+
+      <EntourageInfoModal isOpen={isEntourageModalOpen} onClose={closeEntourageModal} />
 
       {terpenPanel.open && terpenPanel.cultivar && (
         <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>
