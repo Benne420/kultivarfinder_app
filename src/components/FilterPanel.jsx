@@ -192,10 +192,16 @@ export default function FilterPanel({
         </div>
       </div>
 
-      <div style={{ textAlign: "center" }}>
-        <label>
-          <input type="checkbox" checked={filters.includeDiscontinued} onChange={(e) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value: e.target.checked })} />
-          &nbsp;Eingestellte Sorten einbeziehen
+      <div className="filters__checkbox-row">
+        <label className="filters__checkbox-label">
+          <input
+            type="checkbox"
+            checked={filters.includeDiscontinued}
+            onChange={(e) =>
+              dispatch({ type: "TOGGLE_INCLUDE_DISC", value: e.target.checked })
+            }
+          />
+          <span>Eingestellte Sorten einbeziehen</span>
         </label>
       </div>
     </div>
