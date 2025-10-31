@@ -7,7 +7,7 @@
  * unverändert.
  */
 
-import { useEffect, useMemo, useCallback, useReducer, useState } from "react";
+import { useEffect, useMemo, useCallback, useReducer, useRef, useState } from "react";
 import "@fontsource/montserrat";
 import "./styles.css";
 import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
@@ -257,13 +257,52 @@ export default function CannabisKultivarFinderUseReducer() {
   const [terpeneOptions, setTerpeneOptions] = useState(defaultTerpeneOptions);
   const [terpeneLookup, setTerpeneLookup] = useState(null);
   const [terpeneMetadata, setTerpeneMetadata] = useState([]);
+  const referencesCacheRef = useRef({ data: null, promise: null });
+  const [references, setReferences] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const loadReferences = useCallback(async () => {
+    if (referencesCacheRef.current.data) {
+      setReferences(referencesCacheRef.current.data);
+      return referencesCacheRef.current.data;
+    }
+
+    if (!referencesCacheRef.current.promise) {
+      const fetchPromise = (async () => {
+        const response = await fetch("/data/references.json");
+        if (!response.ok) {
+          throw new Error(`Referenzen HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        const normalized = Array.isArray(data) ? data : [];
+        referencesCacheRef.current.data = normalized;
+        setReferences(normalized);
+        return normalized;
+      })();
+
+      referencesCacheRef.current.promise = fetchPromise
+        .catch((err) => {
+          referencesCacheRef.current.data = null;
+          throw err;
+        })
+        .finally(() => {
+          referencesCacheRef.current.promise = null;
+        });
+    }
+
+    if (referencesCacheRef.current.promise) {
+      return referencesCacheRef.current.promise;
+    }
+
+    return [];
+  }, []);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
       try {
+        const referencesPromise = loadReferences();
         const [kultivarResponse, terpeneResponse] = await Promise.all([
           fetch("/kultivare.json"),
           fetch("/data/terpenes.json"),
@@ -276,9 +315,10 @@ export default function CannabisKultivarFinderUseReducer() {
           throw new Error(`Terpene HTTP ${terpeneResponse.status}`);
         }
 
-        const [kultivarData, terpenesData] = await Promise.all([
+        const [kultivarData, terpenesData, referencesData] = await Promise.all([
           kultivarResponse.json(),
           terpeneResponse.json(),
+          referencesPromise,
         ]);
 
         const terpenes = Array.isArray(terpenesData) ? terpenesData : [];
@@ -336,6 +376,10 @@ export default function CannabisKultivarFinderUseReducer() {
         setAvailableWirkungen(
           wirkungList.length ? wirkungList : defaultWirkungen
         );
+
+        if (Array.isArray(referencesData)) {
+          setReferences(referencesData);
+        }
       } catch (err) {
         console.error("Fehler beim Laden der Daten:", err);
         setError(err instanceof Error ? err.message : "Unbekannter Fehler");
@@ -349,7 +393,7 @@ export default function CannabisKultivarFinderUseReducer() {
       }
     };
     fetchData();
-  }, []);
+  }, [loadReferences]);
 
   // useReducer für den Filterzustand
   const [filters, dispatch] = useReducer(filterReducer, initialFilterState);
@@ -434,8 +478,10 @@ export default function CannabisKultivarFinderUseReducer() {
     () => ({
       terpenes: terpeneMetadata,
       aliasLookup: terpeneLookup,
+      references,
+      loadReferences,
     }),
-    [terpeneMetadata, terpeneLookup]
+    [terpeneMetadata, terpeneLookup, references, loadReferences]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen
