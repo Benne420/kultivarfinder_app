@@ -1,6 +1,5 @@
 import React from "react";
 import TerpeneChips from "./TerpeneChips";
-import { radarPathSvg } from "../utils/helpers";
 
 export default function StrainTable({
   strains = [],
