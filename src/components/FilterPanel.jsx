@@ -172,7 +172,7 @@ export default function FilterPanel({
       </div>
 
       <div className="select-group">
-        <h3 id="wirkungen-heading">Wirkungfilter</h3>
+        <h3 id="wirkungen-heading">Wirkungsfilter</h3>
         <div className="select-row select-row--with-reset">
           <MultiSelectDropdown
             headingId="wirkungen-heading"
