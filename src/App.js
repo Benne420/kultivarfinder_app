@@ -498,65 +498,7 @@ export default function CannabisKultivarFinderUseReducer() {
       <header className="header" aria-label="App-Kopfzeile">
         <h1 className="appname">Four20 Index</h1>
       </header>
-      {/* Inline‑Styles für Chips, Modals und Filterelemente */}
-      <style>{`
-        .terp-list {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px;
-          justify-content: center;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-        .terp-chip {
-          border: 1px solid #cfd8dc; border-radius: 9999px; padding: 4px 10px; cursor: pointer;
-          background: #f7fafc; font-size: 12px; line-height: 1; white-space: nowrap;
-        }
-        .terp-chip:hover { background: #eef2f7; }
-        .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: grid; place-items: center; z-index: 50; }
-        .modal { background: #fff; max-width: 600px; width: 90%; border-radius: 12px; padding: 18px 20px 20px; position: relative; }
-        .modal-title { margin: 0 0 8px; text-align: left; font-size: 18px; }
-        .modal-close { position: absolute; top: 8px; right: 10px; border: none; background: transparent; font-size: 22px; cursor: pointer; }
-        .modal-content p { margin: 0.5rem 0; }
-        .modal-meta { font-size: 12px; color: #546e7a; }
-        .filters { display: grid; gap: 12px; margin: 12px 0 24px; }
-        .select-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; }
-        .select-group h3 { margin: 0 0 8px; font-size: 16px; text-align: center; }
-        .select-row { display: flex; gap: 12px; align-items: flex-start; }
-        .select-row--with-reset .reset-btn { align-self: flex-start; }
-        .multi-select { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; width: 100%; }
-        .multi-select__option { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid #cfd8dc; border-radius: 9999px; background: #f7fafc; font-size: 13px; line-height: 1.3; }
-        .multi-select__option input { accent-color: #546e7a; }
-        .multi-select__option:focus-within { outline: 2px solid #90caf9; outline-offset: 2px; }
-        .reset-btn { padding: 8px 10px; border: 1px solid #b0bec5; background: #f5f7f9; border-radius: 8px; cursor: pointer; }
-        .reset-btn:hover { background: #eef2f7; }
-        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .table-container { overflow-x: auto; }
-
-        /* NEU: Tabelle zentrieren und maximale Breite setzen */
-        .strain-table-wrapper { display: flex; justify-content: center; width: 100%; margin: 0 auto; }
-        .strain-table { width: 100%; max-width: 1100px; border-collapse: collapse; }
-        .strain-table th, .strain-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
-        .strain-table th.terpenprofil-header, .strain-table td.terpenprofil-cell { text-align: center; }
-
-        .table { width: 100%; }
-        .table th, .table td { white-space: normal; }
-        .typ-button-group { background: #ffffffcc; padding: 12px; border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; margin: 12px 0; }
-        .typ-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; justify-content: center; }
-        .typ-btn { border: 1px solid #cfd8dc; border-radius: 9999px; padding: 8px 12px; cursor: pointer; background: #fff; font-size: 14px; line-height: 1; white-space: nowrap; }
-        .typ-btn:hover { background: #f7faff; }
-        .typ-btn.active { background: #e8f0fe; border-color: #90caf9; }
-        .status { margin: 16px auto; max-width: 720px; padding: 12px 16px; border-radius: 10px; font-size: 15px; text-align: center; }
-        .status--loading { background: #f1f8ff; border: 1px solid #90caf9; color: #0d47a1; }
-        .status--error { background: #ffebee; border: 1px solid #ef9a9a; color: #b71c1c; }
-        /* Kleine Screens: Spalten mit der Klasse hidden-sm ausblenden */
-        @media (max-width: 640px) {
-          .hidden-sm {
-            display: none;
-          }
-        }
-      `}</style>
+      
       {/* HWG-Hinweis */}
       <div
         style={{
