@@ -1,6 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import TerpeneChips from "./TerpeneChips";
 
+const PAGE_SIZE_OPTIONS = [50, 100];
+const DEFAULT_PAGE_SIZE = 100;
+
 export default function StrainTable({
   strains = [],
   showInfo = () => {},
