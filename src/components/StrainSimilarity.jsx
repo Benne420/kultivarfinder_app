@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 
 /* helper: determine whether a strain is considered "active" (same logic as filters) */
 function isActiveStrain(s = {}) {
@@ -55,12 +55,20 @@ function findSimilar(reference, allStrains, limit = 5) {
     .slice(0, limit);
 }
 
-export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
+export default function StrainSimilarity({
+  kultivare = [],
+  onApplySimilar,
+  includeDiscontinued = false,
+  onToggleIncludeDiscontinued,
+}) {
   const [selectedName, setSelectedName] = useState("");
   const [similarStrains, setSimilarStrains] = useState([]);
 
-  // only consider active strains for dropdown / comparisons
-  const activeStrains = useMemo(() => kultivare.filter(isActiveStrain), [kultivare]);
+  // only consider active strains for dropdown / comparisons unless discontinued should be included
+  const selectableStrains = useMemo(
+    () => (includeDiscontinued ? kultivare : kultivare.filter(isActiveStrain)),
+    [includeDiscontinued, kultivare]
+  );
 
   const emitResults = useCallback(
     (reference, results) => {
@@ -82,22 +90,40 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
       emitResults(null, []);
       return;
     }
-    const ref = activeStrains.find(k => k.name === name);
+    const ref = selectableStrains.find((k) => k.name === name);
     if (!ref) {
       setSimilarStrains([]);
       emitResults(null, []);
       return;
     }
-    const similar = findSimilar(ref, activeStrains);
+    const similar = findSimilar(ref, selectableStrains);
     setSimilarStrains(similar);
     emitResults(ref, similar);
   };
 
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
     setSelectedName("");
     setSimilarStrains([]);
     emitResults(null, []);
-  };
+  }, [emitResults]);
+
+  useEffect(() => {
+    if (!includeDiscontinued && selectedName) {
+      const selected = kultivare.find((k) => k.name === selectedName);
+      if (selected && !isActiveStrain(selected)) {
+        handleClear();
+      }
+    }
+  }, [includeDiscontinued, selectedName, kultivare, handleClear]);
+
+  const handleIncludeToggle = useCallback(
+    (event) => {
+      if (typeof onToggleIncludeDiscontinued === "function") {
+        onToggleIncludeDiscontinued(event.target.checked);
+      }
+    },
+    [onToggleIncludeDiscontinued]
+  );
 
   return (
     <section className="similarity-panel">
@@ -111,12 +137,11 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
           onChange={handleChange}
           value={selectedName}
           aria-labelledby="similarity-panel-title"
-          aria-describedby="strain-select-description"
         >
           <option value="" disabled hidden>
             Sorte wählen
           </option>
-          {activeStrains.map((s) => (
+          {selectableStrains.map((s) => (
             <option key={s.name} value={s.name}>
               {s.name}
             </option>
@@ -133,9 +158,17 @@ export default function StrainSimilarity({ kultivare = [], onApplySimilar }) {
         </button>
       </div>
 
-      <p id="strain-select-description" className="similarity-panel__description">
-        Nur verfügbare Sorten werden angezeigt
-      </p>
+      <div id="strain-select-description" className="similarity-panel__description">
+        <input
+          id="similarity-include-discontinued"
+          type="checkbox"
+          checked={includeDiscontinued}
+          onChange={handleIncludeToggle}
+        />
+        <label htmlFor="similarity-include-discontinued">
+          Nicht mehr verfügbare Sorten anzeigen
+        </label>
+      </div>
 
       <div className="similarity-panel__status" aria-live="polite">
         {selectedName && similarStrains.length === 0 && (
