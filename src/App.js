@@ -297,12 +297,32 @@ export default function CannabisKultivarFinderUseReducer() {
 
     return [];
   }, []);
+  const prefetchReferences = useCallback(() => {
+    const maybePromise = loadReferences();
+    if (maybePromise && typeof maybePromise.then === "function") {
+      maybePromise.catch((err) => {
+        console.warn(
+          "Referenzdaten konnten nicht geladen werden, Kernfunktionalität wird fortgesetzt.",
+          err
+        );
+      });
+    }
+  }, [loadReferences]);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
+
       try {
-        const referencesPromise = loadReferences();
+        prefetchReferences();
+      } catch (err) {
+        console.warn(
+          "Referenzdaten konnten nicht geladen werden, Kernfunktionalität wird fortgesetzt.",
+          err
+        );
+      }
+
+      try {
         const [kultivarResponse, terpeneResponse] = await Promise.all([
           fetch("/kultivare.json"),
           fetch("/data/terpenes.json"),
@@ -315,10 +335,9 @@ export default function CannabisKultivarFinderUseReducer() {
           throw new Error(`Terpene HTTP ${terpeneResponse.status}`);
         }
 
-        const [kultivarData, terpenesData, referencesData] = await Promise.all([
+        const [kultivarData, terpenesData] = await Promise.all([
           kultivarResponse.json(),
           terpeneResponse.json(),
-          referencesPromise,
         ]);
 
         const terpenes = Array.isArray(terpenesData) ? terpenesData : [];
@@ -377,9 +396,6 @@ export default function CannabisKultivarFinderUseReducer() {
           wirkungList.length ? wirkungList : defaultWirkungen
         );
 
-        if (Array.isArray(referencesData)) {
-          setReferences(referencesData);
-        }
       } catch (err) {
         console.error("Fehler beim Laden der Daten:", err);
         setError(err instanceof Error ? err.message : "Unbekannter Fehler");
@@ -393,7 +409,7 @@ export default function CannabisKultivarFinderUseReducer() {
       }
     };
     fetchData();
-  }, [loadReferences]);
+  }, [prefetchReferences]);
 
   // useReducer für den Filterzustand
   const [filters, dispatch] = useReducer(filterReducer, initialFilterState);
