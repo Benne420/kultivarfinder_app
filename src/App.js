@@ -301,13 +301,17 @@ export default function CannabisKultivarFinderUseReducer() {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
-      try {
-        Promise.resolve(loadReferences()).catch((err) => {
+
+      Promise.resolve()
+        .then(() => loadReferences())
+        .catch((err) => {
           console.warn(
             "Referenzdaten konnten nicht geladen werden, Kernfunktionalität wird fortgesetzt.",
             err
           );
         });
+
+      try {
         const [kultivarResponse, terpeneResponse] = await Promise.all([
           fetch("/kultivare.json"),
           fetch("/data/terpenes.json"),
