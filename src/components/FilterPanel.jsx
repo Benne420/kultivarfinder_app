@@ -37,7 +37,7 @@ const MultiSelectDropdown = ({
 
   const summary = React.useMemo(() => {
     if (!selectedItems.length) {
-      return "Alle anzeigen";
+      return null;
     }
 
     if (selectedItems.length <= 2) {
@@ -86,7 +86,9 @@ const MultiSelectDropdown = ({
         onClick={toggleOpen}
       >
         <span className="multi-select-dropdown__label">{label}</span>
-        <span className="multi-select-dropdown__summary">{summary}</span>
+        {summary ? (
+          <span className="multi-select-dropdown__summary">{summary}</span>
+        ) : null}
         <span className="multi-select-dropdown__chevron" aria-hidden="true">
           ▾
         </span>
@@ -147,7 +149,7 @@ export default function FilterPanel({
   return (
     <div className="filters">
       <div className="select-group">
-        <h3 id="terpene-heading">Terpene</h3>
+        <h3 id="terpene-heading">Terpenfilter</h3>
         <div className="select-row select-row--with-reset">
           <MultiSelectDropdown
             headingId="terpene-heading"
@@ -170,7 +172,7 @@ export default function FilterPanel({
       </div>
 
       <div className="select-group">
-        <h3 id="wirkungen-heading">Wirkungen</h3>
+        <h3 id="wirkungen-heading">Wirkungfilter</h3>
         <div className="select-row select-row--with-reset">
           <MultiSelectDropdown
             headingId="wirkungen-heading"
@@ -192,12 +194,6 @@ export default function FilterPanel({
         </div>
       </div>
 
-      <div style={{ textAlign: "center" }}>
-        <label>
-          <input type="checkbox" checked={filters.includeDiscontinued} onChange={(e) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value: e.target.checked })} />
-          &nbsp;Nicht mehr verfügbare Sorten anzeigen
-        </label>
-      </div>
     </div>
   );
 }

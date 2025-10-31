@@ -465,6 +465,10 @@ export default function CannabisKultivarFinderUseReducer() {
     () => dispatch({ type: "CLEAR_WIRKUNGEN" }),
     []
   );
+  const handleIncludeDiscontinuedChange = useCallback(
+    (value) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value }),
+    [dispatch]
+  );
   // Memoized helpers to open and close the information dialog. Wrapping
   // setInfoDialog in useCallback avoids recreating these functions on every render.
   const showInfo = useCallback((cultivar) => {
@@ -516,7 +520,12 @@ export default function CannabisKultivarFinderUseReducer() {
         gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
       </div>
 
-      <StrainSimilarity kultivare={kultivare} onApplySimilar={handleApplySimilarity} />
+      <StrainSimilarity
+        kultivare={kultivare}
+        onApplySimilar={handleApplySimilarity}
+        includeDiscontinued={filters.includeDiscontinued}
+        onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+      />
       <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
       <FilterPanel
         filters={filters}
