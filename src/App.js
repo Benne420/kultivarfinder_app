@@ -302,7 +302,12 @@ export default function CannabisKultivarFinderUseReducer() {
       setLoading(true);
       setError(null);
       try {
-        const referencesPromise = loadReferences();
+        Promise.resolve(loadReferences()).catch((err) => {
+          console.warn(
+            "Referenzdaten konnten nicht geladen werden, Kernfunktionalität wird fortgesetzt.",
+            err
+          );
+        });
         const [kultivarResponse, terpeneResponse] = await Promise.all([
           fetch("/kultivare.json"),
           fetch("/data/terpenes.json"),
@@ -315,10 +320,9 @@ export default function CannabisKultivarFinderUseReducer() {
           throw new Error(`Terpene HTTP ${terpeneResponse.status}`);
         }
 
-        const [kultivarData, terpenesData, referencesData] = await Promise.all([
+        const [kultivarData, terpenesData] = await Promise.all([
           kultivarResponse.json(),
           terpeneResponse.json(),
-          referencesPromise,
         ]);
 
         const terpenes = Array.isArray(terpenesData) ? terpenesData : [];
@@ -377,9 +381,6 @@ export default function CannabisKultivarFinderUseReducer() {
           wirkungList.length ? wirkungList : defaultWirkungen
         );
 
-        if (Array.isArray(referencesData)) {
-          setReferences(referencesData);
-        }
       } catch (err) {
         console.error("Fehler beim Laden der Daten:", err);
         setError(err instanceof Error ? err.message : "Unbekannter Fehler");
