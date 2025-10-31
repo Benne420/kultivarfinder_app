@@ -297,19 +297,30 @@ export default function CannabisKultivarFinderUseReducer() {
 
     return [];
   }, []);
+  const prefetchReferences = useCallback(() => {
+    const maybePromise = loadReferences();
+    if (maybePromise && typeof maybePromise.then === "function") {
+      maybePromise.catch((err) => {
+        console.warn(
+          "Referenzdaten konnten nicht geladen werden, Kernfunktionalität wird fortgesetzt.",
+          err
+        );
+      });
+    }
+  }, [loadReferences]);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
 
-      Promise.resolve()
-        .then(() => loadReferences())
-        .catch((err) => {
-          console.warn(
-            "Referenzdaten konnten nicht geladen werden, Kernfunktionalität wird fortgesetzt.",
-            err
-          );
-        });
+      try {
+        prefetchReferences();
+      } catch (err) {
+        console.warn(
+          "Referenzdaten konnten nicht geladen werden, Kernfunktionalität wird fortgesetzt.",
+          err
+        );
+      }
 
       try {
         const [kultivarResponse, terpeneResponse] = await Promise.all([
@@ -398,7 +409,7 @@ export default function CannabisKultivarFinderUseReducer() {
       }
     };
     fetchData();
-  }, [loadReferences]);
+  }, [prefetchReferences]);
 
   // useReducer für den Filterzustand
   const [filters, dispatch] = useReducer(filterReducer, initialFilterState);
