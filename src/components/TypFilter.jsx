@@ -14,7 +14,6 @@ export default function TypFilter({ typ, dispatch, typInfo }) {
       <h3>Typ</h3>
       <div className="typ-row">
         {Object.keys(typInfo)
-          // entferne reine "Indica" / "Sativa" Buttons (exakte Bezeichnungen)
           .filter((t) => !/^\s*(indica|sativa)\s*$/i.test(t))
           .map((t) => (
             <button
