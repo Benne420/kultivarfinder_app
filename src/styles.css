@@ -161,6 +161,9 @@ nav a:hover {
 }
 
 .filters .multi-select-dropdown__label {
+  flex: 1 1 auto;
+  display: block;
+  text-align: center;
   font-weight: 600;
 }
 

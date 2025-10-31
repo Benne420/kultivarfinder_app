@@ -37,7 +37,7 @@ const MultiSelectDropdown = ({
 
   const summary = React.useMemo(() => {
     if (!selectedItems.length) {
-      return "Alle anzeigen";
+      return null;
     }
 
     if (selectedItems.length <= 2) {
@@ -86,7 +86,9 @@ const MultiSelectDropdown = ({
         onClick={toggleOpen}
       >
         <span className="multi-select-dropdown__label">{label}</span>
-        <span className="multi-select-dropdown__summary">{summary}</span>
+        {summary ? (
+          <span className="multi-select-dropdown__summary">{summary}</span>
+        ) : null}
         <span className="multi-select-dropdown__chevron" aria-hidden="true">
           ▾
         </span>
