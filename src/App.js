@@ -201,30 +201,12 @@ const areSetsEqual = (a, b) => {
  */
 function filterReducer(state, action) {
   switch (action.type) {
-    case "TOGGLE_TERPENE": {
-      const next = new Set(state.selectedTerpene);
-      if (next.has(action.value)) {
-        next.delete(action.value);
-      } else {
-        next.add(action.value);
-      }
-      return { ...state, selectedTerpene: next };
-    }
     case "SET_TERPENE_VALUES": {
       const next = toSet(action.value);
       if (areSetsEqual(next, state.selectedTerpene)) {
         return state;
       }
       return { ...state, selectedTerpene: next };
-    }
-    case "TOGGLE_WIRKUNG": {
-      const next = new Set(state.selectedWirkungen);
-      if (next.has(action.value)) {
-        next.delete(action.value);
-      } else {
-        next.add(action.value);
-      }
-      return { ...state, selectedWirkungen: next };
     }
     case "SET_WIRKUNG_VALUES": {
       const next = toSet(action.value);
