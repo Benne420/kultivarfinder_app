@@ -23,7 +23,7 @@ const aspects = [
   },
 ];
 
-const EntourageInfo = () => {
+const EntourageInfoContent = ({ headingId }) => {
   return (
     <div
       style={{
@@ -35,6 +35,7 @@ const EntourageInfo = () => {
       }}
     >
       <h3
+        id={headingId}
         style={{
           marginTop: 0,
           marginBottom: "12px",
@@ -143,4 +144,4 @@ const EntourageInfo = () => {
   );
 };
 
-export default EntourageInfo;
+export default EntourageInfoContent;
