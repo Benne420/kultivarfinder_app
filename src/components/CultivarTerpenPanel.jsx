@@ -3,11 +3,18 @@ import { useTerpeneContext } from '../context/TerpeneContext';
 import { mapTerpeneToCanonical } from '../utils/helpers';
 
 const CultivarTerpenPanel = ({ cultivar }) => {
-  const { terpenes: contextTerpenes, aliasLookup } = useTerpeneContext();
+  const {
+    terpenes: contextTerpenes,
+    aliasLookup,
+    references: contextReferences,
+    loadReferences: ensureReferences,
+  } = useTerpeneContext();
   const [terpenes, setTerpenes] = useState(() =>
     Array.isArray(contextTerpenes) ? contextTerpenes : []
   );
-  const [references, setReferences] = useState([]);
+  const [references, setReferences] = useState(() =>
+    Array.isArray(contextReferences) ? contextReferences : []
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -27,15 +34,22 @@ const CultivarTerpenPanel = ({ cultivar }) => {
           terpenesData = await terpenesRes.json();
         }
 
-        const referencesRes = await fetch('/data/references.json');
-        if (!referencesRes.ok) {
-          throw new Error(`Referenz-Daten HTTP ${referencesRes.status}`);
+        let referencesData = contextReferences;
+        if (!Array.isArray(referencesData) || referencesData.length === 0) {
+          if (typeof ensureReferences === 'function') {
+            referencesData = await ensureReferences();
+          } else {
+            const referencesRes = await fetch('/data/references.json');
+            if (!referencesRes.ok) {
+              throw new Error(`Referenz-Daten HTTP ${referencesRes.status}`);
+            }
+            referencesData = await referencesRes.json();
+          }
         }
-        const referencesData = await referencesRes.json();
 
         if (!isMounted) return;
         setTerpenes(Array.isArray(terpenesData) ? terpenesData : []);
-        setReferences(referencesData);
+        setReferences(Array.isArray(referencesData) ? referencesData : []);
       } catch (err) {
         if (!isMounted) return;
         setError(err instanceof Error ? err.message : 'Unbekannter Fehler');
@@ -51,7 +65,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
     return () => {
       isMounted = false;
     };
-  }, [contextTerpenes]);
+  }, [contextTerpenes, contextReferences, ensureReferences]);
 
   const getTerpenInfo = (terpenName) => {
     if (!Array.isArray(terpenes)) return undefined;
@@ -67,7 +81,8 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   };
 
   const getReferenceInfo = (refId) => {
-    return references.find(r => r.id === refId);
+    if (!Array.isArray(references)) return undefined;
+    return references.find((r) => r.id === refId);
   };
 
   const formatReference = (ref) => {
