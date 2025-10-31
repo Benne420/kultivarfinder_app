@@ -439,6 +439,7 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
   const [similarityContext, setSimilarityContext] = useState(null);
+  const [isEntourageModalOpen, setIsEntourageModalOpen] = useState(false);
   const handleApplySimilarity = useCallback((payload) => {
     if (
       payload &&
@@ -539,6 +540,14 @@ export default function CannabisKultivarFinderUseReducer() {
     setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
+  const openEntourageModal = useCallback(() => {
+    setIsEntourageModalOpen(true);
+  }, []);
+
+  const closeEntourageModal = useCallback(() => {
+    setIsEntourageModalOpen(false);
+  }, []);
+
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
@@ -596,6 +605,16 @@ export default function CannabisKultivarFinderUseReducer() {
           Beim Laden der Daten ist ein Fehler aufgetreten: {error}
         </div>
       )}
+      <div style={{ display: "flex", justifyContent: "flex-end", margin: "16px 0" }}>
+        <button
+          type="button"
+          onClick={openEntourageModal}
+          aria-haspopup="dialog"
+          aria-expanded={isEntourageModalOpen}
+        >
+          Mehr zum Entourage-Effekt
+        </button>
+      </div>
       {!loading && !error && (
         <StrainTable
           strains={displayedKultivare}
@@ -604,10 +623,32 @@ export default function CannabisKultivarFinderUseReducer() {
           showRadar={showRadar}
         />
       )}
-      <EntourageInfo />
 
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
       <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
+
+      {isEntourageModalOpen && (
+        <div
+          className="modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Informationen zum Entourage-Effekt"
+          onClick={closeEntourageModal}
+        >
+          <div
+            className="modal"
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: "640px", maxHeight: "90vh", overflowY: "auto" }}
+          >
+            <button className="modal-close" onClick={closeEntourageModal} aria-label="Dialog schließen">
+              ×
+            </button>
+            <div className="modal-content">
+              <EntourageInfo />
+            </div>
+          </div>
+        </div>
+      )}
 
       {terpenPanel.open && terpenPanel.cultivar && (
         <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>
