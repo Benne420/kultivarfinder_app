@@ -11,7 +11,7 @@ import { useEffect, useMemo, useCallback, useReducer, useRef, useState } from "r
 import "@fontsource/montserrat";
 import "./styles.css";
 import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
-import EntourageInfo from "./components/EntourageInfo";
+import EntourageInfoModal from "./components/EntourageInfoModal";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
 import DetailsModal from "./components/DetailsModal";
@@ -627,28 +627,7 @@ export default function CannabisKultivarFinderUseReducer() {
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
       <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
 
-      {isEntourageModalOpen && (
-        <div
-          className="modal-backdrop"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Informationen zum Entourage-Effekt"
-          onClick={closeEntourageModal}
-        >
-          <div
-            className="modal"
-            onClick={(e) => e.stopPropagation()}
-            style={{ maxWidth: "640px", maxHeight: "90vh", overflowY: "auto" }}
-          >
-            <button className="modal-close" onClick={closeEntourageModal} aria-label="Dialog schließen">
-              ×
-            </button>
-            <div className="modal-content">
-              <EntourageInfo />
-            </div>
-          </div>
-        </div>
-      )}
+      <EntourageInfoModal isOpen={isEntourageModalOpen} onClose={closeEntourageModal} />
 
       {terpenPanel.open && terpenPanel.cultivar && (
         <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>
