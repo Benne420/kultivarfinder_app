@@ -25,6 +25,8 @@ import {
   mapTerpeneToCanonical,
   sortTerpeneNames,
 } from "./utils/helpers";
+import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
+import defaultWirkungenSource from "./data/default-wirkungen.json";
 
 /*
  * Daten und Hilfsfunktionen werden außerhalb der Komponente definiert, um
@@ -37,36 +39,14 @@ const typInfo = {
   "Sativa-dominant":
     "Hybride mit stärkerem Sativa-Einfluss, wie er bei hochwüchsigen, schlanken Pflanzen aus tropischen Regionen vorkam. Im Narrativ oft als aktivierend beschrieben – die tatsächliche Wirkung lässt sich wissenschaftlich nicht am Namen festmachen, sondern ergibt sich aus Wirkstoff- und Terpenprofil.",
 };
-const defaultTerpeneOptions = sortTerpeneNames([
-  "ɑ-Pinen",
-  "α-Humulen",
-  "β-Myrcen",
-  "β-Ocimen",
-  "Caryophyllen",
-  "D-Limonen",
-  "Farnesen",
-  "Linalool",
-  "Selinen",
-  "Terpinolen",
-]);
+const defaultTerpeneOptions = sortTerpeneNames(defaultTerpeneOptionsSource);
 
 /*
  * Liste der verfügbaren Wirkungen. Synonyme werden über das Mapping
  * `wirkungAliases` auf diese kanonischen Bezeichnungen abgebildet. Diese
  * Liste dient als Quelle für Dropdowns.
  */
-const defaultWirkungen = [
-  "analgetisch",
-  "angstlösend",
-  "antimikrobiell",
-  "antimykotisch",
-  "antioxidativ",
-  "entspannend",
-  "entzündungshemmend",
-  "krampflösend",
-  "neuroprotektiv",
-  "unterstützt Wundheilung",
-].sort();
+const defaultWirkungen = [...defaultWirkungenSource].sort();
 
 const getCanonicalTerpeneProfile = (kultivar, aliasLookup) => {
   if (!kultivar) return new Set();
