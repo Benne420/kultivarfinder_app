@@ -23,31 +23,28 @@ const aspects = [
   },
 ];
 
-const containerStyle = {
-  padding: "16px",
-  backgroundColor: "#f8f9fa",
-  border: "1px solid #dee2e6",
-  borderRadius: "8px",
-  margin: "16px 0",
-};
-
-const headingStyle = {
-  marginTop: 0,
-  marginBottom: "12px",
-  fontSize: "18px",
-  color: "#495057",
-};
-
-const bodyTextStyle = {
-  fontSize: "14px",
-  lineHeight: "1.5",
-  color: "#495057",
-};
-
-const EntourageInfoContent = () => {
+const EntourageInfoContent = ({ headingId }) => {
   return (
-    <div style={containerStyle}>
-      <h3 style={headingStyle}>Entourage-Effekt</h3>
+    <div
+      style={{
+        padding: "16px",
+        backgroundColor: "#f8f9fa",
+        border: "1px solid #dee2e6",
+        borderRadius: "8px",
+        margin: "16px 0",
+      }}
+    >
+      <h3
+        id={headingId}
+        style={{
+          marginTop: 0,
+          marginBottom: "12px",
+          fontSize: "18px",
+          color: "#495057",
+        }}
+      >
+        Entourage-Effekt
+      </h3>
 
       <div style={bodyTextStyle}>
         <p style={{ margin: "0 0 12px 0" }}>
@@ -148,4 +145,3 @@ const EntourageInfoContent = () => {
 };
 
 export default EntourageInfoContent;
-export { EntourageInfoContent };
