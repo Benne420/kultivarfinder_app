@@ -2,17 +2,24 @@ import React, { useMemo } from "react";
 
 const pastelPalette = ["#90caf9", "#a5d6a7", "#ffcc80", "#b39ddb", "#80deea", "#ffe082"];
 
-const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+export const DEFAULT_TERPENE_AXES = [
+  "β-Myrcen",
+  "β-Caryophyllen",
+  "Limonen",
+  "Linalool",
+  "Humulen",
+  "Terpinolen",
+];
 
-function stringToValue(str) {
-  if (!str) return 0.6;
-  let hash = 0;
-  for (let i = 0; i < str.length; i += 1) {
-    hash = (hash << 5) - hash + str.charCodeAt(i);
-    hash |= 0;
+const normalizeKey = (label) =>
+  typeof label === "string" ? label.trim().toLowerCase().replace(/[^a-z0-9]/g, "") : "";
+
+function buildPresenceValues(axes, activeLabels) {
+  if (!axes.length) {
+    return [];
   }
-  const normalized = Math.abs(hash % 1000) / 1000;
-  return clamp(0.35 + normalized * 0.55, 0.35, 0.9);
+  const activeSet = new Set(activeLabels.map((label) => normalizeKey(label)));
+  return axes.map((axisLabel) => (activeSet.has(normalizeKey(axisLabel)) ? 0.95 : 0.18));
 }
 
 function buildPolygonPoints(values, size) {
@@ -30,12 +37,18 @@ function buildPolygonPoints(values, size) {
     .join(" ");
 }
 
-const DEFAULT_LABELS = ["α-Pinen", "β-Myrcen", "Limonen", "Caryophyllen", "Linalool"];
+export default function MiniRadarChart({ axes = DEFAULT_TERPENE_AXES, activeLabels = [], size = 96, title = "" }) {
+  const safeAxes = useMemo(() => {
+    if (Array.isArray(axes) && axes.length) {
+      return axes.filter(Boolean).slice(0, 6);
+    }
+    return DEFAULT_TERPENE_AXES;
+  }, [axes]);
 
-export default function MiniRadarChart({ labels = [], size = 96, title = "" }) {
-  const safeLabels = labels.length ? labels.slice(0, 6) : DEFAULT_LABELS;
-
-  const values = useMemo(() => safeLabels.map((label) => stringToValue(label)), [safeLabels]);
+  const values = useMemo(() => buildPresenceValues(safeAxes, Array.isArray(activeLabels) ? activeLabels : []), [
+    safeAxes,
+    activeLabels,
+  ]);
   const polygonPoints = useMemo(() => buildPolygonPoints(values, size), [values, size]);
   const gridCircles = [0.3, 0.6, 0.9];
 
@@ -50,7 +63,7 @@ export default function MiniRadarChart({ labels = [], size = 96, title = "" }) {
     >
       <title>{title || "Terpen-Radar"}</title>
       <defs>
-        {safeLabels.map((label, index) => (
+        {safeAxes.map((label, index) => (
           <linearGradient
             key={label}
             id={`radar-gradient-${label.replace(/[^a-z0-9]/gi, "").toLowerCase()}-${index}`}
@@ -75,8 +88,8 @@ export default function MiniRadarChart({ labels = [], size = 96, title = "" }) {
           strokeWidth="0.5"
         />
       ))}
-      {safeLabels.map((label, index) => {
-        const angle = ((Math.PI * 2) / safeLabels.length) * index - Math.PI / 2;
+      {safeAxes.map((label, index) => {
+        const angle = ((Math.PI * 2) / safeAxes.length) * index - Math.PI / 2;
         const x = size / 2 + (size / 2 - 6) * Math.cos(angle);
         const y = size / 2 + (size / 2 - 6) * Math.sin(angle);
         const textX = size / 2 + (size / 2 - 2) * Math.cos(angle);

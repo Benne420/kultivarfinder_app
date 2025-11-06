@@ -1,5 +1,19 @@
-import React from "react";
-import MiniRadarChart from "./MiniRadarChart";
+import React, { useMemo } from "react";
+import MiniRadarChart, { DEFAULT_TERPENE_AXES } from "./MiniRadarChart";
+
+const normalizeKey = (label) =>
+  typeof label === "string" ? label.trim().toLowerCase().replace(/[^a-z0-9]/g, "") : "";
+
+const getTerpeneLabels = (cultivar) => {
+  if (!cultivar) return [];
+  if (Array.isArray(cultivar.normalizedTerpenprofil) && cultivar.normalizedTerpenprofil.length) {
+    return cultivar.normalizedTerpenprofil;
+  }
+  if (Array.isArray(cultivar.terpenprofil)) {
+    return cultivar.terpenprofil;
+  }
+  return [];
+};
 
 function formatValue(value) {
   if (value == null || value === "") {
@@ -35,9 +49,27 @@ export default function ComparisonPanel({
     return null;
   }
 
-  const columnTemplate = {
-    gridTemplateColumns: `160px repeat(${Math.max(cultivars.length, 1)}, minmax(120px, 1fr))`,
-  };
+  const columnTemplate = useMemo(
+    () => ({
+      gridTemplateColumns: `200px repeat(${Math.max(cultivars.length, 1)}, minmax(180px, 1fr))`,
+    }),
+    [cultivars.length]
+  );
+
+  const terpeneAxes = useMemo(() => {
+    const baseAxes = [...DEFAULT_TERPENE_AXES];
+    const seen = new Set(baseAxes.map(normalizeKey));
+    cultivars.forEach((cultivar) => {
+      getTerpeneLabels(cultivar).forEach((label) => {
+        const key = normalizeKey(label);
+        if (label && !seen.has(key)) {
+          seen.add(key);
+          baseAxes.push(label);
+        }
+      });
+    });
+    return baseAxes.slice(0, 6);
+  }, [cultivars]);
 
   return (
     <aside className="comparison-panel" role="dialog" aria-modal="true" aria-labelledby="comparison-panel-title">
@@ -103,11 +135,8 @@ export default function ComparisonPanel({
           {cultivars.map((cultivar) => (
             <div key={`${cultivar.name}-radar`} className="comparison-panel__cell" role="cell">
               <MiniRadarChart
-                labels={
-                  Array.isArray(cultivar.normalizedTerpenprofil) && cultivar.normalizedTerpenprofil.length
-                    ? cultivar.normalizedTerpenprofil
-                    : cultivar.terpenprofil || []
-                }
+                axes={terpeneAxes}
+                activeLabels={getTerpeneLabels(cultivar)}
                 size={110}
                 title={`Terpen-Radar für ${cultivar.name}`}
               />
