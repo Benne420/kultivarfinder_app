@@ -1,19 +1,6 @@
 import React, { useMemo } from "react";
-import MiniRadarChart, { DEFAULT_TERPENE_AXES } from "./MiniRadarChart";
-
-const normalizeKey = (label) =>
-  typeof label === "string" ? label.trim().toLowerCase().replace(/[^a-z0-9]/g, "") : "";
-
-const getTerpeneLabels = (cultivar) => {
-  if (!cultivar) return [];
-  if (Array.isArray(cultivar.normalizedTerpenprofil) && cultivar.normalizedTerpenprofil.length) {
-    return cultivar.normalizedTerpenprofil;
-  }
-  if (Array.isArray(cultivar.terpenprofil)) {
-    return cultivar.terpenprofil;
-  }
-  return [];
-};
+import MiniRadarChart from "./MiniRadarChart";
+import { buildTerpeneAxes, getTerpeneLabels } from "../utils/comparison";
 
 function formatValue(value) {
   if (value == null || value === "") {
@@ -56,20 +43,7 @@ export default function ComparisonPanel({
     [cultivars.length]
   );
 
-  const terpeneAxes = useMemo(() => {
-    const baseAxes = [...DEFAULT_TERPENE_AXES];
-    const seen = new Set(baseAxes.map(normalizeKey));
-    cultivars.forEach((cultivar) => {
-      getTerpeneLabels(cultivar).forEach((label) => {
-        const key = normalizeKey(label);
-        if (label && !seen.has(key)) {
-          seen.add(key);
-          baseAxes.push(label);
-        }
-      });
-    });
-    return baseAxes.slice(0, 6);
-  }, [cultivars]);
+  const terpeneAxes = useMemo(() => buildTerpeneAxes(cultivars), [cultivars]);
 
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -141,16 +115,20 @@ export default function ComparisonPanel({
           ))}
         </div>
 
-        <div className="comparison-panel__row" role="row" style={columnTemplate}>
+        <div className="comparison-panel__row comparison-panel__row--radar" role="row" style={columnTemplate}>
           <div className="comparison-panel__cell" role="rowheader">
             Terpen-Radar
           </div>
           {cultivars.map((cultivar) => (
-            <div key={`${cultivar.name}-radar`} className="comparison-panel__cell" role="cell">
+            <div
+              key={`${cultivar.name}-radar`}
+              className="comparison-panel__cell comparison-panel__cell--radar"
+              role="cell"
+            >
               <MiniRadarChart
                 axes={terpeneAxes}
                 activeLabels={getTerpeneLabels(cultivar)}
-                size={110}
+                size={140}
                 title={`Terpen-Radar für ${cultivar.name}`}
               />
             </div>

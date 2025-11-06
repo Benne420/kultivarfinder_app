@@ -1,25 +1,14 @@
 import React, { useMemo } from "react";
+import { DEFAULT_TERPENE_AXES, normalizeTerpeneKey } from "../utils/comparison";
 
 const pastelPalette = ["#90caf9", "#a5d6a7", "#ffcc80", "#b39ddb", "#80deea", "#ffe082"];
-
-export const DEFAULT_TERPENE_AXES = [
-  "β-Myrcen",
-  "β-Caryophyllen",
-  "Limonen",
-  "Linalool",
-  "Humulen",
-  "Terpinolen",
-];
-
-const normalizeKey = (label) =>
-  typeof label === "string" ? label.trim().toLowerCase().replace(/[^a-z0-9]/g, "") : "";
 
 function buildPresenceValues(axes, activeLabels) {
   if (!axes.length) {
     return [];
   }
-  const activeSet = new Set(activeLabels.map((label) => normalizeKey(label)));
-  return axes.map((axisLabel) => (activeSet.has(normalizeKey(axisLabel)) ? 0.95 : 0.18));
+  const activeSet = new Set(activeLabels.map((label) => normalizeTerpeneKey(label)));
+  return axes.map((axisLabel) => (activeSet.has(normalizeTerpeneKey(axisLabel)) ? 0.95 : 0.18));
 }
 
 function buildPolygonPoints(values, size) {

@@ -19,6 +19,7 @@ import RadarModal from "./components/RadarModal";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
 import ComparisonPanel from "./components/ComparisonPanel";
+import ComparisonDetailsModal from "./components/ComparisonDetailsModal";
 import { TerpeneContext } from "./context/TerpeneContext";
 import {
   normalizeWirkung,
@@ -424,6 +425,7 @@ export default function CannabisKultivarFinderUseReducer() {
   const [similarityContext, setSimilarityContext] = useState(null);
   const [selectedCultivars, setSelectedCultivars] = useState([]);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
+  const [isComparisonDetailsOpen, setIsComparisonDetailsOpen] = useState(false);
   const [isEntourageModalOpen, setIsEntourageModalOpen] = useState(false);
   const handleApplySimilarity = useCallback((payload) => {
     if (
@@ -567,6 +569,7 @@ export default function CannabisKultivarFinderUseReducer() {
 
   const handleAddMoreCultivars = useCallback(() => {
     setIsComparisonOpen(false);
+    setIsComparisonDetailsOpen(false);
   }, []);
 
   useEffect(() => {
@@ -574,6 +577,12 @@ export default function CannabisKultivarFinderUseReducer() {
       setIsComparisonOpen(false);
     }
   }, [isComparisonOpen, selectedCultivars.length]);
+
+  useEffect(() => {
+    if (isComparisonDetailsOpen && selectedCultivars.length < 2) {
+      setIsComparisonDetailsOpen(false);
+    }
+  }, [isComparisonDetailsOpen, selectedCultivars.length]);
 
   const openEntourageModal = useCallback(() => {
     setIsEntourageModalOpen(true);
@@ -586,10 +595,22 @@ export default function CannabisKultivarFinderUseReducer() {
   const canOpenComparison = selectedCultivars.length >= 2;
 
   const handleShowAllDetails = useCallback(() => {
-    if (selectedCultivars.length) {
-      showInfo(selectedCultivars[0]);
+    if (!selectedCultivars.length) {
+      return;
     }
+
+    if (selectedCultivars.length === 1) {
+      showInfo(selectedCultivars[0]);
+      return;
+    }
+
+    setIsComparisonOpen(false);
+    setIsComparisonDetailsOpen(true);
   }, [selectedCultivars, showInfo]);
+
+  const closeComparisonDetails = useCallback(() => {
+    setIsComparisonDetailsOpen(false);
+  }, []);
 
   // Rendern der Komponente
   return (
@@ -707,6 +728,11 @@ export default function CannabisKultivarFinderUseReducer() {
         onClose={closeComparison}
         onRequestAdd={handleAddMoreCultivars}
         onShowAllDetails={handleShowAllDetails}
+      />
+      <ComparisonDetailsModal
+        isOpen={isComparisonDetailsOpen}
+        cultivars={selectedCultivars}
+        onClose={closeComparisonDetails}
       />
       </div>
     </TerpeneContext.Provider>
