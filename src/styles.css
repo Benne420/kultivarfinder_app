@@ -412,11 +412,11 @@ nav a:hover {
 .comparison-panel__cell--radar {
   align-items: center;
   justify-content: center;
-  min-height: 220px;
+  min-height: 260px;
 }
 
 .comparison-panel__radar-image {
-  width: 160px;
+  width: min(240px, 100%);
 }
 
 .comparison-details-modal {
@@ -544,7 +544,7 @@ nav a:hover {
 }
 
 .comparison-details-modal__radar-image {
-  width: 180px;
+  width: min(240px, 100%);
 }
 
 @media (max-width: 960px) {
