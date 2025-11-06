@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { DEFAULT_TERPENE_AXES, normalizeTerpeneKey } from "../utils/comparison";
 
 const pastelPalette = ["#90caf9", "#a5d6a7", "#ffcc80", "#b39ddb", "#80deea", "#ffe082"];
+const CHART_PADDING = 16;
 
 function buildPresenceValues(axes, activeLabels) {
   if (!axes.length) {
@@ -12,7 +13,7 @@ function buildPresenceValues(axes, activeLabels) {
 }
 
 function buildPolygonPoints(values, size) {
-  const radius = size / 2 - 6;
+  const radius = size / 2 - CHART_PADDING;
   const center = size / 2;
   const angleStep = (Math.PI * 2) / values.length;
   return values
@@ -40,6 +41,8 @@ export default function MiniRadarChart({ axes = DEFAULT_TERPENE_AXES, activeLabe
   ]);
   const polygonPoints = useMemo(() => buildPolygonPoints(values, size), [values, size]);
   const gridCircles = [0.3, 0.6, 0.9];
+  const radius = size / 2 - CHART_PADDING;
+  const center = size / 2;
 
   return (
     <svg
@@ -69,9 +72,9 @@ export default function MiniRadarChart({ axes = DEFAULT_TERPENE_AXES, activeLabe
       {gridCircles.map((factor) => (
         <circle
           key={factor}
-          cx={size / 2}
-          cy={size / 2}
-          r={(size / 2 - 6) * factor}
+          cx={center}
+          cy={center}
+          r={radius * factor}
           fill="none"
           stroke="#d0d7e2"
           strokeWidth="0.5"
@@ -79,21 +82,29 @@ export default function MiniRadarChart({ axes = DEFAULT_TERPENE_AXES, activeLabe
       ))}
       {safeAxes.map((label, index) => {
         const angle = ((Math.PI * 2) / safeAxes.length) * index - Math.PI / 2;
-        const x = size / 2 + (size / 2 - 6) * Math.cos(angle);
-        const y = size / 2 + (size / 2 - 6) * Math.sin(angle);
-        const textX = size / 2 + (size / 2 - 2) * Math.cos(angle);
-        const textY = size / 2 + (size / 2 - 2) * Math.sin(angle);
+        const x = center + radius * Math.cos(angle);
+        const y = center + radius * Math.sin(angle);
+        const textRadius = radius + 12;
+        const textX = center + textRadius * Math.cos(angle);
+        const textY = center + textRadius * Math.sin(angle);
         return (
           <g key={label}>
             <line
-              x1={size / 2}
-              y1={size / 2}
+              x1={center}
+              y1={center}
               x2={x}
               y2={y}
               stroke="#c4cedd"
               strokeWidth="0.5"
             />
-            <text x={textX} y={textY} textAnchor="middle" fontSize="8" fill="#5a6b7d">
+            <text
+              x={textX}
+              y={textY}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="8.5"
+              fill="#5a6b7d"
+            >
               {label.split(" ")[0]}
             </text>
           </g>

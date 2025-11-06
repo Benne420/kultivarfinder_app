@@ -387,8 +387,8 @@ nav a:hover {
 }
 
 .comparison-panel__row--radar {
-  padding: 28px 24px;
-  align-items: center;
+  padding: 36px 28px 40px;
+  align-items: stretch;
 }
 
 .comparison-panel__row--header {
@@ -408,11 +408,13 @@ nav a:hover {
 
 .comparison-panel__cell--radar {
   align-items: center;
+  justify-content: center;
+  min-height: 220px;
 }
 
 .comparison-panel__cell--radar .mini-radar-chart {
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
 }
 
 .comparison-details-modal {
@@ -885,7 +887,6 @@ nav a:hover {
 
 .strain-table {
   width: 100%;
-  max-width: 1100px;
   border-collapse: collapse;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
@@ -927,8 +928,7 @@ nav a:hover {
   justify-content: space-between;
   gap: 12px;
   width: 100%;
-  max-width: 1100px;
-  margin: 12px auto 0;
+  margin: 12px 0 0;
   flex-wrap: wrap;
 }
 

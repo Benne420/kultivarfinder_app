@@ -128,7 +128,7 @@ export default function ComparisonPanel({
               <MiniRadarChart
                 axes={terpeneAxes}
                 activeLabels={getTerpeneLabels(cultivar)}
-                size={140}
+                size={160}
                 title={`Terpen-Radar für ${cultivar.name}`}
               />
             </div>
