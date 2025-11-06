@@ -81,5 +81,20 @@ export const mapTerpeneToCanonical = (name, lookup) => {
   return value;
 };
 
-export const radarPathSvg = (name) =>
-  `/netzdiagramme/${(name || "").toString().replace(/\s+/g, "_")}.svg`;
+export const radarPathSvg = (name) => {
+  const raw = (name || "").toString().trim();
+  if (!raw) {
+    return "";
+  }
+
+  const normalized = raw
+    .normalize("NFKD")
+    .replace(/ß/gi, (match) => (match === "ß" ? "ss" : "SS"))
+    .replace(/\p{Diacritic}/gu, "");
+
+  const fileName = normalized
+    .replace(/[^a-z0-9]+/gi, "_")
+    .replace(/^_+|_+$/g, "");
+
+  return `/netzdiagramme/${fileName}.svg`;
+};

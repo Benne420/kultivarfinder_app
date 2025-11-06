@@ -299,8 +299,11 @@ nav a:hover {
   background: #3a8dff;
 }
 
-.mini-radar-chart {
+
+.terpene-radar-image {
   display: block;
+  max-width: 100%;
+  height: auto;
   margin: 0 auto;
 }
 
@@ -412,9 +415,8 @@ nav a:hover {
   min-height: 220px;
 }
 
-.comparison-panel__cell--radar .mini-radar-chart {
+.comparison-panel__radar-image {
   width: 160px;
-  height: 160px;
 }
 
 .comparison-details-modal {
@@ -541,9 +543,8 @@ nav a:hover {
   justify-self: center;
 }
 
-.comparison-details-modal__radar .mini-radar-chart {
+.comparison-details-modal__radar-image {
   width: 180px;
-  height: 180px;
 }
 
 @media (max-width: 960px) {

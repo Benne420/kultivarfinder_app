@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
-import MiniRadarChart from "./MiniRadarChart";
-import { buildTerpeneAxes, getTerpeneLabels } from "../utils/comparison";
+import TerpeneRadarImage from "./TerpeneRadarImage";
 
 function formatValue(value) {
   if (value == null || value === "") {
@@ -42,8 +41,6 @@ export default function ComparisonPanel({
     }),
     [cultivars.length]
   );
-
-  const terpeneAxes = useMemo(() => buildTerpeneAxes(cultivars), [cultivars]);
 
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -125,11 +122,9 @@ export default function ComparisonPanel({
               className="comparison-panel__cell comparison-panel__cell--radar"
               role="cell"
             >
-              <MiniRadarChart
-                axes={terpeneAxes}
-                activeLabels={getTerpeneLabels(cultivar)}
-                size={160}
-                title={`Terpen-Radar für ${cultivar.name}`}
+              <TerpeneRadarImage
+                cultivarName={cultivar?.name}
+                className="comparison-panel__radar-image"
               />
             </div>
           ))}

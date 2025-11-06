@@ -1,6 +1,5 @@
-import React, { useMemo } from "react";
-import MiniRadarChart from "./MiniRadarChart";
-import { buildTerpeneAxes, getTerpeneLabels } from "../utils/comparison";
+import React from "react";
+import TerpeneRadarImage from "./TerpeneRadarImage";
 
 function formatValue(value) {
   if (value == null || value === "") {
@@ -11,8 +10,6 @@ function formatValue(value) {
 
 export default function ComparisonDetailsModal({ isOpen, cultivars = [], onClose = () => {} }) {
   const showModal = isOpen && Array.isArray(cultivars) && cultivars.length > 0;
-
-  const terpeneAxes = useMemo(() => buildTerpeneAxes(cultivars), [cultivars]);
 
   if (!showModal) {
     return null;
@@ -86,11 +83,10 @@ export default function ComparisonDetailsModal({ isOpen, cultivars = [], onClose
                 </dl>
 
                 <div className="comparison-details-modal__radar">
-                  <MiniRadarChart
-                    axes={terpeneAxes}
-                    activeLabels={getTerpeneLabels(cultivar)}
-                    size={180}
-                    title={`Terpen-Radar für ${cultivar.name}`}
+                  <TerpeneRadarImage
+                    cultivarName={cultivar?.name}
+                    className="comparison-details-modal__radar-image"
+                    lazy={false}
                   />
                 </div>
               </div>
