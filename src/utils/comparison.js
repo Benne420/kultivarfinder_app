@@ -21,7 +21,7 @@ export const getTerpeneLabels = (cultivar) => {
   return [];
 };
 
-export const buildTerpeneAxes = (cultivars = [], limit = 6) => {
+export const buildTerpeneAxes = (cultivars = [], limit) => {
   const baseAxes = [...DEFAULT_TERPENE_AXES];
   const seen = new Set(baseAxes.map(normalizeTerpeneKey));
 
@@ -35,5 +35,10 @@ export const buildTerpeneAxes = (cultivars = [], limit = 6) => {
     });
   });
 
-  return baseAxes.slice(0, Math.max(1, limit));
+  if (typeof limit === "number" && Number.isFinite(limit)) {
+    const capped = Math.max(1, Math.floor(limit));
+    return baseAxes.slice(0, capped);
+  }
+
+  return baseAxes;
 };

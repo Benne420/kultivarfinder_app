@@ -30,7 +30,7 @@ function buildPolygonPoints(values, size) {
 export default function MiniRadarChart({ axes = DEFAULT_TERPENE_AXES, activeLabels = [], size = 96, title = "" }) {
   const safeAxes = useMemo(() => {
     if (Array.isArray(axes) && axes.length) {
-      return axes.filter(Boolean).slice(0, 6);
+      return axes.filter(Boolean);
     }
     return DEFAULT_TERPENE_AXES;
   }, [axes]);
@@ -84,7 +84,7 @@ export default function MiniRadarChart({ axes = DEFAULT_TERPENE_AXES, activeLabe
         const angle = ((Math.PI * 2) / safeAxes.length) * index - Math.PI / 2;
         const x = center + radius * Math.cos(angle);
         const y = center + radius * Math.sin(angle);
-        const textRadius = radius + 12;
+        const textRadius = radius + Math.min(6, CHART_PADDING / 2);
         const textX = center + textRadius * Math.cos(angle);
         const textY = center + textRadius * Math.sin(angle);
         return (
