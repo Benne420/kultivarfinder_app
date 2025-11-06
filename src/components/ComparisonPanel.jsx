@@ -71,8 +71,21 @@ export default function ComparisonPanel({
     return baseAxes.slice(0, 6);
   }, [cultivars]);
 
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <aside className="comparison-panel" role="dialog" aria-modal="true" aria-labelledby="comparison-panel-title">
+    <div className="comparison-panel-backdrop" role="presentation" onClick={handleBackdropClick}>
+      <aside
+        className="comparison-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="comparison-panel-title"
+        onClick={(event) => event.stopPropagation()}
+      >
       <div className="comparison-panel__header">
         <div>
           <p className="comparison-panel__eyebrow">Medizinischer Vergleich</p>
@@ -169,6 +182,7 @@ export default function ComparisonPanel({
           </button>
         </div>
       </div>
-    </aside>
+      </aside>
+    </div>
   );
 }
