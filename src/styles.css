@@ -320,14 +320,14 @@ nav a:hover {
 
 .comparison-panel {
   width: min(1140px, 94vw);
-  max-height: calc(100vh - 72px);
+  max-height: calc(100vh - 56px);
   background: linear-gradient(180deg, rgba(250, 253, 255, 0.98), rgba(232, 240, 250, 0.98));
   box-shadow: 0 18px 48px rgba(17, 33, 62, 0.2);
   border-radius: 24px;
-  padding: 24px 28px 84px;
+  padding: 20px 24px 64px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   overflow: hidden;
 }
 
@@ -370,26 +370,26 @@ nav a:hover {
 
 .comparison-panel__content {
   flex: 1 1 auto;
-  overflow-y: visible;
   overflow-x: auto;
+  overflow-y: hidden;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .comparison-panel__row {
   display: grid;
   grid-template-columns: inherit;
-  gap: 10px;
+  gap: 8px;
   align-items: start;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(196, 209, 228, 0.5);
   border-radius: 16px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   min-width: max-content;
 }
 
 .comparison-panel__row--radar {
-  padding: 20px 18px 24px;
+  padding: 18px 16px 20px;
   align-items: stretch;
 }
 
@@ -411,7 +411,7 @@ nav a:hover {
 .comparison-panel__cell--radar {
   align-items: center;
   justify-content: center;
-  min-height: 320px;
+  min-height: 0;
 }
 
 .comparison-panel__radar-image {
@@ -596,11 +596,11 @@ nav a:hover {
 
 .comparison-panel__actions {
   position: sticky;
-  bottom: 16px;
+  bottom: 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-top: 8px;
+  gap: 6px;
+  padding-top: 6px;
   background: linear-gradient(
     180deg,
     rgba(248, 252, 255, 0.05),

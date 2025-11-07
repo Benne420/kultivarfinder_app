@@ -426,6 +426,27 @@ export default function CannabisKultivarFinderUseReducer() {
   const [selectedCultivars, setSelectedCultivars] = useState([]);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isComparisonDetailsOpen, setIsComparisonDetailsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isComparisonOpen || typeof document === "undefined") {
+      return undefined;
+    }
+
+    const { style } = document.body;
+    const previousOverflow = style.overflow;
+    const previousPaddingRight = style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      style.overflow = previousOverflow;
+      style.paddingRight = previousPaddingRight;
+    };
+  }, [isComparisonOpen]);
   const [isEntourageModalOpen, setIsEntourageModalOpen] = useState(false);
   const handleApplySimilarity = useCallback((payload) => {
     if (
