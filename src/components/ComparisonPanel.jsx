@@ -125,10 +125,12 @@ export default function ComparisonPanel({
                   className="comparison-panel__cell comparison-panel__cell--radar"
                   role="cell"
                 >
-                  <TerpeneRadarImage
-                    cultivarName={cultivar?.name}
-                    className="comparison-panel__radar-image"
-                  />
+                  <div className="comparison-panel__radar-wrapper">
+                    <TerpeneRadarImage
+                      cultivarName={cultivar?.name}
+                      className="comparison-panel__radar-image"
+                    />
+                  </div>
                 </div>
               ))}
             </div>

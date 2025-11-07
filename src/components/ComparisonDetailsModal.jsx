@@ -83,11 +83,13 @@ export default function ComparisonDetailsModal({ isOpen, cultivars = [], onClose
                 </dl>
 
                 <div className="comparison-details-modal__radar">
-                  <TerpeneRadarImage
-                    cultivarName={cultivar?.name}
-                    className="comparison-details-modal__radar-image"
-                    lazy={false}
-                  />
+                  <div className="comparison-details-modal__radar-wrapper">
+                    <TerpeneRadarImage
+                      cultivarName={cultivar?.name}
+                      className="comparison-details-modal__radar-image"
+                      lazy={false}
+                    />
+                  </div>
                 </div>
               </div>
             </section>
