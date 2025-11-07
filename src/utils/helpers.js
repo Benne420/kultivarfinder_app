@@ -119,3 +119,45 @@ export const getCultivarEffects = (cultivar) => {
     .map((entry) => (entry || "").toString().trim())
     .filter(Boolean);
 };
+
+const CM_TO_PX = 37.7952755906;
+
+export const COMPARISON_HEADER_WIDTH_PX = 180;
+export const COMPARISON_COLUMN_GAP_PX = 8;
+export const COMPARISON_MAX_WIDTH_PX = 1200;
+const COMPARISON_RADAR_WIDTH_CM = 11;
+const COMPARISON_RADAR_HEIGHT_CM = 8.5;
+
+export const getComparisonLayoutMetrics = (count = 1, maxWidthPx) => {
+  const cultivarCount = Math.max(Number.parseInt(count, 10) || 0, 1);
+  const preferredColumnWidthPx = COMPARISON_RADAR_WIDTH_CM * CM_TO_PX;
+  const aspectRatio = COMPARISON_RADAR_HEIGHT_CM / COMPARISON_RADAR_WIDTH_CM;
+  const totalGapWidth = cultivarCount * COMPARISON_COLUMN_GAP_PX;
+  const preferredPanelWidthPx =
+    COMPARISON_HEADER_WIDTH_PX + totalGapWidth + cultivarCount * preferredColumnWidthPx;
+  const rawPanelWidthPx = Math.max(COMPARISON_MAX_WIDTH_PX, preferredPanelWidthPx);
+  const constrainedWidth =
+    typeof maxWidthPx === "number" && Number.isFinite(maxWidthPx) && maxWidthPx > 0
+      ? maxWidthPx
+      : null;
+  const panelWidthPx = constrainedWidth
+    ? Math.min(rawPanelWidthPx, constrainedWidth)
+    : rawPanelWidthPx;
+  const availableWidth = Math.max(
+    panelWidthPx - COMPARISON_HEADER_WIDTH_PX - totalGapWidth,
+    0
+  );
+
+  const rawColumnWidth =
+    cultivarCount > 0 && availableWidth > 0
+      ? availableWidth / cultivarCount
+      : preferredColumnWidthPx;
+
+  const columnWidthPx = Math.min(preferredColumnWidthPx, rawColumnWidth);
+
+  return {
+    panelWidthPx,
+    columnWidthPx,
+    radarHeightPx: columnWidthPx * aspectRatio,
+  };
+};

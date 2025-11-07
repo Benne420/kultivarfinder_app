@@ -15,7 +15,8 @@ body {
   line-height: 1.6;
 }
 .container {
-  max-width: 1200px;
+  width: min(var(--layout-max-width, 1200px), 94vw);
+  max-width: min(var(--layout-max-width, 1200px), 94vw);
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -319,7 +320,7 @@ nav a:hover {
 }
 
 .comparison-panel {
-  width: min(var(--comparison-panel-width, 1140px), 94vw);
+  width: min(var(--comparison-panel-width, 1200px), 94vw);
   max-height: calc(100vh - 56px);
   background: linear-gradient(180deg, rgba(250, 253, 255, 0.98), rgba(232, 240, 250, 0.98));
   box-shadow: 0 18px 48px rgba(17, 33, 62, 0.2);
@@ -381,6 +382,7 @@ nav a:hover {
   grid-template-columns: inherit;
   gap: 8px;
   align-items: start;
+  justify-content: start;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(196, 209, 228, 0.5);
   border-radius: 16px;
@@ -433,7 +435,7 @@ nav a:hover {
 }
 
 .comparison-details-modal {
-  width: min(1080px, 94vw);
+  width: min(var(--comparison-panel-width, 1200px), 94vw);
   max-height: calc(100vh - 72px);
   background: linear-gradient(180deg, rgba(250, 253, 255, 0.98), rgba(232, 240, 250, 0.98));
   border-radius: 28px;
@@ -523,7 +525,7 @@ nav a:hover {
 
 .comparison-details-modal__body {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(11cm, 1fr);
+  grid-template-columns: minmax(220px, 1fr) minmax(var(--comparison-column-width, 11cm), 1fr);
   gap: 24px;
   align-items: center;
 }
@@ -557,8 +559,8 @@ nav a:hover {
 }
 
 .comparison-details-modal__radar-wrapper {
-  width: 11cm;
-  height: 8.5cm;
+  width: var(--comparison-column-width, 11cm);
+  height: var(--comparison-radar-height, 8.5cm);
   max-width: 100%;
   max-height: 100%;
   display: flex;

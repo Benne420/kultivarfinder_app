@@ -1,9 +1,18 @@
 import React from "react";
 import TerpeneRadarImage from "./TerpeneRadarImage";
 import EffectPills from "./EffectPills";
-import { formatMetricValue, getCultivarEffects } from "../utils/helpers";
+import {
+  formatMetricValue,
+  getCultivarEffects,
+  getComparisonLayoutMetrics,
+} from "../utils/helpers";
 
-export default function ComparisonDetailsModal({ isOpen, cultivars = [], onClose = () => {} }) {
+export default function ComparisonDetailsModal({
+  isOpen,
+  cultivars = [],
+  onClose = () => {},
+  layoutMetrics,
+}) {
   const showModal = isOpen && Array.isArray(cultivars) && cultivars.length > 0;
 
   if (!showModal) {
@@ -16,9 +25,26 @@ export default function ComparisonDetailsModal({ isOpen, cultivars = [], onClose
     }
   };
 
+  const cultivarCount = Math.max(cultivars.length, 1);
+  const { panelWidthPx, columnWidthPx, radarHeightPx } =
+    layoutMetrics && typeof layoutMetrics.panelWidthPx === "number"
+      ? layoutMetrics
+      : getComparisonLayoutMetrics(cultivarCount);
+
+  const modalStyle = {
+    "--comparison-panel-width": `${panelWidthPx}px`,
+    "--comparison-column-width": `${columnWidthPx}px`,
+    "--comparison-radar-height": `${radarHeightPx}px`,
+  };
+
   return (
     <div className="modal-backdrop" onClick={handleBackdropClick} role="dialog" aria-modal="true">
-      <div className="comparison-details-modal" onClick={(event) => event.stopPropagation()} role="document">
+      <div
+        className="comparison-details-modal"
+        onClick={(event) => event.stopPropagation()}
+        role="document"
+        style={modalStyle}
+      >
         <header className="comparison-details-modal__header">
           <div>
             <p className="comparison-details-modal__eyebrow">Vergleichsansicht</p>

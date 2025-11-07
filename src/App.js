@@ -26,6 +26,8 @@ import {
   createTerpeneAliasLookup,
   mapTerpeneToCanonical,
   sortTerpeneNames,
+  getComparisonLayoutMetrics,
+  COMPARISON_MAX_WIDTH_PX,
 } from "./utils/helpers";
 import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
 import defaultWirkungenSource from "./data/default-wirkungen.json";
@@ -51,6 +53,8 @@ const defaultTerpeneOptions = sortTerpeneNames(defaultTerpeneOptionsSource);
 const defaultWirkungen = [...defaultWirkungenSource].sort();
 
 const MAX_COMPARISON_ITEMS = 4;
+const VIEWPORT_WIDTH_FACTOR = 0.94;
+const VIEWPORT_WIDTH_FALLBACK = COMPARISON_MAX_WIDTH_PX / VIEWPORT_WIDTH_FACTOR;
 
 const getCanonicalTerpeneProfile = (kultivar, aliasLookup) => {
   if (!kultivar) return new Set();
@@ -427,6 +431,50 @@ export default function CannabisKultivarFinderUseReducer() {
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isComparisonDetailsOpen, setIsComparisonDetailsOpen] = useState(false);
 
+  const [viewportWidth, setViewportWidth] = useState(() => {
+    if (typeof window === "undefined") {
+      return VIEWPORT_WIDTH_FALLBACK;
+    }
+    return window.innerWidth;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const viewportConstraint = useMemo(() => {
+    if (!Number.isFinite(viewportWidth) || viewportWidth <= 0) {
+      return undefined;
+    }
+    return Math.floor(viewportWidth * VIEWPORT_WIDTH_FACTOR);
+  }, [viewportWidth]);
+
+  const comparisonLayout = useMemo(
+    () =>
+      getComparisonLayoutMetrics(
+        Math.max(selectedCultivars.length, 1),
+        viewportConstraint
+      ),
+    [selectedCultivars.length, viewportConstraint]
+  );
+
+  const containerStyle = useMemo(
+    () => ({ "--layout-max-width": `${comparisonLayout.panelWidthPx}px` }),
+    [comparisonLayout.panelWidthPx]
+  );
+
   useEffect(() => {
     if (!isComparisonOpen || typeof document === "undefined") {
       return undefined;
@@ -636,7 +684,7 @@ export default function CannabisKultivarFinderUseReducer() {
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
-      <div className="container">
+      <div className="container" style={containerStyle}>
       <header className="header" aria-label="App-Kopfzeile">
         <h1 className="appname">Four20 Index</h1>
       </header>
@@ -749,11 +797,13 @@ export default function CannabisKultivarFinderUseReducer() {
         onClose={closeComparison}
         onRequestAdd={handleAddMoreCultivars}
         onShowAllDetails={handleShowAllDetails}
+        layoutMetrics={comparisonLayout}
       />
       <ComparisonDetailsModal
         isOpen={isComparisonDetailsOpen}
         cultivars={selectedCultivars}
         onClose={closeComparisonDetails}
+        layoutMetrics={comparisonLayout}
       />
       </div>
     </TerpeneContext.Provider>

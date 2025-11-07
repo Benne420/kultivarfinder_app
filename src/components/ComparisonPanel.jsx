@@ -1,12 +1,12 @@
 import React from "react";
 import TerpeneRadarImage from "./TerpeneRadarImage";
 import EffectPills from "./EffectPills";
-import { formatMetricValue, getCultivarEffects } from "../utils/helpers";
-
-const RADAR_WIDTH_CM = 11;
-const RADAR_HEIGHT_CM = 8.5;
-const HEADER_COLUMN_WIDTH_PX = 180;
-const COLUMN_GAP_PX = 8;
+import {
+  formatMetricValue,
+  getCultivarEffects,
+  getComparisonLayoutMetrics,
+  COMPARISON_HEADER_WIDTH_PX,
+} from "../utils/helpers";
 
 export default function ComparisonPanel({
   isOpen,
@@ -14,6 +14,7 @@ export default function ComparisonPanel({
   onClose = () => {},
   onRequestAdd = () => {},
   onShowAllDetails = () => {},
+  layoutMetrics,
 }) {
   if (!isOpen) {
     return null;
@@ -21,15 +22,20 @@ export default function ComparisonPanel({
 
   const cultivarCount = Math.max(cultivars.length, 1);
 
-  const columnWidth = `${RADAR_WIDTH_CM}cm`;
+  const { panelWidthPx, columnWidthPx, radarHeightPx } =
+    layoutMetrics && typeof layoutMetrics.panelWidthPx === "number"
+      ? layoutMetrics
+      : getComparisonLayoutMetrics(cultivarCount);
+
+  const columnWidth = `${columnWidthPx}px`;
   const columnTemplate = {
-    gridTemplateColumns: `${HEADER_COLUMN_WIDTH_PX}px repeat(${cultivarCount}, var(--comparison-column-width, ${RADAR_WIDTH_CM}cm))`,
+    gridTemplateColumns: `${COMPARISON_HEADER_WIDTH_PX}px repeat(${cultivarCount}, var(--comparison-column-width, ${columnWidth}))`,
   };
 
   const panelStyle = {
     "--comparison-column-width": columnWidth,
-    "--comparison-radar-height": `${RADAR_HEIGHT_CM}cm`,
-    "--comparison-panel-width": `calc(${HEADER_COLUMN_WIDTH_PX}px + ${cultivarCount} * ${columnWidth} + ${cultivarCount} * ${COLUMN_GAP_PX}px)`,
+    "--comparison-radar-height": `${radarHeightPx}px`,
+    "--comparison-panel-width": `${panelWidthPx}px`,
   };
 
   const handleBackdropClick = (event) => {
