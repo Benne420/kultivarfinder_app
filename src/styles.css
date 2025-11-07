@@ -314,20 +314,20 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  padding: 24px;
   z-index: 40;
 }
 
 .comparison-panel {
-  width: min(1200px, 94vw);
-  max-height: calc(100vh - 64px);
+  width: min(1140px, 94vw);
+  max-height: calc(100vh - 72px);
   background: linear-gradient(180deg, rgba(250, 253, 255, 0.98), rgba(232, 240, 250, 0.98));
   box-shadow: 0 18px 48px rgba(17, 33, 62, 0.2);
   border-radius: 24px;
-  padding: 32px 36px 120px;
+  padding: 24px 28px 84px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   overflow: hidden;
 }
 
@@ -370,13 +370,10 @@ nav a:hover {
 
 .comparison-panel__content {
   flex: 1 1 auto;
-  overflow-y: auto;
+  overflow-y: visible;
   overflow-x: auto;
-  padding-right: 8px;
   display: grid;
-  gap: 16px;
-  margin-right: -8px;
-  padding-bottom: 8px;
+  gap: 12px;
 }
 
 .comparison-panel__row {
@@ -387,12 +384,12 @@ nav a:hover {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(196, 209, 228, 0.5);
   border-radius: 16px;
-  padding: 16px 18px;
+  padding: 12px 14px;
   min-width: max-content;
 }
 
 .comparison-panel__row--radar {
-  padding: 28px 22px 32px;
+  padding: 20px 18px 24px;
   align-items: stretch;
 }
 
@@ -414,7 +411,7 @@ nav a:hover {
 .comparison-panel__cell--radar {
   align-items: center;
   justify-content: center;
-  min-height: 390px;
+  min-height: 320px;
 }
 
 .comparison-panel__radar-image {
@@ -599,18 +596,18 @@ nav a:hover {
 
 .comparison-panel__actions {
   position: sticky;
-  bottom: 24px;
+  bottom: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-top: 12px;
+  gap: 8px;
+  padding-top: 8px;
   background: linear-gradient(
     180deg,
     rgba(248, 252, 255, 0.05),
     rgba(248, 252, 255, 0.9) 55%,
     rgba(248, 252, 255, 1)
   );
-  margin-top: 4px;
+  margin-top: 0;
 }
 
 .comparison-panel__add {
