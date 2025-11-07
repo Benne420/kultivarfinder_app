@@ -98,3 +98,24 @@ export const radarPathSvg = (name) => {
 
   return `/netzdiagramme/${fileName}.svg`;
 };
+
+export const formatMetricValue = (value) =>
+  value == null || value === "" ? "–" : value;
+
+export const getCultivarEffects = (cultivar) => {
+  if (!cultivar) return [];
+
+  const primary = Array.isArray(cultivar.normalizedWirkungen)
+    ? cultivar.normalizedWirkungen
+    : null;
+
+  const fallback = Array.isArray(cultivar.wirkungen)
+    ? cultivar.wirkungen
+    : null;
+
+  const values = primary && primary.length ? primary : fallback || [];
+
+  return values
+    .map((entry) => (entry || "").toString().trim())
+    .filter(Boolean);
+};

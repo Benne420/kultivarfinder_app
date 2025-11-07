@@ -1,12 +1,7 @@
 import React from "react";
 import TerpeneRadarImage from "./TerpeneRadarImage";
-
-function formatValue(value) {
-  if (value == null || value === "") {
-    return "–";
-  }
-  return value;
-}
+import EffectPills from "./EffectPills";
+import { formatMetricValue, getCultivarEffects } from "../utils/helpers";
 
 export default function ComparisonDetailsModal({ isOpen, cultivars = [], onClose = () => {} }) {
   const showModal = isOpen && Array.isArray(cultivars) && cultivars.length > 0;
@@ -46,38 +41,20 @@ export default function ComparisonDetailsModal({ isOpen, cultivars = [], onClose
                 <dl className="comparison-details-modal__metrics">
                   <div>
                     <dt>THC</dt>
-                    <dd>{formatValue(cultivar.thc)}</dd>
+                    <dd>{formatMetricValue(cultivar.thc)}</dd>
                   </div>
                   <div>
                     <dt>CBD</dt>
-                    <dd>{formatValue(cultivar.cbd)}</dd>
+                    <dd>{formatMetricValue(cultivar.cbd)}</dd>
                   </div>
                   <div>
                     <dt>Terpengehalt</dt>
-                    <dd>{formatValue(cultivar.terpengehalt)}</dd>
+                    <dd>{formatMetricValue(cultivar.terpengehalt)}</dd>
                   </div>
                   <div>
                     <dt>Häufigste Wirkungen</dt>
                     <dd>
-                      {Array.isArray(cultivar.normalizedWirkungen) && cultivar.normalizedWirkungen.length ? (
-                        <div className="effect-pills" role="list">
-                          {cultivar.normalizedWirkungen.slice(0, 6).map((effect) => (
-                            <span key={effect} className="effect-pill" role="listitem">
-                              {effect}
-                            </span>
-                          ))}
-                        </div>
-                      ) : Array.isArray(cultivar.wirkungen) && cultivar.wirkungen.length ? (
-                        <div className="effect-pills" role="list">
-                          {cultivar.wirkungen.slice(0, 6).map((effect) => (
-                            <span key={effect} className="effect-pill" role="listitem">
-                              {effect}
-                            </span>
-                          ))}
-                        </div>
-                      ) : (
-                        <span className="empty-value">–</span>
-                      )}
+                      <EffectPills effects={getCultivarEffects(cultivar)} />
                     </dd>
                   </div>
                 </dl>

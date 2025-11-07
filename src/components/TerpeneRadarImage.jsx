@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { radarPathSvg } from "../utils/helpers";
 
 export default function TerpeneRadarImage({
@@ -10,15 +10,20 @@ export default function TerpeneRadarImage({
 }) {
   const [loadError, setLoadError] = useState(false);
 
-  const safeName = useMemo(() => {
-    const value = (cultivarName || "").toString().trim();
-    return value;
-  }, [cultivarName]);
+  const safeName = (cultivarName || "").toString().trim();
 
-  const src = useMemo(() => (safeName ? radarPathSvg(safeName) : null), [safeName]);
-  const alt = altText || (safeName ? `Terpen-Netzdiagramm für ${safeName}` : "Terpen-Netzdiagramm");
+  useEffect(() => {
+    setLoadError(false);
+  }, [safeName]);
 
-  if (!safeName || loadError || !src) {
+  if (!safeName) {
+    return <span className="empty-value">Netzdiagramm nicht verfügbar</span>;
+  }
+
+  const src = radarPathSvg(safeName);
+  const alt = altText || `Terpen-Netzdiagramm für ${safeName}`;
+
+  if (!src || loadError) {
     return <span className="empty-value">Netzdiagramm nicht verfügbar</span>;
   }
 
