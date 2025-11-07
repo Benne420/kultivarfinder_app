@@ -1,6 +1,11 @@
 import React, { useMemo } from "react";
 import TerpeneRadarImage from "./TerpeneRadarImage";
 
+const RADAR_WIDTH_CM = 11;
+const RADAR_HEIGHT_CM = 8.5;
+const HEADER_COLUMN_WIDTH_PX = 180;
+const COLUMN_GAP_PX = 8;
+
 function formatValue(value) {
   if (value == null || value === "") {
     return "–";
@@ -35,14 +40,22 @@ export default function ComparisonPanel({
     return null;
   }
 
+  const cultivarCount = Math.max(cultivars.length, 1);
+
   const columnTemplate = useMemo(
     () => ({
-      gridTemplateColumns: `180px repeat(${Math.max(
-        cultivars.length,
-        1
-      )}, minmax(0, 1fr))`,
+      gridTemplateColumns: `${HEADER_COLUMN_WIDTH_PX}px repeat(${cultivarCount}, var(--comparison-column-width, ${RADAR_WIDTH_CM}cm))`,
     }),
-    [cultivars.length]
+    [cultivarCount]
+  );
+
+  const panelStyle = useMemo(
+    () => ({
+      "--comparison-column-width": `${RADAR_WIDTH_CM}cm`,
+      "--comparison-radar-height": `${RADAR_HEIGHT_CM}cm`,
+      "--comparison-panel-width": `calc(${HEADER_COLUMN_WIDTH_PX}px + ${cultivarCount} * ${RADAR_WIDTH_CM}cm + ${cultivarCount} * ${COLUMN_GAP_PX}px)`,
+    }),
+    [cultivarCount]
   );
 
   const handleBackdropClick = (event) => {
@@ -59,6 +72,7 @@ export default function ComparisonPanel({
           aria-modal="true"
           aria-labelledby="comparison-panel-title"
           onClick={(event) => event.stopPropagation()}
+          style={panelStyle}
         >
           <div className="comparison-panel__header">
             <div>
