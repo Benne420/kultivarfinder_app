@@ -370,7 +370,7 @@ nav a:hover {
 
 .comparison-panel__content {
   flex: 1 1 auto;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   display: grid;
   gap: 10px;
@@ -385,7 +385,7 @@ nav a:hover {
   border: 1px solid rgba(196, 209, 228, 0.5);
   border-radius: 16px;
   padding: 10px 12px;
-  min-width: max-content;
+  width: 100%;
 }
 
 .comparison-panel__row--radar {
