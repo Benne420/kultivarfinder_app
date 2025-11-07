@@ -37,7 +37,10 @@ export default function ComparisonPanel({
 
   const columnTemplate = useMemo(
     () => ({
-      gridTemplateColumns: `200px repeat(${Math.max(cultivars.length, 1)}, minmax(180px, 1fr))`,
+      gridTemplateColumns: `240px repeat(${Math.max(
+        cultivars.length,
+        1
+      )}, minmax(360px, 1fr))`,
     }),
     [cultivars.length]
   );

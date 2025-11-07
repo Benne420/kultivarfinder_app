@@ -319,7 +319,7 @@ nav a:hover {
 }
 
 .comparison-panel {
-  width: min(1040px, 92vw);
+  width: min(1360px, 96vw);
   max-height: calc(100vh - 64px);
   background: linear-gradient(180deg, rgba(250, 253, 255, 0.98), rgba(232, 240, 250, 0.98));
   box-shadow: 0 22px 60px rgba(17, 33, 62, 0.25);
@@ -371,6 +371,7 @@ nav a:hover {
 .comparison-panel__content {
   flex: 1 1 auto;
   overflow-y: auto;
+  overflow-x: auto;
   padding-right: 12px;
   display: grid;
   gap: 20px;
@@ -387,6 +388,7 @@ nav a:hover {
   border: 1px solid rgba(196, 209, 228, 0.55);
   border-radius: 18px;
   padding: 18px 20px;
+  min-width: max-content;
 }
 
 .comparison-panel__row--radar {
@@ -412,11 +414,11 @@ nav a:hover {
 .comparison-panel__cell--radar {
   align-items: center;
   justify-content: center;
-  min-height: 260px;
+  min-height: 390px;
 }
 
 .comparison-panel__radar-image {
-  width: min(240px, 100%);
+  width: min(360px, 100%);
 }
 
 .comparison-details-modal {
@@ -510,7 +512,7 @@ nav a:hover {
 
 .comparison-details-modal__body {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(260px, 320px);
+  grid-template-columns: minmax(220px, 1fr) minmax(360px, 1fr);
   gap: 24px;
   align-items: center;
 }
@@ -544,7 +546,7 @@ nav a:hover {
 }
 
 .comparison-details-modal__radar-image {
-  width: min(240px, 100%);
+  width: min(360px, 100%);
 }
 
 @media (max-width: 960px) {
