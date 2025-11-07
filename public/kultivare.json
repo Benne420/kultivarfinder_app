@@ -104,7 +104,7 @@
     "thc": "27-33%",
     "cbd": "<1%",
     "terpengehalt": "3.15%",
-    "terpenprofil": ["β-Myrcen", "β-Ocimen"],
+    "terpenprofil": ["β-Myrcen", "Ocimen"],
     "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
     "typ": "Indica-dominant",
     "status": "active"
@@ -274,7 +274,7 @@
     "thc": "18-22%",
     "cbd": "<1%",
     "terpengehalt": "1.55%",
-    "terpenprofil": ["Limonen", "β-Myrcen"],
+    "terpenprofil": ["D-Limonen", "β-Myrcen"],
     "wirkungen": ["antiinflammatorisch", "antioxidativ", "antimykotisch", "analgetisch"],
     "typ": "Indica-dominant",
     "status": "active"
@@ -314,7 +314,7 @@
     "thc": "22-27%",
     "cbd": "<1%",
     "terpengehalt": "3.26%",
-    "terpenprofil": ["β-Myrcen", "ɑ-Pinen"],
+    "terpenprofil": ["β-Myrcen", "α-Pinen"],
     "wirkungen": ["antiinflammatorisch", "neuroprotektiv"],
     "typ": "Sativa-dominant",
     "status": "active"
@@ -374,7 +374,7 @@
     "thc": "22-27%",
     "cbd": "<1%",
     "terpengehalt": "1.86%",
-    "terpenprofil": ["Caryophyllen", "Myrcen"],
+    "terpenprofil": ["Caryophyllen", "β-Myrcen"],
     "wirkungen": ["analgetisch", "antiinflammatorisch", "anxiolytisch", "antidepressiv"],
     "typ": "Indica-dominant",
     "status": "active"
