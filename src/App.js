@@ -230,17 +230,27 @@ export default function CannabisKultivarFinderUseReducer() {
     const root = document.documentElement;
     const previousPattern = root.style.getPropertyValue("--body-pattern-image");
     const previousTitle = document.title;
+    const computedStyles = getComputedStyle(root);
+    const assetPathRaw = computedStyles
+      .getPropertyValue("--body-pattern-asset-path")
+      .replace(/["']/g, "")
+      .trim();
+    const assetPath = assetPathRaw || "/F20_Pharma_Pattern-Hexagon_07.png";
     const publicUrl = process.env.PUBLIC_URL || "";
-    const normalizedPublicUrl = publicUrl.endsWith("/")
-      ? publicUrl.slice(0, -1)
-      : publicUrl;
-    const patternUrl = `${normalizedPublicUrl}/F20_Pharma_Pattern-Hexagon_07.png`;
+    const normalizedPublicUrl =
+      publicUrl && publicUrl !== "/"
+        ? publicUrl.replace(/\/+$/, "")
+        : "";
+    const resolvedAssetPath = assetPath.startsWith("/")
+      ? assetPath
+      : `/${assetPath}`;
+    const patternUrl = `${normalizedPublicUrl}${resolvedAssetPath}`;
 
     root.style.setProperty("--body-pattern-image", `url('${patternUrl}')`);
     document.title = "Four20 Index";
 
     return () => {
-      if (previousPattern) {
+      if (previousPattern && previousPattern.trim()) {
         root.style.setProperty("--body-pattern-image", previousPattern);
       } else {
         root.style.removeProperty("--body-pattern-image");

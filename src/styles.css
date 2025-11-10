@@ -15,6 +15,7 @@
   --pure-white: #ffffff;
   --body-background: #ffffff;
   --body-pattern-image: none;
+  --body-pattern-asset-path: "/F20_Pharma_Pattern-Hexagon_07.png";
   --shadow-soft: 0 16px 40px rgba(0, 36, 77, 0.12);
   --shadow-subtle: 0 8px 20px rgba(0, 36, 77, 0.08);
   --radius-lg: 20px;
