@@ -2,372 +2,137 @@
   {
     "name": "α-Bisabolol",
     "aliases": ["Bisabolol", "Levon-Bisabolol"],
-    "description": "Sesquiterpen-Alkohol; Bestandteil vieler pharmazeutischer Kamille-Extrakte. Bekannt für mild-blumige Noten.",
-    "effects": [
-      {
-        "effect": "entzündungshemmend",
-        "strength": "stark",
-        "sources": ["reference_30", "reference_31"]
-      },
-      {
-        "effect": "beruhigend",
-        "strength": "mittel",
-        "sources": ["reference_31"]
-      },
-      {
-        "effect": "antioxidativ",
-        "strength": "schwach",
-        "sources": ["reference_30"]
-      }
-    ],
-    "aroma": "blumig, honigartig, weich",
-    "boilingPoint": "153°C"
+    "description": "Sesquiterpen-Alkohol mit sanft-blumigem Charakter; bekannt aus Kamillenblüten und dermatologischer Kosmetik.",
+    "aroma": "blumig, honigartig, sanft",
+    "boilingPoint": "153°C",
+    "effects": []
   },
   {
     "name": "α-Pinen",
-    "aliases": ["a-Pinen", "Alpha-Pinen"],
-    "description": "Bicyclisches Monoterpen; verleiht klassischen Nadelholzduft. Häufig in Pinus- und Rosmarinus-Arten.",
-    "effects": [
-      {
-        "effect": "kognitiv anregend",
-        "strength": "mittel",
-        "sources": ["reference_32"]
-      },
-      {
-        "effect": "bronchial erweiternd",
-        "strength": "schwach",
-        "sources": ["reference_33"]
-      },
-      {
-        "effect": "antimikrobiell",
-        "strength": "schwach",
-        "sources": ["reference_34"]
-      }
-    ],
-    "aroma": "harzig, kiefernartig, frisch",
-    "boilingPoint": "155-156°C"
+    "aliases": ["Alpha-Pinen", "a-Pinen"],
+    "description": "Bicyclisches Monoterpen, das den klassischen Duft von Nadelhölzern prägt; häufig in Pinus- und Rosmarinus-Arten.",
+    "aroma": "kiefernartig, harzig, frisch",
+    "boilingPoint": "155–156°C",
+    "effects": []
   },
   {
     "name": "β-Myrcen",
-    "aliases": ["Myrcen"],
-    "description": "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
-    "effects": [
-      {
-        "effect": "entspannend",
-        "strength": "mittel",
-        "sources": ["reference_1", "reference_2"]
-      },
-      {
-        "effect": "entzündungshemmend",
-        "strength": "schwach",
-        "sources": ["reference_3"]
-      }
-    ],
-    "aroma": "erdig, krautig, moschusartig",
-    "boilingPoint": "166-168°C"
+    "aliases": ["Myrcen", "Beta-Myrcen"],
+    "description": "Monoterpen mit krautig-erdigen Noten; eines der am häufigsten vorkommenden Terpene in Cannabis-Blüten.",
+    "aroma": "erdig, moschusartig, kräuterig",
+    "boilingPoint": "166–168°C",
+    "effects": []
   },
   {
     "name": "β-Pinen",
-    "aliases": ["b-Pinen", "Beta-Pinen"],
-    "description": "Monoterpen; ergänzt α-Pinen in vielen koniferenreichen Ölen. Aroma erinnert an Kräuter und Hopfen.",
-    "effects": [
-      {
-        "effect": "antimikrobiell",
-        "strength": "mittel",
-        "sources": ["reference_34", "reference_35"]
-      },
-      {
-        "effect": "analgetisch",
-        "strength": "schwach",
-        "sources": ["reference_35"]
-      }
-    ],
+    "aliases": ["Beta-Pinen", "b-Pinen"],
+    "description": "Monoterpen, das häufig gemeinsam mit α-Pinen auftritt und Kräuter- sowie Hopfennuancen beiträgt.",
     "aroma": "krautig, hopfig, kiefernartig",
-    "boilingPoint": "165°C"
+    "boilingPoint": "165°C",
+    "effects": []
   },
   {
     "name": "Bulnesol",
-    "aliases": ["Bulnesol-β", "β-Bulnesol"],
-    "description": "Sesquiterpen-Alkohol; wichtiger Bestandteil von Patchouli-Öl mit warm-holzigen Noten.",
-    "effects": [
-      {
-        "effect": "beruhigend",
-        "strength": "schwach",
-        "sources": ["reference_36"]
-      },
-      {
-        "effect": "antimikrobiell",
-        "strength": "schwach",
-        "sources": ["reference_37"]
-      }
-    ],
-    "aroma": "warm, holzig, leicht balsamisch",
-    "boilingPoint": "140-142°C"
+    "aliases": ["β-Bulnesol"],
+    "description": "Sesquiterpen-Alkohol aus Patchouli-Öl; sorgt für warme, balsamische Nuancen.",
+    "aroma": "warm, holzig, balsamisch",
+    "boilingPoint": "140–142°C",
+    "effects": []
   },
   {
     "name": "Caryophyllen",
     "aliases": ["β-Caryophyllen", "Trans-Caryophyllen"],
-    "description": "Sesquiterpen; pfeffrig-würzig. Bindet als einziger geläufiger Duftstoff direkt am CB2-Rezeptor (präklinische Evidenz).",
-    "effects": [
-      {
-        "effect": "analgetisch",
-        "strength": "mittel",
-        "sources": ["reference_1", "reference_4"]
-      },
-      {
-        "effect": "entzündungshemmend",
-        "strength": "stark",
-        "sources": ["reference_2", "reference_3"]
-      },
-      {
-        "effect": "angstlösend",
-        "strength": "schwach",
-        "sources": ["reference_5"]
-      }
-    ],
-    "aroma": "pfeffrig, würzig, warm",
-    "boilingPoint": "160°C"
+    "description": "Sesquiterpen mit pfeffrig-würzigem Profil; prägt Schwarzer Pfeffer, Nelken und viele Cannabissorten.",
+    "aroma": "würzig, pfeffrig, warm",
+    "boilingPoint": "160°C",
+    "effects": []
   },
   {
     "name": "D-Limonen",
     "aliases": ["Limonen"],
-    "description": "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
-    "effects": [
-      {
-        "effect": "angstlösend",
-        "strength": "mittel",
-        "sources": ["reference_1", "reference_6"]
-      },
-      {
-        "effect": "antioxidativ",
-        "strength": "stark",
-        "sources": ["reference_2", "reference_7"]
-      },
-      {
-        "effect": "antimikrobiell",
-        "strength": "mittel",
-        "sources": ["reference_8"]
-      }
-    ],
+    "description": "Monoterpen aus den Schalen von Zitrusfrüchten; verleiht frische, süß-zitrische Noten.",
     "aroma": "zitrusartig, frisch, süß",
-    "boilingPoint": "176°C"
+    "boilingPoint": "176°C",
+    "effects": []
   },
   {
     "name": "Farnesen",
-    "aliases": [],
-    "description": "Sesquiterpen-Familie; grün-apfelig, in Apfel- und Hopfenaromen. Subtyp-abhängige Profile.",
-    "effects": [
-      {
-        "effect": "antioxidativ",
-        "strength": "mittel",
-        "sources": ["reference_23", "reference_24"]
-      },
-      {
-        "effect": "antimikrobiell",
-        "strength": "mittel",
-        "sources": ["reference_25"]
-      },
-      {
-        "effect": "entzündungshemmend",
-        "strength": "schwach",
-        "sources": ["reference_26"]
-      }
-    ],
-    "aroma": "grün, apfelartig, frisch",
-    "boilingPoint": "124°C"
+    "aliases": ["β-Farnesen"],
+    "description": "Familie isomerer Sesquiterpene, die grün-fruchtige Akzente in Äpfeln, Hopfen und Lavendel setzen.",
+    "aroma": "grün, apfelig, leicht holzig",
+    "boilingPoint": "121–124°C",
+    "effects": []
   },
   {
     "name": "Fenchol",
-    "aliases": ["Fenchylalkohol"],
-    "description": "Bicyclischer Monoterpen-Alkohol; typisch für Basilikum- und Kampferaromen.",
-    "effects": [
-      {
-        "effect": "antimikrobiell",
-        "strength": "mittel",
-        "sources": ["reference_38", "reference_39"]
-      },
-      {
-        "effect": "stimmungsaufhellend",
-        "strength": "schwach",
-        "sources": ["reference_40"]
-      }
-    ],
-    "aroma": "balsamisch, kampferartig, frisch",
-    "boilingPoint": "200-201°C"
+    "aliases": ["Fenchyl-Alkohol"],
+    "description": "Bicyclischer Monoterpenalkohol aus Basilikum- und Kampferölen mit frischen Holznoten.",
+    "aroma": "holzartig, frisch, leicht süß",
+    "boilingPoint": "198°C",
+    "effects": []
   },
   {
     "name": "Germacren B",
-    "aliases": ["Germacrene B"],
-    "description": "Sesquiterpen; in vielen ätherischen Ölen (u. a. Gewürznelke) mit würzig-harzigen Nuancen.",
-    "effects": [
-      {
-        "effect": "entzündungshemmend",
-        "strength": "schwach",
-        "sources": ["reference_41"]
-      },
-      {
-        "effect": "antimikrobiell",
-        "strength": "schwach",
-        "sources": ["reference_42"]
-      }
-    ],
-    "aroma": "würzig, harzig, leicht bitter",
-    "boilingPoint": "258°C"
+    "aliases": ["Germacren"],
+    "description": "Sesquiterpen aus verschiedenen Asteraceae-Arten; liefert tiefe, harzige Wärme.",
+    "aroma": "harzig, warm, kräuterig",
+    "boilingPoint": "270°C",
+    "effects": []
   },
   {
     "name": "Guaiol",
-    "aliases": ["Champacol"],
-    "description": "Sesquiterpen-Alkohol; verleiht Guajakholzöl seine markant-holzigen Noten.",
-    "effects": [
-      {
-        "effect": "antimikrobiell",
-        "strength": "mittel",
-        "sources": ["reference_43"]
-      },
-      {
-        "effect": "entzündungshemmend",
-        "strength": "schwach",
-        "sources": ["reference_44"]
-      }
-    ],
-    "aroma": "holzartig, erdig, leicht rosig",
-    "boilingPoint": "92-94°C bei 0.2 kPa"
+    "aliases": ["Champacol", "Guaiyl-Alkohol"],
+    "description": "Sesquiterpen-Alkohol aus Guajakholz und Zypressengewächsen; sorgt für kühle Holznoten.",
+    "aroma": "holzig, rosig, frisch",
+    "boilingPoint": "92°C (bei 0,1 mmHg)",
+    "effects": []
   },
   {
     "name": "Humulen",
-    "aliases": ["α-Humulen", "Humulene"],
-    "description": "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit Caryophyllen zu finden.",
-    "effects": [
-      {
-        "effect": "entspannend",
-        "strength": "mittel",
-        "sources": ["reference_12", "reference_13"]
-      },
-      {
-        "effect": "entzündungshemmend",
-        "strength": "mittel",
-        "sources": ["reference_14"]
-      },
-      {
-        "effect": "antimikrobiell",
-        "strength": "schwach",
-        "sources": ["reference_15"]
-      }
-    ],
-    "aroma": "hopfig, herb, holzig",
-    "boilingPoint": "198°C"
+    "aliases": ["α-Humulen", "Humulen"],
+    "description": "Sesquiterpen, das Hopfen- und Koriandersamen ihre herb-würzige Signatur verleiht.",
+    "aroma": "hopfig, herb, harzig",
+    "boilingPoint": "198°C",
+    "effects": []
   },
   {
     "name": "Linalool",
     "aliases": [],
-    "description": "Monoterpenalkohol; blumig-lavendelartig. Weit verbreitet in Lavendel, Koriander, Basilikum.",
-    "effects": [
-      {
-        "effect": "entspannend",
-        "strength": "stark",
-        "sources": ["reference_1", "reference_9"]
-      },
-      {
-        "effect": "angstlösend",
-        "strength": "stark",
-        "sources": ["reference_2", "reference_10"]
-      },
-      {
-        "effect": "antimikrobiell",
-        "strength": "schwach",
-        "sources": ["reference_11"]
-      }
-    ],
-    "aroma": "blumig, lavendelartig, süß",
-    "boilingPoint": "198°C"
+    "description": "Monoterpenalkohol mit floraler Süße; verbreitet in Lavendel, Basilikum und Koriander.",
+    "aroma": "blumig, lavendelartig, sanft süß",
+    "boilingPoint": "198°C",
+    "effects": []
   },
   {
     "name": "Ocimen",
     "aliases": ["β-Ocimen", "Ocimene"],
-    "description": "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
-    "effects": [
-      {
-        "effect": "entspannend",
-        "strength": "schwach",
-        "sources": ["reference_20", "reference_21"]
-      },
-      {
-        "effect": "neuroprotektiv",
-        "strength": "schwach",
-        "sources": ["reference_22"]
-      }
-    ],
-    "aroma": "süß, krautig, holzig",
-    "boilingPoint": "176°C"
+    "description": "Monoterpen mit süß-krautigem Profil; in Basilikum, Minze und Mango identifiziert.",
+    "aroma": "süß, krautig, leicht holzig",
+    "boilingPoint": "174–177°C",
+    "effects": []
   },
   {
     "name": "Selinene",
-    "aliases": [
-      "Selinen",
-      "α‑Selinen",
-      "β‑Selinen",
-      "δ‑Selinen",
-      "α-Selinene",
-      "beta-Selinene",
-      "delta-Selinene"
-    ],
-    "description": "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α‑, β‑, δ‑Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch.",
-    "effects": [
-      {
-        "effect": "analgetisch",
-        "strength": "schwach",
-        "sources": ["reference_27", "reference_28"]
-      },
-      {
-        "effect": "entzündungshemmend",
-        "strength": "schwach",
-        "sources": ["reference_29"]
-      }
-    ],
-    "aroma": "holzig, würzig, sellerieartig",
-    "boilingPoint": "171°C"
+    "aliases": ["α-Selinene", "β-Selinene"],
+    "description": "Gruppe bicyclischer Sesquiterpene aus Sellerie- und Petersilienölen mit erdigen Holznoten.",
+    "aroma": "erdig, würzig, holzig",
+    "boilingPoint": "262°C",
+    "effects": []
   },
   {
     "name": "Terpinolen",
     "aliases": [],
-    "description": "Monoterpen; frisch, kiefernartig mit blumigen Noten. In Apfel, Teebaum, Kreuzkümmel beschrieben.",
-    "effects": [
-      {
-        "effect": "entspannend",
-        "strength": "mittel",
-        "sources": ["reference_16", "reference_17"]
-      },
-      {
-        "effect": "antioxidativ",
-        "strength": "schwach",
-        "sources": ["reference_18"]
-      },
-      {
-        "effect": "unterstützt Wundheilung",
-        "strength": "schwach",
-        "sources": ["reference_19"]
-      }
-    ],
+    "description": "Monoterpen mit frischen, kiefernartigen Nuancen und floralen Spitzen; u. a. in Teebaum beschrieben.",
     "aroma": "frisch, kiefernartig, blumig",
-    "boilingPoint": "186°C"
+    "boilingPoint": "186°C",
+    "effects": []
   },
   {
     "name": "Trans-β-Ocimen",
     "aliases": ["trans-β-Ocimen", "trans-Ocimen"],
-    "description": "Isomere Form von Ocimen mit betont fruchtigen Akzenten; beschrieben in Mango- und Hopfenölen.",
-    "effects": [
-      {
-        "effect": "stimmungsaufhellend",
-        "strength": "schwach",
-        "sources": ["reference_21", "reference_45"]
-      },
-      {
-        "effect": "antioxidativ",
-        "strength": "schwach",
-        "sources": ["reference_45"]
-      }
-    ],
-    "aroma": "fruchtig, süß, leicht kräuterig",
-    "boilingPoint": "174°C"
+    "description": "Isomer des Ocimens mit hell-süßem Duftprofil; trägt zu tropisch-fruchtigen Noten bei.",
+    "aroma": "hell süß, tropisch, floral",
+    "boilingPoint": "175°C",
+    "effects": []
   }
 ]
