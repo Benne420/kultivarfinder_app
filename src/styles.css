@@ -14,6 +14,7 @@
   --surface-overlay: rgba(255, 255, 255, 0.92);
   --pure-white: #ffffff;
   --body-background: #ffffff;
+  --body-pattern-image: none;
   --shadow-soft: 0 16px 40px rgba(0, 36, 77, 0.12);
   --shadow-subtle: 0 8px 20px rgba(0, 36, 77, 0.08);
   --radius-lg: 20px;
@@ -36,10 +37,10 @@ body {
   min-height: 100vh;
   color: var(--primary-grey);
   background-color: var(--body-background);
-  background-image: url("../public/F20_Pharma_Pattern-Hexagon_07.png");
-  background-repeat: repeat;
-  background-size: 320px auto;
-  background-position: top left;
+  background-image: var(--body-pattern-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
