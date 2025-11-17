@@ -300,6 +300,105 @@
     "status": "discontinued"
   },
   {
+    "name": "Legendary Larry",
+    "thc": "18-27%",
+    "cbd": "<1%",
+    "terpengehalt": "1.88%",
+    "terpenprofil": [
+      "β-Caryophyllen",
+      "β-Myrcen"
+    ],
+    "wirkungen": [
+      "antiinflammatorisch",
+      "analgetisch"
+    ],
+    "typ": "Indica-dominant",
+    "status": "discontinued"
+  },
+  {
+    "name": "Lemon Cherry Gelato",
+    "thc": "16-22%",
+    "cbd": "<1%",
+    "terpengehalt": "1.08%",
+    "terpenprofil": [
+      "β-Caryophyllen",
+      "D-Limonen"
+    ],
+    "wirkungen": [
+      "antiinflammatorisch",
+      "analgetisch"
+    ],
+    "typ": "Indica-dominant",
+    "status": "active"
+  },
+  {
+    "name": "MAC 1",
+    "thc": "20-25%",
+    "cbd": "<1%",
+    "terpengehalt": "2.76%",
+    "terpenprofil": [
+      "Farnesen",
+      "D-Limonen"
+    ],
+    "wirkungen": [
+      "antioxidativ",
+      "antiinflammatorisch",
+      "antimikrobiell"
+    ],
+    "typ": "Indica-dominant",
+    "status": "active"
+  },
+  {
+    "name": "Masterpiece",
+    "thc": "27-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.43%",
+    "terpenprofil": [
+      "D-Limonen",
+      "β-Myrcen"
+    ],
+    "wirkungen": [
+      "antiinflammatorisch",
+      "antioxidativ",
+      "antimykotisch",
+      "analgetisch"
+    ],
+    "typ": "Indica-dominant",
+    "status": "active"
+  },
+  {
+    "name": "Mellowz",
+    "thc": "18-25%",
+    "cbd": "<1%",
+    "terpengehalt": "2.14%",
+    "terpenprofil": [
+      "β-Myrcen",
+      "β-Caryophyllen"
+    ],
+    "wirkungen": [
+      "antiinflammatorisch",
+      "neuroprotektiv"
+    ],
+    "typ": "Indica-dominant",
+    "status": "discontinued"
+  },
+  {
+    "name": "Miracle Mints",
+    "thc": "22-33%",
+    "cbd": "<1%",
+    "terpengehalt": "2.45%",
+    "terpenprofil": [
+      "Selinen",
+      "β-Caryophyllen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "antiinflammatorisch"
+    ],
+    "typ": "Indica-dominant",
+    "status": "discontinued"
+  },
+  {
     "name": "Modified Grapes",
     "thc": "27-33%",
     "cbd": "<1%",
@@ -442,7 +541,7 @@
     "terpengehalt": "3.26%",
     "terpenprofil": [
       "β-Myrcen",
-      "α-Pinen"
+      "ɑ-Pinen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
