@@ -46,7 +46,7 @@
     "name": "β-Myrcen",
     "aliases": ["Myrcen"],
     "description": "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
-    "aroma": "holzig, fruchtig",
+    "aroma": "erdig, krautig, moschusartig",
     "occurrence": "Hopfen, Mango, Zitronengras",
     "effects": [
       {
@@ -156,16 +156,21 @@
         "sources": ["reference_30"]
       },
       {
+        "effect": "anxiolytisch",
+        "strength": "schwach",
+        "sources": ["reference_30"]
+      },
+      {
         "effect": "krampflösend",
         "strength": "schwach",
         "sources": ["reference_31"]
-      },
+      }
     ]
   },
   {
     "name": "α-Pinen",
     "aliases": ["ɑ-Pinen","α-Pinene","Pinene"],
-    "description": "Monoterpen; harzig- kiefernartig. Häufig in Nadel- und Kiefernölen.",
+    "description": "Monoterpen; harzig-kiefernartig. Häufig in Nadel- und Kiefernölen.",
     "aroma": "harzig, kiefernartig",
     "occurrence": "Kiefern, Rosmarin, Pfefferminze",
     "effects": [
@@ -184,7 +189,7 @@
       "β-Selinen",
       "δ-Selinen"
     ],
-    "description": "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α-, β-, δ-Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch. Berichtet u. a. in Selleriesamen-, Muskat-, Koriander- und Hopfenölen; in Cannabis meist in geringen Anteilen.",
+    "description": "Sammelbegriff für isomere bicyclische Sesquiterpene (z. B. α-, β-, δ-Selinen). Aroma: holzig, würzig, sellerie-/apiaceae-typisch.",
     "aroma": "holzig, würzig, sellerieartig",
     "occurrence": "Selleriesamen, Hopfen, Patschuli",
     "effects": [
