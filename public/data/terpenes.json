@@ -169,11 +169,7 @@
     "aroma": "harzig, kiefernartig",
     "occurrence": "Kiefern, Rosmarin, Pfefferminze",
     "effects": [
-      {
-        "effect": "anxiolytisch",
-        "strength": "schwach",
-        "sources": []
-      }
+    
     ]
   },
   {
