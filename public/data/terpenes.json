@@ -159,11 +159,6 @@
         "effect": "anxiolytisch",
         "strength": "schwach",
         "sources": ["reference_30"]
-      },
-      {
-        "effect": "krampflösend",
-        "strength": "schwach",
-        "sources": ["reference_31"]
       }
     ]
   },
