@@ -46,7 +46,7 @@
     "name": "β-Myrcen",
     "aliases": ["Myrcen"],
     "description": "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
-    "aroma": "erdig, krautig, moschusartig",
+    "aroma": "holzig, fruchtig",
     "occurrence": "Hopfen, Mango, Zitronengras",
     "effects": [
       {
@@ -158,7 +158,7 @@
       {
         "effect": "analgetisch",
         "strength": "schwach",
-        "sources": []
+        "sources": ["reference_29"]
       },
       {
         "effect": "antimikrobiell",
@@ -166,9 +166,19 @@
         "sources": ["reference_17"]
       },
       {
+        "effect": "entspannend",
+        "strength": "schwach",
+        "sources": ["reference_30"]
+      },
+      {
         "effect": "anxiolytisch",
         "strength": "schwach",
-        "sources": []
+        "sources": ["reference_30"]
+      },
+      {
+        "effect": "krampflösend",
+        "strength": "schwach",
+        "sources": ["reference_31"]
       },
       {
         "effect": "antidepressiv",

@@ -273,4 +273,35 @@
     "doi": "10.1002/cbdv.201100155",
     "type": "peer_reviewed"
   }
+  ,
+  {
+    "id": "reference_29",
+    "title": "Inhibitory effects of linalool, an essential oil component of lavender, on nociceptive TRPA1 and voltage-gated Ca2+ channels in mouse sensory neurons",
+    "authors": "Hashimoto M, Takahashi K, Ohta T",
+    "journal": "Biochem Biophys Rep",
+    "year": 2023,
+    "doi": "10.1016/j.bbrep.2023.101468",
+    "pmid": "37102121",
+    "pmcid": "PMC10123348",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_30",
+    "title": "Linalool Odor-Induced Anxiolytic Effects in Mice",
+    "authors": "Harada H, Kashiwadani H, Kanmura Y, Kuwaki T",
+    "journal": "Frontiers in Behavioral Neuroscience",
+    "year": 2018,
+    "doi": "10.3389/fnbeh.2018.00241",
+    "pmid": "30405369",
+    "pmcid": "PMC6206409",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_31",
+    "title": "In-Vitro Pharmacological Activity of Essential Oil – Linalool from Jasminum Polyantham",
+    "authors": "Rekha B., Muthukumar C., Bakiyalakshmi S.V., Shakila G.",
+    "journal": "Pharmacology & Toxicology Research",
+    "year": 2016,
+    "type": "other"
+  }
 ]
