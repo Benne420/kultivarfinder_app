@@ -146,32 +146,12 @@
     "occurrence": "Lavendel, Koriander, Basilikum",
     "effects": [
       {
-        "effect": "antiseptisch",
-        "strength": "mittel",
-        "sources": []
-      },
-      {
-        "effect": "antibakteriell",
-        "strength": "mittel",
-        "sources": []
-      },
-      {
         "effect": "analgetisch",
         "strength": "schwach",
         "sources": ["reference_29"]
       },
       {
-        "effect": "antimikrobiell",
-        "strength": "mittel",
-        "sources": ["reference_17"]
-      },
-      {
         "effect": "entspannend",
-        "strength": "schwach",
-        "sources": ["reference_30"]
-      },
-      {
-        "effect": "anxiolytisch",
         "strength": "schwach",
         "sources": ["reference_30"]
       },
@@ -180,11 +160,6 @@
         "strength": "schwach",
         "sources": ["reference_31"]
       },
-      {
-        "effect": "antidepressiv",
-        "strength": "schwach",
-        "sources": []
-      }
     ]
   },
   {
