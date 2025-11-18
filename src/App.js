@@ -18,13 +18,19 @@ import DetailsModal from "./components/DetailsModal";
 import RadarModal from "./components/RadarModal";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
+import ComparisonPanel from "./components/ComparisonPanel";
+import ComparisonDetailsModal from "./components/ComparisonDetailsModal";
 import { TerpeneContext } from "./context/TerpeneContext";
 import {
   normalizeWirkung,
   createTerpeneAliasLookup,
   mapTerpeneToCanonical,
   sortTerpeneNames,
+  getComparisonLayoutMetrics,
+  COMPARISON_MAX_WIDTH_PX,
 } from "./utils/helpers";
+import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
+import defaultWirkungenSource from "./data/default-wirkungen.json";
 
 /*
  * Daten und Hilfsfunktionen werden außerhalb der Komponente definiert, um
@@ -37,36 +43,18 @@ const typInfo = {
   "Sativa-dominant":
     "Hybride mit stärkerem Sativa-Einfluss, wie er bei hochwüchsigen, schlanken Pflanzen aus tropischen Regionen vorkam. Im Narrativ oft als aktivierend beschrieben – die tatsächliche Wirkung lässt sich wissenschaftlich nicht am Namen festmachen, sondern ergibt sich aus Wirkstoff- und Terpenprofil.",
 };
-const defaultTerpeneOptions = sortTerpeneNames([
-  "ɑ-Pinen",
-  "α-Humulen",
-  "β-Myrcen",
-  "β-Ocimen",
-  "Caryophyllen",
-  "D-Limonen",
-  "Farnesen",
-  "Linalool",
-  "Selinen",
-  "Terpinolen",
-]);
+const defaultTerpeneOptions = sortTerpeneNames(defaultTerpeneOptionsSource);
 
 /*
  * Liste der verfügbaren Wirkungen. Synonyme werden über das Mapping
  * `wirkungAliases` auf diese kanonischen Bezeichnungen abgebildet. Diese
  * Liste dient als Quelle für Dropdowns.
  */
-const defaultWirkungen = [
-  "analgetisch",
-  "angstlösend",
-  "antimikrobiell",
-  "antimykotisch",
-  "antioxidativ",
-  "entspannend",
-  "entzündungshemmend",
-  "krampflösend",
-  "neuroprotektiv",
-  "unterstützt Wundheilung",
-].sort();
+const defaultWirkungen = [...defaultWirkungenSource].sort();
+
+const MAX_COMPARISON_ITEMS = 4;
+const VIEWPORT_WIDTH_FACTOR = 0.94;
+const VIEWPORT_WIDTH_FALLBACK = COMPARISON_MAX_WIDTH_PX / VIEWPORT_WIDTH_FACTOR;
 
 const getCanonicalTerpeneProfile = (kultivar, aliasLookup) => {
   if (!kultivar) return new Set();
@@ -439,6 +427,74 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
   const [similarityContext, setSimilarityContext] = useState(null);
+  const [selectedCultivars, setSelectedCultivars] = useState([]);
+  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
+  const [isComparisonDetailsOpen, setIsComparisonDetailsOpen] = useState(false);
+
+  const [viewportWidth, setViewportWidth] = useState(() => {
+    if (typeof window === "undefined") {
+      return VIEWPORT_WIDTH_FALLBACK;
+    }
+    return window.innerWidth;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const viewportConstraint = useMemo(() => {
+    if (!Number.isFinite(viewportWidth) || viewportWidth <= 0) {
+      return undefined;
+    }
+    return Math.floor(viewportWidth * VIEWPORT_WIDTH_FACTOR);
+  }, [viewportWidth]);
+
+  const comparisonLayout = useMemo(
+    () =>
+      getComparisonLayoutMetrics(
+        Math.max(selectedCultivars.length, 1),
+        viewportConstraint
+      ),
+    [selectedCultivars.length, viewportConstraint]
+  );
+
+  const containerStyle = useMemo(
+    () => ({ "--layout-max-width": `${comparisonLayout.panelWidthPx}px` }),
+    [comparisonLayout.panelWidthPx]
+  );
+
+  useEffect(() => {
+    if (!isComparisonOpen || typeof document === "undefined") {
+      return undefined;
+    }
+
+    const { style } = document.body;
+    const previousOverflow = style.overflow;
+    const previousPaddingRight = style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      style.overflow = previousOverflow;
+      style.paddingRight = previousPaddingRight;
+    };
+  }, [isComparisonOpen]);
   const [isEntourageModalOpen, setIsEntourageModalOpen] = useState(false);
   const handleApplySimilarity = useCallback((payload) => {
     if (
@@ -491,6 +547,24 @@ export default function CannabisKultivarFinderUseReducer() {
     [similarityContext, filteredKultivare]
   );
 
+  const kultivarLookup = useMemo(() => {
+    const lookup = new Map();
+    kultivare.forEach((cultivar) => {
+      if (cultivar?.name) {
+        lookup.set(cultivar.name, cultivar);
+      }
+    });
+    return lookup;
+  }, [kultivare]);
+
+  useEffect(() => {
+    setSelectedCultivars((prev) =>
+      prev
+        .map((item) => (item?.name ? kultivarLookup.get(item.name) : null))
+        .filter(Boolean)
+    );
+  }, [kultivarLookup]);
+
   const terpeneContextValue = useMemo(
     () => ({
       terpenes: terpeneMetadata,
@@ -540,6 +614,45 @@ export default function CannabisKultivarFinderUseReducer() {
     setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
+  const toggleCultivarSelection = useCallback((cultivar) => {
+    if (!cultivar?.name) return;
+    setSelectedCultivars((prev) => {
+      const exists = prev.some((item) => item.name === cultivar.name);
+      if (exists) {
+        return prev.filter((item) => item.name !== cultivar.name);
+      }
+      if (prev.length >= MAX_COMPARISON_ITEMS) {
+        return prev;
+      }
+      return [...prev, cultivar];
+    });
+  }, []);
+
+  const openComparison = useCallback(() => {
+    setIsComparisonOpen((prev) => (selectedCultivars.length >= 2 ? true : prev));
+  }, [selectedCultivars.length]);
+
+  const closeComparison = useCallback(() => {
+    setIsComparisonOpen(false);
+  }, []);
+
+  const handleAddMoreCultivars = useCallback(() => {
+    setIsComparisonOpen(false);
+    setIsComparisonDetailsOpen(false);
+  }, []);
+
+  useEffect(() => {
+    if (isComparisonOpen && selectedCultivars.length < 2) {
+      setIsComparisonOpen(false);
+    }
+  }, [isComparisonOpen, selectedCultivars.length]);
+
+  useEffect(() => {
+    if (isComparisonDetailsOpen && selectedCultivars.length < 2) {
+      setIsComparisonDetailsOpen(false);
+    }
+  }, [isComparisonDetailsOpen, selectedCultivars.length]);
+
   const openEntourageModal = useCallback(() => {
     setIsEntourageModalOpen(true);
   }, []);
@@ -548,10 +661,30 @@ export default function CannabisKultivarFinderUseReducer() {
     setIsEntourageModalOpen(false);
   }, []);
 
+  const canOpenComparison = selectedCultivars.length >= 2;
+
+  const handleShowAllDetails = useCallback(() => {
+    if (!selectedCultivars.length) {
+      return;
+    }
+
+    if (selectedCultivars.length === 1) {
+      showInfo(selectedCultivars[0]);
+      return;
+    }
+
+    setIsComparisonOpen(false);
+    setIsComparisonDetailsOpen(true);
+  }, [selectedCultivars, showInfo]);
+
+  const closeComparisonDetails = useCallback(() => {
+    setIsComparisonDetailsOpen(false);
+  }, []);
+
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
-      <div className="container">
+      <div className="container" style={containerStyle}>
       <header className="header" aria-label="App-Kopfzeile">
         <h1 className="appname">Four20 Index</h1>
       </header>
@@ -616,12 +749,32 @@ export default function CannabisKultivarFinderUseReducer() {
         </button>
       </div>
       {!loading && !error && (
-        <StrainTable
-          strains={displayedKultivare}
-          showInfo={showInfo}
-          showTerpenPanel={showTerpenPanel}
-          showRadar={showRadar}
-        />
+        <>
+          <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
+            <p className="comparison-toolbar__hint">
+              {selectedCultivars.length
+                ? `${selectedCultivars.length} Sorte${selectedCultivars.length > 1 ? "n" : ""} ausgewählt (max. ${MAX_COMPARISON_ITEMS})`
+                : "Wählen Sie mindestens zwei Sorten aus, um den Vergleich zu starten."}
+            </p>
+            <button
+              type="button"
+              className="primary"
+              onClick={openComparison}
+              disabled={!canOpenComparison}
+              aria-disabled={!canOpenComparison}
+            >
+              Vergleich starten
+            </button>
+          </div>
+          <StrainTable
+            strains={displayedKultivare}
+            showInfo={showInfo}
+            showTerpenPanel={showTerpenPanel}
+            showRadar={showRadar}
+            onToggleSelect={toggleCultivarSelection}
+            selectedCultivars={selectedCultivars}
+          />
+        </>
       )}
 
       <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
@@ -637,6 +790,21 @@ export default function CannabisKultivarFinderUseReducer() {
           </div>
         </div>
       )}
+
+      <ComparisonPanel
+        isOpen={isComparisonOpen}
+        cultivars={selectedCultivars}
+        onClose={closeComparison}
+        onRequestAdd={handleAddMoreCultivars}
+        onShowAllDetails={handleShowAllDetails}
+        layoutMetrics={comparisonLayout}
+      />
+      <ComparisonDetailsModal
+        isOpen={isComparisonDetailsOpen}
+        cultivars={selectedCultivars}
+        onClose={closeComparisonDetails}
+        layoutMetrics={comparisonLayout}
+      />
       </div>
     </TerpeneContext.Provider>
   );

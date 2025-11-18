@@ -9,6 +9,8 @@ export default function StrainTable({
   showInfo = () => {},
   showTerpenPanel = () => {},
   showRadar = () => {},
+  onToggleSelect = () => {},
+  selectedCultivars = [],
 }) {
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [pageIndex, setPageIndex] = useState(0);
@@ -56,6 +58,7 @@ export default function StrainTable({
       <table className="strain-table">
         <thead>
           <tr>
+            <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">Vergleich</th>
             <th>Name</th>
             {hasSimilarityColumn && <th className="similarity-column">Übereinstimmung</th>}
             <th>THC</th>
@@ -67,11 +70,24 @@ export default function StrainTable({
         </thead>
         <tbody>
           {paginatedStrains && paginatedStrains.length ? (
-            paginatedStrains.map((k) => (
-              <tr key={k.name}>
-                <td>
-                  <button
-                    type="button"
+            paginatedStrains.map((k) => {
+              const isSelected = selectedCultivars.some((item) => item.name === k.name);
+              return (
+                <tr key={k.name} className={isSelected ? "is-selected" : undefined}>
+                  <td className="comparison-column">
+                    <label className="comparison-checkbox">
+                      <input
+                        type="checkbox"
+                        checked={isSelected}
+                        onChange={() => onToggleSelect(k)}
+                        aria-label={`${k.name} für Vergleich ${isSelected ? "abwählen" : "auswählen"}`}
+                      />
+                      <span aria-hidden="true" />
+                    </label>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
                     className="link-button"
                     onClick={() => {
                       const url = `/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`;
@@ -123,11 +139,15 @@ export default function StrainTable({
                     anzeigen
                   </button>
                 </td>
-              </tr>
-            ))
+                </tr>
+              );
+            })
           ) : (
             <tr>
-              <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ textAlign: "center", padding: 12 }}>
+              <td
+                colSpan={hasSimilarityColumn ? 8 : 7}
+                style={{ textAlign: "center", padding: 12 }}
+              >
                 Keine Ergebnisse
               </td>
             </tr>
