@@ -35,8 +35,11 @@ function validateTerpenes(terpenes) {
       errors.push(`Terpene[${index}]: Missing or invalid 'aroma' field`);
     }
     
-    if (!terpene.boilingPoint || typeof terpene.boilingPoint !== 'string') {
-      errors.push(`Terpene[${index}]: Missing or invalid 'boilingPoint' field`);
+    if (
+      terpene.boilingPoint !== undefined &&
+      typeof terpene.boilingPoint !== 'string'
+    ) {
+      errors.push(`Terpene[${index}]: 'boilingPoint' must be a string when provided`);
     }
 
     // Aliases prüfen (optional, aber wenn vorhanden, muss es ein Array sein)

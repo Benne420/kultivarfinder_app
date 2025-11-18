@@ -169,9 +169,12 @@ const CultivarTerpenPanel = ({ cultivar }) => {
               <strong>Aroma:</strong> {terpenInfo.aroma}
             </div>
             
-            <div style={{ marginBottom: '8px' }}>
-              <strong>Siedepunkt:</strong> {terpenInfo.boilingPoint}
-            </div>
+            {typeof terpenInfo.boilingPoint === 'string' &&
+              terpenInfo.boilingPoint.trim().length > 0 && (
+                <div style={{ marginBottom: '8px' }}>
+                  <strong>Siedepunkt:</strong> {terpenInfo.boilingPoint}
+                </div>
+            )}
 
             {terpenInfo.effects && terpenInfo.effects.length > 0 && (
               <div>
