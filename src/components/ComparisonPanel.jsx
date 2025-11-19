@@ -65,56 +65,66 @@ export default function ComparisonPanel({
           </button>
         </div>
 
-        <div className="comparison-panel__content" role="table" aria-label="Ausgewählte Sorten vergleichen">
-          <div className="comparison-panel__row comparison-panel__row--header" role="row" style={columnTemplate}>
-            <div className="comparison-panel__cell" role="columnheader">
-              <span className="comparison-panel__cell-label">Parameter</span>
-            </div>
-            {cultivars.map((cultivar) => (
-              <div key={cultivar.name} className="comparison-panel__cell" role="columnheader">
-                <span className="comparison-panel__cultivar-name">{cultivar.name}</span>
+        <div className="comparison-panel__content">
+          <div
+            className="comparison-panel__table"
+            role="table"
+            aria-label="Ausgewählte Sorten vergleichen"
+          >
+            <div
+              className="comparison-panel__row comparison-panel__row--header"
+              role="row"
+              style={columnTemplate}
+            >
+              <div className="comparison-panel__cell" role="columnheader">
+                <span className="comparison-panel__cell-label">Parameter</span>
               </div>
-            ))}
-          </div>
-
-          {comparisonMetrics.map((metric) => {
-            const rowClassName = ["comparison-panel__row"];
-            if (metric.rowClassName) {
-              rowClassName.push(metric.rowClassName);
-            }
-
-            const cellClassName = ["comparison-panel__cell"];
-            if (metric.cellClassName) {
-              cellClassName.push(metric.cellClassName);
-            }
-
-            return (
-              <div
-                key={metric.accessor || metric.label}
-                className={rowClassName.join(" ")}
-                role="row"
-                style={columnTemplate}
-              >
-                <div className="comparison-panel__cell" role="rowheader">
-                  {metric.label}
+              {cultivars.map((cultivar) => (
+                <div key={cultivar.name} className="comparison-panel__cell" role="columnheader">
+                  <span className="comparison-panel__cultivar-name">{cultivar.name}</span>
                 </div>
-                {cultivars.map((cultivar) => (
-                  <div
-                    key={`${cultivar.name}-${metric.accessor || metric.label}`}
-                    className={cellClassName.join(" ")}
-                    role="cell"
-                  >
-                    {renderComparisonMetricValue(
-                      metric,
-                      cultivar,
-                      "panel",
-                      formatMetricValue,
-                    )}
+              ))}
+            </div>
+
+            {comparisonMetrics.map((metric) => {
+              const rowClassName = ["comparison-panel__row"];
+              if (metric.rowClassName) {
+                rowClassName.push(metric.rowClassName);
+              }
+
+              const cellClassName = ["comparison-panel__cell"];
+              if (metric.cellClassName) {
+                cellClassName.push(metric.cellClassName);
+              }
+
+              return (
+                <div
+                  key={metric.accessor || metric.label}
+                  className={rowClassName.join(" ")}
+                  role="row"
+                  style={columnTemplate}
+                >
+                  <div className="comparison-panel__cell" role="rowheader">
+                    {metric.label}
                   </div>
-                ))}
-              </div>
-            );
-          })}
+                  {cultivars.map((cultivar) => (
+                    <div
+                      key={`${cultivar.name}-${metric.accessor || metric.label}`}
+                      className={cellClassName.join(" ")}
+                      role="cell"
+                    >
+                      {renderComparisonMetricValue(
+                        metric,
+                        cultivar,
+                        "panel",
+                        formatMetricValue,
+                      )}
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div className="comparison-panel__actions">
