@@ -1,11 +1,13 @@
 import React from "react";
 import TerpeneRadarImage from "./TerpeneRadarImage";
-import EffectPills from "./EffectPills";
 import {
   formatMetricValue,
-  getCultivarEffects,
   getComparisonLayoutMetrics,
 } from "../utils/helpers";
+import {
+  comparisonMetrics,
+  renderComparisonMetricValue,
+} from "./comparisonMetrics";
 
 export default function ComparisonDetailsModal({
   isOpen,
@@ -65,24 +67,21 @@ export default function ComparisonDetailsModal({
 
               <div className="comparison-details-modal__body">
                 <dl className="comparison-details-modal__metrics">
-                  <div>
-                    <dt>THC</dt>
-                    <dd>{formatMetricValue(cultivar.thc)}</dd>
-                  </div>
-                  <div>
-                    <dt>CBD</dt>
-                    <dd>{formatMetricValue(cultivar.cbd)}</dd>
-                  </div>
-                  <div>
-                    <dt>Terpengehalt</dt>
-                    <dd>{formatMetricValue(cultivar.terpengehalt)}</dd>
-                  </div>
-                  <div>
-                    <dt>Häufigste Wirkungen</dt>
-                    <dd>
-                      <EffectPills effects={getCultivarEffects(cultivar)} />
-                    </dd>
-                  </div>
+                  {comparisonMetrics
+                    .filter((metric) => metric.includeInDetails !== false)
+                    .map((metric) => (
+                      <div key={metric.accessor || metric.label}>
+                        <dt>{metric.label}</dt>
+                        <dd>
+                          {renderComparisonMetricValue(
+                            metric,
+                            cultivar,
+                            "details",
+                            formatMetricValue,
+                          )}
+                        </dd>
+                      </div>
+                    ))}
                 </dl>
 
                 <div className="comparison-details-modal__radar">

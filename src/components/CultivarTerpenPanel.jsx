@@ -15,43 +15,45 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   const [references, setReferences] = useState(() =>
     Array.isArray(contextReferences) ? contextReferences : []
   );
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
 
     const loadData = async () => {
-      setLoading(true);
+      if (!isMounted) {
+        return;
+      }
+
+      if (Array.isArray(contextTerpenes)) {
+        setTerpenes(contextTerpenes);
+      }
+
+      if (Array.isArray(contextReferences) && contextReferences.length > 0) {
+        setReferences(contextReferences);
+        setLoading(false);
+        return;
+      }
+
+      if (typeof ensureReferences !== 'function') {
+        setLoading(false);
+        return;
+      }
+
       setError(null);
+      setLoading(true);
+
       try {
-        let terpenesData = contextTerpenes;
-        if (!Array.isArray(terpenesData) || terpenesData.length === 0) {
-          const terpenesRes = await fetch('/data/terpenes.json');
-          if (!terpenesRes.ok) {
-            throw new Error(`Terpen-Daten HTTP ${terpenesRes.status}`);
-          }
-          terpenesData = await terpenesRes.json();
+        const loadedReferences = await ensureReferences();
+        if (!isMounted) {
+          return;
         }
-
-        let referencesData = contextReferences;
-        if (!Array.isArray(referencesData) || referencesData.length === 0) {
-          if (typeof ensureReferences === 'function') {
-            referencesData = await ensureReferences();
-          } else {
-            const referencesRes = await fetch('/data/references.json');
-            if (!referencesRes.ok) {
-              throw new Error(`Referenz-Daten HTTP ${referencesRes.status}`);
-            }
-            referencesData = await referencesRes.json();
-          }
-        }
-
-        if (!isMounted) return;
-        setTerpenes(Array.isArray(terpenesData) ? terpenesData : []);
-        setReferences(Array.isArray(referencesData) ? referencesData : []);
+        setReferences(Array.isArray(loadedReferences) ? loadedReferences : []);
       } catch (err) {
-        if (!isMounted) return;
+        if (!isMounted) {
+          return;
+        }
         setError(err instanceof Error ? err.message : 'Unbekannter Fehler');
       } finally {
         if (isMounted) {
@@ -169,9 +171,12 @@ const CultivarTerpenPanel = ({ cultivar }) => {
               <strong>Aroma:</strong> {terpenInfo.aroma}
             </div>
             
-            <div style={{ marginBottom: '8px' }}>
-              <strong>Siedepunkt:</strong> {terpenInfo.boilingPoint}
-            </div>
+            {typeof terpenInfo.boilingPoint === 'string' &&
+              terpenInfo.boilingPoint.trim().length > 0 && (
+                <div style={{ marginBottom: '8px' }}>
+                  <strong>Siedepunkt:</strong> {terpenInfo.boilingPoint}
+                </div>
+            )}
 
             {terpenInfo.effects && terpenInfo.effects.length > 0 && (
               <div>

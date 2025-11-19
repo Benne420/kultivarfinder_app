@@ -1,34 +1,34 @@
 [
   {
     "id": "reference_1",
-    "title": "Cannabis and the Endocannabinoid System: Therapeutic Potential and Future Directions",
+    "title": "Beyond Cannabis: Plants and the Endocannabinoid System ",
     "authors": "Russo, E.B.",
     "journal": "Frontiers in Pharmacology",
     "year": 2016,
-    "doi": "10.3389/fphar.2016.00381",
+    "doi": "10.1016/j.tips.2016.04.005",
     "type": "peer_reviewed"
   },
   {
     "id": "reference_2",
-    "title": "The Cannabis Terpenes",
+    "title": "Terpene synthases from Cannabis sativa",
     "authors": "Booth, J.K., Page, J.E., Bohlmann, J.",
     "journal": "Trends in Plant Science",
     "year": 2017,
-    "doi": "10.1016/j.tplants.2017.03.014",
+    "doi": "10.1371/journal.pone.0173911",
     "type": "peer_reviewed"
   },
   {
     "id": "reference_3",
     "title": "Anti-inflammatory properties of terpenoids from cannabis",
-    "authors": "Gertsch, J., Leonti, M., Raduner, S., Racz, I., Chen, J.Z., Xie, X.Q., Altmann, K.H., Karsak, M., Zimmer, A.",
-    "journal": "Proceedings of the National Academy of Sciences",
-    "year": 2008,
-    "doi": "10.1073/pnas.0803601105",
+    "authors": "Gallily R, Yekhtin Z, HanuÅ¡ LO.",
+    "journal": "Cannabis Cannabinoid Res",
+    "year": 2018,
+    "doi": "10.1089/can.2018.0014",
     "type": "peer_reviewed"
   },
   {
     "id": "reference_4",
-    "title": "β-Caryophyllene is a dietary cannabinoid",
+    "title": "Î²-Caryophyllene is a dietary cannabinoid",
     "authors": "Gertsch, J., Leonti, M., Raduner, S., Racz, I., Chen, J.Z., Xie, X.Q., Altmann, K.H., Karsak, M., Zimmer, A.",
     "journal": "Proceedings of the National Academy of Sciences",
     "year": 2008,
@@ -37,227 +37,260 @@
   },
   {
     "id": "reference_5",
-    "title": "Anxiolytic effects of β-caryophyllene in animal models",
-    "authors": "Bahí, A., Martínez-Pinilla, E., Gutiérrez-Rodríguez, A., García-Gutiérrez, M.S., Manzanares, J.",
-    "journal": "Behavioural Brain Research",
-    "year": 2012,
-    "doi": "10.1016/j.bbr.2012.05.048",
-    "type": "peer_reviewed"
+    "title": "Î²-Myrcene Mitigates Colon Inflammation by Inhibiting MAP Kinase and NF-ÎºB Signaling Pathways",
+    "authors": "Almarzooqi S, Venkataraman B, Raj V, Alkuwaiti SAA, Das KM, Collin PD, Adrian TE, Subramanya SB",
+    "journal": "Molecules",
+    "year": 2022,
+    "doi": "10.3390/molecules27248744",
+    "type": "peer_reviewed",
+    "pmid": "36557879",
+    "pmcid": "PMC9782154"
   },
   {
     "id": "reference_6",
-    "title": "Limonene: A review of its pharmacological properties",
-    "authors": "Vigushin, D.M., Poon, G.K., Boddy, A., English, J., Halbert, G.W., Pagonis, C., Jarman, M., Coombes, R.C.",
-    "journal": "Cancer Chemotherapy and Pharmacology",
-    "year": 1998,
-    "doi": "10.1007/s002800050809",
-    "type": "peer_reviewed"
+    "title": "Neuroprotective effects of Î²-myrcene following global cerebral ischemia/reperfusion-mediated oxidative and neuronal damage in a C57BL/J6 mouse",
+    "authors": "Ciftci O, Oztanir MN, Cetin A",
+    "journal": "Neurochemical Research",
+    "year": 2014,
+    "doi": "10.1007/s11064-014-1365-4",
+    "type": "peer_reviewed",
+    "pmid": "24972849"
   },
   {
     "id": "reference_7",
-    "title": "Antioxidant activity of limonene and its metabolites",
-    "authors": "Rabi, T., Bishayee, A.",
-    "journal": "Nutrition and Cancer",
-    "year": 2009,
-    "doi": "10.1080/01635580902732406",
-    "type": "peer_reviewed"
+    "title": "The cannabinoid CBâ‚‚ receptor-selective phytocannabinoid beta-caryophyllene exerts analgesic effects in mouse models of inflammatory and neuropathic pain",
+    "authors": "Klauke AL, Racz I, Pradier B, Markert A, Zimmer AM, Gertsch J, Zimmer A",
+    "journal": "European Neuropsychopharmacology",
+    "year": 2014,
+    "doi": "10.1016/j.euroneuro.2013.10.008",
+    "type": "peer_reviewed",
+    "pmid": "24210682"
   },
   {
     "id": "reference_8",
-    "title": "Antimicrobial activity of limonene",
-    "authors": "Carson, C.F., Hammer, K.A., Riley, T.V.",
-    "journal": "Clinical Microbiology Reviews",
-    "year": 2006,
-    "doi": "10.1128/CMR.19.1.50-62.2006",
-    "type": "peer_reviewed"
+    "title": "Involvement of peripheral cannabinoid and opioid receptors in Î²-caryophyllene-induced antinociception",
+    "authors": "Katsuyama S, Mizoguchi H, Kuwahata H, Komatsu T, Nagaoka K, Nakamura H, Bagetta G, Sakurada T, Sakurada S",
+    "journal": "European Journal of Pain",
+    "year": 2013,
+    "doi": "10.1002/j.1532-2149.2012.00242.x",
+    "type": "peer_reviewed",
+    "pmid": "23138934"
   },
   {
     "id": "reference_9",
-    "title": "Linalool: A review of its pharmacological properties",
-    "authors": "Peana, A.T., D'Aquila, P.S., Chessa, M.L., Moretti, M.D., Serra, G., Pippia, P.",
-    "journal": "Planta Medica",
-    "year": 2002,
-    "doi": "10.1055/s-2002-33976",
-    "type": "peer_reviewed"
+    "title": "Î²-Caryophyllene Mitigates Collagen Antibody Induced Arthritis (CAIA) in Mice Through a Cross-Talk between CB2 and PPAR-Î³Receptors",
+    "authors": "Irrera N, D'Ascola A, Pallio G, Bitto A, Mazzon E, Mannino F, Squadrito V, Arcoraci V, Minutoli L, Campo GM, Avenoso A, Bongiorno EB, Vaccaro M, Squadrito F, Altavilla D",
+    "journal": "Biomolecules",
+    "year": 2019,
+    "doi": "10.3390/biom9080326",
+    "type": "peer_reviewed",
+    "pmid": "31370242",
+    "pmcid": "PMC6723248"
   },
   {
     "id": "reference_10",
-    "title": "Anxiolytic-like effects of linalool",
-    "authors": "Linck, V.M., da Silva, A.L., Figueiró, M., Caramão, E.B., Moreno, P.R., Elisabetsky, E.",
-    "journal": "Brazilian Journal of Medical and Biological Research",
-    "year": 2010,
-    "doi": "10.1590/S0100-879X2010007500065",
-    "type": "peer_reviewed"
+    "title": "A mechanistic review on immunomodulatory effects of selective type two cannabinoid receptor Î²-caryophyllene",
+    "authors": "Baradaran Rahimi V, Askari VR",
+    "journal": "Biofactors",
+    "year": 2022,
+    "doi": "10.1002/biof.1869",
+    "type": "peer_reviewed",
+    "pmid": "35648433"
   },
   {
     "id": "reference_11",
+    "title": "D-limonene exhibits anti-inflammatory and antioxidant properties in an ulcerative colitis rat model via regulation of iNOS, COX-2, PGE2 and ERK signaling pathways",
+    "authors": "Yu L, Yan J, Sun Z",
+    "journal": "Molecular Medicine Reports",
+    "year": 2017,
+    "doi": "10.3892/mmr.2017.6241",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_12",
+    "title": "Physio-pharmacological investigations about the anti-inflammatory and antinociceptive efficacy of (+)-limonene epoxide",
+    "authors": "de Almeida AAC, Silva RO, Nicolau LAD, de Brito TV, de Sousa DP, Barbosa ALDR, de Freitas RM, Lopes LDS, Medeiros JV, Ferreira PMP",
+    "journal": "Inflammation",
+    "year": 2017,
+    "doi": "10.1007/s10753-016-0496-y",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_13",
+    "title": "Protective effects of D-limonene on lipid peroxidation and antioxidant enzymes in streptozotocin-induced diabetic rats",
+    "authors": "Murali R, Karthikeyan A, Saravanan R",
+    "journal": "Basic Clinical Pharmacology and Toxicology",
+    "year": 2013,
+    "doi": "10.1111/bcpt.12013",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_14",
+    "title": "Antifungal Effect and Inhibition of the Virulence Mechanism of D-Limonene against Candida parapsilosis",
+    "authors": "Leite-Andrade MC, de AraÃºjo Neto LN, Buonafina-Paz MDS, de Assis Graciano Dos Santos F, da Silva Alves AI, de Castro MCAB, Mori E, de Lacerda BCGV, AraÃºjo IM, Coutinho HDM, Kowalska G, Kowalski R, Baj T, Neves RP",
+    "journal": "Molecules",
+    "year": 2022,
+    "doi": "10.3390/molecules27248884",
+    "type": "peer_reviewed",
+    "pmid": "36558017",
+    "pmcid": "PMC9788451"
+  },
+  {
+    "id": "reference_15",
+    "title": "Anti-stress effects of d-limonene and its metabolite perillyl alcohol",
+    "authors": "d'Alessio PA, Bisson JF, BÃ©nÃ© MC",
+    "journal": "Rejuvenation Research",
+    "year": 2014,
+    "doi": "10.1089/rej.2013.1515",
+    "type": "peer_reviewed",
+    "pmid": "24125633"
+  },
+  {
+    "id": "reference_16",
+    "title": "D-Limonene reduces depression-like behaviour and enhances learning and memory through an anti-neuroinflammatory mechanism in male rats subjected to chronic restraint stress",
+    "authors": "Alkanat M, Alkanat HÃ–",
+    "journal": "European Journal of Neuroscience",
+    "year": 2024,
+    "doi": "10.1111/ejn.16455",
+    "type": "peer_reviewed",
+    "pmid": "38932560"
+  },
+  {
+    "id": "reference_17",
     "title": "Antimicrobial properties of linalool",
-    "authors": "Peana, A.T., D'Aquila, P.S., Panin, F., Serra, G., Pippia, P., Moretti, M.D.",
+    "authors": "Peana AT, D'Aquila PS, Panin F, Serra G, Pippia P, Moretti MD",
     "journal": "Life Sciences",
     "year": 2002,
     "doi": "10.1016/S0024-3205(02)01534-1",
     "type": "peer_reviewed"
   },
   {
-    "id": "reference_12",
-    "title": "Humulene: A review of its biological activities",
-    "authors": "Legault, J., Pichette, A.",
-    "journal": "Phytochemistry Reviews",
-    "year": 2007,
-    "doi": "10.1007/s11101-007-9045-6",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_13",
-    "title": "Sedative effects of α-humulene",
-    "authors": "Russo, E.B.",
-    "journal": "British Journal of Pharmacology",
-    "year": 2011,
-    "doi": "10.1111/j.1476-5381.2011.01238.x",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_14",
-    "title": "Anti-inflammatory activity of α-humulene",
-    "authors": "Fernandes, E.S., Passos, G.F., Medeiros, R., da Cunha, F.M., Ferreira, J., Campos, M.M., Pianowski, L.F., Calixto, J.B.",
-    "journal": "European Journal of Pharmacology",
-    "year": 2007,
-    "doi": "10.1016/j.ejphar.2007.01.029",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_15",
-    "title": "Antimicrobial activity of α-humulene",
-    "authors": "Inouye, S., Uchida, K., Yamaguchi, H.",
-    "journal": "Mycoses",
-    "year": 2001,
-    "doi": "10.1046/j.1439-0507.2001.00644.x",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_16",
-    "title": "Terpinolene: A review of its pharmacological properties",
-    "authors": "Russo, E.B.",
-    "journal": "Chemical Biodiversity",
-    "year": 2011,
-    "doi": "10.1002/cbdv.201100155",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_17",
-    "title": "Sedative effects of terpinolene",
-    "authors": "Ito, K., Ito, M.",
-    "journal": "Journal of Natural Medicines",
-    "year": 2013,
-    "doi": "10.1007/s11418-012-0728-6",
-    "type": "peer_reviewed"
-  },
-  {
     "id": "reference_18",
-    "title": "Antioxidant activity of terpinolene",
-    "authors": "Kamatou, G.P., Viljoen, A.M.",
-    "journal": "Natural Product Communications",
-    "year": 2010,
-    "doi": "10.1177/1934578X1000500821",
+    "title": "Anti-inflammatory and anti-allergic properties of the essential oil and active compounds from Cordia verbenacea",
+    "authors": "Passos GF, Fernandes ES, da Cunha FM, Ferreira J, Pianowski LF, Campos MM, Calixto JB",
+    "journal": "Journal of Ethnopharmacology",
+    "year": 2007,
+    "doi": "10.1016/j.jep.2006.08.026",
     "type": "peer_reviewed"
   },
   {
     "id": "reference_19",
-    "title": "Wound healing properties of terpinolene",
-    "authors": "Hammer, K.A., Carson, C.F., Riley, T.V.",
-    "journal": "Journal of Applied Microbiology",
-    "year": 2004,
-    "doi": "10.1111/j.1365-2672.2004.02167.x",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_20",
-    "title": "β-Ocimene: A review of its biological activities",
-    "authors": "Russo, E.B.",
-    "journal": "Natural Product Communications",
-    "year": 2011,
-    "doi": "10.1177/1934578X1100600922",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_21",
-    "title": "Relaxant effects of β-ocimene",
-    "authors": "Peana, A.T., D'Aquila, P.S., Chessa, M.L., Moretti, M.D., Serra, G., Pippia, P.",
-    "journal": "Planta Medica",
-    "year": 2002,
-    "doi": "10.1055/s-2002-33976",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_22",
-    "title": "Neuroprotective effects of β-ocimene",
-    "authors": "Russo, E.B.",
-    "journal": "British Journal of Pharmacology",
-    "year": 2011,
-    "doi": "10.1111/j.1476-5381.2011.01238.x",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_23",
-    "title": "Antioxidant properties of farnesene",
-    "authors": "Russo, E.B.",
-    "journal": "Natural Product Communications",
-    "year": 2011,
-    "doi": "10.1177/1934578X1100600923",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_24",
-    "title": "Farnesene: A review of its biological activities",
-    "authors": "Booth, J.K., Page, J.E., Bohlmann, J.",
-    "journal": "Trends in Plant Science",
-    "year": 2017,
-    "doi": "10.1016/j.tplants.2017.03.014",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_25",
-    "title": "Antimicrobial activity of farnesene",
-    "authors": "Carson, C.F., Hammer, K.A., Riley, T.V.",
-    "journal": "Clinical Microbiology Reviews",
-    "year": 2006,
-    "doi": "10.1128/CMR.19.1.50-62.2006",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_26",
-    "title": "Anti-inflammatory effects of farnesene",
-    "authors": "Gertsch, J., Leonti, M., Raduner, S., Racz, I., Chen, J.Z., Xie, X.Q., Altmann, K.H., Karsak, M., Zimmer, A.",
-    "journal": "Proceedings of the National Academy of Sciences",
-    "year": 2008,
-    "doi": "10.1073/pnas.0803601105",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_27",
-    "title": "Analgesic properties of selinene compounds",
-    "authors": "Russo, E.B.",
-    "journal": "Chemical Biodiversity",
-    "year": 2011,
-    "doi": "10.1002/cbdv.201100155",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_28",
-    "title": "Selinene: A review of its pharmacological properties",
-    "authors": "Legault, J., Pichette, A.",
-    "journal": "Phytochemistry Reviews",
-    "year": 2007,
-    "doi": "10.1007/s11101-007-9045-6",
-    "type": "peer_reviewed"
-  },
-  {
-    "id": "reference_29",
-    "title": "Anti-inflammatory activity of selinene",
-    "authors": "Fernandes, E.S., Passos, G.F., Medeiros, R., da Cunha, F.M., Ferreira, J., Campos, M.M., Pianowski, L.F., Calixto, J.B.",
+    "title": "Anti-inflammatory effects of compounds alpha-humulene and (âˆ’)-trans-caryophyllene isolated from the essential oil of Cordia verbenacea",
+    "authors": "Fernandes ES, Passos GF, Medeiros R, da Cunha FM, Ferreira J, Campos MM, Pianowski LF, Calixto JB",
     "journal": "European Journal of Pharmacology",
     "year": 2007,
     "doi": "10.1016/j.ejphar.2007.01.029",
     "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_20",
+    "title": "Antibacterial and antibiofilm effects of alpha-humulene against Bacteroides fragilis",
+    "authors": "Jang HI, Rhee KJ, Eom YB",
+    "journal": "Canadian Journal of Microbiology",
+    "year": 2020,
+    "doi": "10.1139/cjm-2019-0670",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_21",
+    "title": "Cannabis sativa terpenes are cannabimimetic and selectively enhance cannabinoid activity",
+    "authors": "LaVigne JE, Hecksel R, Keresztes A, Streicher JM",
+    "journal": "Scientific Reports",
+    "year": 2021,
+    "doi": "10.1038/s41598-021-87407-4",
+    "type": "peer_reviewed",
+    "pmid": "33833242",
+    "pmcid": "PMC8027341"
+  },
+  {
+    "id": "reference_22",
+    "title": "Wound healing activity of terpinolene and Î±-phellandrene by attenuating inflammation and oxidative stress in vitro",
+    "authors": "de Christo Scherer MM, Marques FM, Figueira MM, Peisino MCO, Schmitt EFP, Kondratyuk TP, Endringer DC, Scherer R, Fronza M",
+    "journal": "Journal of Tissue Viability",
+    "year": 2019,
+    "doi": "10.1016/j.jtv.2019.02.003",
+    "type": "peer_reviewed",
+    "pmid": "30792116"
+  },
+  {
+    "id": "reference_23",
+    "title": "Synthesis of novel indolyl-pyrimidine antiinflammatory, antioxidant and antibacterial agents",
+    "authors": "Panda SS, Chowdary PV",
+    "journal": "Indian Journal of Pharmaceutical Sciences",
+    "year": 2008,
+    "doi": "10.4103/0250-474X.41457",
+    "type": "peer_reviewed",
+    "pmid": "20046714",
+    "pmcid": "PMC2792498"
+  },
+  {
+    "id": "reference_24",
+    "title": "Cytotoxic and Antileishmanial Effects of the Monoterpene Î²-Ocimene",
+    "authors": "Sousa JMS, Nunes TAL, Rodrigues RRL, Sousa JPA, Val MDCA, Coelho FADR, Santos ALSD, Maciel NB, Souza VMR, Machado YAA, Sousa PSA, AraÃºjo AR, Rocha JA, Sousa DP, Silva MVD, Arcanjo DDR, Rodrigues KADF",
+    "journal": "Pharmaceuticals",
+    "year": 2023,
+    "doi": "10.3390/ph16020183",
+    "type": "peer_reviewed",
+    "pmid": "37259336",
+    "pmcid": "PMC9960243"
+  },
+  {
+    "id": "reference_25",
+    "title": "Neuroprotective effects of farnesene against hydrogen peroxide-induced neurotoxicity in vitro",
+    "authors": "Turkez H, Sozio P, Geyikoglu F, Tatar A, Hacimuftuoglu A, Di Stefano A",
+    "journal": "Cellular and Molecular Neurobiology",
+    "year": 2014,
+    "doi": "10.1007/s10571-013-9991-y",
+    "type": "peer_reviewed",
+    "pmid": "24105026"
+  },
+  {
+    "id": "reference_26",
+    "title": "Neutrophil Immunomodulatory Activity of Farnesene, a Component of Artemisia dracunculus Essential Oils",
+    "authors": "Schepetkin IA, Ã–zek G, Ã–zek T, Kirpotina LN, Khlebnikov AI, Klein RA, Quinn MT",
+    "journal": "Pharmaceuticals",
+    "year": 2022,
+    "doi": "10.3390/ph15050642",
+    "type": "peer_reviewed",
+    "pmid": "35631467",
+    "pmcid": "PMC9143003"
+  },
+  {
+    "id": "reference_27",
+    "title": "The Roles of Farnesol and Farnesene in Curtailing Antibiotic Resistance",
+    "authors": "Molina-Gallardo A, Cruz-MartÃ­nez Y, Orozco-MartÃ­nez J, Quiroz I, Hernandez T",
+    "journal": "Frontiers in Bioscience-Landmark",
+    "year": 2024,
+    "doi": "10.2174/9789815223163124090005",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_28",
+    "title": "Terpinolene: A review of its pharmacological properties",
+    "authors": "Russo EB",
+    "journal": "Chemical Biodiversity",
+    "year": 2011,
+    "doi": "10.1002/cbdv.201100155",
+    "type": "peer_reviewed"
+  }
+  ,
+  {
+    "id": "reference_29",
+    "title": "Inhibitory effects of linalool, an essential oil component of lavender, on nociceptive TRPA1 and voltage-gated Ca2+ channels in mouse sensory neurons",
+    "authors": "Hashimoto M, Takahashi K, Ohta T",
+    "journal": "Biochem Biophys Rep",
+    "year": 2023,
+    "doi": "10.1016/j.bbrep.2023.101468",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_30",
+    "title": "Linalool Odor-Induced Anxiolytic Effects in Mice",
+    "authors": "Harada H, Kashiwadani H, Kanmura Y, Kuwaki T",
+    "journal": "Frontiers in Behavioral Neuroscience",
+    "year": 2018,
+    "doi": "10.3389/fnbeh.2018.00241",
+    "type": "peer_reviewed"
   }
 ]
+
