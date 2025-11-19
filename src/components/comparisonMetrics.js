@@ -13,7 +13,7 @@ export const comparisonMetrics = [
     render: ({ cultivar, context }) => (
       <EffectPills
         effects={getCultivarEffects(cultivar)}
-        limit={context === "panel" ? 5 : undefined}
+        limit={context === "panel" ? 5 : Number.POSITIVE_INFINITY}
       />
     ),
   },
