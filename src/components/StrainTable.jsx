@@ -1,8 +1,112 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import TerpeneChips from "./TerpeneChips";
 
 const PAGE_SIZE_OPTIONS = [50, 100];
 const DEFAULT_PAGE_SIZE = 100;
+
+const StrainTableRow = React.memo(function StrainTableRow({
+  strain,
+  isSelected,
+  hasSimilarityColumn,
+  onToggleSelect,
+  showInfo,
+  showTerpenPanel,
+  showRadar,
+}) {
+  if (!strain) {
+    return null;
+  }
+
+  const { name = "Unbekannt", thc, cbd, normalizedTerpenprofil, terpenprofil } = strain;
+  const pdfUrl = useMemo(
+    () => `/datenblaetter/${name.replace(/\s+/g, "_")}.pdf`,
+    [name]
+  );
+  const terpeneList = useMemo(() => {
+    if (Array.isArray(normalizedTerpenprofil) && normalizedTerpenprofil.length) {
+      return normalizedTerpenprofil;
+    }
+    return Array.isArray(terpenprofil) ? terpenprofil : [];
+  }, [normalizedTerpenprofil, terpenprofil]);
+
+  const handleToggleSelect = useCallback(() => onToggleSelect(strain), [onToggleSelect, strain]);
+  const handleShowInfo = useCallback(() => showInfo(strain), [showInfo, strain]);
+  const handleShowTerpenPanel = useCallback(
+    () => showTerpenPanel(strain),
+    [showTerpenPanel, strain]
+  );
+  const handleShowRadar = useCallback(() => showRadar(strain), [showRadar, strain]);
+  const handleOpenPdf = useCallback(() => {
+    window.open(pdfUrl, "_blank", "noopener,noreferrer");
+  }, [pdfUrl]);
+
+  const similarityValue =
+    typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
+      ? `${Math.round(strain.similarity * 100)}%`
+      : "–";
+
+  return (
+    <tr className={isSelected ? "is-selected" : undefined}>
+      <td className="comparison-column" data-label="Vergleich">
+        <label className="comparison-checkbox">
+          <input
+            type="checkbox"
+            checked={isSelected}
+            onChange={handleToggleSelect}
+            aria-label={`${name} für Vergleich ${isSelected ? "abwählen" : "auswählen"}`}
+          />
+          <span aria-hidden="true" />
+        </label>
+      </td>
+      <td data-label="Name">
+        <button
+          type="button"
+          className="link-button"
+          onClick={handleOpenPdf}
+          aria-label={`${name} Datenblatt anzeigen`}
+        >
+          {name}
+        </button>
+      </td>
+      {hasSimilarityColumn && (
+        <td className="similarity-column" data-label="Übereinstimmung">
+          {similarityValue}
+        </td>
+      )}
+      <td data-label="THC">
+        <span className="thc-values">{thc || "N/A"}</span>
+      </td>
+      <td className="hidden-sm" data-label="CBD">
+        {cbd || "N/A"}
+      </td>
+      <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
+        <TerpeneChips list={terpeneList} onInfo={handleShowTerpenPanel} />
+      </td>
+      <td data-label="Radar">
+        <button
+          className="link-button"
+          onClick={handleShowRadar}
+          type="button"
+          aria-label={`${name} Radar anzeigen`}
+        >
+          anzeigen
+        </button>
+      </td>
+      <td data-label="Details">
+        <button
+          type="button"
+          className="link-button"
+          onClick={handleShowInfo}
+          aria-label={`${name} Details anzeigen`}
+        >
+          anzeigen
+        </button>
+      </td>
+    </tr>
+  );
+});
+
+StrainTableRow.displayName = "StrainTableRow";
 
 export default function StrainTable({
   strains = [],
@@ -15,9 +119,14 @@ export default function StrainTable({
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [pageIndex, setPageIndex] = useState(0);
 
-  const hasSimilarityColumn = Array.isArray(strains)
-    ? strains.some((s) => typeof s?.similarity === "number" && !Number.isNaN(s.similarity))
-    : false;
+  const hasSimilarityColumn = useMemo(() => {
+    if (!Array.isArray(strains)) {
+      return false;
+    }
+    return strains.some(
+      (s) => typeof s?.similarity === "number" && !Number.isNaN(s.similarity)
+    );
+  }, [strains]);
 
   const totalItems = Array.isArray(strains) ? strains.length : 0;
   const totalPages = totalItems ? Math.ceil(totalItems / pageSize) : 0;
@@ -32,6 +141,18 @@ export default function StrainTable({
     const end = start + pageSize;
     return strains.slice(start, end);
   }, [pageSize, safePageIndex, strains]);
+
+  const selectedNameSet = useMemo(() => {
+    if (!Array.isArray(selectedCultivars) || !selectedCultivars.length) {
+      return new Set();
+    }
+
+    return new Set(
+      selectedCultivars
+        .map((item) => (item?.name ? item.name : null))
+        .filter((value) => typeof value === "string")
+    );
+  }, [selectedCultivars]);
 
   useEffect(() => {
     if (pageIndex !== safePageIndex) {
@@ -71,80 +192,18 @@ export default function StrainTable({
           </thead>
           <tbody>
             {paginatedStrains && paginatedStrains.length ? (
-              paginatedStrains.map((k) => {
-                const isSelected = selectedCultivars.some((item) => item.name === k.name);
-                return (
-                  <tr key={k.name} className={isSelected ? "is-selected" : undefined}>
-                    <td className="comparison-column" data-label="Vergleich">
-                      <label className="comparison-checkbox">
-                        <input
-                          type="checkbox"
-                          checked={isSelected}
-                          onChange={() => onToggleSelect(k)}
-                          aria-label={`${k.name} für Vergleich ${isSelected ? "abwählen" : "auswählen"}`}
-                        />
-                        <span aria-hidden="true" />
-                      </label>
-                    </td>
-                    <td data-label="Name">
-                      <button
-                        type="button"
-                        className="link-button"
-                        onClick={() => {
-                          const url = `/datenblaetter/${k.name.replace(/\s+/g, "_")}.pdf`;
-                          window.open(url, "_blank", "noopener,noreferrer");
-                        }}
-                        aria-label={`${k.name} Datenblatt anzeigen`}
-                      >
-                        {k.name}
-                      </button>
-                    </td>
-                    {hasSimilarityColumn && (
-                      <td className="similarity-column" data-label="Übereinstimmung">
-                        {typeof k.similarity === "number" && !Number.isNaN(k.similarity)
-                          ? `${Math.round(k.similarity * 100)}%`
-                          : "–"}
-                      </td>
-                    )}
-                    <td data-label="THC">
-                      <span className="thc-values">{k.thc || "N/A"}</span>
-                    </td>
-                    <td className="hidden-sm" data-label="CBD">
-                      {k.cbd || "N/A"}
-                    </td>
-                    <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
-                      <TerpeneChips
-                        list={
-                          Array.isArray(k.normalizedTerpenprofil) && k.normalizedTerpenprofil.length
-                            ? k.normalizedTerpenprofil
-                            : k.terpenprofil || []
-                        }
-                        onInfo={() => showTerpenPanel(k)}
-                      />
-                    </td>
-                    <td data-label="Radar">
-                      <button
-                        className="link-button"
-                        onClick={() => showRadar(k)}
-                        type="button"
-                        aria-label={`${k.name} Radar anzeigen`}
-                      >
-                        anzeigen
-                      </button>
-                    </td>
-                    <td data-label="Details">
-                      <button
-                        type="button"
-                        className="link-button"
-                        onClick={() => showInfo(k)}
-                        aria-label={`${k.name} Details anzeigen`}
-                      >
-                        anzeigen
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })
+              paginatedStrains.map((k) => (
+                <StrainTableRow
+                  key={k.name}
+                  strain={k}
+                  isSelected={selectedNameSet.has(k.name)}
+                  hasSimilarityColumn={hasSimilarityColumn}
+                  onToggleSelect={onToggleSelect}
+                  showInfo={showInfo}
+                  showTerpenPanel={showTerpenPanel}
+                  showRadar={showRadar}
+                />
+              ))
             ) : (
               <tr>
                 <td

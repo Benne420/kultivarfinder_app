@@ -7,19 +7,22 @@
  * unverändert.
  */
 
-import { useEffect, useMemo, useCallback, useReducer, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useCallback,
+  useReducer,
+  useRef,
+  useState,
+  lazy,
+  Suspense,
+} from "react";
 import "@fontsource/montserrat";
 import "./styles.css";
-import CultivarTerpenPanel from "./components/CultivarTerpenPanel";
-import EntourageInfoModal from "./components/EntourageInfoModal";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
-import DetailsModal from "./components/DetailsModal";
-import RadarModal from "./components/RadarModal";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
-import ComparisonPanel from "./components/ComparisonPanel";
-import ComparisonDetailsModal from "./components/ComparisonDetailsModal";
 import { TerpeneContext } from "./context/TerpeneContext";
 import {
   normalizeWirkung,
@@ -31,6 +34,13 @@ import {
 } from "./utils/helpers";
 import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
 import defaultWirkungenSource from "./data/default-wirkungen.json";
+
+const CultivarTerpenPanel = lazy(() => import("./components/CultivarTerpenPanel"));
+const EntourageInfoModal = lazy(() => import("./components/EntourageInfoModal"));
+const DetailsModal = lazy(() => import("./components/DetailsModal"));
+const RadarModal = lazy(() => import("./components/RadarModal"));
+const ComparisonPanel = lazy(() => import("./components/ComparisonPanel"));
+const ComparisonDetailsModal = lazy(() => import("./components/ComparisonDetailsModal"));
 
 /*
  * Daten und Hilfsfunktionen werden außerhalb der Komponente definiert, um
@@ -51,6 +61,20 @@ const defaultTerpeneOptions = sortTerpeneNames(defaultTerpeneOptionsSource);
  * Liste dient als Quelle für Dropdowns.
  */
 const defaultWirkungen = [...defaultWirkungenSource].sort();
+
+const SuspenseOverlayFallback = ({ label = "Inhalt wird geladen …" }) => (
+  <div className="modal-fallback" role="status" aria-live="polite">
+    <span className="modal-fallback__spinner" aria-hidden="true" />
+    <span>{label}</span>
+  </div>
+);
+
+const SuspenseInlineFallback = ({ label = "Inhalt wird geladen …" }) => (
+  <div className="modal-inline-loader" role="status" aria-live="polite">
+    <span className="modal-inline-loader__spinner" aria-hidden="true" />
+    <span>{label}</span>
+  </div>
+);
 
 const MAX_COMPARISON_ITEMS = 4;
 const VIEWPORT_WIDTH_FACTOR = 0.94;
@@ -777,34 +801,56 @@ export default function CannabisKultivarFinderUseReducer() {
         </>
       )}
 
-      <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
-      <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
+      {infoDialog.open && (
+        <Suspense fallback={<SuspenseOverlayFallback label="Sortendetails werden geladen …" />}>
+          <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
+        </Suspense>
+      )}
+      {radarDialog.open && (
+        <Suspense fallback={<SuspenseOverlayFallback label="Radar wird geladen …" />}>
+          <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
+        </Suspense>
+      )}
 
-      <EntourageInfoModal isOpen={isEntourageModalOpen} onClose={closeEntourageModal} />
+      {isEntourageModalOpen && (
+        <Suspense fallback={<SuspenseOverlayFallback label="Informationen werden geladen …" />}>
+          <EntourageInfoModal isOpen={isEntourageModalOpen} onClose={closeEntourageModal} />
+        </Suspense>
+      )}
 
       {terpenPanel.open && terpenPanel.cultivar && (
         <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>
           <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: "800px", maxHeight: "90vh", overflow: "auto" }}>
             <button className="modal-close" onClick={hideTerpenPanel} aria-label="Dialog schließen">×</button>
-            <CultivarTerpenPanel cultivar={terpenPanel.cultivar} />
+            <Suspense fallback={<SuspenseInlineFallback label="Terpenprofil wird geladen …" />}>
+              <CultivarTerpenPanel cultivar={terpenPanel.cultivar} />
+            </Suspense>
           </div>
         </div>
       )}
 
-      <ComparisonPanel
-        isOpen={isComparisonOpen}
-        cultivars={selectedCultivars}
-        onClose={closeComparison}
-        onRequestAdd={handleAddMoreCultivars}
-        onShowAllDetails={handleShowAllDetails}
-        layoutMetrics={comparisonLayout}
-      />
-      <ComparisonDetailsModal
-        isOpen={isComparisonDetailsOpen}
-        cultivars={selectedCultivars}
-        onClose={closeComparisonDetails}
-        layoutMetrics={comparisonLayout}
-      />
+      {isComparisonOpen && (
+        <Suspense fallback={<SuspenseOverlayFallback label="Vergleich wird geladen …" />}>
+          <ComparisonPanel
+            isOpen={isComparisonOpen}
+            cultivars={selectedCultivars}
+            onClose={closeComparison}
+            onRequestAdd={handleAddMoreCultivars}
+            onShowAllDetails={handleShowAllDetails}
+            layoutMetrics={comparisonLayout}
+          />
+        </Suspense>
+      )}
+      {isComparisonDetailsOpen && (
+        <Suspense fallback={<SuspenseOverlayFallback label="Detailansicht wird geladen …" />}>
+          <ComparisonDetailsModal
+            isOpen={isComparisonDetailsOpen}
+            cultivars={selectedCultivars}
+            onClose={closeComparisonDetails}
+            layoutMetrics={comparisonLayout}
+          />
+        </Suspense>
+      )}
       </div>
     </TerpeneContext.Provider>
   );
