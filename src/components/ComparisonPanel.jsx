@@ -1,12 +1,13 @@
 import React from "react";
-import TerpeneRadarImage from "./TerpeneRadarImage";
-import EffectPills from "./EffectPills";
 import {
   formatMetricValue,
-  getCultivarEffects,
   getComparisonLayoutMetrics,
   COMPARISON_HEADER_WIDTH_PX,
 } from "../utils/helpers";
+import {
+  comparisonMetrics,
+  renderComparisonMetricValue,
+} from "./comparisonMetrics";
 
 export default function ComparisonPanel({
   isOpen,
@@ -76,69 +77,44 @@ export default function ComparisonPanel({
             ))}
           </div>
 
-          <div className="comparison-panel__row" role="row" style={columnTemplate}>
-            <div className="comparison-panel__cell" role="rowheader">
-              THC
-            </div>
-            {cultivars.map((cultivar) => (
-              <div key={`${cultivar.name}-thc`} className="comparison-panel__cell" role="cell">
-                {formatMetricValue(cultivar.thc)}
-              </div>
-            ))}
-          </div>
+          {comparisonMetrics.map((metric) => {
+            const rowClassName = ["comparison-panel__row"];
+            if (metric.rowClassName) {
+              rowClassName.push(metric.rowClassName);
+            }
 
-          <div className="comparison-panel__row" role="row" style={columnTemplate}>
-            <div className="comparison-panel__cell" role="rowheader">
-              CBD
-            </div>
-            {cultivars.map((cultivar) => (
-              <div key={`${cultivar.name}-cbd`} className="comparison-panel__cell" role="cell">
-                {formatMetricValue(cultivar.cbd)}
-              </div>
-            ))}
-          </div>
+            const cellClassName = ["comparison-panel__cell"];
+            if (metric.cellClassName) {
+              cellClassName.push(metric.cellClassName);
+            }
 
-          <div className="comparison-panel__row" role="row" style={columnTemplate}>
-            <div className="comparison-panel__cell" role="rowheader">
-              Terpengehalt
-            </div>
-            {cultivars.map((cultivar) => (
-              <div key={`${cultivar.name}-terpengehalt`} className="comparison-panel__cell" role="cell">
-                {formatMetricValue(cultivar.terpengehalt)}
-              </div>
-            ))}
-          </div>
-
-          <div className="comparison-panel__row comparison-panel__row--radar" role="row" style={columnTemplate}>
-            <div className="comparison-panel__cell" role="rowheader">
-              Terpen-Radar
-            </div>
-            {cultivars.map((cultivar) => (
+            return (
               <div
-                key={`${cultivar.name}-radar`}
-                className="comparison-panel__cell comparison-panel__cell--radar"
-                role="cell"
+                key={metric.accessor || metric.label}
+                className={rowClassName.join(" ")}
+                role="row"
+                style={columnTemplate}
               >
-                <div className="comparison-panel__radar-wrapper">
-                  <TerpeneRadarImage
-                    cultivarName={cultivar?.name}
-                    className="comparison-panel__radar-image"
-                  />
+                <div className="comparison-panel__cell" role="rowheader">
+                  {metric.label}
                 </div>
+                {cultivars.map((cultivar) => (
+                  <div
+                    key={`${cultivar.name}-${metric.accessor || metric.label}`}
+                    className={cellClassName.join(" ")}
+                    role="cell"
+                  >
+                    {renderComparisonMetricValue(
+                      metric,
+                      cultivar,
+                      "panel",
+                      formatMetricValue,
+                    )}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <div className="comparison-panel__row" role="row" style={columnTemplate}>
-            <div className="comparison-panel__cell" role="rowheader">
-              Häufigste Wirkungen
-            </div>
-            {cultivars.map((cultivar) => (
-              <div key={`${cultivar.name}-effects`} className="comparison-panel__cell" role="cell">
-                <EffectPills effects={getCultivarEffects(cultivar)} limit={5} />
-              </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
         <div className="comparison-panel__actions">
