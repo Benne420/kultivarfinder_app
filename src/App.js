@@ -708,74 +708,60 @@ export default function CannabisKultivarFinderUseReducer() {
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
-      <main className="container" style={containerStyle}>
+      <div className="container" style={containerStyle}>
         <header className="header" aria-label="App-Kopfzeile">
           <h1 className="appname">Four20 Index</h1>
         </header>
 
-        <section className="notice" aria-labelledby="hwg-notice-heading">
-          <h2 id="hwg-notice-heading">Hinweis</h2>
-          <p>
-            Diese Anwendung dient ausschließlich der allgemeinen Information und ersetzt keine medizinische Beratung. Bei
-            gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
-          </p>
-        </section>
+        <div className="notice" role="note">
+          <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information und ersetzt keine medizinische
+          Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
+        </div>
 
-        <section className="filters-section" aria-labelledby="filters-heading">
-          <h2 id="filters-heading" className="section-title">Filter</h2>
-          <StrainSimilarity
-            kultivare={kultivare}
-            onApplySimilar={handleApplySimilarity}
-            includeDiscontinued={filters.includeDiscontinued}
-            onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
-          />
-          <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
-          <FilterPanel
-            filters={filters}
-            dispatch={dispatch}
-            terpene={terpeneOptions}
-            wirkungen={availableWirkungen}
-            clearTerpene={clearTerpene}
-            clearWirkungen={clearWirkungen}
-          />
-          <div className="utility-bar">
-            <button
-              type="button"
-              onClick={openEntourageModal}
-              aria-haspopup="dialog"
-              aria-expanded={isEntourageModalOpen}
-            >
-              Mehr zum Entourage-Effekt
-            </button>
+        <StrainSimilarity
+          kultivare={kultivare}
+          onApplySimilar={handleApplySimilarity}
+          includeDiscontinued={filters.includeDiscontinued}
+          onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+        />
+        <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+        <FilterPanel
+          filters={filters}
+          dispatch={dispatch}
+          terpene={terpeneOptions}
+          wirkungen={availableWirkungen}
+          clearTerpene={clearTerpene}
+          clearWirkungen={clearWirkungen}
+        />
+        {similarityContext && (
+          <div className="similarity-banner" role="status" aria-live="polite">
+            <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
+            {" "}angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Clear similarity“, um zur
+            gefilterten Ansicht zurückzukehren.
           </div>
-        </section>
-
-        {(similarityContext || loading || (error && !loading)) && (
-          <section className="status-section" aria-labelledby="status-heading">
-            <h2 id="status-heading" className="section-title">Statusmeldungen</h2>
-            {similarityContext && (
-              <div className="similarity-banner" role="status" aria-live="polite">
-                <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
-                {" "}angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Clear similarity“,
-                um zur gefilterten Ansicht zurückzukehren.
-              </div>
-            )}
-            {loading && (
-              <div className="status status--loading" role="status" aria-live="polite">
-                Daten werden geladen …
-              </div>
-            )}
-            {error && !loading && (
-              <div className="status status--error" role="alert">
-                Beim Laden der Daten ist ein Fehler aufgetreten: {error}
-              </div>
-            )}
-          </section>
         )}
-
+        {loading && (
+          <div className="status status--loading" role="status" aria-live="polite">
+            Daten werden geladen …
+          </div>
+        )}
+        {error && !loading && (
+          <div className="status status--error" role="alert">
+            Beim Laden der Daten ist ein Fehler aufgetreten: {error}
+          </div>
+        )}
+        <div className="utility-bar">
+          <button
+            type="button"
+            onClick={openEntourageModal}
+            aria-haspopup="dialog"
+            aria-expanded={isEntourageModalOpen}
+          >
+            Mehr zum Entourage-Effekt
+          </button>
+        </div>
         {!loading && !error && (
-          <section className="table-section" aria-labelledby="table-heading">
-            <h2 id="table-heading" className="section-title">Sortenübersicht</h2>
+          <>
             <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
               <p className="comparison-toolbar__hint">
                 {selectedCultivars.length
@@ -800,7 +786,7 @@ export default function CannabisKultivarFinderUseReducer() {
               onToggleSelect={toggleCultivarSelection}
               selectedCultivars={selectedCultivars}
             />
-          </section>
+          </>
         )}
 
         {infoDialog.open && (
@@ -853,7 +839,7 @@ export default function CannabisKultivarFinderUseReducer() {
             />
           </Suspense>
         )}
-      </main>
+      </div>
     </TerpeneContext.Provider>
   );
 }
