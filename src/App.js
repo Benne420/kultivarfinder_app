@@ -753,6 +753,7 @@ export default function CannabisKultivarFinderUseReducer() {
         <div className="utility-bar">
           <button
             type="button"
+            className="utility-bar__button"
             onClick={openEntourageModal}
             aria-haspopup="dialog"
             aria-expanded={isEntourageModalOpen}

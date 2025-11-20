@@ -175,6 +175,34 @@ p {
   justify-content: flex-end;
   margin: 16px 0 0;
 }
+
+.utility-bar__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid #0055a4;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0055a4;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.utility-bar__button:hover,
+.utility-bar__button:focus-visible {
+  background-color: #eef4ff;
+  border-color: #004080;
+  box-shadow: 0 4px 12px rgba(0, 85, 164, 0.15);
+  outline: none;
+}
+
+.utility-bar__button:focus-visible {
+  outline: 2px solid #a8cff7;
+  outline-offset: 2px;
+}
 ul {
   padding-inline-start: 20px;
 }
