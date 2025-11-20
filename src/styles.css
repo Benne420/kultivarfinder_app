@@ -409,6 +409,15 @@ nav a:hover {
   font-weight: 500;
 }
 
+.filter-heading {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #37474f;
+}
+
 .comparison-column {
   width: 64px;
   text-align: center;

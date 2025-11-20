@@ -11,7 +11,7 @@ export default function TypFilter({ typ, dispatch, typInfo }) {
 
   return (
     <div className="typ-button-group">
-      <h3>Typ</h3>
+      <h3 className="filter-heading">Typ</h3>
       <div className="typ-row">
         {Object.keys(typInfo)
           .filter((t) => !/^\s*(indica|sativa)\s*$/i.test(t))
