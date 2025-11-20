@@ -138,6 +138,43 @@ h6 {
 p {
   margin-bottom: var(--base-spacing);
 }
+
+.section-title {
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.filters-section,
+.status-section,
+.table-section {
+  margin: 12px 0 24px;
+}
+
+.notice {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #856404;
+}
+
+.notice h2 {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.notice p {
+  margin: 0;
+}
+
+.utility-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0 0;
+}
 ul {
   padding-inline-start: 20px;
 }
@@ -1182,6 +1219,12 @@ nav a:hover {
   border-radius: 12px;
   padding: 18px 20px 20px;
   position: relative;
+}
+
+.modal--wide {
+  max-width: 800px;
+  max-height: 90vh;
+  overflow: auto;
 }
 
 .modal-fallback {
