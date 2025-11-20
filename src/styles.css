@@ -409,13 +409,13 @@ nav a:hover {
   font-weight: 500;
 }
 
-.filter-heading {
-  margin: 0 0 8px;
-  font-size: 14px;
+.filter-heading,
+.similarity-panel__title {
+  margin: 0 0 10px;
+  font-size: 16px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: #37474f;
+  letter-spacing: 0.01em;
+  color: #263238;
 }
 
 .comparison-column {
@@ -1137,8 +1137,6 @@ nav a:hover {
 }
 
 .similarity-panel__title {
-  margin: 0 0 12px;
-  font-size: 18px;
   text-align: center;
 }
 
