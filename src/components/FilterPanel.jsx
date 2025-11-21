@@ -149,7 +149,9 @@ export default function FilterPanel({
   return (
     <div className="filters">
       <div className="select-group">
-        <h3 id="terpene-heading">Terpenfilter</h3>
+        <h3 id="terpene-heading" className="filter-heading">
+          Terpenfilter
+        </h3>
         <div className="select-row select-row--with-reset">
           <MultiSelectDropdown
             headingId="terpene-heading"
@@ -172,7 +174,9 @@ export default function FilterPanel({
       </div>
 
       <div className="select-group">
-        <h3 id="wirkungen-heading">Wirkungsfilter</h3>
+        <h3 id="wirkungen-heading" className="filter-heading">
+          Wirkungsfilter
+        </h3>
         <div className="select-row select-row--with-reset">
           <MultiSelectDropdown
             headingId="wirkungen-heading"
