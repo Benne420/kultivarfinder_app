@@ -23,11 +23,64 @@ body {
   padding: 0;
   color: var(--primary-grey);
   background-color: var(--body-background);
-  background-image: url("../public/F20_Pharma_Pattern-Hexagon_07.png");
-  background-repeat: repeat;
-  background-size: auto;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 85, 164, 0.08),
+      rgba(0, 85, 164, 0) 35%
+    ),
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(99, 189, 50, 0.08),
+      rgba(99, 189, 50, 0) 32%
+    ),
+    var(--body-background);
+  background-repeat: no-repeat;
+  background-size: 100% 100%, 100% 100%, auto;
   background-position: center;
   line-height: 1.6;
+}
+
+@media (prefers-reduced-data: no-preference) {
+  body {
+    background-image: radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 85, 164, 0.08),
+        rgba(0, 85, 164, 0) 35%
+      ),
+      radial-gradient(
+        circle at 80% 0%,
+        rgba(99, 189, 50, 0.08),
+        rgba(99, 189, 50, 0) 32%
+      ),
+      url("../public/F20_Pharma_Pattern-Hexagon_07.png"),
+      var(--body-background);
+    background-repeat: repeat, repeat, repeat, repeat;
+    background-size: 100% 100%, 100% 100%, auto, auto;
+    background-position: center;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-background: #0f172a;
+    --primary-grey: #e2e8f0;
+    --light-grey: #1e293b;
+  }
+
+  body {
+    background: radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 85, 164, 0.16),
+        rgba(0, 85, 164, 0) 35%
+      ),
+      radial-gradient(
+        circle at 80% 0%,
+        rgba(99, 189, 50, 0.16),
+        rgba(99, 189, 50, 0) 32%
+      ),
+      var(--body-background);
+    color: var(--primary-grey);
+  }
 }
 
 .btn-primary {
@@ -148,6 +201,16 @@ p {
 .status-section,
 .table-section {
   margin: 12px 0 24px;
+}
+
+.table-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px auto;
+}
+
+.lazy-surface {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px auto;
 }
 
 .notice {
