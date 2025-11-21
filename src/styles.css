@@ -16,6 +16,7 @@
   --font-scale-h4: clamp(1.375rem, 1rem + 0.5vw, 1.75rem);
   --font-scale-h5: clamp(1.125rem, 0.95rem + 0.3vw, 1.375rem);
   --font-scale-h6: clamp(1rem, 0.9rem + 0.2vw, 1.25rem);
+  color-scheme: light;
 }
 /* Fonts werden über @fontsource/montserrat geladen */
 body {
@@ -62,14 +63,12 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  body:not([data-theme="light"]) {
     --body-background: #0f172a;
     --primary-grey: #e2e8f0;
     --light-grey: #1e293b;
     --table-text: #e2e8f0;
-  }
-
-  body {
+    color-scheme: dark;
     background: radial-gradient(
         circle at 20% 20%,
         rgba(0, 85, 164, 0.16),
@@ -84,31 +83,31 @@ body {
     color: var(--primary-grey);
   }
 
-  .strain-table {
+  body:not([data-theme="light"]) .strain-table {
     background: #0b1220;
     box-shadow: 0 10px 28px rgba(15, 23, 42, 0.35);
     color: #e2e8f0;
   }
 
-  .strain-table th,
-  .strain-table td {
+  body:not([data-theme="light"]) .strain-table th,
+  body:not([data-theme="light"]) .strain-table td {
     border-bottom: 1px solid #1f2a44;
   }
 
-  .strain-table thead {
+  body:not([data-theme="light"]) .strain-table thead {
     background: #1e293b;
     color: #e2e8f0;
   }
 
-  .strain-table tbody tr:hover {
+  body:not([data-theme="light"]) .strain-table tbody tr:hover {
     background: rgba(59, 130, 246, 0.12);
   }
 
-  .strain-table tbody tr.is-selected {
+  body:not([data-theme="light"]) .strain-table tbody tr.is-selected {
     background: rgba(59, 130, 246, 0.2);
   }
 
-  .strain-table td::before {
+  body:not([data-theme="light"]) .strain-table td::before {
     color: #cbd5e1;
   }
 }
