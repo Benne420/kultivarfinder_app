@@ -750,16 +750,29 @@ export default function CannabisKultivarFinderUseReducer() {
             Beim Laden der Daten ist ein Fehler aufgetreten: {error}
           </div>
         )}
-        <div className="utility-bar">
-          <button
-            type="button"
-            className="utility-bar__button"
-            onClick={openEntourageModal}
-            aria-haspopup="dialog"
-            aria-expanded={isEntourageModalOpen}
-          >
-            Mehr zum Entourage-Effekt
-          </button>
+        <div
+          className="utility-bar"
+          role="complementary"
+          aria-label="Entourage-Effekt Informationen"
+        >
+          <div className="utility-bar__content">
+            <div className="utility-bar__text">
+              <p className="utility-bar__title">Entourage-Effekt</p>
+              <p className="utility-bar__description">
+                Erfahren Sie, wie Cannabinoide und Terpene zusammenwirken und welche
+                Profil-Daten die App dafür nutzt.
+              </p>
+            </div>
+            <button
+              type="button"
+              className="utility-bar__button"
+              onClick={openEntourageModal}
+              aria-haspopup="dialog"
+              aria-expanded={isEntourageModalOpen}
+            >
+              Mehr zum Entourage-Effekt
+            </button>
+          </div>
         </div>
         {!loading && !error && (
           <>
