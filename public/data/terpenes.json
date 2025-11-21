@@ -1,8 +1,8 @@
 [
   {
-    "name": "α-Humulen",
-    "aliases": ["Humulen"],
-    "description": "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit (β-)Caryophyllen zu finden.",
+    "name": "Humulen",
+    "aliases": ["α-Humulen"],
+    "description": "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit Caryophyllen zu finden.",
     "aroma": "holzig, erdig, würzig",
     "occurrence": "Nelken, Hopfen",
     "effects": [
@@ -24,8 +24,8 @@
     ]
   },
   {
-    "name": "β-Caryophyllen",
-    "aliases": ["Trans-Caryophyllen", "Caryophyllen"],
+    "name": "Caryophyllen",
+    "aliases": ["β-Caryophyllen", "Trans-Caryophyllen"],
     "description": "Sesquiterpen; pfeffrig-würzig. Bindet als einziger geläufiger Duftstoff direkt am CB2-Rezeptor (präklinische Evidenz).",
     "aroma": "würzig, holzig",
     "occurrence": "Schwarzer Pfeffer",
@@ -43,8 +43,8 @@
     ]
   },
   {
-    "name": "β-Myrcen",
-    "aliases": ["Myrcen"],
+    "name": "Myrcen",
+    "aliases": ["β-Myrcen"],
     "description": "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
     "aroma": "erdig, krautig, moschusartig",
     "occurrence": "Hopfen, Mango, Zitronengras",
@@ -62,8 +62,8 @@
     ]
   },
   {
-    "name": "β-Ocimen",
-    "aliases": ["Ocimen"],
+    "name": "Ocimen",
+    "aliases": ["β-Ocimen"],
     "description": "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
     "aroma": "zitronig, süß, krautig",
     "occurrence": "Basilikum, Studentenblumen",
@@ -86,8 +86,8 @@
     ]
   },
   {
-    "name": "D-Limonen",
-    "aliases": ["Limonen"],
+    "name": "Limonen",
+    "aliases": ["D-Limonen", "Limonene"],
     "description": "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
     "aroma": "frisch, zitronig, fruchtig, süß",
     "occurrence": "Zitrus, Pfefferminze, Kümmel",
@@ -163,8 +163,8 @@
     ]
   },
   {
-    "name": "α-Pinen",
-    "aliases": ["ɑ-Pinen","α-Pinene","Pinene"],
+    "name": "Pinen",
+    "aliases": ["α-Pinen", "β-Pinen", "Pinene"],
     "description": "Monoterpen; harzig-kiefernartig. Häufig in Nadel- und Kiefernölen.",
     "aroma": "harzig, kiefernartig",
     "occurrence": "Kiefern, Rosmarin, Pfefferminze",
@@ -173,9 +173,9 @@
     ]
   },
   {
-    "name": "Selinen",
+    "name": "Selinene",
     "aliases": [
-      "Selinene",
+      "Selinen",
       "α-Selinen",
       "β-Selinen",
       "δ-Selinen"
@@ -214,5 +214,45 @@
         "sources": ["reference_22"]
       }
     ]
+  },
+  {
+    "name": "Bisabolol",
+    "aliases": ["α-Bisabolol"],
+    "description": "Monoterpenalkohol; blumig, süßlich. Häufig in Kamille und Baldrian.",
+    "aroma": "blumig, süß, würzig",
+    "occurrence": "Kamille, Baldrian, Teebaum",
+    "effects": []
+  },
+  {
+    "name": "Bulnesol",
+    "aliases": [],
+    "description": "Sesquiterpenalkohol; holzig, würzig. Komponente ätherischer Öle.",
+    "aroma": "holzig, würzig, erdig",
+    "occurrence": "Sandelholz, Zedernholz",
+    "effects": []
+  },
+  {
+    "name": "Fenchol",
+    "aliases": ["Fenchel"],
+    "description": "Monoterpenalkohol; würzig-minzig, kühlend. Häufig in Fenchel und Pfefferminze.",
+    "aroma": "würzig, minzig, kühlend",
+    "occurrence": "Fenchel, Pfefferminze, Wermut",
+    "effects": []
+  },
+  {
+    "name": "Germacren B",
+    "aliases": ["Germacren-B", "β-Germacren"],
+    "description": "Sesquiterpen; würzig-holzig, terpenartig. Komponente des Hopfenöls.",
+    "aroma": "würzig, holzig, erdig",
+    "occurrence": "Hopfen, Johannisbeere, Kümmel",
+    "effects": []
+  },
+  {
+    "name": "Guaiol",
+    "aliases": [],
+    "description": "Sesquiterpenalkohol; holzig, würzig. Häufig in Zypresse- und Guajakholzöl.",
+    "aroma": "holzig, würzig, minzig",
+    "occurrence": "Zypresse, Guajakholz, Muskatnuss",
+    "effects": []
   }
 ]
