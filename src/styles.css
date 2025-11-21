@@ -81,6 +81,40 @@ body {
       var(--body-background);
     color: var(--primary-grey);
   }
+
+  .table,
+  .table th,
+  .table td {
+    color: #e2e8f0;
+  }
+
+  .strain-table {
+    background: #0b1220;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.35);
+    color: #e2e8f0;
+  }
+
+  .strain-table th,
+  .strain-table td {
+    border-bottom: 1px solid #1f2a44;
+  }
+
+  .strain-table thead {
+    background: #1e293b;
+    color: #e2e8f0;
+  }
+
+  .strain-table tbody tr:hover {
+    background: rgba(59, 130, 246, 0.12);
+  }
+
+  .strain-table tbody tr.is-selected {
+    background: rgba(59, 130, 246, 0.2);
+  }
+
+  .strain-table td::before {
+    color: #cbd5e1;
+  }
 }
 
 .btn-primary {
@@ -334,6 +368,7 @@ nav a:hover {
   width: 100%;
   margin: auto;
   text-align: center;
+  color: #0f172a;
 }
 .table td:first-child {
   text-align: left;
@@ -1395,6 +1430,7 @@ nav a:hover {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 28px rgba(33, 52, 87, 0.08);
+  color: #0f172a;
 }
 
 .strain-table th,
