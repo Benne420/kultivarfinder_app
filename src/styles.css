@@ -171,11 +171,7 @@ p {
 }
 
 .utility-bar {
-  margin: 24px 0;
-}
-
-.utility-bar + .utility-bar {
-  margin-top: 32px;
+  margin: 16px 0;
 }
 
 .utility-bar__content {
