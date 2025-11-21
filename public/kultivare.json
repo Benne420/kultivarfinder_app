@@ -1,11 +1,11 @@
-[
+﻿[
   {
     "name": "Alien Mints",
     "thc": "20-27",
     "cbd": "<1%",
     "terpengehalt": "2.68%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -22,7 +22,7 @@
     "terpengehalt": "1,96%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -39,7 +39,7 @@
     "cbd": "<1%",
     "terpengehalt": "3.64%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -73,7 +73,7 @@
     "cbd": "<1%",
     "terpengehalt": "3.39%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Linalool"
     ],
     "wirkungen": [
@@ -108,7 +108,7 @@
     "terpengehalt": "1.39%",
     "terpenprofil": [
       "Caryophyllen",
-      "D-Limonen"
+      "Limonen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -123,8 +123,8 @@
     "cbd": "<1%",
     "terpengehalt": "1,41%",
     "terpenprofil": [
-      "β-Myrcen",
-      "D-Limonen"
+      "Myrcen",
+      "Limonen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -140,7 +140,7 @@
     "terpengehalt": "1.40%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -155,7 +155,7 @@
     "cbd": "<1%",
     "terpengehalt": "1.76%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -174,7 +174,7 @@
     "terpengehalt": "2,79%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -191,7 +191,7 @@
     "cbd": "<1%",
     "terpengehalt": "3.34%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -212,7 +212,7 @@
     ],
     "wirkungen": [
       "antiinflammatorisch",
-      "unterstützt Wundheilung"
+      "unterstÃ¼tzt Wundheilung"
     ],
     "typ": "sativa-dominant",
     "status": "active"
@@ -223,7 +223,7 @@
     "cbd": "<1%",
     "terpengehalt": "3.15%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Ocimen"
     ],
     "wirkungen": [
@@ -244,7 +244,7 @@
     ],
     "wirkungen": [
       "entspannend",
-      "schlaffördernd",
+      "schlaffÃ¶rdernd",
       "analgetisch"
     ],
     "typ": "indica-dominant",
@@ -273,7 +273,7 @@
     "terpengehalt": "3.50%",
     "terpenprofil": [
       "Farnesen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "antioxidativ",
@@ -290,7 +290,7 @@
     "terpengehalt": "2,77%",
     "terpenprofil": [
       "Caryophyllen",
-      "D-Limonen"
+      "Limonen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -323,8 +323,8 @@
     "cbd": "<1%",
     "terpengehalt": "1,41%",
     "terpenprofil": [
-      "β-Myrcen",
-      "D-Limonen"
+      "Myrcen",
+      "Limonen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -340,7 +340,7 @@
     "terpengehalt": "1,96%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -364,7 +364,7 @@
       "analgetisch",
       "entspannend",
       "anxiolytisch",
-      "krampflösend"
+      "krampflÃ¶send"
     ],
     "typ": "indica-dominant",
     "status": "active"
@@ -375,7 +375,7 @@
     "cbd": "<1%",
     "terpengehalt": "1.96%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -410,7 +410,7 @@
     "terpengehalt": "1.88%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -426,7 +426,7 @@
     "terpengehalt": "1.08%",
     "terpenprofil": [
       "Caryophyllen",
-      "D-Limonen"
+      "Limonen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -442,7 +442,7 @@
     "terpengehalt": "2.76%",
     "terpenprofil": [
       "Farnesen",
-      "D-Limonen"
+      "Limonen"
     ],
     "wirkungen": [
       "antioxidativ",
@@ -458,8 +458,8 @@
     "cbd": "<1%",
     "terpengehalt": "3.43%",
     "terpenprofil": [
-      "D-Limonen",
-      "β-Myrcen"
+      "Limonen",
+      "Myrcen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -476,7 +476,7 @@
     "cbd": "<1%",
     "terpengehalt": "2.14%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -509,7 +509,7 @@
     "terpengehalt": "2.32%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -524,8 +524,8 @@
     "cbd": "<1%",
     "terpengehalt": "2.14%",
     "terpenprofil": [
-      "D-Limonen",
-      "β-Myrcen"
+      "Limonen",
+      "Myrcen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -543,7 +543,7 @@
     "terpengehalt": "2,79%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -555,12 +555,12 @@
     "status": "active"
   },
   {
-    "name": "Platinum Pavé",
+    "name": "Platinum PavÃ©",
     "thc": "25-33%",
     "cbd": "<1%",
     "terpengehalt": "4,57%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Linalool"
     ],
     "wirkungen": [
@@ -594,8 +594,8 @@
     "cbd": "<1%",
     "terpengehalt": "1.55%",
     "terpenprofil": [
-      "β-Myrcen",
-      "D-Limonen"
+      "Myrcen",
+      "Limonen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -607,12 +607,12 @@
     "status": "active"
   },
   {
-    "name": "Rose Gold Pavé",
+    "name": "Rose Gold PavÃ©",
     "thc": "22-33%",
     "cbd": "<1%",
     "terpengehalt": "4.15%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Linalool"
     ],
     "wirkungen": [
@@ -630,7 +630,7 @@
     "cbd": "<1%",
     "terpengehalt": "2.98%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -646,7 +646,7 @@
     "cbd": "<1%",
     "terpengehalt": "2.57%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -662,8 +662,8 @@
     "cbd": "<1%",
     "terpengehalt": "3.26%",
     "terpenprofil": [
-      "β-Myrcen",
-      "α-Pinen"
+      "Myrcen",
+      "Î±-Pinen"
     ],
     "wirkungen": [
       "antiinflammatorisch",
@@ -678,7 +678,7 @@
     "cbd": "7%",
     "terpengehalt": "0.98%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -694,7 +694,7 @@
     "cbd": "<1%",
     "terpengehalt": "1.46%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -710,7 +710,7 @@
     "cbd": "<1%",
     "terpengehalt": "3.45%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
@@ -760,7 +760,7 @@
     "terpengehalt": "1.86%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -794,7 +794,7 @@
     "terpengehalt": "1.17%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -809,8 +809,8 @@
     "cbd": "<1%",
     "terpengehalt": "2.00%",
     "terpenprofil": [
-      "D-Limonen",
-      "β-Myrcen"
+      "Limonen",
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -848,9 +848,11 @@
     ],
     "wirkungen": [
       "antiinflammatorisch",
-      "unterstützt Wundheilung"
+      "unterstÃ¼tzt Wundheilung"
     ],
     "typ": "indica-dominant",
     "status": "active"
   }
 ]
+
+
