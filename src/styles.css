@@ -138,6 +138,104 @@ h6 {
 p {
   margin-bottom: var(--base-spacing);
 }
+
+.section-title {
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.filters-section,
+.status-section,
+.table-section {
+  margin: 12px 0 24px;
+}
+
+.notice {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #856404;
+}
+
+.notice h2 {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  text-align: left;
+}
+
+.notice p {
+  margin: 0;
+}
+
+.utility-bar {
+  margin: 16px 0;
+}
+
+.utility-bar__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #f6f8fc 0%, #eef3fb 100%);
+  border: 1px solid #dfe8f5;
+  box-shadow: 0 10px 24px rgba(0, 85, 164, 0.06);
+  flex-wrap: wrap;
+}
+
+.utility-bar__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 240px;
+}
+
+.utility-bar__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2a44;
+}
+
+.utility-bar__description {
+  margin: 0;
+  font-size: 14px;
+  color: #425372;
+  line-height: 1.5;
+}
+
+.utility-bar__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid #0a6ad8;
+  background: linear-gradient(135deg, #0e7bf0 0%, #0a5eb5 100%);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(14, 123, 240, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.utility-bar__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(14, 123, 240, 0.24);
+  filter: brightness(1.02);
+}
+
+.utility-bar__button:focus-visible {
+  outline: 2px solid #a8cff7;
+  outline-offset: 3px;
+}
 ul {
   padding-inline-start: 20px;
 }
@@ -342,6 +440,15 @@ nav a:hover {
   margin: 0;
   color: #35506b;
   font-weight: 500;
+}
+
+.filter-heading,
+.similarity-panel__title {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #263238;
 }
 
 .comparison-column {
@@ -1063,8 +1170,6 @@ nav a:hover {
 }
 
 .similarity-panel__title {
-  margin: 0 0 12px;
-  font-size: 18px;
   text-align: center;
 }
 
@@ -1182,6 +1287,12 @@ nav a:hover {
   border-radius: 12px;
   padding: 18px 20px 20px;
   position: relative;
+}
+
+.modal--wide {
+  max-width: 800px;
+  max-height: 90vh;
+  overflow: auto;
 }
 
 .modal-fallback {
