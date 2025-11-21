@@ -9,12 +9,14 @@
   --light-grey: #f5f5f5;
   --pure-white: #ffffff;
   --body-background: #ffffff;
+  --table-text: #0f172a;
   --font-scale-h1: clamp(2.5rem, 1.5rem + 2vw, 3.5rem);
   --font-scale-h2: clamp(2rem, 1.25rem + 1.2vw, 2.75rem);
   --font-scale-h3: clamp(1.625rem, 1.1rem + 0.8vw, 2.125rem);
   --font-scale-h4: clamp(1.375rem, 1rem + 0.5vw, 1.75rem);
   --font-scale-h5: clamp(1.125rem, 0.95rem + 0.3vw, 1.375rem);
   --font-scale-h6: clamp(1rem, 0.9rem + 0.2vw, 1.25rem);
+  color-scheme: light;
 }
 /* Fonts werden über @fontsource/montserrat geladen */
 body {
@@ -23,11 +25,91 @@ body {
   padding: 0;
   color: var(--primary-grey);
   background-color: var(--body-background);
-  background-image: url("../public/F20_Pharma_Pattern-Hexagon_07.png");
-  background-repeat: repeat;
-  background-size: auto;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 85, 164, 0.08),
+      rgba(0, 85, 164, 0) 35%
+    ),
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(99, 189, 50, 0.08),
+      rgba(99, 189, 50, 0) 32%
+    ),
+    var(--body-background);
+  background-repeat: no-repeat;
+  background-size: 100% 100%, 100% 100%, auto;
   background-position: center;
   line-height: 1.6;
+}
+
+@media (prefers-reduced-data: no-preference) {
+  body {
+    background-image: radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 85, 164, 0.08),
+        rgba(0, 85, 164, 0) 35%
+      ),
+      radial-gradient(
+        circle at 80% 0%,
+        rgba(99, 189, 50, 0.08),
+        rgba(99, 189, 50, 0) 32%
+      ),
+      url("../public/F20_Pharma_Pattern-Hexagon_07.png"),
+      var(--body-background);
+    background-repeat: repeat, repeat, repeat, repeat;
+    background-size: 100% 100%, 100% 100%, auto, auto;
+    background-position: center;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) {
+    --body-background: #0f172a;
+    --primary-grey: #e2e8f0;
+    --light-grey: #1e293b;
+    --table-text: #e2e8f0;
+    color-scheme: dark;
+    background: radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 85, 164, 0.16),
+        rgba(0, 85, 164, 0) 35%
+      ),
+      radial-gradient(
+        circle at 80% 0%,
+        rgba(99, 189, 50, 0.16),
+        rgba(99, 189, 50, 0) 32%
+      ),
+      var(--body-background);
+    color: var(--primary-grey);
+  }
+
+  body:not([data-theme="light"]) .strain-table {
+    background: #0b1220;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.35);
+    color: #e2e8f0;
+  }
+
+  body:not([data-theme="light"]) .strain-table th,
+  body:not([data-theme="light"]) .strain-table td {
+    border-bottom: 1px solid #1f2a44;
+  }
+
+  body:not([data-theme="light"]) .strain-table thead {
+    background: #1e293b;
+    color: #e2e8f0;
+  }
+
+  body:not([data-theme="light"]) .strain-table tbody tr:hover {
+    background: rgba(59, 130, 246, 0.12);
+  }
+
+  body:not([data-theme="light"]) .strain-table tbody tr.is-selected {
+    background: rgba(59, 130, 246, 0.2);
+  }
+
+  body:not([data-theme="light"]) .strain-table td::before {
+    color: #cbd5e1;
+  }
 }
 
 .btn-primary {
@@ -148,6 +230,16 @@ p {
 .status-section,
 .table-section {
   margin: 12px 0 24px;
+}
+
+.table-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px auto;
+}
+
+.lazy-surface {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px auto;
 }
 
 .notice {
@@ -271,6 +363,7 @@ nav a:hover {
   width: 100%;
   margin: auto;
   text-align: center;
+  color: var(--table-text);
 }
 .table td:first-child {
   text-align: left;
@@ -1332,6 +1425,7 @@ nav a:hover {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 28px rgba(33, 52, 87, 0.08);
+  color: #0f172a;
 }
 
 .strain-table th,
@@ -1452,13 +1546,17 @@ nav a:hover {
     margin-bottom: 2px;
   }
 
+  .strain-table td.comparison-column {
+    align-items: center;
+  }
+
+  .hidden-sm {
+    display: none;
+  }
+
   .strain-table td.hidden-sm,
   .strain-table th.hidden-sm {
     display: block;
-  }
-
-  .strain-table td.comparison-column {
-    align-items: center;
   }
 
 }
@@ -1598,13 +1696,3 @@ nav a:hover {
   color: #b71c1c;
 }
 
-@media (max-width: 640px) {
-  .hidden-sm {
-    display: none;
-  }
-
-  .strain-table td.hidden-sm,
-  .strain-table th.hidden-sm {
-    display: block;
-  }
-}
