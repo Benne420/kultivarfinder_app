@@ -112,17 +112,17 @@ function printSummary(stats){
   }
 
   const refs = JSON.parse(fs.readFileSync(REF_PATH, "utf8"));
-  const keys = Object.keys(refs);
-  if (keys.length === 0) {
+  if (!Array.isArray(refs) || refs.length === 0) {
     console.log("ℹ️ Keine Referenzen vorhanden.");
     process.exit(0);
   }
 
-  let stats = { total: keys.length, checked: 0, ok: 0, warn: 0, fail: 0, noDoi: 0, skipped: 0 };
+  let stats = { total: refs.length, checked: 0, ok: 0, warn: 0, fail: 0, noDoi: 0, skipped: 0 };
   const issues = [];
 
-  for (const id of keys) {
-    const r = refs[id];
+  const processRef = async (ref, index) => {
+    const id = ref?.id ?? String(index);
+    const r = ref;
     const titleLocal = r?.title || "";
     const doi = (r?.doi || "").trim();
     const url = (r?.url || "").trim();
@@ -137,19 +137,19 @@ function printSummary(stats){
     if (!doiCandidate) {
       stats.noDoi++;
       issues.push({ id, level: "WARN", reason: "Keine DOI vorhanden", ref: r });
-      continue;
+      return;
     }
 
     // DOI-Format
     if (!DOI_RE.test(doiCandidate)) {
       stats.fail++;
       issues.push({ id, level: "FAIL", reason: `Ungültiges DOI-Format: ${doiCandidate}`, ref: r });
-      continue;
+      return;
     }
 
     if (NO_FETCH || !hasFetch) {
       stats.skipped++;
-      continue;
+      return;
     }
 
     try {
@@ -197,6 +197,15 @@ function printSummary(stats){
     // Rate Limit schonen
     await wait(SLOW_MS);
     stats.checked++;
+  };
+
+  const tasks = [];
+  refs.forEach((ref, index) => {
+    tasks.push(() => processRef(ref, index));
+  });
+
+  for (const task of tasks) {
+    await task();
   }
 
   // Ausgabe
