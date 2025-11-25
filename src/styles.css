@@ -524,7 +524,6 @@ nav a:hover {
   padding: clamp(12px, 2vw, 28px);
   scrollbar-width: thin;
   scrollbar-color: #9eb7d6 transparent;
-  --comparison-grid-template: minmax(160px, 1fr);
 }
 
 .comparison-panel__table::-webkit-scrollbar {
@@ -585,15 +584,6 @@ nav a:hover {
   font-weight: 500;
   min-width: 0;
   font-size: 15px;
-}
-
-.comparison-panel__cell-heading {
-  display: none;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #8ba1c0;
 }
 
 .comparison-panel__cell--radar {
@@ -831,37 +821,12 @@ nav a:hover {
     padding: 20px 20px 28px;
   }
 
-  .comparison-details-modal {
-    padding: 28px 20px;
-  }
-
-  .comparison-details-modal__cultivar {
-    padding: 24px;
-  }
-}
-
-@media (max-width: 720px) {
   .comparison-panel__table {
     max-height: none;
-    overflow: visible;
   }
 
   .comparison-panel__row {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 16px;
-  }
-
-  .comparison-panel__row--header {
-    display: none;
-  }
-
-  .comparison-panel__cell {
-    padding: 0;
-  }
-
-  .comparison-panel__cell-heading {
-    display: block;
   }
 
   .comparison-panel__actions {
@@ -872,41 +837,13 @@ nav a:hover {
     flex-direction: column;
     align-items: stretch;
   }
-}
-
-@media (max-width: 640px) {
-  .comparison-panel-backdrop {
-    padding: 0;
-    align-items: stretch;
-  }
-
-  .comparison-panel {
-    width: 100vw;
-    max-height: none;
-    min-height: 100vh;
-    border-radius: 0;
-  }
 
   .comparison-details-modal {
-    width: 100vw;
-    max-height: none;
-    min-height: 100vh;
-    border-radius: 0;
-  }
-
-  .comparison-details-modal__content {
-    margin-right: 0;
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 540px) {
-  .comparison-details-modal__metrics > div {
-    grid-template-columns: 1fr;
+    padding: 28px 20px;
   }
 
   .comparison-details-modal__cultivar {
-    padding: 20px 16px;
+    padding: 24px;
   }
 }
 

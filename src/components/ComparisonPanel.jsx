@@ -69,11 +69,11 @@ export default function ComparisonPanel({
             className="comparison-panel__table"
             role="table"
             aria-label="Ausgewählte Sorten vergleichen"
-            style={{ "--comparison-grid-template": gridTemplate }}
           >
             <div
               className="comparison-panel__row comparison-panel__row--header"
               role="row"
+              style={columnTemplate}
             >
               <div className="comparison-panel__cell" role="columnheader">
                 <span className="comparison-panel__cell-label">Parameter</span>
@@ -101,6 +101,7 @@ export default function ComparisonPanel({
                   key={metric.accessor || metric.label}
                   className={rowClassName.join(" ")}
                   role="row"
+                  style={columnTemplate}
                 >
                   <div className="comparison-panel__cell" role="rowheader">
                     {metric.label}
@@ -111,9 +112,6 @@ export default function ComparisonPanel({
                       className={cellClassName.join(" ")}
                       role="cell"
                     >
-                      <span className="comparison-panel__cell-heading" aria-hidden="true">
-                        {cultivar.name}
-                      </span>
                       {renderComparisonMetricValue(
                         metric,
                         cultivar,
