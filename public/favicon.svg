@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Kultivarfinder Logo</title>
+  <desc id="desc">Minimalistisches Blattsymbol in einem sechseckigen Rahmen</desc>
+  <defs>
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f6a4f" />
+      <stop offset="100%" stop-color="#8ec640" />
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="48" height="48" rx="12" fill="#0c2630" />
+  <path d="M32 14c-6.6 5.7-13 13-13 21.5C19 43 25 50 32 50s13-7 13-14.5C45 27 38.6 19.7 32 14Zm-1.5 10.8c-4.2 5-6.9 9.4-6.9 13.4 0 2.8 1.5 5.6 4.4 6.2 2.3.5 4.5-.5 6.7-2.3-1.6-1-3.1-2.3-4.1-3.9a13.2 13.2 0 0 1-1.1-13.4Z" fill="url(#leafGradient)" />
+</svg>
