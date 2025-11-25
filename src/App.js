@@ -713,87 +713,98 @@ export default function CannabisKultivarFinderUseReducer() {
           <h1 className="appname">Four20 Index</h1>
         </header>
 
-        <div className="notice" role="note">
-          <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information und ersetzt keine medizinische
-          Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
+        <div className="content-stack">
+          <div className="notice" role="note">
+            <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information und ersetzt keine medizinische
+            Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
+          </div>
+
+          <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+
+          {similarityContext && (
+            <div className="similarity-banner" role="status" aria-live="polite">
+              <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
+              {" "}angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Clear similarity“, um zur
+              gefilterten Ansicht zurückzukehren.
+            </div>
+          )}
+          {loading && (
+            <div className="status status--loading" role="status" aria-live="polite">
+              Daten werden geladen …
+            </div>
+          )}
+          {error && !loading && (
+            <div className="status status--error" role="alert">
+              Beim Laden der Daten ist ein Fehler aufgetreten: {error}
+            </div>
+          )}
+
+          <StrainSimilarity
+            kultivare={kultivare}
+            onApplySimilar={handleApplySimilarity}
+            includeDiscontinued={filters.includeDiscontinued}
+            onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+          />
+          {!loading && !error && (
+            <>
+              <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
+                <p className="comparison-toolbar__hint">
+                  {selectedCultivars.length
+                    ? `${selectedCultivars.length} Sorte${selectedCultivars.length > 1 ? "n" : ""} ausgewählt (max. ${MAX_COMPARISON_ITEMS})`
+                    : "Wählen Sie mindestens zwei Sorten aus, um den Vergleich zu starten."}
+                </p>
+                <button
+                  type="button"
+                  className="primary"
+                  onClick={openComparison}
+                  disabled={!canOpenComparison}
+                  aria-disabled={!canOpenComparison}
+                >
+                  Vergleich starten
+                </button>
+              </div>
+
+              <FilterPanel
+                filters={filters}
+                dispatch={dispatch}
+                terpene={terpeneOptions}
+                wirkungen={availableWirkungen}
+                clearTerpene={clearTerpene}
+                clearWirkungen={clearWirkungen}
+              />
+
+              <div className="entourage-inline" role="region" aria-label="Information zum Entourage-Effekt">
+                <div className="entourage-inline__copy">
+                  <p className="entourage-inline__eyebrow">Wissen</p>
+                  <p className="entourage-inline__title">Was bedeutet Entourage-Effekt?</p>
+                  <p className="entourage-inline__hint">
+                    Erfahren Sie, wie Cannabinoide und Terpene zusammenwirken und warum das Zusammenspiel für das Profil einer Sorte
+                    zählt.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  className="entourage-button"
+                  onClick={openEntourageModal}
+                  aria-haspopup="dialog"
+                  aria-expanded={isEntourageModalOpen}
+                >
+                  <span aria-hidden="true">✨</span>
+                  <span>Mehr erfahren</span>
+                </button>
+              </div>
+
+              <StrainTable
+                strains={displayedKultivare}
+                showInfo={showInfo}
+                showTerpenPanel={showTerpenPanel}
+                showRadar={showRadar}
+                onToggleSelect={toggleCultivarSelection}
+                selectedCultivars={selectedCultivars}
+              />
+            </>
+          )}
         </div>
-
-        <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
-
-        {similarityContext && (
-          <div className="similarity-banner" role="status" aria-live="polite">
-            <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
-            {" "}angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Clear similarity“, um zur
-            gefilterten Ansicht zurückzukehren.
-          </div>
-        )}
-        {loading && (
-          <div className="status status--loading" role="status" aria-live="polite">
-            Daten werden geladen …
-          </div>
-        )}
-        {error && !loading && (
-          <div className="status status--error" role="alert">
-            Beim Laden der Daten ist ein Fehler aufgetreten: {error}
-          </div>
-        )}
-
-        <StrainSimilarity
-          kultivare={kultivare}
-          onApplySimilar={handleApplySimilarity}
-          includeDiscontinued={filters.includeDiscontinued}
-          onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
-        />
-        {!loading && !error && (
-          <>
-            <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
-              <p className="comparison-toolbar__hint">
-                {selectedCultivars.length
-                  ? `${selectedCultivars.length} Sorte${selectedCultivars.length > 1 ? "n" : ""} ausgewählt (max. ${MAX_COMPARISON_ITEMS})`
-                  : "Wählen Sie mindestens zwei Sorten aus, um den Vergleich zu starten."}
-              </p>
-              <button
-                type="button"
-                className="primary"
-                onClick={openComparison}
-                disabled={!canOpenComparison}
-                aria-disabled={!canOpenComparison}
-              >
-                Vergleich starten
-              </button>
-            </div>
-
-            <FilterPanel
-              filters={filters}
-              dispatch={dispatch}
-              terpene={terpeneOptions}
-              wirkungen={availableWirkungen}
-              clearTerpene={clearTerpene}
-              clearWirkungen={clearWirkungen}
-            />
-
-            <div className="entourage-inline">
-              <button
-                type="button"
-                className="entourage-button"
-                onClick={openEntourageModal}
-                aria-haspopup="dialog"
-                aria-expanded={isEntourageModalOpen}
-              >
-                Entourage-Info
-              </button>
-            </div>
-
-            <StrainTable
-              strains={displayedKultivare}
-              showInfo={showInfo}
-              showTerpenPanel={showTerpenPanel}
-              showRadar={showRadar}
-              onToggleSelect={toggleCultivarSelection}
-              selectedCultivars={selectedCultivars}
-            />
-          </>
-        )}
 
         {infoDialog.open && (
           <Suspense fallback={<SuspenseOverlayFallback label="Sortendetails werden geladen …" />}>
