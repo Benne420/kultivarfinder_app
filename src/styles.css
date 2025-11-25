@@ -304,7 +304,7 @@ nav a:hover {
     auto-fit,
     minmax(var(--grid-min-column, 280px), 1fr)
   );
-  gap: calc(var(--grid-gap, 1.5rem) * 0.75);
+  gap: clamp(4px, 0.8vw, 10px);
   margin: 0;
 }
 
