@@ -107,7 +107,7 @@ body {
 .content-stack {
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 2vw, 24px);
+  gap: clamp(8px, 1vw, 14px);
 }
 h1,
 h2,
@@ -1133,7 +1133,7 @@ nav a:hover {
 }
 
 .similarity-panel {
-  margin: 24px 0 12px;
+  margin: 0;
   padding: 16px;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -1504,7 +1504,7 @@ nav a:hover {
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   text-align: center;
-  margin: 12px 0;
+  margin: 0;
 }
 
 .typ-row {
