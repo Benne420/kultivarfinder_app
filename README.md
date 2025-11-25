@@ -51,24 +51,26 @@ Falls ein manuelles Deployment nötig ist:
 ```plaintext
 📦 kultivarfinder_app
  ┣ 📂 public/               # Statische Dateien (z. B. index.html, JSONs)
- ┃ ┣ 📜 index.html
- ┃ ┣ 📜 kultivare.json      # Datenbank mit allen Kultivaren
- ┃ ┣ 📂 data/               # Terpen-Datenbanken
- ┃ ┃ ┣ 📜 terpenes.json     # Detaillierte Terpen-Informationen
- ┃ ┃ ┗ 📜 references.json   # Wissenschaftliche Quellen
- ┃ ┗ 📂 datenblaetter/      # PDFs für jede Sorte
- ┣ 📂 src/                  # Hauptcode der App
- ┃ ┣ 📂 components/         # React-Komponenten
+┃ ┣ 📜 index.html
+┃ ┣ 📜 kultivare.json      # Datenbank mit allen Kultivaren
+┃ ┣ 📂 data/               # Terpen-Datenbanken
+┃ ┃ ┣ 📜 terpenes.json     # Detaillierte Terpen-Informationen
+┃ ┃ ┗ 📜 references.json   # Wissenschaftliche Quellen
+┃ ┗ 📂 datenblaetter/      # PDFs für jede Sorte
+┣ 📂 src/                  # Hauptcode der App
+┃ ┣ 📂 components/         # React-Komponenten
  ┃ ┃ ┣ 📜 CultivarTerpenPanel.jsx  # Terpen-Wirkungen Panel
  ┃ ┃ ┗ 📜 EntourageInfo.jsx        # Entourage-Effekt Info
- ┃ ┣ 📜 App.js              # Hauptkomponente
- ┃ ┣ 📜 index.js            # Einstiegspunkt der App
- ┃ ┗ 📜 styles.css          # Styles für die App
- ┣ 📂 scripts/              # Build-Scripts
- ┃ ┗ 📜 validate-terpenes.mjs # Datenvalidierung
- ┣ 📜 package.json          # Abhängigkeiten & Scripts
- ┗ 📜 README.md             # Diese Datei!
+┃ ┣ 📜 App.js              # Hauptkomponente
+┃ ┣ 📜 index.js            # Einstiegspunkt der App
+┃ ┗ 📜 styles.css          # Styles für die App
+┣ 📂 scripts/              # Build-Scripts
+┃ ┗ 📜 validate-terpenes.mjs # Datenvalidierung
+┣ 📜 package.json          # Abhängigkeiten & Scripts
+┗ 📜 README.md             # Diese Datei!
 ```
+
+> Halte `public/data` frei von Backup-Kopien (z. B. `*.bak`), damit Skripte und Live-Daten ausschließlich die validierten JSON-Dateien nutzen.
 
 ## 🔬 **Neue Features (Branch: feature/terpen-panel)**
 

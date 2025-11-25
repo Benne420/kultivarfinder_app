@@ -4,6 +4,19 @@ import TerpeneChips from "./TerpeneChips";
 const PAGE_SIZE_OPTIONS = [50, 100];
 const DEFAULT_PAGE_SIZE = 100;
 
+const toSafePdfPath = (name) => {
+  const normalized = String(name || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/["'`]/g, "")
+    .trim();
+
+  const sanitized = normalized.replace(/[^\w\s-]+/g, "");
+  const underscored = sanitized.replace(/\s+/g, "_") || "datenblatt";
+
+  return `/datenblaetter/${encodeURIComponent(underscored)}.pdf`;
+};
+
 const StrainTableRow = React.memo(function StrainTableRow({
   strain,
   isSelected,
@@ -18,10 +31,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
   }
 
   const { name = "Unbekannt", thc, cbd, normalizedTerpenprofil, terpenprofil } = strain;
-  const pdfUrl = useMemo(
-    () => `/datenblaetter/${name.replace(/\s+/g, "_")}.pdf`,
-    [name]
-  );
+  const pdfUrl = useMemo(() => toSafePdfPath(name), [name]);
   const terpeneList = useMemo(() => {
     if (Array.isArray(normalizedTerpenprofil) && normalizedTerpenprofil.length) {
       return normalizedTerpenprofil;

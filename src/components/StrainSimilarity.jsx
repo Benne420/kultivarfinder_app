@@ -131,6 +131,9 @@ export default function StrainSimilarity({
         Ähnliche Sorte finden
       </h3>
       <div className="similarity-panel__controls">
+        <label className="similarity-panel__label" htmlFor="strain-select">
+          Sorte wählen
+        </label>
         <select
           id="strain-select"
           className="similarity-panel__select"
