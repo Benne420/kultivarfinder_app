@@ -762,6 +762,28 @@ export default function CannabisKultivarFinderUseReducer() {
                 Vergleich starten
               </button>
             </div>
+
+            <FilterPanel
+              filters={filters}
+              dispatch={dispatch}
+              terpene={terpeneOptions}
+              wirkungen={availableWirkungen}
+              clearTerpene={clearTerpene}
+              clearWirkungen={clearWirkungen}
+            />
+
+            <div className="entourage-inline">
+              <button
+                type="button"
+                className="entourage-button"
+                onClick={openEntourageModal}
+                aria-haspopup="dialog"
+                aria-expanded={isEntourageModalOpen}
+              >
+                Entourage-Info
+              </button>
+            </div>
+
             <StrainTable
               strains={displayedKultivare}
               showInfo={showInfo}
@@ -772,27 +794,6 @@ export default function CannabisKultivarFinderUseReducer() {
             />
           </>
         )}
-
-        <FilterPanel
-          filters={filters}
-          dispatch={dispatch}
-          terpene={terpeneOptions}
-          wirkungen={availableWirkungen}
-          clearTerpene={clearTerpene}
-          clearWirkungen={clearWirkungen}
-        />
-
-        <div className="entourage-inline">
-          <button
-            type="button"
-            className="entourage-button"
-            onClick={openEntourageModal}
-            aria-haspopup="dialog"
-            aria-expanded={isEntourageModalOpen}
-          >
-            Entourage-Info
-          </button>
-        </div>
 
         {infoDialog.open && (
           <Suspense fallback={<SuspenseOverlayFallback label="Sortendetails werden geladen …" />}>
