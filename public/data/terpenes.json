@@ -165,11 +165,25 @@
   {
     "name": "Pinen",
     "aliases": ["α-Pinen", "β-Pinen", "Pinene"],
-    "description": "Monoterpen; harzig-kiefernartig. Häufig in Nadel- und Kiefernölen.",
-    "aroma": "harzig, kiefernartig",
+    "description": "Monoterpen; harzig-kiefernartig. Häufig in Nadel- und Kiefernölen. Bekannt für bronchienerweiternde Eigenschaften.",
+    "aroma": "harzig, kiefernartig, frisch",
     "occurrence": "Kiefern, Rosmarin, Pfefferminze",
     "effects": [
-    
+      {
+        "effect": "bronchodilatatorisch (erweitert Atemwege)",
+        "strength": "mittel",
+        "sources": ["reference_32"]
+      },
+      {
+        "effect": "gedächtnisfördernd (Acetylcholinesterase-Hemmer)",
+        "strength": "schwach",
+        "sources": ["reference_32"]
+      },
+      {
+        "effect": "entzündungshemmend",
+        "strength": "mittel",
+        "sources": ["reference_31"]
+      }
     ]
   },
   {
@@ -218,10 +232,26 @@
   {
     "name": "Bisabolol",
     "aliases": ["α-Bisabolol"],
-    "description": "Monoterpenalkohol; blumig, süßlich. Häufig in Kamille und Baldrian.",
+    "description": "Monoterpenalkohol; blumig, süßlich. Häufig in Kamille und Baldrian. Bekannt für hautberuhigende Eigenschaften.",
     "aroma": "blumig, süß, würzig",
     "occurrence": "Kamille, Baldrian, Teebaum",
-    "effects": []
+    "effects": [
+      {
+        "effect": "entzündungshemmend",
+        "strength": "stark",
+        "sources": ["reference_33"]
+      },
+      {
+        "effect": "antimikrobiell",
+        "strength": "mittel",
+        "sources": ["reference_33"]
+      },
+      {
+        "effect": "analgetisch",
+        "strength": "mittel",
+        "sources": ["reference_33"]
+      }
+    ]
   },
   {
     "name": "Bulnesol",
@@ -229,7 +259,13 @@
     "description": "Sesquiterpenalkohol; holzig, würzig. Komponente ätherischer Öle.",
     "aroma": "holzig, würzig, erdig",
     "occurrence": "Sandelholz, Zedernholz",
-    "effects": []
+    "effects": [
+       {
+        "effect": "antifungal (gegen Pilze)",
+        "strength": "mittel",
+        "sources": ["reference_35"]
+      }
+    ]
   },
   {
     "name": "Fenchol",
@@ -237,7 +273,18 @@
     "description": "Monoterpenalkohol; würzig-minzig, kühlend. Häufig in Fenchel und Pfefferminze.",
     "aroma": "würzig, minzig, kühlend",
     "occurrence": "Fenchel, Pfefferminze, Wermut",
-    "effects": []
+    "effects": [
+       {
+        "effect": "antibakteriell",
+        "strength": "mittel",
+        "sources": ["reference_37"]
+      },
+      {
+        "effect": "antioxidativ",
+        "strength": "mittel",
+        "sources": ["reference_37"]
+      }
+    ]
   },
   {
     "name": "Germacren B",
@@ -245,7 +292,13 @@
     "description": "Sesquiterpen; würzig-holzig, terpenartig. Komponente des Hopfenöls.",
     "aroma": "würzig, holzig, erdig",
     "occurrence": "Hopfen, Johannisbeere, Kümmel",
-    "effects": []
+    "effects": [
+       {
+        "effect": "antimikrobiell",
+        "strength": "mittel",
+        "sources": ["reference_39"]
+      }
+    ]
   },
   {
     "name": "Guaiol",
@@ -253,6 +306,17 @@
     "description": "Sesquiterpenalkohol; holzig, würzig. Häufig in Zypresse- und Guajakholzöl.",
     "aroma": "holzig, würzig, minzig",
     "occurrence": "Zypresse, Guajakholz, Muskatnuss",
-    "effects": []
+    "effects": [
+       {
+        "effect": "antibakteriell",
+        "strength": "mittel",
+        "sources": ["reference_40", "reference_41"]
+      },
+      {
+        "effect": "entzündungshemmend",
+        "strength": "mittel",
+        "sources": ["reference_40"]
+      }
+    ]
   }
 ]
