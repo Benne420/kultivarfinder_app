@@ -44,6 +44,38 @@ const MultiSelectDropdown = ({
     [selectedSet]
   );
 
+  const optionList = React.useMemo(() => {
+    const seen = new Map();
+    return options.map((option) => {
+      const baseId = slugify(optionPrefix, option);
+      const count = seen.get(baseId) || 0;
+      const id = count ? `${baseId}-${count + 1}` : baseId;
+      seen.set(baseId, count + 1);
+      const isChecked = selectedSet.has(option);
+      return (
+        <label key={`${option}-${id}`} htmlFor={id} className="multi-select__option">
+          <input
+            id={id}
+            type="checkbox"
+            value={option}
+            checked={isChecked}
+            onChange={() => {
+              if (typeof onChange !== "function") return;
+              const next = new Set(selectedSet);
+              if (next.has(option)) {
+                next.delete(option);
+              } else {
+                next.add(option);
+              }
+              onChange(next);
+            }}
+          />
+          <span>{option}</span>
+        </label>
+      );
+    });
+  }, [optionPrefix, options, onChange, selectedSet]);
+
   const summary = React.useMemo(() => {
     if (!selectedItems.length) {
       return null;
@@ -110,37 +142,7 @@ const MultiSelectDropdown = ({
           aria-labelledby={headingId}
         >
           <div className="multi-select">
-            {React.useMemo(() => {
-              const seen = new Map();
-              return options.map((option) => {
-                const baseId = slugify(optionPrefix, option);
-                const count = seen.get(baseId) || 0;
-                const id = count ? `${baseId}-${count + 1}` : baseId;
-                seen.set(baseId, count + 1);
-                const isChecked = selectedSet.has(option);
-                return (
-                  <label key={`${option}-${id}`} htmlFor={id} className="multi-select__option">
-                    <input
-                      id={id}
-                      type="checkbox"
-                      value={option}
-                      checked={isChecked}
-                      onChange={() => {
-                        if (typeof onChange !== "function") return;
-                        const next = new Set(selectedSet);
-                        if (next.has(option)) {
-                          next.delete(option);
-                        } else {
-                          next.add(option);
-                        }
-                        onChange(next);
-                      }}
-                    />
-                    <span>{option}</span>
-                  </label>
-                );
-              });
-            }, [optionPrefix, options, onChange, selectedSet])}
+            {optionList}
           </div>
         </div>
       ) : null}
