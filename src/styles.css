@@ -9,6 +9,14 @@
   --light-grey: #f5f5f5;
   --pure-white: #ffffff;
   --body-background: #ffffff;
+  --grid-gap: clamp(1rem, 2vw, 2.5rem);
+  --grid-min-column: 280px;
+  --font-scale-h1: clamp(2.5rem, 1.5rem + 2vw, 3.5rem);
+  --font-scale-h2: clamp(2rem, 1.25rem + 1.2vw, 2.75rem);
+  --font-scale-h3: clamp(1.625rem, 1.1rem + 0.8vw, 2.125rem);
+  --font-scale-h4: clamp(1.375rem, 1rem + 0.5vw, 1.75rem);
+  --font-scale-h5: clamp(1.125rem, 0.95rem + 0.3vw, 1.375rem);
+  --font-scale-h6: clamp(1rem, 0.9rem + 0.2vw, 1.25rem);
 }
 /* Fonts werden über @fontsource/montserrat geladen */
 body {
@@ -104,24 +112,30 @@ h6 {
   margin-top: 0;
 }
 h1 {
-  font-size: 44px;
+  font-size: var(--font-scale-h1);
+  line-height: clamp(2.75rem, 1.85rem + 2.4vw, 4rem);
   text-align: center;
 }
 h2 {
-  font-size: 20px;
+  font-size: var(--font-scale-h2);
+  line-height: clamp(2.25rem, 1.5rem + 1.8vw, 3.25rem);
   text-align: center;
 }
 h3 {
-  font-size: 18px;
+  font-size: var(--font-scale-h3);
+  line-height: clamp(1.95rem, 1.3rem + 1.4vw, 2.75rem);
 }
 h4 {
-  font-size: 16px;
+  font-size: var(--font-scale-h4);
+  line-height: clamp(1.7rem, 1.2rem + 1vw, 2.3rem);
 }
 h5 {
-  font-size: 14px;
+  font-size: var(--font-scale-h5);
+  line-height: clamp(1.5rem, 1.05rem + 0.8vw, 2rem);
 }
 h6 {
-  font-size: 12px;
+  font-size: var(--font-scale-h6);
+  line-height: clamp(1.35rem, 0.95rem + 0.6vw, 1.75rem);
 }
 p {
   margin-bottom: var(--base-spacing);
@@ -146,15 +160,21 @@ nav a {
 nav a:hover {
   color: #0056b3;
 }
-.main-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.main-content,
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--grid-min-column, 280px), 1fr)
+  );
+  gap: var(--grid-gap, 1.5rem);
+  align-items: start;
 }
 .table-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--grid-gap, 1.5rem);
+  justify-items: center;
   width: 100%;
 }
 .table {
@@ -174,15 +194,30 @@ nav a:hover {
   word-break: normal;
   hyphens: none;
 }
+@media (max-width: 1024px) {
+  .main-content,
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .filters {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   body {
     margin: 20px;
   }
-}
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  .main-content,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .filters {
+    grid-template-columns: 1fr;
+  }
+  .filters .select-row {
+    flex-direction: column;
+  }
 }
 
 .primary {
@@ -227,7 +262,11 @@ nav a:hover {
 
 .filters {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--grid-min-column, 280px), 1fr)
+  );
+  gap: calc(var(--grid-gap, 1.5rem) * 0.75);
   margin: 12px 0 24px;
 }
 
@@ -503,7 +542,7 @@ nav a:hover {
 
 .comparison-panel__row {
   display: grid;
-  grid-template-columns: inherit;
+  grid-template-columns: var(--comparison-grid-template, 1fr);
   gap: 8px;
   align-items: start;
   justify-content: start;
@@ -968,6 +1007,16 @@ nav a:hover {
   }
 }
 
+@media (max-width: 600px) {
+  .filters .select-row {
+    flex-direction: column;
+  }
+
+  .filters .select-row--with-reset .reset-btn {
+    align-self: flex-end;
+  }
+}
+
 .similarity-panel {
   margin: 24px 0 12px;
   padding: 16px;
@@ -1099,6 +1148,58 @@ nav a:hover {
   position: relative;
 }
 
+.modal-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(8, 20, 36, 0.65);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.modal-fallback__spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  animation: modal-fallback-spin 0.85s linear infinite;
+}
+
+.modal-inline-loader {
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #37474f;
+  text-align: center;
+}
+
+.modal-inline-loader__spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(55, 71, 79, 0.25);
+  border-top-color: #37474f;
+  animation: modal-fallback-spin 0.85s linear infinite;
+}
+
+@keyframes modal-fallback-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .modal-title {
   margin: 0 0 8px;
   text-align: left;
@@ -1132,6 +1233,12 @@ nav a:hover {
   width: 100%;
   margin: 0 auto;
   gap: 12px;
+}
+
+.strain-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .strain-table {
@@ -1209,6 +1316,67 @@ nav a:hover {
   border-radius: 6px;
   padding: 4px 8px;
   background: #ffffff;
+}
+
+@media (max-width: 720px) {
+  .strain-table-scroll {
+    overflow-x: visible;
+  }
+
+  .strain-table {
+    border-collapse: separate;
+  }
+
+  .strain-table thead {
+    display: none;
+  }
+
+  .strain-table tbody {
+    display: grid;
+    gap: 16px;
+    padding: 0 4px 8px;
+  }
+
+  .strain-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid #d7e3f4;
+    border-radius: 16px;
+    padding: 12px 16px;
+    background: #ffffff;
+  }
+
+  .strain-table tbody tr:hover,
+  .strain-table tbody tr.is-selected {
+    background: rgba(232, 241, 255, 0.9);
+  }
+
+  .strain-table td,
+  .strain-table th {
+    border: none;
+    padding: 4px 0;
+  }
+
+  .strain-table td::before {
+    content: attr(data-label);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #7a95b4;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .strain-table td.hidden-sm,
+  .strain-table th.hidden-sm {
+    display: block;
+  }
+
+  .strain-table td.comparison-column {
+    align-items: center;
+  }
+
 }
 
 .typ-button-group {
@@ -1349,5 +1517,10 @@ nav a:hover {
 @media (max-width: 640px) {
   .hidden-sm {
     display: none;
+  }
+
+  .strain-table td.hidden-sm,
+  .strain-table th.hidden-sm {
+    display: block;
   }
 }

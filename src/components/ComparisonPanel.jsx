@@ -28,13 +28,12 @@ export default function ComparisonPanel({
       ? layoutMetrics
       : getComparisonLayoutMetrics(cultivarCount);
 
-  const columnWidth = `${columnWidthPx}px`;
-  const columnTemplate = {
-    gridTemplateColumns: `${COMPARISON_HEADER_WIDTH_PX}px repeat(${cultivarCount}, var(--comparison-column-width, ${columnWidth}))`,
-  };
+  const safeColumnWidth = Math.max(columnWidthPx, 160);
+  const safeHeaderWidth = Math.max(COMPARISON_HEADER_WIDTH_PX, 180);
+  const gridTemplate = `minmax(160px, ${safeHeaderWidth}px) repeat(${cultivarCount}, minmax(160px, ${safeColumnWidth}px))`;
 
   const panelStyle = {
-    "--comparison-column-width": columnWidth,
+    "--comparison-column-width": `${safeColumnWidth}px`,
     "--comparison-radar-height": `${radarHeightPx}px`,
     "--comparison-panel-width": `${panelWidthPx}px`,
   };
