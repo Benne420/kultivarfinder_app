@@ -718,21 +718,8 @@ export default function CannabisKultivarFinderUseReducer() {
           Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
         </div>
 
-        <StrainSimilarity
-          kultivare={kultivare}
-          onApplySimilar={handleApplySimilarity}
-          includeDiscontinued={filters.includeDiscontinued}
-          onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
-        />
         <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
-        <FilterPanel
-          filters={filters}
-          dispatch={dispatch}
-          terpene={terpeneOptions}
-          wirkungen={availableWirkungen}
-          clearTerpene={clearTerpene}
-          clearWirkungen={clearWirkungen}
-        />
+
         {similarityContext && (
           <div className="similarity-banner" role="status" aria-live="polite">
             <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
@@ -750,30 +737,13 @@ export default function CannabisKultivarFinderUseReducer() {
             Beim Laden der Daten ist ein Fehler aufgetreten: {error}
           </div>
         )}
-        <div
-          className="utility-bar"
-          role="complementary"
-          aria-label="Entourage-Effekt Informationen"
-        >
-          <div className="utility-bar__content">
-            <div className="utility-bar__text">
-              <p className="utility-bar__title">Entourage-Effekt</p>
-              <p className="utility-bar__description">
-                Erfahren Sie, wie Cannabinoide und Terpene zusammenwirken und welche
-                Profil-Daten die App dafür nutzt.
-              </p>
-            </div>
-            <button
-              type="button"
-              className="utility-bar__button"
-              onClick={openEntourageModal}
-              aria-haspopup="dialog"
-              aria-expanded={isEntourageModalOpen}
-            >
-              Mehr zum Entourage-Effekt
-            </button>
-          </div>
-        </div>
+
+        <StrainSimilarity
+          kultivare={kultivare}
+          onApplySimilar={handleApplySimilarity}
+          includeDiscontinued={filters.includeDiscontinued}
+          onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+        />
         {!loading && !error && (
           <>
             <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
@@ -792,6 +762,28 @@ export default function CannabisKultivarFinderUseReducer() {
                 Vergleich starten
               </button>
             </div>
+
+            <FilterPanel
+              filters={filters}
+              dispatch={dispatch}
+              terpene={terpeneOptions}
+              wirkungen={availableWirkungen}
+              clearTerpene={clearTerpene}
+              clearWirkungen={clearWirkungen}
+            />
+
+            <div className="entourage-inline">
+              <button
+                type="button"
+                className="entourage-button"
+                onClick={openEntourageModal}
+                aria-haspopup="dialog"
+                aria-expanded={isEntourageModalOpen}
+              >
+                Entourage-Info
+              </button>
+            </div>
+
             <StrainTable
               strains={displayedKultivare}
               showInfo={showInfo}
