@@ -1444,7 +1444,7 @@ nav a:hover {
   border: 1px solid var(--terp-chip-border);
   background: var(--terp-chip-bg);
   color: #000000;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 13px;
   box-shadow: none;
   transform: none;
