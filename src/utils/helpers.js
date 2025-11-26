@@ -1,6 +1,7 @@
 // Mapping of common aliases for effects (Wirkungen)
 export const wirkungAliases = {
   antiinflammatorisch: "entzündungshemmend",
+  "anti-inflammatorisch": "entzündungshemmend",
   antiphlogistisch: "entzündungshemmend",
   schmerzstillend: "analgetisch",
   schmerzlindernd: "analgetisch",
