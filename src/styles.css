@@ -1437,6 +1437,36 @@ nav a:hover {
   background: rgba(201, 224, 255, 0.6);
 }
 
+.strain-table .link-button {
+  padding: 8px 12px;
+  min-height: 34px;
+  border-radius: 8px;
+  border: 1px solid #cfd8dc;
+  background: #ffffff;
+  color: #0d47a1;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: none;
+  transform: none;
+}
+
+.strain-table .link-button:hover {
+  background: #e8f0fe;
+  color: #0b3c85;
+  box-shadow: none;
+}
+
+.strain-table .link-button:focus-visible {
+  outline: 2px solid #90caf9;
+  outline-offset: 2px;
+}
+
+.strain-table .link-button:disabled,
+.strain-table .link-button[disabled] {
+  background: #f2f4f7;
+  color: #90a4ae;
+}
+
 .strain-table-pagination {
   display: flex;
   align-items: center;
