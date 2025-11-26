@@ -5,11 +5,11 @@
     "cbd": "<1%",
     "terpengehalt": "2.68%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Indica-dominant",
@@ -21,11 +21,11 @@
     "cbd": "<1%",
     "terpengehalt": "3.64%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "entspannend"
@@ -44,7 +44,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "active"
@@ -55,11 +55,11 @@
     "cbd": "<1%",
     "terpengehalt": "3.39%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Linalool"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "entspannend"
@@ -78,7 +78,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "discontinued"
@@ -90,11 +90,11 @@
     "terpengehalt": "1.39%",
     "terpenprofil": [
       "Caryophyllen",
-      "D-Limonen"
+      "Limonen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Sativa",
     "status": "active"
@@ -106,11 +106,11 @@
     "terpengehalt": "1.40%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "active"
@@ -121,11 +121,11 @@
     "cbd": "<1%",
     "terpengehalt": "1.76%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "entspannend"
@@ -139,11 +139,11 @@
     "cbd": "<1%",
     "terpengehalt": "3.34%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Indica-dominant",
@@ -159,7 +159,7 @@
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "unterstützt Wundheilung"
     ],
     "typ": "Sativa-dominant",
@@ -171,11 +171,11 @@
     "cbd": "<1%",
     "terpengehalt": "3.15%",
     "terpenprofil": [
-      "β-Myrcen",
-      "β-Ocimen"
+      "Myrcen",
+      "Ocimen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Indica-dominant",
@@ -208,7 +208,7 @@
       "Terpinolen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "analgetisch"
     ],
     "typ": "Indica-dominant",
@@ -221,11 +221,11 @@
     "terpengehalt": "3.50%",
     "terpenprofil": [
       "Farnesen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "antioxidativ",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antimikrobiell"
     ],
     "typ": "Indica-dominant",
@@ -242,7 +242,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Sativa-dominant",
     "status": "active"
@@ -271,11 +271,11 @@
     "cbd": "<1%",
     "terpengehalt": "1.96%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -294,7 +294,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "discontinued"
@@ -306,10 +306,10 @@
     "terpengehalt": "1.88%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "analgetisch"
     ],
     "typ": "Indica-dominant",
@@ -322,10 +322,10 @@
     "terpengehalt": "1.08%",
     "terpenprofil": [
       "Caryophyllen",
-      "D-Limonen"
+      "Limonen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "analgetisch"
     ],
     "typ": "Indica-dominant",
@@ -338,11 +338,11 @@
     "terpengehalt": "2.76%",
     "terpenprofil": [
       "Farnesen",
-      "D-Limonen"
+      "Limonen"
     ],
     "wirkungen": [
       "antioxidativ",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antimikrobiell"
     ],
     "typ": "Indica-dominant",
@@ -354,11 +354,11 @@
     "cbd": "<1%",
     "terpengehalt": "3.43%",
     "terpenprofil": [
-      "D-Limonen",
-      "β-Myrcen"
+      "Limonen",
+      "Myrcen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -372,11 +372,11 @@
     "cbd": "<1%",
     "terpengehalt": "2.14%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Indica-dominant",
@@ -393,7 +393,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "discontinued"
@@ -405,10 +405,10 @@
     "terpengehalt": "2.32%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "analgetisch"
     ],
     "typ": "Indica-dominant",
@@ -420,11 +420,11 @@
     "cbd": "<1%",
     "terpengehalt": "2.14%",
     "terpenprofil": [
-      "D-Limonen",
-      "β-Myrcen"
+      "Limonen",
+      "Myrcen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -438,12 +438,12 @@
     "cbd": "<1%",
     "terpengehalt": "4,57%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -461,7 +461,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "active"
@@ -473,10 +473,10 @@
     "terpengehalt": "1.55%",
     "terpenprofil": [
       "Limonen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -490,11 +490,11 @@
     "cbd": "<1%",
     "terpengehalt": "4.15%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Linalool"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -508,11 +508,11 @@
     "cbd": "<1%",
     "terpengehalt": "2.98%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Indica-dominant",
@@ -524,11 +524,11 @@
     "cbd": "<1%",
     "terpengehalt": "2.57%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Indica-dominant",
@@ -540,11 +540,11 @@
     "cbd": "<1%",
     "terpengehalt": "3.26%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "ɑ-Pinen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Sativa-dominant",
@@ -556,11 +556,11 @@
     "cbd": 7,
     "terpengehalt": "0.98%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Sativa-dominant",
@@ -572,11 +572,11 @@
     "cbd": "<1%",
     "terpengehalt": "1.46%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "Indica-dominant",
@@ -588,12 +588,12 @@
     "cbd": "<1%",
     "terpengehalt": "3.45%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "active"
@@ -609,7 +609,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Sativa-dominant",
     "status": "active"
@@ -624,7 +624,7 @@
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimikrobiell"
     ],
@@ -642,7 +642,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -660,7 +660,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Sativa-dominant",
     "status": "active"
@@ -672,11 +672,11 @@
     "terpengehalt": "1.17%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "active"
@@ -687,12 +687,12 @@
     "cbd": "<1%",
     "terpengehalt": "2.00%",
     "terpenprofil": [
-      "D-Limonen",
-      "β-Myrcen"
+      "Limonen",
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -710,7 +710,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "Indica-dominant",
     "status": "active"
@@ -725,7 +725,7 @@
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "unterstützt Wundheilung"
     ],
     "typ": "Indica-dominant",

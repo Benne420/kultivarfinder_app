@@ -5,14 +5,14 @@
     "cbd": "<1%",
     "terpengehalt": "2.68%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen",
       "Linalool",
-      "D-Limonen",
+      "Limonen",
       "Humulen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
@@ -25,14 +25,14 @@
     "terpengehalt": "1,96%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
+      "Myrcen",
       "Humulen",
-      "D-Limonen",
+      "Limonen",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -45,14 +45,14 @@
     "cbd": "<1%",
     "terpengehalt": "3.64%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen",
       "Linalool",
       "Selinene",
       "Germacren B"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimikrobiell",
       "entspannend"
@@ -68,12 +68,12 @@
     "terpenprofil": [
       "Caryophyllen",
       "Selinene",
-      "β-Myrcen",
-      "D-Limonen"
+      "Myrcen",
+      "Limonen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "discontinued"
@@ -84,14 +84,14 @@
     "cbd": "<1%",
     "terpengehalt": "3.39%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Linalool",
       "Caryophyllen",
       "Selinene",
-      "β-Myrcen"
+      "Myrcen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "entspannend"
@@ -106,14 +106,14 @@
     "terpengehalt": "1.39%",
     "terpenprofil": [
       "Caryophyllen",
-      "D-Limonen",
+      "Limonen",
       "Humulen",
-      "β-Myrcen",
+      "Myrcen",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "sativa-dominant",
     "status": "discontinued"
@@ -124,14 +124,14 @@
     "cbd": "<1%",
     "terpengehalt": "1,41%",
     "terpenprofil": [
-      "β-Myrcen",
-      "D-Limonen",
+      "Myrcen",
+      "Limonen",
       "Caryophyllen",
-      "β-Pinen",
-      "α-Pinen"
+      "Pinen",
+      "Pinen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "sativa-dominant",
@@ -144,14 +144,14 @@
     "terpengehalt": "1.40%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
+      "Myrcen",
+      "Limonen",
       "Humulen",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "discontinued"
@@ -162,14 +162,14 @@
     "cbd": "<1%",
     "terpengehalt": "1.76%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen",
-      "β-Myrcen",
+      "Myrcen",
       "Linalool",
       "Guaiol"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "entspannend"
@@ -184,13 +184,13 @@
     "terpengehalt": "2,79%",
     "terpenprofil": [
       "Caryophyllen",
-      "β-Myrcen",
-      "D-Limonen",
+      "Myrcen",
+      "Limonen",
       "Humulen",
       "Linalool"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "entspannend"
@@ -204,14 +204,14 @@
     "cbd": "<1%",
     "terpengehalt": "3.34%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen",
-      "D-Limonen",
+      "Limonen",
       "Farnesen",
       "Humulen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
@@ -230,7 +230,7 @@
       "Linalool"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "unterstützt Wundheilung"
     ],
     "typ": "sativa-dominant",
@@ -246,10 +246,10 @@
       "Ocimen",
       "Linalool",
       "Caryophyllen",
-      "Selina-3,7(11)-diene"
+      "Selinene"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
@@ -264,7 +264,7 @@
       "Caryophyllen",
       "Humulen",
       "Limonen",
-      "Alpha-Bisabolol",
+      "Bisabolol",
       "Myrcen"
     ],
     "wirkungen": [
@@ -284,11 +284,11 @@
       "Caryophyllen",
       "Terpinolen",
       "Farnesen",
-      "Alpha-Humulen",
+      "Humulen",
       "Limonen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "analgetisch"
     ],
     "typ": "indica-dominant",
@@ -304,11 +304,11 @@
       "Myrcen",
       "Caryophyllen",
       "Limonen",
-      "Alpha-Humulen"
+      "Humulen"
     ],
     "wirkungen": [
       "antioxidativ",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antimikrobiell"
     ],
     "typ": "indica-dominant",
@@ -320,14 +320,14 @@
     "cbd": "<1%",
     "terpengehalt": "2,77%",
     "terpenprofil": [
-      "Trans-Caryophyllen",
-      "D-Limonen",
-      "Beta-Myrcen",
+      "Caryophyllen",
+      "Limonen",
+      "Myrcen",
       "Ocimen",
       "Linalool"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "entspannend"
@@ -342,14 +342,14 @@
     "terpengehalt": "2.25%",
     "terpenprofil": [
       "Caryophyllen",
-      "Selina-3,7(11)-diene",
-      "Selina-4(15),7(11)-diene",
+      "Selinene",
+      "Selinene",
       "Myrcen",
       "Limonen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "sativa-dominant",
     "status": "active"
@@ -360,14 +360,14 @@
     "cbd": "<1%",
     "terpengehalt": "1,41%",
     "terpenprofil": [
-      "β-Myrcen",
-      "D-Limonen",
-      "Beta-Caryophyllen",
-      "Beta-Pinen",
-      "Alpha-Pinen"
+      "Myrcen",
+      "Limonen",
+      "Caryophyllen",
+      "Pinen",
+      "Pinen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "sativa-dominant",
@@ -379,15 +379,15 @@
     "cbd": "<1%",
     "terpengehalt": "1,96%",
     "terpenprofil": [
-      "Beta-Caryophyllen",
-      "Beta-Myrcen",
-      "Alpha-Humulen",
-      "D-Limonen",
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Limonen",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -404,7 +404,7 @@
       "Caryophyllen",
       "Limonen",
       "Guaiol",
-      "Alpha-Humulen"
+      "Humulen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -421,11 +421,11 @@
     "cbd": "<1%",
     "terpengehalt": "1.96%",
     "terpenprofil": [
-      "D-Limonen",
+      "Limonen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -440,14 +440,14 @@
     "terpengehalt": "0.98%",
     "terpenprofil": [
       "Caryophyllen",
-      "Alpha-Humulen",
+      "Humulen",
       "Guaiol",
-      "Alpha-Bisabolol",
+      "Bisabolol",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "discontinued"
@@ -462,10 +462,10 @@
       "Myrcen",
       "Farnesen",
       "Limonen",
-      "Alpha-Humulen"
+      "Humulen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "analgetisch"
     ],
     "typ": "indica-dominant",
@@ -480,11 +480,11 @@
       "Caryophyllen",
       "Limonen",
       "Linalool",
-      "Alpha-Humulen",
-      "Beta-Pinen"
+      "Humulen",
+      "Pinen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "analgetisch"
     ],
     "typ": "indica-dominant",
@@ -499,12 +499,12 @@
       "Farnesen",
       "Limonen",
       "Caryophyllen",
-      "Alpha-Pinen",
+      "Pinen",
       "Linalool"
     ],
     "wirkungen": [
       "antioxidativ",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antimikrobiell"
     ],
     "typ": "indica-dominant",
@@ -523,7 +523,7 @@
       "Bulnesol"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -539,12 +539,12 @@
     "terpenprofil": [
       "Myrcen",
       "Caryophyllen",
-      "Selina-3,7(11)-diene",
+      "Selinene",
       "Linalool",
-      "Selina-4(15),7(11)-diene"
+      "Selinene"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
@@ -556,15 +556,15 @@
     "cbd": "<1%",
     "terpengehalt": "2.45%",
     "terpenprofil": [
-      "Selina-3,7(11)-diene",
+      "Selinene",
       "Caryophyllen",
       "Limonen",
-      "Alpha-Humulen",
-      "Alpha-Bisabolol"
+      "Humulen",
+      "Bisabolol"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "discontinued"
@@ -577,12 +577,12 @@
     "terpenprofil": [
       "Caryophyllen",
       "Myrcen",
-      "Alpha-Humulen",
+      "Humulen",
       "Limonen",
       "Farnesen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "analgetisch"
     ],
     "typ": "indica-dominant",
@@ -598,10 +598,10 @@
       "Myrcen",
       "Caryophyllen",
       "Farnesen",
-      "Alpha-Humulen"
+      "Humulen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -615,15 +615,15 @@
     "cbd": "<1%",
     "terpengehalt": "2,79%",
     "terpenprofil": [
-      "Beta-Caryophyllen",
-      "Beta-Myrcen",
-      "D-Limonen",
-      "Alpha-Humulen",
+      "Caryophyllen",
+      "Myrcen",
+      "Limonen",
+      "Humulen",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -644,7 +644,7 @@
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -661,11 +661,11 @@
       "Linalool",
       "Limonen",
       "Myrcen",
-      "Alpha-Humulen"
+      "Humulen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "discontinued"
@@ -678,12 +678,12 @@
     "terpenprofil": [
       "Limonen",
       "Myrcen",
-      "Beta-Pinen",
+      "Pinen",
       "Linalool",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -704,7 +704,7 @@
       "Germacren B"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimykotisch",
       "analgetisch"
@@ -718,11 +718,11 @@
     "cbd": "<1%",
     "terpengehalt": "2.98%",
     "terpenprofil": [
-      "β-Myrcen",
+      "Myrcen",
       "Caryophyllen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
@@ -738,10 +738,10 @@
       "Caryophyllen",
       "Limonen",
       "Linalool",
-      "Alpha-Humulen"
+      "Humulen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
@@ -754,13 +754,13 @@
     "terpengehalt": "3.26%",
     "terpenprofil": [
       "Myrcen",
-      "Alpha-Pinen",
+      "Pinen",
       "Caryophyllen",
       "Limonen",
       "Farnesen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "sativa-dominant",
@@ -775,11 +775,11 @@
       "Myrcen",
       "Caryophyllen",
       "Limonen",
-      "Alpha-Pinen",
-      "Alpha-Humulen"
+      "Pinen",
+      "Humulen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "sativa-dominant",
@@ -793,12 +793,12 @@
     "terpenprofil": [
       "Myrcen",
       "Caryophyllen",
-      "Alpha-Pinen",
+      "Pinen",
       "Limonen",
       "Linalool"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
@@ -814,11 +814,11 @@
       "Caryophyllen",
       "Limonen",
       "Farnesen",
-      "Alpha-Humulen"
+      "Humulen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "active"
@@ -831,12 +831,12 @@
     "terpenprofil": [
       "Caryophyllen",
       "Linalool",
-      "Alpha-Humulen",
+      "Humulen",
       "Limonen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "sativa-dominant",
     "status": "active"
@@ -850,11 +850,11 @@
       "Farnesen",
       "Caryophyllen",
       "Myrcen",
-      "Alpha-Humulen",
+      "Humulen",
       "Limonen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "antioxidativ",
       "antimikrobiell"
     ],
@@ -870,12 +870,12 @@
       "Caryophyllen",
       "Myrcen",
       "Limonen",
-      "Alpha-Humulen",
+      "Humulen",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -891,12 +891,12 @@
       "Caryophyllen",
       "Linalool",
       "Limonen",
-      "Alpha-Humulen",
+      "Humulen",
       "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "sativa-dominant",
     "status": "active"
@@ -911,11 +911,11 @@
       "Myrcen",
       "Limonen",
       "Linalool",
-      "Alpha-Humulen"
+      "Humulen"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "active"
@@ -929,12 +929,12 @@
       "Limonen",
       "Myrcen",
       "Caryophyllen",
-      "Alpha-Humulen",
+      "Humulen",
       "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "anxiolytisch",
       "antidepressiv"
     ],
@@ -951,11 +951,11 @@
       "Linalool",
       "Limonen",
       "Fenchol",
-      "Alpha-Bisabolol"
+      "Bisabolol"
     ],
     "wirkungen": [
       "analgetisch",
-      "antiinflammatorisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "active"
@@ -969,11 +969,11 @@
       "Terpinolen",
       "Caryophyllen",
       "Myrcen",
-      "Alpha-Humulen",
-      "Beta-Pinen"
+      "Humulen",
+      "Pinen"
     ],
     "wirkungen": [
-      "antiinflammatorisch",
+      "entzündungshemmend",
       "unterstützt Wundheilung"
     ],
     "typ": "indica-dominant",
