@@ -12,6 +12,9 @@
   --button-min-height: 40px;
   --button-padding-inline: 16px;
   --button-padding-block: 10px;
+  --button-radius: 12px;
+  --button-gap: 8px;
+  --button-font-size: 14px;
   --grid-gap: clamp(1rem, 2vw, 2.5rem);
   --grid-min-column: 280px;
   --font-scale-h1: clamp(2.5rem, 1.5rem + 2vw, 3.5rem);
@@ -263,15 +266,27 @@ nav a:hover {
   }
 }
 
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
+  min-height: var(--button-min-height);
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  border-radius: var(--button-radius);
+  font-weight: 600;
+  font-size: var(--button-font-size);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease,
+    background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
 .primary {
   background: linear-gradient(135deg, #6eb1ff, #3a8dff);
   color: #ffffff;
   border: none;
-  border-radius: 999px;
-  padding: 10px 24px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 6px 12px rgba(58, 141, 255, 0.2);
 }
 
 .primary:disabled,
@@ -282,25 +297,23 @@ nav a:hover {
 }
 
 .primary:not(:disabled):hover,
-.primary:not([aria-disabled="true"]):hover {
+.primary:not([aria-disabled="true"]):hover,
+.primary:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 8px 16px rgba(62, 127, 255, 0.24);
+  box-shadow: 0 10px 20px rgba(62, 127, 255, 0.28);
 }
 
 .secondary {
-  background: transparent;
+  background: #f6f8fb;
   border: 1px solid #90a4ae;
   color: #35506b;
-  border-radius: 999px;
-  padding: 10px 24px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.secondary:hover {
+.secondary:hover,
+.secondary:focus-visible {
   border-color: #3a8dff;
   color: #2b5f91;
+  background-color: #eef2f7;
 }
 
 .filters {
@@ -609,14 +622,18 @@ nav a:hover {
 }
 
 .comparison-panel__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
   border: 1px solid rgba(148, 163, 184, 0.5);
   background: rgba(255, 255, 255, 0.65);
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   color: #4a6282;
   cursor: pointer;
-  border-radius: 12px;
-  padding: 6px 10px;
+  border-radius: var(--button-radius);
+  padding: var(--button-padding-block) var(--button-padding-inline);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1016,14 +1033,19 @@ nav a:hover {
 }
 
 .comparison-panel__add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
   align-self: flex-start;
   background: rgba(58, 141, 255, 0.12);
   border: 1px solid rgba(58, 141, 255, 0.2);
   color: #1e429f;
   font-weight: 600;
   cursor: pointer;
-  border-radius: 999px;
-  padding: 8px 16px;
+  border-radius: var(--button-radius);
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  min-height: var(--button-min-height);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1556,26 +1578,23 @@ nav a:hover {
 .typ-info__button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--button-gap);
   padding: var(--button-padding-block) var(--button-padding-inline);
   min-height: var(--button-min-height);
-  border-radius: 9999px;
+  border-radius: var(--button-radius);
   border: 1px solid #90caf9;
   background: #e8f0fe;
   color: #0d47a1;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--button-font-size);
   letter-spacing: 0.01em;
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.typ-info__button:hover {
-  background: #d2e3fc;
-}
-
+.typ-info__button:hover,
 .typ-info__button:focus-visible {
-  outline: none;
+  background: #d2e3fc;
   border-color: #42a5f5;
   box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.35);
 }
@@ -1595,14 +1614,14 @@ nav a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: var(--button-padding-block) 14px;
-  border-radius: 12px;
+  gap: var(--button-gap);
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  border-radius: var(--button-radius);
   border: 1px solid #cfd8dc;
   background: #ffffff;
   color: #0d47a1;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--button-font-size);
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease, box-shadow 0.2s ease,
