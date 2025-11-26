@@ -1,31 +1,58 @@
 [
   {
-    "name": "Humulen",
-    "aliases": ["α-Humulen"],
-    "description": "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit Caryophyllen zu finden.",
-    "aroma": "holzig, erdig, würzig",
-    "occurrence": "Nelken, Hopfen",
+    "name": "Bisabolol",
+    "aliases": [
+      "α-Bisabolol"
+    ],
+    "description": "Monoterpenalkohol; blumig, süßlich. Häufig in Kamille und Baldrian. Bekannt für hautberuhigende Eigenschaften.",
+    "aroma": "blumig, süß, würzig",
+    "occurrence": "Kamille, Baldrian, Teebaum",
     "effects": [
       {
         "effect": "entzündungshemmend",
-        "strength": "mittel",
-        "sources": ["reference_18", "reference_19"]
+        "strength": "stark",
+        "sources": [
+          "reference_33"
+        ]
       },
       {
-        "effect": "antibakteriell",
+        "effect": "antimikrobiell",
         "strength": "mittel",
-        "sources": ["reference_20"]
+        "sources": [
+          "reference_33"
+        ]
       },
       {
         "effect": "analgetisch",
         "strength": "mittel",
-        "sources": ["reference_21"]
+        "sources": [
+          "reference_33"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bulnesol",
+    "aliases": [],
+    "description": "Sesquiterpenalkohol; holzig, würzig. Komponente ätherischer Öle.",
+    "aroma": "holzig, würzig, erdig",
+    "occurrence": "Sandelholz, Zedernholz",
+    "effects": [
+      {
+        "effect": "antifungal (gegen Pilze)",
+        "strength": "mittel",
+        "sources": [
+          "reference_35"
+        ]
       }
     ]
   },
   {
     "name": "Caryophyllen",
-    "aliases": ["β-Caryophyllen", "Trans-Caryophyllen"],
+    "aliases": [
+      "β-Caryophyllen",
+      "Trans-Caryophyllen"
+    ],
     "description": "Sesquiterpen; pfeffrig-würzig. Bindet als einziger geläufiger Duftstoff direkt am CB2-Rezeptor (präklinische Evidenz).",
     "aroma": "würzig, holzig",
     "occurrence": "Schwarzer Pfeffer",
@@ -33,84 +60,18 @@
       {
         "effect": "analgetisch",
         "strength": "stark",
-        "sources": ["reference_7", "reference_8"]
+        "sources": [
+          "reference_7",
+          "reference_8"
+        ]
       },
       {
         "effect": "entzündungshemmend",
         "strength": "stark",
-        "sources": ["reference_9", "reference_10"]
-      }
-    ]
-  },
-  {
-    "name": "Myrcen",
-    "aliases": ["β-Myrcen"],
-    "description": "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
-    "aroma": "erdig, krautig, moschusartig",
-    "occurrence": "Hopfen, Mango, Zitronengras",
-    "effects": [
-      {
-        "effect": "entzündungshemmend",
-        "strength": "mittel",
-        "sources": ["reference_5"]
-      },
-      {
-        "effect": "neuroprotektiv",
-        "strength": "mittel",
-        "sources": ["reference_6"]
-      }
-    ]
-  },
-  {
-    "name": "Ocimen",
-    "aliases": ["β-Ocimen"],
-    "description": "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
-    "aroma": "zitronig, süß, krautig",
-    "occurrence": "Basilikum, Studentenblumen",
-    "effects": [
-      {
-        "effect": "antimykotisch",
-        "strength": "schwach",
-        "sources": ["reference_23"]
-      },
-      {
-        "effect": "antibakteriell",
-        "strength": "schwach",
-        "sources": ["reference_23"]
-      },
-      {
-        "effect": "antiparasitär",
-        "strength": "schwach",
-        "sources": ["reference_24"]
-      }
-    ]
-  },
-  {
-    "name": "Limonen",
-    "aliases": ["D-Limonen", "Limonene"],
-    "description": "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
-    "aroma": "frisch, zitronig, fruchtig, süß",
-    "occurrence": "Zitrus, Pfefferminze, Kümmel",
-    "effects": [
-      {
-        "effect": "entzündungshemmend",
-        "strength": "mittel",
-        "sources": ["reference_11", "reference_12"]
-      },
-      {
-        "effect": "antioxidativ",
-        "strength": "mittel",
-        "sources": ["reference_13"]
-      },
-      {
-        "effect": "antimykotisch",
-        "strength": "mittel",
-        "sources": ["reference_14"]
-      },
-      {
-        "effect": "entspannend",
-        "strength": "mittel",
-        "sources": ["reference_15", "reference_16"]
+        "sources": [
+          "reference_9",
+          "reference_10"
+        ]
       }
     ]
   },
@@ -124,17 +85,166 @@
       {
         "effect": "antioxidativ",
         "strength": "mittel",
-        "sources": ["reference_25"]
+        "sources": [
+          "reference_25"
+        ]
       },
       {
         "effect": "entzündungshemmend",
         "strength": "mittel",
-        "sources": ["reference_26"]
+        "sources": [
+          "reference_26"
+        ]
       },
       {
         "effect": "antimikrobiell",
         "strength": "mittel",
-        "sources": ["reference_27"]
+        "sources": [
+          "reference_27"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fenchol",
+    "aliases": [
+      "Fenchel"
+    ],
+    "description": "Monoterpenalkohol; würzig-minzig, kühlend. Häufig in Fenchel und Pfefferminze.",
+    "aroma": "würzig, minzig, kühlend",
+    "occurrence": "Fenchel, Pfefferminze, Wermut",
+    "effects": [
+      {
+        "effect": "antibakteriell",
+        "strength": "mittel",
+        "sources": [
+          "reference_37"
+        ]
+      },
+      {
+        "effect": "antioxidativ",
+        "strength": "mittel",
+        "sources": [
+          "reference_37"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Germacren B",
+    "aliases": [
+      "Germacren-B",
+      "β-Germacren"
+    ],
+    "description": "Sesquiterpen; würzig-holzig, terpenartig. Komponente des Hopfenöls.",
+    "aroma": "würzig, holzig, erdig",
+    "occurrence": "Hopfen, Johannisbeere, Kümmel",
+    "effects": [
+      {
+        "effect": "antimikrobiell",
+        "strength": "mittel",
+        "sources": [
+          "reference_39"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Guaiol",
+    "aliases": [],
+    "description": "Sesquiterpenalkohol; holzig, würzig. Häufig in Zypresse- und Guajakholzöl.",
+    "aroma": "holzig, würzig, minzig",
+    "occurrence": "Zypresse, Guajakholz, Muskatnuss",
+    "effects": [
+      {
+        "effect": "antibakteriell",
+        "strength": "mittel",
+        "sources": [
+          "reference_40",
+          "reference_41"
+        ]
+      },
+      {
+        "effect": "entzündungshemmend",
+        "strength": "mittel",
+        "sources": [
+          "reference_40"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Humulen",
+    "aliases": [
+      "α-Humulen"
+    ],
+    "description": "Sesquiterpen; hopfig-herb (in Hopfen). Oft zusammen mit Caryophyllen zu finden.",
+    "aroma": "holzig, erdig, würzig",
+    "occurrence": "Nelken, Hopfen",
+    "effects": [
+      {
+        "effect": "entzündungshemmend",
+        "strength": "mittel",
+        "sources": [
+          "reference_18",
+          "reference_19"
+        ]
+      },
+      {
+        "effect": "antibakteriell",
+        "strength": "mittel",
+        "sources": [
+          "reference_20"
+        ]
+      },
+      {
+        "effect": "analgetisch",
+        "strength": "mittel",
+        "sources": [
+          "reference_21"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Limonen",
+    "aliases": [
+      "D-Limonen",
+      "Limonene"
+    ],
+    "description": "Monoterpen; zitrusartig (Orange/Zitrone). Häufig in Schalen von Zitrusfrüchten.",
+    "aroma": "frisch, zitronig, fruchtig, süß",
+    "occurrence": "Zitrus, Pfefferminze, Kümmel",
+    "effects": [
+      {
+        "effect": "entzündungshemmend",
+        "strength": "mittel",
+        "sources": [
+          "reference_11",
+          "reference_12"
+        ]
+      },
+      {
+        "effect": "antioxidativ",
+        "strength": "mittel",
+        "sources": [
+          "reference_13"
+        ]
+      },
+      {
+        "effect": "antimykotisch",
+        "strength": "mittel",
+        "sources": [
+          "reference_14"
+        ]
+      },
+      {
+        "effect": "entspannend",
+        "strength": "mittel",
+        "sources": [
+          "reference_15",
+          "reference_16"
+        ]
       }
     ]
   },
@@ -148,23 +258,90 @@
       {
         "effect": "analgetisch",
         "strength": "schwach",
-        "sources": ["reference_29"]
+        "sources": [
+          "reference_29"
+        ]
       },
       {
         "effect": "entspannend",
         "strength": "schwach",
-        "sources": ["reference_30"]
+        "sources": [
+          "reference_30"
+        ]
       },
       {
         "effect": "anxiolytisch",
         "strength": "schwach",
-        "sources": ["reference_30"]
+        "sources": [
+          "reference_30"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Myrcen",
+    "aliases": [
+      "β-Myrcen"
+    ],
+    "description": "Monoterpen; häufigstes Terpen in Cannabisblüten vieler Kultivare. Typische Noten: erdig, krautig, moschusartig.",
+    "aroma": "erdig, krautig, moschusartig",
+    "occurrence": "Hopfen, Mango, Zitronengras",
+    "effects": [
+      {
+        "effect": "entzündungshemmend",
+        "strength": "mittel",
+        "sources": [
+          "reference_5"
+        ]
+      },
+      {
+        "effect": "neuroprotektiv",
+        "strength": "mittel",
+        "sources": [
+          "reference_6"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ocimen",
+    "aliases": [
+      "β-Ocimen"
+    ],
+    "description": "Monoterpen; süß, krautig, leicht holzig. Variiert stark zwischen Kultivaren.",
+    "aroma": "zitronig, süß, krautig",
+    "occurrence": "Basilikum, Studentenblumen",
+    "effects": [
+      {
+        "effect": "antimykotisch",
+        "strength": "schwach",
+        "sources": [
+          "reference_23"
+        ]
+      },
+      {
+        "effect": "antibakteriell",
+        "strength": "schwach",
+        "sources": [
+          "reference_23"
+        ]
+      },
+      {
+        "effect": "antiparasitär",
+        "strength": "schwach",
+        "sources": [
+          "reference_24"
+        ]
       }
     ]
   },
   {
     "name": "Pinen",
-    "aliases": ["α-Pinen", "β-Pinen", "Pinene"],
+    "aliases": [
+      "α-Pinen",
+      "β-Pinen",
+      "Pinene"
+    ],
     "description": "Monoterpen; harzig-kiefernartig. Häufig in Nadel- und Kiefernölen. Bekannt für bronchienerweiternde Eigenschaften.",
     "aroma": "harzig, kiefernartig, frisch",
     "occurrence": "Kiefern, Rosmarin, Pfefferminze",
@@ -172,17 +349,23 @@
       {
         "effect": "bronchodilatatorisch (erweitert Atemwege)",
         "strength": "mittel",
-        "sources": ["reference_32"]
+        "sources": [
+          "reference_32"
+        ]
       },
       {
         "effect": "gedächtnisfördernd (Acetylcholinesterase-Hemmer)",
         "strength": "schwach",
-        "sources": ["reference_32"]
+        "sources": [
+          "reference_32"
+        ]
       },
       {
         "effect": "entzündungshemmend",
         "strength": "mittel",
-        "sources": ["reference_31"]
+        "sources": [
+          "reference_31"
+        ]
       }
     ]
   },
@@ -201,12 +384,16 @@
       {
         "effect": "analgetisch",
         "strength": "schwach",
-        "sources": ["reference_28"]
+        "sources": [
+          "reference_28"
+        ]
       },
       {
         "effect": "entzündungshemmend",
         "strength": "schwach",
-        "sources": ["reference_19"]
+        "sources": [
+          "reference_19"
+        ]
       }
     ]
   },
@@ -220,102 +407,16 @@
       {
         "effect": "entzündungshemmend",
         "strength": "mittel",
-        "sources": ["reference_22"]
+        "sources": [
+          "reference_22"
+        ]
       },
       {
         "effect": "unterstützt Wundheilung",
         "strength": "mittel",
-        "sources": ["reference_22"]
-      }
-    ]
-  },
-  {
-    "name": "Bisabolol",
-    "aliases": ["α-Bisabolol"],
-    "description": "Monoterpenalkohol; blumig, süßlich. Häufig in Kamille und Baldrian. Bekannt für hautberuhigende Eigenschaften.",
-    "aroma": "blumig, süß, würzig",
-    "occurrence": "Kamille, Baldrian, Teebaum",
-    "effects": [
-      {
-        "effect": "entzündungshemmend",
-        "strength": "stark",
-        "sources": ["reference_33"]
-      },
-      {
-        "effect": "antimikrobiell",
-        "strength": "mittel",
-        "sources": ["reference_33"]
-      },
-      {
-        "effect": "analgetisch",
-        "strength": "mittel",
-        "sources": ["reference_33"]
-      }
-    ]
-  },
-  {
-    "name": "Bulnesol",
-    "aliases": [],
-    "description": "Sesquiterpenalkohol; holzig, würzig. Komponente ätherischer Öle.",
-    "aroma": "holzig, würzig, erdig",
-    "occurrence": "Sandelholz, Zedernholz",
-    "effects": [
-       {
-        "effect": "antifungal (gegen Pilze)",
-        "strength": "mittel",
-        "sources": ["reference_35"]
-      }
-    ]
-  },
-  {
-    "name": "Fenchol",
-    "aliases": ["Fenchel"],
-    "description": "Monoterpenalkohol; würzig-minzig, kühlend. Häufig in Fenchel und Pfefferminze.",
-    "aroma": "würzig, minzig, kühlend",
-    "occurrence": "Fenchel, Pfefferminze, Wermut",
-    "effects": [
-       {
-        "effect": "antibakteriell",
-        "strength": "mittel",
-        "sources": ["reference_37"]
-      },
-      {
-        "effect": "antioxidativ",
-        "strength": "mittel",
-        "sources": ["reference_37"]
-      }
-    ]
-  },
-  {
-    "name": "Germacren B",
-    "aliases": ["Germacren-B", "β-Germacren"],
-    "description": "Sesquiterpen; würzig-holzig, terpenartig. Komponente des Hopfenöls.",
-    "aroma": "würzig, holzig, erdig",
-    "occurrence": "Hopfen, Johannisbeere, Kümmel",
-    "effects": [
-       {
-        "effect": "antimikrobiell",
-        "strength": "mittel",
-        "sources": ["reference_39"]
-      }
-    ]
-  },
-  {
-    "name": "Guaiol",
-    "aliases": [],
-    "description": "Sesquiterpenalkohol; holzig, würzig. Häufig in Zypresse- und Guajakholzöl.",
-    "aroma": "holzig, würzig, minzig",
-    "occurrence": "Zypresse, Guajakholz, Muskatnuss",
-    "effects": [
-       {
-        "effect": "antibakteriell",
-        "strength": "mittel",
-        "sources": ["reference_40", "reference_41"]
-      },
-      {
-        "effect": "entzündungshemmend",
-        "strength": "mittel",
-        "sources": ["reference_40"]
+        "sources": [
+          "reference_22"
+        ]
       }
     ]
   }
