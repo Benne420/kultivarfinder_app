@@ -12,7 +12,7 @@
   --button-min-height: 40px;
   --button-padding-inline: 16px;
   --button-padding-block: 10px;
-  --button-radius: 12px;
+  --button-radius: 9999px;
   --button-gap: 8px;
   --button-font-size: 14px;
   --grid-gap: clamp(1rem, 2vw, 2.5rem);
@@ -278,20 +278,24 @@ nav a:hover {
   font-weight: 600;
   font-size: var(--button-font-size);
   cursor: pointer;
+  border: 1px solid #cfd8dc;
+  background: #f7fafc;
+  color: #35506b;
+  box-shadow: 0 6px 12px rgba(84, 110, 122, 0.12);
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease,
     background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .primary {
-  background: linear-gradient(135deg, #6eb1ff, #3a8dff);
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 6px 12px rgba(58, 141, 255, 0.2);
+  background: linear-gradient(120deg, #e6f0ff, #d2e6ff);
+  border-color: #a7c4f7;
+  color: #0d47a1;
+  box-shadow: 0 10px 18px rgba(13, 71, 161, 0.18);
 }
 
 .primary:disabled,
 .primary[aria-disabled="true"] {
-  opacity: 0.5;
+  opacity: 0.55;
   cursor: not-allowed;
   box-shadow: none;
 }
@@ -300,20 +304,22 @@ nav a:hover {
 .primary:not([aria-disabled="true"]):hover,
 .primary:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(62, 127, 255, 0.28);
+  background: linear-gradient(120deg, #dbe9ff, #c6dcff);
+  border-color: #8fb5f5;
+  box-shadow: 0 12px 22px rgba(13, 71, 161, 0.22);
 }
 
 .secondary {
-  background: #f6f8fb;
-  border: 1px solid #90a4ae;
+  background: #f7fafc;
   color: #35506b;
 }
 
 .secondary:hover,
 .secondary:focus-visible {
-  border-color: #3a8dff;
+  border-color: #b0bec5;
   color: #2b5f91;
   background-color: #eef2f7;
+  box-shadow: 0 8px 16px rgba(84, 110, 122, 0.14);
 }
 
 .filters {
