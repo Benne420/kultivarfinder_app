@@ -9,6 +9,9 @@
   --light-grey: #f5f5f5;
   --pure-white: #ffffff;
   --body-background: #ffffff;
+  --button-min-height: 40px;
+  --button-padding-inline: 16px;
+  --button-padding-block: 10px;
   --grid-gap: clamp(1rem, 2vw, 2.5rem);
   --grid-min-column: 280px;
   --font-scale-h1: clamp(2.5rem, 1.5rem + 2vw, 3.5rem);
@@ -37,7 +40,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.5rem;
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  min-height: var(--button-min-height);
   border: none;
   border-radius: 999px;
   background-color: var(--primary-blue);
@@ -60,7 +64,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.5rem;
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  min-height: var(--button-min-height);
   border: 2px solid var(--primary-blue);
   border-radius: 999px;
   background-color: var(--pure-white);
@@ -398,7 +403,8 @@ nav a:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  min-height: var(--button-min-height);
   border-radius: 999px;
   border: none;
   background: linear-gradient(135deg, #6eb1ff, #3a8dff);
@@ -1075,8 +1081,9 @@ nav a:hover {
 .button {
   flex: 1 1 150px;
   text-align: center;
-  padding: 10px 20px;
+  padding: var(--button-padding-block) var(--button-padding-inline);
   min-width: 150px;
+  min-height: var(--button-min-height);
 }
 /* Verhindert Abschneiden und erlaubt horizontales Scrollen */
 .table-container,
@@ -1223,7 +1230,8 @@ nav a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 14px;
+  padding: var(--button-padding-block) 14px;
+  min-height: var(--button-min-height);
   border: 1px solid #b0bec5;
   background: #f5f7f9;
   border-radius: 9999px;
@@ -1549,7 +1557,8 @@ nav a:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  min-height: var(--button-min-height);
   border-radius: 9999px;
   border: 1px solid #90caf9;
   background: #e8f0fe;
@@ -1574,6 +1583,51 @@ nav a:hover {
 .typ-info__button-icon {
   font-size: 14px;
   line-height: 1;
+}
+
+.link-button,
+.comparison-panel__add,
+.comparison-panel__close {
+  min-height: var(--button-min-height);
+}
+
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: var(--button-padding-block) 14px;
+  border-radius: 12px;
+  border: 1px solid #cfd8dc;
+  background: #ffffff;
+  color: #0d47a1;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease, color 0.2s ease;
+}
+
+.link-button:hover {
+  background: #eef2f7;
+  color: #0b3c85;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(13, 71, 161, 0.14);
+}
+
+.link-button:focus-visible {
+  outline: 2px solid #90caf9;
+  outline-offset: 2px;
+}
+
+.link-button:disabled,
+.link-button[disabled] {
+  background: #f2f4f7;
+  color: #90a4ae;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
 .typ-info__button-label {
