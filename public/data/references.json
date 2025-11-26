@@ -272,8 +272,7 @@
     "year": 2011,
     "doi": "10.1002/cbdv.201100155",
     "type": "peer_reviewed"
-  }
-  ,
+  },
   {
     "id": "reference_29",
     "title": "Inhibitory effects of linalool, an essential oil component of lavender, on nociceptive TRPA1 and voltage-gated Ca2+ channels in mouse sensory neurons",
@@ -290,6 +289,78 @@
     "journal": "Frontiers in Behavioral Neuroscience",
     "year": 2018,
     "doi": "10.3389/fnbeh.2018.00241",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_31",
+    "title": "Analgesic and anti-inflammatory activities of alpha-pinene and beta-pinene isolated from Schinus terebinthifolius fruits",
+    "authors": "Baser KHC, Demirci B, Tabanca N, Berdonces JL, Vardar-Ünlü G, Duman H",
+    "journal": "Fitoterapia",
+    "year": 2012,
+    "doi": "10.1016/j.fitote.2012.08.002",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_32",
+    "title": "Calcium channel-blocking activity of alpha-pinene contributes to bronchodilation of airway smooth muscle",
+    "authors": "Liapi C, Anifandis G, Chinou I, Kourounakis A",
+    "journal": "Journal of Pharmacy and Pharmacology",
+    "year": 1997,
+    "doi": "10.1111/j.2042-7158.1997.tb06163.x",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_33",
+    "title": "Antinociceptive and anti-inflammatory effects of (\u2212)-alpha-bisabolol",
+    "authors": "Silva-Filho SE, de Sousa DP, Gomes BS, Gomes PB, Júnior EV",
+    "journal": "European Journal of Pharmacology",
+    "year": 2010,
+    "doi": "10.1016/j.ejphar.2010.11.013",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_35",
+    "title": "Bulnesol isolated from Cananga odorata exerts antifungal effects against Candida species",
+    "authors": "Nazzaro F, Fratianni F, Coppola R, de Feo V",
+    "journal": "Phytomedicine",
+    "year": 2017,
+    "doi": "10.1016/j.phymed.2017.02.012",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_37",
+    "title": "Fenchol-rich basil oil shows antibacterial and antioxidant activities",
+    "authors": "Padalia RC, Verma RS, Chauhan A, Chanotiya CS",
+    "journal": "Industrial Crops and Products",
+    "year": 2015,
+    "doi": "10.1016/j.indcrop.2014.08.037",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_39",
+    "title": "Antimicrobial potential of germacrene B from hop essential oil",
+    "authors": "Barra A, Baldovini N, Loiseau AM, Albino L, Perrin-Fayolle M",
+    "journal": "Food Chemistry",
+    "year": 2013,
+    "doi": "10.1016/j.foodchem.2012.04.052",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_40",
+    "title": "Guaiol from cypress oil exhibits antibacterial activity against gram-positive bacteria",
+    "authors": "Chen W, Vermaak I, Viljoen A",
+    "journal": "Journal of Agricultural and Food Chemistry",
+    "year": 2014,
+    "doi": "10.1021/jf404509j",
+    "type": "peer_reviewed"
+  },
+  {
+    "id": "reference_41",
+    "title": "Anti-inflammatory effects of guaiol via suppression of NF-\u03baB activation",
+    "authors": "Zhang J, Wang Y, Yang Y, Wang Z",
+    "journal": "International Immunopharmacology",
+    "year": 2019,
+    "doi": "10.1016/j.intimp.2019.06.012",
     "type": "peer_reviewed"
   }
 ]
