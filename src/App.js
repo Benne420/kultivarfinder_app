@@ -379,7 +379,7 @@ export default function CannabisKultivarFinderUseReducer() {
                         .map((name) => mapTerpeneToCanonical(name, aliasLookup))
                         .filter(Boolean)
                     )
-                  )
+                  ).slice(0, 5)
                 : [];
               return {
                 ...k,

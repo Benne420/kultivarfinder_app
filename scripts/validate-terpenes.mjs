@@ -138,6 +138,25 @@ function validateCultivars(cultivars) {
     if (cultivar.terpenprofil && !Array.isArray(cultivar.terpenprofil)) {
       errors.push(`Cultivar[${index}]: 'terpenprofil' must be an array`);
     }
+
+    if (Array.isArray(cultivar.terpenprofil)) {
+      const seen = new Set();
+      const duplicates = new Set();
+      cultivar.terpenprofil.forEach((terpene) => {
+        const key = terpene.trim().toLowerCase();
+        if (seen.has(key)) {
+          duplicates.add(terpene);
+        }
+        seen.add(key);
+      });
+
+      if (duplicates.size > 0) {
+        const list = Array.from(duplicates).join(', ');
+        errors.push(
+          `Cultivar[${index}]: duplicate terpenprofil entries found (${list})`
+        );
+      }
+    }
   });
 
   return errors;
