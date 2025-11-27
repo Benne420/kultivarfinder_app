@@ -11,16 +11,31 @@ function isActiveStrain(s = {}) {
   return false;
 }
 
-/* cosine similarity for two terpene-profiles (arrays). returns 0..1 */
+function normalizeTerpeneList(value = []) {
+  return (Array.isArray(value) ? value : String(value || "").split(/[;,]/))
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+/* cosine similarity for two terpene-profiles (arrays) with positional weighting */
 function cosineSimilarity(a = [], b = []) {
-  const arrA = Array.isArray(a) ? a : String(a || "").split(/[;,]/).map(s => s.trim()).filter(Boolean);
-  const arrB = Array.isArray(b) ? b : String(b || "").split(/[;,]/).map(s => s.trim()).filter(Boolean);
+  const arrA = normalizeTerpeneList(a);
+  const arrB = normalizeTerpeneList(b);
 
   const unique = Array.from(new Set([...arrA, ...arrB]));
   if (unique.length === 0) return 0;
 
-  const vecA = unique.map(k => (arrA.includes(k) ? 1 : 0));
-  const vecB = unique.map(k => (arrB.includes(k) ? 1 : 0));
+  const vecA = unique.map((k) => {
+    const idx = arrA.indexOf(k);
+    if (idx === -1) return 0;
+    return (arrA.length - idx) / arrA.length;
+  });
+
+  const vecB = unique.map((k) => {
+    const idx = arrB.indexOf(k);
+    if (idx === -1) return 0;
+    return (arrB.length - idx) / arrB.length;
+  });
 
   const dot = vecA.reduce((sum, v, i) => sum + v * vecB[i], 0);
   const magA = Math.sqrt(vecA.reduce((sum, v) => sum + v * v, 0));
