@@ -57,6 +57,27 @@ const EntourageInfoContent = ({ headingId }) => {
         </p>
 
         <div style={{ marginBottom: "12px" }}>
+          <strong>Das Endocannabinoid-System (ECS):</strong>
+          <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
+            <li>
+              Körpereigenes Regulationssystem, das u. a. Schmerzverarbeitung,
+              Schlaf, Muskeltonus und Immunreaktionen mitsteuert.
+            </li>
+            <li>
+              Besteht aus Endocannabinoiden und Rezeptoren, vor allem CB1 im
+              zentralen Nervensystem sowie CB2 in Immun- und peripheren
+              Geweben.
+            </li>
+            <li>
+              Phytocannabinoide wie THC und CBD können ebenfalls an diese
+              Rezeptoren binden; THC wirkt v. a. psychoaktiv und analgetisch,
+              CBD eher entzündungshemmend und antikonvulsiv und kann manche
+              unerwünschten Effekte von THC abmildern.
+            </li>
+          </ul>
+        </div>
+
+        <div style={{ marginBottom: "12px" }}>
           <strong>Wichtige Aspekte:</strong>
           <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
             {aspects.map(({ title, description }) => (
@@ -86,7 +107,8 @@ const EntourageInfoContent = ({ headingId }) => {
         >
           <strong>Rechtlicher Hinweis:</strong> Diese Informationen dienen der
           allgemeinen wissenschaftlichen Orientierung und ersetzen keine
-          medizinische Beratung.
+          medizinische Beratung. Indikation und Präparateauswahl erfolgen
+          ausschließlich durch ärztliches Fachpersonal.
         </div>
 
         <div style={{ marginTop: "12px", fontSize: "12px", color: "#6c757d" }}>
