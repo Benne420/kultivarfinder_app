@@ -62,6 +62,13 @@ const defaultTerpeneOptions = sortTerpeneNames(defaultTerpeneOptionsSource);
  */
 const defaultWirkungen = [...defaultWirkungenSource].sort();
 
+const INFO_PDF_URL = "/docs/kultivarfinder_info.pdf";
+const infoSummaryPoints = [
+  "Kurzanleitung zur Bedienung der Suche und Filter.",
+  "Tipps, wie der Sortenvergleich funktioniert.",
+  "Hinweis: Keine medizinische Beratung oder Heilaussagen.",
+];
+
 const SuspenseOverlayFallback = ({ label = "Inhalt wird geladen …" }) => (
   <div className="modal-fallback" role="status" aria-live="polite">
     <span className="modal-fallback__spinner" aria-hidden="true" />
@@ -642,6 +649,10 @@ export default function CannabisKultivarFinderUseReducer() {
     setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
+  const openInfoPdf = useCallback(() => {
+    window.open(INFO_PDF_URL, "_blank", "noopener,noreferrer");
+  }, []);
+
   const toggleCultivarSelection = useCallback((cultivar) => {
     if (!cultivar?.name) return;
     setSelectedCultivars((prev) => {
@@ -722,6 +733,41 @@ export default function CannabisKultivarFinderUseReducer() {
             <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information und ersetzt keine medizinische
             Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
           </div>
+
+          <section
+            className="info-card"
+            role="region"
+            aria-label="Infoblatt als PDF oder kurze Zusammenfassung"
+          >
+            <div className="info-card__copy">
+              <p className="info-card__eyebrow">Dokumentation</p>
+              <h2 className="info-card__title">Infoblatt als PDF</h2>
+              <p className="info-card__description">
+                Das Infoblatt fasst die wichtigsten Schritte zur Nutzung des Kultivarfinder-Tools zusammen. Sie
+                können es direkt hier öffnen oder die Kernpunkte kurz überfliegen.
+              </p>
+              <ul className="info-card__list">
+                {infoSummaryPoints.map((entry) => (
+                  <li key={entry} className="info-card__list-item">
+                    {entry}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="info-card__actions">
+              <button
+                type="button"
+                className="secondary"
+                onClick={openInfoPdf}
+                aria-label="PDF mit ausführlichen Informationen öffnen"
+              >
+                PDF öffnen
+              </button>
+              <p className="info-card__meta" aria-hidden="true">
+                Öffnet in neuem Tab
+              </p>
+            </div>
+          </section>
 
           <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
 
