@@ -50,10 +50,21 @@ const StrainTableRow = React.memo(function StrainTableRow({
     window.open(pdfUrl, "_blank", "noopener,noreferrer");
   }, [pdfUrl]);
 
-  const similarityValue =
+  const similarityScore =
     typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
-      ? `${Math.round(strain.similarity * 100)}%`
-      : "–";
+      ? strain.similarity
+      : null;
+  const overlap = strain?.overlap;
+  const overlapBucketText =
+    overlap && Number.isFinite(overlap.bucket)
+      ? `${overlap.bucket}/5 Terpene`
+      : null;
+  const similarityLabel = strain?.similarityLabel;
+
+  const similarityPrimary = similarityLabel || "Übereinstimmung";
+  const similarityMeta = [overlapBucketText].filter(Boolean);
+  const similarityDescription =
+    [similarityLabel, overlapBucketText].filter(Boolean).join(" – ") || "Ähnlichkeitsbewertung";
 
   return (
     <tr className={isSelected ? "is-selected" : undefined}>
@@ -80,7 +91,25 @@ const StrainTableRow = React.memo(function StrainTableRow({
       </td>
       {hasSimilarityColumn && (
         <td className="similarity-column" data-label="Übereinstimmung">
-          {similarityValue}
+          {similarityScore !== null ? (
+            <div className="similarity-badge" aria-label={similarityDescription}>
+              <span className="similarity-badge__primary">{similarityPrimary}</span>
+              {similarityMeta.length > 0 && (
+                <span className="similarity-badge__meta">
+                  {similarityMeta.map((entry, index) => (
+                    <span
+                      key={`${entry}-${index}`}
+                      className={index === 0 ? "similarity-pill" : "similarity-detail"}
+                    >
+                      {entry}
+                    </span>
+                  ))}
+                </span>
+              )}
+            </div>
+          ) : (
+            "–"
+          )}
         </td>
       )}
       <td data-label="THC">

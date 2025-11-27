@@ -1,36 +1,63 @@
 [
   {
     "name": "Alien Mints",
-    "thc": "20-27",
+    "thc": "20-27%",
     "cbd": "<1%",
     "terpengehalt": "2.68%",
     "terpenprofil": [
       "Myrcen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Linalool",
+      "Limonen",
+      "Humulen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
+    "name": "Bavarian Bud",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "1,96%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Limonen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend",
+      "anxiolytisch",
+      "antidepressiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued"
+  },
+  {
     "name": "Berlin Berries",
-    "thc": "25-33",
+    "thc": "25-33%",
     "cbd": "<1%",
     "terpengehalt": "3.64%",
     "terpenprofil": [
       "Limonen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Linalool",
+      "Selinene",
+      "Germacren B"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "antioxidativ",
-      "antimykotisch",
+      "antimikrobiell",
       "entspannend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -40,14 +67,16 @@
     "terpengehalt": "2.25%",
     "terpenprofil": [
       "Caryophyllen",
-      "Selinene"
+      "Selinene",
+      "Myrcen",
+      "Limonen"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Indica-dominant",
-    "status": "active"
+    "typ": "indica-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Bling Blaow",
@@ -56,7 +85,10 @@
     "terpengehalt": "3.39%",
     "terpenprofil": [
       "Limonen",
-      "Linalool"
+      "Linalool",
+      "Caryophyllen",
+      "Selinene",
+      "Myrcen"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -64,24 +96,8 @@
       "antimykotisch",
       "entspannend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
-  },
-  {
-    "name": "Blue Dream",
-    "thc": "16-25%",
-    "cbd": "<1%",
-    "terpengehalt": "1.65%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "Indica-dominant",
-    "status": "discontinued"
   },
   {
     "name": "Bucket List",
@@ -90,13 +106,34 @@
     "terpengehalt": "1.39%",
     "terpenprofil": [
       "Caryophyllen",
-      "Limonen"
+      "Limonen",
+      "Humulen",
+      "Myrcen",
+      "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Sativa",
+    "typ": "sativa-dominant",
+    "status": "discontinued"
+  },
+  {
+    "name": "C-47",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "1,41%",
+    "terpenprofil": [
+      "Myrcen",
+      "Limonen",
+      "Caryophyllen",
+      "Pinen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "sativa-dominant",
     "status": "active"
   },
   {
@@ -106,14 +143,17 @@
     "terpengehalt": "1.40%",
     "terpenprofil": [
       "Caryophyllen",
-      "Myrcen"
+      "Myrcen",
+      "Limonen",
+      "Humulen",
+      "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Indica-dominant",
-    "status": "active"
+    "typ": "indica-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Cinderella Kush",
@@ -122,7 +162,10 @@
     "terpengehalt": "1.76%",
     "terpenprofil": [
       "Limonen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Myrcen",
+      "Linalool",
+      "Guaiol"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -130,8 +173,29 @@
       "antimykotisch",
       "entspannend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
+  },
+  {
+    "name": "Dortmund Diesel",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2,79%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Limonen",
+      "Humulen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "entspannend"
+    ],
+    "typ": "sativa-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Frosted Gumbo",
@@ -140,13 +204,16 @@
     "terpengehalt": "3.34%",
     "terpenprofil": [
       "Myrcen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Limonen",
+      "Farnesen",
+      "Humulen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -156,13 +223,16 @@
     "terpengehalt": "2.55%",
     "terpenprofil": [
       "Terpinolen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Limonen",
+      "Myrcen",
+      "Linalool"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "unterstützt Wundheilung"
     ],
-    "typ": "Sativa-dominant",
+    "typ": "sativa-dominant",
     "status": "active"
   },
   {
@@ -172,13 +242,16 @@
     "terpengehalt": "3.15%",
     "terpenprofil": [
       "Myrcen",
-      "Ocimen"
+      "Ocimen",
+      "Linalool",
+      "Caryophyllen",
+      "Selinene"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -188,14 +261,17 @@
     "terpengehalt": "2.19%",
     "terpenprofil": [
       "Caryophyllen",
-      "Humulen"
+      "Humulen",
+      "Limonen",
+      "Bisabolol",
+      "Myrcen"
     ],
     "wirkungen": [
       "entspannend",
       "schlaffördernd",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -205,13 +281,16 @@
     "terpengehalt": "1.93%",
     "terpenprofil": [
       "Caryophyllen",
-      "Terpinolen"
+      "Terpinolen",
+      "Farnesen",
+      "Humulen",
+      "Limonen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -221,14 +300,38 @@
     "terpengehalt": "3.50%",
     "terpenprofil": [
       "Farnesen",
-      "Myrcen"
+      "Myrcen",
+      "Caryophyllen",
+      "Limonen",
+      "Humulen"
     ],
     "wirkungen": [
       "antioxidativ",
       "entzündungshemmend",
       "antimikrobiell"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
+    "status": "active"
+  },
+  {
+    "name": "Grape Burger",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2,77%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Limonen",
+      "Myrcen",
+      "Ocimen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "entspannend"
+    ],
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -238,13 +341,54 @@
     "terpengehalt": "2.25%",
     "terpenprofil": [
       "Caryophyllen",
-      "Selinene"
+      "Selinene",
+      "Myrcen",
+      "Limonen"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Sativa-dominant",
+    "typ": "sativa-dominant",
+    "status": "active"
+  },
+  {
+    "name": "Hamburg Haze",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "1,41%",
+    "terpenprofil": [
+      "Myrcen",
+      "Limonen",
+      "Caryophyllen",
+      "Pinen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "sativa-dominant",
+    "status": "discontinued"
+  },
+  {
+    "name": "Holy Mints",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "1,96%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Limonen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend",
+      "anxiolytisch",
+      "antidepressiv"
+    ],
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -254,7 +398,10 @@
     "terpengehalt": "1.34%",
     "terpenprofil": [
       "Linalool",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Limonen",
+      "Guaiol",
+      "Humulen"
     ],
     "wirkungen": [
       "analgetisch",
@@ -262,7 +409,7 @@
       "anxiolytisch",
       "krampflösend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -280,7 +427,7 @@
       "antimykotisch",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "discontinued"
   },
   {
@@ -290,13 +437,16 @@
     "terpengehalt": "0.98%",
     "terpenprofil": [
       "Caryophyllen",
-      "Humulen"
+      "Humulen",
+      "Guaiol",
+      "Bisabolol",
+      "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "discontinued"
   },
   {
@@ -306,13 +456,16 @@
     "terpengehalt": "1.88%",
     "terpenprofil": [
       "Caryophyllen",
-      "Myrcen"
+      "Myrcen",
+      "Farnesen",
+      "Limonen",
+      "Humulen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "discontinued"
   },
   {
@@ -322,13 +475,16 @@
     "terpengehalt": "1.08%",
     "terpenprofil": [
       "Caryophyllen",
-      "Limonen"
+      "Limonen",
+      "Linalool",
+      "Humulen",
+      "Pinen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -338,14 +494,17 @@
     "terpengehalt": "2.76%",
     "terpenprofil": [
       "Farnesen",
-      "Limonen"
+      "Limonen",
+      "Caryophyllen",
+      "Pinen",
+      "Linalool"
     ],
     "wirkungen": [
       "antioxidativ",
       "entzündungshemmend",
       "antimikrobiell"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -355,7 +514,10 @@
     "terpengehalt": "3.43%",
     "terpenprofil": [
       "Limonen",
-      "Myrcen"
+      "Myrcen",
+      "Linalool",
+      "Caryophyllen",
+      "Bulnesol"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -363,7 +525,7 @@
       "antimykotisch",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -373,13 +535,15 @@
     "terpengehalt": "2.14%",
     "terpenprofil": [
       "Myrcen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Selinene",
+      "Linalool"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "discontinued"
   },
   {
@@ -389,13 +553,16 @@
     "terpengehalt": "2.45%",
     "terpenprofil": [
       "Selinene",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Limonen",
+      "Humulen",
+      "Bisabolol"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "discontinued"
   },
   {
@@ -405,13 +572,16 @@
     "terpengehalt": "2.32%",
     "terpenprofil": [
       "Caryophyllen",
-      "Myrcen"
+      "Myrcen",
+      "Humulen",
+      "Limonen",
+      "Farnesen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -421,7 +591,10 @@
     "terpengehalt": "2.14%",
     "terpenprofil": [
       "Limonen",
-      "Myrcen"
+      "Myrcen",
+      "Caryophyllen",
+      "Farnesen",
+      "Humulen"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -429,7 +602,28 @@
       "antimykotisch",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
+    "status": "active"
+  },
+  {
+    "name": "Pineapple God",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2,79%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Limonen",
+      "Humulen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend",
+      "anxiolytisch",
+      "antidepressiv"
+    ],
+    "typ": "sativa-dominant",
     "status": "active"
   },
   {
@@ -439,7 +633,10 @@
     "terpengehalt": "4,57%",
     "terpenprofil": [
       "Limonen",
-      "Linalool"
+      "Linalool",
+      "Myrcen",
+      "Caryophyllen",
+      "Germacren B"
     ],
     "wirkungen": [
       "analgetisch",
@@ -448,7 +645,7 @@
       "antidepressiv"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "active"
   },
   {
     "name": "Plum Driver",
@@ -457,14 +654,17 @@
     "terpengehalt": "1.40%",
     "terpenprofil": [
       "Caryophyllen",
-      "Linalool"
+      "Linalool",
+      "Limonen",
+      "Myrcen",
+      "Humulen"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Indica-dominant",
-    "status": "active"
+    "typ": "indica-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Private Banana",
@@ -473,7 +673,10 @@
     "terpengehalt": "1.55%",
     "terpenprofil": [
       "Limonen",
-      "Myrcen"
+      "Myrcen",
+      "Pinen",
+      "Linalool",
+      "Caryophyllen"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -481,7 +684,7 @@
       "antimykotisch",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -491,7 +694,10 @@
     "terpengehalt": "4.15%",
     "terpenprofil": [
       "Limonen",
-      "Linalool"
+      "Linalool",
+      "Myrcen",
+      "Caryophyllen",
+      "Germacren B"
     ],
     "wirkungen": [
       "entzündungshemmend",
@@ -499,8 +705,8 @@
       "antimykotisch",
       "analgetisch"
     ],
-    "typ": "Indica-dominant",
-    "status": "active"
+    "typ": "indica-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Rose Gold Runtz",
@@ -515,7 +721,7 @@
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "discontinued"
   },
   {
@@ -525,13 +731,16 @@
     "terpengehalt": "2.57%",
     "terpenprofil": [
       "Myrcen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Limonen",
+      "Linalool",
+      "Humulen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -541,29 +750,35 @@
     "terpengehalt": "3.26%",
     "terpenprofil": [
       "Myrcen",
-      "ɑ-Pinen"
+      "Pinen",
+      "Caryophyllen",
+      "Limonen",
+      "Farnesen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Sativa-dominant",
+    "typ": "sativa-dominant",
     "status": "active"
   },
   {
     "name": "Super Lemon G",
-    "thc": 7,
-    "cbd": 7,
+    "thc": "7%",
+    "cbd": "7%",
     "terpengehalt": "0.98%",
     "terpenprofil": [
       "Myrcen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Limonen",
+      "Pinen",
+      "Humulen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Sativa-dominant",
+    "typ": "sativa-dominant",
     "status": "active"
   },
   {
@@ -573,14 +788,17 @@
     "terpengehalt": "1.46%",
     "terpenprofil": [
       "Myrcen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Pinen",
+      "Limonen",
+      "Linalool"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "Indica-dominant",
-    "status": "active"
+    "typ": "indica-dominant",
+    "status": "discontinued"
   },
   {
     "name": "Triangle Octane",
@@ -589,13 +807,16 @@
     "terpengehalt": "3.45%",
     "terpenprofil": [
       "Myrcen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Limonen",
+      "Farnesen",
+      "Humulen"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -605,13 +826,15 @@
     "terpengehalt": "1.29%",
     "terpenprofil": [
       "Caryophyllen",
-      "Linalool"
+      "Linalool",
+      "Humulen",
+      "Limonen"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Sativa-dominant",
+    "typ": "sativa-dominant",
     "status": "active"
   },
   {
@@ -621,14 +844,17 @@
     "terpengehalt": "2.55%",
     "terpenprofil": [
       "Farnesen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Limonen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "antioxidativ",
       "antimikrobiell"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -638,7 +864,10 @@
     "terpengehalt": "1.86%",
     "terpenprofil": [
       "Caryophyllen",
-      "Myrcen"
+      "Myrcen",
+      "Limonen",
+      "Humulen",
+      "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
@@ -646,7 +875,7 @@
       "anxiolytisch",
       "antidepressiv"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -656,13 +885,16 @@
     "terpengehalt": "1.00%",
     "terpenprofil": [
       "Caryophyllen",
-      "Linalool"
+      "Linalool",
+      "Limonen",
+      "Humulen",
+      "Myrcen"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Sativa-dominant",
+    "typ": "sativa-dominant",
     "status": "active"
   },
   {
@@ -672,13 +904,16 @@
     "terpengehalt": "1.17%",
     "terpenprofil": [
       "Caryophyllen",
-      "Myrcen"
+      "Myrcen",
+      "Limonen",
+      "Linalool",
+      "Humulen"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -688,7 +923,10 @@
     "terpengehalt": "2.00%",
     "terpenprofil": [
       "Limonen",
-      "Myrcen"
+      "Myrcen",
+      "Caryophyllen",
+      "Humulen",
+      "Linalool"
     ],
     "wirkungen": [
       "analgetisch",
@@ -696,7 +934,7 @@
       "anxiolytisch",
       "antidepressiv"
     ],
-    "typ": "Sativa-dominant",
+    "typ": "sativa-dominant",
     "status": "active"
   },
   {
@@ -706,13 +944,16 @@
     "terpengehalt": "0.64%",
     "terpenprofil": [
       "Caryophyllen",
-      "Linalool"
+      "Linalool",
+      "Limonen",
+      "Fenchol",
+      "Bisabolol"
     ],
     "wirkungen": [
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   },
   {
@@ -722,13 +963,16 @@
     "terpengehalt": "2.37%",
     "terpenprofil": [
       "Terpinolen",
-      "Caryophyllen"
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Pinen"
     ],
     "wirkungen": [
       "entzündungshemmend",
       "unterstützt Wundheilung"
     ],
-    "typ": "Indica-dominant",
+    "typ": "indica-dominant",
     "status": "active"
   }
 ]
