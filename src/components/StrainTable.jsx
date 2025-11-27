@@ -59,12 +59,17 @@ const StrainTableRow = React.memo(function StrainTableRow({
     overlap && Number.isFinite(overlap.bucket)
       ? `${overlap.bucket}/5 Terpene`
       : null;
+  const overlapDetailText =
+    overlap && Number.isFinite(overlap.shared) && Number.isFinite(overlap.total) && overlap.total > 0
+      ? `${overlap.shared}/${overlap.total} Terpene deckungsgleich`
+      : null;
   const similarityLabel = strain?.similarityLabel;
 
   const similarityPrimary = similarityLabel || "Übereinstimmung";
-  const similarityMeta = [overlapBucketText].filter(Boolean);
+  const similarityMeta = [overlapBucketText, overlapDetailText].filter(Boolean);
   const similarityDescription =
-    [similarityLabel, overlapBucketText].filter(Boolean).join(" – ") || "Ähnlichkeitsbewertung";
+    [similarityLabel, overlapBucketText, overlapDetailText].filter(Boolean).join(" – ") ||
+    "Ähnlichkeitsbewertung";
 
   return (
     <tr className={isSelected ? "is-selected" : undefined}>
