@@ -62,7 +62,8 @@ function buildTerpeneWeightMap(list = []) {
 }
 
 function getTerpeneOverlap(refList = [], targetList = []) {
-  if (!refList.length || !targetList.length) return { shared: 0, total: 0, bucket: 0 };
+  if (!refList.length || !targetList.length)
+    return { shared: 0, total: 0, bucket: 0, weightedRatio: 0 };
 
   const refSet = new Set(refList);
   const targetSet = new Set(targetList);
@@ -88,7 +89,7 @@ function getTerpeneOverlap(refList = [], targetList = []) {
   const weightedRatio = totalWeight > 0 ? sharedWeight / totalWeight : 0;
   const bucket = weightedRatio === 0 ? 0 : Math.max(1, Math.round(weightedRatio * 5));
 
-  return { shared, total, bucket };
+  return { shared, total, bucket, weightedRatio };
 }
 
 function describeSimilarity(overlap = { bucket: 0 }) {
@@ -107,17 +108,25 @@ function findSimilar(reference, allStrains, limit = 5) {
   return allStrains
     .filter((s) => s.name !== reference.name && s.normalizedTerpenes.length > 0)
     .map((s) => {
-      const similarity = cosineSimilarity(reference.normalizedTerpenes, s.normalizedTerpenes);
       const overlap = getTerpeneOverlap(reference.normalizedTerpenes, s.normalizedTerpenes);
+      const weightedSimilarity = overlap.weightedRatio;
+      const cosineScore = cosineSimilarity(reference.normalizedTerpenes, s.normalizedTerpenes);
 
       return {
         ...s,
-        similarity,
+        similarity: weightedSimilarity,
+        weightedSimilarity,
+        cosineSimilarity: cosineScore,
         overlap,
         similarityLabel: describeSimilarity(overlap),
       };
     })
-    .sort((a, b) => b.similarity - a.similarity)
+    .sort((a, b) => {
+      if (b.weightedSimilarity !== a.weightedSimilarity) {
+        return b.weightedSimilarity - a.weightedSimilarity;
+      }
+      return b.cosineSimilarity - a.cosineSimilarity;
+    })
     .slice(0, limit);
 }
 
