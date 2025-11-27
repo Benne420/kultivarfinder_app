@@ -4,16 +4,8 @@
 # Pfad zu Node hinzufügen (Windows)
 export PATH="$PATH:/c/Users/BenediktBlazeowsky/Downloads/node-v22.20.0-win-x64/node-v22.20.0-win-x64"
 
-echo "🔎 pre-commit: validate:data (offline)"
-npm run validate:data || { echo "❌ Daten-Validierung fehlgeschlagen"; exit 1; }
-echo "🔎 pre-commit: validate:data (offline)"
-npm run validate:data
-status=$?
-
-if [ $status -ne 0 ]; then
-  echo "❌ Daten-Validierung fehlgeschlagen (validate:data). Commit abgebrochen."
-  exit $status
-fi
+echo "🔎 pre-commit: validate (offline)"
+npm run validate || { echo "❌ Daten-Validierung fehlgeschlagen"; exit 1; }
 
 # Optional: Lint/Format hier einhängen
 # npm run lint && npm run format

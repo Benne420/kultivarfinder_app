@@ -26,19 +26,23 @@ async function compareBackup({ source, backup }) {
   }
 }
 
-async function main() {
+export async function validateBackups(pairs = backupPairs) {
   const failures = [];
 
-  await Promise.all(
-    backupPairs.map(async (pair) => {
-      try {
-        await compareBackup(pair);
-        console.log(`✅ Backup aktuell: ${pair.backup}`);
-      } catch (error) {
-        failures.push(error.message);
-      }
-    })
-  );
+  for (const pair of pairs) {
+    try {
+      await compareBackup(pair);
+      console.log(`✅ Backup aktuell: ${pair.backup}`);
+    } catch (error) {
+      failures.push(error.message);
+    }
+  }
+
+  return { failures };
+}
+
+async function main() {
+  const { failures } = await validateBackups();
 
   if (failures.length > 0) {
     const formatted = formatList(failures);
@@ -50,4 +54,6 @@ async function main() {
   console.log('🎉 Alle Backups sind auf dem neuesten Stand.');
 }
 
-main();
+if (process.argv[1] === new URL(import.meta.url).pathname) {
+  main();
+}
