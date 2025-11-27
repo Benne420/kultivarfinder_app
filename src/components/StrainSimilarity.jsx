@@ -62,7 +62,8 @@ function buildTerpeneWeightMap(list = []) {
 }
 
 function getTerpeneOverlap(refList = [], targetList = []) {
-  if (!refList.length || !targetList.length) return { shared: 0, total: 0, bucket: 0 };
+  if (!refList.length || !targetList.length)
+    return { shared: 0, total: 0, bucket: 0, weightedRatio: 0 };
 
   const refSet = new Set(refList);
   const targetSet = new Set(targetList);
@@ -88,7 +89,7 @@ function getTerpeneOverlap(refList = [], targetList = []) {
   const weightedRatio = totalWeight > 0 ? sharedWeight / totalWeight : 0;
   const bucket = weightedRatio === 0 ? 0 : Math.max(1, Math.round(weightedRatio * 5));
 
-  return { shared, total, bucket };
+  return { shared, total, bucket, weightedRatio };
 }
 
 function describeSimilarity(overlap = { bucket: 0 }) {
@@ -102,33 +103,30 @@ function describeSimilarity(overlap = { bucket: 0 }) {
 }
 
 function findSimilar(reference, allStrains, limit = 5) {
-  if (!reference) return [];
-  const refTerps =
-    reference.normalizedTerpenprofil ||
-    reference.terpenprofil ||
-    reference.terpenprofile ||
-    reference.terpenes ||
-    [];
-  const normalizedRef = normalizeTerpeneList(refTerps);
+  if (!reference?.normalizedTerpenes?.length) return [];
 
   return allStrains
-    .filter((s) => s.name !== reference.name)
+    .filter((s) => s.name !== reference.name && s.normalizedTerpenes.length > 0)
     .map((s) => {
-      const targetTerps =
-        s.normalizedTerpenprofil || s.terpenprofil || s.terpenprofile || s.terpenes || [];
-      const normalizedTarget = normalizeTerpeneList(targetTerps);
-
-      const similarity = cosineSimilarity(normalizedRef, normalizedTarget);
-      const overlap = getTerpeneOverlap(normalizedRef, normalizedTarget);
+      const overlap = getTerpeneOverlap(reference.normalizedTerpenes, s.normalizedTerpenes);
+      const weightedSimilarity = overlap.weightedRatio;
+      const cosineScore = cosineSimilarity(reference.normalizedTerpenes, s.normalizedTerpenes);
 
       return {
         ...s,
-        similarity,
+        similarity: weightedSimilarity,
+        weightedSimilarity,
+        cosineSimilarity: cosineScore,
         overlap,
         similarityLabel: describeSimilarity(overlap),
       };
     })
-    .sort((a, b) => b.similarity - a.similarity)
+    .sort((a, b) => {
+      if (b.weightedSimilarity !== a.weightedSimilarity) {
+        return b.weightedSimilarity - a.weightedSimilarity;
+      }
+      return b.cosineSimilarity - a.cosineSimilarity;
+    })
     .slice(0, limit);
 }
 
@@ -141,10 +139,27 @@ export default function StrainSimilarity({
   const [selectedName, setSelectedName] = useState("");
   const [similarStrains, setSimilarStrains] = useState([]);
 
+  const strainsWithNormalizedTerpenes = useMemo(
+    () =>
+      kultivare.map((strain) => ({
+        ...strain,
+        normalizedTerpenes: normalizeTerpeneList(
+          strain.normalizedTerpenprofil ||
+            strain.terpenprofil ||
+            strain.terpenprofile ||
+            strain.terpenes ||
+            []
+        ),
+      })),
+    [kultivare]
+  );
+
   // only consider active strains for dropdown / comparisons unless discontinued should be included
   const selectableStrains = useMemo(
-    () => (includeDiscontinued ? kultivare : kultivare.filter(isActiveStrain)),
-    [includeDiscontinued, kultivare]
+    () =>
+      (includeDiscontinued ? strainsWithNormalizedTerpenes : strainsWithNormalizedTerpenes.filter(isActiveStrain))
+        .filter((strain) => strain.normalizedTerpenes.length > 0),
+    [includeDiscontinued, strainsWithNormalizedTerpenes]
   );
 
   const emitResults = useCallback(
