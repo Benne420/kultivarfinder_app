@@ -45,22 +45,6 @@ function cosineSimilarity(a = [], b = []) {
   return dot / (magA * magB);
 }
 
-function buildTerpeneWeightMap(list = []) {
-  const normalized = normalizeTerpeneList(list);
-  const map = new Map();
-  const len = normalized.length || 1;
-
-  normalized.forEach((name, index) => {
-    const weight = (len - index) / len;
-    const prev = map.get(name) || 0;
-    if (weight > prev) {
-      map.set(name, weight);
-    }
-  });
-
-  return map;
-}
-
 function getTerpeneOverlap(refList = [], targetList = []) {
   if (!refList.length || !targetList.length) return { shared: 0, total: 0, bucket: 0 };
 
@@ -70,23 +54,8 @@ function getTerpeneOverlap(refList = [], targetList = []) {
 
   const shared = Array.from(union).filter((t) => refSet.has(t) && targetSet.has(t)).length;
   const total = union.size;
-
-  const refWeights = buildTerpeneWeightMap(refList);
-  const targetWeights = buildTerpeneWeightMap(targetList);
-
-  let sharedWeight = 0;
-  let totalWeight = 0;
-  union.forEach((name) => {
-    const refWeight = refWeights.get(name) || 0;
-    const targetWeight = targetWeights.get(name) || 0;
-    const maxWeight = Math.max(refWeight, targetWeight);
-    const minWeight = Math.min(refWeight, targetWeight);
-    totalWeight += maxWeight;
-    sharedWeight += minWeight;
-  });
-
-  const weightedRatio = totalWeight > 0 ? sharedWeight / totalWeight : 0;
-  const bucket = weightedRatio === 0 ? 0 : Math.max(1, Math.round(weightedRatio * 5));
+  const ratio = total > 0 ? shared / total : 0;
+  const bucket = ratio === 0 ? 0 : Math.max(1, Math.round(ratio * 5));
 
   return { shared, total, bucket };
 }
