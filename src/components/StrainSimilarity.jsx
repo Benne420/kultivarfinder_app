@@ -11,16 +11,31 @@ function isActiveStrain(s = {}) {
   return false;
 }
 
-/* cosine similarity for two terpene-profiles (arrays). returns 0..1 */
+function normalizeTerpeneList(value = []) {
+  return (Array.isArray(value) ? value : String(value || "").split(/[;,]/))
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+/* cosine similarity for two terpene-profiles (arrays) with positional weighting */
 function cosineSimilarity(a = [], b = []) {
-  const arrA = Array.isArray(a) ? a : String(a || "").split(/[;,]/).map(s => s.trim()).filter(Boolean);
-  const arrB = Array.isArray(b) ? b : String(b || "").split(/[;,]/).map(s => s.trim()).filter(Boolean);
+  const arrA = normalizeTerpeneList(a);
+  const arrB = normalizeTerpeneList(b);
 
   const unique = Array.from(new Set([...arrA, ...arrB]));
   if (unique.length === 0) return 0;
 
-  const vecA = unique.map(k => (arrA.includes(k) ? 1 : 0));
-  const vecB = unique.map(k => (arrB.includes(k) ? 1 : 0));
+  const vecA = unique.map((k) => {
+    const idx = arrA.indexOf(k);
+    if (idx === -1) return 0;
+    return (arrA.length - idx) / arrA.length;
+  });
+
+  const vecB = unique.map((k) => {
+    const idx = arrB.indexOf(k);
+    if (idx === -1) return 0;
+    return (arrB.length - idx) / arrB.length;
+  });
 
   const dot = vecA.reduce((sum, v, i) => sum + v * vecB[i], 0);
   const magA = Math.sqrt(vecA.reduce((sum, v) => sum + v * v, 0));
@@ -28,6 +43,31 @@ function cosineSimilarity(a = [], b = []) {
 
   if (magA === 0 || magB === 0) return 0;
   return dot / (magA * magB);
+}
+
+function getTerpeneOverlap(refList = [], targetList = []) {
+  if (!refList.length || !targetList.length) return { shared: 0, total: 0, bucket: 0 };
+
+  const refSet = new Set(refList);
+  const targetSet = new Set(targetList);
+  const union = new Set([...refSet, ...targetSet]);
+
+  const shared = Array.from(union).filter((t) => refSet.has(t) && targetSet.has(t)).length;
+  const total = union.size;
+  const ratio = total > 0 ? shared / total : 0;
+  const bucket = ratio === 0 ? 0 : Math.max(1, Math.round(ratio * 5));
+
+  return { shared, total, bucket };
+}
+
+function describeSimilarity(overlap = { bucket: 0 }) {
+  const { bucket } = overlap;
+  if (bucket === 5) return "sehr hoch";
+  if (bucket === 4) return "hoch";
+  if (bucket === 3) return "mittel";
+  if (bucket === 2) return "niedrig";
+  if (bucket === 1) return "sehr niedrig";
+  return null;
 }
 
 function findSimilar(reference, allStrains, limit = 5) {
@@ -38,19 +78,25 @@ function findSimilar(reference, allStrains, limit = 5) {
     reference.terpenprofile ||
     reference.terpenes ||
     [];
+  const normalizedRef = normalizeTerpeneList(refTerps);
+
   return allStrains
-    .filter(s => s.name !== reference.name)
-    .map(s => ({
-      ...s,
-      similarity: cosineSimilarity(
-        refTerps,
-        s.normalizedTerpenprofil ||
-          s.terpenprofil ||
-          s.terpenprofile ||
-          s.terpenes ||
-          []
-      ),
-    }))
+    .filter((s) => s.name !== reference.name)
+    .map((s) => {
+      const targetTerps =
+        s.normalizedTerpenprofil || s.terpenprofil || s.terpenprofile || s.terpenes || [];
+      const normalizedTarget = normalizeTerpeneList(targetTerps);
+
+      const similarity = cosineSimilarity(normalizedRef, normalizedTarget);
+      const overlap = getTerpeneOverlap(normalizedRef, normalizedTarget);
+
+      return {
+        ...s,
+        similarity,
+        overlap,
+        similarityLabel: describeSimilarity(overlap),
+      };
+    })
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, limit);
 }

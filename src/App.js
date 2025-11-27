@@ -528,7 +528,11 @@ export default function CannabisKultivarFinderUseReducer() {
       payload.results.length
     ) {
       const referenceName = payload.reference?.name || payload.referenceName || "";
-      const referenceEntry = { ...payload.reference, similarity: 1 };
+      const referenceEntry = {
+        ...payload.reference,
+        similarity: 1,
+        similarityLabel: "Referenz",
+      };
       const filteredResults = payload.results.filter(
         (result) => result && result.name !== referenceEntry.name
       );
