@@ -45,6 +45,27 @@ function cosineSimilarity(a = [], b = []) {
   return dot / (magA * magB);
 }
 
+function getDominantOverlap(refList, targetList, topN = 3) {
+  if (!refList.length || !targetList.length) return { shared: 0, total: topN };
+  const refTop = refList.slice(0, topN);
+  const targetTop = targetList.slice(0, topN);
+  const shared = refTop.filter((t) => targetTop.includes(t)).length;
+  return { shared, total: topN };
+}
+
+function describeSimilarity(score, dominantOverlap = { shared: 0, total: 3 }) {
+  if (score >= 0.85 || dominantOverlap.shared >= Math.ceil(dominantOverlap.total * 0.66)) {
+    return "hoch";
+  }
+  if (score >= 0.6 || dominantOverlap.shared >= Math.ceil(dominantOverlap.total * 0.33)) {
+    return "mittel";
+  }
+  if (score > 0) {
+    return "niedrig";
+  }
+  return null;
+}
+
 function findSimilar(reference, allStrains, limit = 5) {
   if (!reference) return [];
   const refTerps =
@@ -53,19 +74,25 @@ function findSimilar(reference, allStrains, limit = 5) {
     reference.terpenprofile ||
     reference.terpenes ||
     [];
+  const normalizedRef = normalizeTerpeneList(refTerps);
+
   return allStrains
-    .filter(s => s.name !== reference.name)
-    .map(s => ({
-      ...s,
-      similarity: cosineSimilarity(
-        refTerps,
-        s.normalizedTerpenprofil ||
-          s.terpenprofil ||
-          s.terpenprofile ||
-          s.terpenes ||
-          []
-      ),
-    }))
+    .filter((s) => s.name !== reference.name)
+    .map((s) => {
+      const targetTerps =
+        s.normalizedTerpenprofil || s.terpenprofil || s.terpenprofile || s.terpenes || [];
+      const normalizedTarget = normalizeTerpeneList(targetTerps);
+
+      const similarity = cosineSimilarity(normalizedRef, normalizedTarget);
+      const dominantOverlap = getDominantOverlap(normalizedRef, normalizedTarget);
+
+      return {
+        ...s,
+        similarity,
+        dominantOverlap,
+        similarityLabel: describeSimilarity(similarity, dominantOverlap),
+      };
+    })
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, limit);
 }

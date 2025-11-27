@@ -50,9 +50,24 @@ const StrainTableRow = React.memo(function StrainTableRow({
     window.open(pdfUrl, "_blank", "noopener,noreferrer");
   }, [pdfUrl]);
 
-  const similarityValue =
+  const similarityScore =
     typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
-      ? `${Math.round(strain.similarity * 100)}%`
+      ? strain.similarity
+      : null;
+  const similarityPercent =
+    similarityScore !== null ? `${Math.round(similarityScore * 100)}%` : null;
+  const dominantOverlap = strain?.dominantOverlap;
+  const dominantOverlapText =
+    dominantOverlap && Number.isFinite(dominantOverlap.shared)
+      ? `${dominantOverlap.shared}/${dominantOverlap.total || 3} Top-Terpene`
+      : null;
+  const similarityLabel = strain?.similarityLabel;
+
+  const similarityValue =
+    similarityPercent || similarityLabel || dominantOverlapText
+      ? [similarityLabel, similarityPercent, dominantOverlapText]
+          .filter(Boolean)
+          .join(" • ")
       : "–";
 
   return (
