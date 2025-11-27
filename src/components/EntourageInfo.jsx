@@ -61,64 +61,23 @@ const references = [
   },
 ];
 
-const styles = {
-  container: {
-    padding: "16px",
-    backgroundColor: "#f8f9fa",
-    border: "1px solid #dee2e6",
-    borderRadius: "8px",
-    margin: "16px 0",
-  },
-  heading: {
-    marginTop: 0,
-    marginBottom: "12px",
-    fontSize: "18px",
-    color: "#495057",
-  },
-  text: {
-    fontSize: "14px",
-    lineHeight: 1.5,
-    color: "#495057",
-  },
-  section: {
-    marginBottom: "12px",
-  },
-  list: {
-    margin: "8px 0 0 0",
-    paddingLeft: "20px",
-  },
-  disclaimer: {
-    padding: "8px 12px",
-    backgroundColor: "#fff3cd",
-    border: "1px solid #ffeaa7",
-    borderRadius: "4px",
-    fontSize: "12px",
-    color: "#856404",
-  },
-  sources: {
-    marginTop: "12px",
-    fontSize: "12px",
-    color: "#6c757d",
-  },
-};
-
 const EntourageInfoContent = ({ headingId }) => {
   return (
-    <section style={styles.container} aria-labelledby={headingId}>
-      <h3 id={headingId} style={styles.heading}>
-        Entourage-Effekt
-      </h3>
-
-      <div style={styles.text}>
-        <p style={{ margin: "0 0 12px 0" }}>
-          Der <strong>Entourage-Effekt</strong> bezeichnet potenziell synergistische Wechselwirkungen zwischen Cannabinoiden,
-          Terpenen und Flavonoiden. Das Konzept postuliert, dass Kombinationspräparate ein anderes oder ausgewogeneres
-          pharmakologisches Profil entfalten könnten als isolierte Einzelstoffe.
+    <section className="entourage-info" aria-labelledby={headingId}>
+      <header className="entourage-info__header">
+        <p className="entourage-info__eyebrow">Wissen</p>
+        <h3 id={headingId} className="entourage-info__title">
+          Entourage-Effekt &amp; ECS
+        </h3>
+        <p className="entourage-info__lede">
+          Kompakte Übersicht zu Mechanismen, möglichen Synergien und aktueller Evidenzlage.
         </p>
+      </header>
 
-        <div style={styles.section}>
-          <strong>Das Endocannabinoid-System (ECS) im Überblick</strong>
-          <ul style={styles.list}>
+      <div className="entourage-info__panel">
+        <div className="entourage-info__section">
+          <h4 className="entourage-info__section-title">Das Endocannabinoid-System (ECS) im Überblick</h4>
+          <ul className="entourage-info__list">
             {ecsPoints.map(({ heading, text }) => (
               <li key={heading}>
                 <strong>{heading}:</strong> {text}
@@ -127,9 +86,18 @@ const EntourageInfoContent = ({ headingId }) => {
           </ul>
         </div>
 
-        <div style={styles.section}>
-          <strong>Wichtige Aspekte zum Entourage-Effekt</strong>
-          <ul style={styles.list}>
+        <div className="entourage-info__section">
+          <h4 className="entourage-info__section-title">Entourage-Effekt</h4>
+          <p>
+            Der Entourage-Effekt bezeichnet potenziell synergistische Wechselwirkungen zwischen Cannabinoiden, Terpenen und
+            Flavonoiden. Das Konzept postuliert, dass Kombinationspräparate ein anderes oder ausgewogeneres pharmakologisches
+            Profil entfalten könnten als isolierte Einzelstoffe.
+          </p>
+        </div>
+
+        <div className="entourage-info__section">
+          <h5 className="entourage-info__subsection-title">Wichtige Aspekte zum Entourage-Effekt</h5>
+          <ul className="entourage-info__list entourage-info__list--dense">
             {aspects.map(({ title, description }) => (
               <li key={title}>
                 <strong>{`${title}:`}</strong> {description}
@@ -138,20 +106,20 @@ const EntourageInfoContent = ({ headingId }) => {
           </ul>
         </div>
 
-        <p style={{ margin: "0 0 12px 0" }}>
+        <p className="entourage-info__note">
           Der Hypothese nach könnten Kombinationen molekulare Synergien erzeugen; eine klinisch belastbare Bestätigung steht
           bislang aus (Russo, 2011).
         </p>
 
-        <div style={styles.disclaimer}>
+        <div className="entourage-info__disclaimer" role="note">
           <strong>Rechtlicher Hinweis:</strong> Diese Informationen dienen der allgemeinen wissenschaftlichen Orientierung und
           ersetzen keine medizinische Beratung. Indikation und Präparateauswahl erfolgen ausschließlich durch ärztliches
           Fachpersonal.
         </div>
 
-        <div style={styles.sources}>
-          Quellen:
-          <ul style={styles.list}>
+        <div className="entourage-info__sources">
+          <h6 className="entourage-info__sources-title">Quellen</h6>
+          <ol className="entourage-info__list entourage-info__list--compact">
             {references.map(({ label, href }) => (
               <li key={href}>
                 <a href={href} target="_blank" rel="noopener noreferrer">
@@ -159,7 +127,7 @@ const EntourageInfoContent = ({ headingId }) => {
                 </a>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
       </div>
     </section>
