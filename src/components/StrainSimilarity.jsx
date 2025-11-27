@@ -102,24 +102,13 @@ function describeSimilarity(overlap = { bucket: 0 }) {
 }
 
 function findSimilar(reference, allStrains, limit = 5) {
-  if (!reference) return [];
-  const refTerps =
-    reference.normalizedTerpenprofil ||
-    reference.terpenprofil ||
-    reference.terpenprofile ||
-    reference.terpenes ||
-    [];
-  const normalizedRef = normalizeTerpeneList(refTerps);
+  if (!reference?.normalizedTerpenes?.length) return [];
 
   return allStrains
-    .filter((s) => s.name !== reference.name)
+    .filter((s) => s.name !== reference.name && s.normalizedTerpenes.length > 0)
     .map((s) => {
-      const targetTerps =
-        s.normalizedTerpenprofil || s.terpenprofil || s.terpenprofile || s.terpenes || [];
-      const normalizedTarget = normalizeTerpeneList(targetTerps);
-
-      const similarity = cosineSimilarity(normalizedRef, normalizedTarget);
-      const overlap = getTerpeneOverlap(normalizedRef, normalizedTarget);
+      const similarity = cosineSimilarity(reference.normalizedTerpenes, s.normalizedTerpenes);
+      const overlap = getTerpeneOverlap(reference.normalizedTerpenes, s.normalizedTerpenes);
 
       return {
         ...s,
@@ -141,10 +130,27 @@ export default function StrainSimilarity({
   const [selectedName, setSelectedName] = useState("");
   const [similarStrains, setSimilarStrains] = useState([]);
 
+  const strainsWithNormalizedTerpenes = useMemo(
+    () =>
+      kultivare.map((strain) => ({
+        ...strain,
+        normalizedTerpenes: normalizeTerpeneList(
+          strain.normalizedTerpenprofil ||
+            strain.terpenprofil ||
+            strain.terpenprofile ||
+            strain.terpenes ||
+            []
+        ),
+      })),
+    [kultivare]
+  );
+
   // only consider active strains for dropdown / comparisons unless discontinued should be included
   const selectableStrains = useMemo(
-    () => (includeDiscontinued ? kultivare : kultivare.filter(isActiveStrain)),
-    [includeDiscontinued, kultivare]
+    () =>
+      (includeDiscontinued ? strainsWithNormalizedTerpenes : strainsWithNormalizedTerpenes.filter(isActiveStrain))
+        .filter((strain) => strain.normalizedTerpenes.length > 0),
+    [includeDiscontinued, strainsWithNormalizedTerpenes]
   );
 
   const emitResults = useCallback(
