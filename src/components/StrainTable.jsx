@@ -63,12 +63,10 @@ const StrainTableRow = React.memo(function StrainTableRow({
       : null;
   const similarityLabel = strain?.similarityLabel;
 
-  const similarityValue =
-    similarityPercent || similarityLabel || dominantOverlapText
-      ? [similarityLabel, similarityPercent, dominantOverlapText]
-          .filter(Boolean)
-          .join(" • ")
-      : "–";
+  const similarityMeta = [similarityLabel, dominantOverlapText].filter(Boolean);
+  const similarityDescription = similarityPercent
+    ? [similarityPercent, similarityMeta.join(", ")].filter(Boolean).join(" – ")
+    : null;
 
   return (
     <tr className={isSelected ? "is-selected" : undefined}>
@@ -95,7 +93,25 @@ const StrainTableRow = React.memo(function StrainTableRow({
       </td>
       {hasSimilarityColumn && (
         <td className="similarity-column" data-label="Übereinstimmung">
-          {similarityValue}
+          {similarityPercent !== null ? (
+            <div className="similarity-badge" aria-label={similarityDescription}>
+              <span className="similarity-badge__primary">{similarityPercent}</span>
+              {similarityMeta.length > 0 && (
+                <span className="similarity-badge__meta">
+                  {similarityMeta.map((entry, index) => (
+                    <span
+                      key={`${entry}-${index}`}
+                      className={index === 0 ? "similarity-pill" : "similarity-detail"}
+                    >
+                      {entry}
+                    </span>
+                  ))}
+                </span>
+              )}
+            </div>
+          ) : (
+            "–"
+          )}
         </td>
       )}
       <td data-label="THC">
