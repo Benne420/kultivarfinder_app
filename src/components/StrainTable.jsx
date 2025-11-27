@@ -54,8 +54,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
     typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
       ? strain.similarity
       : null;
-  const similarityPercent =
-    similarityScore !== null ? `${Math.round(similarityScore * 100)}%` : null;
   const dominantOverlap = strain?.dominantOverlap;
   const dominantOverlapText =
     dominantOverlap && Number.isFinite(dominantOverlap.shared)
@@ -63,10 +61,11 @@ const StrainTableRow = React.memo(function StrainTableRow({
       : null;
   const similarityLabel = strain?.similarityLabel;
 
-  const similarityMeta = [similarityLabel, dominantOverlapText].filter(Boolean);
-  const similarityDescription = similarityPercent
-    ? [similarityPercent, similarityMeta.join(", ")].filter(Boolean).join(" – ")
-    : null;
+  const similarityPrimary = similarityLabel || "Übereinstimmung";
+  const similarityMeta = [dominantOverlapText].filter(Boolean);
+  const similarityDescription =
+    [similarityLabel, dominantOverlapText].filter(Boolean).join(" – ") ||
+    "Ähnlichkeitsbewertung";
 
   return (
     <tr className={isSelected ? "is-selected" : undefined}>
@@ -93,9 +92,9 @@ const StrainTableRow = React.memo(function StrainTableRow({
       </td>
       {hasSimilarityColumn && (
         <td className="similarity-column" data-label="Übereinstimmung">
-          {similarityPercent !== null ? (
+          {similarityScore !== null ? (
             <div className="similarity-badge" aria-label={similarityDescription}>
-              <span className="similarity-badge__primary">{similarityPercent}</span>
+              <span className="similarity-badge__primary">{similarityPrimary}</span>
               {similarityMeta.length > 0 && (
                 <span className="similarity-badge__meta">
                   {similarityMeta.map((entry, index) => (
