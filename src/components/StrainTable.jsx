@@ -54,17 +54,21 @@ const StrainTableRow = React.memo(function StrainTableRow({
     typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
       ? strain.similarity
       : null;
-  const dominantOverlap = strain?.dominantOverlap;
-  const dominantOverlapText =
-    dominantOverlap && Number.isFinite(dominantOverlap.shared)
-      ? `${dominantOverlap.shared}/${dominantOverlap.total || 3} Top-Terpene`
+  const overlap = strain?.overlap;
+  const overlapBucketText =
+    overlap && Number.isFinite(overlap.bucket)
+      ? `${overlap.bucket}/5 Terpene`
+      : null;
+  const overlapDetailText =
+    overlap && Number.isFinite(overlap.shared) && Number.isFinite(overlap.total) && overlap.total > 0
+      ? `${overlap.shared}/${overlap.total} Terpene deckungsgleich`
       : null;
   const similarityLabel = strain?.similarityLabel;
 
   const similarityPrimary = similarityLabel || "Übereinstimmung";
-  const similarityMeta = [dominantOverlapText].filter(Boolean);
+  const similarityMeta = [overlapBucketText, overlapDetailText].filter(Boolean);
   const similarityDescription =
-    [similarityLabel, dominantOverlapText].filter(Boolean).join(" – ") ||
+    [similarityLabel, overlapBucketText, overlapDetailText].filter(Boolean).join(" – ") ||
     "Ähnlichkeitsbewertung";
 
   return (

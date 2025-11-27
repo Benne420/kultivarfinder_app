@@ -45,24 +45,28 @@ function cosineSimilarity(a = [], b = []) {
   return dot / (magA * magB);
 }
 
-function getDominantOverlap(refList, targetList, topN = 3) {
-  if (!refList.length || !targetList.length) return { shared: 0, total: topN };
-  const refTop = refList.slice(0, topN);
-  const targetTop = targetList.slice(0, topN);
-  const shared = refTop.filter((t) => targetTop.includes(t)).length;
-  return { shared, total: topN };
+function getTerpeneOverlap(refList = [], targetList = []) {
+  if (!refList.length || !targetList.length) return { shared: 0, total: 0, bucket: 0 };
+
+  const refSet = new Set(refList);
+  const targetSet = new Set(targetList);
+  const union = new Set([...refSet, ...targetSet]);
+
+  const shared = Array.from(union).filter((t) => refSet.has(t) && targetSet.has(t)).length;
+  const total = union.size;
+  const ratio = total > 0 ? shared / total : 0;
+  const bucket = ratio === 0 ? 0 : Math.max(1, Math.round(ratio * 5));
+
+  return { shared, total, bucket };
 }
 
-function describeSimilarity(score, dominantOverlap = { shared: 0, total: 3 }) {
-  if (score >= 0.85 || dominantOverlap.shared >= Math.ceil(dominantOverlap.total * 0.66)) {
-    return "hoch";
-  }
-  if (score >= 0.6 || dominantOverlap.shared >= Math.ceil(dominantOverlap.total * 0.33)) {
-    return "mittel";
-  }
-  if (score > 0) {
-    return "niedrig";
-  }
+function describeSimilarity(overlap = { bucket: 0 }) {
+  const { bucket } = overlap;
+  if (bucket === 5) return "sehr hoch";
+  if (bucket === 4) return "hoch";
+  if (bucket === 3) return "mittel";
+  if (bucket === 2) return "niedrig";
+  if (bucket === 1) return "sehr niedrig";
   return null;
 }
 
@@ -84,13 +88,13 @@ function findSimilar(reference, allStrains, limit = 5) {
       const normalizedTarget = normalizeTerpeneList(targetTerps);
 
       const similarity = cosineSimilarity(normalizedRef, normalizedTarget);
-      const dominantOverlap = getDominantOverlap(normalizedRef, normalizedTarget);
+      const overlap = getTerpeneOverlap(normalizedRef, normalizedTarget);
 
       return {
         ...s,
         similarity,
-        dominantOverlap,
-        similarityLabel: describeSimilarity(similarity, dominantOverlap),
+        overlap,
+        similarityLabel: describeSimilarity(overlap),
       };
     })
     .sort((a, b) => b.similarity - a.similarity)
