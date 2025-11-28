@@ -4,7 +4,7 @@ import TerpeneChips from "./TerpeneChips";
 const PAGE_SIZE_OPTIONS = [50, 100];
 const DEFAULT_PAGE_SIZE = 100;
 
-const toSafePdfPath = (name) => {
+export const toSafePdfPath = (name) => {
   const trimmed = String(name || "").trim();
   if (!trimmed) {
     return "/datenblaetter/datenblatt.pdf";
