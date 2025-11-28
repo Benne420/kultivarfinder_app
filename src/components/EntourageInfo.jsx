@@ -94,7 +94,7 @@ const EntourageInfoContent = ({ headingId }) => {
         ))}
       </div>
 
-      <div className="entourage-info__two-column" role="presentation">
+      <div className="entourage-info__stack" role="presentation">
         <section className="entourage-info__block" aria-label="Endocannabinoid-System">
           <h4 className="entourage-info__section-title">Das Endocannabinoid-System (ECS)</h4>
           <dl className="entourage-info__definition-list">

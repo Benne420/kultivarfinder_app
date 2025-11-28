@@ -512,10 +512,9 @@ nav a:hover {
   font-size: 14px;
 }
 
-.entourage-info__two-column {
+.entourage-info__stack {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  gap: 12px;
 }
 
 .entourage-info__section-title,
