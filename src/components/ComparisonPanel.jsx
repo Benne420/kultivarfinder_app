@@ -31,6 +31,7 @@ export default function ComparisonPanel({
   const safeColumnWidth = Math.max(columnWidthPx, 160);
   const safeHeaderWidth = Math.max(COMPARISON_HEADER_WIDTH_PX, 180);
   const gridTemplate = `minmax(160px, ${safeHeaderWidth}px) repeat(${cultivarCount}, minmax(160px, ${safeColumnWidth}px))`;
+  const columnTemplate = { gridTemplateColumns: gridTemplate };
 
   const panelStyle = {
     "--comparison-column-width": `${safeColumnWidth}px`,

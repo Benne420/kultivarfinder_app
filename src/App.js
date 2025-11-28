@@ -148,13 +148,15 @@ const filterKultivare = (
       }
       // Wirkungen filtern (normalisiert)
       if (selectedNormalized && selectedNormalized.length) {
-        if (!Array.isArray(k.wirkungen)) return false;
-        // Use preprocessed normalizedWirkungen if available to avoid re-normalizing on each filter.
+        // Greife auf vorberechnete normalisierte Werte zurück und fallbacke auf Rohdaten.
         const kultivarNormalized = Array.isArray(k.normalizedWirkungen)
           ? k.normalizedWirkungen
           : Array.isArray(k.wirkungen)
           ? k.wirkungen.map((w) => normalizeWirkung(w))
           : [];
+        if (!kultivarNormalized.length) {
+          return false;
+        }
         for (const w of selectedNormalized) {
           if (!kultivarNormalized.includes(w)) {
             return false;

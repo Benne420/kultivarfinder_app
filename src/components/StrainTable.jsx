@@ -5,16 +5,25 @@ const PAGE_SIZE_OPTIONS = [50, 100];
 const DEFAULT_PAGE_SIZE = 100;
 
 const toSafePdfPath = (name) => {
-  const normalized = String(name || "")
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/["'`]/g, "")
+  const trimmed = String(name || "").trim();
+  if (!trimmed) {
+    return "/datenblaetter/datenblatt.pdf";
+  }
+
+  // Entferne nur wirklich problematische Dateisystem-Zeichen, lasse aber Diakritika intakt,
+  // damit vorhandene Dateien wie "Rose_Gold_Pavé.pdf" auch gefunden werden.
+  const withoutInvalidFsChars = trimmed
+    .replace(/[<>:"/\\|?*]/g, "")
+    .replace(/[\u0000-\u001f]/g, "")
+    .replace(/['`]/g, "");
+
+  const underscored = withoutInvalidFsChars
+    .replace(/\s+/g, "_")
+    .replace(/_+/g, "_")
     .trim();
 
-  const sanitized = normalized.replace(/[^\w\s-]+/g, "");
-  const underscored = sanitized.replace(/\s+/g, "_") || "datenblatt";
-
-  return `/datenblaetter/${encodeURIComponent(underscored)}.pdf`;
+  const safeName = underscored || "datenblatt";
+  return `/datenblaetter/${encodeURIComponent(safeName)}.pdf`;
 };
 
 const StrainTableRow = React.memo(function StrainTableRow({
