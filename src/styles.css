@@ -1528,6 +1528,47 @@ nav a:hover {
   font-weight: 600;
 }
 
+.terpene-legend {
+  margin: 8px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #546e7a;
+}
+
+.terpene-legend__label {
+  font-weight: 600;
+  color: #35506b;
+}
+
+.terpene-legend__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  font-size: 12px;
+  border: 1px solid var(--terp-chip-border);
+}
+
+.terpene-legend__badge--dominant {
+  background: #e3f2fd;
+  color: #0d47a1;
+  border-color: #42a5f5;
+}
+
+.terpene-legend__badge--supporting {
+  background: #f7fafc;
+  color: #35506b;
+}
+
+.terpene-legend__text {
+  font-size: 12px;
+  color: #546e7a;
+}
+
 .reset-btn {
   display: inline-flex;
   align-items: center;

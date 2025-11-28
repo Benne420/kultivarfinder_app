@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTerpeneContext } from '../context/TerpeneContext';
-import { mapTerpeneToCanonical, sortTerpeneNames } from '../utils/helpers';
+import { mapTerpeneToCanonical } from '../utils/helpers';
 
 const makeAnchorId = (value, fallback) => {
   const raw = (value || '').toString().trim();
@@ -33,12 +33,21 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   const [error, setError] = useState(null);
   const [showDetails, setShowDetails] = useState(true);
 
-  const sortedProfile = useMemo(() => {
+  const orderedProfile = useMemo(() => {
     if (!cultivar || !Array.isArray(cultivar.terpenprofil)) return [];
-    const canonicalNames = cultivar.terpenprofil
-      .filter(Boolean)
-      .map((name) => mapTerpeneToCanonical(name, aliasLookup));
-    return sortTerpeneNames(canonicalNames);
+
+    const seen = new Set();
+
+    return cultivar.terpenprofil
+      .map((name) => mapTerpeneToCanonical(name, aliasLookup))
+      .map((value) => (value || '').toString().trim())
+      .filter((name) => {
+        if (!name) return false;
+        const key = name.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
   }, [aliasLookup, cultivar]);
 
   useEffect(() => {
@@ -169,7 +178,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
           <nav aria-label="Terpen-Navigation" className="terpen-panel__nav">
             <span className="terpen-panel__nav-label">Schnellwahl:</span>
             <ul>
-              {sortedProfile.map((name, index) => (
+              {orderedProfile.map((name, index) => (
                 <li key={name || index}>
                   <a href={`#${makeAnchorId(name, index)}`}>
                     {name || `Terpen ${index + 1}`}
@@ -189,9 +198,9 @@ const CultivarTerpenPanel = ({ cultivar }) => {
         </div>
       </div>
 
-      {sortedProfile.length > 0 && (
+      {orderedProfile.length > 0 && (
         <div className="terpen-panel__overview" role="list">
-          {sortedProfile.map((name, index) => {
+          {orderedProfile.map((name, index) => {
             const sectionId = makeAnchorId(name, index);
             const rank = index === 0 ? 'dominant' : 'begleitend';
             const icon = index === 0 ? '🔥' : '🌿';
@@ -225,7 +234,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
         </p>
       </div>
 
-      {sortedProfile.map((terpenName, index) => {
+      {orderedProfile.map((terpenName, index) => {
         const terpenInfo = getTerpenInfo(terpenName);
         const sectionId = makeAnchorId(terpenName, index);
 

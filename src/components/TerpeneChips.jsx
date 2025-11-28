@@ -1,14 +1,22 @@
-import { useId, useMemo } from "react";
-import { sortTerpeneNames } from "../utils/helpers";
+import { useMemo } from "react";
 
-export default function TerpeneChips({ list = [], onInfo }) {
-  const legendId = useId();
-  const sortedList = useMemo(() => {
+export default function TerpeneChips({ list = [], onInfo, describedBy }) {
+  const orderedList = useMemo(() => {
     if (!Array.isArray(list)) return [];
-    return sortTerpeneNames(list.filter(Boolean));
+
+    const seen = new Set();
+    return list
+      .map((value) => (value || "").toString().trim())
+      .filter((name) => {
+        if (!name) return false;
+        const key = name.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
   }, [list]);
 
-  if (sortedList.length === 0) {
+  if (orderedList.length === 0) {
     return (
       <p className="terp-list__placeholder" role="status">
         Kein Terpenprofil hinterlegt. Die Angaben fehlen entweder im Datensatz
@@ -24,14 +32,9 @@ export default function TerpeneChips({ list = [], onInfo }) {
   }
 
   return (
-    <div className="terp-list__wrapper" aria-describedby={legendId}>
-      <p id={legendId} className="terp-list__legend">
-        Legende: kräftig markierte Chips stehen für dominantere Terpene, helle
-        Chips für Begleitstoffe. Nutzen Sie die Schaltflächen, um Details
-        aufzurufen.
-      </p>
+    <div className="terp-list__wrapper" aria-describedby={describedBy}>
       <ul className="terp-list" aria-label="Terpenprofil">
-        {sortedList.map((t, idx) => {
+        {orderedList.map((t, idx) => {
           const dominance = idx === 0 ? "dominant" : "supporting";
           return (
             <li key={`${t}-${idx}`}>
