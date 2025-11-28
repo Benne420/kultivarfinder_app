@@ -487,6 +487,31 @@ nav a:hover {
   color: #4b5b6c;
 }
 
+.entourage-info__summary {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.entourage-info__summary-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #e6ebf1;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.entourage-info__summary-text {
+  margin: 0;
+  color: #2b3642;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 .entourage-info__two-column {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -513,23 +538,14 @@ nav a:hover {
 }
 
 .entourage-info__block {
-  padding: 6px 0 6px 14px;
+  padding: 6px 0;
   display: grid;
-  gap: 8px;
-}
-
-.entourage-info__block--ecs {
-  border-left: 4px solid #0f5bbd;
-}
-
-.entourage-info__block--entourage {
-  border-left: 4px solid #66788d;
-}
-
-.entourage-info__block-heading {
-  display: flex;
-  align-items: center;
   gap: 10px;
+  border-top: 1px solid #dfe5eb;
+}
+
+.entourage-info__block:first-of-type {
+  border-top: none;
 }
 
 .entourage-info__tag {
@@ -563,17 +579,54 @@ nav a:hover {
   gap: 8px;
 }
 
-.entourage-info__list--spaced {
+.entourage-info__list--spaced,
+.entourage-info__list--compact {
   display: grid;
   gap: 10px;
   padding-left: 18px;
 }
 
 .entourage-info__list--compact {
-  padding-left: 18px;
   margin: 0;
   font-size: 13px;
   color: #5a6a7a;
+}
+
+.entourage-info__definition-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.entourage-info__definition-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.entourage-info__definition-row dt {
+  margin: 0;
+  font-weight: 700;
+  color: #0f5bbd;
+}
+
+.entourage-info__definition-row dd {
+  margin: 0;
+  color: #2b3642;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .entourage-info__definition-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .entourage-info__definition-row dt {
+    font-size: 13px;
+  }
 }
 
 .entourage-info__note {
