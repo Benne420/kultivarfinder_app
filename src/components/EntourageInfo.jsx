@@ -3,15 +3,15 @@ import React from "react";
 const ecsPoints = [
   {
     heading: "Funktion",
-    text: "Reguliert u. a. Schmerzverarbeitung, Schlaf, Muskeltonus und Immunantworten.",
+    text: "Steuert Schmerzverarbeitung, Schlaf, Muskeltonus und Immunantworten mit.",
   },
   {
     heading: "Rezeptoren",
-    text: "CB1 (zentralnervös) und CB2 (Immun- und periphere Gewebe) sind zentrale Bindungspartner für Endo- und Phytocannabinoide.",
+    text: "CB1 (v. a. zentralnervös) und CB2 (Immun- und periphere Gewebe) binden Endo- und Phytocannabinoide.",
   },
   {
     heading: "Cannabinoide",
-    text: "THC wirkt vor allem psychoaktiv und analgetisch; CBD zeigt vorwiegend entzündungshemmende und antikonvulsive Eigenschaften und kann unerwünschte THC-Effekte abschwächen.",
+    text: "THC: vor allem psychoaktiv und analgetisch. CBD: eher entzündungshemmend/antikonvulsiv und kann THC-Nebenwirkungen dämpfen.",
   },
 ];
 
@@ -19,22 +19,22 @@ const aspects = [
   {
     title: "Cannabinoid–Terpen–Interaktionen",
     description:
-      "Terpene wie Linalool, β-Pinen oder α-Humulen zeigen in präklinischen Modellen cannabimimetische Eigenschaften und können Cannabinoidwirkungen modulieren (LaVigne et al., 2021).",
+      "Terpene wie Linalool, β-Pinen oder α-Humulen können Cannabinoidwirkungen in Modellen modulieren (LaVigne et al., 2021).",
   },
   {
     title: "Pharmakologische Modulation",
     description:
-      "Terpene besitzen eigene Wirkmechanismen – etwa über GABA-, Adenosin- oder TRP-Kanäle – und könnten Bioverfügbarkeit sowie Rezeptorbindung von Cannabinoiden beeinflussen (André et al., 2024).",
+      "Eigene Wirkmechanismen (z. B. GABA, Adenosin, TRP) könnten Bioverfügbarkeit und Rezeptorbindung der Cannabinoide beeinflussen (André et al., 2024).",
   },
   {
     title: "Klinische Evidenz",
     description:
-      "Beobachtungen legen nahe, dass CBD-reiche Vollextrakte eine stärkere Wirksamkeit und ein günstigeres Nebenwirkungsprofil zeigen könnten als isoliertes CBD (Pamplona et al., 2018).",
+      "Beobachtungen: CBD-reiche Vollextrakte könnten wirksamer und verträglicher sein als isoliertes CBD (Pamplona et al., 2018).",
   },
   {
     title: "Aktueller Forschungsstand",
     description:
-      "Systematische Übersichtsarbeiten betonen, dass bislang keine kontrollierten klinischen Studien eine generalisierbare Synergie belegen (Christensen et al., 2023).",
+      "Systematische Reviews sehen bislang keine belastbaren kontrollierten Studien für generalisierbare Synergien (Christensen et al., 2023).",
   },
 ];
 
@@ -67,10 +67,10 @@ const EntourageInfoContent = ({ headingId }) => {
       <header className="entourage-info__header">
         <p className="entourage-info__eyebrow">Wissen</p>
         <h3 id={headingId} className="entourage-info__title">
-          Entourage-Effekt &amp; ECS
+          ECS und Entourage-Effekt
         </h3>
         <p className="entourage-info__lede">
-          Kurz und sachlich: Grundlagen zum Endocannabinoid-System und zum Entourage-Effekt.
+          Kompakter Überblick zu Endocannabinoid-System und Entourage-Effekt.
         </p>
       </header>
 
@@ -89,13 +89,11 @@ const EntourageInfoContent = ({ headingId }) => {
       <section className="entourage-info__section" aria-label="Entourage-Effekt">
         <h4 className="entourage-info__section-title">Entourage-Effekt</h4>
         <p className="entourage-info__text">
-          Potenziell synergistische Wechselwirkungen zwischen Cannabinoiden, Terpenen und Flavonoiden; das Konzept geht
-          davon aus, dass Kombinationen ein anderes oder ausgewogeneres pharmakologisches Profil entfalten könnten als
-          isolierte Einzelstoffe.
+          Synergien zwischen Cannabinoiden, Terpenen und Flavonoiden: Mischungen können ein anderes, teils
+          ausgewogeneres pharmakologisches Profil als Einzelstoffe entfalten.
         </p>
         <p className="entourage-info__note">
-          Der Hypothese nach könnten Kombinationen molekulare Synergien erzeugen; eine klinisch belastbare Bestätigung steht
-          bislang aus (Russo, 2011).
+          Die Synergie-Hypothese ist plausibel, aber klinisch bislang nicht belastbar bestätigt (Russo, 2011).
         </p>
       </section>
 
