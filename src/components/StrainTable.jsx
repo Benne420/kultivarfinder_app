@@ -163,6 +163,8 @@ export default function StrainTable({
   showRadar = () => {},
   onToggleSelect = () => {},
   selectedCultivars = [],
+  onResetEmptyState = () => {},
+  isSimilarityMode = false,
 }) {
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [pageIndex, setPageIndex] = useState(0);
@@ -254,11 +256,27 @@ export default function StrainTable({
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={hasSimilarityColumn ? 8 : 7}
-                  style={{ textAlign: "center", padding: 12 }}
-                >
-                  Keine Ergebnisse
+                <td colSpan={hasSimilarityColumn ? 8 : 7} style={{ padding: 12 }}>
+                  <div className="empty-state" aria-live="polite">
+                    <p className="empty-state__headline">Keine Ergebnisse</p>
+                    <p className="empty-state__hint">
+                      {isSimilarityMode
+                        ? "Es wurden keine ähnlichen Sorten gefunden. Setzen Sie die Ähnlichkeitssuche zurück, um wieder alle Ergebnisse zu sehen."
+                        : "Passen Sie die Filter an oder setzen Sie sie zurück, um wieder Treffer zu erhalten."}
+                    </p>
+                    <button
+                      type="button"
+                      className="primary"
+                      onClick={onResetEmptyState}
+                      aria-label={
+                        isSimilarityMode
+                          ? "Ähnlichkeitssuche zurücksetzen"
+                          : "Alle Filter zurücksetzen"
+                      }
+                    >
+                      {isSimilarityMode ? "Ähnlichkeitssuche aufheben" : "Filter zurücksetzen"}
+                    </button>
+                  </div>
                 </td>
               </tr>
             )}

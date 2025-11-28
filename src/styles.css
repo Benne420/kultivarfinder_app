@@ -1662,6 +1662,27 @@ nav a:hover {
   background: rgba(201, 224, 255, 0.6);
 }
 
+.strain-table .empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  align-items: center;
+  padding: 12px 8px;
+}
+
+.strain-table .empty-state__headline {
+  margin: 0;
+  font-weight: 700;
+  color: #2c3a4b;
+}
+
+.strain-table .empty-state__hint {
+  margin: 0;
+  color: #4d5a6a;
+  max-width: 520px;
+}
+
 .strain-table .link-button {
   padding: 6px 12px;
   min-height: 34px;

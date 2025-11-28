@@ -155,12 +155,19 @@ export default function StrainSimilarity({
   );
 
   // only consider active strains for dropdown / comparisons unless discontinued should be included
-  const selectableStrains = useMemo(
-    () =>
-      (includeDiscontinued ? strainsWithNormalizedTerpenes : strainsWithNormalizedTerpenes.filter(isActiveStrain))
-        .filter((strain) => strain.normalizedTerpenes.length > 0),
-    [includeDiscontinued, strainsWithNormalizedTerpenes]
-  );
+  const selectableStrains = useMemo(() => {
+    const filtered = (
+      includeDiscontinued
+        ? strainsWithNormalizedTerpenes
+        : strainsWithNormalizedTerpenes.filter(isActiveStrain)
+    ).filter((strain) => strain.normalizedTerpenes.length > 0);
+
+    return filtered.sort((a, b) => {
+      const nameA = a?.name || "";
+      const nameB = b?.name || "";
+      return nameA.localeCompare(nameB, "de", { sensitivity: "base" });
+    });
+  }, [includeDiscontinued, strainsWithNormalizedTerpenes]);
 
   const emitResults = useCallback(
     (reference, results) => {
@@ -232,10 +239,9 @@ export default function StrainSimilarity({
           onChange={handleChange}
           value={selectedName}
           aria-labelledby="similarity-panel-title"
+          aria-describedby="strain-select-description"
         >
-          <option value="" disabled hidden>
-            Sorte wählen
-          </option>
+          <option value="">Sorte wählen …</option>
           {selectableStrains.map((s) => (
             <option key={s.name} value={s.name}>
               {s.name}
