@@ -70,65 +70,84 @@ const EntourageInfoContent = ({ headingId }) => {
           Entourage-Effekt &amp; ECS
         </h3>
         <p className="entourage-info__lede">
-          Kompakte Übersicht zu Mechanismen, möglichen Synergien und aktueller Evidenzlage.
+          Kompakte Übersicht zu Mechanismen, potenziellen Synergien und aktueller Evidenzlage.
         </p>
       </header>
 
-      <div className="entourage-info__panel">
-        <div className="entourage-info__section">
-          <h4 className="entourage-info__section-title">Das Endocannabinoid-System (ECS) im Überblick</h4>
-          <ul className="entourage-info__list">
-            {ecsPoints.map(({ heading, text }) => (
-              <li key={heading}>
-                <strong>{heading}:</strong> {text}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="entourage-info__grid" role="presentation">
+        <article className="entourage-info__card entourage-info__card--accent" aria-label="Endocannabinoid-System">
+          <div className="entourage-info__pill">ECS</div>
+          <div className="entourage-info__card-body">
+            <h4 className="entourage-info__section-title">Das Endocannabinoid-System (ECS)</h4>
+            <ul className="entourage-info__list entourage-info__list--spaced">
+              {ecsPoints.map(({ heading, text }) => (
+                <li key={heading}>
+                  <strong>{heading}:</strong> {text}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
 
-        <div className="entourage-info__section">
-          <h4 className="entourage-info__section-title">Entourage-Effekt</h4>
-          <p>
-            Der Entourage-Effekt bezeichnet potenziell synergistische Wechselwirkungen zwischen Cannabinoiden, Terpenen und
-            Flavonoiden. Das Konzept postuliert, dass Kombinationspräparate ein anderes oder ausgewogeneres pharmakologisches
-            Profil entfalten könnten als isolierte Einzelstoffe.
+        <article className="entourage-info__card entourage-info__card--ghost" aria-label="Entourage-Effekt">
+          <div className="entourage-info__pill entourage-info__pill--subtle">Entourage</div>
+          <div className="entourage-info__card-body">
+            <h4 className="entourage-info__section-title">Was bedeutet Entourage-Effekt?</h4>
+            <p className="entourage-info__text">
+              Potenziell synergistische Wechselwirkungen zwischen Cannabinoiden, Terpenen und Flavonoiden; das Konzept geht
+              davon aus, dass Kombinationen ein anderes oder ausgewogeneres pharmakologisches Profil entfalten könnten als
+              isolierte Einzelstoffe.
+            </p>
+            <p className="entourage-info__note">
+              Der Hypothese nach könnten Kombinationen molekulare Synergien erzeugen; eine klinisch belastbare Bestätigung
+              steht bislang aus (Russo, 2011).
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <section className="entourage-info__section entourage-info__section--stacked" aria-label="Schlüssel-Aspekte zum Entourage-Effekt">
+        <div className="entourage-info__section-heading">
+          <h5 className="entourage-info__subsection-title">Schlüssel-Aspekte</h5>
+          <p className="entourage-info__section-description">
+            Kurzprofil der aktuellen Forschungslage und Wirkmechanismen.
           </p>
         </div>
-
-        <div className="entourage-info__section">
-          <h5 className="entourage-info__subsection-title">Wichtige Aspekte zum Entourage-Effekt</h5>
-          <ul className="entourage-info__list entourage-info__list--dense">
-            {aspects.map(({ title, description }) => (
-              <li key={title}>
-                <strong>{`${title}:`}</strong> {description}
-              </li>
-            ))}
-          </ul>
+        <div className="entourage-info__aspects-grid">
+          {aspects.map(({ title, description }, index) => (
+            <article key={title} className="entourage-info__aspect">
+              <div className="entourage-info__chip" aria-hidden="true">
+                {index + 1}
+              </div>
+              <div className="entourage-info__aspect-body">
+                <h6 className="entourage-info__aspect-title">{title}</h6>
+                <p className="entourage-info__text">{description}</p>
+              </div>
+            </article>
+          ))}
         </div>
+      </section>
 
-        <p className="entourage-info__note">
-          Der Hypothese nach könnten Kombinationen molekulare Synergien erzeugen; eine klinisch belastbare Bestätigung steht
-          bislang aus (Russo, 2011).
-        </p>
+      <div className="entourage-info__disclaimer" role="note">
+        <strong>Rechtlicher Hinweis:</strong> Diese Informationen dienen der allgemeinen wissenschaftlichen Orientierung und
+        ersetzen keine medizinische Beratung. Indikation und Präparateauswahl erfolgen ausschließlich durch ärztliches
+        Fachpersonal.
+      </div>
 
-        <div className="entourage-info__disclaimer" role="note">
-          <strong>Rechtlicher Hinweis:</strong> Diese Informationen dienen der allgemeinen wissenschaftlichen Orientierung und
-          ersetzen keine medizinische Beratung. Indikation und Präparateauswahl erfolgen ausschließlich durch ärztliches
-          Fachpersonal.
-        </div>
-
-        <div className="entourage-info__sources">
+      <div className="entourage-info__sources" aria-label="Quellenverzeichnis">
+        <div className="entourage-info__section-heading entourage-info__section-heading--compact">
           <h6 className="entourage-info__sources-title">Quellen</h6>
-          <ol className="entourage-info__list entourage-info__list--compact">
-            {references.map(({ label, href }) => (
-              <li key={href}>
-                <a href={href} target="_blank" rel="noopener noreferrer">
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ol>
+          <p className="entourage-info__section-description">Weitere Literatur zur Vertiefung.</p>
         </div>
+        <ol className="entourage-info__list entourage-info__list--compact">
+          {references.map(({ label, href }) => (
+            <li key={href}>
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

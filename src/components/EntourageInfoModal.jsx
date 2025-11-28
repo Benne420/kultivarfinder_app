@@ -19,7 +19,7 @@ const EntourageInfoModal = ({ isOpen, onClose }) => {
       <div
         className="modal"
         onClick={(event) => event.stopPropagation()}
-        style={{ maxWidth: "640px", maxHeight: "90vh", overflowY: "auto" }}
+        style={{ maxWidth: "760px", maxHeight: "90vh", overflowY: "auto" }}
       >
         <button className="modal-close" onClick={onClose} aria-label="Dialog schließen">
           ×
