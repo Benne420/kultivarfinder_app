@@ -780,11 +780,8 @@ export default function CannabisKultivarFinderUseReducer() {
               <div className="entourage-inline" role="region" aria-label="Information zum Entourage-Effekt">
                 <div className="entourage-inline__copy">
                   <p className="entourage-inline__eyebrow">Wissen</p>
-                  <p className="entourage-inline__title">Was bedeutet Entourage-Effekt?</p>
-                  <p className="entourage-inline__hint">
-                    Erfahren Sie, wie Cannabinoide und Terpene zusammenwirken und warum das Zusammenspiel für das Profil einer Sorte
-                    zählt.
-                  </p>
+                  <p className="entourage-inline__title">Entourage-Effekt &amp; ECS kompakt</p>
+                  <p className="entourage-inline__hint">Kernpunkte zu Synergien, Mechanismen und Evidenz auf einen Blick.</p>
                 </div>
                 <button
                   type="button"
