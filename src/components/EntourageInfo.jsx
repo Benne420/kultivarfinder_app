@@ -15,17 +15,6 @@ const ecsPoints = [
   },
 ];
 
-const summaryTags = [
-  {
-    label: "ECS",
-    text: "Regulationsnetz für Schmerz, Schlaf, Muskeltonus und Immunantworten",
-  },
-  {
-    label: "Entourage",
-    text: "Wechselwirkungen zwischen Cannabinoiden, Terpenen und Flavonoiden",
-  },
-];
-
 const aspects = [
   {
     title: "Cannabinoid–Terpen–Interaktionen",
@@ -81,59 +70,43 @@ const EntourageInfoContent = ({ headingId }) => {
           Entourage-Effekt &amp; ECS
         </h3>
         <p className="entourage-info__lede">
-          Kompakte Übersicht zu Mechanismen, potenziellen Synergien und aktueller Evidenzlage.
+          Kurz und sachlich: Grundlagen zum Endocannabinoid-System und zum Entourage-Effekt.
         </p>
       </header>
 
-      <div className="entourage-info__summary" aria-label="Kurzüberblick">
-        {summaryTags.map(({ label, text }) => (
-          <div key={label} className="entourage-info__summary-item">
-            <span className="entourage-info__tag">{label}</span>
-            <p className="entourage-info__summary-text">{text}</p>
-          </div>
-        ))}
-      </div>
+      <section className="entourage-info__section" aria-label="Endocannabinoid-System">
+        <h4 className="entourage-info__section-title">Das Endocannabinoid-System (ECS)</h4>
+        <dl className="entourage-info__definition-list">
+          {ecsPoints.map(({ heading, text }) => (
+            <div key={heading} className="entourage-info__definition-row">
+              <dt>{heading}</dt>
+              <dd>{text}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
-      <div className="entourage-info__stack" role="presentation">
-        <section className="entourage-info__block" aria-label="Endocannabinoid-System">
-          <h4 className="entourage-info__section-title">Das Endocannabinoid-System (ECS)</h4>
-          <dl className="entourage-info__definition-list">
-            {ecsPoints.map(({ heading, text }) => (
-              <div key={heading} className="entourage-info__definition-row">
-                <dt>{heading}</dt>
-                <dd>{text}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
+      <section className="entourage-info__section" aria-label="Entourage-Effekt">
+        <h4 className="entourage-info__section-title">Entourage-Effekt</h4>
+        <p className="entourage-info__text">
+          Potenziell synergistische Wechselwirkungen zwischen Cannabinoiden, Terpenen und Flavonoiden; das Konzept geht
+          davon aus, dass Kombinationen ein anderes oder ausgewogeneres pharmakologisches Profil entfalten könnten als
+          isolierte Einzelstoffe.
+        </p>
+        <p className="entourage-info__note">
+          Der Hypothese nach könnten Kombinationen molekulare Synergien erzeugen; eine klinisch belastbare Bestätigung steht
+          bislang aus (Russo, 2011).
+        </p>
+      </section>
 
-        <section className="entourage-info__block" aria-label="Entourage-Effekt">
-          <h4 className="entourage-info__section-title">Was bedeutet Entourage-Effekt?</h4>
-          <p className="entourage-info__text">
-            Potenziell synergistische Wechselwirkungen zwischen Cannabinoiden, Terpenen und Flavonoiden; das Konzept geht
-            davon aus, dass Kombinationen ein anderes oder ausgewogeneres pharmakologisches Profil entfalten könnten als
-            isolierte Einzelstoffe.
-          </p>
-          <p className="entourage-info__note">
-            Der Hypothese nach könnten Kombinationen molekulare Synergien erzeugen; eine klinisch belastbare Bestätigung
-            steht bislang aus (Russo, 2011).
-          </p>
-        </section>
-      </div>
-
-      <section className="entourage-info__section entourage-info__section--stacked" aria-label="Schlüssel-Aspekte zum Entourage-Effekt">
+      <section className="entourage-info__section" aria-label="Schlüssel-Aspekte zum Entourage-Effekt">
         <div className="entourage-info__section-heading">
           <h5 className="entourage-info__subsection-title">Schlüssel-Aspekte</h5>
-          <p className="entourage-info__section-description">
-            Kurzprofil der aktuellen Forschungslage und Wirkmechanismen.
-          </p>
+          <p className="entourage-info__section-description">Kerneinblicke aus Forschung und Pharmakologie.</p>
         </div>
         <ol className="entourage-info__aspect-list">
-          {aspects.map(({ title, description }, index) => (
+          {aspects.map(({ title, description }) => (
             <li key={title} className="entourage-info__aspect">
-              <div className="entourage-info__chip" aria-hidden="true">
-                {index + 1}
-              </div>
               <div className="entourage-info__aspect-body">
                 <h6 className="entourage-info__aspect-title">{title}</h6>
                 <p className="entourage-info__text">{description}</p>
