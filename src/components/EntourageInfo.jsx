@@ -74,36 +74,36 @@ const EntourageInfoContent = ({ headingId }) => {
         </p>
       </header>
 
-      <div className="entourage-info__grid" role="presentation">
-        <article className="entourage-info__card entourage-info__card--accent" aria-label="Endocannabinoid-System">
-          <div className="entourage-info__pill">ECS</div>
-          <div className="entourage-info__card-body">
+      <div className="entourage-info__two-column" role="presentation">
+        <section className="entourage-info__block entourage-info__block--ecs" aria-label="Endocannabinoid-System">
+          <div className="entourage-info__block-heading">
+            <span className="entourage-info__tag">ECS</span>
             <h4 className="entourage-info__section-title">Das Endocannabinoid-System (ECS)</h4>
-            <ul className="entourage-info__list entourage-info__list--spaced">
-              {ecsPoints.map(({ heading, text }) => (
-                <li key={heading}>
-                  <strong>{heading}:</strong> {text}
-                </li>
-              ))}
-            </ul>
           </div>
-        </article>
+          <ul className="entourage-info__list entourage-info__list--spaced">
+            {ecsPoints.map(({ heading, text }) => (
+              <li key={heading}>
+                <strong>{heading}:</strong> {text}
+              </li>
+            ))}
+          </ul>
+        </section>
 
-        <article className="entourage-info__card entourage-info__card--ghost" aria-label="Entourage-Effekt">
-          <div className="entourage-info__pill entourage-info__pill--subtle">Entourage</div>
-          <div className="entourage-info__card-body">
+        <section className="entourage-info__block entourage-info__block--entourage" aria-label="Entourage-Effekt">
+          <div className="entourage-info__block-heading">
+            <span className="entourage-info__tag entourage-info__tag--muted">Entourage</span>
             <h4 className="entourage-info__section-title">Was bedeutet Entourage-Effekt?</h4>
-            <p className="entourage-info__text">
-              Potenziell synergistische Wechselwirkungen zwischen Cannabinoiden, Terpenen und Flavonoiden; das Konzept geht
-              davon aus, dass Kombinationen ein anderes oder ausgewogeneres pharmakologisches Profil entfalten könnten als
-              isolierte Einzelstoffe.
-            </p>
-            <p className="entourage-info__note">
-              Der Hypothese nach könnten Kombinationen molekulare Synergien erzeugen; eine klinisch belastbare Bestätigung
-              steht bislang aus (Russo, 2011).
-            </p>
           </div>
-        </article>
+          <p className="entourage-info__text">
+            Potenziell synergistische Wechselwirkungen zwischen Cannabinoiden, Terpenen und Flavonoiden; das Konzept geht
+            davon aus, dass Kombinationen ein anderes oder ausgewogeneres pharmakologisches Profil entfalten könnten als
+            isolierte Einzelstoffe.
+          </p>
+          <p className="entourage-info__note">
+            Der Hypothese nach könnten Kombinationen molekulare Synergien erzeugen; eine klinisch belastbare Bestätigung
+            steht bislang aus (Russo, 2011).
+          </p>
+        </section>
       </div>
 
       <section className="entourage-info__section entourage-info__section--stacked" aria-label="Schlüssel-Aspekte zum Entourage-Effekt">
@@ -113,9 +113,9 @@ const EntourageInfoContent = ({ headingId }) => {
             Kurzprofil der aktuellen Forschungslage und Wirkmechanismen.
           </p>
         </div>
-        <div className="entourage-info__aspects-grid">
+        <ol className="entourage-info__aspect-list">
           {aspects.map(({ title, description }, index) => (
-            <article key={title} className="entourage-info__aspect">
+            <li key={title} className="entourage-info__aspect">
               <div className="entourage-info__chip" aria-hidden="true">
                 {index + 1}
               </div>
@@ -123,9 +123,9 @@ const EntourageInfoContent = ({ headingId }) => {
                 <h6 className="entourage-info__aspect-title">{title}</h6>
                 <p className="entourage-info__text">{description}</p>
               </div>
-            </article>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       <div className="entourage-info__disclaimer" role="note">

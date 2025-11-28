@@ -457,7 +457,7 @@ nav a:hover {
   border-radius: 14px;
   color: #2b3642;
   display: grid;
-  gap: 16px;
+  gap: 18px;
   box-shadow: 0 14px 30px rgba(16, 37, 66, 0.08);
 }
 
@@ -487,10 +487,10 @@ nav a:hover {
   color: #4b5b6c;
 }
 
-.entourage-info__grid {
+.entourage-info__two-column {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
 }
 
 .entourage-info__section-title,
@@ -512,46 +512,30 @@ nav a:hover {
   font-size: 13px;
 }
 
-.entourage-info__card {
-  background: #ffffff;
-  border: 1px solid #e6ebf1;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04);
-  overflow: hidden;
+.entourage-info__block {
+  padding: 6px 0 6px 14px;
   display: grid;
-  grid-template-rows: auto 1fr;
+  gap: 8px;
 }
 
-.entourage-info__card--accent {
-  background: linear-gradient(145deg, #0f5bbd 0%, #1a75d2 45%, #0d3f7f 100%);
-  color: #e9f2ff;
-  border-color: #0f5bbd;
+.entourage-info__block--ecs {
+  border-left: 4px solid #0f5bbd;
 }
 
-.entourage-info__card--accent .entourage-info__section-title {
-  color: #e9f2ff;
+.entourage-info__block--entourage {
+  border-left: 4px solid #66788d;
 }
 
-.entourage-info__card--accent .entourage-info__list,
-.entourage-info__card--accent .entourage-info__text {
-  color: #eef4ff;
-}
-
-.entourage-info__card--ghost {
-  background: #ffffff;
-}
-
-.entourage-info__card-body {
-  padding: 14px 16px 16px;
-  display: grid;
+.entourage-info__block-heading {
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
 
-.entourage-info__pill {
+.entourage-info__tag {
   display: inline-flex;
   align-items: center;
-  padding: 6px 10px;
-  margin: 12px 12px 0;
+  padding: 5px 9px;
   border-radius: 999px;
   background: rgba(15, 91, 189, 0.12);
   color: #0f5bbd;
@@ -561,9 +545,9 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-.entourage-info__pill--subtle {
-  background: rgba(93, 121, 146, 0.12);
-  color: #1f2f45;
+.entourage-info__tag--muted {
+  background: rgba(18, 55, 99, 0.1);
+  color: #123763;
 }
 
 .entourage-info__list {
@@ -649,22 +633,25 @@ nav a:hover {
   align-items: flex-start;
 }
 
-.entourage-info__aspects-grid {
+.entourage-info__aspect-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
-  margin-top: 10px;
+  gap: 10px;
 }
 
 .entourage-info__aspect {
-  background: #ffffff;
-  border: 1px solid #e6ebf1;
-  border-radius: 12px;
-  padding: 12px 14px;
   display: grid;
   grid-template-columns: auto 1fr;
+  align-items: start;
   gap: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.03);
+  padding: 8px 0;
+  border-bottom: 1px solid #e6ebf1;
+}
+
+.entourage-info__aspect:last-child {
+  border-bottom: none;
 }
 
 .entourage-info__chip {
