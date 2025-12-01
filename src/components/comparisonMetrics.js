@@ -40,22 +40,32 @@ export const comparisonMetrics = [
       const remainingCount = Math.max(profile.length - limit, 0);
 
       return (
-        <div className="comparison-panel__terpene-profile" role="group" aria-label="Terpenprofil">
-          <ul className="comparison-panel__terpene-list">
+        <div
+          className="comparison-panel__terpene-profile"
+          role="group"
+          aria-label="Terpenprofil"
+        >
+          <div className="comparison-panel__terpene-line">
             {limitedProfile.map((terpene, index) => (
-              <li key={`${terpene}-${index}`} className="comparison-panel__terpene-item">
-                <span className="comparison-panel__terpene-badge" aria-hidden="true">
-                  {index === 0 ? "★" : "•"}
+              <span
+                key={`${terpene}-${index}`}
+                className={`comparison-panel__terpene-chip${
+                  index === 0 ? " comparison-panel__terpene-chip--primary" : ""
+                }`}
+                aria-label={`${index + 1}. ${terpene}`}
+              >
+                <span className="comparison-panel__terpene-order" aria-hidden="true">
+                  {index + 1}
                 </span>
                 <span className="comparison-panel__terpene-label">{terpene}</span>
-              </li>
+              </span>
             ))}
             {remainingCount > 0 && (
-              <li className="comparison-panel__terpene-item comparison-panel__terpene-item--more">
-                +{remainingCount} weitere Terpene
-              </li>
+              <span className="comparison-panel__terpene-chip comparison-panel__terpene-chip--more">
+                +{remainingCount} weitere
+              </span>
             )}
-          </ul>
+          </div>
         </div>
       );
     },

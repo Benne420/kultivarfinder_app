@@ -942,45 +942,53 @@ nav a:hover {
   width: 100%;
 }
 
-.comparison-panel__terpene-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.comparison-panel__terpene-line {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 12px;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0;
+  padding: 0;
 }
 
-.comparison-panel__terpene-item {
+.comparison-panel__terpene-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   color: #0f1f3a;
   font-weight: 600;
-  background: rgba(234, 242, 255, 0.7);
+  background: rgba(234, 242, 255, 0.65);
   border: 1px solid rgba(111, 139, 176, 0.35);
-  border-radius: 12px;
-  padding: 6px 10px;
-  line-height: 1.2;
+  border-radius: 10px;
+  padding: 4px 8px;
+  line-height: 1.1;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.05);
 }
 
-.comparison-panel__terpene-item--more {
-  background: rgba(15, 31, 58, 0.05);
+.comparison-panel__terpene-chip--primary {
+  background: linear-gradient(120deg, rgba(227, 242, 255, 0.85), #f9fbff);
+  border-color: rgba(111, 139, 176, 0.5);
+}
+
+.comparison-panel__terpene-chip--more {
+  background: transparent;
   border-style: dashed;
+  color: #35506b;
   font-weight: 500;
 }
 
-.comparison-panel__terpene-badge {
+.comparison-panel__terpene-order {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 999px;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
   background: #0f1f3a;
   color: #fff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
+  line-height: 1;
 }
 
 .comparison-panel__terpene-label {
