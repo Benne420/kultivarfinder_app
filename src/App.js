@@ -24,6 +24,7 @@ import StrainTable from "./components/StrainTable";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
 import { TerpeneContext } from "./context/TerpeneContext";
+import { DEFAULT_TERPENE_RANK_ICONS } from "./constants/terpeneIcons";
 import {
   normalizeWirkung,
   createTerpeneAliasLookup,
@@ -608,6 +609,7 @@ export default function CannabisKultivarFinderUseReducer() {
       aliasLookup: terpeneLookup,
       references,
       loadReferences,
+      rankIconMap: DEFAULT_TERPENE_RANK_ICONS,
     }),
     [terpeneMetadata, terpeneLookup, references, loadReferences]
   );

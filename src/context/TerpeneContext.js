@@ -5,6 +5,7 @@ export const TerpeneContext = createContext({
   aliasLookup: null,
   references: null,
   loadReferences: async () => [],
+  rankIconMap: null,
 });
 
 export const useTerpeneContext = () => useContext(TerpeneContext);
