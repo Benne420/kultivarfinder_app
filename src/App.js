@@ -739,7 +739,7 @@ export default function CannabisKultivarFinderUseReducer() {
               className="header__logo"
               decoding="async"
             />
-            <h1 className="appname">Four20 Index</h1>
+            <h1 className="appname visually-hidden">Four20 Index</h1>
           </div>
         </header>
 
