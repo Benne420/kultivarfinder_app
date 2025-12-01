@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { DEFAULT_TERPENE_RANK_ICONS } from '../constants/terpeneIcons';
 import { useTerpeneContext } from '../context/TerpeneContext';
 import { mapTerpeneToCanonical } from '../utils/helpers';
 
@@ -22,6 +23,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
     aliasLookup,
     references: contextReferences,
     loadReferences: ensureReferences,
+    rankIconMap: rankIconOverrides,
   } = useTerpeneContext();
   const [terpenes, setTerpenes] = useState(() =>
     Array.isArray(contextTerpenes) ? contextTerpenes : []
@@ -61,6 +63,19 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   }, [orderedProfile]);
 
   const displayProfile = orderMode === 'alpha' ? sortedProfile : orderedProfile;
+
+  const rankIcons = useMemo(() => {
+    const overrides =
+      rankIconOverrides && typeof rankIconOverrides === 'object'
+        ? rankIconOverrides
+        : {};
+
+    return {
+      // Symbolherkunft: bewusst als Konstante dokumentiert, damit die Dominanz-Bedeutung nachvollziehbar bleibt
+      ...DEFAULT_TERPENE_RANK_ICONS,
+      ...overrides,
+    };
+  }, [rankIconOverrides]);
 
   useEffect(() => {
     let isMounted = true;
@@ -222,7 +237,8 @@ const CultivarTerpenPanel = ({ cultivar }) => {
           {displayProfile.map((name, index) => {
             const sectionId = makeAnchorId(name, index);
             const rank = index === 0 ? 'dominant' : 'begleitend';
-            const icon = index === 0 ? '🔥' : '🌿';
+            const rankKey = rank === 'dominant' ? 'dominant' : 'supporting';
+            const icon = rankIcons[rankKey]?.icon || '';
             return (
               <div
                 key={sectionId}
