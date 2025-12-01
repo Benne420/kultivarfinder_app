@@ -300,6 +300,10 @@ export default function StrainTable({
           •
         </span>
         <span className="terpene-legend__text">Begleitend</span>
+        <span className="terpene-legend__note">
+          Reihenfolge folgt dem Datensatz; im Terpen-Panel lässt sich bei Bedarf
+          eine alphabetische Ansicht wählen.
+        </span>
       </div>
       {totalPages > 1 && (
         <div className="strain-table-pagination" role="navigation" aria-label="Seitennavigation">

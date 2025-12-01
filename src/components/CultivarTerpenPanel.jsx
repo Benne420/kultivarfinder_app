@@ -32,6 +32,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showDetails, setShowDetails] = useState(true);
+  const [orderMode, setOrderMode] = useState('dataset');
 
   const orderedProfile = useMemo(() => {
     if (!cultivar || !Array.isArray(cultivar.terpenprofil)) return [];
@@ -49,6 +50,16 @@ const CultivarTerpenPanel = ({ cultivar }) => {
         return true;
       });
   }, [aliasLookup, cultivar]);
+
+  const sortedProfile = useMemo(() => {
+    if (!orderedProfile.length) return [];
+
+    return [...orderedProfile].sort((a, b) =>
+      a.localeCompare(b, 'de', { sensitivity: 'base' })
+    );
+  }, [orderedProfile]);
+
+  const displayProfile = orderMode === 'alpha' ? sortedProfile : orderedProfile;
 
   useEffect(() => {
     let isMounted = true;
@@ -172,21 +183,48 @@ const CultivarTerpenPanel = ({ cultivar }) => {
       <div className="terpen-panel__meta" aria-describedby="terpen-panel-legend">
         <p id="terpen-panel-legend" className="terpen-panel__legend">
           Nutzen Sie die Navigation, um direkt zu einzelnen Terpenen zu springen.
-          Die Kurzfassung blendet Tabellen mit Quellenangaben aus.
+          Die Kurzfassung blendet Tabellen mit Quellenangaben aus. Standardmäßig
+          bleibt die Reihenfolge wie im Datensatz erhalten; bei Bedarf können Sie
+          auf eine alphabetische Ansicht wechseln.
         </p>
         <div className="terpen-panel__controls">
-          <nav aria-label="Terpen-Navigation" className="terpen-panel__nav">
-            <span className="terpen-panel__nav-label">Schnellwahl:</span>
-            <ul>
-              {orderedProfile.map((name, index) => (
-                <li key={name || index}>
-                  <a href={`#${makeAnchorId(name, index)}`}>
-                    {name || `Terpen ${index + 1}`}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="terpen-panel__control-group">
+            <nav aria-label="Terpen-Navigation" className="terpen-panel__nav">
+              <span className="terpen-panel__nav-label">Schnellwahl:</span>
+              <ul>
+                {displayProfile.map((name, index) => (
+                  <li key={name || index}>
+                    <a href={`#${makeAnchorId(name, index)}`}>
+                      {name || `Terpen ${index + 1}`}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div
+              className="terpen-panel__ordering"
+              role="group"
+              aria-label="Reihenfolge des Terpenprofils"
+            >
+              <span className="terpen-panel__nav-label">Reihenfolge:</span>
+              <button
+                type="button"
+                className={`terpen-panel__ordering-btn${orderMode === 'dataset' ? ' is-active' : ''}`}
+                aria-pressed={orderMode === 'dataset'}
+                onClick={() => setOrderMode('dataset')}
+              >
+                Datensatz
+              </button>
+              <button
+                type="button"
+                className={`terpen-panel__ordering-btn${orderMode === 'alpha' ? ' is-active' : ''}`}
+                aria-pressed={orderMode === 'alpha'}
+                onClick={() => setOrderMode('alpha')}
+              >
+                Alphabetisch
+              </button>
+            </div>
+          </div>
           <button
             type="button"
             className="terpen-panel__toggle"
@@ -198,9 +236,9 @@ const CultivarTerpenPanel = ({ cultivar }) => {
         </div>
       </div>
 
-      {orderedProfile.length > 0 && (
+      {displayProfile.length > 0 && (
         <div className="terpen-panel__overview" role="list">
-          {orderedProfile.map((name, index) => {
+          {displayProfile.map((name, index) => {
             const sectionId = makeAnchorId(name, index);
             const rank = index === 0 ? 'dominant' : 'begleitend';
             const icon = index === 0 ? '🔥' : '🌿';
@@ -234,7 +272,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
         </p>
       </div>
 
-      {orderedProfile.map((terpenName, index) => {
+      {displayProfile.map((terpenName, index) => {
         const terpenInfo = getTerpenInfo(terpenName);
         const sectionId = makeAnchorId(terpenName, index);
 
