@@ -34,6 +34,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
   showInfo,
   showTerpenPanel,
   showRadar,
+  terpeneLegendId,
 }) {
   if (!strain) {
     return null;
@@ -128,7 +129,11 @@ const StrainTableRow = React.memo(function StrainTableRow({
         {cbd || "N/A"}
       </td>
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
-        <TerpeneChips list={terpeneList} onInfo={handleShowTerpenPanel} />
+        <TerpeneChips
+          list={terpeneList}
+          onInfo={handleShowTerpenPanel}
+          describedBy={terpeneLegendId}
+        />
       </td>
       <td data-label="Radar">
         <button
@@ -163,7 +168,10 @@ export default function StrainTable({
   showRadar = () => {},
   onToggleSelect = () => {},
   selectedCultivars = [],
+  onResetEmptyState = () => {},
+  isSimilarityMode = false,
 }) {
+  const terpeneLegendId = "terpene-legend";
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [pageIndex, setPageIndex] = useState(0);
 
@@ -250,20 +258,52 @@ export default function StrainTable({
                   showInfo={showInfo}
                   showTerpenPanel={showTerpenPanel}
                   showRadar={showRadar}
+                  terpeneLegendId={terpeneLegendId}
                 />
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={hasSimilarityColumn ? 8 : 7}
-                  style={{ textAlign: "center", padding: 12 }}
-                >
-                  Keine Ergebnisse
+                <td colSpan={hasSimilarityColumn ? 8 : 7} style={{ padding: 12 }}>
+                  <div className="empty-state" aria-live="polite">
+                    <p className="empty-state__headline">Keine Ergebnisse</p>
+                    <p className="empty-state__hint">
+                      {isSimilarityMode
+                        ? "Es wurden keine ähnlichen Sorten gefunden. Setzen Sie die Ähnlichkeitssuche zurück, um wieder alle Ergebnisse zu sehen."
+                        : "Passen Sie die Filter an oder setzen Sie sie zurück, um wieder Treffer zu erhalten."}
+                    </p>
+                    <button
+                      type="button"
+                      className="primary"
+                      onClick={onResetEmptyState}
+                      aria-label={
+                        isSimilarityMode
+                          ? "Ähnlichkeitssuche zurücksetzen"
+                          : "Alle Filter zurücksetzen"
+                      }
+                    >
+                      {isSimilarityMode ? "Ähnlichkeitssuche aufheben" : "Filter zurücksetzen"}
+                    </button>
+                  </div>
                 </td>
               </tr>
             )}
           </tbody>
         </table>
+      </div>
+      <div id={terpeneLegendId} className="terpene-legend" aria-live="polite">
+        <span className="terpene-legend__label">Terpenprofil-Legende:</span>
+        <span className="terpene-legend__badge terpene-legend__badge--dominant" aria-hidden="true">
+          ★
+        </span>
+        <span className="terpene-legend__text">Dominant</span>
+        <span className="terpene-legend__badge terpene-legend__badge--supporting" aria-hidden="true">
+          •
+        </span>
+        <span className="terpene-legend__text">Begleitend</span>
+        <span className="terpene-legend__note">
+          Reihenfolge folgt dem Datensatz; im Terpen-Panel lässt sich bei Bedarf
+          eine alphabetische Ansicht wählen.
+        </span>
       </div>
       {totalPages > 1 && (
         <div className="strain-table-pagination" role="navigation" aria-label="Seitennavigation">

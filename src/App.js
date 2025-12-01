@@ -241,6 +241,13 @@ function filterReducer(state, action) {
     case "CLEAR_WIRKUNGEN": {
       return { ...state, selectedWirkungen: new Set() };
     }
+    case "CLEAR_FILTERS": {
+      return {
+        ...initialFilterState,
+        selectedTerpene: new Set(),
+        selectedWirkungen: new Set(),
+      };
+    }
     default:
       return state;
   }
@@ -614,6 +621,7 @@ export default function CannabisKultivarFinderUseReducer() {
     () => dispatch({ type: "CLEAR_WIRKUNGEN" }),
     []
   );
+  const resetFilters = useCallback(() => dispatch({ type: "CLEAR_FILTERS" }), []);
   const handleIncludeDiscontinuedChange = useCallback(
     (value) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value }),
     [dispatch]
@@ -711,12 +719,22 @@ export default function CannabisKultivarFinderUseReducer() {
     setIsComparisonDetailsOpen(false);
   }, []);
 
+  const handleResetEmptyState = useCallback(() => {
+    if (similarityContext) {
+      setSimilarityContext(null);
+      return;
+    }
+    resetFilters();
+  }, [resetFilters, similarityContext]);
+
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
       <div className="container" style={containerStyle}>
         <header className="header" aria-label="App-Kopfzeile">
-          <h1 className="appname">Four20 Index</h1>
+          <div className="header__brand">
+            <h1 className="appname">Four20 Index</h1>
+          </div>
         </header>
 
         <div className="content-stack">
@@ -804,6 +822,8 @@ export default function CannabisKultivarFinderUseReducer() {
                 showRadar={showRadar}
                 onToggleSelect={toggleCultivarSelection}
                 selectedCultivars={selectedCultivars}
+                onResetEmptyState={handleResetEmptyState}
+                isSimilarityMode={Boolean(similarityContext)}
               />
             </>
           )}
