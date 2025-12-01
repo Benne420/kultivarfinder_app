@@ -180,10 +180,9 @@ h6 {
 }
 
 .header__logo {
-  width: clamp(160px, 14vw + 80px, 220px);
+  max-width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
 }
 
 .header .appname {
