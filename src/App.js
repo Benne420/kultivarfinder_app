@@ -732,7 +732,15 @@ export default function CannabisKultivarFinderUseReducer() {
     <TerpeneContext.Provider value={terpeneContextValue}>
       <div className="container" style={containerStyle}>
         <header className="header" aria-label="App-Kopfzeile">
-          <h1 className="appname">Four20 Index</h1>
+          <div className="header__brand">
+            <img
+              src="/four20-logo.svg"
+              alt="Four20 Pharma Logo"
+              className="header__logo"
+              decoding="async"
+            />
+            <h1 className="appname">Four20 Index</h1>
+          </div>
         </header>
 
         <div className="content-stack">

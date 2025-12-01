@@ -155,6 +155,30 @@ h6 {
   font-size: var(--font-scale-h6);
   line-height: clamp(1.35rem, 0.95rem + 0.6vw, 1.75rem);
 }
+.header {
+  padding: 24px 0 12px;
+}
+
+.header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.header__logo {
+  width: clamp(160px, 14vw + 80px, 220px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+}
+
+.header .appname {
+  margin: 0;
+  text-align: center;
+}
 p {
   margin-bottom: var(--base-spacing);
 }

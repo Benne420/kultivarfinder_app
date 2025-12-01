@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-labelledby="title desc">
+  <title id="title">Four20 Pharma Logo</title>
+  <desc id="desc">Green square with a white medical cross next to the text Four20 Pharma</desc>
+  <defs>
+    <style>
+      .text-primary { fill: #1d1d1b; font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; font-weight: 700; }
+      .text-accent { fill: #63bd32; font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; font-weight: 700; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="120" height="120" rx="8" ry="8" fill="#63bd32" />
+  <rect x="34" y="16" width="52" height="88" fill="#63bd32" />
+  <rect x="16" y="34" width="88" height="52" fill="#63bd32" />
+  <rect x="46" y="28" width="28" height="64" fill="#ffffff" rx="3" />
+  <rect x="28" y="46" width="64" height="28" fill="#ffffff" rx="3" />
+  <text class="text-primary" x="145" y="52" font-size="44">FOUR</text>
+  <text class="text-accent" x="270" y="52" font-size="44">20</text>
+  <text class="text-primary" x="145" y="98" font-size="40">PHARMA</text>
+</svg>
