@@ -938,6 +938,55 @@ nav a:hover {
   font-size: 15px;
 }
 
+.comparison-panel__terpene-profile {
+  width: 100%;
+}
+
+.comparison-panel__terpene-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.comparison-panel__terpene-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0f1f3a;
+  font-weight: 600;
+  background: rgba(234, 242, 255, 0.7);
+  border: 1px solid rgba(111, 139, 176, 0.35);
+  border-radius: 12px;
+  padding: 6px 10px;
+  line-height: 1.2;
+}
+
+.comparison-panel__terpene-item--more {
+  background: rgba(15, 31, 58, 0.05);
+  border-style: dashed;
+  font-weight: 500;
+}
+
+.comparison-panel__terpene-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #0f1f3a;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.comparison-panel__terpene-label {
+  white-space: nowrap;
+}
+
 .comparison-panel__cell--radar {
   align-items: center;
   justify-content: center;
