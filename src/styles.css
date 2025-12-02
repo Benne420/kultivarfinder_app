@@ -1880,6 +1880,16 @@ nav a:hover {
   color: #90a4ae;
 }
 
+.strain-table .action-cell {
+  min-width: 200px;
+}
+
+.strain-table .action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .strain-table-pagination {
   display: flex;
   align-items: center;

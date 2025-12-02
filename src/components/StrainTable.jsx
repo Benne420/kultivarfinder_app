@@ -135,25 +135,25 @@ const StrainTableRow = React.memo(function StrainTableRow({
           describedBy={terpeneLegendId}
         />
       </td>
-      <td data-label="Radar">
-        <button
-          className="link-button"
-          onClick={handleShowRadar}
-          type="button"
-          aria-label={`${name} Radar anzeigen`}
-        >
-          anzeigen
-        </button>
-      </td>
-      <td data-label="Details">
-        <button
-          type="button"
-          className="link-button"
-          onClick={handleShowInfo}
-          aria-label={`${name} Details anzeigen`}
-        >
-          anzeigen
-        </button>
+      <td data-label="Radar & Details" className="action-cell">
+        <div className="action-buttons">
+          <button
+            className="link-button"
+            onClick={handleShowRadar}
+            type="button"
+            aria-label={`${name} Radar anzeigen`}
+          >
+            Netzdiagramm
+          </button>
+          <button
+            type="button"
+            className="link-button"
+            onClick={handleShowInfo}
+            aria-label={`${name} Details anzeigen`}
+          >
+            Details
+          </button>
+        </div>
       </td>
     </tr>
   );
@@ -242,8 +242,7 @@ export default function StrainTable({
               <th>THC</th>
               <th className="hidden-sm">CBD</th>
               <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
-              <th>Radar</th>
-              <th>Details</th>
+              <th>Netzdiagramm & Details</th>
             </tr>
           </thead>
           <tbody>
@@ -263,7 +262,7 @@ export default function StrainTable({
               ))
             ) : (
               <tr>
-                <td colSpan={hasSimilarityColumn ? 8 : 7} style={{ padding: 12 }}>
+                <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ padding: 12 }}>
                   <div className="empty-state" aria-live="polite">
                     <p className="empty-state__headline">Keine Ergebnisse</p>
                     <p className="empty-state__hint">
