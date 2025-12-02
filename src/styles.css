@@ -1860,7 +1860,7 @@ nav a:hover {
   height: auto;
   display: block;
   object-fit: contain;
-  max-width: 420px;
+  max-width: 480px;
   margin-inline: auto;
 }
 
