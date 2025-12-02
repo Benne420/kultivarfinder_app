@@ -1777,8 +1777,8 @@ nav a:hover {
 }
 
 .modal--terpene-radar {
-  max-width: 1080px;
-  width: min(94vw, 1080px);
+  max-width: 880px;
+  width: min(92vw, 880px);
 }
 
 .terpene-radar-layout {
