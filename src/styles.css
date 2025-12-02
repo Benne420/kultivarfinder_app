@@ -1890,6 +1890,52 @@ nav a:hover {
   flex-wrap: wrap;
 }
 
+.strain-table .action-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.strain-table .action-dropdown__summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.strain-table .action-dropdown__summary::-webkit-details-marker {
+  display: none;
+}
+
+.strain-table .action-dropdown[open] .action-dropdown__summary {
+  background: var(--terp-chip-hover-bg);
+}
+
+.strain-table .action-dropdown__menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  min-width: 180px;
+  background: #ffffff;
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.strain-table .action-dropdown__item {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.strain-table .action-dropdown__chevron {
+  font-size: 12px;
+}
+
 .strain-table-pagination {
   display: flex;
   align-items: center;
