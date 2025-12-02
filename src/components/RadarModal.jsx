@@ -1,5 +1,6 @@
 import React from "react";
 import { radarPathSvg } from "../utils/helpers";
+import CultivarTerpenPanel from "./CultivarTerpenPanel";
 
 export default function RadarModal({ radarDialog, hideRadar }) {
   if (!radarDialog.open || !radarDialog.cultivar) return null;
@@ -20,20 +21,31 @@ export default function RadarModal({ radarDialog, hideRadar }) {
       aria-modal="true"
       aria-labelledby={titleId}
     >
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal modal--wide modal--terpene-radar"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className="modal-close" onClick={hideRadar} aria-label="Dialog schließen">
           ×
         </button>
         <h3 className="modal-title" id={titleId}>
-          Radar-Diagramm: {cultivar.name}
+          Netzdiagramm &amp; Terpenprofil: {cultivar.name}
         </h3>
-        <div className="modal-content" style={{ textAlign: "center" }}>
-          <img
-            src={radarPathSvg(cultivar.name)}
-            alt={`Radar-Diagramm für ${cultivar.name}`}
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
-          <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
+        <div className="terpene-radar-layout">
+          <section className="terpene-radar-layout__panel" aria-label="Netzdiagramm">
+            <img
+              src={radarPathSvg(cultivar.name)}
+              alt={`Radar-Diagramm für ${cultivar.name}`}
+              className="terpene-radar-layout__image"
+            />
+            <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
+          </section>
+          <section
+            className="terpene-radar-layout__panel terpene-radar-layout__panel--terpenes"
+            aria-label="Terpeninformationen"
+          >
+            <CultivarTerpenPanel cultivar={cultivar} />
+          </section>
         </div>
       </div>
     </div>
