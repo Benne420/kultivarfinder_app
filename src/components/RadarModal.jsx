@@ -1,11 +1,9 @@
 import React, { useMemo } from "react";
 import { normalizeWirkung, radarPathSvg } from "../utils/helpers";
-import { toSafePdfPath } from "./StrainTable";
 
 export default function RadarModal({ radarDialog, hideRadar }) {
   if (!radarDialog.open || !radarDialog.cultivar) return null;
   const cultivar = radarDialog.cultivar;
-  const pdfUrl = useMemo(() => toSafePdfPath(cultivar?.name), [cultivar?.name]);
   const safeId = (cultivar.name || "")
     .toString()
     .trim()
@@ -93,16 +91,6 @@ export default function RadarModal({ radarDialog, hideRadar }) {
                 </div>
               )}
             </dl>
-            <div className="terpene-radar-layout__actions">
-              <button
-                type="button"
-                className="link-button"
-                onClick={() => window.open(pdfUrl, "_blank", "noopener,noreferrer")}
-                aria-label={`${cultivar.name} Datenblatt öffnen`}
-              >
-                Datenblatt öffnen
-              </button>
-            </div>
           </section>
         </div>
       </div>
