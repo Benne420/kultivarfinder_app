@@ -1,10 +1,12 @@
-import React from "react";
-import { radarPathSvg } from "../utils/helpers";
+import React, { useMemo } from "react";
+import { normalizeWirkung, radarPathSvg } from "../utils/helpers";
+import { toSafePdfPath } from "./StrainTable";
 import CultivarTerpenPanel from "./CultivarTerpenPanel";
 
 export default function RadarModal({ radarDialog, hideRadar }) {
   if (!radarDialog.open || !radarDialog.cultivar) return null;
   const cultivar = radarDialog.cultivar;
+  const pdfUrl = useMemo(() => toSafePdfPath(cultivar?.name), [cultivar?.name]);
   const safeId = (cultivar.name || "")
     .toString()
     .trim()
@@ -12,6 +14,21 @@ export default function RadarModal({ radarDialog, hideRadar }) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "") || "radar";
   const titleId = `radar-modal-title-${safeId}`;
+  const wirkungen = useMemo(() => {
+    if (Array.isArray(cultivar?.wirkungen)) {
+      return cultivar.wirkungen.map((w) => normalizeWirkung(w)).join(", ");
+    }
+    return cultivar?.wirkungen;
+  }, [cultivar?.wirkungen]);
+  const optionalDetails = useMemo(
+    () =>
+      [
+        { label: "Aroma/Flavour", value: cultivar?.aroma },
+        { label: "Genetik", value: cultivar?.genetik },
+        { label: "Anbauhinweise", value: cultivar?.anbauhinweise },
+      ].filter((entry) => Boolean(entry.value)),
+    [cultivar?.anbauhinweise, cultivar?.aroma, cultivar?.genetik]
+  );
 
   return (
     <div
@@ -29,16 +46,64 @@ export default function RadarModal({ radarDialog, hideRadar }) {
           ×
         </button>
         <h3 className="modal-title" id={titleId}>
-          Netzdiagramm &amp; Terpenprofil: {cultivar.name}
+          Netzdiagramm, Terpene &amp; Details: {cultivar.name}
         </h3>
         <div className="terpene-radar-layout">
-          <section className="terpene-radar-layout__panel" aria-label="Netzdiagramm">
+          <section
+            className="terpene-radar-layout__panel terpene-radar-layout__panel--overview"
+            aria-label="Netzdiagramm und Kerndaten"
+          >
             <img
               src={radarPathSvg(cultivar.name)}
               alt={`Radar-Diagramm für ${cultivar.name}`}
               className="terpene-radar-layout__image"
             />
             <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
+            <dl className="terpene-radar-layout__details">
+              <div className="terpene-radar-layout__details-row">
+                <dt>Typ</dt>
+                <dd>{cultivar.typ || "Keine Angabe"}</dd>
+              </div>
+              <div className="terpene-radar-layout__details-row">
+                <dt>THC</dt>
+                <dd>{cultivar.thc || "Keine Angabe"}</dd>
+              </div>
+              <div className="terpene-radar-layout__details-row">
+                <dt>CBD</dt>
+                <dd>{cultivar.cbd || "Keine Angabe"}</dd>
+              </div>
+              <div className="terpene-radar-layout__details-row">
+                <dt>Terpengehalt</dt>
+                <dd>{cultivar.terpengehalt || "Keine Angabe"}</dd>
+              </div>
+              <div className="terpene-radar-layout__details-row">
+                <dt>Angegebene Wirkungen</dt>
+                <dd>{wirkungen || "Keine Angabe"}</dd>
+              </div>
+              {optionalDetails.length > 0 && (
+                <div
+                  className="terpene-radar-layout__details-row terpene-radar-layout__details-row--stack"
+                  aria-label="Zusätzliche Angaben"
+                >
+                  {optionalDetails.map((entry) => (
+                    <div key={entry.label} className="terpene-radar-layout__detail-chip">
+                      <span className="terpene-radar-layout__detail-label">{entry.label}:</span>
+                      <span>{entry.value}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </dl>
+            <div className="terpene-radar-layout__actions">
+              <button
+                type="button"
+                className="link-button"
+                onClick={() => window.open(pdfUrl, "_blank", "noopener,noreferrer")}
+                aria-label={`${cultivar.name} Datenblatt öffnen`}
+              >
+                Datenblatt öffnen
+              </button>
+            </div>
           </section>
           <section
             className="terpene-radar-layout__panel terpene-radar-layout__panel--terpenes"

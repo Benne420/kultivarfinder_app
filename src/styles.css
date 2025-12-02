@@ -1789,6 +1789,12 @@ nav a:hover {
   margin-top: 8px;
 }
 
+.terpene-radar-layout__panel--overview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .terpene-radar-layout__panel {
   background: linear-gradient(180deg, rgba(243, 248, 255, 0.85), #ffffff);
   border: 1px solid rgba(149, 175, 204, 0.35);
@@ -1801,6 +1807,58 @@ nav a:hover {
   padding: 8px 10px 4px;
   max-height: 70vh;
   overflow: auto;
+}
+
+.terpene-radar-layout__details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px 12px;
+  margin: 0;
+}
+
+.terpene-radar-layout__details-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) 1.2fr;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.terpene-radar-layout__details-row dt {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.terpene-radar-layout__details-row dd {
+  margin: 0;
+  font-size: 14px;
+}
+
+.terpene-radar-layout__details-row--stack {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.terpene-radar-layout__detail-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background-color: rgba(0, 85, 164, 0.06);
+  color: #2c3e50;
+  border: 1px solid rgba(0, 85, 164, 0.12);
+  font-size: 13px;
+}
+
+.terpene-radar-layout__detail-label {
+  font-weight: 700;
+}
+
+.terpene-radar-layout__actions {
+  margin-top: auto;
 }
 
 .terpene-radar-layout__image {
@@ -1926,6 +1984,27 @@ nav a:hover {
 
 .strain-table .action-cell {
   min-width: 200px;
+}
+
+.strain-table .action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 85, 164, 0.25);
+  background-color: rgba(0, 85, 164, 0.06);
+  color: #0d3c61;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.strain-table .action-button:hover,
+.strain-table .action-button:focus-visible {
+  background-color: rgba(0, 85, 164, 0.12);
+  border-color: rgba(0, 85, 164, 0.45);
+  color: #003459;
 }
 
 .strain-table .action-buttons {
