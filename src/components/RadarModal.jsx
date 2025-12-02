@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import { normalizeWirkung, radarPathSvg } from "../utils/helpers";
 import { toSafePdfPath } from "./StrainTable";
-import CultivarTerpenPanel from "./CultivarTerpenPanel";
 
 export default function RadarModal({ radarDialog, hideRadar }) {
   if (!radarDialog.open || !radarDialog.cultivar) return null;
@@ -46,7 +45,7 @@ export default function RadarModal({ radarDialog, hideRadar }) {
           ×
         </button>
         <h3 className="modal-title" id={titleId}>
-          Netzdiagramm, Terpene &amp; Details: {cultivar.name}
+          Netzdiagramm &amp; Details: {cultivar.name}
         </h3>
         <div className="terpene-radar-layout">
           <section
@@ -104,12 +103,6 @@ export default function RadarModal({ radarDialog, hideRadar }) {
                 Datenblatt öffnen
               </button>
             </div>
-          </section>
-          <section
-            className="terpene-radar-layout__panel terpene-radar-layout__panel--terpenes"
-            aria-label="Terpeninformationen"
-          >
-            <CultivarTerpenPanel cultivar={cultivar} />
           </section>
         </div>
       </div>
