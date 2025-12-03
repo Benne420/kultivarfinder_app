@@ -23,6 +23,8 @@ const CultivarTerpenPanel = ({ cultivar }) => {
     aliasLookup,
     references: contextReferences,
     loadReferences: ensureReferences,
+    referencesLoading,
+    referencesError,
     rankIconMap: rankIconOverrides,
   } = useTerpeneContext();
   const [terpenes, setTerpenes] = useState(() =>
@@ -31,8 +33,6 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   const [references, setReferences] = useState(() =>
     Array.isArray(contextReferences) ? contextReferences : []
   );
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [showDetails, setShowDetails] = useState(true);
   const [orderMode, setOrderMode] = useState('dataset');
   const cultivarName = cultivar?.name || 'Kultivar';
@@ -78,55 +78,23 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   }, [rankIconOverrides]);
 
   useEffect(() => {
-    let isMounted = true;
+    if (Array.isArray(contextTerpenes)) {
+      setTerpenes(contextTerpenes);
+    }
+  }, [contextTerpenes]);
 
-    const loadData = async () => {
-      if (!isMounted) {
-        return;
-      }
+  useEffect(() => {
+    if (Array.isArray(contextReferences)) {
+      setReferences(contextReferences);
+      return;
+    }
 
-      if (Array.isArray(contextTerpenes)) {
-        setTerpenes(contextTerpenes);
-      }
-
-      if (Array.isArray(contextReferences) && contextReferences.length > 0) {
-        setReferences(contextReferences);
-        setLoading(false);
-        return;
-      }
-
-      if (typeof ensureReferences !== 'function') {
-        setLoading(false);
-        return;
-      }
-
-      setError(null);
-      setLoading(true);
-
-      try {
-        const loadedReferences = await ensureReferences();
-        if (!isMounted) {
-          return;
-        }
-        setReferences(Array.isArray(loadedReferences) ? loadedReferences : []);
-      } catch (err) {
-        if (!isMounted) {
-          return;
-        }
-        setError(err instanceof Error ? err.message : 'Unbekannter Fehler');
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    loadData();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [contextTerpenes, contextReferences, ensureReferences]);
+    if (typeof ensureReferences === 'function') {
+      ensureReferences().catch(() => {
+        // Fehlerzustand wird vom Kontext verwaltet
+      });
+    }
+  }, [contextReferences, ensureReferences]);
 
   const getTerpenInfo = (terpenName) => {
     if (!Array.isArray(terpenes)) return undefined;
@@ -151,7 +119,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
     return `${ref.authors} (${ref.year}). ${ref.title}. ${ref.journal}`;
   };
 
-  if (loading) {
+  if (referencesLoading) {
     return (
       <div style={{ padding: '16px', textAlign: 'center' }}>
         <p>Lade Terpen-Informationen...</p>
@@ -159,10 +127,10 @@ const CultivarTerpenPanel = ({ cultivar }) => {
     );
   }
 
-  if (error) {
+  if (referencesError) {
     return (
       <div style={{ padding: '16px', textAlign: 'center', color: '#d32f2f' }}>
-        <p>Fehler beim Laden der Terpen-Daten: {error}</p>
+        <p>Fehler beim Laden der Terpen-Daten: {referencesError}</p>
       </div>
     );
   }
