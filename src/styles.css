@@ -529,7 +529,7 @@ nav a:hover {
 .entourage-button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   padding: var(--button-padding-block) var(--button-padding-inline);
   min-height: var(--button-min-height);
   border-radius: 999px;
@@ -538,6 +538,7 @@ nav a:hover {
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
+  text-align: center;
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(58, 141, 255, 0.22);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
