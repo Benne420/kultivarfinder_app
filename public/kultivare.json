@@ -16,7 +16,9 @@
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Berlin Berries",
@@ -37,7 +39,9 @@
       "entspannend"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Black Triangle",
@@ -55,7 +59,9 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Bling Blaow",
@@ -76,7 +82,9 @@
       "entspannend"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Bucket List",
@@ -95,7 +103,9 @@
       "entzündungshemmend"
     ],
     "typ": "sativa-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "C-47",
@@ -113,7 +123,9 @@
       "neuroprotektiv"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Chemdog",
@@ -132,7 +144,9 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Cinderella Kush",
@@ -153,7 +167,9 @@
       "entspannend"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Frosted Gumbo",
@@ -172,7 +188,9 @@
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Frozen Lemon Mints",
@@ -191,7 +209,9 @@
       "unterstützt Wundheilung"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Gastro Pop",
@@ -210,7 +230,9 @@
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "GG4",
@@ -230,7 +252,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Glaced Apricot Gelato",
@@ -249,7 +273,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "GMO",
@@ -269,7 +295,9 @@
       "antimikrobiell"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Grape Burger",
@@ -290,7 +318,9 @@
       "entspannend"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Grape Face",
@@ -308,7 +338,9 @@
       "entzündungshemmend"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Holy Mints",
@@ -329,7 +361,9 @@
       "antidepressiv"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Ice Cream Cake Kush Mints",
@@ -350,7 +384,9 @@
       "krampflösend"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Jealousy",
@@ -368,7 +404,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Lavender Cake",
@@ -387,7 +425,9 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Legendary Larry",
@@ -406,7 +446,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Lemon Cherry Gelato",
@@ -425,7 +467,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "MAC 1",
@@ -445,7 +489,9 @@
       "antimikrobiell"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Masterpiece",
@@ -466,7 +512,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Mellowz",
@@ -484,7 +532,9 @@
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Miracle Mints",
@@ -503,7 +553,9 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Modified Grapes",
@@ -522,7 +574,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Peach Chementine",
@@ -543,7 +597,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Pineapple God",
@@ -564,7 +620,9 @@
       "antidepressiv"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Platinum Pavé",
@@ -585,7 +643,9 @@
       "antidepressiv"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Plum Driver",
@@ -604,7 +664,9 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Private Banana",
@@ -625,7 +687,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Rose Gold Pavé",
@@ -646,7 +710,9 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Rose Gold Runtz",
@@ -662,7 +728,9 @@
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Scoops",
@@ -681,7 +749,9 @@
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Star Struck",
@@ -700,7 +770,9 @@
       "neuroprotektiv"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Super Lemon G",
@@ -719,7 +791,9 @@
       "neuroprotektiv"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Tigerz Eye",
@@ -738,7 +812,9 @@
       "neuroprotektiv"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued"
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Triangle Octane",
@@ -757,7 +833,9 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Tropicana Cookies",
@@ -775,7 +853,9 @@
       "entzündungshemmend"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Unicorn Cake",
@@ -795,7 +875,9 @@
       "antimikrobiell"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Waffle Truffle",
@@ -816,7 +898,9 @@
       "antidepressiv"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Wedding Pop Triangle",
@@ -835,7 +919,9 @@
       "entzündungshemmend"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Wedding Singer",
@@ -854,7 +940,9 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Whiteout",
@@ -875,7 +963,9 @@
       "antidepressiv"
     ],
     "typ": "sativa-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Zookies",
@@ -894,7 +984,9 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   },
   {
     "name": "Zour Apple",
@@ -913,6 +1005,8 @@
       "unterstützt Wundheilung"
     ],
     "typ": "indica-dominant",
-    "status": "active"
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
   }
 ]
