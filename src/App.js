@@ -284,16 +284,23 @@ export default function CannabisKultivarFinderUseReducer() {
   const [terpeneMetadata, setTerpeneMetadata] = useState([]);
   const referencesCacheRef = useRef({ data: null, promise: null });
   const [references, setReferences] = useState(null);
+  const [referencesLoading, setReferencesLoading] = useState(false);
+  const [referencesError, setReferencesError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const loadReferences = useCallback(async () => {
     if (referencesCacheRef.current.data) {
       setReferences(referencesCacheRef.current.data);
+      setReferencesError(null);
+      setReferencesLoading(false);
       return referencesCacheRef.current.data;
     }
 
     if (!referencesCacheRef.current.promise) {
+      setReferencesError(null);
+      setReferencesLoading(true);
+
       const fetchPromise = (async () => {
         const response = await fetch("/data/references.json");
         if (!response.ok) {
@@ -309,15 +316,22 @@ export default function CannabisKultivarFinderUseReducer() {
       referencesCacheRef.current.promise = fetchPromise
         .catch((err) => {
           referencesCacheRef.current.data = null;
+          setReferencesError(err instanceof Error ? err.message : "Unbekannter Fehler");
           throw err;
         })
         .finally(() => {
           referencesCacheRef.current.promise = null;
+          setReferencesLoading(false);
         });
     }
 
     if (referencesCacheRef.current.promise) {
-      return referencesCacheRef.current.promise;
+      try {
+        return await referencesCacheRef.current.promise;
+      } catch (err) {
+        // Fehler werden bereits oben gesetzt; trotzdem weiterreichen für spezifische Behandlungen
+        throw err;
+      }
     }
 
     return [];
@@ -605,9 +619,18 @@ export default function CannabisKultivarFinderUseReducer() {
       aliasLookup: terpeneLookup,
       references,
       loadReferences,
+      referencesLoading,
+      referencesError,
       rankIconMap: DEFAULT_TERPENE_RANK_ICONS,
     }),
-    [terpeneMetadata, terpeneLookup, references, loadReferences]
+    [
+      terpeneMetadata,
+      terpeneLookup,
+      references,
+      loadReferences,
+      referencesLoading,
+      referencesError,
+    ]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen

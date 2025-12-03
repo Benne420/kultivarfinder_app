@@ -21,29 +21,6 @@
     "Kürzel": ""
   },
   {
-    "name": "Bavarian Bud",
-    "thc": "18-30%",
-    "cbd": "<1%",
-    "terpengehalt": "1,96%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Humulen",
-      "Limonen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend",
-      "anxiolytisch",
-      "antidepressiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "",
-    "Kürzel": ""
-  },
-  {
     "name": "Berlin Berries",
     "thc": "25-33%",
     "cbd": "<1%",
@@ -191,29 +168,6 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
-    "Kürzel": ""
-  },
-  {
-    "name": "Dortmund Diesel",
-    "thc": "18-30%",
-    "cbd": "<1%",
-    "terpengehalt": "2,79%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Limonen",
-      "Humulen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ],
-    "typ": "sativa-dominant",
-    "status": "discontinued",
     "produktlinie": "",
     "Kürzel": ""
   },
@@ -385,26 +339,6 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
-    "Kürzel": ""
-  },
-  {
-    "name": "Hamburg Haze",
-    "thc": "18-30%",
-    "cbd": "<1%",
-    "terpengehalt": "1,41%",
-    "terpenprofil": [
-      "Myrcen",
-      "Limonen",
-      "Caryophyllen",
-      "Pinen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "sativa-dominant",
-    "status": "discontinued",
     "produktlinie": "",
     "Kürzel": ""
   },
