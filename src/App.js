@@ -24,6 +24,7 @@ import StrainTable from "./components/StrainTable";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
 import { TerpeneContext } from "./context/TerpeneContext";
+import { DEFAULT_TERPENE_RANK_ICONS } from "./constants/terpeneIcons";
 import {
   normalizeWirkung,
   createTerpeneAliasLookup,
@@ -35,9 +36,7 @@ import {
 import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
 import defaultWirkungenSource from "./data/default-wirkungen.json";
 
-const CultivarTerpenPanel = lazy(() => import("./components/CultivarTerpenPanel"));
 const EntourageInfoModal = lazy(() => import("./components/EntourageInfoModal"));
-const DetailsModal = lazy(() => import("./components/DetailsModal"));
 const RadarModal = lazy(() => import("./components/RadarModal"));
 const ComparisonPanel = lazy(() => import("./components/ComparisonPanel"));
 const ComparisonDetailsModal = lazy(() => import("./components/ComparisonDetailsModal"));
@@ -65,13 +64,6 @@ const defaultWirkungen = [...defaultWirkungenSource].sort();
 const SuspenseOverlayFallback = ({ label = "Inhalt wird geladen …" }) => (
   <div className="modal-fallback" role="status" aria-live="polite">
     <span className="modal-fallback__spinner" aria-hidden="true" />
-    <span>{label}</span>
-  </div>
-);
-
-const SuspenseInlineFallback = ({ label = "Inhalt wird geladen …" }) => (
-  <div className="modal-inline-loader" role="status" aria-live="polite">
-    <span className="modal-inline-loader__spinner" aria-hidden="true" />
     <span>{label}</span>
   </div>
 );
@@ -241,6 +233,13 @@ function filterReducer(state, action) {
     case "CLEAR_WIRKUNGEN": {
       return { ...state, selectedWirkungen: new Set() };
     }
+    case "CLEAR_FILTERS": {
+      return {
+        ...initialFilterState,
+        selectedTerpene: new Set(),
+        selectedWirkungen: new Set(),
+      };
+    }
     default:
       return state;
   }
@@ -253,15 +252,27 @@ function filterReducer(state, action) {
 export default function CannabisKultivarFinderUseReducer() {
   // Hintergrundbild setzen
   useEffect(() => {
-    const previousBackground = document.body.style.backgroundImage;
-    const previousTitle = document.title;
+    const previousStyles = {
+      backgroundImage: document.body.style.backgroundImage,
+      backgroundRepeat: document.body.style.backgroundRepeat,
+      backgroundSize: document.body.style.backgroundSize,
+      backgroundPosition: document.body.style.backgroundPosition,
+      title: document.title,
+    };
+
     document.body.style.backgroundImage =
       "url('/F20_Pharma_Pattern-Hexagon_07.png')";
+    document.body.style.backgroundRepeat = "repeat";
+    document.body.style.backgroundSize = "auto";
+    document.body.style.backgroundPosition = "center";
     document.title = "Four20 Index";
 
     return () => {
-      document.body.style.backgroundImage = previousBackground;
-      document.title = previousTitle;
+      document.body.style.backgroundImage = previousStyles.backgroundImage;
+      document.body.style.backgroundRepeat = previousStyles.backgroundRepeat;
+      document.body.style.backgroundSize = previousStyles.backgroundSize;
+      document.body.style.backgroundPosition = previousStyles.backgroundPosition;
+      document.title = previousStyles.title;
     };
   }, []);
 
@@ -273,16 +284,23 @@ export default function CannabisKultivarFinderUseReducer() {
   const [terpeneMetadata, setTerpeneMetadata] = useState([]);
   const referencesCacheRef = useRef({ data: null, promise: null });
   const [references, setReferences] = useState(null);
+  const [referencesLoading, setReferencesLoading] = useState(false);
+  const [referencesError, setReferencesError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const loadReferences = useCallback(async () => {
     if (referencesCacheRef.current.data) {
       setReferences(referencesCacheRef.current.data);
+      setReferencesError(null);
+      setReferencesLoading(false);
       return referencesCacheRef.current.data;
     }
 
     if (!referencesCacheRef.current.promise) {
+      setReferencesError(null);
+      setReferencesLoading(true);
+
       const fetchPromise = (async () => {
         const response = await fetch("/data/references.json");
         if (!response.ok) {
@@ -298,15 +316,22 @@ export default function CannabisKultivarFinderUseReducer() {
       referencesCacheRef.current.promise = fetchPromise
         .catch((err) => {
           referencesCacheRef.current.data = null;
+          setReferencesError(err instanceof Error ? err.message : "Unbekannter Fehler");
           throw err;
         })
         .finally(() => {
           referencesCacheRef.current.promise = null;
+          setReferencesLoading(false);
         });
     }
 
     if (referencesCacheRef.current.promise) {
-      return referencesCacheRef.current.promise;
+      try {
+        return await referencesCacheRef.current.promise;
+      } catch (err) {
+        // Fehler werden bereits oben gesetzt; trotzdem weiterreichen für spezifische Behandlungen
+        throw err;
+      }
     }
 
     return [];
@@ -441,15 +466,8 @@ export default function CannabisKultivarFinderUseReducer() {
     return normalized;
   }, [filters.selectedWirkungen]);
 
-  // Dialog für detaillierte Sorteninformationen (Name, THC, CBD, Terpengehalt, Wirkungen, Terpenprofil)
-  const [infoDialog, setInfoDialog] = useState({ open: false, cultivar: null });
+  // Dialog für das kombinierte Radar- und Detailfenster
   const [radarDialog, setRadarDialog] = useState({ open: false, cultivar: null });
-
-  // Zustand für das Terpen-Panel
-  const [terpenPanel, setTerpenPanel] = useState({
-    open: false,
-    cultivar: null,
-  });
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
   const [similarityContext, setSimilarityContext] = useState(null);
@@ -601,8 +619,18 @@ export default function CannabisKultivarFinderUseReducer() {
       aliasLookup: terpeneLookup,
       references,
       loadReferences,
+      referencesLoading,
+      referencesError,
+      rankIconMap: DEFAULT_TERPENE_RANK_ICONS,
     }),
-    [terpeneMetadata, terpeneLookup, references, loadReferences]
+    [
+      terpeneMetadata,
+      terpeneLookup,
+      references,
+      loadReferences,
+      referencesLoading,
+      referencesError,
+    ]
   );
 
   // Callback‑Funktionen zum Dispatchen von Aktionen
@@ -614,34 +642,17 @@ export default function CannabisKultivarFinderUseReducer() {
     () => dispatch({ type: "CLEAR_WIRKUNGEN" }),
     []
   );
+  const resetFilters = useCallback(() => dispatch({ type: "CLEAR_FILTERS" }), []);
   const handleIncludeDiscontinuedChange = useCallback(
     (value) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value }),
     [dispatch]
   );
-  // Memoized helpers to open and close the information dialog. Wrapping
-  // setInfoDialog in useCallback avoids recreating these functions on every render.
-  const showInfo = useCallback((cultivar) => {
-    setInfoDialog({ open: true, cultivar });
-  }, []);
-  const hideInfo = useCallback(() => {
-    setInfoDialog({ open: false, cultivar: null });
-  }, []);
-
   const showRadar = useCallback((cultivar) => {
     setRadarDialog({ open: true, cultivar });
   }, []);
 
   const hideRadar = useCallback(() => {
     setRadarDialog({ open: false, cultivar: null });
-  }, []);
-
-  // Callback-Funktionen für das Terpen-Panel
-  const showTerpenPanel = useCallback((cultivar) => {
-    setTerpenPanel({ open: true, cultivar });
-  }, []);
-
-  const hideTerpenPanel = useCallback(() => {
-    setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
   const toggleCultivarSelection = useCallback((cultivar) => {
@@ -699,24 +710,34 @@ export default function CannabisKultivarFinderUseReducer() {
     }
 
     if (selectedCultivars.length === 1) {
-      showInfo(selectedCultivars[0]);
+      showRadar(selectedCultivars[0]);
       return;
     }
 
     setIsComparisonOpen(false);
     setIsComparisonDetailsOpen(true);
-  }, [selectedCultivars, showInfo]);
+  }, [selectedCultivars, showRadar]);
 
   const closeComparisonDetails = useCallback(() => {
     setIsComparisonDetailsOpen(false);
   }, []);
+
+  const handleResetEmptyState = useCallback(() => {
+    if (similarityContext) {
+      setSimilarityContext(null);
+      return;
+    }
+    resetFilters();
+  }, [resetFilters, similarityContext]);
 
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
       <div className="container" style={containerStyle}>
         <header className="header" aria-label="App-Kopfzeile">
-          <h1 className="appname">Four20 Index</h1>
+          <div className="header__brand">
+            <h1 className="appname">Four20 Index</h1>
+          </div>
         </header>
 
         <div className="content-stack">
@@ -791,29 +812,24 @@ export default function CannabisKultivarFinderUseReducer() {
                   onClick={openEntourageModal}
                   aria-haspopup="dialog"
                   aria-expanded={isEntourageModalOpen}
+                  aria-label="Mehr zum Entourage-Effekt"
                 >
-                  <span aria-hidden="true">✨</span>
-                  <span>Mehr erfahren</span>
+                  <span>Mehr</span>
                 </button>
               </div>
 
               <StrainTable
                 strains={displayedKultivare}
-                showInfo={showInfo}
-                showTerpenPanel={showTerpenPanel}
                 showRadar={showRadar}
                 onToggleSelect={toggleCultivarSelection}
                 selectedCultivars={selectedCultivars}
+                onResetEmptyState={handleResetEmptyState}
+                isSimilarityMode={Boolean(similarityContext)}
               />
             </>
           )}
         </div>
 
-        {infoDialog.open && (
-          <Suspense fallback={<SuspenseOverlayFallback label="Sortendetails werden geladen …" />}>
-            <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
-          </Suspense>
-        )}
         {radarDialog.open && (
           <Suspense fallback={<SuspenseOverlayFallback label="Radar wird geladen …" />}>
             <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
@@ -824,17 +840,6 @@ export default function CannabisKultivarFinderUseReducer() {
           <Suspense fallback={<SuspenseOverlayFallback label="Informationen werden geladen …" />}>
             <EntourageInfoModal isOpen={isEntourageModalOpen} onClose={closeEntourageModal} />
           </Suspense>
-        )}
-
-        {terpenPanel.open && terpenPanel.cultivar && (
-          <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>
-            <div className="modal modal--wide" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={hideTerpenPanel} aria-label="Dialog schließen">×</button>
-              <Suspense fallback={<SuspenseInlineFallback label="Terpenprofil wird geladen …" />}>
-                <CultivarTerpenPanel cultivar={terpenPanel.cultivar} />
-              </Suspense>
-            </div>
-          </div>
         )}
 
         {isComparisonOpen && (

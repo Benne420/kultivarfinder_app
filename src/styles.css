@@ -9,24 +9,20 @@
   --light-grey: #f5f5f5;
   --pure-white: #ffffff;
   --body-background: #ffffff;
-  --button-min-height: 40px;
-  --button-padding-inline: 16px;
+  --table-text: #0f172a;
   --button-padding-block: 10px;
-  --button-radius: 9999px;
+  --button-padding-inline: 16px;
   --button-gap: 8px;
+  --button-min-height: 42px;
+  --button-radius: 14px;
   --button-font-size: 14px;
-  --terp-chip-bg: #f7fafc;
-  --terp-chip-hover-bg: #eef2f7;
-  --terp-chip-border: #cfd8dc;
-  --terp-chip-text: #35506b;
-  --grid-gap: clamp(1rem, 2vw, 2.5rem);
-  --grid-min-column: 280px;
   --font-scale-h1: clamp(2.5rem, 1.5rem + 2vw, 3.5rem);
   --font-scale-h2: clamp(2rem, 1.25rem + 1.2vw, 2.75rem);
   --font-scale-h3: clamp(1.625rem, 1.1rem + 0.8vw, 2.125rem);
   --font-scale-h4: clamp(1.375rem, 1rem + 0.5vw, 1.75rem);
   --font-scale-h5: clamp(1.125rem, 0.95rem + 0.3vw, 1.375rem);
   --font-scale-h6: clamp(1rem, 0.9rem + 0.2vw, 1.25rem);
+  color-scheme: light;
 }
 /* Fonts werden über @fontsource/montserrat geladen */
 body {
@@ -35,11 +31,106 @@ body {
   padding: 0;
   color: var(--primary-grey);
   background-color: var(--body-background);
-  background-image: url("../public/F20_Pharma_Pattern-Hexagon_07.png");
-  background-repeat: repeat;
-  background-size: auto;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 85, 164, 0.08),
+      rgba(0, 85, 164, 0) 35%
+    ),
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(99, 189, 50, 0.08),
+      rgba(99, 189, 50, 0) 32%
+    ),
+    var(--body-background);
+  background-repeat: no-repeat;
+  background-size: 100% 100%, 100% 100%, auto;
   background-position: center;
   line-height: 1.6;
+}
+
+button,
+.link-button,
+.reset-btn,
+.comparison-panel__add,
+.filters .multi-select__option,
+.filters .multi-select-dropdown__trigger,
+.similarity-panel__clear,
+.strain-table .action-button,
+.strain-table .link-button,
+.strain-table-pagination__button,
+.table-controls__button,
+.table-controls__dropdown {
+  border-radius: 9999px;
+}
+
+@media (prefers-reduced-data: no-preference) {
+  body {
+    background-image: radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 85, 164, 0.08),
+        rgba(0, 85, 164, 0) 35%
+      ),
+      radial-gradient(
+        circle at 80% 0%,
+        rgba(99, 189, 50, 0.08),
+        rgba(99, 189, 50, 0) 32%
+      ),
+      url("../public/F20_Pharma_Pattern-Hexagon_07.png"),
+      var(--body-background);
+    background-repeat: repeat, repeat, repeat, repeat;
+    background-size: 100% 100%, 100% 100%, auto, auto;
+    background-position: center;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) {
+    --body-background: #0f172a;
+    --primary-grey: #e2e8f0;
+    --light-grey: #1e293b;
+    --table-text: #e2e8f0;
+    color-scheme: dark;
+    background: radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 85, 164, 0.16),
+        rgba(0, 85, 164, 0) 35%
+      ),
+      radial-gradient(
+        circle at 80% 0%,
+        rgba(99, 189, 50, 0.16),
+        rgba(99, 189, 50, 0) 32%
+      ),
+      var(--body-background);
+    color: var(--primary-grey);
+  }
+
+  body:not([data-theme="light"]) .strain-table {
+    background: #0b1220;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.35);
+    color: #e2e8f0;
+  }
+
+  body:not([data-theme="light"]) .strain-table th,
+  body:not([data-theme="light"]) .strain-table td {
+    border-bottom: 1px solid #1f2a44;
+  }
+
+  body:not([data-theme="light"]) .strain-table thead {
+    background: #1e293b;
+    color: #e2e8f0;
+  }
+
+  body:not([data-theme="light"]) .strain-table tbody tr:hover {
+    background: rgba(59, 130, 246, 0.12);
+  }
+
+  body:not([data-theme="light"]) .strain-table tbody tr.is-selected {
+    background: rgba(59, 130, 246, 0.2);
+  }
+
+  body:not([data-theme="light"]) .strain-table td::before {
+    color: #cbd5e1;
+  }
 }
 
 .btn-primary {
@@ -155,6 +246,23 @@ h6 {
   font-size: var(--font-scale-h6);
   line-height: clamp(1.35rem, 0.95rem + 0.6vw, 1.75rem);
 }
+.header {
+  padding: 24px 0 12px;
+}
+
+.header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.header .appname {
+  margin: 0;
+  text-align: center;
+}
 p {
   margin-bottom: var(--base-spacing);
 }
@@ -168,6 +276,16 @@ p {
 .status-section,
 .table-section {
   margin: 12px 0 24px;
+}
+
+.table-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px auto;
+}
+
+.lazy-surface {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px auto;
 }
 
 .notice {
@@ -231,6 +349,7 @@ nav a:hover {
   width: 100%;
   margin: auto;
   text-align: center;
+  color: var(--table-text);
 }
 .table td:first-child {
   text-align: left;
@@ -425,7 +544,7 @@ nav a:hover {
 .entourage-button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   padding: var(--button-padding-block) var(--button-padding-inline);
   min-height: var(--button-min-height);
   border-radius: 999px;
@@ -434,6 +553,7 @@ nav a:hover {
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
+  text-align: center;
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(58, 141, 255, 0.22);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
@@ -919,6 +1039,63 @@ nav a:hover {
   font-weight: 500;
   min-width: 0;
   font-size: 15px;
+}
+
+.comparison-panel__terpene-profile {
+  width: 100%;
+}
+
+.comparison-panel__terpene-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.comparison-panel__terpene-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0f1f3a;
+  font-weight: 600;
+  background: rgba(234, 242, 255, 0.65);
+  border: 1px solid rgba(111, 139, 176, 0.35);
+  border-radius: 10px;
+  padding: 4px 8px;
+  line-height: 1.1;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.05);
+}
+
+.comparison-panel__terpene-chip--primary {
+  background: linear-gradient(120deg, rgba(227, 242, 255, 0.85), #f9fbff);
+  border-color: rgba(111, 139, 176, 0.5);
+}
+
+.comparison-panel__terpene-chip--more {
+  background: transparent;
+  border-style: dashed;
+  color: #35506b;
+  font-weight: 500;
+}
+
+.comparison-panel__terpene-order {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: #0f1f3a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.comparison-panel__terpene-label {
+  white-space: nowrap;
 }
 
 .comparison-panel__cell--radar {
@@ -1483,6 +1660,99 @@ nav a:hover {
   background: #eef2f7;
 }
 
+.terp-list__wrapper {
+  display: grid;
+  gap: 10px;
+}
+
+.terp-list__legend {
+  margin: 0;
+  font-size: 12px;
+  color: #546e7a;
+}
+
+.terp-list__placeholder {
+  margin: 0;
+  font-size: 14px;
+  color: #546e7a;
+}
+
+.terp-chip--dominant {
+  border-color: #42a5f5;
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.terp-chip--supporting {
+  border-color: #cfd8dc;
+  background: #f7fafc;
+  color: #35506b;
+}
+
+.terp-chip__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: rgba(13, 71, 161, 0.08);
+  font-size: 10px;
+}
+
+.terp-chip__label {
+  font-weight: 600;
+}
+
+.terpene-legend {
+  margin: 8px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #546e7a;
+}
+
+.terpene-legend__label {
+  font-weight: 600;
+  color: #35506b;
+}
+
+.terpene-legend__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  font-size: 12px;
+  border: 1px solid var(--terp-chip-border);
+}
+
+.terpene-legend__badge--dominant {
+  background: #e3f2fd;
+  color: #0d47a1;
+  border-color: #42a5f5;
+}
+
+.terpene-legend__badge--supporting {
+  background: #f7fafc;
+  color: #35506b;
+}
+
+.terpene-legend__text {
+  font-size: 12px;
+  color: #546e7a;
+}
+
+.terpene-legend__note {
+  display: block;
+  font-size: 12px;
+  color: #546e7a;
+  margin-top: 4px;
+}
+
 .reset-btn {
   display: inline-flex;
   align-items: center;
@@ -1609,6 +1879,144 @@ nav a:hover {
   color: #546e7a;
 }
 
+.modal--terpene-radar {
+  max-width: 920px;
+  width: min(94vw, 920px);
+}
+
+
+.terpene-radar-layout {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(280px, 0.9fr);
+  gap: 18px;
+  align-items: start;
+  margin-top: 8px;
+}
+
+.terpene-radar-layout__panel--visual {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.terpene-radar-layout__panel--details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.terpene-radar-layout__panel {
+  background: linear-gradient(180deg, rgba(243, 248, 255, 0.85), #ffffff);
+  border: 1px solid rgba(149, 175, 204, 0.35);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 28px rgba(33, 52, 87, 0.08);
+}
+
+.terpene-radar-layout__details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.terpene-radar-layout__details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px 14px;
+  margin: 0;
+}
+
+.terpene-radar-layout__details-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) 1.2fr;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.terpene-radar-layout__details-row--wide {
+  grid-column: 1 / -1;
+}
+
+.terpene-radar-layout__details-row dt {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.terpene-radar-layout__details-row dd {
+  margin: 0;
+  font-size: 14px;
+}
+
+.terpene-radar-layout__detail-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background-color: rgba(0, 85, 164, 0.06);
+  color: #2c3e50;
+  border: 1px solid rgba(0, 85, 164, 0.12);
+  font-size: 13px;
+}
+
+.terpene-radar-layout__detail-label {
+  font-weight: 700;
+}
+
+.terpene-radar-layout__extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.terpene-radar-layout__terpenes {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid #e0e7ef;
+  padding-top: 12px;
+}
+
+.terpene-radar-layout__terpene-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.terpene-radar-layout__terpene-title {
+  margin: 0;
+  font-size: 15px;
+  color: #1c2b36;
+}
+
+.terpene-radar-layout__terpene-hint {
+  margin: 0;
+  font-size: 13px;
+  color: #546e7a;
+}
+
+.terpene-radar-layout__image {
+  width: clamp(520px, 72vw, 720px);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  margin-inline: auto;
+}
+
+@media (max-width: 520px) {
+  .terpene-radar-layout__image {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .terpene-radar-layout {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 
 .strain-table-wrapper {
   display: flex;
@@ -1632,6 +2040,7 @@ nav a:hover {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 28px rgba(33, 52, 87, 0.08);
+  color: #0f172a;
 }
 
 .strain-table th,
@@ -1662,6 +2071,27 @@ nav a:hover {
   background: rgba(201, 224, 255, 0.6);
 }
 
+.strain-table .empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  align-items: center;
+  padding: 12px 8px;
+}
+
+.strain-table .empty-state__headline {
+  margin: 0;
+  font-weight: 700;
+  color: #2c3a4b;
+}
+
+.strain-table .empty-state__hint {
+  margin: 0;
+  color: #4d5a6a;
+  max-width: 520px;
+}
+
 .strain-table .link-button {
   padding: 6px 12px;
   min-height: 34px;
@@ -1690,6 +2120,90 @@ nav a:hover {
 .strain-table .link-button[disabled] {
   background: #f2f4f7;
   color: #90a4ae;
+}
+
+.strain-table .action-cell {
+  min-width: 200px;
+}
+
+.strain-table .action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 85, 164, 0.25);
+  background-color: rgba(0, 85, 164, 0.06);
+  color: #0d3c61;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.strain-table .strain-table__name-button {
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  min-width: 180px;
+}
+
+.strain-table .action-button:hover,
+.strain-table .action-button:focus-visible {
+  background-color: rgba(0, 85, 164, 0.12);
+  border-color: rgba(0, 85, 164, 0.45);
+  color: #003459;
+}
+
+.strain-table .action-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.strain-table .action-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.strain-table .action-dropdown__summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.strain-table .action-dropdown__summary::-webkit-details-marker {
+  display: none;
+}
+
+.strain-table .action-dropdown[open] .action-dropdown__summary {
+  background: var(--terp-chip-hover-bg);
+}
+
+.strain-table .action-dropdown__menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  min-width: 180px;
+  background: #ffffff;
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.strain-table .action-dropdown__item {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.strain-table .action-dropdown__chevron {
+  font-size: 12px;
 }
 
 .strain-table-pagination {
@@ -1782,13 +2296,17 @@ nav a:hover {
     margin-bottom: 2px;
   }
 
+  .strain-table td.comparison-column {
+    align-items: center;
+  }
+
+  .hidden-sm {
+    display: none;
+  }
+
   .strain-table td.hidden-sm,
   .strain-table th.hidden-sm {
     display: block;
-  }
-
-  .strain-table td.comparison-column {
-    align-items: center;
   }
 
 }
@@ -1971,13 +2489,3 @@ nav a:hover {
   color: #b71c1c;
 }
 
-@media (max-width: 640px) {
-  .hidden-sm {
-    display: none;
-  }
-
-  .strain-table td.hidden-sm,
-  .strain-table th.hidden-sm {
-    display: block;
-  }
-}
