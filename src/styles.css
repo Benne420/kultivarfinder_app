@@ -1777,8 +1777,8 @@ nav a:hover {
 }
 
 .modal--terpene-radar {
-  max-width: 760px;
-  width: min(92vw, 760px);
+  max-width: 860px;
+  width: min(94vw, 860px);
 }
 
 
@@ -1893,12 +1893,18 @@ nav a:hover {
 }
 
 .terpene-radar-layout__image {
-  width: 100%;
+  width: clamp(440px, 70vw, 640px);
+  max-width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
-  max-width: 520px;
   margin-inline: auto;
+}
+
+@media (max-width: 520px) {
+  .terpene-radar-layout__image {
+    width: 100%;
+  }
 }
 
 @media (max-width: 900px) {
