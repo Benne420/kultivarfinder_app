@@ -75,7 +75,7 @@ button,
         rgba(99, 189, 50, 0.08),
         rgba(99, 189, 50, 0) 32%
       ),
-      url("../public/F20_Pharma_Pattern-Hexagon_07.png"),
+      url("/F20_Pharma_Pattern-Hexagon_07.png"),
       var(--body-background);
     background-repeat: repeat, repeat, repeat, repeat;
     background-size: 100% 100%, 100% 100%, auto, auto;
