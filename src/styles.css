@@ -48,6 +48,21 @@ body {
   line-height: 1.6;
 }
 
+button,
+.link-button,
+.reset-btn,
+.comparison-panel__add,
+.filters .multi-select__option,
+.filters .multi-select-dropdown__trigger,
+.similarity-panel__clear,
+.strain-table .action-button,
+.strain-table .link-button,
+.strain-table-pagination__button,
+.table-controls__button,
+.table-controls__dropdown {
+  border-radius: 9999px;
+}
+
 @media (prefers-reduced-data: no-preference) {
   body {
     background-image: radial-gradient(
@@ -2116,7 +2131,7 @@ nav a:hover {
   align-items: center;
   gap: 6px;
   padding: 10px 12px;
-  border-radius: 12px;
+  border-radius: 9999px;
   border: 1px solid rgba(0, 85, 164, 0.25);
   background-color: rgba(0, 85, 164, 0.06);
   color: #0d3c61;
@@ -2126,7 +2141,8 @@ nav a:hover {
 }
 
 .strain-table .strain-table__name-button {
-  justify-content: flex-start;
+  justify-content: center;
+  text-align: center;
   font-weight: 700;
   min-width: 180px;
 }

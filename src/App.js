@@ -252,15 +252,27 @@ function filterReducer(state, action) {
 export default function CannabisKultivarFinderUseReducer() {
   // Hintergrundbild setzen
   useEffect(() => {
-    const previousBackground = document.body.style.backgroundImage;
-    const previousTitle = document.title;
+    const previousStyles = {
+      backgroundImage: document.body.style.backgroundImage,
+      backgroundRepeat: document.body.style.backgroundRepeat,
+      backgroundSize: document.body.style.backgroundSize,
+      backgroundPosition: document.body.style.backgroundPosition,
+      title: document.title,
+    };
+
     document.body.style.backgroundImage =
       "url('/F20_Pharma_Pattern-Hexagon_07.png')";
+    document.body.style.backgroundRepeat = "repeat";
+    document.body.style.backgroundSize = "auto";
+    document.body.style.backgroundPosition = "center";
     document.title = "Four20 Index";
 
     return () => {
-      document.body.style.backgroundImage = previousBackground;
-      document.title = previousTitle;
+      document.body.style.backgroundImage = previousStyles.backgroundImage;
+      document.body.style.backgroundRepeat = previousStyles.backgroundRepeat;
+      document.body.style.backgroundSize = previousStyles.backgroundSize;
+      document.body.style.backgroundPosition = previousStyles.backgroundPosition;
+      document.title = previousStyles.title;
     };
   }, []);
 
