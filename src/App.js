@@ -36,9 +36,7 @@ import {
 import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
 import defaultWirkungenSource from "./data/default-wirkungen.json";
 
-const CultivarTerpenPanel = lazy(() => import("./components/CultivarTerpenPanel"));
 const EntourageInfoModal = lazy(() => import("./components/EntourageInfoModal"));
-const DetailsModal = lazy(() => import("./components/DetailsModal"));
 const RadarModal = lazy(() => import("./components/RadarModal"));
 const ComparisonPanel = lazy(() => import("./components/ComparisonPanel"));
 const ComparisonDetailsModal = lazy(() => import("./components/ComparisonDetailsModal"));
@@ -66,13 +64,6 @@ const defaultWirkungen = [...defaultWirkungenSource].sort();
 const SuspenseOverlayFallback = ({ label = "Inhalt wird geladen …" }) => (
   <div className="modal-fallback" role="status" aria-live="polite">
     <span className="modal-fallback__spinner" aria-hidden="true" />
-    <span>{label}</span>
-  </div>
-);
-
-const SuspenseInlineFallback = ({ label = "Inhalt wird geladen …" }) => (
-  <div className="modal-inline-loader" role="status" aria-live="polite">
-    <span className="modal-inline-loader__spinner" aria-hidden="true" />
     <span>{label}</span>
   </div>
 );
@@ -449,15 +440,8 @@ export default function CannabisKultivarFinderUseReducer() {
     return normalized;
   }, [filters.selectedWirkungen]);
 
-  // Dialog für detaillierte Sorteninformationen (Name, THC, CBD, Terpengehalt, Wirkungen, Terpenprofil)
-  const [infoDialog, setInfoDialog] = useState({ open: false, cultivar: null });
+  // Dialog für das kombinierte Radar- und Detailfenster
   const [radarDialog, setRadarDialog] = useState({ open: false, cultivar: null });
-
-  // Zustand für das Terpen-Panel
-  const [terpenPanel, setTerpenPanel] = useState({
-    open: false,
-    cultivar: null,
-  });
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
   const [similarityContext, setSimilarityContext] = useState(null);
@@ -628,30 +612,12 @@ export default function CannabisKultivarFinderUseReducer() {
     (value) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value }),
     [dispatch]
   );
-  // Memoized helpers to open and close the information dialog. Wrapping
-  // setInfoDialog in useCallback avoids recreating these functions on every render.
-  const showInfo = useCallback((cultivar) => {
-    setInfoDialog({ open: true, cultivar });
-  }, []);
-  const hideInfo = useCallback(() => {
-    setInfoDialog({ open: false, cultivar: null });
-  }, []);
-
   const showRadar = useCallback((cultivar) => {
     setRadarDialog({ open: true, cultivar });
   }, []);
 
   const hideRadar = useCallback(() => {
     setRadarDialog({ open: false, cultivar: null });
-  }, []);
-
-  // Callback-Funktionen für das Terpen-Panel
-  const showTerpenPanel = useCallback((cultivar) => {
-    setTerpenPanel({ open: true, cultivar });
-  }, []);
-
-  const hideTerpenPanel = useCallback(() => {
-    setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
   const toggleCultivarSelection = useCallback((cultivar) => {
@@ -709,13 +675,13 @@ export default function CannabisKultivarFinderUseReducer() {
     }
 
     if (selectedCultivars.length === 1) {
-      showInfo(selectedCultivars[0]);
+      showRadar(selectedCultivars[0]);
       return;
     }
 
     setIsComparisonOpen(false);
     setIsComparisonDetailsOpen(true);
-  }, [selectedCultivars, showInfo]);
+  }, [selectedCultivars, showRadar]);
 
   const closeComparisonDetails = useCallback(() => {
     setIsComparisonDetailsOpen(false);
@@ -819,8 +785,6 @@ export default function CannabisKultivarFinderUseReducer() {
 
               <StrainTable
                 strains={displayedKultivare}
-                showInfo={showInfo}
-                showTerpenPanel={showTerpenPanel}
                 showRadar={showRadar}
                 onToggleSelect={toggleCultivarSelection}
                 selectedCultivars={selectedCultivars}
@@ -831,11 +795,6 @@ export default function CannabisKultivarFinderUseReducer() {
           )}
         </div>
 
-        {infoDialog.open && (
-          <Suspense fallback={<SuspenseOverlayFallback label="Sortendetails werden geladen …" />}>
-            <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
-          </Suspense>
-        )}
         {radarDialog.open && (
           <Suspense fallback={<SuspenseOverlayFallback label="Radar wird geladen …" />}>
             <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
@@ -846,17 +805,6 @@ export default function CannabisKultivarFinderUseReducer() {
           <Suspense fallback={<SuspenseOverlayFallback label="Informationen werden geladen …" />}>
             <EntourageInfoModal isOpen={isEntourageModalOpen} onClose={closeEntourageModal} />
           </Suspense>
-        )}
-
-        {terpenPanel.open && terpenPanel.cultivar && (
-          <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>
-            <div className="modal modal--wide" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={hideTerpenPanel} aria-label="Dialog schließen">×</button>
-              <Suspense fallback={<SuspenseInlineFallback label="Terpenprofil wird geladen …" />}>
-                <CultivarTerpenPanel cultivar={terpenPanel.cultivar} />
-              </Suspense>
-            </div>
-          </div>
         )}
 
         {isComparisonOpen && (
