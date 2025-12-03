@@ -24,6 +24,7 @@ import StrainTable from "./components/StrainTable";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
 import { TerpeneContext } from "./context/TerpeneContext";
+import { DEFAULT_TERPENE_RANK_ICONS } from "./constants/terpeneIcons";
 import {
   normalizeWirkung,
   createTerpeneAliasLookup,
@@ -35,9 +36,7 @@ import {
 import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
 import defaultWirkungenSource from "./data/default-wirkungen.json";
 
-const CultivarTerpenPanel = lazy(() => import("./components/CultivarTerpenPanel"));
 const EntourageInfoModal = lazy(() => import("./components/EntourageInfoModal"));
-const DetailsModal = lazy(() => import("./components/DetailsModal"));
 const RadarModal = lazy(() => import("./components/RadarModal"));
 const ComparisonPanel = lazy(() => import("./components/ComparisonPanel"));
 const ComparisonDetailsModal = lazy(() => import("./components/ComparisonDetailsModal"));
@@ -65,13 +64,6 @@ const defaultWirkungen = [...defaultWirkungenSource].sort();
 const SuspenseOverlayFallback = ({ label = "Inhalt wird geladen …" }) => (
   <div className="modal-fallback" role="status" aria-live="polite">
     <span className="modal-fallback__spinner" aria-hidden="true" />
-    <span>{label}</span>
-  </div>
-);
-
-const SuspenseInlineFallback = ({ label = "Inhalt wird geladen …" }) => (
-  <div className="modal-inline-loader" role="status" aria-live="polite">
-    <span className="modal-inline-loader__spinner" aria-hidden="true" />
     <span>{label}</span>
   </div>
 );
@@ -148,13 +140,15 @@ const filterKultivare = (
       }
       // Wirkungen filtern (normalisiert)
       if (selectedNormalized && selectedNormalized.length) {
-        if (!Array.isArray(k.wirkungen)) return false;
-        // Use preprocessed normalizedWirkungen if available to avoid re-normalizing on each filter.
+        // Greife auf vorberechnete normalisierte Werte zurück und fallbacke auf Rohdaten.
         const kultivarNormalized = Array.isArray(k.normalizedWirkungen)
           ? k.normalizedWirkungen
           : Array.isArray(k.wirkungen)
           ? k.wirkungen.map((w) => normalizeWirkung(w))
           : [];
+        if (!kultivarNormalized.length) {
+          return false;
+        }
         for (const w of selectedNormalized) {
           if (!kultivarNormalized.includes(w)) {
             return false;
@@ -238,6 +232,13 @@ function filterReducer(state, action) {
     }
     case "CLEAR_WIRKUNGEN": {
       return { ...state, selectedWirkungen: new Set() };
+    }
+    case "CLEAR_FILTERS": {
+      return {
+        ...initialFilterState,
+        selectedTerpene: new Set(),
+        selectedWirkungen: new Set(),
+      };
     }
     default:
       return state;
@@ -379,7 +380,7 @@ export default function CannabisKultivarFinderUseReducer() {
                         .map((name) => mapTerpeneToCanonical(name, aliasLookup))
                         .filter(Boolean)
                     )
-                  )
+                  ).slice(0, 5)
                 : [];
               return {
                 ...k,
@@ -439,15 +440,8 @@ export default function CannabisKultivarFinderUseReducer() {
     return normalized;
   }, [filters.selectedWirkungen]);
 
-  // Dialog für detaillierte Sorteninformationen (Name, THC, CBD, Terpengehalt, Wirkungen, Terpenprofil)
-  const [infoDialog, setInfoDialog] = useState({ open: false, cultivar: null });
+  // Dialog für das kombinierte Radar- und Detailfenster
   const [radarDialog, setRadarDialog] = useState({ open: false, cultivar: null });
-
-  // Zustand für das Terpen-Panel
-  const [terpenPanel, setTerpenPanel] = useState({
-    open: false,
-    cultivar: null,
-  });
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
   const [similarityContext, setSimilarityContext] = useState(null);
@@ -528,7 +522,11 @@ export default function CannabisKultivarFinderUseReducer() {
       payload.results.length
     ) {
       const referenceName = payload.reference?.name || payload.referenceName || "";
-      const referenceEntry = { ...payload.reference, similarity: 1 };
+      const referenceEntry = {
+        ...payload.reference,
+        similarity: 1,
+        similarityLabel: "Referenz",
+      };
       const filteredResults = payload.results.filter(
         (result) => result && result.name !== referenceEntry.name
       );
@@ -595,6 +593,7 @@ export default function CannabisKultivarFinderUseReducer() {
       aliasLookup: terpeneLookup,
       references,
       loadReferences,
+      rankIconMap: DEFAULT_TERPENE_RANK_ICONS,
     }),
     [terpeneMetadata, terpeneLookup, references, loadReferences]
   );
@@ -608,34 +607,17 @@ export default function CannabisKultivarFinderUseReducer() {
     () => dispatch({ type: "CLEAR_WIRKUNGEN" }),
     []
   );
+  const resetFilters = useCallback(() => dispatch({ type: "CLEAR_FILTERS" }), []);
   const handleIncludeDiscontinuedChange = useCallback(
     (value) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value }),
     [dispatch]
   );
-  // Memoized helpers to open and close the information dialog. Wrapping
-  // setInfoDialog in useCallback avoids recreating these functions on every render.
-  const showInfo = useCallback((cultivar) => {
-    setInfoDialog({ open: true, cultivar });
-  }, []);
-  const hideInfo = useCallback(() => {
-    setInfoDialog({ open: false, cultivar: null });
-  }, []);
-
   const showRadar = useCallback((cultivar) => {
     setRadarDialog({ open: true, cultivar });
   }, []);
 
   const hideRadar = useCallback(() => {
     setRadarDialog({ open: false, cultivar: null });
-  }, []);
-
-  // Callback-Funktionen für das Terpen-Panel
-  const showTerpenPanel = useCallback((cultivar) => {
-    setTerpenPanel({ open: true, cultivar });
-  }, []);
-
-  const hideTerpenPanel = useCallback(() => {
-    setTerpenPanel({ open: false, cultivar: null });
   }, []);
 
   const toggleCultivarSelection = useCallback((cultivar) => {
@@ -693,121 +675,126 @@ export default function CannabisKultivarFinderUseReducer() {
     }
 
     if (selectedCultivars.length === 1) {
-      showInfo(selectedCultivars[0]);
+      showRadar(selectedCultivars[0]);
       return;
     }
 
     setIsComparisonOpen(false);
     setIsComparisonDetailsOpen(true);
-  }, [selectedCultivars, showInfo]);
+  }, [selectedCultivars, showRadar]);
 
   const closeComparisonDetails = useCallback(() => {
     setIsComparisonDetailsOpen(false);
   }, []);
+
+  const handleResetEmptyState = useCallback(() => {
+    if (similarityContext) {
+      setSimilarityContext(null);
+      return;
+    }
+    resetFilters();
+  }, [resetFilters, similarityContext]);
 
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
       <div className="container" style={containerStyle}>
         <header className="header" aria-label="App-Kopfzeile">
-          <h1 className="appname">Four20 Index</h1>
+          <div className="header__brand">
+            <h1 className="appname">Four20 Index</h1>
+          </div>
         </header>
 
-        <div className="notice" role="note">
-          <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information und ersetzt keine medizinische
-          Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
+        <div className="content-stack">
+          <div className="notice" role="note">
+            <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information und ersetzt keine medizinische
+            Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
+          </div>
+
+          <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+
+          {similarityContext && (
+            <div className="similarity-banner" role="status" aria-live="polite">
+              <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
+              {" "}angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Clear similarity“, um zur
+              gefilterten Ansicht zurückzukehren.
+            </div>
+          )}
+          {loading && (
+            <div className="status status--loading" role="status" aria-live="polite">
+              Daten werden geladen …
+            </div>
+          )}
+          {error && !loading && (
+            <div className="status status--error" role="alert">
+              Beim Laden der Daten ist ein Fehler aufgetreten: {error}
+            </div>
+          )}
+
+          <StrainSimilarity
+            kultivare={kultivare}
+            onApplySimilar={handleApplySimilarity}
+            includeDiscontinued={filters.includeDiscontinued}
+            onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+          />
+          {!loading && !error && (
+            <>
+              <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
+                <p className="comparison-toolbar__hint">
+                  {selectedCultivars.length
+                    ? `${selectedCultivars.length} Sorte${selectedCultivars.length > 1 ? "n" : ""} ausgewählt (max. ${MAX_COMPARISON_ITEMS})`
+                    : "Wählen Sie mindestens zwei Sorten aus, um den Vergleich zu starten."}
+                </p>
+                <button
+                  type="button"
+                  className="primary"
+                  onClick={openComparison}
+                  disabled={!canOpenComparison}
+                  aria-disabled={!canOpenComparison}
+                >
+                  Vergleich starten
+                </button>
+              </div>
+
+              <FilterPanel
+                filters={filters}
+                dispatch={dispatch}
+                terpene={terpeneOptions}
+                wirkungen={availableWirkungen}
+                clearTerpene={clearTerpene}
+                clearWirkungen={clearWirkungen}
+              />
+
+              <div className="entourage-inline" role="region" aria-label="Information zum Entourage-Effekt">
+                <div className="entourage-inline__copy">
+                  <p className="entourage-inline__eyebrow">Wissen</p>
+                  <p className="entourage-inline__title">Entourage-Effekt &amp; ECS kompakt</p>
+                  <p className="entourage-inline__hint">Kernpunkte zu Synergien, Mechanismen und Evidenz auf einen Blick.</p>
+                </div>
+                <button
+                  type="button"
+                  className="entourage-button"
+                  onClick={openEntourageModal}
+                  aria-haspopup="dialog"
+                  aria-expanded={isEntourageModalOpen}
+                >
+                  <span aria-hidden="true">✨</span>
+                  <span>Mehr erfahren</span>
+                </button>
+              </div>
+
+              <StrainTable
+                strains={displayedKultivare}
+                showRadar={showRadar}
+                onToggleSelect={toggleCultivarSelection}
+                selectedCultivars={selectedCultivars}
+                onResetEmptyState={handleResetEmptyState}
+                isSimilarityMode={Boolean(similarityContext)}
+              />
+            </>
+          )}
         </div>
 
-        <StrainSimilarity
-          kultivare={kultivare}
-          onApplySimilar={handleApplySimilarity}
-          includeDiscontinued={filters.includeDiscontinued}
-          onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
-        />
-        <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
-        <FilterPanel
-          filters={filters}
-          dispatch={dispatch}
-          terpene={terpeneOptions}
-          wirkungen={availableWirkungen}
-          clearTerpene={clearTerpene}
-          clearWirkungen={clearWirkungen}
-        />
-        {similarityContext && (
-          <div className="similarity-banner" role="status" aria-live="polite">
-            <strong>Hinweis:</strong> Es werden ähnliche Sorten zu <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>
-            {" "}angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Clear similarity“, um zur
-            gefilterten Ansicht zurückzukehren.
-          </div>
-        )}
-        {loading && (
-          <div className="status status--loading" role="status" aria-live="polite">
-            Daten werden geladen …
-          </div>
-        )}
-        {error && !loading && (
-          <div className="status status--error" role="alert">
-            Beim Laden der Daten ist ein Fehler aufgetreten: {error}
-          </div>
-        )}
-        <div
-          className="utility-bar"
-          role="complementary"
-          aria-label="Entourage-Effekt Informationen"
-        >
-          <div className="utility-bar__content">
-            <div className="utility-bar__text">
-              <p className="utility-bar__title">Entourage-Effekt</p>
-              <p className="utility-bar__description">
-                Erfahren Sie, wie Cannabinoide und Terpene zusammenwirken und welche
-                Profil-Daten die App dafür nutzt.
-              </p>
-            </div>
-            <button
-              type="button"
-              className="utility-bar__button"
-              onClick={openEntourageModal}
-              aria-haspopup="dialog"
-              aria-expanded={isEntourageModalOpen}
-            >
-              Mehr zum Entourage-Effekt
-            </button>
-          </div>
-        </div>
-        {!loading && !error && (
-          <>
-            <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
-              <p className="comparison-toolbar__hint">
-                {selectedCultivars.length
-                  ? `${selectedCultivars.length} Sorte${selectedCultivars.length > 1 ? "n" : ""} ausgewählt (max. ${MAX_COMPARISON_ITEMS})`
-                  : "Wählen Sie mindestens zwei Sorten aus, um den Vergleich zu starten."}
-              </p>
-              <button
-                type="button"
-                className="primary"
-                onClick={openComparison}
-                disabled={!canOpenComparison}
-                aria-disabled={!canOpenComparison}
-              >
-                Vergleich starten
-              </button>
-            </div>
-            <StrainTable
-              strains={displayedKultivare}
-              showInfo={showInfo}
-              showTerpenPanel={showTerpenPanel}
-              showRadar={showRadar}
-              onToggleSelect={toggleCultivarSelection}
-              selectedCultivars={selectedCultivars}
-            />
-          </>
-        )}
-
-        {infoDialog.open && (
-          <Suspense fallback={<SuspenseOverlayFallback label="Sortendetails werden geladen …" />}>
-            <DetailsModal infoDialog={infoDialog} hideInfo={hideInfo} />
-          </Suspense>
-        )}
         {radarDialog.open && (
           <Suspense fallback={<SuspenseOverlayFallback label="Radar wird geladen …" />}>
             <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
@@ -818,17 +805,6 @@ export default function CannabisKultivarFinderUseReducer() {
           <Suspense fallback={<SuspenseOverlayFallback label="Informationen werden geladen …" />}>
             <EntourageInfoModal isOpen={isEntourageModalOpen} onClose={closeEntourageModal} />
           </Suspense>
-        )}
-
-        {terpenPanel.open && terpenPanel.cultivar && (
-          <div className="modal-backdrop" onClick={hideTerpenPanel} role="dialog" aria-modal="true" aria-label={`Terpen-Informationen für ${terpenPanel.cultivar.name}`}>
-            <div className="modal modal--wide" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={hideTerpenPanel} aria-label="Dialog schließen">×</button>
-              <Suspense fallback={<SuspenseInlineFallback label="Terpenprofil wird geladen …" />}>
-                <CultivarTerpenPanel cultivar={terpenPanel.cultivar} />
-              </Suspense>
-            </div>
-          </div>
         )}
 
         {isComparisonOpen && (

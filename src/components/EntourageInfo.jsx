@@ -1,146 +1,141 @@
 import React from "react";
 
+const ecsPoints = [
+  {
+    heading: "Funktion",
+    text: "Steuert Schmerzverarbeitung, Schlaf, Muskeltonus und Immunantworten mit.",
+  },
+  {
+    heading: "Rezeptoren",
+    text: "CB1 (v. a. zentralnervös) und CB2 (Immun- und periphere Gewebe) binden Endo- und Phytocannabinoide.",
+  },
+  {
+    heading: "Cannabinoide",
+    text: "THC: vor allem psychoaktiv und analgetisch. CBD: eher entzündungshemmend/antikonvulsiv und kann THC-Nebenwirkungen dämpfen.",
+  },
+];
+
 const aspects = [
   {
     title: "Cannabinoid–Terpen–Interaktionen",
     description:
-      "Terpene wie Linalool, β-Pinen oder α-Humulen zeigen in präklinischen Modellen cannabimimetische Eigenschaften und können Cannabinoidwirkungen modulieren (LaVigne et al., 2021).",
+      "Terpene wie Linalool, β-Pinen oder α-Humulen können Cannabinoidwirkungen in Modellen modulieren (LaVigne et al., 2021).",
   },
   {
     title: "Pharmakologische Modulation",
     description:
-      "Terpene besitzen eigene Wirkmechanismen – etwa über GABA-, Adenosin- oder TRP-Kanäle – und könnten Bioverfügbarkeit sowie Rezeptorbindung von Cannabinoiden beeinflussen (André et al., 2024).",
+      "Eigene Wirkmechanismen (z. B. GABA, Adenosin, TRP) könnten Bioverfügbarkeit und Rezeptorbindung der Cannabinoide beeinflussen (André et al., 2024).",
   },
   {
     title: "Klinische Evidenz",
     description:
-      "Beobachtungen legen nahe, dass CBD-reiche Vollextrakte eine stärkere Wirksamkeit und ein günstigeres Nebenwirkungsprofil zeigen könnten als isoliertes CBD (Pamplona et al., 2018).",
+      "Beobachtungen: CBD-reiche Vollextrakte könnten wirksamer und verträglicher sein als isoliertes CBD (Pamplona et al., 2018).",
   },
   {
     title: "Aktueller Forschungsstand",
     description:
-      "Systematische Übersichtsarbeiten betonen, dass bislang keine kontrollierten klinischen Studien eine generalisierbare Synergie belegen (Christensen et al., 2023).",
+      "Systematische Reviews sehen bislang keine belastbaren kontrollierten Studien für generalisierbare Synergien (Christensen et al., 2023).",
+  },
+];
+
+const references = [
+  {
+    label: "Pamplona, F. A. et al. (2018). Front Neurol, 9, 759.",
+    href: "https://www.frontiersin.org/articles/10.3389/fneur.2018.00759/full",
+  },
+  {
+    label: "LaVigne, J. E. et al. (2021). Sci Rep, 11, 9481.",
+    href: "https://www.nature.com/articles/s41598-021-87740-8",
+  },
+  {
+    label: "Christensen, C. et al. (2023). Biomedicines, 11(8), 2110.",
+    href: "https://pubmed.ncbi.nlm.nih.gov/37626819/",
+  },
+  {
+    label: "André, R. et al. (2024). Pharmaceuticals, 17(11), 1543.",
+    href: "https://www.mdpi.com/1424-8247/17/11/1543",
+  },
+  {
+    label: "Russo, E. B. (2011). Br J Pharmacol, 163(7), 1344–1364.",
+    href: "https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x",
   },
 ];
 
 const EntourageInfoContent = ({ headingId }) => {
   return (
-    <div
-      style={{
-        padding: "16px",
-        backgroundColor: "#f8f9fa",
-        border: "1px solid #dee2e6",
-        borderRadius: "8px",
-        margin: "16px 0",
-      }}
-    >
-      <h3
-        id={headingId}
-        style={{
-          marginTop: 0,
-          marginBottom: "12px",
-          fontSize: "18px",
-          color: "#495057",
-        }}
-      >
-        Entourage-Effekt
-      </h3>
-
-      <div style={{ fontSize: "14px", lineHeight: "1.5", color: "#495057" }}>
-        <p style={{ margin: "0 0 12px 0" }}>
-          Der sogenannte <strong>Entourage-Effekt</strong> beschreibt die
-          potenziell synergistische Wechselwirkung verschiedener Inhaltsstoffe
-          der Cannabispflanze – insbesondere Cannabinoide, Terpene und
-          Flavonoide –, die gemeinsam eine andere oder ausgewogenere
-          pharmakologische Wirkung entfalten könnten als isolierte
-          Einzelkomponenten.
+    <section className="entourage-info" aria-labelledby={headingId}>
+      <header className="entourage-info__header">
+        <p className="entourage-info__eyebrow">Wissen</p>
+        <h3 id={headingId} className="entourage-info__title">
+          ECS und Entourage-Effekt
+        </h3>
+        <p className="entourage-info__lede">
+          Kompakter Überblick zu Endocannabinoid-System und Entourage-Effekt.
         </p>
+      </header>
 
-        <div style={{ marginBottom: "12px" }}>
-          <strong>Wichtige Aspekte:</strong>
-          <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
-            {aspects.map(({ title, description }) => (
-              <li key={title}>
-                <strong>{`${title}:`}</strong> {description}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section className="entourage-info__section" aria-label="Endocannabinoid-System">
+        <h4 className="entourage-info__section-title">Das Endocannabinoid-System (ECS)</h4>
+        <dl className="entourage-info__definition-list">
+          {ecsPoints.map(({ heading, text }) => (
+            <div key={heading} className="entourage-info__definition-row">
+              <dt>{heading}</dt>
+              <dd>{text}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
-        <p style={{ margin: "0 0 12px 0" }}>
-          Die Hypothese des Entourage-Effekts wurde 2011 von Ethan B. Russo
-          umfassend beschrieben und postuliert eine molekulare Synergie zwischen
-          Terpenen und Cannabinoiden. Sie ist wissenschaftlich einflussreich,
-          wurde bisher jedoch nicht klinisch validiert (Russo, 2011).
+      <section className="entourage-info__section" aria-label="Entourage-Effekt">
+        <h4 className="entourage-info__section-title">Entourage-Effekt</h4>
+        <p className="entourage-info__text">
+          Synergien zwischen Cannabinoiden, Terpenen und Flavonoiden: Mischungen können ein anderes, teils
+          ausgewogeneres pharmakologisches Profil als Einzelstoffe entfalten.
         </p>
+        <p className="entourage-info__note">
+          Die Synergie-Hypothese ist plausibel, aber klinisch bislang nicht belastbar bestätigt (Russo, 2011).
+        </p>
+      </section>
 
-        <div
-          style={{
-            padding: "8px 12px",
-            backgroundColor: "#fff3cd",
-            border: "1px solid #ffeaa7",
-            borderRadius: "4px",
-            fontSize: "12px",
-            color: "#856404",
-          }}
-        >
-          <strong>Rechtlicher Hinweis:</strong> Diese Informationen dienen der
-          allgemeinen wissenschaftlichen Orientierung und ersetzen keine
-          medizinische Beratung.
+      <section className="entourage-info__section" aria-label="Schlüssel-Aspekte zum Entourage-Effekt">
+        <div className="entourage-info__section-heading">
+          <h5 className="entourage-info__subsection-title">Schlüssel-Aspekte</h5>
+          <p className="entourage-info__section-description">Kerneinblicke aus Forschung und Pharmakologie.</p>
         </div>
+        <ol className="entourage-info__aspect-list">
+          {aspects.map(({ title, description }) => (
+            <li key={title} className="entourage-info__aspect">
+              <div className="entourage-info__aspect-body">
+                <h6 className="entourage-info__aspect-title">{title}</h6>
+                <p className="entourage-info__text">{description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-        <div style={{ marginTop: "12px", fontSize: "12px", color: "#6c757d" }}>
-          Quellen:
-          <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
-            <li>
-              <a
-                href="https://www.frontiersin.org/articles/10.3389/fneur.2018.00759/full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Pamplona, F. A. et al. (2018). Front Neurol, 9, 759.
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.nature.com/articles/s41598-021-87740-8"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LaVigne, J. E. et al. (2021). Sci Rep, 11, 9481.
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://pubmed.ncbi.nlm.nih.gov/37626819/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Christensen, C. et al. (2023). Biomedicines, 11(8), 2110.
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.mdpi.com/1424-8247/17/11/1543"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                André, R. et al. (2024). Pharmaceuticals, 17(11), 1543.
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://bpspubs.onlinelibrary.wiley.com/doi/10.1111/j.1476-5381.2011.01238.x"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Russo, E. B. (2011). Br J Pharmacol, 163(7), 1344–1364.
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div className="entourage-info__disclaimer" role="note">
+        <strong>Rechtlicher Hinweis:</strong> Diese Informationen dienen der allgemeinen wissenschaftlichen Orientierung und
+        ersetzen keine medizinische Beratung. Indikation und Präparateauswahl erfolgen ausschließlich durch ärztliches
+        Fachpersonal.
       </div>
-    </div>
+
+      <div className="entourage-info__sources" aria-label="Quellenverzeichnis">
+        <div className="entourage-info__section-heading entourage-info__section-heading--compact">
+          <h6 className="entourage-info__sources-title">Quellen</h6>
+          <p className="entourage-info__section-description">Weitere Literatur zur Vertiefung.</p>
+        </div>
+        <ol className="entourage-info__list entourage-info__list--compact">
+          {references.map(({ label, href }) => (
+            <li key={href}>
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
   );
 };
 

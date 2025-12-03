@@ -4,24 +4,42 @@ import TerpeneChips from "./TerpeneChips";
 const PAGE_SIZE_OPTIONS = [50, 100];
 const DEFAULT_PAGE_SIZE = 100;
 
+export const toSafePdfPath = (name) => {
+  const trimmed = String(name || "").trim();
+  if (!trimmed) {
+    return "/datenblaetter/datenblatt.pdf";
+  }
+
+  // Entferne nur wirklich problematische Dateisystem-Zeichen, lasse aber Diakritika intakt,
+  // damit vorhandene Dateien wie "Rose_Gold_Pavé.pdf" auch gefunden werden.
+  const withoutInvalidFsChars = trimmed
+    .replace(/[<>:"/\\|?*]/g, "")
+    .replace(/[\u0000-\u001f]/g, "")
+    .replace(/['`]/g, "");
+
+  const underscored = withoutInvalidFsChars
+    .replace(/\s+/g, "_")
+    .replace(/_+/g, "_")
+    .trim();
+
+  const safeName = underscored || "datenblatt";
+  return `/datenblaetter/${encodeURIComponent(safeName)}.pdf`;
+};
+
 const StrainTableRow = React.memo(function StrainTableRow({
   strain,
   isSelected,
   hasSimilarityColumn,
   onToggleSelect,
-  showInfo,
-  showTerpenPanel,
   showRadar,
+  terpeneLegendId,
 }) {
   if (!strain) {
     return null;
   }
 
   const { name = "Unbekannt", thc, cbd, normalizedTerpenprofil, terpenprofil } = strain;
-  const pdfUrl = useMemo(
-    () => `/datenblaetter/${name.replace(/\s+/g, "_")}.pdf`,
-    [name]
-  );
+  const pdfUrl = useMemo(() => toSafePdfPath(name), [name]);
   const terpeneList = useMemo(() => {
     if (Array.isArray(normalizedTerpenprofil) && normalizedTerpenprofil.length) {
       return normalizedTerpenprofil;
@@ -30,20 +48,26 @@ const StrainTableRow = React.memo(function StrainTableRow({
   }, [normalizedTerpenprofil, terpenprofil]);
 
   const handleToggleSelect = useCallback(() => onToggleSelect(strain), [onToggleSelect, strain]);
-  const handleShowInfo = useCallback(() => showInfo(strain), [showInfo, strain]);
-  const handleShowTerpenPanel = useCallback(
-    () => showTerpenPanel(strain),
-    [showTerpenPanel, strain]
-  );
   const handleShowRadar = useCallback(() => showRadar(strain), [showRadar, strain]);
   const handleOpenPdf = useCallback(() => {
     window.open(pdfUrl, "_blank", "noopener,noreferrer");
   }, [pdfUrl]);
 
-  const similarityValue =
+  const similarityScore =
     typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
-      ? `${Math.round(strain.similarity * 100)}%`
-      : "–";
+      ? strain.similarity
+      : null;
+  const overlap = strain?.overlap;
+  const overlapBucketText =
+    overlap && Number.isFinite(overlap.bucket)
+      ? `${overlap.bucket}/5 Terpene`
+      : null;
+  const similarityLabel = strain?.similarityLabel;
+
+  const similarityPrimary = similarityLabel || "Übereinstimmung";
+  const similarityMeta = [overlapBucketText].filter(Boolean);
+  const similarityDescription =
+    [similarityLabel, overlapBucketText].filter(Boolean).join(" – ") || "Ähnlichkeitsbewertung";
 
   return (
     <tr className={isSelected ? "is-selected" : undefined}>
@@ -70,7 +94,25 @@ const StrainTableRow = React.memo(function StrainTableRow({
       </td>
       {hasSimilarityColumn && (
         <td className="similarity-column" data-label="Übereinstimmung">
-          {similarityValue}
+          {similarityScore !== null ? (
+            <div className="similarity-badge" aria-label={similarityDescription}>
+              <span className="similarity-badge__primary">{similarityPrimary}</span>
+              {similarityMeta.length > 0 && (
+                <span className="similarity-badge__meta">
+                  {similarityMeta.map((entry, index) => (
+                    <span
+                      key={`${entry}-${index}`}
+                      className={index === 0 ? "similarity-pill" : "similarity-detail"}
+                    >
+                      {entry}
+                    </span>
+                  ))}
+                </span>
+              )}
+            </div>
+          ) : (
+            "–"
+          )}
         </td>
       )}
       <td data-label="THC">
@@ -80,26 +122,20 @@ const StrainTableRow = React.memo(function StrainTableRow({
         {cbd || "N/A"}
       </td>
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
-        <TerpeneChips list={terpeneList} onInfo={handleShowTerpenPanel} />
+        <TerpeneChips
+          list={terpeneList}
+          onInfo={handleShowRadar}
+          describedBy={terpeneLegendId}
+        />
       </td>
-      <td data-label="Radar">
+      <td data-label="Details" className="action-cell">
         <button
-          className="link-button"
+          type="button"
+          className="link-button action-button"
           onClick={handleShowRadar}
-          type="button"
-          aria-label={`${name} Radar anzeigen`}
+          aria-label={`${name} Diagramm, Details und Terpene anzeigen`}
         >
-          anzeigen
-        </button>
-      </td>
-      <td data-label="Details">
-        <button
-          type="button"
-          className="link-button"
-          onClick={handleShowInfo}
-          aria-label={`${name} Details anzeigen`}
-        >
-          anzeigen
+          Details
         </button>
       </td>
     </tr>
@@ -110,12 +146,13 @@ StrainTableRow.displayName = "StrainTableRow";
 
 export default function StrainTable({
   strains = [],
-  showInfo = () => {},
-  showTerpenPanel = () => {},
   showRadar = () => {},
   onToggleSelect = () => {},
   selectedCultivars = [],
+  onResetEmptyState = () => {},
+  isSimilarityMode = false,
 }) {
+  const terpeneLegendId = "terpene-legend";
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const [pageIndex, setPageIndex] = useState(0);
 
@@ -186,7 +223,6 @@ export default function StrainTable({
               <th>THC</th>
               <th className="hidden-sm">CBD</th>
               <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
-              <th>Radar</th>
               <th>Details</th>
             </tr>
           </thead>
@@ -199,23 +235,53 @@ export default function StrainTable({
                   isSelected={selectedNameSet.has(k.name)}
                   hasSimilarityColumn={hasSimilarityColumn}
                   onToggleSelect={onToggleSelect}
-                  showInfo={showInfo}
-                  showTerpenPanel={showTerpenPanel}
                   showRadar={showRadar}
+                  terpeneLegendId={terpeneLegendId}
                 />
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={hasSimilarityColumn ? 8 : 7}
-                  style={{ textAlign: "center", padding: 12 }}
-                >
-                  Keine Ergebnisse
+                <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ padding: 12 }}>
+                  <div className="empty-state" aria-live="polite">
+                    <p className="empty-state__headline">Keine Ergebnisse</p>
+                    <p className="empty-state__hint">
+                      {isSimilarityMode
+                        ? "Es wurden keine ähnlichen Sorten gefunden. Setzen Sie die Ähnlichkeitssuche zurück, um wieder alle Ergebnisse zu sehen."
+                        : "Passen Sie die Filter an oder setzen Sie sie zurück, um wieder Treffer zu erhalten."}
+                    </p>
+                    <button
+                      type="button"
+                      className="primary"
+                      onClick={onResetEmptyState}
+                      aria-label={
+                        isSimilarityMode
+                          ? "Ähnlichkeitssuche zurücksetzen"
+                          : "Alle Filter zurücksetzen"
+                      }
+                    >
+                      {isSimilarityMode ? "Ähnlichkeitssuche aufheben" : "Filter zurücksetzen"}
+                    </button>
+                  </div>
                 </td>
               </tr>
             )}
           </tbody>
         </table>
+      </div>
+      <div id={terpeneLegendId} className="terpene-legend" aria-live="polite">
+        <span className="terpene-legend__label">Terpenprofil-Legende:</span>
+        <span className="terpene-legend__badge terpene-legend__badge--dominant" aria-hidden="true">
+          ★
+        </span>
+        <span className="terpene-legend__text">Dominant</span>
+        <span className="terpene-legend__badge terpene-legend__badge--supporting" aria-hidden="true">
+          •
+        </span>
+        <span className="terpene-legend__text">Begleitend</span>
+        <span className="terpene-legend__note">
+          Reihenfolge folgt dem Datensatz; im Terpen-Panel lässt sich bei Bedarf
+          eine alphabetische Ansicht wählen.
+        </span>
       </div>
       {totalPages > 1 && (
         <div className="strain-table-pagination" role="navigation" aria-label="Seitennavigation">
