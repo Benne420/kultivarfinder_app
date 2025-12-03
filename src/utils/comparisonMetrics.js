@@ -1,7 +1,7 @@
 import React from "react";
-import EffectPills from "./EffectPills";
-import TerpeneRadarImage from "./TerpeneRadarImage";
-import { getCultivarEffects } from "../utils/helpers";
+import EffectPills from "../components/EffectPills";
+import TerpeneRadarImage from "../components/TerpeneRadarImage";
+import { getCultivarEffects } from "./helpers";
 
 function getCultivarTerpeneProfile(cultivar) {
   if (!cultivar) return [];

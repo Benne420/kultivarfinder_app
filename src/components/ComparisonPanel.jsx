@@ -7,7 +7,7 @@ import {
 import {
   comparisonMetrics,
   renderComparisonMetricValue,
-} from "./comparisonMetrics";
+} from "../utils/comparisonMetrics";
 
 export default function ComparisonPanel({
   isOpen,
