@@ -85,7 +85,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
       <td data-label="Name">
         <button
           type="button"
-          className="link-button strain-table__name-button"
+          className="link-button action-button strain-table__name-button"
           onClick={handleOpenPdf}
           aria-label={`${name} Datenblatt anzeigen`}
         >
