@@ -120,8 +120,7 @@ function printSummary(stats){
   let stats = { total: refs.length, checked: 0, ok: 0, warn: 0, fail: 0, noDoi: 0, skipped: 0 };
   const issues = [];
 
-  const processRef = async (ref, index) => {
-    const id = ref?.id ?? String(index);
+  const processRef = async (ref, id) => {
     const r = ref;
     const titleLocal = r?.title || "";
     const doi = (r?.doi || "").trim();
@@ -201,7 +200,8 @@ function printSummary(stats){
 
   const tasks = [];
   refs.forEach((ref, index) => {
-    tasks.push(() => processRef(ref, index));
+    const id = ref?.id ?? String(index);
+    tasks.push(() => processRef(ref, id));
   });
 
   for (const task of tasks) {
