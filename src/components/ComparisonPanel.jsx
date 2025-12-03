@@ -33,6 +33,10 @@ export default function ComparisonPanel({
   const gridTemplate = `minmax(160px, ${safeHeaderWidth}px) repeat(${cultivarCount}, minmax(160px, ${safeColumnWidth}px))`;
   const columnTemplate = { gridTemplateColumns: gridTemplate };
 
+  const columnTemplate = {
+    gridTemplateColumns: gridTemplate,
+  };
+
   const panelStyle = {
     "--comparison-column-width": `${safeColumnWidth}px`,
     "--comparison-radar-height": `${radarHeightPx}px`,
