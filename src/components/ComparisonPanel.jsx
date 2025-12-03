@@ -31,7 +31,7 @@ export default function ComparisonPanel({
   const safeColumnWidth = Math.max(columnWidthPx, 160);
   const safeHeaderWidth = Math.max(COMPARISON_HEADER_WIDTH_PX, 180);
   const gridTemplate = `minmax(160px, ${safeHeaderWidth}px) repeat(${cultivarCount}, minmax(160px, ${safeColumnWidth}px))`;
-  const columnTemplate = { gridTemplateColumns: gridTemplate };
+  const columnTemplateStyle = { gridTemplateColumns: gridTemplate };
 
   const columnTemplate = {
     gridTemplateColumns: gridTemplate,
@@ -78,7 +78,7 @@ export default function ComparisonPanel({
             <div
               className="comparison-panel__row comparison-panel__row--header"
               role="row"
-              style={columnTemplate}
+              style={columnTemplateStyle}
             >
               <div className="comparison-panel__cell" role="columnheader">
                 <span className="comparison-panel__cell-label">Parameter</span>
@@ -106,7 +106,7 @@ export default function ComparisonPanel({
                   key={metric.accessor || metric.label}
                   className={rowClassName.join(" ")}
                   role="row"
-                  style={columnTemplate}
+                  style={columnTemplateStyle}
                 >
                   <div className="comparison-panel__cell" role="rowheader">
                     {metric.label}
