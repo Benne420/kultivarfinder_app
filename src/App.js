@@ -119,6 +119,17 @@ const mapTyp = (s) => {
   return t;
 };
 
+const typInfoNormalized = Object.entries(typInfo).reduce(
+  (acc, [label, description]) => {
+    const key = mapTyp(label);
+    if (key) {
+      acc[key] = description;
+    }
+    return acc;
+  },
+  {}
+);
+
 // Filterfunktion, die den aktuellen Filterzustand nutzt
 const filterKultivare = (
   kultivare,
@@ -222,7 +233,7 @@ function filterReducer(state, action) {
       return { ...state, selectedWirkungen: next };
     }
     case "SET_TYP": {
-      return { ...state, typ: action.value };
+      return { ...state, typ: mapTyp(action.value) };
     }
     case "TOGGLE_INCLUDE_DISC": {
       return { ...state, includeDiscontinued: action.value };
@@ -746,7 +757,13 @@ export default function CannabisKultivarFinderUseReducer() {
             Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
           </div>
 
-          <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+          <TypFilter
+            typ={filters.typ}
+            dispatch={dispatch}
+            typInfo={typInfo}
+            normalizedTypInfo={typInfoNormalized}
+            normalizeTyp={mapTyp}
+          />
 
           {similarityContext && (
             <div className="similarity-banner" role="status" aria-live="polite">

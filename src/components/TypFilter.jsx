@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 
-export default function TypFilter({ typ, dispatch, typInfo }) {
-  const [isInfoOpen, setIsInfoOpen] = React.useState(false);
+export default function TypFilter({
+  typ,
+  dispatch,
+  typInfo,
+  normalizedTypInfo = {},
+  normalizeTyp = (value) => (value || "").toString().trim().toLowerCase(),
+}) {
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
   const infoTitleId = "typ-info-title";
   const dialogId = "typ-info-dialog";
   const descriptionId = "typ-info-description";
+
+  const normalizedTyp = normalizeTyp(typ);
+
+  const normalizedDescriptions = useMemo(() => {
+    const fallback =
+      normalizedTypInfo && typeof normalizedTypInfo === "object"
+        ? normalizedTypInfo
+        : {};
+
+    return Object.entries(typInfo || {}).reduce((acc, [label, description]) => {
+      const key = normalizeTyp(label);
+      if (key && typeof description === "string") {
+        acc[key] = description;
+      }
+      return acc;
+    }, { ...fallback });
+  }, [normalizeTyp, normalizedTypInfo, typInfo]);
 
   const openInfo = () => setIsInfoOpen(true);
   const closeInfo = () => setIsInfoOpen(false);
@@ -15,18 +38,27 @@ export default function TypFilter({ typ, dispatch, typInfo }) {
       <div className="typ-row">
         {Object.keys(typInfo)
           .filter((t) => !/^\s*(indica|sativa)\s*$/i.test(t))
-          .map((t) => (
-            <button
-              key={t}
-              className={`typ-btn ${typ === t ? "active" : ""}`}
-              onClick={() => dispatch({ type: "SET_TYP", value: typ === t ? "" : t })}
-            >
-              {t}
-            </button>
-          ))}
+          .map((t) => {
+            const normalizedValue = normalizeTyp(t);
+            const isActive = normalizedTyp === normalizedValue;
+            return (
+              <button
+                key={t}
+                className={`typ-btn ${isActive ? "active" : ""}`}
+                onClick={() =>
+                  dispatch({
+                    type: "SET_TYP",
+                    value: isActive ? "" : normalizedValue,
+                  })
+                }
+              >
+                {t}
+              </button>
+            );
+          })}
       </div>
       <p id={descriptionId} className="typ-description">
-        {typ ? typInfo[typ] : ""}
+        {normalizedTyp ? normalizedDescriptions[normalizedTyp] || "" : ""}
       </p>
       <div className="typ-info">
         <button
