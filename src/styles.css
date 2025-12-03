@@ -2083,10 +2083,25 @@ nav a:hover {
   transform: none;
 }
 
+.strain-table .strain-table__name-button {
+  border-color: rgba(13, 60, 97, 0.2);
+  background: linear-gradient(135deg, #e7f1ff, #dbe9ff);
+  color: #0d3c61;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 6px 14px rgba(13, 60, 97, 0.12);
+}
+
 .strain-table .link-button:hover {
   background: var(--terp-chip-hover-bg);
   color: #000000;
   box-shadow: none;
+}
+
+.strain-table .strain-table__name-button:hover {
+  background: linear-gradient(135deg, #d4e6ff, #c7ddff);
+  color: #0b3050;
+  box-shadow: 0 10px 18px rgba(13, 60, 97, 0.16);
 }
 
 .strain-table .link-button:focus-visible {
