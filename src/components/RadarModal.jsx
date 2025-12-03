@@ -47,8 +47,8 @@ export default function RadarModal({ radarDialog, hideRadar }) {
         </h3>
         <div className="terpene-radar-layout">
           <section
-            className="terpene-radar-layout__panel terpene-radar-layout__panel--overview"
-            aria-label="Netzdiagramm und Kerndaten"
+            className="terpene-radar-layout__panel terpene-radar-layout__panel--visual"
+            aria-label="Netzdiagramm"
           >
             <img
               src={radarPathSvg(cultivar.name)}
@@ -56,32 +56,36 @@ export default function RadarModal({ radarDialog, hideRadar }) {
               className="terpene-radar-layout__image"
             />
             <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
-            <dl className="terpene-radar-layout__details">
-              <div className="terpene-radar-layout__details-row">
-                <dt>Typ</dt>
-                <dd>{cultivar.typ || "Keine Angabe"}</dd>
-              </div>
-              <div className="terpene-radar-layout__details-row">
-                <dt>THC</dt>
-                <dd>{cultivar.thc || "Keine Angabe"}</dd>
-              </div>
-              <div className="terpene-radar-layout__details-row">
-                <dt>CBD</dt>
-                <dd>{cultivar.cbd || "Keine Angabe"}</dd>
-              </div>
-              <div className="terpene-radar-layout__details-row">
-                <dt>Terpengehalt</dt>
-                <dd>{cultivar.terpengehalt || "Keine Angabe"}</dd>
-              </div>
-              <div className="terpene-radar-layout__details-row">
-                <dt>Angegebene Wirkungen</dt>
-                <dd>{wirkungen || "Keine Angabe"}</dd>
-              </div>
+          </section>
+          <section
+            className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
+            aria-label="Sortendetails"
+          >
+            <div className="terpene-radar-layout__details-grid">
+              <dl className="terpene-radar-layout__details">
+                <div className="terpene-radar-layout__details-row">
+                  <dt>Typ</dt>
+                  <dd>{cultivar.typ || "Keine Angabe"}</dd>
+                </div>
+                <div className="terpene-radar-layout__details-row">
+                  <dt>THC</dt>
+                  <dd>{cultivar.thc || "Keine Angabe"}</dd>
+                </div>
+                <div className="terpene-radar-layout__details-row">
+                  <dt>CBD</dt>
+                  <dd>{cultivar.cbd || "Keine Angabe"}</dd>
+                </div>
+                <div className="terpene-radar-layout__details-row">
+                  <dt>Terpengehalt</dt>
+                  <dd>{cultivar.terpengehalt || "Keine Angabe"}</dd>
+                </div>
+                <div className="terpene-radar-layout__details-row terpene-radar-layout__details-row--wide">
+                  <dt>Angegebene Wirkungen</dt>
+                  <dd>{wirkungen || "Keine Angabe"}</dd>
+                </div>
+              </dl>
               {optionalDetails.length > 0 && (
-                <div
-                  className="terpene-radar-layout__details-row terpene-radar-layout__details-row--stack"
-                  aria-label="Zusätzliche Angaben"
-                >
+                <div className="terpene-radar-layout__extras" aria-label="Zusätzliche Angaben">
                   {optionalDetails.map((entry) => (
                     <div key={entry.label} className="terpene-radar-layout__detail-chip">
                       <span className="terpene-radar-layout__detail-label">{entry.label}:</span>
@@ -90,7 +94,7 @@ export default function RadarModal({ radarDialog, hideRadar }) {
                   ))}
                 </div>
               )}
-            </dl>
+            </div>
           </section>
         </div>
       </div>

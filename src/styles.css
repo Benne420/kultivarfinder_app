@@ -1781,18 +1781,25 @@ nav a:hover {
   width: min(92vw, 760px);
 }
 
+
 .terpene-radar-layout {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
+  grid-template-columns: minmax(320px, 1fr) minmax(280px, 0.9fr);
+  gap: 16px;
   align-items: start;
   margin-top: 8px;
 }
 
-.terpene-radar-layout__panel--overview {
+.terpene-radar-layout__panel--visual {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.terpene-radar-layout__panel--details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .terpene-radar-layout__panel {
@@ -1803,10 +1810,16 @@ nav a:hover {
   box-shadow: 0 10px 28px rgba(33, 52, 87, 0.08);
 }
 
+.terpene-radar-layout__details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
 .terpene-radar-layout__details {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 8px 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px 14px;
   margin: 0;
 }
 
@@ -1815,6 +1828,10 @@ nav a:hover {
   grid-template-columns: minmax(110px, 1fr) 1.2fr;
   gap: 4px;
   align-items: baseline;
+}
+
+.terpene-radar-layout__details-row--wide {
+  grid-column: 1 / -1;
 }
 
 .terpene-radar-layout__details-row dt {
@@ -1826,13 +1843,6 @@ nav a:hover {
 .terpene-radar-layout__details-row dd {
   margin: 0;
   font-size: 14px;
-}
-
-.terpene-radar-layout__details-row--stack {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
 }
 
 .terpene-radar-layout__detail-chip {
@@ -1851,8 +1861,10 @@ nav a:hover {
   font-weight: 700;
 }
 
-.terpene-radar-layout__actions {
-  margin-top: auto;
+.terpene-radar-layout__extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .terpene-radar-layout__image {
