@@ -31,8 +31,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
   isSelected,
   hasSimilarityColumn,
   onToggleSelect,
-  showInfo,
-  showTerpenPanel,
   showRadar,
   terpeneLegendId,
 }) {
@@ -50,11 +48,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
   }, [normalizedTerpenprofil, terpenprofil]);
 
   const handleToggleSelect = useCallback(() => onToggleSelect(strain), [onToggleSelect, strain]);
-  const handleShowInfo = useCallback(() => showInfo(strain), [showInfo, strain]);
-  const handleShowTerpenPanel = useCallback(
-    () => showTerpenPanel(strain),
-    [showTerpenPanel, strain]
-  );
   const handleShowRadar = useCallback(() => showRadar(strain), [showRadar, strain]);
   const handleOpenPdf = useCallback(() => {
     window.open(pdfUrl, "_blank", "noopener,noreferrer");
@@ -131,28 +124,18 @@ const StrainTableRow = React.memo(function StrainTableRow({
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
         <TerpeneChips
           list={terpeneList}
-          onInfo={handleShowTerpenPanel}
+          onInfo={handleShowRadar}
           describedBy={terpeneLegendId}
         />
       </td>
-      <td data-label="Radar">
+      <td data-label="Details" className="action-cell">
         <button
-          className="link-button"
+          type="button"
+          className="link-button action-button"
           onClick={handleShowRadar}
-          type="button"
-          aria-label={`${name} Radar anzeigen`}
+          aria-label={`${name} Diagramm, Details und Terpene anzeigen`}
         >
-          anzeigen
-        </button>
-      </td>
-      <td data-label="Details">
-        <button
-          type="button"
-          className="link-button"
-          onClick={handleShowInfo}
-          aria-label={`${name} Details anzeigen`}
-        >
-          anzeigen
+          Details
         </button>
       </td>
     </tr>
@@ -163,8 +146,6 @@ StrainTableRow.displayName = "StrainTableRow";
 
 export default function StrainTable({
   strains = [],
-  showInfo = () => {},
-  showTerpenPanel = () => {},
   showRadar = () => {},
   onToggleSelect = () => {},
   selectedCultivars = [],
@@ -242,7 +223,6 @@ export default function StrainTable({
               <th>THC</th>
               <th className="hidden-sm">CBD</th>
               <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
-              <th>Radar</th>
               <th>Details</th>
             </tr>
           </thead>
@@ -255,15 +235,13 @@ export default function StrainTable({
                   isSelected={selectedNameSet.has(k.name)}
                   hasSimilarityColumn={hasSimilarityColumn}
                   onToggleSelect={onToggleSelect}
-                  showInfo={showInfo}
-                  showTerpenPanel={showTerpenPanel}
                   showRadar={showRadar}
                   terpeneLegendId={terpeneLegendId}
                 />
               ))
             ) : (
               <tr>
-                <td colSpan={hasSimilarityColumn ? 8 : 7} style={{ padding: 12 }}>
+                <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ padding: 12 }}>
                   <div className="empty-state" aria-live="polite">
                     <p className="empty-state__headline">Keine Ergebnisse</p>
                     <p className="empty-state__hint">
