@@ -777,9 +777,10 @@ export default function CannabisKultivarFinderUseReducer() {
                   onClick={openEntourageModal}
                   aria-haspopup="dialog"
                   aria-expanded={isEntourageModalOpen}
+                  aria-label="Mehr zum Entourage-Effekt"
                 >
                   <span aria-hidden="true">✨</span>
-                  <span>Mehr erfahren</span>
+                  <span>Mehr</span>
                 </button>
               </div>
 
