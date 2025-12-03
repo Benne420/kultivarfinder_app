@@ -181,23 +181,32 @@ export default function StrainSimilarity({
     [onApplySimilar]
   );
 
+  const recomputeSimilarities = useCallback(
+    (name, strains) => {
+      if (!name) {
+        setSimilarStrains([]);
+        emitResults(null, []);
+        return;
+      }
+
+      const reference = strains.find((k) => k.name === name);
+      if (!reference) {
+        setSimilarStrains([]);
+        emitResults(null, []);
+        return;
+      }
+
+      const similar = findSimilar(reference, strains);
+      setSimilarStrains(similar);
+      emitResults(reference, similar);
+    },
+    [emitResults]
+  );
+
   const handleChange = (e) => {
     const name = e.target.value;
     setSelectedName(name);
-    if (!name) {
-      setSimilarStrains([]);
-      emitResults(null, []);
-      return;
-    }
-    const ref = selectableStrains.find((k) => k.name === name);
-    if (!ref) {
-      setSimilarStrains([]);
-      emitResults(null, []);
-      return;
-    }
-    const similar = findSimilar(ref, selectableStrains);
-    setSimilarStrains(similar);
-    emitResults(ref, similar);
+    recomputeSimilarities(name, selectableStrains);
   };
 
   const handleClear = useCallback(() => {
@@ -214,6 +223,10 @@ export default function StrainSimilarity({
       }
     }
   }, [includeDiscontinued, selectedName, kultivare, handleClear]);
+
+  useEffect(() => {
+    recomputeSimilarities(selectedName, selectableStrains);
+  }, [recomputeSimilarities, selectedName, selectableStrains]);
 
   const handleIncludeToggle = useCallback(
     (event) => {
