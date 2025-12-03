@@ -1867,6 +1867,31 @@ nav a:hover {
   gap: 6px;
 }
 
+.terpene-radar-layout__terpenes {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid #e0e7ef;
+  padding-top: 12px;
+}
+
+.terpene-radar-layout__terpene-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.terpene-radar-layout__terpene-title {
+  margin: 0;
+  font-size: 15px;
+  color: #1c2b36;
+}
+
+.terpene-radar-layout__terpene-hint {
+  margin: 0;
+  font-size: 13px;
+  color: #546e7a;
+}
+
 .terpene-radar-layout__image {
   width: 100%;
   height: auto;

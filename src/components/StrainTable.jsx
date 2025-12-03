@@ -133,9 +133,9 @@ const StrainTableRow = React.memo(function StrainTableRow({
           type="button"
           className="link-button action-button"
           onClick={handleShowRadar}
-          aria-label={`${name} Diagramm und Kerndaten öffnen`}
+          aria-label={`${name} Diagramm, Details und Terpene öffnen`}
         >
-          Diagramm &amp; Kerndaten öffnen
+          Diagramm, Details &amp; Terpene öffnen
         </button>
       </td>
     </tr>
@@ -223,7 +223,7 @@ export default function StrainTable({
               <th>THC</th>
               <th className="hidden-sm">CBD</th>
               <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
-              <th>Diagramm &amp; Kerndaten</th>
+              <th>Diagramm, Details &amp; Terpene</th>
             </tr>
           </thead>
           <tbody>

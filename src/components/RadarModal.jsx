@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import TerpeneChips from "./TerpeneChips";
 import { normalizeWirkung, radarPathSvg } from "../utils/helpers";
 
 export default function RadarModal({ radarDialog, hideRadar }) {
@@ -26,6 +27,16 @@ export default function RadarModal({ radarDialog, hideRadar }) {
       ].filter((entry) => Boolean(entry.value)),
     [cultivar?.anbauhinweise, cultivar?.aroma, cultivar?.genetik]
   );
+  const terpeneList = useMemo(() => {
+    if (
+      Array.isArray(cultivar?.normalizedTerpenprofil) &&
+      cultivar.normalizedTerpenprofil.length
+    ) {
+      return cultivar.normalizedTerpenprofil;
+    }
+    return Array.isArray(cultivar?.terpenprofil) ? cultivar.terpenprofil : [];
+  }, [cultivar?.normalizedTerpenprofil, cultivar?.terpenprofil]);
+  const terpeneLegendId = `${titleId}-terpene-legend`;
 
   return (
     <div
@@ -94,6 +105,35 @@ export default function RadarModal({ radarDialog, hideRadar }) {
                   ))}
                 </div>
               )}
+            </div>
+            <div
+              className="terpene-radar-layout__terpenes"
+              aria-label="Terpenprofil"
+            >
+              <div className="terpene-radar-layout__terpene-header">
+                <h4 className="terpene-radar-layout__terpene-title">Terpenprofil</h4>
+                <p className="terpene-radar-layout__terpene-hint">
+                  Dominante und begleitende Terpene der Sorte
+                </p>
+              </div>
+              <TerpeneChips list={terpeneList} describedBy={terpeneLegendId} />
+              <p id={terpeneLegendId} className="terpene-legend">
+                <span className="terpene-legend__label">Legende:</span>
+                <span
+                  className="terpene-legend__badge terpene-legend__badge--dominant"
+                  aria-hidden="true"
+                >
+                  ★
+                </span>
+                <span className="terpene-legend__text">Dominant</span>
+                <span
+                  className="terpene-legend__badge terpene-legend__badge--supporting"
+                  aria-hidden="true"
+                >
+                  •
+                </span>
+                <span className="terpene-legend__text">Begleitend</span>
+              </p>
             </div>
           </section>
         </div>
