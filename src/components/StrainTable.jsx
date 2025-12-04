@@ -49,9 +49,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
 
   const handleToggleSelect = useCallback(() => onToggleSelect(strain), [onToggleSelect, strain]);
   const handleShowRadar = useCallback(() => showRadar(strain), [showRadar, strain]);
-  const handleOpenPdf = useCallback(() => {
-    window.open(pdfUrl, "_blank", "noopener,noreferrer");
-  }, [pdfUrl]);
 
   const similarityScore =
     typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
@@ -83,14 +80,15 @@ const StrainTableRow = React.memo(function StrainTableRow({
         </label>
       </td>
       <td data-label="Name">
-        <button
-          type="button"
+        <a
           className="link-button action-button strain-table__name-button"
-          onClick={handleOpenPdf}
+          href={pdfUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`${name} Datenblatt anzeigen`}
         >
           {name}
-        </button>
+        </a>
       </td>
       {hasSimilarityColumn && (
         <td className="similarity-column" data-label="Übereinstimmung">

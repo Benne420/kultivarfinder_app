@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   formatMetricValue,
   getComparisonLayoutMetrics,
@@ -17,9 +17,70 @@ export default function ComparisonPanel({
   onShowAllDetails = () => {},
   layoutMetrics,
 }) {
-  if (!isOpen) {
-    return null;
-  }
+  const panelRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const lastFocusedElementRef = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
+    }
+
+    lastFocusedElementRef.current = document.activeElement;
+
+    const nodeToFocus = closeButtonRef.current || panelRef.current;
+    if (nodeToFocus?.focus) {
+      nodeToFocus.focus({ preventScroll: true });
+    }
+
+    return () => {
+      if (
+        lastFocusedElementRef.current &&
+        typeof lastFocusedElementRef.current.focus === "function"
+      ) {
+        lastFocusedElementRef.current.focus({ preventScroll: true });
+      }
+    };
+  }, [isOpen]);
+
+  const focusableSelectors =
+    'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+  const trapFocus = (event) => {
+    if (event.key !== "Tab" || !panelRef.current) return;
+
+    const focusable = Array.from(
+      panelRef.current.querySelectorAll(focusableSelectors)
+    ).filter((node) => node.offsetParent !== null);
+
+    if (!focusable.length) {
+      event.preventDefault();
+      panelRef.current.focus({ preventScroll: true });
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const current = document.activeElement;
+
+    if (event.shiftKey && current === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && current === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      event.stopPropagation();
+      onClose();
+      return;
+    }
+
+    trapFocus(event);
+  };
 
   const cultivarCount = Math.max(cultivars.length, 1);
 
@@ -49,6 +110,10 @@ export default function ComparisonPanel({
     }
   };
 
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <div className="comparison-panel-backdrop" role="presentation" onClick={handleBackdropClick}>
       <aside
@@ -56,15 +121,24 @@ export default function ComparisonPanel({
         role="dialog"
         aria-modal="true"
         aria-labelledby="comparison-panel-title"
+        ref={panelRef}
         onClick={(event) => event.stopPropagation()}
         style={panelStyle}
+        tabIndex={-1}
+        onKeyDown={handleKeyDown}
       >
         <div className="comparison-panel__header">
           <div>
             <p className="comparison-panel__eyebrow">Medizinischer Vergleich</p>
             <h2 id="comparison-panel-title">Vergleich starten</h2>
           </div>
-          <button type="button" className="comparison-panel__close" onClick={onClose} aria-label="Vergleich schließen">
+          <button
+            type="button"
+            className="comparison-panel__close"
+            onClick={onClose}
+            aria-label="Vergleich schließen"
+            ref={closeButtonRef}
+          >
             ×
           </button>
         </div>
