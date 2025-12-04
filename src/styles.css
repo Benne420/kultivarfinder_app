@@ -1705,6 +1705,168 @@ nav a:hover {
   font-weight: 600;
 }
 
+.terpen-panel__meta {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.terpen-panel__legend {
+  margin: 0;
+  font-size: 13px;
+  color: #425466;
+}
+
+.terpen-panel__controls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.terpen-panel__control-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.terpen-panel__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.terpen-panel__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.terpen-panel__nav a {
+  color: #1565c0;
+  font-weight: 600;
+}
+
+.terpen-panel__nav-label {
+  font-weight: 700;
+  color: #35506b;
+}
+
+.terpen-panel__ordering {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.terpen-panel__ordering-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #dce3eb;
+  background: #f7fafc;
+  cursor: pointer;
+  font-weight: 600;
+  color: #35506b;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.terpen-panel__ordering-btn.is-active {
+  background: #e3f2fd;
+  color: #0d47a1;
+  border-color: #90caf9;
+}
+
+.terpen-panel__toggle {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #dce3eb;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  color: #274160;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.terpen-panel__toggle:hover,
+.terpen-panel__ordering-btn:hover {
+  background: #eef2f7;
+  border-color: #cfd8dc;
+}
+
+.terpen-panel__overview {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+.terpen-panel__overview-chip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.terpen-panel__overview-chip--dominant {
+  border-color: #90caf9;
+  background: #f2f7ff;
+}
+
+.terpen-panel__overview-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #e8eef6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.terpen-panel__overview-title {
+  font-weight: 700;
+  color: #1f3045;
+}
+
+.terpen-panel__overview-meta {
+  font-size: 12px;
+  color: #546e7a;
+}
+
+.terpen-panel__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #e8f0fe;
+  color: #0d47a1;
+  font-weight: 700;
+  font-size: 12px;
+  border: 1px solid #c6d7fb;
+}
+
+.terpen-panel__badge--muted {
+  background: #f7fafc;
+  border-color: #dce3eb;
+  color: #35506b;
+}
+
+.terpen-panel__badge--accent {
+  background: #ffe9d5;
+  border-color: #ffc48a;
+  color: #bf360c;
+}
+
 .terpene-legend {
   margin: 8px 0 0;
   display: inline-flex;

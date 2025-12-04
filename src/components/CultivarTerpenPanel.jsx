@@ -70,6 +70,17 @@ const CultivarTerpenPanel = ({ cultivar, activeTerpene }) => {
     return mapTerpeneToCanonical(activeTerpene, aliasLookup);
   }, [activeTerpene, aliasLookup]);
 
+  const primaryTerpene = useMemo(() => {
+    if (!displayProfile.length) return null;
+    if (activeCanonical) {
+      const found = displayProfile.find(
+        (name) => mapTerpeneToCanonical(name, aliasLookup) === activeCanonical
+      );
+      if (found) return found;
+    }
+    return displayProfile[0];
+  }, [activeCanonical, aliasLookup, displayProfile]);
+
   const rankIcons = useMemo(() => {
     const overrides =
       rankIconOverrides && typeof rankIconOverrides === 'object'
@@ -166,10 +177,9 @@ const CultivarTerpenPanel = ({ cultivar, activeTerpene }) => {
 
       <div className="terpen-panel__meta" aria-describedby="terpen-panel-legend">
         <p id="terpen-panel-legend" className="terpen-panel__legend">
-          Nutzen Sie die Navigation, um direkt zu einzelnen Terpenen zu springen.
-          Die Kurzfassung blendet Tabellen mit Quellenangaben aus. Standardmäßig
-          bleibt die Reihenfolge wie im Datensatz erhalten; bei Bedarf können Sie
-          auf eine alphabetische Ansicht wechseln.
+          Schnellwahl springt direkt zu einer Terpen-Karte. Die Kurzfassung blendet
+          Quellenangaben aus, die alphabetische Ansicht sortiert nach Namen statt
+          Datensatz-Reihenfolge.
         </p>
         <div className="terpen-panel__controls">
           <div className="terpen-panel__control-group">
@@ -219,6 +229,105 @@ const CultivarTerpenPanel = ({ cultivar, activeTerpene }) => {
           </button>
         </div>
       </div>
+
+      {primaryTerpene && (
+        <div
+          className="terpen-panel__feature"
+          style={{
+            margin: '12px 0 20px 0',
+            padding: '12px',
+            borderRadius: '10px',
+            border: '1px solid #d0e2ff',
+            background: '#f4f8ff'
+          }}
+        >
+          {(() => {
+            const primaryInfo = getTerpenInfo(primaryTerpene);
+            const canonical =
+              mapTerpeneToCanonical(primaryTerpene, aliasLookup) || primaryTerpene;
+            const effectHighlight = primaryInfo?.effects?.slice(0, 2) || [];
+            return (
+              <div>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    flexWrap: 'wrap'
+                  }}
+                >
+                  <div>
+                    <p
+                      style={{
+                        margin: 0,
+                        color: '#1565c0',
+                        fontWeight: 600,
+                        letterSpacing: '0.02em'
+                      }}
+                    >
+                      Aktuell ausgewählt
+                    </p>
+                    <h4
+                      style={{
+                        margin: '2px 0 4px 0',
+                        fontSize: '18px'
+                      }}
+                    >
+                      {primaryInfo?.name || primaryTerpene}
+                    </h4>
+                    <div style={{ fontSize: '13px', color: '#333' }}>
+                      {primaryInfo?.description || 'Kurzinfo wird geladen'}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      marginLeft: 'auto',
+                      display: 'flex',
+                      gap: '12px',
+                      flexWrap: 'wrap'
+                    }}
+                  >
+                    <div className="terpen-panel__badge">{canonical}</div>
+                    {primaryInfo?.aroma && (
+                      <div className="terpen-panel__badge terpen-panel__badge--muted">
+                        Aroma: {primaryInfo.aroma}
+                      </div>
+                    )}
+                    {primaryInfo?.boilingPoint && (
+                      <div className="terpen-panel__badge terpen-panel__badge--muted">
+                        Siedepunkt: {primaryInfo.boilingPoint}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {effectHighlight.length > 0 && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: '12px',
+                      flexWrap: 'wrap',
+                      marginTop: '10px'
+                    }}
+                    aria-label="Wichtigste berichtete Wirkungen"
+                  >
+                    {effectHighlight.map((entry, idx) => (
+                      <div
+                        key={`${entry.effect}-${idx}`}
+                        className="terpen-panel__badge terpen-panel__badge--accent"
+                        title={entry.strength ? `${entry.effect} (${entry.strength})` : entry.effect}
+                      >
+                        {entry.effect}
+                        {entry.strength ? ` · ${entry.strength}` : ''}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+        </div>
+      )}
 
       {displayProfile.length > 0 && (
         <div className="terpen-panel__overview" role="list">
