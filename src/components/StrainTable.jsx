@@ -32,6 +32,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
   hasSimilarityColumn,
   onToggleSelect,
   showRadar,
+  showTerpeneInfo,
   terpeneLegendId,
 }) {
   if (!strain) {
@@ -49,9 +50,10 @@ const StrainTableRow = React.memo(function StrainTableRow({
 
   const handleToggleSelect = useCallback(() => onToggleSelect(strain), [onToggleSelect, strain]);
   const handleShowRadar = useCallback(() => showRadar(strain), [showRadar, strain]);
-  const handleOpenPdf = useCallback(() => {
-    window.open(pdfUrl, "_blank", "noopener,noreferrer");
-  }, [pdfUrl]);
+  const handleShowTerpeneInfo = useCallback(
+    (terpeneName) => showTerpeneInfo(strain, terpeneName),
+    [showTerpeneInfo, strain]
+  );
 
   const similarityScore =
     typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
@@ -83,14 +85,15 @@ const StrainTableRow = React.memo(function StrainTableRow({
         </label>
       </td>
       <td data-label="Name">
-        <button
-          type="button"
+        <a
           className="link-button action-button strain-table__name-button"
-          onClick={handleOpenPdf}
+          href={pdfUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`${name} Datenblatt anzeigen`}
         >
           {name}
-        </button>
+        </a>
       </td>
       {hasSimilarityColumn && (
         <td className="similarity-column" data-label="Übereinstimmung">
@@ -124,7 +127,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
         <TerpeneChips
           list={terpeneList}
-          onInfo={handleShowRadar}
+          onInfo={handleShowTerpeneInfo}
           describedBy={terpeneLegendId}
         />
       </td>
@@ -147,6 +150,7 @@ StrainTableRow.displayName = "StrainTableRow";
 export default function StrainTable({
   strains = [],
   showRadar = () => {},
+  showTerpeneInfo = () => {},
   onToggleSelect = () => {},
   selectedCultivars = [],
   onResetEmptyState = () => {},
@@ -236,6 +240,7 @@ export default function StrainTable({
                   hasSimilarityColumn={hasSimilarityColumn}
                   onToggleSelect={onToggleSelect}
                   showRadar={showRadar}
+                  showTerpeneInfo={showTerpeneInfo}
                   terpeneLegendId={terpeneLegendId}
                 />
               ))

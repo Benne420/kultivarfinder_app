@@ -252,7 +252,7 @@ export default function StrainSimilarity({
           onChange={handleChange}
           value={selectedName}
           aria-labelledby="similarity-panel-title"
-          aria-describedby="strain-select-description"
+          aria-describedby="strain-select-note"
         >
           <option value="">Sorte wählen …</option>
           {selectableStrains.map((s) => (
@@ -272,17 +272,24 @@ export default function StrainSimilarity({
         </button>
       </div>
 
-      <div id="strain-select-description" className="similarity-panel__description">
-        <input
-          id="similarity-include-discontinued"
-          type="checkbox"
-          checked={includeDiscontinued}
-          onChange={handleIncludeToggle}
-        />
-        <label htmlFor="similarity-include-discontinued">
-          Nicht mehr verfügbare Sorten anzeigen
-        </label>
-      </div>
+      <p id="strain-select-note" className="similarity-panel__description">
+        Wählen Sie eine Referenzsorte, um ähnliche Kultivare anhand des Terpenprofils zu finden.
+      </p>
+
+      <fieldset className="similarity-panel__options">
+        <legend className="visually-hidden">Optionen für die Ähnlichkeitssuche</legend>
+        <div className="similarity-panel__description">
+          <input
+            id="similarity-include-discontinued"
+            type="checkbox"
+            checked={includeDiscontinued}
+            onChange={handleIncludeToggle}
+          />
+          <label htmlFor="similarity-include-discontinued">
+            Nicht mehr verfügbare Sorten anzeigen
+          </label>
+        </div>
+      </fieldset>
 
       <div className="similarity-panel__status" aria-live="polite">
         {selectedName && similarStrains.length === 0 && (
