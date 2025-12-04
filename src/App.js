@@ -37,6 +37,7 @@ import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
 import defaultWirkungenSource from "./data/default-wirkungen.json";
 
 const EntourageInfoModal = lazy(() => import("./components/EntourageInfoModal"));
+const TerpeneInfoModal = lazy(() => import("./components/TerpeneInfoModal"));
 const RadarModal = lazy(() => import("./components/RadarModal"));
 const ComparisonPanel = lazy(() => import("./components/ComparisonPanel"));
 const ComparisonDetailsModal = lazy(() => import("./components/ComparisonDetailsModal"));
@@ -468,6 +469,11 @@ export default function CannabisKultivarFinderUseReducer() {
 
   // Dialog für das kombinierte Radar- und Detailfenster
   const [radarDialog, setRadarDialog] = useState({ open: false, cultivar: null });
+  const [terpeneDialog, setTerpeneDialog] = useState({
+    open: false,
+    cultivar: null,
+    terpene: null,
+  });
 
   // NEW: Similarity override state — wenn gesetzt, ersetzt diese Liste die gefilterten Ergebnisse
   const [similarityContext, setSimilarityContext] = useState(null);
@@ -651,8 +657,16 @@ export default function CannabisKultivarFinderUseReducer() {
     setRadarDialog({ open: true, cultivar });
   }, []);
 
+  const showTerpeneInfo = useCallback((cultivar, terpene) => {
+    setTerpeneDialog({ open: true, cultivar, terpene });
+  }, []);
+
   const hideRadar = useCallback(() => {
     setRadarDialog({ open: false, cultivar: null });
+  }, []);
+
+  const hideTerpeneInfo = useCallback(() => {
+    setTerpeneDialog({ open: false, cultivar: null, terpene: null });
   }, []);
 
   const toggleCultivarSelection = useCallback((cultivar) => {
@@ -821,6 +835,7 @@ export default function CannabisKultivarFinderUseReducer() {
               <StrainTable
                 strains={displayedKultivare}
                 showRadar={showRadar}
+                showTerpeneInfo={showTerpeneInfo}
                 onToggleSelect={toggleCultivarSelection}
                 selectedCultivars={selectedCultivars}
                 onResetEmptyState={handleResetEmptyState}
@@ -833,6 +848,17 @@ export default function CannabisKultivarFinderUseReducer() {
         {radarDialog.open && (
           <Suspense fallback={<SuspenseOverlayFallback label="Radar wird geladen …" />}>
             <RadarModal radarDialog={radarDialog} hideRadar={hideRadar} />
+          </Suspense>
+        )}
+
+        {terpeneDialog.open && (
+          <Suspense fallback={<SuspenseOverlayFallback label="Terpen-Informationen werden geladen …" />}>
+            <TerpeneInfoModal
+              isOpen={terpeneDialog.open}
+              cultivar={terpeneDialog.cultivar}
+              activeTerpene={terpeneDialog.terpene}
+              onClose={hideTerpeneInfo}
+            />
           </Suspense>
         )}
 

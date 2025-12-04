@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_TERPENE_RANK_ICONS } from '../constants/terpeneIcons';
 import { useTerpeneContext } from '../context/TerpeneContext';
 import { mapTerpeneToCanonical } from '../utils/helpers';
@@ -17,7 +17,7 @@ const makeAnchorId = (value, fallback) => {
   return `terpen-${fallback}`;
 };
 
-const CultivarTerpenPanel = ({ cultivar }) => {
+const CultivarTerpenPanel = ({ cultivar, activeTerpene }) => {
   const {
     terpenes: contextTerpenes,
     aliasLookup,
@@ -36,6 +36,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   const [showDetails, setShowDetails] = useState(true);
   const [orderMode, setOrderMode] = useState('dataset');
   const cultivarName = cultivar?.name || 'Kultivar';
+  const containerRef = useRef(null);
 
   const orderedProfile = useMemo(() => {
     if (!cultivar || !Array.isArray(cultivar.terpenprofil)) return [];
@@ -63,6 +64,11 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   }, [orderedProfile]);
 
   const displayProfile = orderMode === 'alpha' ? sortedProfile : orderedProfile;
+
+  const activeCanonical = useMemo(() => {
+    if (!activeTerpene) return null;
+    return mapTerpeneToCanonical(activeTerpene, aliasLookup);
+  }, [activeTerpene, aliasLookup]);
 
   const rankIcons = useMemo(() => {
     const overrides =
@@ -95,6 +101,20 @@ const CultivarTerpenPanel = ({ cultivar }) => {
       });
     }
   }, [contextReferences, ensureReferences]);
+
+  useEffect(() => {
+    if (!containerRef.current || !activeCanonical) return;
+    const target = containerRef.current.querySelector(
+      `[data-terpene-id="${activeCanonical}"]`
+    );
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const heading = target.querySelector('.terpen-panel__section-title');
+      if (heading && typeof heading.focus === 'function') {
+        heading.focus({ preventScroll: true });
+      }
+    }
+  }, [activeCanonical, displayProfile]);
 
   const getTerpenInfo = (terpenName) => {
     if (!Array.isArray(terpenes)) return undefined;
@@ -136,7 +156,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   }
 
   return (
-    <div style={{ padding: '16px' }}>
+    <div style={{ padding: '16px' }} ref={containerRef}>
       <h3
         style={{ marginTop: 0, marginBottom: '12px', fontSize: '18px' }}
         id="terpen-panel-heading"
@@ -241,20 +261,28 @@ const CultivarTerpenPanel = ({ cultivar }) => {
       {displayProfile.map((terpenName, index) => {
         const terpenInfo = getTerpenInfo(terpenName);
         const sectionId = makeAnchorId(terpenName, index);
+        const canonicalName = mapTerpeneToCanonical(terpenName, aliasLookup);
+        const isActive = activeCanonical && canonicalName === activeCanonical;
 
         if (!terpenInfo) {
           return (
             <div
               id={sectionId}
               key={index}
+              data-terpene-id={canonicalName}
               style={{
                 marginBottom: '12px',
                 padding: '12px',
                 border: '1px solid #e0e0e0',
                 borderRadius: '8px'
               }}
+              className={isActive ? 'terpen-panel__section is-active' : 'terpen-panel__section'}
             >
-              <h4 style={{ margin: '0 0 8px 0', fontSize: '16px' }}>
+              <h4
+                style={{ margin: '0 0 8px 0', fontSize: '16px' }}
+                className="terpen-panel__section-title"
+                tabIndex={-1}
+              >
                 {terpenName}
               </h4>
               <p style={{ margin: 0, color: '#666' }}>
@@ -268,6 +296,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
           <div
             id={sectionId}
             key={index}
+            data-terpene-id={canonicalName}
             style={{
               marginBottom: '16px',
               padding: '12px',
@@ -275,8 +304,13 @@ const CultivarTerpenPanel = ({ cultivar }) => {
               borderRadius: '8px',
               backgroundColor: '#fafafa'
             }}
+            className={isActive ? 'terpen-panel__section is-active' : 'terpen-panel__section'}
           >
-            <h4 style={{ margin: '0 0 8px 0', fontSize: '16px' }}>
+            <h4
+              style={{ margin: '0 0 8px 0', fontSize: '16px' }}
+              className="terpen-panel__section-title"
+              tabIndex={-1}
+            >
               {terpenInfo.name}
             </h4>
 
