@@ -11,7 +11,7 @@ Diese Web-App hilft medizinischem Fachpersonal und Patienten, geeignete Cannabis
 
 ## 🔥 **Funktionen**
 
-✅ Auswahl von bis zu **zwei Wirkungen** zur Filterung  
+✅ Auswahl von mehreren **Wirkungen** zur Filterung
 ✅ **Datenbank mit Kultivaren**, inklusive THC-, CBD- und Terpengehalt  
 ✅ **Detaillierte Terpen-Wirkungen** mit wissenschaftlichen Quellen  
 ✅ **Entourage-Effekt Erklärung** und Kontextualisierung  
