@@ -17,7 +17,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -40,7 +40,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
@@ -60,7 +60,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -83,7 +83,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
@@ -104,7 +104,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -124,7 +124,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -145,7 +145,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "SUNGROWN",
     "Kürzel": ""
   },
   {
@@ -168,7 +168,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -189,7 +189,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -210,7 +210,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -231,11 +231,11 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
-    "name": "GG4",
+    "name": "GG4 (Gorilla Glue #4)",
     "thc": "20-25%",
     "cbd": "<1%",
     "terpengehalt": "2.19%",
@@ -253,7 +253,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "NATURAL",
     "Kürzel": ""
   },
   {
@@ -274,7 +274,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
@@ -296,7 +296,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -319,7 +319,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -339,7 +339,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -362,7 +362,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -385,7 +385,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -405,7 +405,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "SUNGROWN",
     "Kürzel": ""
   },
   {
@@ -426,7 +426,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "NATURAL",
     "Kürzel": ""
   },
   {
@@ -447,7 +447,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "SUNGROWN",
     "Kürzel": ""
   },
   {
@@ -468,7 +468,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -490,7 +490,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -513,7 +513,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -533,7 +533,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
@@ -554,7 +554,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -575,7 +575,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -598,7 +598,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -621,7 +621,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -644,7 +644,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
@@ -665,7 +665,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -688,7 +688,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -711,7 +711,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
@@ -729,7 +729,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
@@ -750,7 +750,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -771,7 +771,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -792,7 +792,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "BALANCED",
     "Kürzel": ""
   },
   {
@@ -813,7 +813,7 @@
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
-    "produktlinie": "",
+    "produktlinie": "COMPOUND",
     "Kürzel": ""
   },
   {
@@ -834,7 +834,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "NATURAL",
     "Kürzel": ""
   },
   {
@@ -854,7 +854,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "NATURAL",
     "Kürzel": ""
   },
   {
@@ -876,7 +876,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -899,7 +899,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -920,7 +920,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "NATURAL",
     "Kürzel": ""
   },
   {
@@ -941,7 +941,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "EVOLUTION",
     "Kürzel": ""
   },
   {
@@ -964,7 +964,7 @@
     ],
     "typ": "sativa-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "HUALA",
     "Kürzel": ""
   },
   {
@@ -985,7 +985,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "NATURAL",
     "Kürzel": ""
   },
   {
@@ -1006,7 +1006,7 @@
     ],
     "typ": "indica-dominant",
     "status": "active",
-    "produktlinie": "",
+    "produktlinie": "SUNGROWN",
     "Kürzel": ""
   }
 ]

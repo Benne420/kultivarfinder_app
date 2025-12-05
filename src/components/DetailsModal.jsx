@@ -97,6 +97,9 @@ export default function DetailsModal({ infoDialog, hideInfo }) {
             <strong>Typ:</strong> {cultivar.typ || "Keine Angabe"}
           </p>
           <p>
+            <strong>Produktlinie:</strong> {cultivar.produktlinie || "Keine Angabe"}
+          </p>
+          <p>
             <strong>THC:</strong> {cultivar.thc || "Keine Angabe"}
           </p>
           <p>
