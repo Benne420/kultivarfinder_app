@@ -2191,15 +2191,9 @@ nav a:hover {
 
 .strain-table-scroll {
   width: 100%;
-  overflow: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-
-.strain-table-virtual-outer {
   max-height: 72vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: 16px;
   box-shadow: 0 10px 28px rgba(33, 52, 87, 0.08);
 }
@@ -2452,7 +2446,7 @@ nav a:hover {
 }
 
 @media (max-width: 720px) {
-  .strain-table-virtual-outer {
+  .strain-table-scroll {
     max-height: none;
   }
 

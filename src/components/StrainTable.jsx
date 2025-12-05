@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FixedSizeList } from "react-window";
 import TerpeneChips from "./TerpeneChips";
 
 const DEFAULT_BATCH_SIZE = 100;
@@ -161,8 +160,8 @@ export default function StrainTable({
 }) {
   const terpeneLegendId = "terpene-legend";
   const [visibleCount, setVisibleCount] = useState(DEFAULT_BATCH_SIZE);
-  const [listWidth, setListWidth] = useState(0);
   const [listHeight, setListHeight] = useState(640);
+  const [scrollTop, setScrollTop] = useState(0);
   const scrollContainerRef = useRef(null);
 
   const hasSimilarityColumn = useMemo(() => {
@@ -199,6 +198,10 @@ export default function StrainTable({
   useEffect(() => {
     const newCount = Math.min(DEFAULT_BATCH_SIZE, totalItems || 0);
     setVisibleCount(newCount || 0);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
+    setScrollTop(0);
   }, [totalItems]);
 
   useEffect(() => {
@@ -207,11 +210,14 @@ export default function StrainTable({
         return;
       }
 
-      const nextHeight = Math.min(820, Math.max(360, Math.floor(window.innerHeight * 0.6)));
-      setListHeight(nextHeight);
+      const preferredHeight = Math.min(820, Math.max(360, Math.floor(window.innerHeight * 0.6)));
 
       if (scrollContainerRef.current) {
-        setListWidth(scrollContainerRef.current.clientWidth);
+        const { clientHeight } = scrollContainerRef.current;
+        const nextHeight = Math.min(820, Math.max(320, clientHeight || preferredHeight));
+        setListHeight(nextHeight);
+      } else {
+        setListHeight(preferredHeight);
       }
     };
 
@@ -227,14 +233,31 @@ export default function StrainTable({
     });
   }, [totalItems]);
 
-  const handleItemsRendered = useCallback(
-    ({ visibleStopIndex }) => {
-      if (visibleStopIndex >= visibleCount - LOAD_AHEAD_THRESHOLD && visibleCount < totalItems) {
-        loadMoreItems();
-      }
-    },
-    [loadMoreItems, totalItems, visibleCount]
+  const overscan = 5;
+  const startIndex = useMemo(
+    () => Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - overscan),
+    [overscan, scrollTop]
   );
+
+  const endIndex = useMemo(
+    () =>
+      Math.min(
+        visibleStrains.length,
+        Math.ceil((scrollTop + listHeight) / ROW_HEIGHT) + overscan
+      ),
+    [listHeight, overscan, scrollTop, visibleStrains.length]
+  );
+
+  useEffect(() => {
+    if (endIndex >= visibleCount - LOAD_AHEAD_THRESHOLD && visibleCount < totalItems) {
+      loadMoreItems();
+    }
+  }, [endIndex, loadMoreItems, totalItems, visibleCount]);
+
+  const handleScroll = useCallback((event) => {
+    const { scrollTop: nextScrollTop } = event.currentTarget;
+    setScrollTop(nextScrollTop);
+  }, []);
 
   const columnTemplate = useMemo(
     () =>
@@ -244,67 +267,49 @@ export default function StrainTable({
     [hasSimilarityColumn]
   );
 
-  const VirtualizedTableOuter = useMemo(
-    () =>
-      React.forwardRef(function VirtualizedTableOuter(props, ref) {
-        const { style, children, ...rest } = props;
-        return (
-          <div
-            ref={ref}
-            className="strain-table-virtual-outer"
-            style={style}
-            role="region"
-            aria-label="Kultivar-Ergebnisse"
-            {...rest}
-          >
-            <table className="strain-table" style={{ "--strain-table-columns": columnTemplate }}>
-              <thead>
-                <tr>
-                  <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">
-                    Vergleich
-                  </th>
-                  <th>Name</th>
-                  {hasSimilarityColumn && <th className="similarity-column">Übereinstimmung</th>}
-                  <th>THC</th>
-                  <th className="hidden-sm">CBD</th>
-                  <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
-                  <th>Details</th>
-                </tr>
-              </thead>
-              {children}
-            </table>
-          </div>
-        );
-      }),
-    [columnTemplate, hasSimilarityColumn]
+  const totalHeight = useMemo(
+    () => Math.max(0, visibleStrains.length * ROW_HEIGHT),
+    [visibleStrains.length]
   );
 
-  const VirtualizedTableBody = useMemo(
-    () =>
-      React.forwardRef(function VirtualizedTableBody(props, ref) {
-        const { style, ...rest } = props;
-        return <tbody ref={ref} style={{ ...style, position: "relative" }} {...rest} />;
-      }),
-    []
-  );
+  const visibleRows = useMemo(() => {
+    if (!Array.isArray(visibleStrains) || visibleStrains.length === 0) {
+      return [];
+    }
+    const rows = [];
+    for (let i = startIndex; i < endIndex; i += 1) {
+      rows.push({ index: i, strain: visibleStrains[i] });
+    }
+    return rows;
+  }, [endIndex, startIndex, visibleStrains]);
 
   return (
     <div className="strain-table-wrapper">
-      <div className="strain-table-scroll" ref={scrollContainerRef}>
+      <div
+        className="strain-table-scroll"
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        style={{ maxHeight: listHeight }}
+        role="region"
+        aria-label="Kultivar-Ergebnisse"
+      >
         {visibleStrains && visibleStrains.length ? (
-          <FixedSizeList
-            height={listHeight}
-            width={listWidth || 1}
-            itemCount={visibleStrains.length}
-            itemSize={ROW_HEIGHT}
-            outerElementType={VirtualizedTableOuter}
-            innerElementType={VirtualizedTableBody}
-            onItemsRendered={handleItemsRendered}
-            itemKey={(index) => visibleStrains[index]?.name ?? index}
-          >
-            {({ index, style }) => {
-              const strain = visibleStrains[index];
-              return (
+          <table className="strain-table" style={{ "--strain-table-columns": columnTemplate }}>
+            <thead>
+              <tr>
+                <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">
+                  Vergleich
+                </th>
+                <th>Name</th>
+                {hasSimilarityColumn && <th className="similarity-column">Übereinstimmung</th>}
+                <th>THC</th>
+                <th className="hidden-sm">CBD</th>
+                <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody style={{ height: totalHeight }}>
+              {visibleRows.map(({ index, strain }) => (
                 <StrainTableRow
                   key={strain?.name || index}
                   strain={strain}
@@ -314,11 +319,17 @@ export default function StrainTable({
                   showRadar={showRadar}
                   showTerpeneInfo={showTerpeneInfo}
                   terpeneLegendId={terpeneLegendId}
-                  style={{ ...style, height: ROW_HEIGHT }}
+                  style={{
+                    position: "absolute",
+                    top: index * ROW_HEIGHT,
+                    left: 0,
+                    right: 0,
+                    height: ROW_HEIGHT,
+                  }}
                 />
-              );
-            }}
-          </FixedSizeList>
+              ))}
+            </tbody>
+          </table>
         ) : (
           <div className="strain-table-empty" role="status" aria-live="polite">
             <p className="empty-state__headline">Keine Ergebnisse</p>
