@@ -2221,6 +2221,10 @@ nav a:hover {
   width: 100%;
 }
 
+.strain-table tbody tr {
+  min-height: 110px;
+}
+
 .strain-table tbody {
   position: relative;
 }
@@ -2228,7 +2232,8 @@ nav a:hover {
 .strain-table th,
 .strain-table td {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 6px;
   padding: 12px 16px;
   border-bottom: 1px solid #e1e9f5;
   text-align: left;
@@ -2256,6 +2261,17 @@ nav a:hover {
 
 .strain-table tbody tr.is-selected {
   background: rgba(201, 224, 255, 0.6);
+}
+
+.strain-table .virtual-spacer {
+  display: block;
+  padding: 0;
+  border: none;
+}
+
+.strain-table .virtual-spacer td {
+  padding: 0;
+  border: none;
 }
 
 .strain-table .empty-state {

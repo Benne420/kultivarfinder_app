@@ -3,7 +3,7 @@ import TerpeneChips from "./TerpeneChips";
 
 const DEFAULT_BATCH_SIZE = 100;
 const LOAD_AHEAD_THRESHOLD = 10;
-const ROW_HEIGHT = 88;
+const ROW_HEIGHT = 110;
 
 export const toSafePdfPath = (name) => {
   const trimmed = String(name || "").trim();
@@ -35,7 +35,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
   showRadar,
   showTerpeneInfo,
   terpeneLegendId,
-  style,
 }) {
   if (!strain) {
     return null;
@@ -74,7 +73,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
     [similarityLabel, overlapBucketText].filter(Boolean).join(" – ") || "Ähnlichkeitsbewertung";
 
   return (
-    <tr className={isSelected ? "is-selected" : undefined} style={style}>
+    <tr className={isSelected ? "is-selected" : undefined}>
       <td className="comparison-column" data-label="Vergleich">
         <label className="comparison-checkbox">
           <input
@@ -272,6 +271,12 @@ export default function StrainTable({
     [visibleStrains.length]
   );
 
+  const paddingTop = useMemo(() => startIndex * ROW_HEIGHT, [startIndex]);
+  const paddingBottom = useMemo(
+    () => Math.max(totalHeight - endIndex * ROW_HEIGHT, 0),
+    [endIndex, totalHeight]
+  );
+
   const visibleRows = useMemo(() => {
     if (!Array.isArray(visibleStrains) || visibleStrains.length === 0) {
       return [];
@@ -308,7 +313,13 @@ export default function StrainTable({
                 <th>Details</th>
               </tr>
             </thead>
-            <tbody style={{ height: totalHeight }}>
+            <tbody style={{ minHeight: totalHeight }}>
+              {paddingTop > 0 && (
+                <tr className="virtual-spacer" aria-hidden="true">
+                  <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ height: paddingTop }} />
+                </tr>
+              )}
+
               {visibleRows.map(({ index, strain }) => (
                 <StrainTableRow
                   key={strain?.name || index}
@@ -319,15 +330,14 @@ export default function StrainTable({
                   showRadar={showRadar}
                   showTerpeneInfo={showTerpeneInfo}
                   terpeneLegendId={terpeneLegendId}
-                  style={{
-                    position: "absolute",
-                    top: index * ROW_HEIGHT,
-                    left: 0,
-                    right: 0,
-                    height: ROW_HEIGHT,
-                  }}
                 />
               ))}
+
+              {paddingBottom > 0 && (
+                <tr className="virtual-spacer" aria-hidden="true">
+                  <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ height: paddingBottom }} />
+                </tr>
+              )}
             </tbody>
           </table>
         ) : (
