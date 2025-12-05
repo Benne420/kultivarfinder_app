@@ -1,8 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { FixedSizeList } from "react-window";
 import TerpeneChips from "./TerpeneChips";
 
-const PAGE_SIZE_OPTIONS = [50, 100];
-const DEFAULT_PAGE_SIZE = 100;
+const DEFAULT_BATCH_SIZE = 100;
+const LOAD_AHEAD_THRESHOLD = 10;
+const ROW_HEIGHT = 88;
 
 export const toSafePdfPath = (name) => {
   const trimmed = String(name || "").trim();
@@ -34,6 +36,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
   showRadar,
   showTerpeneInfo,
   terpeneLegendId,
+  style,
 }) {
   if (!strain) {
     return null;
@@ -72,7 +75,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
     [similarityLabel, overlapBucketText].filter(Boolean).join(" – ") || "Ähnlichkeitsbewertung";
 
   return (
-    <tr className={isSelected ? "is-selected" : undefined}>
+    <tr className={isSelected ? "is-selected" : undefined} style={style}>
       <td className="comparison-column" data-label="Vergleich">
         <label className="comparison-checkbox">
           <input
@@ -157,8 +160,10 @@ export default function StrainTable({
   isSimilarityMode = false,
 }) {
   const terpeneLegendId = "terpene-legend";
-  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
-  const [pageIndex, setPageIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(DEFAULT_BATCH_SIZE);
+  const [listWidth, setListWidth] = useState(0);
+  const [listHeight, setListHeight] = useState(640);
+  const scrollContainerRef = useRef(null);
 
   const hasSimilarityColumn = useMemo(() => {
     if (!Array.isArray(strains)) {
@@ -170,18 +175,14 @@ export default function StrainTable({
   }, [strains]);
 
   const totalItems = Array.isArray(strains) ? strains.length : 0;
-  const totalPages = totalItems ? Math.ceil(totalItems / pageSize) : 0;
-  const safePageIndex = Math.min(pageIndex, Math.max(totalPages - 1, 0));
 
-  const paginatedStrains = useMemo(() => {
+  const visibleStrains = useMemo(() => {
     if (!Array.isArray(strains) || strains.length === 0) {
       return [];
     }
 
-    const start = safePageIndex * pageSize;
-    const end = start + pageSize;
-    return strains.slice(start, end);
-  }, [pageSize, safePageIndex, strains]);
+    return strains.slice(0, Math.min(visibleCount, totalItems));
+  }, [strains, totalItems, visibleCount]);
 
   const selectedNameSet = useMemo(() => {
     if (!Array.isArray(selectedCultivars) || !selectedCultivars.length) {
@@ -196,82 +197,148 @@ export default function StrainTable({
   }, [selectedCultivars]);
 
   useEffect(() => {
-    if (pageIndex !== safePageIndex) {
-      setPageIndex(safePageIndex);
-    }
-  }, [pageIndex, safePageIndex]);
+    const newCount = Math.min(DEFAULT_BATCH_SIZE, totalItems || 0);
+    setVisibleCount(newCount || 0);
+  }, [totalItems]);
 
-  const handlePageSizeChange = (event) => {
-    const value = Number.parseInt(event.target.value, 10);
-    setPageSize(Number.isNaN(value) ? DEFAULT_PAGE_SIZE : value);
-    setPageIndex(0);
-  };
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (typeof window === "undefined") {
+        return;
+      }
 
-  const goToPage = (nextIndex) => {
-    if (nextIndex < 0 || nextIndex >= totalPages) {
-      return;
-    }
+      const nextHeight = Math.min(820, Math.max(360, Math.floor(window.innerHeight * 0.6)));
+      setListHeight(nextHeight);
 
-    setPageIndex(nextIndex);
-  };
+      if (scrollContainerRef.current) {
+        setListWidth(scrollContainerRef.current.clientWidth);
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  const loadMoreItems = useCallback(() => {
+    setVisibleCount((current) => {
+      const next = Math.min(current + DEFAULT_BATCH_SIZE, totalItems);
+      return next;
+    });
+  }, [totalItems]);
+
+  const handleItemsRendered = useCallback(
+    ({ visibleStopIndex }) => {
+      if (visibleStopIndex >= visibleCount - LOAD_AHEAD_THRESHOLD && visibleCount < totalItems) {
+        loadMoreItems();
+      }
+    },
+    [loadMoreItems, totalItems, visibleCount]
+  );
+
+  const columnTemplate = useMemo(
+    () =>
+      hasSimilarityColumn
+        ? "110px minmax(220px, 2fr) 1.1fr 0.8fr 0.9fr 1.6fr 1fr"
+        : "110px minmax(220px, 2fr) 0.8fr 0.9fr 1.6fr 1fr",
+    [hasSimilarityColumn]
+  );
+
+  const VirtualizedTableOuter = useMemo(
+    () =>
+      React.forwardRef(function VirtualizedTableOuter(props, ref) {
+        const { style, children, ...rest } = props;
+        return (
+          <div
+            ref={ref}
+            className="strain-table-virtual-outer"
+            style={style}
+            role="region"
+            aria-label="Kultivar-Ergebnisse"
+            {...rest}
+          >
+            <table className="strain-table" style={{ "--strain-table-columns": columnTemplate }}>
+              <thead>
+                <tr>
+                  <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">
+                    Vergleich
+                  </th>
+                  <th>Name</th>
+                  {hasSimilarityColumn && <th className="similarity-column">Übereinstimmung</th>}
+                  <th>THC</th>
+                  <th className="hidden-sm">CBD</th>
+                  <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              {children}
+            </table>
+          </div>
+        );
+      }),
+    [columnTemplate, hasSimilarityColumn]
+  );
+
+  const VirtualizedTableBody = useMemo(
+    () =>
+      React.forwardRef(function VirtualizedTableBody(props, ref) {
+        const { style, ...rest } = props;
+        return <tbody ref={ref} style={{ ...style, position: "relative" }} {...rest} />;
+      }),
+    []
+  );
 
   return (
     <div className="strain-table-wrapper">
-      <div className="strain-table-scroll" role="region" aria-label="Kultivar-Ergebnisse">
-        <table className="strain-table">
-          <thead>
-            <tr>
-              <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">Vergleich</th>
-              <th>Name</th>
-              {hasSimilarityColumn && <th className="similarity-column">Übereinstimmung</th>}
-              <th>THC</th>
-              <th className="hidden-sm">CBD</th>
-              <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {paginatedStrains && paginatedStrains.length ? (
-              paginatedStrains.map((k) => (
+      <div className="strain-table-scroll" ref={scrollContainerRef}>
+        {visibleStrains && visibleStrains.length ? (
+          <FixedSizeList
+            height={listHeight}
+            width={listWidth || 1}
+            itemCount={visibleStrains.length}
+            itemSize={ROW_HEIGHT}
+            outerElementType={VirtualizedTableOuter}
+            innerElementType={VirtualizedTableBody}
+            onItemsRendered={handleItemsRendered}
+            itemKey={(index) => visibleStrains[index]?.name ?? index}
+          >
+            {({ index, style }) => {
+              const strain = visibleStrains[index];
+              return (
                 <StrainTableRow
-                  key={k.name}
-                  strain={k}
-                  isSelected={selectedNameSet.has(k.name)}
+                  key={strain?.name || index}
+                  strain={strain}
+                  isSelected={strain?.name ? selectedNameSet.has(strain.name) : false}
                   hasSimilarityColumn={hasSimilarityColumn}
                   onToggleSelect={onToggleSelect}
                   showRadar={showRadar}
                   showTerpeneInfo={showTerpeneInfo}
                   terpeneLegendId={terpeneLegendId}
+                  style={{ ...style, height: ROW_HEIGHT }}
                 />
-              ))
-            ) : (
-              <tr>
-                <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ padding: 12 }}>
-                  <div className="empty-state" aria-live="polite">
-                    <p className="empty-state__headline">Keine Ergebnisse</p>
-                    <p className="empty-state__hint">
-                      {isSimilarityMode
-                        ? "Es wurden keine ähnlichen Sorten gefunden. Setzen Sie die Ähnlichkeitssuche zurück, um wieder alle Ergebnisse zu sehen."
-                        : "Passen Sie die Filter an oder setzen Sie sie zurück, um wieder Treffer zu erhalten."}
-                    </p>
-                    <button
-                      type="button"
-                      className="primary"
-                      onClick={onResetEmptyState}
-                      aria-label={
-                        isSimilarityMode
-                          ? "Ähnlichkeitssuche zurücksetzen"
-                          : "Alle Filter zurücksetzen"
-                      }
-                    >
-                      {isSimilarityMode ? "Ähnlichkeitssuche aufheben" : "Filter zurücksetzen"}
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              );
+            }}
+          </FixedSizeList>
+        ) : (
+          <div className="strain-table-empty" role="status" aria-live="polite">
+            <p className="empty-state__headline">Keine Ergebnisse</p>
+            <p className="empty-state__hint">
+              {isSimilarityMode
+                ? "Es wurden keine ähnlichen Sorten gefunden. Setzen Sie die Ähnlichkeitssuche zurück, um wieder alle Ergebnisse zu sehen."
+                : "Passen Sie die Filter an oder setzen Sie sie zurück, um wieder Treffer zu erhalten."}
+            </p>
+            <button
+              type="button"
+              className="primary"
+              onClick={onResetEmptyState}
+              aria-label={
+                isSimilarityMode ? "Ähnlichkeitssuche zurücksetzen" : "Alle Filter zurücksetzen"
+              }
+            >
+              {isSimilarityMode ? "Ähnlichkeitssuche aufheben" : "Filter zurücksetzen"}
+            </button>
+          </div>
+        )}
       </div>
       <div id={terpeneLegendId} className="terpene-legend" aria-live="polite">
         <span className="terpene-legend__label">Terpenprofil-Legende:</span>
@@ -288,57 +355,6 @@ export default function StrainTable({
           eine alphabetische Ansicht wählen.
         </span>
       </div>
-      {totalPages > 1 && (
-        <div className="strain-table-pagination" role="navigation" aria-label="Seitennavigation">
-          <div className="pagination-controls">
-            <button
-              type="button"
-              className="link-button"
-              onClick={() => goToPage(0)}
-              disabled={safePageIndex === 0}
-            >
-              « Erste
-            </button>
-            <button
-              type="button"
-              className="link-button"
-              onClick={() => goToPage(safePageIndex - 1)}
-              disabled={safePageIndex === 0}
-            >
-              ‹ Zurück
-            </button>
-            <span className="pagination-status" aria-live="polite">
-              Seite {safePageIndex + 1} von {totalPages}
-            </span>
-            <button
-              type="button"
-              className="link-button"
-              onClick={() => goToPage(safePageIndex + 1)}
-              disabled={safePageIndex + 1 >= totalPages}
-            >
-              Weiter ›
-            </button>
-            <button
-              type="button"
-              className="link-button"
-              onClick={() => goToPage(totalPages - 1)}
-              disabled={safePageIndex + 1 >= totalPages}
-            >
-              Letzte »
-            </button>
-          </div>
-          <label className="pagination-size" htmlFor="strain-pagination-size">
-            Einträge pro Seite:
-            <select id="strain-pagination-size" value={pageSize} onChange={handlePageSizeChange}>
-              {PAGE_SIZE_OPTIONS.map((size) => (
-                <option key={size} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-      )}
     </div>
   );
 }
