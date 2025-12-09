@@ -1565,15 +1565,29 @@ nav a:hover {
 
 .similarity-panel__options {
   border: 0;
-  padding: 0;
-  margin: 12px 0 0;
+  padding: 8px 12px 0;
+  margin: 12px auto 0;
   min-inline-size: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .similarity-panel__options .similarity-panel__description {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin: 0;
+}
+
+.similarity-panel__options input[type="checkbox"] {
+  accent-color: var(--primary-blue);
+  width: 18px;
+  height: 18px;
+}
+
+.similarity-panel__options label {
+  display: inline-flex;
+  align-items: center;
 }
 
 .similarity-panel__select {
