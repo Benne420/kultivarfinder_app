@@ -258,15 +258,15 @@ h6 {
   padding: clamp(14px, 2vw, 20px);
   border-radius: 18px;
   border: 1px solid #e5eef5;
-  background: linear-gradient(135deg, #f5fbf7 0%, #f0f6ff 100%);
+  background: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 20, 60, 0.05);
   width: 100%;
   max-width: 100%;
 }
 
 .header__surface--compact {
-  background: #f6fbf8;
-  border: 1px solid #dbe9e1;
+  background: #ffffff;
+  border: 1px solid #e5eef5;
   box-shadow: 0 8px 20px rgba(0, 40, 20, 0.04);
 }
 
