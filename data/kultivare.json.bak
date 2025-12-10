@@ -1,7 +1,7 @@
 [
   {
     "name": "Alien Mints",
-    "thc": "20-27%",
+    "thc": "20-25%",
     "cbd": "<1%",
     "terpengehalt": "2.68%",
     "terpenprofil": [
@@ -15,14 +15,14 @@
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "ALM",
+    "genetics": "Alien Cookies x Animal Mints",
+    "smell": "Erdig, würzig",
+    "taste": "Erdige Noten, fruchtig",
+    "code": "ALM"
   },
   {
     "name": "Berlin Berries",
@@ -42,14 +42,14 @@
       "antimikrobiell",
       "entspannend"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "BER",
+    "genetics": "Georgia Pie x Gastro Pop",
+    "smell": "Cremig, Süß, Beerig, Rote Früchte",
+    "taste": "Cremig, Süß, Beerig, Rote Früchte",
+    "code": "BER"
   },
   {
     "name": "Black Triangle",
@@ -93,14 +93,14 @@
       "antimykotisch",
       "entspannend"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "BBW",
+    "genetics": "Glitter Bomb x Gastro Pop",
+    "smell": "Candy, Blaubeere, Banane, Kiwi, Wermut",
+    "taste": "Candy, Fruchtig, Wermut",
+    "code": "BBW"
   },
   {
     "name": "Bucket List",
@@ -142,14 +142,14 @@
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "C47",
+    "genetics": "Animal Face x Electric Grapefruit",
+    "smell": "Süß, würzig",
+    "taste": "Zitrone, Pinien, süß",
+    "code": "C47"
   },
   {
     "name": "Chemdog",
@@ -194,14 +194,14 @@
       "antimykotisch",
       "entspannend"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "CIN",
+    "genetics": "Cinderella 99 x (GG4 x Critical Kush)",
+    "smell": "Erdiges Kush, leicht zitronig",
+    "taste": "Erdiges Kush, leicht zitronig",
+    "code": "CIN"
   },
   {
     "name": "Frosted Gumbo",
@@ -219,18 +219,18 @@
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "FRG",
+    "genetics": "Bubblegum x (Unknown x Gelato)",
+    "smell": "Süß, vanille, kerosin",
+    "taste": "Süß, vanille, kerosin",
+    "code": "FRG"
   },
   {
     "name": "Frozen Lemon Mints",
-    "thc": "25-30%",
+    "thc": "20-33%",
     "cbd": "<1%",
     "terpengehalt": "2.55%",
     "terpenprofil": [
@@ -244,18 +244,18 @@
       "entzündungshemmend",
       "unterstützt Wundheilung"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "FLM",
+    "genetics": "Cap's Frozen Lemon x Kush Mints #11",
+    "smell": "Zitrus, cremig, Benzin",
+    "taste": "Zitrus, cremig, Benzin",
+    "code": "FLM"
   },
   {
     "name": "Gastro Pop",
-    "thc": "27-33%",
+    "thc": "22-33%",
     "cbd": "<1%",
     "terpengehalt": "3.15%",
     "terpenprofil": [
@@ -269,14 +269,14 @@
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "GAP",
+    "genetics": "Apples & Bananas x Grape Gasoline",
+    "smell": "Kiwi, Blaubeere, Banane",
+    "taste": "Blaubeere, Pflaume, Kerosin",
+    "code": "GAP"
   },
   {
     "name": "GG4 (Gorilla Glue #4)",
@@ -295,18 +295,18 @@
       "schlaffördernd",
       "analgetisch"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "NATURAL",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "GG4",
+    "genetics": "(Chem's Sister x Sour Dubb) x Chocolate Diesel",
+    "smell": "Erdig, würzig, schokoladig",
+    "taste": "Erdige Noten, Schokolade, Gewürze",
+    "code": "GG4"
   },
   {
     "name": "Glaced Apricot Gelato",
-    "thc": "18-22%",
+    "thc": "18-33%",
     "cbd": "<1%",
     "terpengehalt": "1.93%",
     "terpenprofil": [
@@ -320,18 +320,18 @@
       "entzündungshemmend",
       "analgetisch"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "GAG",
+    "genetics": "Gelato 1 x Legend Orange Apricot F2",
+    "smell": "Aprikose, Orange, Cremig",
+    "taste": "Aprikose, Orange, Cremig, Kerosin",
+    "code": "GAG"
   },
   {
     "name": "GMO",
-    "thc": "27-33%",
+    "thc": "27-30%",
     "cbd": "<1%",
     "terpengehalt": "3.50%",
     "terpenprofil": [
@@ -346,14 +346,14 @@
       "entzündungshemmend",
       "antimikrobiell"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "GMO",
+    "genetics": "Chem D x Girl Scout Cookies",
+    "smell": "Knoblauch, Zwiebeln",
+    "taste": "Knoblauch, Zwiebeln",
+    "code": "GMO"
   },
   {
     "name": "Grape Burger",
@@ -373,14 +373,14 @@
       "antimykotisch",
       "entspannend"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "GBG",
+    "genetics": "(GMO Cookies x Larry OG) x (Grape Ape x OG Kush)",
+    "smell": "Würzig, leicht herb, beerig",
+    "taste": "Süß, würzig, beerig",
+    "code": "GBG"
   },
   {
     "name": "Grape Face",
@@ -397,14 +397,14 @@
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "GRF",
+    "genetics": "Animal Face x Grape Fruit",
+    "smell": "Erdig, fruchtig, säuerlich",
+    "taste": "Diesel",
+    "code": "GRF"
   },
   {
     "name": "Holy Mints",
@@ -424,14 +424,14 @@
       "anxiolytisch",
       "antidepressiv"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "HOM",
+    "genetics": "Kush Mints x Edelweiß",
+    "smell": "Cremig, Diesel, minzig",
+    "taste": "Cremig, erdig, minzig",
+    "code": "HOM"
   },
   {
     "name": "Ice Cream Cake Kush Mints",
@@ -451,14 +451,14 @@
       "anxiolytisch",
       "krampflösend"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "ICC",
+    "genetics": "Ice Cream Cake x Kush Mints #11",
+    "smell": "Orangen, Vanille",
+    "taste": "Zitrus, cremig",
+    "code": "ICC"
   },
   {
     "name": "Jealousy",
@@ -550,14 +550,14 @@
       "entzündungshemmend",
       "analgetisch"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "LCG",
+    "genetics": "Sunset Sherbert x Girl Scout Cookies",
+    "smell": "Süß, Kirsche, Zitrone, Blumig, Kerosin",
+    "taste": "Süß, Zitronig",
+    "code": "LCG"
   },
   {
     "name": "MAC 1",
@@ -576,14 +576,14 @@
       "entzündungshemmend",
       "antimikrobiell"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "MAC",
+    "genetics": "Alien Cookies F2 x Miracle 15",
+    "smell": "Blumig, fruchtig, süß, erdig",
+    "taste": "Süß, blumig, erdig",
+    "code": "MAC"
   },
   {
     "name": "Masterpiece",
@@ -603,14 +603,14 @@
       "antimykotisch",
       "analgetisch"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "MSP",
+    "genetics": "Cap Junky x Platinum",
+    "smell": "Süß, sauer, blumig",
+    "taste": "Süß, sauer, blumig",
+    "code": "MSP"
   },
   {
     "name": "Mellowz",
@@ -677,14 +677,14 @@
       "entzündungshemmend",
       "analgetisch"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "MFG",
+    "genetics": "GMO x Purple Punch",
+    "smell": "Fruchtig, süß, trauben",
+    "taste": "Süß, fruchtig, erdig, würzig",
+    "code": "MFG"
   },
   {
     "name": "Peach Chementine",
@@ -704,14 +704,14 @@
       "antimykotisch",
       "analgetisch"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "PCH",
+    "genetics": "Chem D x i95 x Mandarin Cookies x Peach Ringz",
+    "smell": "Süß, tropisch, Zitrus",
+    "taste": "Süß, tropisch, Zitrus",
+    "code": "PCH"
   },
   {
     "name": "Pineapple God",
@@ -731,14 +731,14 @@
       "anxiolytisch",
       "antidepressiv"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "POG",
+    "genetics": "God Bud x Black Cherry Punch",
+    "smell": "Diesel, erdig, saure Kirschen",
+    "taste": "Fruchtig, süß, beerig",
+    "code": "POG"
   },
   {
     "name": "Platinum Pavé",
@@ -758,14 +758,14 @@
       "anxiolytisch",
       "antidepressiv"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "PPE",
+    "genetics": "Pavé x Spritzer",
+    "smell": "Kerosin, süß",
+    "taste": "Kerosin, süß",
+    "code": "PPE"
   },
   {
     "name": "Plum Driver",
@@ -810,14 +810,14 @@
       "antimykotisch",
       "analgetisch"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "PVB",
+    "genetics": "Banana OG x Private Reserve",
+    "smell": "Diesel, Cremig, Fruchtig, Tropisch, Banane, würzig, zitronig",
+    "taste": "Kerosin, Würzig, Fruchtig",
+    "code": "PVB"
   },
   {
     "name": "Rose Gold Pavé",
@@ -884,18 +884,18 @@
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "SCO",
+    "genetics": "(Gelato x Tina) x Cookies & Cream F2",
+    "smell": "Cremig, vanille, beerig",
+    "taste": "Cremig, süß, beerig",
+    "code": "SCO"
   },
   {
     "name": "Star Struck",
-    "thc": "22-27%",
+    "thc": "22-30%",
     "cbd": "<1%",
     "terpengehalt": "3.26%",
     "terpenprofil": [
@@ -909,18 +909,18 @@
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "STR",
+    "genetics": "Stardawg × Arise",
+    "smell": "Zitronengras, Kiefer, Basilikum",
+    "taste": "Süß, sauer",
+    "code": "STR"
   },
   {
     "name": "Super Lemon G",
-    "thc": "7%",
+    "thc": "7 (CBD: 7%)",
     "cbd": "7%",
     "terpengehalt": "0.98%",
     "terpenprofil": [
@@ -934,14 +934,14 @@
       "entzündungshemmend",
       "neuroprotektiv"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "BALANCED",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "SLG",
+    "genetics": "Super Lemon G x PF1 CBD",
+    "smell": "Süßlich, Zitronen, Orangen",
+    "taste": "Süßlich, Zitronen, Orangen",
+    "code": "SLG"
   },
   {
     "name": "Tigerz Eye",
@@ -984,18 +984,18 @@
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "NATURAL",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "TGO",
+    "genetics": "High Octane x Triangle Kush",
+    "smell": "Diesel, Kerosin",
+    "taste": "Diesel, Kerosin",
+    "code": "TGO"
   },
   {
     "name": "Tropicana Cookies",
-    "thc": "14-22%",
+    "thc": "15-22%",
     "cbd": "<1%",
     "terpengehalt": "1.29%",
     "terpenprofil": [
@@ -1008,14 +1008,14 @@
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "NATURAL",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "TRP",
+    "genetics": "Girl Scout Cookies x Tangie",
+    "smell": "Fruchtig, Zitrus, erdig, würzig",
+    "taste": "Angenehm Fruchtig, Zitrus",
+    "code": "TRP"
   },
   {
     "name": "Unicorn Cake",
@@ -1034,14 +1034,14 @@
       "antioxidativ",
       "antimikrobiell"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "UNC",
+    "genetics": "Unicorn Poop x Wedding Cake",
+    "smell": "Diesel, süß, cremig",
+    "taste": "Diesel, süß, cremig",
+    "code": "UNC"
   },
   {
     "name": "Waffle Truffle",
@@ -1061,14 +1061,14 @@
       "anxiolytisch",
       "antidepressiv"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "WTR",
+    "genetics": "White Truffle x Northern Lights",
+    "smell": "Cremig, schokoladig, würzig",
+    "taste": "Cremig, schokoladig, würzig",
+    "code": "WTR"
   },
   {
     "name": "Wedding Pop Triangle",
@@ -1086,14 +1086,14 @@
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "NATURAL",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "WPT",
+    "genetics": "Wedding Pop x Triangle Kush",
+    "smell": "Pfeffer, Zitrus",
+    "taste": "Süß, Pfeffer, Zitrus",
+    "code": "WPT"
   },
   {
     "name": "Wedding Singer",
@@ -1111,14 +1111,14 @@
       "analgetisch",
       "entzündungshemmend"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "WES",
+    "genetics": "White Wedding x Kush Mints #11",
+    "smell": "Beeren, Pinie, Diesel",
+    "taste": "Fruchtig, würzig, cremig",
+    "code": "WES"
   },
   {
     "name": "Whiteout",
@@ -1138,14 +1138,14 @@
       "anxiolytisch",
       "antidepressiv"
     ],
-    "typ": "sativa-dominant",
+    "typ": "Sativa-dominanter Hybrid",
     "status": "active",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "WOT",
+    "genetics": "Super Silver Haze × The White",
+    "smell": "Zitronig, Kräuternoten",
+    "taste": "Herb, zitronig",
+    "code": "WOT"
   },
   {
     "name": "Zookies",
@@ -1188,13 +1188,13 @@
       "entzündungshemmend",
       "unterstützt Wundheilung"
     ],
-    "typ": "indica-dominant",
+    "typ": "Indica-dominanter Hybrid",
     "status": "active",
     "produktlinie": "SUNGROWN",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "ZRP",
+    "genetics": "Gorilla Glue 4 x Jack Herer",
+    "smell": "Fruchtig, Saurer Apfel, Diesel",
+    "taste": "Erdig, Diesel, Zitrone",
+    "code": "ZRP"
   }
 ]
