@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import TerpeneChips from "./TerpeneChips";
 
 const DEFAULT_BATCH_SIZE = 100;
-const LOAD_AHEAD_THRESHOLD = 10;
-const ROW_HEIGHT = 110;
 
 export const toSafePdfPath = (name) => {
   const trimmed = String(name || "").trim();
@@ -159,9 +157,7 @@ export default function StrainTable({
 }) {
   const terpeneLegendId = "terpene-legend";
   const [visibleCount, setVisibleCount] = useState(DEFAULT_BATCH_SIZE);
-  const [listHeight, setListHeight] = useState(640);
-  const [scrollTop, setScrollTop] = useState(0);
-  const scrollContainerRef = useRef(null);
+  const loadMoreMarkerRef = useRef(null);
 
   const hasSimilarityColumn = useMemo(() => {
     if (!Array.isArray(strains)) {
@@ -197,33 +193,7 @@ export default function StrainTable({
   useEffect(() => {
     const newCount = Math.min(DEFAULT_BATCH_SIZE, totalItems || 0);
     setVisibleCount(newCount || 0);
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = 0;
-    }
-    setScrollTop(0);
   }, [totalItems]);
-
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (typeof window === "undefined") {
-        return;
-      }
-
-      const preferredHeight = Math.min(820, Math.max(360, Math.floor(window.innerHeight * 0.6)));
-
-      if (scrollContainerRef.current) {
-        const { clientHeight } = scrollContainerRef.current;
-        const nextHeight = Math.min(820, Math.max(320, clientHeight || preferredHeight));
-        setListHeight(nextHeight);
-      } else {
-        setListHeight(preferredHeight);
-      }
-    };
-
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
 
   const loadMoreItems = useCallback(() => {
     setVisibleCount((current) => {
@@ -232,135 +202,100 @@ export default function StrainTable({
     });
   }, [totalItems]);
 
-  const overscan = 5;
-  const startIndex = useMemo(
-    () => Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - overscan),
-    [overscan, scrollTop]
-  );
-
-  const endIndex = useMemo(
-    () =>
-      Math.min(
-        visibleStrains.length,
-        Math.ceil((scrollTop + listHeight) / ROW_HEIGHT) + overscan
-      ),
-    [listHeight, overscan, scrollTop, visibleStrains.length]
-  );
-
   useEffect(() => {
-    if (endIndex >= visibleCount - LOAD_AHEAD_THRESHOLD && visibleCount < totalItems) {
-      loadMoreItems();
+    if (!loadMoreMarkerRef.current || typeof IntersectionObserver === "undefined") {
+      return undefined;
     }
-  }, [endIndex, loadMoreItems, totalItems, visibleCount]);
 
-  const handleScroll = useCallback((event) => {
-    const { scrollTop: nextScrollTop } = event.currentTarget;
-    setScrollTop(nextScrollTop);
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const shouldLoadMore = entries.some((entry) => entry.isIntersecting);
+        if (shouldLoadMore) {
+          loadMoreItems();
+        }
+      },
+      { root: null, rootMargin: "320px 0px", threshold: 0 }
+    );
 
-  const columnTemplate = useMemo(
-    () =>
-      hasSimilarityColumn
-        ? "110px minmax(220px, 2fr) 1.1fr 0.8fr 0.9fr 1.6fr 1fr"
-        : "110px minmax(220px, 2fr) 0.8fr 0.9fr 1.6fr 1fr",
-    [hasSimilarityColumn]
-  );
+    observer.observe(loadMoreMarkerRef.current);
 
-  const totalHeight = useMemo(
-    () => Math.max(0, visibleStrains.length * ROW_HEIGHT),
-    [visibleStrains.length]
-  );
+    return () => observer.disconnect();
+  }, [loadMoreItems]);
 
-  const paddingTop = useMemo(() => startIndex * ROW_HEIGHT, [startIndex]);
-  const paddingBottom = useMemo(
-    () => Math.max(totalHeight - endIndex * ROW_HEIGHT, 0),
-    [endIndex, totalHeight]
-  );
-
-  const visibleRows = useMemo(() => {
-    if (!Array.isArray(visibleStrains) || visibleStrains.length === 0) {
-      return [];
-    }
-    const rows = [];
-    for (let i = startIndex; i < endIndex; i += 1) {
-      rows.push({ index: i, strain: visibleStrains[i] });
-    }
-    return rows;
-  }, [endIndex, startIndex, visibleStrains]);
+  const canLoadMore = visibleCount < totalItems;
 
   return (
     <div className="strain-table-wrapper">
-      <div
-        className="strain-table-scroll"
-        ref={scrollContainerRef}
-        onScroll={handleScroll}
-        style={{ maxHeight: listHeight }}
-        role="region"
-        aria-label="Kultivar-Ergebnisse"
-      >
-        {visibleStrains && visibleStrains.length ? (
-          <table className="strain-table" style={{ "--strain-table-columns": columnTemplate }}>
-            <thead>
-              <tr>
-                <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">
-                  Vergleich
-                </th>
-                <th>Name</th>
-                {hasSimilarityColumn && <th className="similarity-column">Übereinstimmung</th>}
-                <th>THC</th>
-                <th className="hidden-sm">CBD</th>
-                <th className="hidden-sm terpenprofil-header">Terpenprofil</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody style={{ minHeight: totalHeight }}>
-              {paddingTop > 0 && (
-                <tr className="virtual-spacer" aria-hidden="true">
-                  <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ height: paddingTop }} />
-                </tr>
-              )}
+      {visibleStrains && visibleStrains.length ? (
+        <table className="strain-table">
+          <thead>
+            <tr>
+              <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">
+                Vergleich
+              </th>
+              <th scope="col">Name</th>
+              {hasSimilarityColumn && <th className="similarity-column" scope="col">Übereinstimmung</th>}
+              <th scope="col">THC</th>
+              <th className="hidden-sm" scope="col">
+                CBD
+              </th>
+              <th className="hidden-sm terpenprofil-header" scope="col">
+                Terpenprofil
+              </th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {visibleStrains.map((strain, index) => (
+              <StrainTableRow
+                key={strain?.name || index}
+                strain={strain}
+                isSelected={strain?.name ? selectedNameSet.has(strain.name) : false}
+                hasSimilarityColumn={hasSimilarityColumn}
+                onToggleSelect={onToggleSelect}
+                showRadar={showRadar}
+                showTerpeneInfo={showTerpeneInfo}
+                terpeneLegendId={terpeneLegendId}
+              />
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div className="strain-table-empty" role="status" aria-live="polite">
+          <p className="empty-state__headline">Keine Ergebnisse</p>
+          <p className="empty-state__hint">
+            {isSimilarityMode
+              ? "Es wurden keine ähnlichen Sorten gefunden. Setzen Sie die Ähnlichkeitssuche zurück, um wieder alle Ergebnisse zu sehen."
+              : "Passen Sie die Filter an oder setzen Sie sie zurück, um wieder Treffer zu erhalten."}
+          </p>
+          <button
+            type="button"
+            className="primary"
+            onClick={onResetEmptyState}
+            aria-label={
+              isSimilarityMode ? "Ähnlichkeitssuche zurücksetzen" : "Alle Filter zurücksetzen"
+            }
+          >
+            {isSimilarityMode ? "Ähnlichkeitssuche aufheben" : "Filter zurücksetzen"}
+          </button>
+        </div>
+      )}
 
-              {visibleRows.map(({ index, strain }) => (
-                <StrainTableRow
-                  key={strain?.name || index}
-                  strain={strain}
-                  isSelected={strain?.name ? selectedNameSet.has(strain.name) : false}
-                  hasSimilarityColumn={hasSimilarityColumn}
-                  onToggleSelect={onToggleSelect}
-                  showRadar={showRadar}
-                  showTerpeneInfo={showTerpeneInfo}
-                  terpeneLegendId={terpeneLegendId}
-                />
-              ))}
+      {canLoadMore && (
+        <div className="strain-table__load-more">
+          <button
+            type="button"
+            className="primary"
+            onClick={loadMoreItems}
+            aria-label="Weitere Ergebnisse laden"
+          >
+            Mehr Ergebnisse laden
+          </button>
+        </div>
+      )}
 
-              {paddingBottom > 0 && (
-                <tr className="virtual-spacer" aria-hidden="true">
-                  <td colSpan={hasSimilarityColumn ? 7 : 6} style={{ height: paddingBottom }} />
-                </tr>
-              )}
-            </tbody>
-          </table>
-        ) : (
-          <div className="strain-table-empty" role="status" aria-live="polite">
-            <p className="empty-state__headline">Keine Ergebnisse</p>
-            <p className="empty-state__hint">
-              {isSimilarityMode
-                ? "Es wurden keine ähnlichen Sorten gefunden. Setzen Sie die Ähnlichkeitssuche zurück, um wieder alle Ergebnisse zu sehen."
-                : "Passen Sie die Filter an oder setzen Sie sie zurück, um wieder Treffer zu erhalten."}
-            </p>
-            <button
-              type="button"
-              className="primary"
-              onClick={onResetEmptyState}
-              aria-label={
-                isSimilarityMode ? "Ähnlichkeitssuche zurücksetzen" : "Alle Filter zurücksetzen"
-              }
-            >
-              {isSimilarityMode ? "Ähnlichkeitssuche aufheben" : "Filter zurücksetzen"}
-            </button>
-          </div>
-        )}
-      </div>
+      <div ref={loadMoreMarkerRef} className="strain-table__sentinel" aria-hidden="true" />
+
       <div id={terpeneLegendId} className="terpene-legend" aria-live="polite">
         <span className="terpene-legend__label">Terpenprofil-Legende:</span>
         <span className="terpene-legend__badge terpene-legend__badge--dominant" aria-hidden="true">
