@@ -2107,63 +2107,6 @@ nav a:hover {
   box-shadow: 0 10px 28px rgba(33, 52, 87, 0.08);
 }
 
-.terpene-radar-layout__details-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-.terpene-radar-layout__details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 8px 14px;
-  margin: 0;
-}
-
-.terpene-radar-layout__details-row {
-  display: grid;
-  grid-template-columns: minmax(110px, 1fr) 1.2fr;
-  gap: 4px;
-  align-items: baseline;
-}
-
-.terpene-radar-layout__details-row--wide {
-  grid-column: 1 / -1;
-}
-
-.terpene-radar-layout__details-row dt {
-  font-weight: 700;
-  color: #2c3e50;
-  font-size: 14px;
-}
-
-.terpene-radar-layout__details-row dd {
-  margin: 0;
-  font-size: 14px;
-}
-
-.terpene-radar-layout__detail-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 12px;
-  background-color: rgba(0, 85, 164, 0.06);
-  color: #2c3e50;
-  border: 1px solid rgba(0, 85, 164, 0.12);
-  font-size: 13px;
-}
-
-.terpene-radar-layout__detail-label {
-  font-weight: 700;
-}
-
-.terpene-radar-layout__extras {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
 .terpene-radar-layout__terpenes {
   display: grid;
   gap: 8px;
