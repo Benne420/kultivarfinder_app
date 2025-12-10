@@ -756,20 +756,11 @@ export default function CannabisKultivarFinderUseReducer() {
     <TerpeneContext.Provider value={terpeneContextValue}>
       <div className="container" style={containerStyle}>
         <header className="header" aria-label="App-Kopfzeile">
-          <div className="header__surface">
+          <div className="header__surface header__surface--compact">
             <div className="header__content">
-              <p className="header__eyebrow">Research Preview</p>
-              <div className="header__title-row">
-                <h1 className="appname">Four20 Index</h1>
-                <span className="header__pill" aria-hidden="true">
-                  Beta
-                </span>
-              </div>
-              <p className="header__subtitle">
-                Kultivare nach Terpenprofil, Wirkung und Ähnlichkeit filtern – mit
-                Vergleichsmodus, Radar-Ansicht und Entourage-Wissen auf einen Blick.
-              </p>
-              <div className="header__meta" role="list">
+              <h1 className="appname">Cannabis Sorten Datenbank</h1>
+              <p className="header__subtitle">Genetik, Aromen & Profile im Überblick</p>
+              <div className="header__meta header__meta--inline" role="list">
                 <div
                   className="header__stat"
                   role="listitem"
