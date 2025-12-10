@@ -260,8 +260,8 @@ h6 {
   border: 1px solid #e5eef5;
   background: linear-gradient(135deg, #f5fbf7 0%, #f0f6ff 100%);
   box-shadow: 0 10px 30px rgba(0, 20, 60, 0.05);
-  max-width: 960px;
   width: 100%;
+  max-width: 100%;
 }
 
 .header__surface--compact {
@@ -277,7 +277,7 @@ h6 {
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 720px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
