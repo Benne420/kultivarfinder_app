@@ -150,6 +150,10 @@ export default function RadarModal({ radarDialog, hideRadar }) {
                   <dd>{cultivar.typ || "Keine Angabe"}</dd>
                 </div>
                 <div className="terpene-radar-layout__details-row">
+                  <dt>Produktlinie</dt>
+                  <dd>{cultivar.produktlinie || "Keine Angabe"}</dd>
+                </div>
+                <div className="terpene-radar-layout__details-row">
                   <dt>THC</dt>
                   <dd>{cultivar.thc || "Keine Angabe"}</dd>
                 </div>

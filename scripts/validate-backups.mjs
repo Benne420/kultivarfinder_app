@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises';
 import { isDeepStrictEqual } from 'util';
 
-const backupPairs = [
+export const backupPairs = [
   {
     source: 'public/kultivare.json',
     backup: 'data/kultivare.json.bak'
