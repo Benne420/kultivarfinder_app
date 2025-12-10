@@ -525,6 +525,13 @@ export default function CannabisKultivarFinderUseReducer() {
     [comparisonLayout.panelWidthPx]
   );
 
+  const cultivarCount = useMemo(() => kultivare.length, [kultivare]);
+  const terpeneCount = useMemo(() => terpeneOptions.length, [terpeneOptions]);
+  const wirkungCount = useMemo(
+    () => availableWirkungen.length,
+    [availableWirkungen]
+  );
+
   useEffect(() => {
     if (!isComparisonOpen || typeof document === "undefined") {
       return undefined;
@@ -749,8 +756,46 @@ export default function CannabisKultivarFinderUseReducer() {
     <TerpeneContext.Provider value={terpeneContextValue}>
       <div className="container" style={containerStyle}>
         <header className="header" aria-label="App-Kopfzeile">
-          <div className="header__brand">
-            <h1 className="appname">Four20 Index</h1>
+          <div className="header__surface">
+            <div className="header__content">
+              <p className="header__eyebrow">Research Preview</p>
+              <div className="header__title-row">
+                <h1 className="appname">Four20 Index</h1>
+                <span className="header__pill" aria-hidden="true">
+                  Beta
+                </span>
+              </div>
+              <p className="header__subtitle">
+                Kultivare nach Terpenprofil, Wirkung und Ähnlichkeit filtern – mit
+                Vergleichsmodus, Radar-Ansicht und Entourage-Wissen auf einen Blick.
+              </p>
+              <div className="header__meta" role="list">
+                <div
+                  className="header__stat"
+                  role="listitem"
+                  aria-label={`${cultivarCount || "–"} Kultivare erfasst`}
+                >
+                  <span className="header__stat-value">{cultivarCount || "–"}</span>
+                  <span className="header__stat-label">Kultivare</span>
+                </div>
+                <div
+                  className="header__stat"
+                  role="listitem"
+                  aria-label={`${wirkungCount || "–"} Wirkungen auswählbar`}
+                >
+                  <span className="header__stat-value">{wirkungCount || "–"}</span>
+                  <span className="header__stat-label">Wirkungen</span>
+                </div>
+                <div
+                  className="header__stat"
+                  role="listitem"
+                  aria-label={`${terpeneCount || "–"} Terpene im Fokus`}
+                >
+                  <span className="header__stat-value">{terpeneCount || "–"}</span>
+                  <span className="header__stat-label">Terpene</span>
+                </div>
+              </div>
+            </div>
           </div>
         </header>
 
