@@ -24,11 +24,37 @@ export default function RadarModal({ radarDialog, hideRadar }) {
   const optionalDetails = useMemo(
     () =>
       [
+        { label: "Genetik", value: cultivar?.genetics || cultivar?.genetik },
+        { label: "Geruch", value: cultivar?.smell },
+        { label: "Geschmack", value: cultivar?.taste },
         { label: "Aroma/Flavour", value: cultivar?.aroma },
-        { label: "Genetik", value: cultivar?.genetik },
         { label: "Anbauhinweise", value: cultivar?.anbauhinweise },
       ].filter((entry) => Boolean(entry.value)),
-    [cultivar?.anbauhinweise, cultivar?.aroma, cultivar?.genetik]
+    [
+      cultivar?.anbauhinweise,
+      cultivar?.aroma,
+      cultivar?.genetics,
+      cultivar?.genetik,
+      cultivar?.smell,
+      cultivar?.taste,
+    ]
+  );
+
+  const mainDetails = useMemo(
+    () => [
+      { label: "Typ", value: cultivar?.typ || "Keine Angabe" },
+      { label: "Produktlinie", value: cultivar?.produktlinie || "Keine Angabe" },
+      { label: "THC", value: cultivar?.thc || "Keine Angabe" },
+      { label: "CBD", value: cultivar?.cbd || "Keine Angabe" },
+      { label: "Terpengehalt", value: cultivar?.terpengehalt || "Keine Angabe" },
+      { label: "Angegebene Wirkungen", value: wirkungen || "Keine Angabe" },
+    ],
+    [cultivar?.cbd, cultivar?.produktlinie, cultivar?.terpengehalt, cultivar?.thc, cultivar?.typ, wirkungen]
+  );
+
+  const detailRows = useMemo(
+    () => [...mainDetails, ...optionalDetails],
+    [mainDetails, optionalDetails]
   );
   const terpeneList = useMemo(() => {
     if (
@@ -138,45 +164,6 @@ export default function RadarModal({ radarDialog, hideRadar }) {
               className="terpene-radar-layout__image"
             />
             <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
-          </section>
-          <section
-            className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
-            aria-label="Sortendetails"
-          >
-            <div className="terpene-radar-layout__details-grid">
-              <dl className="terpene-radar-layout__details">
-                <div className="terpene-radar-layout__details-row">
-                  <dt>Typ</dt>
-                  <dd>{cultivar.typ || "Keine Angabe"}</dd>
-                </div>
-                <div className="terpene-radar-layout__details-row">
-                  <dt>THC</dt>
-                  <dd>{cultivar.thc || "Keine Angabe"}</dd>
-                </div>
-                <div className="terpene-radar-layout__details-row">
-                  <dt>CBD</dt>
-                  <dd>{cultivar.cbd || "Keine Angabe"}</dd>
-                </div>
-                <div className="terpene-radar-layout__details-row">
-                  <dt>Terpengehalt</dt>
-                  <dd>{cultivar.terpengehalt || "Keine Angabe"}</dd>
-                </div>
-                <div className="terpene-radar-layout__details-row terpene-radar-layout__details-row--wide">
-                  <dt>Angegebene Wirkungen</dt>
-                  <dd>{wirkungen || "Keine Angabe"}</dd>
-                </div>
-              </dl>
-              {optionalDetails.length > 0 && (
-                <div className="terpene-radar-layout__extras" aria-label="Zusätzliche Angaben">
-                  {optionalDetails.map((entry) => (
-                    <div key={entry.label} className="terpene-radar-layout__detail-chip">
-                      <span className="terpene-radar-layout__detail-label">{entry.label}:</span>
-                      <span>{entry.value}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
             <div
               className="terpene-radar-layout__terpenes"
               aria-label="Terpenprofil"
@@ -206,6 +193,19 @@ export default function RadarModal({ radarDialog, hideRadar }) {
                 <span className="terpene-legend__text">Begleitend</span>
               </p>
             </div>
+          </section>
+          <section
+            className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
+            aria-label="Sortendetails"
+          >
+            <dl className="detail-grid" aria-label="Kultivar-Informationen">
+              {detailRows.map((entry) => (
+                <div className="detail-grid__row" key={entry.label}>
+                  <dt>{entry.label}</dt>
+                  <dd>{entry.value}</dd>
+                </div>
+              ))}
+            </dl>
           </section>
         </div>
       </div>
