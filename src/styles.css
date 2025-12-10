@@ -256,14 +256,14 @@ h6 {
   padding: clamp(14px, 2vw, 20px);
   border-radius: 18px;
   border: 1px solid #e5eef5;
-  background: #f8fbff;
+  background: linear-gradient(135deg, #f5fbf7 0%, #f0f6ff 100%);
   box-shadow: 0 10px 30px rgba(0, 20, 60, 0.05);
 }
 
 .header__surface--compact {
-  background: #ffffff;
-  border: 1px solid #e4ebf2;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  background: #f6fbf8;
+  border: 1px solid #dbe9e1;
+  box-shadow: 0 8px 20px rgba(0, 40, 20, 0.04);
 }
 
 .header__content {
@@ -301,8 +301,8 @@ h6 {
 }
 
 .header__stat {
-  background: #f7fafc;
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  background: #eef5f0;
+  border: 1px solid rgba(14, 116, 48, 0.12);
   border-radius: 12px;
   padding: 10px 12px;
   display: grid;
@@ -313,11 +313,11 @@ h6 {
 .header__stat-value {
   font-weight: 700;
   font-size: 1.1rem;
-  color: #0f172a;
+  color: #0b3b1d;
 }
 
 .header__stat-label {
-  color: #5b6675;
+  color: #2e5b3b;
   font-size: 0.9rem;
 }
 p {

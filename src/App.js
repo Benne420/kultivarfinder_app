@@ -525,13 +525,10 @@ export default function CannabisKultivarFinderUseReducer() {
     [comparisonLayout.panelWidthPx]
   );
 
-  const cultivarCount = useMemo(() => kultivare.length, [kultivare]);
-  const terpeneCount = useMemo(() => terpeneOptions.length, [terpeneOptions]);
-  const wirkungCount = useMemo(
-    () => availableWirkungen.length,
-    [availableWirkungen]
+  const activeCultivarCount = useMemo(
+    () => kultivare.filter((k) => isStatusIncluded(k, false)).length,
+    [kultivare]
   );
-
   useEffect(() => {
     if (!isComparisonOpen || typeof document === "undefined") {
       return undefined;
@@ -764,26 +761,12 @@ export default function CannabisKultivarFinderUseReducer() {
                 <div
                   className="header__stat"
                   role="listitem"
-                  aria-label={`${cultivarCount || "–"} Kultivare erfasst`}
+                  aria-label={`${activeCultivarCount || "–"} aktive Kultivare erfasst`}
                 >
-                  <span className="header__stat-value">{cultivarCount || "–"}</span>
-                  <span className="header__stat-label">Kultivare</span>
-                </div>
-                <div
-                  className="header__stat"
-                  role="listitem"
-                  aria-label={`${wirkungCount || "–"} Wirkungen auswählbar`}
-                >
-                  <span className="header__stat-value">{wirkungCount || "–"}</span>
-                  <span className="header__stat-label">Wirkungen</span>
-                </div>
-                <div
-                  className="header__stat"
-                  role="listitem"
-                  aria-label={`${terpeneCount || "–"} Terpene im Fokus`}
-                >
-                  <span className="header__stat-value">{terpeneCount || "–"}</span>
-                  <span className="header__stat-label">Terpene</span>
+                  <span className="header__stat-value">
+                    {activeCultivarCount || "–"}
+                  </span>
+                  <span className="header__stat-label">Aktive Kultivare</span>
                 </div>
               </div>
             </div>
