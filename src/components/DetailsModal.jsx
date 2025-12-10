@@ -71,6 +71,15 @@ export default function DetailsModal({ infoDialog, hideInfo }) {
     { label: "Anbauhinweise", value: cultivar.anbauhinweise },
   ].filter((entry) => Boolean(entry.value));
 
+  const mainDetails = [
+    { label: "Typ", value: cultivar.typ || "Keine Angabe" },
+    { label: "Produktlinie", value: cultivar.produktlinie || "Keine Angabe" },
+    { label: "THC", value: cultivar.thc || "Keine Angabe" },
+    { label: "CBD", value: cultivar.cbd || "Keine Angabe" },
+    { label: "Terpengehalt", value: cultivar.terpengehalt || "Keine Angabe" },
+    { label: "Angegebene Wirkungen", value: wirkungen || "Keine Angabe" },
+  ];
+
   return (
     <div className="modal-backdrop" onClick={hideInfo}>
       <div
@@ -95,34 +104,21 @@ export default function DetailsModal({ infoDialog, hideInfo }) {
           {cultivar.name}
         </h3>
         <div id="cultivar-details-content" className="modal-content">
-          <p>
-            <strong>Typ:</strong> {cultivar.typ || "Keine Angabe"}
-          </p>
-          <p>
-            <strong>Produktlinie:</strong> {cultivar.produktlinie || "Keine Angabe"}
-          </p>
-          <p>
-            <strong>THC:</strong> {cultivar.thc || "Keine Angabe"}
-          </p>
-          <p>
-            <strong>CBD:</strong> {cultivar.cbd || "Keine Angabe"}
-          </p>
-          <p>
-            <strong>Terpengehalt:</strong> {cultivar.terpengehalt || "Keine Angabe"}
-          </p>
-          <p>
-            <strong>Angegebene Wirkungen:</strong> {wirkungen || "Keine Angabe"}
-          </p>
+          <dl className="detail-grid" aria-label="Kultivar-Informationen">
+            {mainDetails.map((entry) => (
+              <div className="detail-grid__row" key={entry.label}>
+                <dt>{entry.label}</dt>
+                <dd>{entry.value}</dd>
+              </div>
+            ))}
 
-          {optionalDetails.length > 0 && (
-            <div className="modal-meta" aria-label="Zusätzliche Angaben">
-              {optionalDetails.map((entry) => (
-                <p key={entry.label}>
-                  <strong>{entry.label}:</strong> {entry.value}
-                </p>
-              ))}
-            </div>
-          )}
+            {optionalDetails.map((entry) => (
+              <div className="detail-grid__row" key={entry.label}>
+                <dt>{entry.label}</dt>
+                <dd>{entry.value}</dd>
+              </div>
+            ))}
+          </dl>
 
           <div className="modal-meta" style={{ marginTop: "12px" }}>
             <button

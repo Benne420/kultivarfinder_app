@@ -2036,6 +2036,38 @@ nav a:hover {
   margin: 0.5rem 0;
 }
 
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.detail-grid__row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) 2.2fr;
+  gap: 10px;
+  align-items: start;
+  background: #f6f9fc;
+  border: 1px solid #e2e8ed;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.detail-grid__row dt {
+  font-weight: 600;
+  color: #263238;
+}
+
+.detail-grid__row dd {
+  margin: 0;
+  color: #37474f;
+}
+
+.detail-grid__row:last-child {
+  margin-bottom: 0;
+}
+
 .modal-meta {
   font-size: 12px;
   color: #546e7a;
