@@ -248,6 +248,8 @@ h6 {
 }
 .header {
   padding: 12px 0 4px;
+  display: flex;
+  justify-content: center;
 }
 
 .header__surface {
@@ -258,6 +260,8 @@ h6 {
   border: 1px solid #e5eef5;
   background: linear-gradient(135deg, #f5fbf7 0%, #f0f6ff 100%);
   box-shadow: 0 10px 30px rgba(0, 20, 60, 0.05);
+  max-width: 960px;
+  width: 100%;
 }
 
 .header__surface--compact {
@@ -272,6 +276,9 @@ h6 {
   gap: 6px;
   align-items: center;
   text-align: center;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .header .appname {
@@ -293,13 +300,14 @@ h6 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 8px;
-  margin-top: 6px;
+  margin-top: 10px;
   width: 100%;
   justify-items: center;
 }
 
 .header__meta--inline {
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: 1fr;
+  width: auto;
 }
 
 .header__stat {
