@@ -1,1200 +1,1012 @@
 [
-    {
-        "name":  "Alien Mints",
-        "thc":  "20-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.68%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Linalool",
-                             "Limonen",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Berlin Berries",
-        "thc":  "25-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "3.64%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Caryophyllen",
-                             "Linalool",
-                             "Selinene",
-                             "Germacren B"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimikrobiell",
-                          "entspannend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Black Triangle",
-        "thc":  "18-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.25%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Selinene",
-                             "Myrcen",
-                             "Limonen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Bling Blaow",
-        "thc":  "25-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "3.39%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Linalool",
-                             "Caryophyllen",
-                             "Selinene",
-                             "Myrcen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimykotisch",
-                          "entspannend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Bucket List",
-        "thc":  "22-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.39%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Limonen",
-                             "Humulen",
-                             "Myrcen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "C-47",
-        "thc":  "18-30%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1,41%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Limonen",
-                             "Caryophyllen",
-                             "Pinen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Chemdog",
-        "thc":  "18-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.40%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Limonen",
-                             "Humulen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Cinderella Kush",
-        "thc":  "22-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.76%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Linalool",
-                             "Guaiol"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimykotisch",
-                          "entspannend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Frosted Gumbo",
-        "thc":  "27-30%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "3.34%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Farnesen",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Frozen Lemon Mints",
-        "thc":  "25-30%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.55%",
-        "terpenprofil":  [
-                             "Terpinolen",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Myrcen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "unterstÃ¼tzt Wundheilung"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Gastro Pop",
-        "thc":  "27-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "3.15%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Ocimen",
-                             "Linalool",
-                             "Caryophyllen",
-                             "Selinene"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "GG4",
-        "thc":  "20-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.19%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Humulen",
-                             "Limonen",
-                             "Bisabolol",
-                             "Myrcen"
-                         ],
-        "wirkungen":  [
-                          "entspannend",
-                          "schlaffÃ¶rdernd",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Glaced Apricot Gelato",
-        "thc":  "18-22%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.93%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Terpinolen",
-                             "Farnesen",
-                             "Humulen",
-                             "Limonen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "GMO",
-        "thc":  "27-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "3.50%",
-        "terpenprofil":  [
-                             "Farnesen",
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "antioxidativ",
-                          "entzÃ¼ndungshemmend",
-                          "antimikrobiell"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Grape Burger",
-        "thc":  "18-30%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2,77%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Limonen",
-                             "Myrcen",
-                             "Ocimen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimykotisch",
-                          "entspannend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Grape Face",
-        "thc":  "20-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.25%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Selinene",
-                             "Myrcen",
-                             "Limonen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Holy Mints",
-        "thc":  "18-30%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1,96%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Humulen",
-                             "Limonen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend",
-                          "anxiolytisch",
-                          "antidepressiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Ice Cream Cake Kush Mints",
-        "thc":  "25-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.34%",
-        "terpenprofil":  [
-                             "Linalool",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Guaiol",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entspannend",
-                          "anxiolytisch",
-                          "krampflÃ¶send"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Jealousy",
-        "thc":  "18-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.96%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Caryophyllen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimykotisch",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Lavender Cake",
-        "thc":  "16-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "0.98%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Humulen",
-                             "Guaiol",
-                             "Bisabolol",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Legendary Larry",
-        "thc":  "18-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.88%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Farnesen",
-                             "Limonen",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Lemon Cherry Gelato",
-        "thc":  "16-22%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.08%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Limonen",
-                             "Linalool",
-                             "Humulen",
-                             "Pinen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "MAC 1",
-        "thc":  "20-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.76%",
-        "terpenprofil":  [
-                             "Farnesen",
-                             "Limonen",
-                             "Caryophyllen",
-                             "Pinen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "antioxidativ",
-                          "entzÃ¼ndungshemmend",
-                          "antimikrobiell"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Masterpiece",
-        "thc":  "27-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "3.43%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Myrcen",
-                             "Linalool",
-                             "Caryophyllen",
-                             "Bulnesol"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimykotisch",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Mellowz",
-        "thc":  "18-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.14%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Selinene",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Miracle Mints",
-        "thc":  "22-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.45%",
-        "terpenprofil":  [
-                             "Selinene",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Humulen",
-                             "Bisabolol"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Modified Grapes",
-        "thc":  "27-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.32%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Humulen",
-                             "Limonen",
-                             "Farnesen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Peach Chementine",
-        "thc":  "25-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.14%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Farnesen",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimykotisch",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Pineapple God",
-        "thc":  "18-30%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2,79%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Limonen",
-                             "Humulen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend",
-                          "anxiolytisch",
-                          "antidepressiv"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Platinum PavÃ©",
-        "thc":  "25-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "4,57%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Linalool",
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Germacren B"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend",
-                          "anxiolytisch",
-                          "antidepressiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Plum Driver",
-        "thc":  "20-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.40%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Linalool",
-                             "Limonen",
-                             "Myrcen",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Private Banana",
-        "thc":  "18-22%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.55%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Myrcen",
-                             "Pinen",
-                             "Linalool",
-                             "Caryophyllen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimykotisch",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Rose Gold PavÃ©",
-        "thc":  "22-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "4.15%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Linalool",
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Germacren B"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimykotisch",
-                          "analgetisch"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Rose Gold Runtz",
-        "thc":  "20-30%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.98%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Caryophyllen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Scoops",
-        "thc":  "22-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.57%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Linalool",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Star Struck",
-        "thc":  "22-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "3.26%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Pinen",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Farnesen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Super Lemon G",
-        "thc":  "7%",
-        "cbd":  "7%",
-        "terpengehalt":  "0.98%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Pinen",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Tigerz Eye",
-        "thc":  "20-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.46%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Pinen",
-                             "Limonen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "neuroprotektiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "discontinued",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Triangle Octane",
-        "thc":  "27-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "3.45%",
-        "terpenprofil":  [
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Limonen",
-                             "Farnesen",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Tropicana Cookies",
-        "thc":  "14-22%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.29%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Linalool",
-                             "Humulen",
-                             "Limonen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Unicorn Cake",
-        "thc":  "22-33%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.55%",
-        "terpenprofil":  [
-                             "Farnesen",
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Humulen",
-                             "Limonen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "antioxidativ",
-                          "antimikrobiell"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Waffle Truffle",
-        "thc":  "22-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.86%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Limonen",
-                             "Humulen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend",
-                          "anxiolytisch",
-                          "antidepressiv"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Wedding Pop Triangle",
-        "thc":  "20-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.00%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Linalool",
-                             "Limonen",
-                             "Humulen",
-                             "Myrcen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Wedding Singer",
-        "thc":  "25-30%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "1.17%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Limonen",
-                             "Linalool",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Whiteout",
-        "thc":  "20-27%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.00%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Humulen",
-                             "Linalool"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend",
-                          "anxiolytisch",
-                          "antidepressiv"
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Zookies",
-        "thc":  "20-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "0.64%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Linalool",
-                             "Limonen",
-                             "Fenchol",
-                             "Bisabolol"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzÃ¼ndungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    },
-    {
-        "name":  "Zour Apple",
-        "thc":  "20-25%",
-        "cbd":  "\u003c1%",
-        "terpengehalt":  "2.37%",
-        "terpenprofil":  [
-                             "Terpinolen",
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Humulen",
-                             "Pinen"
-                         ],
-        "wirkungen":  [
-                          "entzÃ¼ndungshemmend",
-                          "unterstÃ¼tzt Wundheilung"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "",
-        "KÃ¼rzel":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  ""
-    }
+  {
+    "name": "Alien Mints",
+    "thc": "20-27%",
+    "cbd": "<1%",
+    "terpengehalt": "2.68%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen",
+      "Linalool",
+      "Limonen",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Berlin Berries",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.64%",
+    "terpenprofil": [
+      "Limonen",
+      "Caryophyllen",
+      "Linalool",
+      "Selinene",
+      "Germacren B"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimikrobiell",
+      "entspannend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Black Triangle",
+    "thc": "18-27%",
+    "cbd": "<1%",
+    "terpengehalt": "2.25%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Selinene",
+      "Myrcen",
+      "Limonen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Bling Blaow",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.39%",
+    "terpenprofil": [
+      "Limonen",
+      "Linalool",
+      "Caryophyllen",
+      "Selinene",
+      "Myrcen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "entspannend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Bucket List",
+    "thc": "22-33%",
+    "cbd": "<1%",
+    "terpengehalt": "1.39%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Limonen",
+      "Humulen",
+      "Myrcen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "sativa-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "C-47",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "1,41%",
+    "terpenprofil": [
+      "Myrcen",
+      "Limonen",
+      "Caryophyllen",
+      "Pinen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Chemdog",
+    "thc": "18-27%",
+    "cbd": "<1%",
+    "terpengehalt": "1.40%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Limonen",
+      "Humulen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Cinderella Kush",
+    "thc": "22-27%",
+    "cbd": "<1%",
+    "terpengehalt": "1.76%",
+    "terpenprofil": [
+      "Limonen",
+      "Caryophyllen",
+      "Myrcen",
+      "Linalool",
+      "Guaiol"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "entspannend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Frosted Gumbo",
+    "thc": "27-30%",
+    "cbd": "<1%",
+    "terpengehalt": "3.34%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen",
+      "Limonen",
+      "Farnesen",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Frozen Lemon Mints",
+    "thc": "25-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2.55%",
+    "terpenprofil": [
+      "Terpinolen",
+      "Caryophyllen",
+      "Limonen",
+      "Myrcen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "unterstützt Wundheilung"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Gastro Pop",
+    "thc": "27-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.15%",
+    "terpenprofil": [
+      "Myrcen",
+      "Ocimen",
+      "Linalool",
+      "Caryophyllen",
+      "Selinene"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "GG4",
+    "thc": "20-25%",
+    "cbd": "<1%",
+    "terpengehalt": "2.19%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Humulen",
+      "Limonen",
+      "Bisabolol",
+      "Myrcen"
+    ],
+    "wirkungen": [
+      "entspannend",
+      "schlaffördernd",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Glaced Apricot Gelato",
+    "thc": "18-22%",
+    "cbd": "<1%",
+    "terpengehalt": "1.93%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Terpinolen",
+      "Farnesen",
+      "Humulen",
+      "Limonen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "GMO",
+    "thc": "27-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.50%",
+    "terpenprofil": [
+      "Farnesen",
+      "Myrcen",
+      "Caryophyllen",
+      "Limonen",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "antioxidativ",
+      "entzündungshemmend",
+      "antimikrobiell"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Grape Burger",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2,77%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Limonen",
+      "Myrcen",
+      "Ocimen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "entspannend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Grape Face",
+    "thc": "20-25%",
+    "cbd": "<1%",
+    "terpengehalt": "2.25%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Selinene",
+      "Myrcen",
+      "Limonen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Holy Mints",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "1,96%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Limonen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend",
+      "anxiolytisch",
+      "antidepressiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Ice Cream Cake Kush Mints",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "1.34%",
+    "terpenprofil": [
+      "Linalool",
+      "Caryophyllen",
+      "Limonen",
+      "Guaiol",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entspannend",
+      "anxiolytisch",
+      "krampflösend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Jealousy",
+    "thc": "18-27%",
+    "cbd": "<1%",
+    "terpengehalt": "1.96%",
+    "terpenprofil": [
+      "Limonen",
+      "Caryophyllen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Lavender Cake",
+    "thc": "16-25%",
+    "cbd": "<1%",
+    "terpengehalt": "0.98%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Humulen",
+      "Guaiol",
+      "Bisabolol",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Legendary Larry",
+    "thc": "18-27%",
+    "cbd": "<1%",
+    "terpengehalt": "1.88%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Farnesen",
+      "Limonen",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Lemon Cherry Gelato",
+    "thc": "16-22%",
+    "cbd": "<1%",
+    "terpengehalt": "1.08%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Limonen",
+      "Linalool",
+      "Humulen",
+      "Pinen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "MAC 1",
+    "thc": "20-25%",
+    "cbd": "<1%",
+    "terpengehalt": "2.76%",
+    "terpenprofil": [
+      "Farnesen",
+      "Limonen",
+      "Caryophyllen",
+      "Pinen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "antioxidativ",
+      "entzündungshemmend",
+      "antimikrobiell"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Masterpiece",
+    "thc": "27-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.43%",
+    "terpenprofil": [
+      "Limonen",
+      "Myrcen",
+      "Linalool",
+      "Caryophyllen",
+      "Bulnesol"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Mellowz",
+    "thc": "18-25%",
+    "cbd": "<1%",
+    "terpengehalt": "2.14%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen",
+      "Selinene",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Miracle Mints",
+    "thc": "22-33%",
+    "cbd": "<1%",
+    "terpengehalt": "2.45%",
+    "terpenprofil": [
+      "Selinene",
+      "Caryophyllen",
+      "Limonen",
+      "Humulen",
+      "Bisabolol"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Modified Grapes",
+    "thc": "27-33%",
+    "cbd": "<1%",
+    "terpengehalt": "2.32%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Limonen",
+      "Farnesen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Peach Chementine",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "2.14%",
+    "terpenprofil": [
+      "Limonen",
+      "Myrcen",
+      "Caryophyllen",
+      "Farnesen",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Pineapple God",
+    "thc": "18-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2,79%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Limonen",
+      "Humulen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend",
+      "anxiolytisch",
+      "antidepressiv"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Platinum Pavé",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "4,57%",
+    "terpenprofil": [
+      "Limonen",
+      "Linalool",
+      "Myrcen",
+      "Caryophyllen",
+      "Germacren B"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend",
+      "anxiolytisch",
+      "antidepressiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Plum Driver",
+    "thc": "20-25%",
+    "cbd": "<1%",
+    "terpengehalt": "1.40%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Linalool",
+      "Limonen",
+      "Myrcen",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Private Banana",
+    "thc": "18-22%",
+    "cbd": "<1%",
+    "terpengehalt": "1.55%",
+    "terpenprofil": [
+      "Limonen",
+      "Myrcen",
+      "Pinen",
+      "Linalool",
+      "Caryophyllen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Rose Gold Pavé",
+    "thc": "22-33%",
+    "cbd": "<1%",
+    "terpengehalt": "4.15%",
+    "terpenprofil": [
+      "Limonen",
+      "Linalool",
+      "Myrcen",
+      "Caryophyllen",
+      "Germacren B"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Rose Gold Runtz",
+    "thc": "20-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2.98%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Scoops",
+    "thc": "22-27%",
+    "cbd": "<1%",
+    "terpengehalt": "2.57%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen",
+      "Limonen",
+      "Linalool",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Star Struck",
+    "thc": "22-27%",
+    "cbd": "<1%",
+    "terpengehalt": "3.26%",
+    "terpenprofil": [
+      "Myrcen",
+      "Pinen",
+      "Caryophyllen",
+      "Limonen",
+      "Farnesen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Super Lemon G",
+    "thc": "7%",
+    "cbd": "7%",
+    "terpengehalt": "0.98%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen",
+      "Limonen",
+      "Pinen",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Tigerz Eye",
+    "thc": "20-33%",
+    "cbd": "<1%",
+    "terpengehalt": "1.46%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen",
+      "Pinen",
+      "Limonen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Triangle Octane",
+    "thc": "27-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.45%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen",
+      "Limonen",
+      "Farnesen",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Tropicana Cookies",
+    "thc": "14-22%",
+    "cbd": "<1%",
+    "terpengehalt": "1.29%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Linalool",
+      "Humulen",
+      "Limonen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Unicorn Cake",
+    "thc": "22-33%",
+    "cbd": "<1%",
+    "terpengehalt": "2.55%",
+    "terpenprofil": [
+      "Farnesen",
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Limonen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimikrobiell"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Waffle Truffle",
+    "thc": "22-27%",
+    "cbd": "<1%",
+    "terpengehalt": "1.86%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Limonen",
+      "Humulen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend",
+      "anxiolytisch",
+      "antidepressiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Wedding Pop Triangle",
+    "thc": "20-25%",
+    "cbd": "<1%",
+    "terpengehalt": "1.00%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Linalool",
+      "Limonen",
+      "Humulen",
+      "Myrcen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Wedding Singer",
+    "thc": "25-30%",
+    "cbd": "<1%",
+    "terpengehalt": "1.17%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Myrcen",
+      "Limonen",
+      "Linalool",
+      "Humulen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Whiteout",
+    "thc": "20-27%",
+    "cbd": "<1%",
+    "terpengehalt": "2.00%",
+    "terpenprofil": [
+      "Limonen",
+      "Myrcen",
+      "Caryophyllen",
+      "Humulen",
+      "Linalool"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend",
+      "anxiolytisch",
+      "antidepressiv"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Zookies",
+    "thc": "20-25%",
+    "cbd": "<1%",
+    "terpengehalt": "0.64%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Linalool",
+      "Limonen",
+      "Fenchol",
+      "Bisabolol"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "",
+    "Kürzel": ""
+  },
+  {
+    "name": "Zour Apple",
+    "thc": "20-25%",
+    "cbd": "<1%",
+    "terpengehalt": "2.37%",
+    "terpenprofil": [
+      "Terpinolen",
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Pinen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "unterstützt Wundheilung"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "",
+    "Kürzel": ""
+  }
 ]
