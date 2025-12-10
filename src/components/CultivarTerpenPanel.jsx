@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_TERPENE_RANK_ICONS } from '../constants/terpeneIcons';
 import { useTerpeneContext } from '../context/TerpeneContext';
 import { mapTerpeneToCanonical } from '../utils/helpers';
@@ -17,7 +17,7 @@ const makeAnchorId = (value, fallback) => {
   return `terpen-${fallback}`;
 };
 
-const CultivarTerpenPanel = ({ cultivar }) => {
+const CultivarTerpenPanel = ({ cultivar, activeTerpene }) => {
   const {
     terpenes: contextTerpenes,
     aliasLookup,
@@ -36,6 +36,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   const [showDetails, setShowDetails] = useState(true);
   const [orderMode, setOrderMode] = useState('dataset');
   const cultivarName = cultivar?.name || 'Kultivar';
+  const containerRef = useRef(null);
 
   const orderedProfile = useMemo(() => {
     if (!cultivar || !Array.isArray(cultivar.terpenprofil)) return [];
@@ -63,6 +64,22 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   }, [orderedProfile]);
 
   const displayProfile = orderMode === 'alpha' ? sortedProfile : orderedProfile;
+
+  const activeCanonical = useMemo(() => {
+    if (!activeTerpene) return null;
+    return mapTerpeneToCanonical(activeTerpene, aliasLookup);
+  }, [activeTerpene, aliasLookup]);
+
+  const primaryTerpene = useMemo(() => {
+    if (!displayProfile.length) return null;
+    if (activeCanonical) {
+      const found = displayProfile.find(
+        (name) => mapTerpeneToCanonical(name, aliasLookup) === activeCanonical
+      );
+      if (found) return found;
+    }
+    return displayProfile[0];
+  }, [activeCanonical, aliasLookup, displayProfile]);
 
   const rankIcons = useMemo(() => {
     const overrides =
@@ -95,6 +112,20 @@ const CultivarTerpenPanel = ({ cultivar }) => {
       });
     }
   }, [contextReferences, ensureReferences]);
+
+  useEffect(() => {
+    if (!containerRef.current || !activeCanonical) return;
+    const target = containerRef.current.querySelector(
+      `[data-terpene-id="${activeCanonical}"]`
+    );
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const heading = target.querySelector('.terpen-panel__section-title');
+      if (heading && typeof heading.focus === 'function') {
+        heading.focus({ preventScroll: true });
+      }
+    }
+  }, [activeCanonical, displayProfile]);
 
   const getTerpenInfo = (terpenName) => {
     if (!Array.isArray(terpenes)) return undefined;
@@ -136,7 +167,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
   }
 
   return (
-    <div style={{ padding: '16px' }}>
+    <div style={{ padding: '16px' }} ref={containerRef}>
       <h3
         style={{ marginTop: 0, marginBottom: '12px', fontSize: '18px' }}
         id="terpen-panel-heading"
@@ -146,10 +177,9 @@ const CultivarTerpenPanel = ({ cultivar }) => {
 
       <div className="terpen-panel__meta" aria-describedby="terpen-panel-legend">
         <p id="terpen-panel-legend" className="terpen-panel__legend">
-          Nutzen Sie die Navigation, um direkt zu einzelnen Terpenen zu springen.
-          Die Kurzfassung blendet Tabellen mit Quellenangaben aus. Standardmäßig
-          bleibt die Reihenfolge wie im Datensatz erhalten; bei Bedarf können Sie
-          auf eine alphabetische Ansicht wechseln.
+          Schnellwahl springt direkt zu einer Terpen-Karte. Die Kurzfassung blendet
+          Quellenangaben aus, die alphabetische Ansicht sortiert nach Namen statt
+          Datensatz-Reihenfolge.
         </p>
         <div className="terpen-panel__controls">
           <div className="terpen-panel__control-group">
@@ -200,6 +230,105 @@ const CultivarTerpenPanel = ({ cultivar }) => {
         </div>
       </div>
 
+      {primaryTerpene && (
+        <div
+          className="terpen-panel__feature"
+          style={{
+            margin: '12px 0 20px 0',
+            padding: '12px',
+            borderRadius: '10px',
+            border: '1px solid #d0e2ff',
+            background: '#f4f8ff'
+          }}
+        >
+          {(() => {
+            const primaryInfo = getTerpenInfo(primaryTerpene);
+            const canonical =
+              mapTerpeneToCanonical(primaryTerpene, aliasLookup) || primaryTerpene;
+            const effectHighlight = primaryInfo?.effects?.slice(0, 2) || [];
+            return (
+              <div>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    flexWrap: 'wrap'
+                  }}
+                >
+                  <div>
+                    <p
+                      style={{
+                        margin: 0,
+                        color: '#1565c0',
+                        fontWeight: 600,
+                        letterSpacing: '0.02em'
+                      }}
+                    >
+                      Aktuell ausgewählt
+                    </p>
+                    <h4
+                      style={{
+                        margin: '2px 0 4px 0',
+                        fontSize: '18px'
+                      }}
+                    >
+                      {primaryInfo?.name || primaryTerpene}
+                    </h4>
+                    <div style={{ fontSize: '13px', color: '#333' }}>
+                      {primaryInfo?.description || 'Kurzinfo wird geladen'}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      marginLeft: 'auto',
+                      display: 'flex',
+                      gap: '12px',
+                      flexWrap: 'wrap'
+                    }}
+                  >
+                    <div className="terpen-panel__badge">{canonical}</div>
+                    {primaryInfo?.aroma && (
+                      <div className="terpen-panel__badge terpen-panel__badge--muted">
+                        Aroma: {primaryInfo.aroma}
+                      </div>
+                    )}
+                    {primaryInfo?.boilingPoint && (
+                      <div className="terpen-panel__badge terpen-panel__badge--muted">
+                        Siedepunkt: {primaryInfo.boilingPoint}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {effectHighlight.length > 0 && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: '12px',
+                      flexWrap: 'wrap',
+                      marginTop: '10px'
+                    }}
+                    aria-label="Wichtigste berichtete Wirkungen"
+                  >
+                    {effectHighlight.map((entry, idx) => (
+                      <div
+                        key={`${entry.effect}-${idx}`}
+                        className="terpen-panel__badge terpen-panel__badge--accent"
+                        title={entry.strength ? `${entry.effect} (${entry.strength})` : entry.effect}
+                      >
+                        {entry.effect}
+                        {entry.strength ? ` · ${entry.strength}` : ''}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+        </div>
+      )}
+
       {displayProfile.length > 0 && (
         <div className="terpen-panel__overview" role="list">
           {displayProfile.map((name, index) => {
@@ -241,20 +370,28 @@ const CultivarTerpenPanel = ({ cultivar }) => {
       {displayProfile.map((terpenName, index) => {
         const terpenInfo = getTerpenInfo(terpenName);
         const sectionId = makeAnchorId(terpenName, index);
+        const canonicalName = mapTerpeneToCanonical(terpenName, aliasLookup);
+        const isActive = activeCanonical && canonicalName === activeCanonical;
 
         if (!terpenInfo) {
           return (
             <div
               id={sectionId}
               key={index}
+              data-terpene-id={canonicalName}
               style={{
                 marginBottom: '12px',
                 padding: '12px',
                 border: '1px solid #e0e0e0',
                 borderRadius: '8px'
               }}
+              className={isActive ? 'terpen-panel__section is-active' : 'terpen-panel__section'}
             >
-              <h4 style={{ margin: '0 0 8px 0', fontSize: '16px' }}>
+              <h4
+                style={{ margin: '0 0 8px 0', fontSize: '16px' }}
+                className="terpen-panel__section-title"
+                tabIndex={-1}
+              >
                 {terpenName}
               </h4>
               <p style={{ margin: 0, color: '#666' }}>
@@ -268,6 +405,7 @@ const CultivarTerpenPanel = ({ cultivar }) => {
           <div
             id={sectionId}
             key={index}
+            data-terpene-id={canonicalName}
             style={{
               marginBottom: '16px',
               padding: '12px',
@@ -275,8 +413,13 @@ const CultivarTerpenPanel = ({ cultivar }) => {
               borderRadius: '8px',
               backgroundColor: '#fafafa'
             }}
+            className={isActive ? 'terpen-panel__section is-active' : 'terpen-panel__section'}
           >
-            <h4 style={{ margin: '0 0 8px 0', fontSize: '16px' }}>
+            <h4
+              style={{ margin: '0 0 8px 0', fontSize: '16px' }}
+              className="terpen-panel__section-title"
+              tabIndex={-1}
+            >
               {terpenInfo.name}
             </h4>
 
