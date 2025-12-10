@@ -247,21 +247,116 @@ h6 {
   line-height: clamp(1.35rem, 0.95rem + 0.6vw, 1.75rem);
 }
 .header {
-  padding: 24px 0 12px;
+  padding: 12px 0 4px;
+  display: flex;
+  justify-content: center;
 }
 
-.header__brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
+.header__surface {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(14px, 2vw, 20px);
+  border-radius: 18px;
+  border: 1px solid #e5eef5;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 20, 60, 0.05);
   width: 100%;
+  max-width: 100%;
+}
+
+.header__surface--compact {
+  background: #ffffff;
+  border: 1px solid #e5eef5;
+  box-shadow: 0 8px 20px rgba(0, 40, 20, 0.04);
+}
+
+.header__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .header .appname {
   margin: 0;
   text-align: center;
+  color: #0f172a;
+  font-size: clamp(1.8rem, 1.3rem + 1vw, 2.2rem);
+}
+
+.header__subtitle {
+  margin: 0;
+  max-width: 820px;
+  color: #2f3a4c;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.header__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+  width: 100%;
+  justify-items: center;
+}
+
+.header__meta--inline {
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.header__stat {
+  background: #eef5f0;
+  border: 1px solid rgba(14, 116, 48, 0.12);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: grid;
+  gap: 2px;
+  min-height: 64px;
+  text-align: center;
+  width: 100%;
+}
+
+.header__stat-value {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0b3b1d;
+}
+
+.header__stat-label {
+  color: #2e5b3b;
+  font-size: 0.9rem;
+}
+
+.header__cta {
+  align-self: center;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(14, 116, 48, 0.24);
+  background: linear-gradient(135deg, #e5f3ea 0%, #dff0ff 100%);
+  color: #0f4122;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  width: 100%;
+}
+
+.header__cta:hover,
+.header__cta:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(14, 116, 48, 0.36);
+  box-shadow: 0 6px 14px rgba(0, 60, 20, 0.08);
+}
+
+.header__cta:active {
+  transform: translateY(0);
 }
 p {
   margin-bottom: var(--base-spacing);
