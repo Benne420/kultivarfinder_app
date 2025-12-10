@@ -294,6 +294,7 @@ h6 {
   color: #2f3a4c;
   font-size: 0.98rem;
   line-height: 1.5;
+  width: 100%;
 }
 
 .header__meta {
@@ -307,7 +308,7 @@ h6 {
 
 .header__meta--inline {
   grid-template-columns: 1fr;
-  width: auto;
+  width: 100%;
 }
 
 .header__stat {
@@ -319,6 +320,7 @@ h6 {
   gap: 2px;
   min-height: 64px;
   text-align: center;
+  width: 100%;
 }
 
 .header__stat-value {
@@ -343,6 +345,7 @@ h6 {
   letter-spacing: 0.01em;
   cursor: pointer;
   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  width: 100%;
 }
 
 .header__cta:hover,
