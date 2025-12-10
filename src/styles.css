@@ -247,7 +247,12 @@ h6 {
   line-height: clamp(1.35rem, 0.95rem + 0.6vw, 1.75rem);
 }
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   padding: 24px 0 12px;
+  background: var(--body-background);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .header__brand {
