@@ -722,6 +722,14 @@ export default function CannabisKultivarFinderUseReducer() {
 
   const canOpenComparison = selectedCultivars.length >= 2;
 
+  const tableSectionRef = useRef(null);
+
+  const scrollToTable = useCallback(() => {
+    if (tableSectionRef.current) {
+      tableSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
+
   const handleShowAllDetails = useCallback(() => {
     if (!selectedCultivars.length) {
       return;
@@ -757,6 +765,9 @@ export default function CannabisKultivarFinderUseReducer() {
             <div className="header__content">
               <h1 className="appname">Cannabis Sorten Datenbank</h1>
               <p className="header__subtitle">Genetik, Aromen & Profile im Überblick</p>
+              <button type="button" className="header__cta" onClick={scrollToTable}>
+                Zur Übersicht
+              </button>
               <div className="header__meta header__meta--inline" role="list">
                 <div
                   className="header__stat"
@@ -857,9 +868,10 @@ export default function CannabisKultivarFinderUseReducer() {
                 showTerpeneInfo={showTerpeneInfo}
                 onToggleSelect={toggleCultivarSelection}
                 selectedCultivars={selectedCultivars}
-                onResetEmptyState={handleResetEmptyState}
-                isSimilarityMode={Boolean(similarityContext)}
-              />
+              onResetEmptyState={handleResetEmptyState}
+              isSimilarityMode={Boolean(similarityContext)}
+              tableRef={tableSectionRef}
+            />
             </>
           )}
         </div>

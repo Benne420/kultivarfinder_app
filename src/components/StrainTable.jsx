@@ -154,6 +154,7 @@ export default function StrainTable({
   selectedCultivars = [],
   onResetEmptyState = () => {},
   isSimilarityMode = false,
+  tableRef = null,
 }) {
   const terpeneLegendId = "terpene-legend";
   const [visibleCount, setVisibleCount] = useState(DEFAULT_BATCH_SIZE);
@@ -225,7 +226,7 @@ export default function StrainTable({
   const canLoadMore = visibleCount < totalItems;
 
   return (
-    <div className="strain-table-wrapper">
+    <div className="strain-table-wrapper" ref={tableRef}>
       {visibleStrains && visibleStrains.length ? (
         <table className="strain-table">
           <thead>
