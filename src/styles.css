@@ -2039,15 +2039,16 @@ nav a:hover {
 .detail-grid {
   display: grid;
   grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
   gap: 10px;
   margin: 12px 0;
 }
 
 .detail-grid__row {
   display: grid;
-  grid-template-columns: minmax(120px, 1fr) 2.2fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  align-items: start;
+  align-items: stretch;
   background: #f6f9fc;
   border: 1px solid #e2e8ed;
   border-radius: 8px;
@@ -2057,11 +2058,13 @@ nav a:hover {
 .detail-grid__row dt {
   font-weight: 600;
   color: #263238;
+  align-self: center;
 }
 
 .detail-grid__row dd {
   margin: 0;
   color: #37474f;
+  align-self: center;
 }
 
 .detail-grid__row:last-child {
