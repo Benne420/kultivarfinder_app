@@ -64,8 +64,10 @@ export default function DetailsModal({ infoDialog, hideInfo }) {
     : cultivar.wirkungen;
 
   const optionalDetails = [
+    { label: "Genetik", value: cultivar.genetics || cultivar.genetik },
+    { label: "Geruch", value: cultivar.smell },
+    { label: "Geschmack", value: cultivar.taste },
     { label: "Aroma/Flavour", value: cultivar.aroma },
-    { label: "Genetik", value: cultivar.genetik },
     { label: "Anbauhinweise", value: cultivar.anbauhinweise },
   ].filter((entry) => Boolean(entry.value));
 
