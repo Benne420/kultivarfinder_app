@@ -131,7 +131,7 @@
     "name": "C-47",
     "thc": "18-30%",
     "cbd": "<1%",
-    "terpengehalt": "1,41%",
+    "terpengehalt": "1.41%",
     "terpenprofil": [
       "Myrcen",
       "Limonen",
@@ -150,6 +150,31 @@
     "smell": "Süß, würzig",
     "taste": "Zitrone, Pinien, süß",
     "code": "C47"
+  },
+   {
+    "name": "Cap Junky",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "2.45%",
+    "terpenprofil": [
+      "Selinene",
+      "Caryophyllen",
+      "Limonen",
+      "Humulen",
+      "Bisabolol"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "EVOLUTION",
+    "Kürzel": "CAP",
+    "genetics": "Alien Cookies x Kush Mints #11",
+    "smell": "kräuterartig",
+    "taste": "erdig, holzig",
+    "code": "CAP"
   },
   {
     "name": "Chemdog",
@@ -204,6 +229,33 @@
     "code": "CIN"
   },
   {
+    "name": "Frosted Fruit Cake",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "3.34%",
+    "terpenprofil": [
+      "Caryophyllen",
+      "Limonen",
+      "Linalool",
+      "Selinene",
+      "Myrcen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "anxiolytisch",
+      "antidepressiv",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "EVOLUTION",
+    "Kürzel": "FFC",
+    "genetics": "Wedding Cake x Fruity Pebbles OG",
+    "smell": "cremig, süß, fruchtig, Kerosin",
+    "taste": "Fruchtig, würzig, cremig",
+    "code": "FFC"
+  },
+  {
     "name": "Frosted Gumbo",
     "thc": "27-30%",
     "cbd": "<1%",
@@ -252,6 +304,33 @@
     "smell": "Zitrus, cremig, Benzin",
     "taste": "Zitrus, cremig, Benzin",
     "code": "FLM"
+  },
+  {
+    "name": "Garlic Truffle",
+    "thc": "20-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2.18%",
+    "terpenprofil": [
+      "Limonen",
+      "Caryophyllen",
+      "Myrcen",
+      "Humulen",
+      "Guaiol"
+    ],
+    "wirkungen": [
+      "antioxidativ",
+      "antimykotisch",
+      "entspannend",
+      "entzündungshemmend"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "CURALEAF",
+    "Kürzel": "GCT",
+    "genetics": "GMO x Girls Scout Cookies",
+    "smell": "würzig, süß",
+    "taste": "erdig. süß",
+    "code": "GCT"
   },
   {
     "name": "Gastro Pop",
@@ -656,7 +735,7 @@
     "status": "discontinued",
     "produktlinie": "EVOLUTION",
     "Kürzel": "",
-    "genetics": "",
+    "genetics": "Alien Cookies x Kush Mints #11",
     "smell": "",
     "taste": "",
     "code": ""
@@ -712,6 +791,33 @@
     "smell": "Süß, tropisch, Zitrus",
     "taste": "Süß, tropisch, Zitrus",
     "code": "PCH"
+  },
+    {
+    "name": "Pineapple Fruz",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "5.45%",
+    "terpenprofil": [
+      "Limonen",
+      "Caryophyllen",
+      "Selinene",
+      "Ocimen",
+      "Germacren B"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "antioxidativ",
+      "antimykotisch",
+      "entspannend"
+    ],
+    "typ": "sativa-dominant",
+    "status": "active",
+    "produktlinie": "EVOLUTION",
+    "Kürzel": "PEX",
+    "genetics": "Animal Mints Bx1 x Zkittlez",
+    "smell": "süß, sauer, Ananas, exotisch",
+    "taste": "süß, sauer, Ananas, exotisch",
+    "code": "PEX"
   },
   {
     "name": "Pineapple God",
