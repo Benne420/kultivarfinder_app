@@ -525,6 +525,10 @@ export default function CannabisKultivarFinderUseReducer() {
     [comparisonLayout.panelWidthPx]
   );
 
+  const activeCultivarCount = useMemo(
+    () => kultivare.filter((k) => isStatusIncluded(k, false)).length,
+    [kultivare]
+  );
   useEffect(() => {
     if (!isComparisonOpen || typeof document === "undefined") {
       return undefined;
@@ -718,6 +722,14 @@ export default function CannabisKultivarFinderUseReducer() {
 
   const canOpenComparison = selectedCultivars.length >= 2;
 
+  const tableSectionRef = useRef(null);
+
+  const scrollToTable = useCallback(() => {
+    if (tableSectionRef.current) {
+      tableSectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
+
   const handleShowAllDetails = useCallback(() => {
     if (!selectedCultivars.length) {
       return;
@@ -749,8 +761,26 @@ export default function CannabisKultivarFinderUseReducer() {
     <TerpeneContext.Provider value={terpeneContextValue}>
       <div className="container" style={containerStyle}>
         <header className="header" aria-label="App-Kopfzeile">
-          <div className="header__brand">
-            <h1 className="appname">Four20 Index</h1>
+          <div className="header__surface header__surface--compact">
+            <div className="header__content">
+              <h1 className="appname">Cannabis Sorten Datenbank</h1>
+              <p className="header__subtitle">Genetik, Aromen & Profile im Überblick</p>
+              <button type="button" className="header__cta" onClick={scrollToTable}>
+                Zur Übersicht
+              </button>
+              <div className="header__meta header__meta--inline" role="list">
+                <div
+                  className="header__stat"
+                  role="listitem"
+                  aria-label={`${activeCultivarCount || "–"} aktive Kultivare erfasst`}
+                >
+                  <span className="header__stat-value">
+                    {activeCultivarCount || "–"}
+                  </span>
+                  <span className="header__stat-label">Aktive Kultivare</span>
+                </div>
+              </div>
+            </div>
           </div>
         </header>
 
@@ -838,9 +868,10 @@ export default function CannabisKultivarFinderUseReducer() {
                 showTerpeneInfo={showTerpeneInfo}
                 onToggleSelect={toggleCultivarSelection}
                 selectedCultivars={selectedCultivars}
-                onResetEmptyState={handleResetEmptyState}
-                isSimilarityMode={Boolean(similarityContext)}
-              />
+              onResetEmptyState={handleResetEmptyState}
+              isSimilarityMode={Boolean(similarityContext)}
+              tableRef={tableSectionRef}
+            />
             </>
           )}
         </div>
