@@ -2117,6 +2117,10 @@ nav a:hover {
   font-size: 18px;
 }
 
+.modal-title--center {
+  text-align: center;
+}
+
 .modal-close {
   position: absolute;
   top: 8px;
@@ -2154,12 +2158,20 @@ nav a:hover {
   font-weight: 600;
   color: #263238;
   align-self: center;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
 }
 
 .detail-grid__row dd {
   margin: 0;
   color: #37474f;
   align-self: center;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
 }
 
 .detail-grid__row:last-child {
@@ -2172,14 +2184,14 @@ nav a:hover {
 }
 
 .modal--terpene-radar {
-  max-width: 920px;
-  width: min(94vw, 920px);
+  max-width: min(var(--layout-max-width, 1200px), 94vw);
+  width: min(var(--layout-max-width, 1200px), 94vw);
 }
 
 
 .terpene-radar-layout {
   display: grid;
-  grid-template-columns: minmax(360px, 1fr) minmax(280px, 0.9fr);
+  grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1fr);
   gap: 18px;
   align-items: start;
   margin-top: 8px;
