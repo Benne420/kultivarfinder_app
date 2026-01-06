@@ -2197,6 +2197,24 @@ nav a:hover {
   gap: 12px;
 }
 
+.cultivar-thumbnail {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid rgba(149, 175, 204, 0.35);
+  background: #ffffff;
+}
+
+.cultivar-thumbnail img {
+  width: 120px;
+  height: 120px;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
 .terpene-radar-layout__panel {
   background: linear-gradient(180deg, rgba(243, 248, 255, 0.85), #ffffff);
   border: 1px solid rgba(149, 175, 204, 0.35);
@@ -2693,4 +2711,3 @@ nav a:hover {
   border: 1px solid #ef9a9a;
   color: #b71c1c;
 }
-

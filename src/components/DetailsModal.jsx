@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef } from "react";
-import { normalizeWirkung } from "../utils/helpers";
-import { toSafePdfPath } from "./StrainTable";
+import { normalizeWirkung, toSafePdfPath } from "../utils/helpers";
 
 export default function DetailsModal({ infoDialog, hideInfo }) {
   const modalRef = useRef(null);

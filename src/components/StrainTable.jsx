@@ -1,29 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import TerpeneChips from "./TerpeneChips";
+import { toSafePdfPath } from "../utils/helpers";
 
 const DEFAULT_BATCH_SIZE = 100;
-
-export const toSafePdfPath = (name) => {
-  const trimmed = String(name || "").trim();
-  if (!trimmed) {
-    return "/datenblaetter/datenblatt.pdf";
-  }
-
-  // Entferne nur wirklich problematische Dateisystem-Zeichen, lasse aber Diakritika intakt,
-  // damit vorhandene Dateien wie "Rose_Gold_Pavé.pdf" auch gefunden werden.
-  const withoutInvalidFsChars = trimmed
-    .replace(/[<>:"/\\|?*]/g, "")
-    .replace(/[\u0000-\u001f]/g, "")
-    .replace(/['`]/g, "");
-
-  const underscored = withoutInvalidFsChars
-    .replace(/\s+/g, "_")
-    .replace(/_+/g, "_")
-    .trim();
-
-  const safeName = underscored || "datenblatt";
-  return `/datenblaetter/${encodeURIComponent(safeName)}.pdf`;
-};
 
 const StrainTableRow = React.memo(function StrainTableRow({
   strain,

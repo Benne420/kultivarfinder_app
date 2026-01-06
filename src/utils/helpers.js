@@ -14,6 +14,35 @@ export const normalizeWirkung = (w) => {
   return normalized || key;
 };
 
+export const toSafeAssetBaseName = (name, fallback = "datenblatt") => {
+  const trimmed = (name || "").toString().trim();
+  if (!trimmed) {
+    return fallback;
+  }
+
+  const withoutInvalidFsChars = trimmed
+    .replace(/[<>:"/\\|?*]/g, "")
+    .replace(/[\u0000-\u001f]/g, "")
+    .replace(/['`]/g, "");
+
+  const underscored = withoutInvalidFsChars
+    .replace(/\s+/g, "_")
+    .replace(/_+/g, "_")
+    .trim();
+
+  return underscored || fallback;
+};
+
+export const toSafePdfPath = (name) => {
+  const safeName = toSafeAssetBaseName(name, "datenblatt");
+  return `/datenblaetter/${encodeURIComponent(safeName)}.pdf`;
+};
+
+export const toSafeThumbnailPath = (name) => {
+  const safeName = toSafeAssetBaseName(name, "thumbnail");
+  return `/thumbnails/${encodeURIComponent(safeName)}.avif`;
+};
+
 const normalizeTerpeneKey = (value) =>
   (value || "").toString().trim().toLowerCase();
 
