@@ -217,16 +217,6 @@ export default function RadarModal({ radarDialog, hideRadar }) {
             className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
             aria-label="Sortendetails"
           >
-            {thumbnailUrl && isThumbnailVisible && (
-              <figure className="cultivar-thumbnail">
-                <img
-                  src={thumbnailUrl}
-                  alt={`Thumbnail von ${cultivar.name}`}
-                  loading="lazy"
-                  onError={() => setIsThumbnailVisible(false)}
-                />
-              </figure>
-            )}
             <dl className="detail-grid" aria-label="Kultivar-Informationen">
               {detailRows.map((entry) => (
                 <div className="detail-grid__row" key={entry.label}>
