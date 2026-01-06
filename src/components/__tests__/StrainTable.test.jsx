@@ -1,4 +1,4 @@
-import { toSafePdfPath } from "../StrainTable";
+import { toSafePdfPath, toSafeThumbnailPath } from "../../utils/helpers";
 
 describe("toSafePdfPath", () => {
   it("behält diakritische Zeichen wie Pavé bei", () => {
@@ -28,3 +28,14 @@ describe("toSafePdfPath", () => {
   });
 });
 
+describe("toSafeThumbnailPath", () => {
+  it("erstellt einen AVIF-Pfad mit dem bereinigten Kultivar-Namen", () => {
+    expect(toSafeThumbnailPath("Rose Gold Pavé")).toBe(
+      "/thumbnails/Rose_Gold_Pav%C3%A9.avif"
+    );
+  });
+
+  it("nutzt einen Standardnamen, wenn kein Kultivar angegeben ist", () => {
+    expect(toSafeThumbnailPath("")).toBe("/thumbnails/thumbnail.avif");
+  });
+});
