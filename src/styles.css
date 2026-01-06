@@ -2183,7 +2183,7 @@ nav a:hover {
 
 .terpene-radar-layout {
   display: grid;
-  grid-template-columns: minmax(360px, 1fr) minmax(280px, 0.9fr);
+  grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1fr);
   gap: 18px;
   align-items: start;
   margin-top: 8px;
