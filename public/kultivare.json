@@ -917,7 +917,7 @@
       "analgetisch"
     ],
     "typ": "indica-dominant",
-    "status": "active",
+    "status": "discontinued",
     "produktlinie": "EVOLUTION",
     "Kürzel": "PVB",
     "genetics": "Banana OG x Private Reserve",
@@ -1068,11 +1068,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
+    "Kürzel": "TGY",
     "genetics": "",
     "smell": "",
     "taste": "",
-    "code": ""
+    "code": "TGY"
   },
   {
     "name": "Triangle Octane",
@@ -1091,7 +1091,7 @@
       "entzündungshemmend"
     ],
     "typ": "indica-dominant",
-    "status": "active",
+    "status": "discontinued",
     "produktlinie": "NATURAL",
     "Kürzel": "TGO",
     "genetics": "High Octane x Triangle Kush",
@@ -1141,7 +1141,7 @@
       "antimikrobiell"
     ],
     "typ": "indica-dominant",
-    "status": "active",
+    "status": "discontinued",
     "produktlinie": "EVOLUTION",
     "Kürzel": "UNC",
     "genetics": "Unicorn Poop x Wedding Cake",
