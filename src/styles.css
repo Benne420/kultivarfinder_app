@@ -2201,19 +2201,18 @@ nav a:hover {
   margin: 0;
   display: flex;
   justify-content: center;
-  padding: 4px;
-  border-radius: 8px;
+  padding: 8px;
+  border-radius: 12px;
   border: 1px solid rgba(149, 175, 204, 0.35);
   background: #ffffff;
 }
 
 .cultivar-thumbnail img {
-  width: min(100%, 100px);
-  max-height: 70px;
+  width: min(100%, 240px);
   height: auto;
   display: block;
-  border-radius: 4px;
-  object-fit: contain;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .terpene-radar-layout__panel {

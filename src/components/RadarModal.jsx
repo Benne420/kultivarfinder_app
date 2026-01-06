@@ -8,8 +8,7 @@ export default function RadarModal({ radarDialog, hideRadar }) {
   const modalRef = useRef(null);
   const closeButtonRef = useRef(null);
   const lastFocusedElementRef = useRef(null);
-  const [thumbnailUrl, setThumbnailUrl] = useState("");
-  const [thumbnailFallbackUsed, setThumbnailFallbackUsed] = useState(false);
+  const [isThumbnailVisible, setIsThumbnailVisible] = useState(true);
   const safeId = (cultivar.name || "")
     .toString()
     .trim()
@@ -68,22 +67,14 @@ export default function RadarModal({ radarDialog, hideRadar }) {
     return Array.isArray(cultivar?.terpenprofil) ? cultivar.terpenprofil : [];
   }, [cultivar?.normalizedTerpenprofil, cultivar?.terpenprofil]);
   const terpeneLegendId = `${titleId}-terpene-legend`;
-  const primaryThumbnailUrl = useMemo(
+  const thumbnailUrl = useMemo(
     () => (cultivar?.name ? toSafeThumbnailPath(cultivar.name) : ""),
     [cultivar?.name]
   );
 
-  const fallbackThumbnailUrl = useMemo(() => {
-    if (!cultivar?.name) return "";
-    const radarPath = radarPathSvg(cultivar.name);
-    if (!radarPath) return "";
-    return radarPath.replace("/netzdiagramme/", "/thumbnails/").replace(".svg", ".avif");
-  }, [cultivar?.name]);
-
   useEffect(() => {
-    setThumbnailUrl(primaryThumbnailUrl);
-    setThumbnailFallbackUsed(false);
-  }, [primaryThumbnailUrl]);
+    setIsThumbnailVisible(true);
+  }, [thumbnailUrl]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -181,6 +172,16 @@ export default function RadarModal({ radarDialog, hideRadar }) {
               alt={`Radar-Diagramm für ${cultivar.name}`}
               className="terpene-radar-layout__image"
             />
+            {thumbnailUrl && isThumbnailVisible && (
+              <figure className="cultivar-thumbnail">
+                <img
+                  src={thumbnailUrl}
+                  alt={`Thumbnail von ${cultivar.name}`}
+                  loading="lazy"
+                  onError={() => setIsThumbnailVisible(false)}
+                />
+              </figure>
+            )}
             <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
             <div
               className="terpene-radar-layout__terpenes"
@@ -216,20 +217,13 @@ export default function RadarModal({ radarDialog, hideRadar }) {
             className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
             aria-label="Sortendetails"
           >
-            {thumbnailUrl && (
+            {thumbnailUrl && isThumbnailVisible && (
               <figure className="cultivar-thumbnail">
                 <img
                   src={thumbnailUrl}
                   alt={`Thumbnail von ${cultivar.name}`}
                   loading="lazy"
-                  onError={() => {
-                    if (!thumbnailFallbackUsed && fallbackThumbnailUrl) {
-                      setThumbnailFallbackUsed(true);
-                      setThumbnailUrl(fallbackThumbnailUrl);
-                      return;
-                    }
-                    setThumbnailUrl("");
-                  }}
+                  onError={() => setIsThumbnailVisible(false)}
                 />
               </figure>
             )}
