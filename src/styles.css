@@ -2201,18 +2201,18 @@ nav a:hover {
   margin: 0;
   display: flex;
   justify-content: center;
-  padding: 6px;
-  border-radius: 10px;
+  padding: 4px;
+  border-radius: 8px;
   border: 1px solid rgba(149, 175, 204, 0.35);
   background: #ffffff;
 }
 
 .cultivar-thumbnail img {
-  width: min(100%, 200px);
-  max-height: 140px;
+  width: min(100%, 100px);
+  max-height: 70px;
   height: auto;
   display: block;
-  border-radius: 6px;
+  border-radius: 4px;
   object-fit: contain;
 }
 

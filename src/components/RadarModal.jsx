@@ -181,23 +181,6 @@ export default function RadarModal({ radarDialog, hideRadar }) {
               alt={`Radar-Diagramm für ${cultivar.name}`}
               className="terpene-radar-layout__image"
             />
-            {thumbnailUrl && (
-              <figure className="cultivar-thumbnail">
-                <img
-                  src={thumbnailUrl}
-                  alt={`Thumbnail von ${cultivar.name}`}
-                  loading="lazy"
-                  onError={() => {
-                    if (!thumbnailFallbackUsed && fallbackThumbnailUrl) {
-                      setThumbnailFallbackUsed(true);
-                      setThumbnailUrl(fallbackThumbnailUrl);
-                      return;
-                    }
-                    setThumbnailUrl("");
-                  }}
-                />
-              </figure>
-            )}
             <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
             <div
               className="terpene-radar-layout__terpenes"
@@ -233,6 +216,23 @@ export default function RadarModal({ radarDialog, hideRadar }) {
             className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
             aria-label="Sortendetails"
           >
+            {thumbnailUrl && (
+              <figure className="cultivar-thumbnail">
+                <img
+                  src={thumbnailUrl}
+                  alt={`Thumbnail von ${cultivar.name}`}
+                  loading="lazy"
+                  onError={() => {
+                    if (!thumbnailFallbackUsed && fallbackThumbnailUrl) {
+                      setThumbnailFallbackUsed(true);
+                      setThumbnailUrl(fallbackThumbnailUrl);
+                      return;
+                    }
+                    setThumbnailUrl("");
+                  }}
+                />
+              </figure>
+            )}
             <dl className="detail-grid" aria-label="Kultivar-Informationen">
               {detailRows.map((entry) => (
                 <div className="detail-grid__row" key={entry.label}>
