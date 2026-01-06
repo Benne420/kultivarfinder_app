@@ -2117,6 +2117,10 @@ nav a:hover {
   font-size: 18px;
 }
 
+.modal-title--center {
+  text-align: center;
+}
+
 .modal-close {
   position: absolute;
   top: 8px;

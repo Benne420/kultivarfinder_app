@@ -159,8 +159,8 @@ export default function RadarModal({ radarDialog, hideRadar }) {
         >
           ×
         </button>
-        <h3 className="modal-title" id={titleId}>
-          Netzdiagramm &amp; Details: {cultivar.name}
+        <h3 className="modal-title modal-title--center" id={titleId}>
+          Sortenprofil: {cultivar.name}
         </h3>
         <div className="terpene-radar-layout">
           <section
