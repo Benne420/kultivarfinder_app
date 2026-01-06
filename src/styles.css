@@ -2159,8 +2159,9 @@ nav a:hover {
   color: #263238;
   align-self: center;
   min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
 }
 
 .detail-grid__row dd {
@@ -2168,8 +2169,9 @@ nav a:hover {
   color: #37474f;
   align-self: center;
   min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
 }
 
 .detail-grid__row:last-child {

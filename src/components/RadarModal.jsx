@@ -167,7 +167,7 @@ export default function RadarModal({ radarDialog, hideRadar }) {
             className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
             aria-label="Sortendetails"
           >
-            <dl className="detail-grid" aria-label="Kultivar-Informationen">
+            <dl className="detail-grid" aria-label="Kultivar-Informationen" lang="de">
               {detailRows.map((entry) => (
                 <div className="detail-grid__row" key={entry.label}>
                   <dt>{entry.label}</dt>
