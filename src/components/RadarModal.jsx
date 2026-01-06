@@ -167,6 +167,7 @@ export default function RadarModal({ radarDialog, hideRadar }) {
             className="terpene-radar-layout__panel terpene-radar-layout__panel--visual"
             aria-label="Netzdiagramm"
           >
+            <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
             <img
               src={radarPathSvg(cultivar.name)}
               alt={`Radar-Diagramm für ${cultivar.name}`}
@@ -182,7 +183,6 @@ export default function RadarModal({ radarDialog, hideRadar }) {
                 />
               </figure>
             )}
-            <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
             <div
               className="terpene-radar-layout__terpenes"
               aria-label="Terpenprofil"
