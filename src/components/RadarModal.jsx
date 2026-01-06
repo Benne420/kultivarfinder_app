@@ -172,6 +172,16 @@ export default function RadarModal({ radarDialog, hideRadar }) {
               alt={`Radar-Diagramm für ${cultivar.name}`}
               className="terpene-radar-layout__image"
             />
+            {thumbnailUrl && isThumbnailVisible && (
+              <figure className="cultivar-thumbnail">
+                <img
+                  src={thumbnailUrl}
+                  alt={`Thumbnail von ${cultivar.name}`}
+                  loading="lazy"
+                  onError={() => setIsThumbnailVisible(false)}
+                />
+              </figure>
+            )}
             <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
             <div
               className="terpene-radar-layout__terpenes"
