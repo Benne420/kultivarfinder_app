@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import TerpeneChips from "./TerpeneChips";
-import { normalizeWirkung, radarPathSvg } from "../utils/helpers";
+import { normalizeWirkung, radarPathSvg, toSafeThumbnailPath } from "../utils/helpers";
 
 export default function RadarModal({ radarDialog, hideRadar }) {
   const cultivar = radarDialog?.cultivar || {};
@@ -8,6 +8,7 @@ export default function RadarModal({ radarDialog, hideRadar }) {
   const modalRef = useRef(null);
   const closeButtonRef = useRef(null);
   const lastFocusedElementRef = useRef(null);
+  const [isThumbnailVisible, setIsThumbnailVisible] = useState(true);
   const safeId = (cultivar.name || "")
     .toString()
     .trim()
@@ -66,6 +67,14 @@ export default function RadarModal({ radarDialog, hideRadar }) {
     return Array.isArray(cultivar?.terpenprofil) ? cultivar.terpenprofil : [];
   }, [cultivar?.normalizedTerpenprofil, cultivar?.terpenprofil]);
   const terpeneLegendId = `${titleId}-terpene-legend`;
+  const thumbnailUrl = useMemo(
+    () => (cultivar?.name ? toSafeThumbnailPath(cultivar.name) : ""),
+    [cultivar?.name]
+  );
+
+  useEffect(() => {
+    setIsThumbnailVisible(true);
+  }, [thumbnailUrl]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -198,6 +207,16 @@ export default function RadarModal({ radarDialog, hideRadar }) {
             className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
             aria-label="Sortendetails"
           >
+            {thumbnailUrl && isThumbnailVisible && (
+              <figure className="cultivar-thumbnail">
+                <img
+                  src={thumbnailUrl}
+                  alt={`Thumbnail von ${cultivar.name}`}
+                  loading="lazy"
+                  onError={() => setIsThumbnailVisible(false)}
+                />
+              </figure>
+            )}
             <dl className="detail-grid" aria-label="Kultivar-Informationen">
               {detailRows.map((entry) => (
                 <div className="detail-grid__row" key={entry.label}>
