@@ -2480,35 +2480,6 @@ nav a:hover {
   color: #0f172a;
 }
 
-.strain-table__effects {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.strain-table__effect-chip {
-  border-radius: 999px;
-  background: #e2e8f0;
-  color: #1f2933;
-  font-size: 12px;
-  padding: 3px 8px;
-  font-weight: 600;
-}
-
-.strain-table__pdf-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
-  color: #1f2933;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
-  background: #f8fafc;
-}
-
 .strain-table {
   width: 100%;
   border-collapse: separate;

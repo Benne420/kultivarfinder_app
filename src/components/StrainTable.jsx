@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import TerpeneChips from "./TerpeneChips";
-import { getCultivarEffects, toSafePdfPath } from "../utils/helpers";
+import { toSafePdfPath } from "../utils/helpers";
 
 const DEFAULT_BATCH_SIZE = 100;
 
@@ -26,7 +26,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
     return Array.isArray(terpenprofil) ? terpenprofil : [];
   }, [normalizedTerpenprofil, terpenprofil]);
   const topTerpenes = useMemo(() => terpeneList.slice(0, 2), [terpeneList]);
-  const effectList = useMemo(() => getCultivarEffects(strain).slice(0, 2), [strain]);
 
   const handleToggleSelect = useCallback(() => onToggleSelect(strain), [onToggleSelect, strain]);
   const handleShowRadar = useCallback(() => showRadar(strain), [showRadar, strain]);
@@ -93,7 +92,16 @@ const StrainTableRow = React.memo(function StrainTableRow({
         </label>
       </td>
       <td data-label="Name">
-        <span className="strain-table__name">{name}</span>
+        <a
+          className="link-button action-button strain-table__name-button"
+          href={pdfUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(event) => event.stopPropagation()}
+          aria-label={`${name} Datenblatt anzeigen`}
+        >
+          {name}
+        </a>
       </td>
       <td data-label="THC">
         <span className="thc-values">{thc ?? "N/A"}</span>
@@ -107,31 +115,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
           onInfo={handleShowTerpeneInfo}
           describedBy={terpeneLegendId}
         />
-      </td>
-      <td data-label="Hauptwirkungen">
-        {effectList.length ? (
-          <div className="strain-table__effects">
-            {effectList.map((effect) => (
-              <span key={effect} className="strain-table__effect-chip">
-                {effect}
-              </span>
-            ))}
-          </div>
-        ) : (
-          "–"
-        )}
-      </td>
-      <td data-label="Datenblatt">
-        <a
-          className="strain-table__pdf-link"
-          href={pdfUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(event) => event.stopPropagation()}
-          aria-label={`${name} Datenblatt anzeigen`}
-        >
-          PDF
-        </a>
       </td>
       {hasSimilarityColumn && (
         <td className="similarity-column" data-label="Übereinstimmung">
@@ -267,8 +250,6 @@ export default function StrainTable({
               <th scope="col">THC</th>
               <th scope="col">CBD</th>
               <th scope="col">Top-Terpene</th>
-              <th scope="col">Hauptwirkungen</th>
-              <th scope="col">PDF</th>
               {hasSimilarityColumn && (
                 <th className="similarity-column" scope="col">
                   Übereinstimmung
