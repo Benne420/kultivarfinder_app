@@ -920,23 +920,54 @@ export default function CannabisKultivarFinderUseReducer() {
             </div>
 
             <div className="filters-panel__content">
-              <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+              <details className="filter-entry" open>
+                <summary className="filter-entry__summary">Typ</summary>
+                <div className="filter-entry__content">
+                  <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+                </div>
+              </details>
 
-              <StrainSimilarity
-                kultivare={kultivare}
-                onApplySimilar={handleApplySimilarity}
-                includeDiscontinued={filters.includeDiscontinued}
-                onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
-              />
+              <details className="filter-entry" open>
+                <summary className="filter-entry__summary">Ähnlichkeit</summary>
+                <div className="filter-entry__content">
+                  <StrainSimilarity
+                    kultivare={kultivare}
+                    onApplySimilar={handleApplySimilarity}
+                    includeDiscontinued={filters.includeDiscontinued}
+                    onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+                  />
+                </div>
+              </details>
 
-              <FilterPanel
-                filters={filters}
-                dispatch={dispatch}
-                terpene={terpeneOptions}
-                wirkungen={availableWirkungen}
-                clearTerpene={clearTerpene}
-                clearWirkungen={clearWirkungen}
-              />
+              <details className="filter-entry" open>
+                <summary className="filter-entry__summary">Terpene</summary>
+                <div className="filter-entry__content">
+                  <FilterPanel
+                    filters={filters}
+                    dispatch={dispatch}
+                    terpene={terpeneOptions}
+                    wirkungen={availableWirkungen}
+                    clearTerpene={clearTerpene}
+                    clearWirkungen={clearWirkungen}
+                    showWirkungen={false}
+                  />
+                </div>
+              </details>
+
+              <details className="filter-entry" open>
+                <summary className="filter-entry__summary">Wirkungen</summary>
+                <div className="filter-entry__content">
+                  <FilterPanel
+                    filters={filters}
+                    dispatch={dispatch}
+                    terpene={terpeneOptions}
+                    wirkungen={availableWirkungen}
+                    clearTerpene={clearTerpene}
+                    clearWirkungen={clearWirkungen}
+                    showTerpene={false}
+                  />
+                </div>
+              </details>
             </div>
           </aside>
 

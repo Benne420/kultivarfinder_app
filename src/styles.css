@@ -612,6 +612,43 @@ nav a:hover {
   padding-right: 4px;
 }
 
+.filter-entry {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 0;
+  overflow: hidden;
+}
+
+.filter-entry__summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-entry__summary::-webkit-details-marker {
+  display: none;
+}
+
+.filter-entry__summary::after {
+  content: "▾";
+  font-size: 14px;
+  color: #64748b;
+}
+
+.filter-entry[open] .filter-entry__summary::after {
+  content: "▴";
+}
+
+.filter-entry__content {
+  padding: 0 12px 12px;
+}
+
 .filter-section {
   border: 1px solid #e2e8f0;
   border-radius: 14px;

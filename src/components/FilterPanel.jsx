@@ -65,6 +65,8 @@ export default function FilterPanel({
   terpene,
   clearTerpene,
   clearWirkungen,
+  showTerpene = true,
+  showWirkungen = true,
 }) {
   const handleTerpeneChange = (nextSet) =>
     dispatch({ type: "SET_TERPENE_VALUES", value: nextSet });
@@ -73,55 +75,59 @@ export default function FilterPanel({
 
   return (
     <div className="filters">
-      <section className="filter-section" aria-labelledby="terpene-heading">
-        <div className="filter-section__header">
-          <div>
-            <h3 id="terpene-heading" className="filter-heading">
-              Terpenprofil
-            </h3>
-            <p className="filter-section__hint">Mehrfachauswahl möglich</p>
+      {showTerpene && (
+        <section className="filter-section" aria-labelledby="terpene-heading">
+          <div className="filter-section__header">
+            <div>
+              <h3 id="terpene-heading" className="filter-heading">
+                Terpenprofil
+              </h3>
+              <p className="filter-section__hint">Mehrfachauswahl möglich</p>
+            </div>
+            <button
+              type="button"
+              className="filter-section__reset"
+              onClick={clearTerpene}
+              disabled={!filters.selectedTerpene.size}
+            >
+              Zurücksetzen
+            </button>
           </div>
-          <button
-            type="button"
-            className="filter-section__reset"
-            onClick={clearTerpene}
-            disabled={!filters.selectedTerpene.size}
-          >
-            Zurücksetzen
-          </button>
-        </div>
-        <MultiSelectChips
-          options={terpene}
-          selectedValues={filters.selectedTerpene}
-          onChange={handleTerpeneChange}
-          emptyLabel="Keine Terpene verfügbar."
-        />
-      </section>
+          <MultiSelectChips
+            options={terpene}
+            selectedValues={filters.selectedTerpene}
+            onChange={handleTerpeneChange}
+            emptyLabel="Keine Terpene verfügbar."
+          />
+        </section>
+      )}
 
-      <section className="filter-section" aria-labelledby="wirkungen-heading">
-        <div className="filter-section__header">
-          <div>
-            <h3 id="wirkungen-heading" className="filter-heading">
-              Wirkziele
-            </h3>
-            <p className="filter-section__hint">Mehrfachauswahl möglich</p>
+      {showWirkungen && (
+        <section className="filter-section" aria-labelledby="wirkungen-heading">
+          <div className="filter-section__header">
+            <div>
+              <h3 id="wirkungen-heading" className="filter-heading">
+                Wirkziele
+              </h3>
+              <p className="filter-section__hint">Mehrfachauswahl möglich</p>
+            </div>
+            <button
+              type="button"
+              className="filter-section__reset"
+              onClick={clearWirkungen}
+              disabled={!filters.selectedWirkungen.size}
+            >
+              Zurücksetzen
+            </button>
           </div>
-          <button
-            type="button"
-            className="filter-section__reset"
-            onClick={clearWirkungen}
-            disabled={!filters.selectedWirkungen.size}
-          >
-            Zurücksetzen
-          </button>
-        </div>
-        <MultiSelectChips
-          options={wirkungen}
-          selectedValues={filters.selectedWirkungen}
-          onChange={handleWirkungChange}
-          emptyLabel="Keine Wirkziele verfügbar."
-        />
-      </section>
+          <MultiSelectChips
+            options={wirkungen}
+            selectedValues={filters.selectedWirkungen}
+            onChange={handleWirkungChange}
+            emptyLabel="Keine Wirkziele verfügbar."
+          />
+        </section>
+      )}
     </div>
   );
 }
