@@ -1,31 +1,11 @@
 import React from "react";
 
-const slugify = (prefix, value) => {
-  const normalized = `${prefix}-${value}`
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-
-  const baseSlug = normalized
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
-  if (baseSlug) return baseSlug;
-
-  return `${prefix}-${encodeURIComponent(String(value))}`;
-};
-
-const MultiSelectDropdown = ({
-  headingId,
-  label,
+const MultiSelectChips = ({
   options,
   selectedValues,
   onChange,
-  optionPrefix,
+  emptyLabel,
 }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
-
   const selectedSet = React.useMemo(() => {
     if (selectedValues instanceof Set) {
       return selectedValues;
@@ -39,113 +19,41 @@ const MultiSelectDropdown = ({
     return new Set([selectedValues]);
   }, [selectedValues]);
 
-  const selectedItems = React.useMemo(
-    () => Array.from(selectedSet.values()),
-    [selectedSet]
+  const handleToggle = React.useCallback(
+    (option) => {
+      if (typeof onChange !== "function") return;
+      const next = new Set(selectedSet);
+      if (next.has(option)) {
+        next.delete(option);
+      } else {
+        next.add(option);
+      }
+      onChange(next);
+    },
+    [onChange, selectedSet]
   );
 
-  const optionList = React.useMemo(() => {
-    const seen = new Map();
-    return options.map((option) => {
-      const baseId = slugify(optionPrefix, option);
-      const count = seen.get(baseId) || 0;
-      const id = count ? `${baseId}-${count + 1}` : baseId;
-      seen.set(baseId, count + 1);
-      const isChecked = selectedSet.has(option);
-      return (
-        <label key={`${option}-${id}`} htmlFor={id} className="multi-select__option">
-          <input
-            id={id}
-            type="checkbox"
-            value={option}
-            checked={isChecked}
-            onChange={() => {
-              if (typeof onChange !== "function") return;
-              const next = new Set(selectedSet);
-              if (next.has(option)) {
-                next.delete(option);
-              } else {
-                next.add(option);
-              }
-              onChange(next);
-            }}
-          />
-          <span>{option}</span>
-        </label>
-      );
-    });
-  }, [optionPrefix, options, onChange, selectedSet]);
-
-  const summary = React.useMemo(() => {
-    if (!selectedItems.length) {
-      return null;
-    }
-
-    if (selectedItems.length <= 2) {
-      return selectedItems.join(", ");
-    }
-
-    return `${selectedItems.length} ausgewählt`;
-  }, [selectedItems]);
-
-  React.useEffect(() => {
-    if (!isOpen) return undefined;
-
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [isOpen]);
-
-  const toggleOpen = () => {
-    setIsOpen((prev) => !prev);
-  };
+  if (!options?.length) {
+    return <p className="filter-section__empty">{emptyLabel}</p>;
+  }
 
   return (
-    <div className="multi-select-dropdown" ref={dropdownRef}>
-      <button
-        type="button"
-        className="multi-select-dropdown__trigger"
-        aria-expanded={isOpen}
-        aria-controls={`${headingId}-options`}
-        onClick={toggleOpen}
-      >
-        <span className="multi-select-dropdown__label">{label}</span>
-        {summary ? (
-          <span className="multi-select-dropdown__summary">{summary}</span>
-        ) : null}
-        <span className="multi-select-dropdown__chevron" aria-hidden="true">
-          ▾
-        </span>
-      </button>
-      {isOpen ? (
-        <div
-          id={`${headingId}-options`}
-          className="multi-select-dropdown__panel"
-          role="group"
-          aria-labelledby={headingId}
-        >
-          <div className="multi-select">
-            {optionList}
-          </div>
-        </div>
-      ) : null}
+    <div className="filter-chip-list" role="list">
+      {options.map((option) => {
+        const isActive = selectedSet.has(option);
+        return (
+          <button
+            key={option}
+            type="button"
+            role="listitem"
+            className={`filter-chip${isActive ? " filter-chip--active" : ""}`}
+            onClick={() => handleToggle(option)}
+            aria-pressed={isActive}
+          >
+            {option}
+          </button>
+        );
+      })}
     </div>
   );
 };
@@ -165,56 +73,55 @@ export default function FilterPanel({
 
   return (
     <div className="filters">
-      <div className="select-group">
-        <h3 id="terpene-heading" className="filter-heading">
-          Terpenfilter
-        </h3>
-        <div className="select-row select-row--with-reset">
-          <MultiSelectDropdown
-            headingId="terpene-heading"
-            label="Terpene auswählen"
-            options={terpene}
-            selectedValues={filters.selectedTerpene}
-            onChange={handleTerpeneChange}
-            optionPrefix="terpene"
-          />
+      <section className="filter-section" aria-labelledby="wirkungen-heading">
+        <div className="filter-section__header">
+          <div>
+            <h3 id="wirkungen-heading" className="filter-heading">
+              Wirkziele
+            </h3>
+            <p className="filter-section__hint">Mehrfachauswahl möglich</p>
+          </div>
           <button
             type="button"
-            className="reset-btn"
-            onClick={clearTerpene}
-            disabled={!filters.selectedTerpene.size}
-            aria-label="Terpenfilter zurücksetzen"
-          >
-            ×
-          </button>
-        </div>
-      </div>
-
-      <div className="select-group">
-        <h3 id="wirkungen-heading" className="filter-heading">
-          Wirkungsfilter
-        </h3>
-        <div className="select-row select-row--with-reset">
-          <MultiSelectDropdown
-            headingId="wirkungen-heading"
-            label="Wirkungen auswählen"
-            options={wirkungen}
-            selectedValues={filters.selectedWirkungen}
-            onChange={handleWirkungChange}
-            optionPrefix="wirkung"
-          />
-          <button
-            type="button"
-            className="reset-btn"
+            className="filter-section__reset"
             onClick={clearWirkungen}
             disabled={!filters.selectedWirkungen.size}
-            aria-label="Wirkungsfilter zurücksetzen"
           >
-            ×
+            Zurücksetzen
           </button>
         </div>
-      </div>
+        <MultiSelectChips
+          options={wirkungen}
+          selectedValues={filters.selectedWirkungen}
+          onChange={handleWirkungChange}
+          emptyLabel="Keine Wirkziele verfügbar."
+        />
+      </section>
 
+      <section className="filter-section" aria-labelledby="terpene-heading">
+        <div className="filter-section__header">
+          <div>
+            <h3 id="terpene-heading" className="filter-heading">
+              Terpenprofil
+            </h3>
+            <p className="filter-section__hint">Mehrfachauswahl möglich</p>
+          </div>
+          <button
+            type="button"
+            className="filter-section__reset"
+            onClick={clearTerpene}
+            disabled={!filters.selectedTerpene.size}
+          >
+            Zurücksetzen
+          </button>
+        </div>
+        <MultiSelectChips
+          options={terpene}
+          selectedValues={filters.selectedTerpene}
+          onChange={handleTerpeneChange}
+          emptyLabel="Keine Terpene verfügbar."
+        />
+      </section>
     </div>
   );
 }
