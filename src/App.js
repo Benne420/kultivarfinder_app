@@ -934,7 +934,6 @@ export default function CannabisKultivarFinderUseReducer() {
                     kultivare={kultivare}
                     onApplySimilar={handleApplySimilarity}
                     includeDiscontinued={filters.includeDiscontinued}
-                    onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
                   />
                 </div>
               </details>
@@ -999,6 +998,18 @@ export default function CannabisKultivarFinderUseReducer() {
 
             {!loading && !error && (
               <>
+                <div className="results-options" role="region" aria-label="Optionen für die Ähnlichkeitssuche">
+                  <p className="results-options__title">Optionen für die Ähnlichkeitssuche</p>
+                  <label className="results-options__checkbox">
+                    <input
+                      type="checkbox"
+                      checked={filters.includeDiscontinued}
+                      onChange={(event) => handleIncludeDiscontinuedChange(event.target.checked)}
+                    />
+                    <span>Nicht mehr verfügbare Sorten anzeigen</span>
+                  </label>
+                </div>
+
                 <div className="results-header">
                   <div>
                     <p className="results-header__title">

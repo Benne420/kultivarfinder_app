@@ -134,7 +134,6 @@ export default function StrainSimilarity({
   kultivare = [],
   onApplySimilar,
   includeDiscontinued = false,
-  onToggleIncludeDiscontinued,
 }) {
   const [selectedName, setSelectedName] = useState("");
   const [similarStrains, setSimilarStrains] = useState([]);
@@ -228,15 +227,6 @@ export default function StrainSimilarity({
     recomputeSimilarities(selectedName, selectableStrains);
   }, [recomputeSimilarities, selectedName, selectableStrains]);
 
-  const handleIncludeToggle = useCallback(
-    (event) => {
-      if (typeof onToggleIncludeDiscontinued === "function") {
-        onToggleIncludeDiscontinued(event.target.checked);
-      }
-    },
-    [onToggleIncludeDiscontinued]
-  );
-
   return (
     <section className="similarity-panel">
       <h3 id="similarity-panel-title" className="similarity-panel__title">
@@ -275,21 +265,6 @@ export default function StrainSimilarity({
       <p id="strain-select-note" className="similarity-panel__description">
         Wählen Sie eine Referenzsorte, um ähnliche Kultivare anhand des Terpenprofils zu finden.
       </p>
-
-      <fieldset className="similarity-panel__options">
-        <legend className="visually-hidden">Optionen für die Ähnlichkeitssuche</legend>
-        <div className="similarity-panel__description">
-          <input
-            id="similarity-include-discontinued"
-            type="checkbox"
-            checked={includeDiscontinued}
-            onChange={handleIncludeToggle}
-          />
-          <label htmlFor="similarity-include-discontinued">
-            Nicht mehr verfügbare Sorten anzeigen
-          </label>
-        </div>
-      </fieldset>
 
       <div className="similarity-panel__status" aria-live="polite">
         {selectedName && similarStrains.length === 0 && (
