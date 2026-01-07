@@ -654,10 +654,6 @@ export default function CannabisKultivarFinderUseReducer() {
     []
   );
   const resetFilters = useCallback(() => dispatch({ type: "CLEAR_FILTERS" }), []);
-  const handleIncludeDiscontinuedChange = useCallback(
-    (value) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value }),
-    [dispatch]
-  );
   const showRadar = useCallback((cultivar) => {
     setRadarDialog({ open: true, cultivar });
   }, []);
@@ -772,26 +768,6 @@ export default function CannabisKultivarFinderUseReducer() {
     setSimilarityContext(null);
     resetFilters();
   }, [resetFilters]);
-
-  const activeFilterLabels = useMemo(() => {
-    const entries = [];
-    filters.selectedWirkungen.forEach((wirkung) => {
-      entries.push(wirkung);
-    });
-    filters.selectedTerpene.forEach((terpene) => {
-      entries.push(terpene);
-    });
-    if (filters.typ) {
-      entries.push(filters.typ);
-    }
-    if (filters.includeDiscontinued) {
-      entries.push("inkl. inaktive Sorten");
-    }
-    if (similarityContext?.referenceName) {
-      entries.push(`Ähnlichkeit: ${similarityContext.referenceName}`);
-    }
-    return entries;
-  }, [filters, similarityContext]);
 
   const activeFilterChips = useMemo(() => {
     const chips = [];
@@ -972,8 +948,7 @@ export default function CannabisKultivarFinderUseReducer() {
 
           <section className="results-panel">
             <div className="notice" role="note">
-              <strong>Hinweis:</strong> Diese Anwendung dient ausschließlich der allgemeinen Information und ersetzt keine medizinische
-              Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
+              <strong>Hinweis:</strong> Nur zur allgemeinen Information – keine medizinische Beratung.
             </div>
 
             {similarityContext && (
@@ -998,38 +973,6 @@ export default function CannabisKultivarFinderUseReducer() {
 
             {!loading && !error && (
               <>
-                <div className="results-options" role="region" aria-label="Optionen für die Ähnlichkeitssuche">
-                  <p className="results-options__title">Optionen für die Ähnlichkeitssuche</p>
-                  <label className="results-options__checkbox">
-                    <input
-                      type="checkbox"
-                      checked={filters.includeDiscontinued}
-                      onChange={(event) => handleIncludeDiscontinuedChange(event.target.checked)}
-                    />
-                    <span>Nicht mehr verfügbare Sorten anzeigen</span>
-                  </label>
-                </div>
-
-                <div className="results-header">
-                  <div>
-                    <p className="results-header__title">
-                      {displayedKultivare.length} Kultivar{displayedKultivare.length !== 1 ? "e" : ""} gefunden
-                    </p>
-                    <p className="results-header__meta">
-                      {activeFilterLabels.length
-                        ? `Filter: ${activeFilterLabels.join(", ")}`
-                        : "Keine Filter aktiv"}
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    className="results-header__filters"
-                    onClick={toggleFilterPanel}
-                  >
-                    Filter {isFilterPanelOpen ? "ausblenden" : "einblenden"}
-                  </button>
-                </div>
-
                 <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
                   <p className="comparison-toolbar__hint">
                     {selectedCultivars.length
