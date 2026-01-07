@@ -920,14 +920,14 @@ export default function CannabisKultivarFinderUseReducer() {
             </div>
 
             <div className="filters-panel__content">
-              <details className="filter-entry" open>
+              <details className="filter-entry">
                 <summary className="filter-entry__summary">Typ</summary>
                 <div className="filter-entry__content">
                   <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
                 </div>
               </details>
 
-              <details className="filter-entry" open>
+              <details className="filter-entry">
                 <summary className="filter-entry__summary">Ähnlichkeit</summary>
                 <div className="filter-entry__content">
                   <StrainSimilarity
@@ -939,7 +939,7 @@ export default function CannabisKultivarFinderUseReducer() {
                 </div>
               </details>
 
-              <details className="filter-entry" open>
+              <details className="filter-entry">
                 <summary className="filter-entry__summary">Terpene</summary>
                 <div className="filter-entry__content">
                   <FilterPanel
@@ -954,7 +954,7 @@ export default function CannabisKultivarFinderUseReducer() {
                 </div>
               </details>
 
-              <details className="filter-entry" open>
+              <details className="filter-entry">
                 <summary className="filter-entry__summary">Wirkungen</summary>
                 <div className="filter-entry__content">
                   <FilterPanel
