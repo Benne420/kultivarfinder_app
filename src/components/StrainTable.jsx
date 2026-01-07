@@ -139,19 +139,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
           )}
         </td>
       )}
-      <td data-label="Details" className="action-cell">
-        <button
-          type="button"
-          className="link-button action-button"
-          onClick={(event) => {
-            event.stopPropagation();
-            handleShowRadar();
-          }}
-          aria-label={`${name} Diagramm, Details und Terpene anzeigen`}
-        >
-          Details
-        </button>
-      </td>
     </tr>
   );
 });
@@ -255,7 +242,6 @@ export default function StrainTable({
                   Übereinstimmung
                 </th>
               )}
-              <th scope="col">Details</th>
             </tr>
           </thead>
           <tbody>

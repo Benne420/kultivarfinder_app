@@ -73,31 +73,6 @@ export default function FilterPanel({
 
   return (
     <div className="filters">
-      <section className="filter-section" aria-labelledby="wirkungen-heading">
-        <div className="filter-section__header">
-          <div>
-            <h3 id="wirkungen-heading" className="filter-heading">
-              Wirkziele
-            </h3>
-            <p className="filter-section__hint">Mehrfachauswahl möglich</p>
-          </div>
-          <button
-            type="button"
-            className="filter-section__reset"
-            onClick={clearWirkungen}
-            disabled={!filters.selectedWirkungen.size}
-          >
-            Zurücksetzen
-          </button>
-        </div>
-        <MultiSelectChips
-          options={wirkungen}
-          selectedValues={filters.selectedWirkungen}
-          onChange={handleWirkungChange}
-          emptyLabel="Keine Wirkziele verfügbar."
-        />
-      </section>
-
       <section className="filter-section" aria-labelledby="terpene-heading">
         <div className="filter-section__header">
           <div>
@@ -120,6 +95,31 @@ export default function FilterPanel({
           selectedValues={filters.selectedTerpene}
           onChange={handleTerpeneChange}
           emptyLabel="Keine Terpene verfügbar."
+        />
+      </section>
+
+      <section className="filter-section" aria-labelledby="wirkungen-heading">
+        <div className="filter-section__header">
+          <div>
+            <h3 id="wirkungen-heading" className="filter-heading">
+              Wirkziele
+            </h3>
+            <p className="filter-section__hint">Mehrfachauswahl möglich</p>
+          </div>
+          <button
+            type="button"
+            className="filter-section__reset"
+            onClick={clearWirkungen}
+            disabled={!filters.selectedWirkungen.size}
+          >
+            Zurücksetzen
+          </button>
+        </div>
+        <MultiSelectChips
+          options={wirkungen}
+          selectedValues={filters.selectedWirkungen}
+          onChange={handleWirkungChange}
+          emptyLabel="Keine Wirkziele verfügbar."
         />
       </section>
     </div>

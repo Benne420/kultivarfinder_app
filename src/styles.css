@@ -2591,10 +2591,6 @@ nav a:hover {
   color: #90a4ae;
 }
 
-.strain-table .action-cell {
-  min-width: 140px;
-}
-
 .strain-table .action-button {
   display: inline-flex;
   align-items: center;

@@ -848,7 +848,7 @@ export default function CannabisKultivarFinderUseReducer() {
         <header className="header" aria-label="App-Kopfzeile">
           <div className="header__surface header__surface--compact">
             <div className="header__content">
-              <h1 className="appname">Kultivare nach Wirkung finden</h1>
+              <h1 className="appname">Kultivarfilter</h1>
               <p className="header__subtitle">
                 Filtern Sie medizinische Cannabis-Kultivare nach Wirkzielen, THC/CBD-Profil und
                 Terpenprofil. In Sekunden zur passenden Auswahl.
@@ -922,6 +922,13 @@ export default function CannabisKultivarFinderUseReducer() {
             <div className="filters-panel__content">
               <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
 
+              <StrainSimilarity
+                kultivare={kultivare}
+                onApplySimilar={handleApplySimilarity}
+                includeDiscontinued={filters.includeDiscontinued}
+                onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+              />
+
               <FilterPanel
                 filters={filters}
                 dispatch={dispatch}
@@ -929,13 +936,6 @@ export default function CannabisKultivarFinderUseReducer() {
                 wirkungen={availableWirkungen}
                 clearTerpene={clearTerpene}
                 clearWirkungen={clearWirkungen}
-              />
-
-              <StrainSimilarity
-                kultivare={kultivare}
-                onApplySimilar={handleApplySimilarity}
-                includeDiscontinued={filters.includeDiscontinued}
-                onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
               />
             </div>
           </aside>
