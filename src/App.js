@@ -654,6 +654,9 @@ export default function CannabisKultivarFinderUseReducer() {
     []
   );
   const resetFilters = useCallback(() => dispatch({ type: "CLEAR_FILTERS" }), []);
+  const handleIncludeDiscontinuedToggle = useCallback(() => {
+    dispatch({ type: "TOGGLE_INCLUDE_DISC", value: !filters.includeDiscontinued });
+  }, [dispatch, filters.includeDiscontinued]);
   const showRadar = useCallback((cultivar) => {
     setRadarDialog({ open: true, cultivar });
   }, []);
@@ -877,6 +880,14 @@ export default function CannabisKultivarFinderUseReducer() {
                   Filter zurücksetzen
                 </button>
               </div>
+              <button
+                type="button"
+                className={`active-filters__toggle${filters.includeDiscontinued ? " is-active" : ""}`}
+                onClick={handleIncludeDiscontinuedToggle}
+                aria-pressed={filters.includeDiscontinued}
+              >
+                Inaktive Sorten {filters.includeDiscontinued ? "ausblenden" : "anzeigen"}
+              </button>
               {activeFilterChips.length ? (
                 <div className="active-filters__chips">
                   {activeFilterChips.map((chip) => (

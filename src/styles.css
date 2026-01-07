@@ -1052,6 +1052,24 @@ nav a:hover {
   gap: 6px;
 }
 
+.active-filters__toggle {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #1f2933;
+  width: fit-content;
+}
+
+.active-filters__toggle.is-active {
+  background: #e0f2f1;
+  border-color: #14b8a6;
+  color: #0f172a;
+  font-weight: 600;
+}
+
 .active-filter-chip {
   border: 1px solid #94a3b8;
   background: #ffffff;
