@@ -47,21 +47,6 @@ const StrainCard = React.memo(function StrainCard({
     [fallbackThumbnailUrl]
   );
 
-  const similarityScore =
-    typeof strain.similarity === "number" && !Number.isNaN(strain.similarity)
-      ? strain.similarity
-      : null;
-  const overlap = strain?.overlap;
-  const overlapBucketText =
-    overlap && Number.isFinite(overlap.bucket)
-      ? `${overlap.bucket}/5 Terpene`
-      : null;
-  const similarityLabel = strain?.similarityLabel;
-  const similarityDescription =
-    [similarityLabel, overlapBucketText].filter(Boolean).join(" – ") || "Ähnlichkeitsbewertung";
-
-  const hasSimilarity = similarityScore !== null;
-
   return (
     <article className={`strain-card ${isSelected ? "is-selected" : ""}`.trim()}>
       <div className="strain-card__media">
@@ -96,21 +81,6 @@ const StrainCard = React.memo(function StrainCard({
           <span className="strain-card__thc" aria-label={`THC ${thc || "N/A"}`}>
             THC {thc || "N/A"}
           </span>
-        </div>
-
-        <div
-          className={`strain-card__similarity ${hasSimilarity ? "" : "is-empty"}`.trim()}
-          aria-label={similarityDescription}
-        >
-          <span className="strain-card__similarity-label">
-            {similarityLabel || "Übereinstimmung"}
-          </span>
-          {overlapBucketText && (
-            <span className="strain-card__similarity-detail">{overlapBucketText}</span>
-          )}
-          {!hasSimilarity && (
-            <span className="strain-card__similarity-placeholder">Keine Daten</span>
-          )}
         </div>
 
         <div className="strain-card__terpenes" aria-label="Top-Terpene">

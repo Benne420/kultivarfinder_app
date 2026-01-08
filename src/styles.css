@@ -1871,36 +1871,6 @@ nav a:hover {
   border-radius: 999px;
 }
 
-.strain-card__similarity {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-size: 0.85rem;
-  color: #0f172a;
-}
-
-.strain-card__similarity.is-empty {
-  color: #607d8b;
-}
-
-.strain-card__similarity-label {
-  font-weight: 700;
-  text-transform: capitalize;
-}
-
-.strain-card__similarity-detail {
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: #eef2f7;
-  font-weight: 600;
-  color: #37474f;
-}
-
-.strain-card__similarity-placeholder {
-  font-weight: 600;
-}
-
 .strain-card__terpenes {
   display: flex;
   flex-wrap: wrap;
