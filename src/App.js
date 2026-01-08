@@ -262,10 +262,14 @@ export default function CannabisKultivarFinderUseReducer() {
       title: document.title,
     };
 
-    document.body.style.backgroundImage =
-      "url('/F20_Pharma_Pattern-Hexagon_07.png')";
-    document.body.style.backgroundRepeat = "repeat";
-    document.body.style.backgroundSize = "auto";
+    document.body.style.backgroundImage = [
+      "radial-gradient(circle at 20% 20%, rgba(0, 85, 164, 0.08), rgba(0, 85, 164, 0) 35%)",
+      "radial-gradient(circle at 80% 0%, rgba(99, 189, 50, 0.08), rgba(99, 189, 50, 0) 32%)",
+      "url('/F20_Pharma_Pattern-Hexagon_07.png')",
+      "var(--body-background)",
+    ].join(", ");
+    document.body.style.backgroundRepeat = "repeat, repeat, repeat, repeat";
+    document.body.style.backgroundSize = "100% 100%, 100% 100%, auto, auto";
     document.body.style.backgroundPosition = "center";
     document.title = "Four20 Index";
 
@@ -966,5 +970,4 @@ export default function CannabisKultivarFinderUseReducer() {
     </TerpeneContext.Provider>
   );
 }
-
 
