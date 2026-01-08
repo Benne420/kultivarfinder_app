@@ -1780,11 +1780,17 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
+  align-items: stretch;
+}
+
+.strain-grid > div {
+  display: flex;
 }
 
 .strain-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: #fff;
   border-radius: 18px;
   overflow: hidden;
@@ -1839,9 +1845,9 @@ nav a:hover {
 
 .strain-card__header {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
 }
 
 .strain-card__name {
@@ -1863,28 +1869,6 @@ nav a:hover {
   background: rgba(0, 85, 164, 0.1);
   padding: 4px 10px;
   border-radius: 999px;
-}
-
-.strain-card__similarity {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-size: 0.85rem;
-  color: #0f172a;
-}
-
-.strain-card__similarity-label {
-  font-weight: 700;
-  text-transform: capitalize;
-}
-
-.strain-card__similarity-detail {
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: #eef2f7;
-  font-weight: 600;
-  color: #37474f;
 }
 
 .strain-card__terpenes {
@@ -1917,6 +1901,7 @@ nav a:hover {
 .strain-card__actions {
   display: flex;
   justify-content: flex-end;
+  margin-top: auto;
 }
 
 .strain-grid__load-more {
