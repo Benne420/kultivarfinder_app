@@ -856,110 +856,110 @@ export default function CannabisKultivarFinderUseReducer() {
           </div>
         </header>
 
-        <div className="content-stack app-layout">
-          <aside
-            className={`filters-panel${isFilterPanelOpen ? " is-open" : ""}`}
-            ref={filterPanelRef}
-          >
-            <div className="filters-panel__header">
-              <h2 className="filters-panel__title">Filter</h2>
-              <button
-                type="button"
-                className="filters-panel__toggle"
-                onClick={toggleFilterPanel}
-                aria-expanded={isFilterPanelOpen}
-              >
-                {isFilterPanelOpen ? "Filter ausblenden" : "Filter anzeigen"}
-              </button>
-            </div>
-
-            <div className="active-filters">
-              <div className="active-filters__header">
-                <p className="active-filters__title">Aktive Filter</p>
-                <button type="button" className="active-filters__reset" onClick={handleResetAllFilters}>
-                  Filter zurücksetzen
-                </button>
-              </div>
-              <button
-                type="button"
-                className={`active-filters__toggle${filters.includeDiscontinued ? " is-active" : ""}`}
-                onClick={handleIncludeDiscontinuedToggle}
-                aria-pressed={filters.includeDiscontinued}
-              >
-                Inaktive Sorten {filters.includeDiscontinued ? "ausblenden" : "anzeigen"}
-              </button>
-              {activeFilterChips.length ? (
-                <div className="active-filters__chips">
-                  {activeFilterChips.map((chip) => (
-                    <button
-                      key={chip.key}
-                      type="button"
-                      className="active-filter-chip"
-                      onClick={chip.onRemove}
-                    >
-                      {chip.label} <span aria-hidden="true">×</span>
-                    </button>
-                  ))}
-                </div>
-              ) : (
-                <p className="active-filters__empty">Keine Filter aktiv.</p>
-              )}
-            </div>
-
-            <div className="filters-panel__content">
-              <details className="filter-entry">
-                <summary className="filter-entry__summary">Typ</summary>
-                <div className="filter-entry__content">
-                  <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
-                </div>
-              </details>
-
-              <details className="filter-entry">
-                <summary className="filter-entry__summary">Ähnlichkeit</summary>
-                <div className="filter-entry__content">
-                  <StrainSimilarity
-                    kultivare={kultivare}
-                    onApplySimilar={handleApplySimilarity}
-                    includeDiscontinued={filters.includeDiscontinued}
-                  />
-                </div>
-              </details>
-
-              <details className="filter-entry">
-                <summary className="filter-entry__summary">Terpene</summary>
-                <div className="filter-entry__content">
-                  <FilterPanel
-                    filters={filters}
-                    dispatch={dispatch}
-                    terpene={terpeneOptions}
-                    wirkungen={availableWirkungen}
-                    clearTerpene={clearTerpene}
-                    clearWirkungen={clearWirkungen}
-                    showWirkungen={false}
-                  />
-                </div>
-              </details>
-
-              <details className="filter-entry">
-                <summary className="filter-entry__summary">Wirkungen</summary>
-                <div className="filter-entry__content">
-                  <FilterPanel
-                    filters={filters}
-                    dispatch={dispatch}
-                    terpene={terpeneOptions}
-                    wirkungen={availableWirkungen}
-                    clearTerpene={clearTerpene}
-                    clearWirkungen={clearWirkungen}
-                    showTerpene={false}
-                  />
-                </div>
-              </details>
-            </div>
-          </aside>
-
+        <div className="content-stack">
           <section className="results-panel">
             <div className="notice" role="note">
               <strong>Hinweis:</strong> Nur zur allgemeinen Information – keine medizinische Beratung.
+            </div>
+
+            <div
+              className={`filters-panel${isFilterPanelOpen ? " is-open" : ""}`}
+              ref={filterPanelRef}
+            >
+              <div className="filters-panel__header">
+                <h2 className="filters-panel__title">Filter</h2>
+                <button
+                  type="button"
+                  className="filters-panel__toggle"
+                  onClick={toggleFilterPanel}
+                  aria-expanded={isFilterPanelOpen}
+                >
+                  {isFilterPanelOpen ? "Filter ausblenden" : "Filter anzeigen"}
+                </button>
+              </div>
+
+              <div className="active-filters">
+                <div className="active-filters__header">
+                  <p className="active-filters__title">Aktive Filter</p>
+                  <button type="button" className="active-filters__reset" onClick={handleResetAllFilters}>
+                    Filter zurücksetzen
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  className={`active-filters__toggle${filters.includeDiscontinued ? " is-active" : ""}`}
+                  onClick={handleIncludeDiscontinuedToggle}
+                  aria-pressed={filters.includeDiscontinued}
+                >
+                  Inaktive Sorten {filters.includeDiscontinued ? "ausblenden" : "anzeigen"}
+                </button>
+                {activeFilterChips.length ? (
+                  <div className="active-filters__chips">
+                    {activeFilterChips.map((chip) => (
+                      <button
+                        key={chip.key}
+                        type="button"
+                        className="active-filter-chip"
+                        onClick={chip.onRemove}
+                      >
+                        {chip.label} <span aria-hidden="true">×</span>
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="active-filters__empty">Keine Filter aktiv.</p>
+                )}
+              </div>
+
+              <div className="filters-panel__content">
+                <details className="filter-entry">
+                  <summary className="filter-entry__summary">Typ</summary>
+                  <div className="filter-entry__content">
+                    <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+                  </div>
+                </details>
+
+                <details className="filter-entry">
+                  <summary className="filter-entry__summary">Ähnlichkeit</summary>
+                  <div className="filter-entry__content">
+                    <StrainSimilarity
+                      kultivare={kultivare}
+                      onApplySimilar={handleApplySimilarity}
+                      includeDiscontinued={filters.includeDiscontinued}
+                    />
+                  </div>
+                </details>
+
+                <details className="filter-entry">
+                  <summary className="filter-entry__summary">Terpene</summary>
+                  <div className="filter-entry__content">
+                    <FilterPanel
+                      filters={filters}
+                      dispatch={dispatch}
+                      terpene={terpeneOptions}
+                      wirkungen={availableWirkungen}
+                      clearTerpene={clearTerpene}
+                      clearWirkungen={clearWirkungen}
+                      showWirkungen={false}
+                    />
+                  </div>
+                </details>
+
+                <details className="filter-entry">
+                  <summary className="filter-entry__summary">Wirkungen</summary>
+                  <div className="filter-entry__content">
+                    <FilterPanel
+                      filters={filters}
+                      dispatch={dispatch}
+                      terpene={terpeneOptions}
+                      wirkungen={availableWirkungen}
+                      clearTerpene={clearTerpene}
+                      clearWirkungen={clearWirkungen}
+                      showTerpene={false}
+                    />
+                  </div>
+                </details>
+              </div>
             </div>
 
             {similarityContext && (

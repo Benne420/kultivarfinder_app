@@ -219,12 +219,6 @@ button,
   padding-bottom: 32px;
 }
 
-.app-layout {
-  display: grid;
-  grid-template-columns: minmax(320px, 360px) minmax(0, 1fr);
-  gap: clamp(16px, 2vw, 28px);
-  align-items: start;
-}
 h1,
 h2,
 h3,
@@ -569,15 +563,11 @@ nav a:hover {
 }
 
 .filters-panel {
-  position: sticky;
-  top: 16px;
-  align-self: start;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid #e2e8f0;
   border-radius: 18px;
   padding: 16px;
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-  max-height: calc(100vh - 48px);
   overflow: hidden;
 }
 
@@ -609,8 +599,6 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow-y: auto;
-  max-height: calc(100vh - 240px);
   padding-right: 4px;
 }
 
@@ -2921,10 +2909,6 @@ nav a:hover {
 }
 
 @media (max-width: 900px) {
-  .app-layout {
-    grid-template-columns: 1fr;
-  }
-
   .filters-panel {
     position: static;
     max-height: none;
@@ -2934,11 +2918,6 @@ nav a:hover {
   .filters-panel:not(.is-open) .filters-panel__content {
     display: none;
   }
-
-  .filters-panel__content {
-    max-height: none;
-  }
-
 }
 
 .status--loading {
