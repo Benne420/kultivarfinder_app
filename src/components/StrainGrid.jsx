@@ -17,6 +17,7 @@ const StrainCard = React.memo(function StrainCard({
   const { name = "Unbekannt", thc, normalizedTerpenprofil, terpenprofil } = strain;
   const pdfUrl = useMemo(() => toSafePdfPath(name), [name]);
   const thumbnailUrl = useMemo(() => toSafeThumbnailPath(name), [name]);
+  const fallbackThumbnailUrl = useMemo(() => toSafeThumbnailPath(""), []);
   const terpeneList = useMemo(() => {
     if (Array.isArray(normalizedTerpenprofil) && normalizedTerpenprofil.length) {
       return normalizedTerpenprofil;
@@ -35,6 +36,15 @@ const StrainCard = React.memo(function StrainCard({
       }
     },
     [showTerpeneInfo, strain]
+  );
+  const handleImageError = useCallback(
+    (event) => {
+      if (event.currentTarget.src !== fallbackThumbnailUrl) {
+        event.currentTarget.src = fallbackThumbnailUrl;
+        event.currentTarget.onerror = null;
+      }
+    },
+    [fallbackThumbnailUrl]
   );
 
   const similarityScore =
@@ -58,6 +68,7 @@ const StrainCard = React.memo(function StrainCard({
           alt={`Blüte der Sorte ${name}`}
           loading="lazy"
           className="strain-card__image"
+          onError={handleImageError}
         />
         <label className="strain-card__compare">
           <input
