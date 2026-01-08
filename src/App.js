@@ -21,6 +21,7 @@ import "@fontsource/montserrat";
 import "./styles.css";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
+import StrainGrid from "./components/StrainGrid";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
 import { TerpeneContext } from "./context/TerpeneContext";
@@ -480,6 +481,7 @@ export default function CannabisKultivarFinderUseReducer() {
   const [selectedCultivars, setSelectedCultivars] = useState([]);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isComparisonDetailsOpen, setIsComparisonDetailsOpen] = useState(false);
+  const [viewMode, setViewMode] = useState("grid");
 
   const [viewportWidth, setViewportWidth] = useState(() => {
     if (typeof window === "undefined") {
@@ -756,6 +758,10 @@ export default function CannabisKultivarFinderUseReducer() {
     resetFilters();
   }, [resetFilters, similarityContext]);
 
+  const handleViewModeChange = useCallback((mode) => {
+    setViewMode(mode);
+  }, []);
+
   // Rendern der Komponente
   return (
     <TerpeneContext.Provider value={terpeneContextValue}>
@@ -844,6 +850,28 @@ export default function CannabisKultivarFinderUseReducer() {
                 clearWirkungen={clearWirkungen}
               />
 
+              <div className="view-switcher" role="group" aria-label="Ansicht wählen">
+                <span className="view-switcher__label">Ansicht</span>
+                <div className="view-switcher__options">
+                  <button
+                    type="button"
+                    className={`view-switcher__button ${viewMode === "grid" ? "is-active" : ""}`.trim()}
+                    aria-pressed={viewMode === "grid"}
+                    onClick={() => handleViewModeChange("grid")}
+                  >
+                    Grid
+                  </button>
+                  <button
+                    type="button"
+                    className={`view-switcher__button ${viewMode === "list" ? "is-active" : ""}`.trim()}
+                    aria-pressed={viewMode === "list"}
+                    onClick={() => handleViewModeChange("list")}
+                  >
+                    Liste
+                  </button>
+                </div>
+              </div>
+
               <div className="entourage-inline" role="region" aria-label="Information zum Entourage-Effekt">
                 <div className="entourage-inline__copy">
                   <p className="entourage-inline__eyebrow">Wissen</p>
@@ -862,16 +890,29 @@ export default function CannabisKultivarFinderUseReducer() {
                 </button>
               </div>
 
-              <StrainTable
-                strains={displayedKultivare}
-                showRadar={showRadar}
-                showTerpeneInfo={showTerpeneInfo}
-                onToggleSelect={toggleCultivarSelection}
-                selectedCultivars={selectedCultivars}
-              onResetEmptyState={handleResetEmptyState}
-              isSimilarityMode={Boolean(similarityContext)}
-              tableRef={tableSectionRef}
-            />
+              {viewMode === "grid" ? (
+                <StrainGrid
+                  strains={displayedKultivare}
+                  showRadar={showRadar}
+                  showTerpeneInfo={showTerpeneInfo}
+                  onToggleSelect={toggleCultivarSelection}
+                  selectedCultivars={selectedCultivars}
+                  onResetEmptyState={handleResetEmptyState}
+                  isSimilarityMode={Boolean(similarityContext)}
+                  gridRef={tableSectionRef}
+                />
+              ) : (
+                <StrainTable
+                  strains={displayedKultivare}
+                  showRadar={showRadar}
+                  showTerpeneInfo={showTerpeneInfo}
+                  onToggleSelect={toggleCultivarSelection}
+                  selectedCultivars={selectedCultivars}
+                  onResetEmptyState={handleResetEmptyState}
+                  isSimilarityMode={Boolean(similarityContext)}
+                  tableRef={tableSectionRef}
+                />
+              )}
             </>
           )}
         </div>
@@ -925,6 +966,5 @@ export default function CannabisKultivarFinderUseReducer() {
     </TerpeneContext.Provider>
   );
 }
-
 
 
