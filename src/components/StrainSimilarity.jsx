@@ -144,7 +144,6 @@ export default function StrainSimilarity({
   kultivare = [],
   onApplySimilar,
   includeDiscontinued = false,
-  onToggleIncludeDiscontinued,
 }) {
   const [selectedName, setSelectedName] = useState("");
   const [query, setQuery] = useState("");
@@ -404,21 +403,6 @@ export default function StrainSimilarity({
       <p id="strain-select-note" className="similarity-panel__description">
         Tippen Sie, um eine Referenzsorte zu finden. Die Suche filtert live und nutzt das Terpenprofil als Basis.
       </p>
-
-      <fieldset className="similarity-panel__options">
-        <legend className="visually-hidden">Optionen für die Ähnlichkeitssuche</legend>
-        <div className="similarity-panel__description">
-          <input
-            id="similarity-include-discontinued"
-            type="checkbox"
-            checked={includeDiscontinued}
-            onChange={handleIncludeToggle}
-          />
-          <label htmlFor="similarity-include-discontinued">
-            Nicht mehr verfügbare Sorten anzeigen
-          </label>
-        </div>
-      </fieldset>
 
       <div className="similarity-panel__status" aria-live="polite">
         {selectedName && similarStrains.length === 0 && (

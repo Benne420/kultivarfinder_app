@@ -19,6 +19,8 @@ export default function TypFilter({ typ, dispatch, typInfo }) {
             <button
               key={t}
               className={`typ-btn ${typ === t ? "active" : ""}`}
+              type="button"
+              aria-pressed={typ === t}
               onClick={() => dispatch({ type: "SET_TYP", value: typ === t ? "" : t })}
             >
               {t}
