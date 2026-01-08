@@ -212,7 +212,7 @@ button,
 .content-stack {
   display: flex;
   flex-direction: column;
-  gap: clamp(8px, 1vw, 14px);
+  gap: clamp(6px, 0.8vw, 10px);
 }
 
 .app-shell {
@@ -565,9 +565,9 @@ nav a:hover {
 .filters-panel {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid #e2e8f0;
-  border-radius: 18px;
-  padding: 16px;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
   overflow: hidden;
 }
 
@@ -576,12 +576,12 @@ nav a:hover {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .filters-panel__title {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   color: #0f172a;
 }
 
@@ -589,8 +589,8 @@ nav a:hover {
   border: 1px solid #cbd5e1;
   background: #ffffff;
   border-radius: 999px;
-  padding: 6px 12px;
-  font-size: 13px;
+  padding: 4px 10px;
+  font-size: 12px;
   cursor: pointer;
   color: #1f2933;
 }
@@ -598,13 +598,13 @@ nav a:hover {
 .filters-panel__content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding-right: 4px;
+  gap: 10px;
+  padding-right: 2px;
 }
 
 .filter-entry {
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
+  border-radius: 12px;
   background: #ffffff;
   padding: 0;
   overflow: hidden;
@@ -613,8 +613,8 @@ nav a:hover {
 .filter-entry__summary {
   list-style: none;
   cursor: pointer;
-  padding: 12px 14px;
-  font-weight: 700;
+  padding: 8px 12px;
+  font-weight: 600;
   color: #0f172a;
   display: flex;
   align-items: center;
@@ -627,7 +627,7 @@ nav a:hover {
 
 .filter-entry__summary::after {
   content: "▾";
-  font-size: 14px;
+  font-size: 12px;
   color: #64748b;
 }
 
@@ -636,16 +636,16 @@ nav a:hover {
 }
 
 .filter-entry__content {
-  padding: 0 12px 12px;
+  padding: 0 10px 10px;
 }
 
 .filter-section {
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 10px;
   background: #ffffff;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .filter-section__header {
@@ -657,7 +657,7 @@ nav a:hover {
 
 .filter-section__hint {
   margin: 4px 0 0;
-  font-size: 12px;
+  font-size: 11px;
   color: #64748b;
 }
 
@@ -665,8 +665,8 @@ nav a:hover {
   border: 1px solid #cbd5e1;
   background: #f8fafc;
   border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 12px;
+  padding: 4px 8px;
+  font-size: 11px;
   cursor: pointer;
   color: #1f2933;
 }
@@ -685,15 +685,15 @@ nav a:hover {
 .filter-chip-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
 }
 
 .filter-chip {
   border: 1px solid #cbd5e1;
   background: #f8fafc;
   border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 12px;
+  padding: 4px 8px;
+  font-size: 11px;
   cursor: pointer;
   color: #1f2933;
 }
@@ -1002,12 +1002,12 @@ nav a:hover {
 
 .active-filters {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 12px;
-  margin-bottom: 12px;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 8px;
 }
 
 .active-filters__header {
@@ -1019,7 +1019,7 @@ nav a:hover {
 
 .active-filters__title {
   margin: 0;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   color: #1f2933;
   letter-spacing: 0.02em;
@@ -1032,7 +1032,7 @@ nav a:hover {
   color: #0f172a;
   font-weight: 600;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 11px;
   text-decoration: underline;
 }
 
@@ -1046,8 +1046,8 @@ nav a:hover {
   border: 1px solid #cbd5e1;
   background: #ffffff;
   border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 12px;
+  padding: 4px 8px;
+  font-size: 11px;
   cursor: pointer;
   color: #1f2933;
   width: fit-content;
@@ -1064,15 +1064,15 @@ nav a:hover {
   border: 1px solid var(--filter-accent);
   background: var(--filter-accent-bg);
   border-radius: 999px;
-  padding: 4px 8px;
-  font-size: 12px;
+  padding: 3px 6px;
+  font-size: 11px;
   cursor: pointer;
   color: #0f3f1e;
 }
 
 .active-filters__empty {
   margin: 0;
-  font-size: 13px;
+  font-size: 11px;
   color: #64748b;
 }
 
