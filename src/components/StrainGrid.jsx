@@ -60,6 +60,8 @@ const StrainCard = React.memo(function StrainCard({
   const similarityDescription =
     [similarityLabel, overlapBucketText].filter(Boolean).join(" – ") || "Ähnlichkeitsbewertung";
 
+  const hasSimilarity = similarityScore !== null;
+
   return (
     <article className={`strain-card ${isSelected ? "is-selected" : ""}`.trim()}>
       <div className="strain-card__media">
@@ -96,16 +98,20 @@ const StrainCard = React.memo(function StrainCard({
           </span>
         </div>
 
-        {similarityScore !== null && (
-          <div className="strain-card__similarity" aria-label={similarityDescription}>
-            <span className="strain-card__similarity-label">
-              {similarityLabel || "Übereinstimmung"}
-            </span>
-            {overlapBucketText && (
-              <span className="strain-card__similarity-detail">{overlapBucketText}</span>
-            )}
-          </div>
-        )}
+        <div
+          className={`strain-card__similarity ${hasSimilarity ? "" : "is-empty"}`.trim()}
+          aria-label={similarityDescription}
+        >
+          <span className="strain-card__similarity-label">
+            {similarityLabel || "Übereinstimmung"}
+          </span>
+          {overlapBucketText && (
+            <span className="strain-card__similarity-detail">{overlapBucketText}</span>
+          )}
+          {!hasSimilarity && (
+            <span className="strain-card__similarity-placeholder">Keine Daten</span>
+          )}
+        </div>
 
         <div className="strain-card__terpenes" aria-label="Top-Terpene">
           {topTerpenes.length ? (
