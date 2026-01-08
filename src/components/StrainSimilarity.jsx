@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import React, { useState, useMemo, useCallback, useEffect, useId } from "react";
 
 /* helper: determine whether a strain is considered "active" (same logic as filters) */
 function isActiveStrain(s = {}) {
@@ -130,6 +130,16 @@ function findSimilar(reference, allStrains, limit = 5) {
     .slice(0, limit);
 }
 
+function matchesQuery(name, query) {
+  if (!query) return true;
+  const normalized = name.toLowerCase();
+  const terms = query
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+  return terms.every((term) => normalized.includes(term));
+}
+
 export default function StrainSimilarity({
   kultivare = [],
   onApplySimilar,
@@ -137,7 +147,11 @@ export default function StrainSimilarity({
   onToggleIncludeDiscontinued,
 }) {
   const [selectedName, setSelectedName] = useState("");
+  const [query, setQuery] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const [similarStrains, setSimilarStrains] = useState([]);
+  const listboxId = useId();
 
   const strainsWithNormalizedTerpenes = useMemo(
     () =>
@@ -168,6 +182,12 @@ export default function StrainSimilarity({
       return nameA.localeCompare(nameB, "de", { sensitivity: "base" });
     });
   }, [includeDiscontinued, strainsWithNormalizedTerpenes]);
+
+  const filteredStrains = useMemo(() => {
+    const trimmed = query.trim();
+    if (!trimmed) return selectableStrains;
+    return selectableStrains.filter((strain) => matchesQuery(strain.name || "", trimmed));
+  }, [query, selectableStrains]);
 
   const emitResults = useCallback(
     (reference, results) => {
@@ -203,15 +223,32 @@ export default function StrainSimilarity({
     [emitResults]
   );
 
-  const handleChange = (e) => {
-    const name = e.target.value;
-    setSelectedName(name);
-    recomputeSimilarities(name, selectableStrains);
+  const handleSelect = useCallback(
+    (name) => {
+      setSelectedName(name);
+      setQuery(name);
+      setIsOpen(false);
+      setActiveIndex(-1);
+    },
+    []
+  );
+
+  const handleChange = (event) => {
+    const nextQuery = event.target.value;
+    setQuery(nextQuery);
+    setIsOpen(true);
+    setActiveIndex(0);
+    if (!nextQuery) {
+      setSelectedName("");
+    }
   };
 
   const handleClear = useCallback(() => {
     setSelectedName("");
+    setQuery("");
     setSimilarStrains([]);
+    setIsOpen(false);
+    setActiveIndex(-1);
     emitResults(null, []);
   }, [emitResults]);
 
@@ -228,6 +265,22 @@ export default function StrainSimilarity({
     recomputeSimilarities(selectedName, selectableStrains);
   }, [recomputeSimilarities, selectedName, selectableStrains]);
 
+  useEffect(() => {
+    if (!selectedName) {
+      setQuery("");
+      return;
+    }
+    setQuery(selectedName);
+  }, [selectedName]);
+
+  useEffect(() => {
+    if (!filteredStrains.length) {
+      setActiveIndex(-1);
+      return;
+    }
+    setActiveIndex((prev) => (prev >= filteredStrains.length ? 0 : prev));
+  }, [filteredStrains.length]);
+
   const handleIncludeToggle = useCallback(
     (event) => {
       if (typeof onToggleIncludeDiscontinued === "function") {
@@ -237,35 +290,111 @@ export default function StrainSimilarity({
     [onToggleIncludeDiscontinued]
   );
 
+  const handleKeyDown = (event) => {
+    if (!isOpen && (event.key === "ArrowDown" || event.key === "ArrowUp")) {
+      setIsOpen(true);
+      return;
+    }
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveIndex((prev) => {
+        const next = prev + 1;
+        return next >= filteredStrains.length ? 0 : next;
+      });
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveIndex((prev) => {
+        if (prev <= 0) return filteredStrains.length - 1;
+        return prev - 1;
+      });
+    }
+
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const target = filteredStrains[activeIndex] || filteredStrains[0];
+      if (target?.name) {
+        handleSelect(target.name);
+      }
+    }
+
+    if (event.key === "Escape") {
+      setIsOpen(false);
+    }
+  };
+
+  const activeDescendantId =
+    activeIndex >= 0 && filteredStrains[activeIndex]
+      ? `${listboxId}-option-${activeIndex}`
+      : undefined;
+
   return (
     <section className="similarity-panel">
       <h3 id="similarity-panel-title" className="similarity-panel__title">
         Ähnliche Sorte finden
       </h3>
       <div className="similarity-panel__controls">
-        <label className="similarity-panel__label" htmlFor="strain-select">
+        <label className="similarity-panel__label" htmlFor="strain-combobox">
           Sorte wählen
         </label>
-        <select
-          id="strain-select"
-          className="similarity-panel__select"
-          onChange={handleChange}
-          value={selectedName}
-          aria-labelledby="similarity-panel-title"
-          aria-describedby="strain-select-note"
-        >
-          <option value="">Sorte wählen …</option>
-          {selectableStrains.map((s) => (
-            <option key={s.name} value={s.name}>
-              {s.name}
-            </option>
-          ))}
-        </select>
+        <div className="similarity-panel__combobox">
+          <input
+            id="strain-combobox"
+            className="similarity-panel__input"
+            type="text"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={isOpen}
+            aria-controls={listboxId}
+            aria-activedescendant={activeDescendantId}
+            aria-labelledby="similarity-panel-title"
+            aria-describedby="strain-select-note"
+            placeholder="Sorte wählen …"
+            value={query}
+            onChange={handleChange}
+            onFocus={() => setIsOpen(true)}
+            onBlur={() => {
+              window.setTimeout(() => setIsOpen(false), 100);
+            }}
+            onKeyDown={handleKeyDown}
+          />
+          {isOpen && (
+            <ul className="similarity-panel__list" role="listbox" id={listboxId}>
+              {filteredStrains.length ? (
+                filteredStrains.map((strain, index) => {
+                  const isActive = index === activeIndex;
+                  return (
+                    <li
+                      key={strain.name}
+                      id={`${listboxId}-option-${index}`}
+                      role="option"
+                      aria-selected={isActive}
+                      className={`similarity-panel__option ${isActive ? "is-active" : ""}`.trim()}
+                      onMouseDown={(event) => {
+                        event.preventDefault();
+                        handleSelect(strain.name);
+                      }}
+                      onMouseEnter={() => setActiveIndex(index)}
+                    >
+                      {strain.name}
+                    </li>
+                  );
+                })
+              ) : (
+                <li className="similarity-panel__option is-empty" role="option" aria-selected="false">
+                  Keine Treffer
+                </li>
+              )}
+            </ul>
+          )}
+        </div>
         <button
           type="button"
           className="reset-btn similarity-panel__clear"
           onClick={handleClear}
-          disabled={!selectedName}
+          disabled={!selectedName && !query}
           aria-label="Ähnlichkeitssuche zurücksetzen"
         >
           ×
@@ -273,7 +402,7 @@ export default function StrainSimilarity({
       </div>
 
       <p id="strain-select-note" className="similarity-panel__description">
-        Wählen Sie eine Referenzsorte, um ähnliche Kultivare anhand des Terpenprofils zu finden.
+        Tippen Sie, um eine Referenzsorte zu finden. Die Suche filtert live und nutzt das Terpenprofil als Basis.
       </p>
 
       <fieldset className="similarity-panel__options">
