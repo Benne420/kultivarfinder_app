@@ -117,7 +117,8 @@ export const radarPathSvg = (name) => {
     return "";
   }
 
-  const normalized = raw
+  const baseName = raw.split("(")[0].trim();
+  const normalized = baseName
     .normalize("NFKD")
     .replace(/ß/gi, (match) => (match === "ß" ? "ss" : "SS"))
     .replace(/\p{Diacritic}/gu, "");
