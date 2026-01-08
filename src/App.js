@@ -21,6 +21,7 @@ import "@fontsource/montserrat";
 import "./styles.css";
 import FilterPanel from "./components/FilterPanel";
 import StrainTable from "./components/StrainTable";
+import StrainGrid from "./components/StrainGrid";
 import StrainSimilarity from "./components/StrainSimilarity";
 import TypFilter from "./components/TypFilter";
 import { TerpeneContext } from "./context/TerpeneContext";
@@ -261,10 +262,14 @@ export default function CannabisKultivarFinderUseReducer() {
       title: document.title,
     };
 
-    document.body.style.backgroundImage =
-      "url('/F20_Pharma_Pattern-Hexagon_07.png')";
-    document.body.style.backgroundRepeat = "repeat";
-    document.body.style.backgroundSize = "auto";
+    document.body.style.backgroundImage = [
+      "radial-gradient(circle at 20% 20%, rgba(0, 85, 164, 0.08), rgba(0, 85, 164, 0) 35%)",
+      "radial-gradient(circle at 80% 0%, rgba(99, 189, 50, 0.08), rgba(99, 189, 50, 0) 32%)",
+      "url('/F20_Pharma_Pattern-Hexagon_07.png')",
+      "var(--body-background)",
+    ].join(", ");
+    document.body.style.backgroundRepeat = "repeat, repeat, repeat, repeat";
+    document.body.style.backgroundSize = "100% 100%, 100% 100%, auto, auto";
     document.body.style.backgroundPosition = "center";
     document.title = "Four20 Index";
 
@@ -480,6 +485,7 @@ export default function CannabisKultivarFinderUseReducer() {
   const [selectedCultivars, setSelectedCultivars] = useState([]);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isComparisonDetailsOpen, setIsComparisonDetailsOpen] = useState(false);
+  const [viewMode, setViewMode] = useState("grid");
 
   const [viewportWidth, setViewportWidth] = useState(() => {
     if (typeof window === "undefined") {
@@ -767,58 +773,9 @@ export default function CannabisKultivarFinderUseReducer() {
     resetFilters();
   }, [resetFilters, similarityContext]);
 
-  const handleResetAllFilters = useCallback(() => {
-    setSimilarityContext(null);
-    resetFilters();
-  }, [resetFilters]);
-
-  const activeFilterChips = useMemo(() => {
-    const chips = [];
-    filters.selectedWirkungen.forEach((wirkung) => {
-      chips.push({
-        key: `wirkung-${wirkung}`,
-        label: wirkung,
-        onRemove: () => {
-          const next = new Set(filters.selectedWirkungen);
-          next.delete(wirkung);
-          dispatch({ type: "SET_WIRKUNG_VALUES", value: next });
-        },
-      });
-    });
-    filters.selectedTerpene.forEach((terpene) => {
-      chips.push({
-        key: `terpene-${terpene}`,
-        label: terpene,
-        onRemove: () => {
-          const next = new Set(filters.selectedTerpene);
-          next.delete(terpene);
-          dispatch({ type: "SET_TERPENE_VALUES", value: next });
-        },
-      });
-    });
-    if (filters.typ) {
-      chips.push({
-        key: "typ",
-        label: filters.typ,
-        onRemove: () => dispatch({ type: "SET_TYP", value: "" }),
-      });
-    }
-    if (filters.includeDiscontinued) {
-      chips.push({
-        key: "include-discontinued",
-        label: "inkl. inaktive Sorten",
-        onRemove: () => dispatch({ type: "TOGGLE_INCLUDE_DISC", value: false }),
-      });
-    }
-    if (similarityContext?.referenceName) {
-      chips.push({
-        key: "similarity",
-        label: `Ähnlichkeit: ${similarityContext.referenceName}`,
-        onRemove: () => setSimilarityContext(null),
-      });
-    }
-    return chips;
-  }, [dispatch, filters, similarityContext]);
+  const handleViewModeChange = useCallback((mode) => {
+    setViewMode(mode);
+  }, []);
 
   // Rendern der Komponente
   return (
@@ -878,12 +835,42 @@ export default function CannabisKultivarFinderUseReducer() {
                 </button>
               </div>
 
-              <div className="active-filters">
-                <div className="active-filters__header">
-                  <p className="active-filters__title">Aktive Filter</p>
-                  <button type="button" className="active-filters__reset" onClick={handleResetAllFilters}>
-                    Filter zurücksetzen
+              <FilterPanel
+                filters={filters}
+                dispatch={dispatch}
+                terpene={terpeneOptions}
+                wirkungen={availableWirkungen}
+                clearTerpene={clearTerpene}
+                clearWirkungen={clearWirkungen}
+              />
+
+              <div className="view-switcher" role="group" aria-label="Ansicht wählen">
+                <span className="view-switcher__label">Ansicht</span>
+                <div className="view-switcher__options">
+                  <button
+                    type="button"
+                    className={`view-switcher__button ${viewMode === "grid" ? "is-active" : ""}`.trim()}
+                    aria-pressed={viewMode === "grid"}
+                    onClick={() => handleViewModeChange("grid")}
+                  >
+                    Grid
                   </button>
+                  <button
+                    type="button"
+                    className={`view-switcher__button ${viewMode === "list" ? "is-active" : ""}`.trim()}
+                    aria-pressed={viewMode === "list"}
+                    onClick={() => handleViewModeChange("list")}
+                  >
+                    Liste
+                  </button>
+                </div>
+              </div>
+
+              <div className="entourage-inline" role="region" aria-label="Information zum Entourage-Effekt">
+                <div className="entourage-inline__copy">
+                  <p className="entourage-inline__eyebrow">Wissen</p>
+                  <p className="entourage-inline__title">Entourage-Effekt &amp; ECS kompakt</p>
+                  <p className="entourage-inline__hint">Kernpunkte zu Synergien, Mechanismen und Evidenz auf einen Blick.</p>
                 </div>
                 <button
                   type="button"
@@ -911,96 +898,18 @@ export default function CannabisKultivarFinderUseReducer() {
                 )}
               </div>
 
-              <div className="filters-panel__content">
-                <details className="filter-entry">
-                  <summary className="filter-entry__summary">Typ</summary>
-                  <div className="filter-entry__content">
-                    <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
-                  </div>
-                </details>
-
-                <details className="filter-entry">
-                  <summary className="filter-entry__summary">Ähnlichkeit</summary>
-                  <div className="filter-entry__content">
-                    <StrainSimilarity
-                      kultivare={kultivare}
-                      onApplySimilar={handleApplySimilarity}
-                      includeDiscontinued={filters.includeDiscontinued}
-                    />
-                  </div>
-                </details>
-
-                <details className="filter-entry">
-                  <summary className="filter-entry__summary">Terpene</summary>
-                  <div className="filter-entry__content">
-                    <FilterPanel
-                      filters={filters}
-                      dispatch={dispatch}
-                      terpene={terpeneOptions}
-                      wirkungen={availableWirkungen}
-                      clearTerpene={clearTerpene}
-                      clearWirkungen={clearWirkungen}
-                      showWirkungen={false}
-                    />
-                  </div>
-                </details>
-
-                <details className="filter-entry">
-                  <summary className="filter-entry__summary">Wirkungen</summary>
-                  <div className="filter-entry__content">
-                    <FilterPanel
-                      filters={filters}
-                      dispatch={dispatch}
-                      terpene={terpeneOptions}
-                      wirkungen={availableWirkungen}
-                      clearTerpene={clearTerpene}
-                      clearWirkungen={clearWirkungen}
-                      showTerpene={false}
-                    />
-                  </div>
-                </details>
-              </div>
-            </div>
-
-            {similarityContext && (
-              <div className="similarity-banner" role="status" aria-live="polite">
-                <strong>Hinweis:</strong> Es werden ähnliche Sorten zu{" "}
-                <em>{similarityContext.referenceName || "der ausgewählten Sorte"}</em>{" "}
-                angezeigt. Die Tabelle enthält dafür eine Spalte mit dem Übereinstimmungswert. Verwenden Sie „Ähnlichkeitssuche
-                zurücksetzen“ (×), um zur gefilterten Ansicht zurückzukehren.
-              </div>
-            )}
-
-            {loading && (
-              <div className="status status--loading" role="status" aria-live="polite">
-                Daten werden geladen …
-              </div>
-            )}
-            {error && !loading && (
-              <div className="status status--error" role="alert">
-                Beim Laden der Daten ist ein Fehler aufgetreten: {error}
-              </div>
-            )}
-
-            {!loading && !error && (
-              <>
-                <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
-                  <p className="comparison-toolbar__hint">
-                    {selectedCultivars.length
-                      ? `${selectedCultivars.length} Sorte${selectedCultivars.length > 1 ? "n" : ""} ausgewählt (max. ${MAX_COMPARISON_ITEMS})`
-                      : "Wählen Sie mindestens zwei Sorten aus, um den Vergleich zu starten."}
-                  </p>
-                  <button
-                    type="button"
-                    className="primary"
-                    onClick={openComparison}
-                    disabled={!canOpenComparison}
-                    aria-disabled={!canOpenComparison}
-                  >
-                    Vergleich starten
-                  </button>
-                </div>
-
+              {viewMode === "grid" ? (
+                <StrainGrid
+                  strains={displayedKultivare}
+                  showRadar={showRadar}
+                  showTerpeneInfo={showTerpeneInfo}
+                  onToggleSelect={toggleCultivarSelection}
+                  selectedCultivars={selectedCultivars}
+                  onResetEmptyState={handleResetEmptyState}
+                  isSimilarityMode={Boolean(similarityContext)}
+                  gridRef={tableSectionRef}
+                />
+              ) : (
                 <StrainTable
                   strains={displayedKultivare}
                   showRadar={showRadar}
@@ -1011,27 +920,9 @@ export default function CannabisKultivarFinderUseReducer() {
                   isSimilarityMode={Boolean(similarityContext)}
                   tableRef={tableSectionRef}
                 />
-              </>
-            )}
-
-            <div className="entourage-inline" role="region" aria-label="Information zum Entourage-Effekt">
-              <div className="entourage-inline__copy">
-                <p className="entourage-inline__eyebrow">Wissen</p>
-                <p className="entourage-inline__title">Entourage-Effekt &amp; ECS kompakt</p>
-                <p className="entourage-inline__hint">Kernpunkte zu Synergien, Mechanismen und Evidenz auf einen Blick.</p>
-              </div>
-              <button
-                type="button"
-                className="entourage-button"
-                onClick={openEntourageModal}
-                aria-haspopup="dialog"
-                aria-expanded={isEntourageModalOpen}
-                aria-label="Mehr zum Entourage-Effekt"
-              >
-                <span>Mehr</span>
-              </button>
-            </div>
-          </section>
+              )}
+            </>
+          )}
         </div>
 
         {radarDialog.open && (
@@ -1083,3 +974,4 @@ export default function CannabisKultivarFinderUseReducer() {
     </TerpeneContext.Provider>
   );
 }
+

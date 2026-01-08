@@ -159,30 +159,27 @@ export default function RadarModal({ radarDialog, hideRadar }) {
         >
           ×
         </button>
-        <h3 className="modal-title" id={titleId}>
-          Netzdiagramm &amp; Details: {cultivar.name}
+        <h3 className="modal-title modal-title--center" id={titleId}>
+          Sortenprofil: {cultivar.name}
         </h3>
         <div className="terpene-radar-layout">
+          <section
+            className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
+            aria-label="Sortendetails"
+          >
+            <dl className="detail-grid" aria-label="Kultivar-Informationen" lang="de">
+              {detailRows.map((entry) => (
+                <div className="detail-grid__row" key={entry.label}>
+                  <dt>{entry.label}</dt>
+                  <dd>{entry.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
           <section
             className="terpene-radar-layout__panel terpene-radar-layout__panel--visual"
             aria-label="Netzdiagramm"
           >
-            <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
-            <img
-              src={radarPathSvg(cultivar.name)}
-              alt={`Radar-Diagramm für ${cultivar.name}`}
-              className="terpene-radar-layout__image"
-            />
-            {thumbnailUrl && isThumbnailVisible && (
-              <figure className="cultivar-thumbnail">
-                <img
-                  src={thumbnailUrl}
-                  alt={`Thumbnail von ${cultivar.name}`}
-                  loading="lazy"
-                  onError={() => setIsThumbnailVisible(false)}
-                />
-              </figure>
-            )}
             <div
               className="terpene-radar-layout__terpenes"
               aria-label="Terpenprofil"
@@ -212,19 +209,22 @@ export default function RadarModal({ radarDialog, hideRadar }) {
                 <span className="terpene-legend__text">Begleitend</span>
               </p>
             </div>
-          </section>
-          <section
-            className="terpene-radar-layout__panel terpene-radar-layout__panel--details"
-            aria-label="Sortendetails"
-          >
-            <dl className="detail-grid" aria-label="Kultivar-Informationen">
-              {detailRows.map((entry) => (
-                <div className="detail-grid__row" key={entry.label}>
-                  <dt>{entry.label}</dt>
-                  <dd>{entry.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <p className="modal-meta">Visualisierung des Terpenprofils als Netzdiagramm.</p>
+            <img
+              src={radarPathSvg(cultivar.name)}
+              alt={`Radar-Diagramm für ${cultivar.name}`}
+              className="terpene-radar-layout__image"
+            />
+            {thumbnailUrl && isThumbnailVisible && (
+              <figure className="cultivar-thumbnail">
+                <img
+                  src={thumbnailUrl}
+                  alt={`Thumbnail von ${cultivar.name}`}
+                  loading="lazy"
+                  onError={() => setIsThumbnailVisible(false)}
+                />
+              </figure>
+            )}
           </section>
         </div>
       </div>
