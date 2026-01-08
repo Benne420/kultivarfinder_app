@@ -1780,11 +1780,17 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
+  align-items: stretch;
+}
+
+.strain-grid > div {
+  display: flex;
 }
 
 .strain-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: #fff;
   border-radius: 18px;
   overflow: hidden;
