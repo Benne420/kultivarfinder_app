@@ -1658,11 +1658,59 @@ nav a:hover {
   text-align: center;
 }
 
-.similarity-panel__select {
-  flex: 0 1 260px;
-  padding: 8px;
-  border-radius: 6px;
+.similarity-panel__combobox {
+  position: relative;
+  flex: 0 1 320px;
+}
+
+.similarity-panel__input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 999px;
   border: 1px solid #b0bec5;
+  background: #fff;
+  font-size: 14px;
+}
+
+.similarity-panel__input:focus {
+  outline: 2px solid rgba(0, 85, 164, 0.4);
+  outline-offset: 2px;
+}
+
+.similarity-panel__list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 6px;
+  margin: 0;
+  list-style: none;
+  border-radius: 14px;
+  border: 1px solid #d5dde3;
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
+  z-index: 10;
+}
+
+.similarity-panel__option {
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #263238;
+}
+
+.similarity-panel__option.is-active {
+  background: rgba(0, 85, 164, 0.1);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.similarity-panel__option.is-empty {
+  cursor: default;
+  color: #607d8b;
 }
 
 .similarity-panel__clear {
@@ -1683,6 +1731,192 @@ nav a:hover {
 
 .similarity-panel__status {
   margin-top: 16px;
+}
+
+.view-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e0e0e0;
+}
+
+.view-switcher__label {
+  font-weight: 600;
+  color: #263238;
+}
+
+.view-switcher__options {
+  display: flex;
+  gap: 8px;
+}
+
+.view-switcher__button {
+  border: 1px solid #b0bec5;
+  background: #fff;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.view-switcher__button.is-active {
+  background: var(--primary-blue);
+  color: #fff;
+  border-color: var(--primary-blue);
+  box-shadow: 0 8px 16px rgba(0, 85, 164, 0.2);
+}
+
+.strain-grid-wrapper {
+  width: 100%;
+}
+
+.strain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.strain-grid > div {
+  display: flex;
+}
+
+.strain-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.strain-card.is-selected {
+  border-color: rgba(0, 85, 164, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 85, 164, 0.2);
+}
+
+.strain-card__media {
+  position: relative;
+  background: #0f172a;
+  aspect-ratio: 4 / 3;
+}
+
+.strain-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.strain-card__compare {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.strain-card__compare input {
+  margin: 0;
+}
+
+.strain-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px 18px;
+}
+
+.strain-card__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.strain-card__name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.strain-card__name:hover,
+.strain-card__name:focus-visible {
+  text-decoration: underline;
+}
+
+.strain-card__thc {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: rgba(0, 85, 164, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.strain-card__terpenes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.strain-card__badge {
+  border: 1px solid rgba(0, 85, 164, 0.25);
+  background: rgba(0, 85, 164, 0.08);
+  color: #0f172a;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.strain-card__badge:hover,
+.strain-card__badge:focus-visible {
+  background: rgba(0, 85, 164, 0.16);
+}
+
+.strain-card__terpene-empty {
+  font-size: 0.8rem;
+  color: #607d8b;
+}
+
+.strain-card__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.strain-grid__load-more {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.strain-grid__sentinel {
+  height: 1px;
+}
+
+.strain-grid-empty {
+  margin-top: 16px;
+  text-align: center;
 }
 
 .strain-table .similarity-column {
