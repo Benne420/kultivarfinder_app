@@ -8,7 +8,7 @@
   --primary-grey: #575756;
   --light-grey: #f5f5f5;
   --pure-white: #ffffff;
-  --body-background: #ffffff;
+  --body-background: #7bb52a;
   --table-text: #0f172a;
   --button-padding-block: 10px;
   --button-padding-inline: 16px;
@@ -85,7 +85,7 @@ button,
 
 @media (prefers-color-scheme: dark) {
   body:not([data-theme="light"]) {
-    --body-background: #0f172a;
+    --body-background: #7bb52a;
     --primary-grey: #e2e8f0;
     --light-grey: #1e293b;
     --table-text: #e2e8f0;
