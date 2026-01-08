@@ -25,6 +25,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
     }
     return Array.isArray(terpenprofil) ? terpenprofil : [];
   }, [normalizedTerpenprofil, terpenprofil]);
+  const topTerpenes = useMemo(() => terpeneList.slice(0, 2), [terpeneList]);
 
   const handleToggleSelect = useCallback(() => onToggleSelect(strain), [onToggleSelect, strain]);
   const handleShowRadar = useCallback(() => showRadar(strain), [showRadar, strain]);
@@ -49,14 +50,42 @@ const StrainTableRow = React.memo(function StrainTableRow({
   const similarityDescription =
     [similarityLabel, overlapBucketText].filter(Boolean).join(" – ") || "Ähnlichkeitsbewertung";
 
+  const handleRowClick = useCallback(
+    (event) => {
+      if (!showRadar) return;
+      if (event?.target?.closest?.("button, a, input, label")) {
+        return;
+      }
+      showRadar(strain);
+    },
+    [showRadar, strain]
+  );
+
+  const handleRowKeyDown = useCallback(
+    (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        showRadar(strain);
+      }
+    },
+    [showRadar, strain]
+  );
+
   return (
-    <tr className={isSelected ? "is-selected" : undefined}>
+    <tr
+      className={`strain-table__row${isSelected ? " is-selected" : ""}`}
+      onClick={handleRowClick}
+      onKeyDown={handleRowKeyDown}
+      tabIndex={0}
+      aria-label={`${name} öffnen`}
+    >
       <td className="comparison-column" data-label="Vergleich">
         <label className="comparison-checkbox">
           <input
             type="checkbox"
             checked={isSelected}
             onChange={handleToggleSelect}
+            onClick={(event) => event.stopPropagation()}
             aria-label={`${name} für Vergleich ${isSelected ? "abwählen" : "auswählen"}`}
           />
           <span aria-hidden="true" />
@@ -68,10 +97,24 @@ const StrainTableRow = React.memo(function StrainTableRow({
           href={pdfUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(event) => event.stopPropagation()}
           aria-label={`${name} Datenblatt anzeigen`}
         >
           {name}
         </a>
+      </td>
+      <td data-label="THC">
+        <span className="thc-values">{thc ?? "N/A"}</span>
+      </td>
+      <td data-label="CBD">
+        {cbd ?? "N/A"}
+      </td>
+      <td data-label="Top-Terpene">
+        <TerpeneChips
+          list={topTerpenes}
+          onInfo={handleShowTerpeneInfo}
+          describedBy={terpeneLegendId}
+        />
       </td>
       {hasSimilarityColumn && (
         <td className="similarity-column" data-label="Übereinstimmung">
@@ -96,29 +139,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
           )}
         </td>
       )}
-      <td data-label="THC">
-        <span className="thc-values">{thc || "N/A"}</span>
-      </td>
-      <td className="hidden-sm" data-label="CBD">
-        {cbd || "N/A"}
-      </td>
-      <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
-        <TerpeneChips
-          list={terpeneList}
-          onInfo={handleShowTerpeneInfo}
-          describedBy={terpeneLegendId}
-        />
-      </td>
-      <td data-label="Details" className="action-cell">
-        <button
-          type="button"
-          className="link-button action-button"
-          onClick={handleShowRadar}
-          aria-label={`${name} Diagramm, Details und Terpene anzeigen`}
-        >
-          Details
-        </button>
-      </td>
     </tr>
   );
 });
@@ -214,15 +234,14 @@ export default function StrainTable({
                 Vergleich
               </th>
               <th scope="col">Name</th>
-              {hasSimilarityColumn && <th className="similarity-column" scope="col">Übereinstimmung</th>}
               <th scope="col">THC</th>
-              <th className="hidden-sm" scope="col">
-                CBD
-              </th>
-              <th className="hidden-sm terpenprofil-header" scope="col">
-                Terpenprofil
-              </th>
-              <th scope="col">Details</th>
+              <th scope="col">CBD</th>
+              <th scope="col">Top-Terpene</th>
+              {hasSimilarityColumn && (
+                <th className="similarity-column" scope="col">
+                  Übereinstimmung
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
