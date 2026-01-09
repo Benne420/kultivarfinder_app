@@ -651,23 +651,23 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
-  padding: 16px 18px;
+  gap: 8px;
+  padding: 12px 14px;
   background: rgba(240, 247, 255, 0.9);
   border: 1px solid rgba(192, 212, 233, 0.6);
-  border-radius: 16px;
+  border-radius: 14px;
 }
 
 .entourage-inline__copy {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  max-width: min(720px, 100%);
+  gap: 2px;
+  max-width: min(640px, 100%);
 }
 
 .entourage-inline__eyebrow {
   margin: 0;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #2b5f91;
@@ -676,7 +676,7 @@ nav a:hover {
 
 .entourage-inline__title {
   margin: 0;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   color: #0f1f33;
 }
@@ -684,20 +684,20 @@ nav a:hover {
 .entourage-inline__hint {
   margin: 0;
   color: #35506b;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .entourage-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--button-padding-block) var(--button-padding-inline);
-  min-height: var(--button-min-height);
+  padding: 8px 16px;
+  min-height: 36px;
   border-radius: 999px;
   border: none;
   background: linear-gradient(135deg, #6eb1ff, #3a8dff);
   color: #ffffff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   text-align: center;
   cursor: pointer;

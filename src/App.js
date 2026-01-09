@@ -847,23 +847,6 @@ export default function CannabisKultivarFinderUseReducer() {
 
           {!loading && !error && (
             <>
-              <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
-                <p className="comparison-toolbar__hint">
-                  {selectedCultivars.length
-                    ? `${selectedCultivars.length} Sorte${selectedCultivars.length > 1 ? "n" : ""} ausgewählt (max. ${MAX_COMPARISON_ITEMS})`
-                    : "Wählen Sie mindestens zwei Sorten aus, um den Vergleich zu starten."}
-                </p>
-                <button
-                  type="button"
-                  className="primary"
-                  onClick={openComparison}
-                  disabled={!canOpenComparison}
-                  aria-disabled={!canOpenComparison}
-                >
-                  Vergleich starten
-                </button>
-              </div>
-
               <FilterPanel
                 id="terpene"
                 title="Terpene"
@@ -901,6 +884,23 @@ export default function CannabisKultivarFinderUseReducer() {
                 optionPrefix="wirkung"
                 resetLabel="Wirkungsfilter zurücksetzen"
               />
+
+              <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
+                <p className="comparison-toolbar__hint">
+                  {selectedCultivars.length
+                    ? `${selectedCultivars.length} Sorte${selectedCultivars.length > 1 ? "n" : ""} ausgewählt (max. ${MAX_COMPARISON_ITEMS})`
+                    : "Wählen Sie mindestens zwei Sorten aus, um den Vergleich zu starten."}
+                </p>
+                <button
+                  type="button"
+                  className="primary"
+                  onClick={openComparison}
+                  disabled={!canOpenComparison}
+                  aria-disabled={!canOpenComparison}
+                >
+                  Vergleich starten
+                </button>
+              </div>
 
               <div className="view-switcher" role="group" aria-label="Ansicht wählen">
                 <span className="view-switcher__label">Ansicht</span>
