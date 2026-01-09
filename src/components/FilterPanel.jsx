@@ -151,70 +151,54 @@ const MultiSelectDropdown = ({
 };
 
 export default function FilterPanel({
-  filters,
-  dispatch,
-  wirkungen,
-  terpene,
-  clearTerpene,
-  clearWirkungen,
+  id,
+  title,
+  label,
+  options,
+  selectedValues,
+  onChange,
+  onClear,
+  optionPrefix,
+  resetLabel,
 }) {
-  const handleTerpeneChange = (nextSet) =>
-    dispatch({ type: "SET_TERPENE_VALUES", value: nextSet });
-  const handleWirkungChange = (nextSet) =>
-    dispatch({ type: "SET_WIRKUNG_VALUES", value: nextSet });
+  const headingId = `${id}-heading`;
+  const contentId = `${id}-content`;
 
   return (
-    <div className="filters">
-      <div className="select-group">
-        <h3 id="terpene-heading" className="filter-heading">
-          Terpenfilter
-        </h3>
-        <div className="select-row select-row--with-reset">
-          <MultiSelectDropdown
-            headingId="terpene-heading"
-            label="Terpene auswählen"
-            options={terpene}
-            selectedValues={filters.selectedTerpene}
-            onChange={handleTerpeneChange}
-            optionPrefix="terpene"
-          />
-          <button
-            type="button"
-            className="reset-btn"
-            onClick={clearTerpene}
-            disabled={!filters.selectedTerpene.size}
-            aria-label="Terpenfilter zurücksetzen"
-          >
-            ×
-          </button>
+    <details className="filter-section">
+      <summary className="filter-section__summary" aria-controls={contentId}>
+        <span id={headingId} className="filter-section__title">
+          {title}
+        </span>
+        <span className="filter-section__chevron" aria-hidden="true">
+          ▾
+        </span>
+      </summary>
+      <div id={contentId} className="filter-section__content">
+        <div className="filters">
+          <div className="select-group">
+            <div className="select-row select-row--with-reset">
+              <MultiSelectDropdown
+                headingId={headingId}
+                label={label}
+                options={options}
+                selectedValues={selectedValues}
+                onChange={onChange}
+                optionPrefix={optionPrefix}
+              />
+              <button
+                type="button"
+                className="reset-btn"
+                onClick={onClear}
+                disabled={!selectedValues.size}
+                aria-label={resetLabel}
+              >
+                ×
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="select-group">
-        <h3 id="wirkungen-heading" className="filter-heading">
-          Wirkungsfilter
-        </h3>
-        <div className="select-row select-row--with-reset">
-          <MultiSelectDropdown
-            headingId="wirkungen-heading"
-            label="Wirkungen auswählen"
-            options={wirkungen}
-            selectedValues={filters.selectedWirkungen}
-            onChange={handleWirkungChange}
-            optionPrefix="wirkung"
-          />
-          <button
-            type="button"
-            className="reset-btn"
-            onClick={clearWirkungen}
-            disabled={!filters.selectedWirkungen.size}
-            aria-label="Wirkungsfilter zurücksetzen"
-          >
-            ×
-          </button>
-        </div>
-      </div>
-
-    </div>
+    </details>
   );
 }

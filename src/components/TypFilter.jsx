@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TypFilter({ typ, dispatch, typInfo }) {
+export default function TypFilter({ typ, dispatch, typInfo, showHeading = true }) {
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
   const infoTitleId = "typ-info-title";
   const dialogId = "typ-info-dialog";
@@ -11,7 +11,7 @@ export default function TypFilter({ typ, dispatch, typInfo }) {
 
   return (
     <div className="typ-button-group">
-      <h3 className="filter-heading">Typ</h3>
+      {showHeading ? <h3 className="filter-heading">Typ</h3> : null}
       <div className="typ-row">
         {Object.keys(typInfo)
           .filter((t) => !/^\s*(indica|sativa)\s*$/i.test(t))
