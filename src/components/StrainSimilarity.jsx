@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback, useEffect, useId } from "react";
+import { mapTerpeneToCanonical } from "../utils/helpers";
 
 /* helper: determine whether a strain is considered "active" (same logic as filters) */
 function isActiveStrain(s = {}) {
@@ -11,16 +12,17 @@ function isActiveStrain(s = {}) {
   return false;
 }
 
-function normalizeTerpeneList(value = []) {
+function normalizeTerpeneList(value = [], aliasLookup) {
   return (Array.isArray(value) ? value : String(value || "").split(/[;,]/))
     .map((s) => s.trim())
+    .map((name) => mapTerpeneToCanonical(name, aliasLookup) || name)
     .filter(Boolean);
 }
 
 /* cosine similarity for two terpene-profiles (arrays) with positional weighting */
-function cosineSimilarity(a = [], b = []) {
-  const arrA = normalizeTerpeneList(a);
-  const arrB = normalizeTerpeneList(b);
+function cosineSimilarity(a = [], b = [], aliasLookup) {
+  const arrA = normalizeTerpeneList(a, aliasLookup);
+  const arrB = normalizeTerpeneList(b, aliasLookup);
 
   const unique = Array.from(new Set([...arrA, ...arrB]));
   if (unique.length === 0) return 0;
@@ -45,8 +47,8 @@ function cosineSimilarity(a = [], b = []) {
   return dot / (magA * magB);
 }
 
-function buildTerpeneWeightMap(list = []) {
-  const normalized = normalizeTerpeneList(list);
+function buildTerpeneWeightMap(list = [], aliasLookup) {
+  const normalized = normalizeTerpeneList(list, aliasLookup);
   const map = new Map();
   const len = normalized.length || 1;
 
@@ -61,19 +63,21 @@ function buildTerpeneWeightMap(list = []) {
   return map;
 }
 
-function getTerpeneOverlap(refList = [], targetList = []) {
+function getTerpeneOverlap(refList = [], targetList = [], aliasLookup) {
   if (!refList.length || !targetList.length)
     return { shared: 0, total: 0, bucket: 0, weightedRatio: 0 };
 
-  const refSet = new Set(refList);
-  const targetSet = new Set(targetList);
+  const refNormalized = normalizeTerpeneList(refList, aliasLookup);
+  const targetNormalized = normalizeTerpeneList(targetList, aliasLookup);
+  const refSet = new Set(refNormalized);
+  const targetSet = new Set(targetNormalized);
   const union = new Set([...refSet, ...targetSet]);
 
   const shared = Array.from(union).filter((t) => refSet.has(t) && targetSet.has(t)).length;
   const total = union.size;
 
-  const refWeights = buildTerpeneWeightMap(refList);
-  const targetWeights = buildTerpeneWeightMap(targetList);
+  const refWeights = buildTerpeneWeightMap(refNormalized, aliasLookup);
+  const targetWeights = buildTerpeneWeightMap(targetNormalized, aliasLookup);
 
   let sharedWeight = 0;
   let totalWeight = 0;
@@ -102,15 +106,23 @@ function describeSimilarity(overlap = { bucket: 0 }) {
   return null;
 }
 
-function findSimilar(reference, allStrains, limit = 5) {
+function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
   if (!reference?.normalizedTerpenes?.length) return [];
 
   return allStrains
     .filter((s) => s.name !== reference.name && s.normalizedTerpenes.length > 0)
     .map((s) => {
-      const overlap = getTerpeneOverlap(reference.normalizedTerpenes, s.normalizedTerpenes);
+      const overlap = getTerpeneOverlap(
+        reference.normalizedTerpenes,
+        s.normalizedTerpenes,
+        aliasLookup
+      );
       const weightedSimilarity = overlap.weightedRatio;
-      const cosineScore = cosineSimilarity(reference.normalizedTerpenes, s.normalizedTerpenes);
+      const cosineScore = cosineSimilarity(
+        reference.normalizedTerpenes,
+        s.normalizedTerpenes,
+        aliasLookup
+      );
 
       return {
         ...s,
@@ -145,6 +157,7 @@ export default function StrainSimilarity({
   onApplySimilar,
   includeDiscontinued = false,
   onToggleIncludeDiscontinued,
+  aliasLookup,
 }) {
   const [selectedName, setSelectedName] = useState("");
   const [query, setQuery] = useState("");
@@ -162,10 +175,11 @@ export default function StrainSimilarity({
             strain.terpenprofil ||
             strain.terpenprofile ||
             strain.terpenes ||
-            []
+            [],
+          aliasLookup
         ),
       })),
-    [kultivare]
+    [kultivare, aliasLookup]
   );
 
   // only consider active strains for dropdown / comparisons unless discontinued should be included
@@ -216,7 +230,7 @@ export default function StrainSimilarity({
         return;
       }
 
-      const similar = findSimilar(reference, strains);
+      const similar = findSimilar(reference, strains, aliasLookup);
       setSimilarStrains(similar);
       emitResults(reference, similar);
     },
