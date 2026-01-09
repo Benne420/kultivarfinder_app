@@ -658,6 +658,14 @@ export default function CannabisKultivarFinderUseReducer() {
     () => dispatch({ type: "CLEAR_WIRKUNGEN" }),
     []
   );
+  const handleTerpeneChange = useCallback(
+    (nextSet) => dispatch({ type: "SET_TERPENE_VALUES", value: nextSet }),
+    []
+  );
+  const handleWirkungChange = useCallback(
+    (nextSet) => dispatch({ type: "SET_WIRKUNG_VALUES", value: nextSet }),
+    []
+  );
   const resetFilters = useCallback(() => dispatch({ type: "CLEAR_FILTERS" }), []);
   const handleIncludeDiscontinuedChange = useCallback(
     (value) => dispatch({ type: "TOGGLE_INCLUDE_DISC", value }),
@@ -800,7 +808,24 @@ export default function CannabisKultivarFinderUseReducer() {
             Beratung. Bei gesundheitlichen Fragen wenden Sie sich an einen Arzt oder Apotheker.
           </div>
 
-          <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} />
+          <details className="filter-section">
+            <summary className="filter-section__summary" aria-controls="similarity-content">
+              <span id="similarity-heading" className="filter-section__title">
+                Ähnlichkeit
+              </span>
+              <span className="filter-section__chevron" aria-hidden="true">
+                ▾
+              </span>
+            </summary>
+            <div id="similarity-content" className="filter-section__content">
+              <StrainSimilarity
+                kultivare={kultivare}
+                onApplySimilar={handleApplySimilarity}
+                includeDiscontinued={filters.includeDiscontinued}
+                onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+              />
+            </div>
+          </details>
 
           {similarityContext && (
             <div className="similarity-banner" role="status" aria-live="polite">
@@ -820,14 +845,46 @@ export default function CannabisKultivarFinderUseReducer() {
             </div>
           )}
 
-          <StrainSimilarity
-            kultivare={kultivare}
-            onApplySimilar={handleApplySimilarity}
-            includeDiscontinued={filters.includeDiscontinued}
-            onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
-          />
           {!loading && !error && (
             <>
+              <FilterPanel
+                id="terpene"
+                title="Terpene"
+                label="Terpene auswählen"
+                options={terpeneOptions}
+                selectedValues={filters.selectedTerpene}
+                onChange={handleTerpeneChange}
+                onClear={clearTerpene}
+                optionPrefix="terpene"
+                resetLabel="Terpenfilter zurücksetzen"
+              />
+
+              <details className="filter-section">
+                <summary className="filter-section__summary" aria-controls="typ-content">
+                  <span id="typ-heading" className="filter-section__title">
+                    Typ
+                  </span>
+                  <span className="filter-section__chevron" aria-hidden="true">
+                    ▾
+                  </span>
+                </summary>
+                <div id="typ-content" className="filter-section__content">
+                  <TypFilter typ={filters.typ} dispatch={dispatch} typInfo={typInfo} showHeading={false} />
+                </div>
+              </details>
+
+              <FilterPanel
+                id="wirkung"
+                title="Wirkung"
+                label="Wirkungen auswählen"
+                options={availableWirkungen}
+                selectedValues={filters.selectedWirkungen}
+                onChange={handleWirkungChange}
+                onClear={clearWirkungen}
+                optionPrefix="wirkung"
+                resetLabel="Wirkungsfilter zurücksetzen"
+              />
+
               <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
                 <p className="comparison-toolbar__hint">
                   {selectedCultivars.length
@@ -844,15 +901,6 @@ export default function CannabisKultivarFinderUseReducer() {
                   Vergleich starten
                 </button>
               </div>
-
-              <FilterPanel
-                filters={filters}
-                dispatch={dispatch}
-                terpene={terpeneOptions}
-                wirkungen={availableWirkungen}
-                clearTerpene={clearTerpene}
-                clearWirkungen={clearWirkungen}
-              />
 
               <div className="view-switcher" role="group" aria-label="Ansicht wählen">
                 <span className="view-switcher__label">Ansicht</span>
@@ -970,4 +1018,3 @@ export default function CannabisKultivarFinderUseReducer() {
     </TerpeneContext.Provider>
   );
 }
-
