@@ -76,6 +76,9 @@ const VIEWPORT_WIDTH_FALLBACK = COMPARISON_MAX_WIDTH_PX / VIEWPORT_WIDTH_FACTOR;
 
 const getCanonicalTerpeneProfile = (kultivar, aliasLookup) => {
   if (!kultivar) return new Set();
+  if (Array.isArray(kultivar.normalizedTerpenprofilOrdered)) {
+    return new Set(kultivar.normalizedTerpenprofilOrdered);
+  }
   if (Array.isArray(kultivar.normalizedTerpenprofil)) {
     return new Set(kultivar.normalizedTerpenprofil);
   }
@@ -90,6 +93,22 @@ const getCanonicalTerpeneProfile = (kultivar, aliasLookup) => {
     }
   });
   return canonicalSet;
+};
+
+const getCanonicalTerpeneOrder = (kultivar, aliasLookup) => {
+  if (!kultivar) return [];
+  if (Array.isArray(kultivar.normalizedTerpenprofilOrdered)) {
+    return kultivar.normalizedTerpenprofilOrdered;
+  }
+  if (Array.isArray(kultivar.normalizedTerpenprofil)) {
+    return kultivar.normalizedTerpenprofil;
+  }
+  if (!Array.isArray(kultivar.terpenprofil)) {
+    return [];
+  }
+  return kultivar.terpenprofil
+    .map((name) => mapTerpeneToCanonical(name, aliasLookup))
+    .filter(Boolean);
 };
 
 const kultivarHasSelectedTerpene = (kultivar, selectedTerpene, aliasLookup) => {
@@ -121,6 +140,56 @@ const mapTyp = (s) => {
   return t;
 };
 
+const uniqueOrdered = (items = []) =>
+  items.filter((value, index) => items.indexOf(value) === index);
+
+const canonicalizeSelectedTerpenes = (selectedTerpene, aliasLookup) =>
+  uniqueOrdered(
+    [...selectedTerpene]
+      .map((name) => mapTerpeneToCanonical(name, aliasLookup) || name)
+      .filter(Boolean)
+  );
+
+const getOrderMatchMeta = (cultivar, selectedOrder, aliasLookup) => {
+  if (!selectedOrder.length) {
+    return { group: 0, orderedMatchCount: 0 };
+  }
+
+  const order = getCanonicalTerpeneOrder(cultivar, aliasLookup);
+  if (!order.length) {
+    return { group: 0, orderedMatchCount: 0 };
+  }
+
+  const selectedSet = new Set(selectedOrder);
+  const filteredOrder = order.filter((name) => selectedSet.has(name));
+
+  const isExactOrder =
+    filteredOrder.length === selectedOrder.length &&
+    filteredOrder.every((value, index) => value === selectedOrder[index]);
+
+  let orderedMatchCount = 0;
+  let cursor = 0;
+  for (const terpene of order) {
+    if (cursor >= selectedOrder.length) {
+      break;
+    }
+    if (terpene === selectedOrder[cursor]) {
+      orderedMatchCount += 1;
+      cursor += 1;
+    }
+  }
+
+  if (isExactOrder) {
+    return { group: 2, orderedMatchCount };
+  }
+
+  if (orderedMatchCount > 0) {
+    return { group: 1, orderedMatchCount };
+  }
+
+  return { group: 0, orderedMatchCount: 0 };
+};
+
 // Filterfunktion, die den aktuellen Filterzustand nutzt
 const filterKultivare = (
   kultivare,
@@ -130,7 +199,7 @@ const filterKultivare = (
   includeDisc,
   aliasLookup
 ) => {
-  return kultivare
+  const filtered = kultivare
     .filter((k) => isStatusIncluded(k, includeDisc))
     .filter((k) => {
       // Terpene filtern
@@ -164,6 +233,31 @@ const filterKultivare = (
       }
       return true;
     });
+
+  if (!selectedTerpene.size) {
+    return filtered;
+  }
+
+  const selectedOrder = canonicalizeSelectedTerpenes(
+    selectedTerpene,
+    aliasLookup
+  );
+
+  return filtered.slice().sort((a, b) => {
+    const metaA = getOrderMatchMeta(a, selectedOrder, aliasLookup);
+    const metaB = getOrderMatchMeta(b, selectedOrder, aliasLookup);
+
+    if (metaB.group !== metaA.group) {
+      return metaB.group - metaA.group;
+    }
+    if (metaB.orderedMatchCount !== metaA.orderedMatchCount) {
+      return metaB.orderedMatchCount - metaA.orderedMatchCount;
+    }
+
+    const nameA = a?.name || "";
+    const nameB = b?.name || "";
+    return nameA.localeCompare(nameB, "de", { sensitivity: "base" });
+  });
 };
 
 /*
@@ -405,19 +499,20 @@ export default function CannabisKultivarFinderUseReducer() {
               const normalizedWirkungen = Array.isArray(k.wirkungen)
                 ? k.wirkungen.map((w) => normalizeWirkung(w))
                 : [];
-              const normalizedTerpenprofil = Array.isArray(k.terpenprofil)
-                ? Array.from(
-                    new Set(
-                      k.terpenprofil
-                        .map((name) => mapTerpeneToCanonical(name, aliasLookup))
-                        .filter(Boolean)
-                    )
-                  ).slice(0, 5)
+              const normalizedTerpenprofilOrdered = Array.isArray(k.terpenprofil)
+                ? uniqueOrdered(
+                    k.terpenprofil
+                      .map((name) => mapTerpeneToCanonical(name, aliasLookup))
+                      .filter(Boolean)
+                  )
                 : [];
+              const normalizedTerpenprofil =
+                normalizedTerpenprofilOrdered.slice(0, 5);
               return {
                 ...k,
                 normalizedWirkungen,
                 normalizedTerpenprofil,
+                normalizedTerpenprofilOrdered,
               };
             })
           : [];
@@ -823,6 +918,7 @@ export default function CannabisKultivarFinderUseReducer() {
                 onApplySimilar={handleApplySimilarity}
                 includeDiscontinued={filters.includeDiscontinued}
                 onToggleIncludeDiscontinued={handleIncludeDiscontinuedChange}
+                aliasLookup={terpeneLookup}
               />
             </div>
           </details>
