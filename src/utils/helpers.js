@@ -133,6 +133,66 @@ export const radarPathSvg = (name) => {
 export const formatMetricValue = (value) =>
   value == null || value === "" ? "–" : value;
 
+const normalizeDescriptorKey = (value) =>
+  (value || "")
+    .toString()
+    .trim()
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/\p{Diacritic}/gu, "");
+
+const descriptorSynonyms = new Map([
+  ["fruchtig", "fruchtig"],
+  ["fruity", "fruchtig"],
+  ["sweet", "suss"],
+  ["suss", "suss"],
+  ["zitrus", "zitrus"],
+  ["citrus", "zitrus"],
+  ["lemon", "zitrus"],
+  ["erdig", "erdig"],
+  ["earthy", "erdig"],
+  ["blumig", "blumig"],
+  ["floral", "blumig"],
+  ["wuerzig", "wuerzig"],
+  ["wurz", "wuerzig"],
+  ["spicy", "wuerzig"],
+  ["herbal", "krautig"],
+  ["krautig", "krautig"],
+  ["pine", "kiefer"],
+  ["kiefer", "kiefer"],
+  ["diesel", "diesel"],
+  ["gas", "diesel"],
+]);
+
+export const parseDescriptor = (value = "") => {
+  const raw = (value || "").toString();
+  if (!raw.trim()) return [];
+
+  const tokens = raw
+    .split(/[,;\/|\-]+/)
+    .map((entry) =>
+      normalizeDescriptorKey(entry.replace(/[()]/g, "").replace(/\s+/g, " "))
+    )
+    .filter(Boolean)
+    .map((key) => descriptorSynonyms.get(key) || key);
+
+  return tokens.filter((token, index) => tokens.indexOf(token) === index);
+};
+
+export const parseParents = (value = "") => {
+  const raw = (value || "").toString();
+  if (!raw.trim()) return [];
+
+  const tokens = raw
+    .replace(/[()]/g, "")
+    .split(/\s*[x×+\/]\s*/i)
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .map((entry) => normalizeDescriptorKey(entry));
+
+  return tokens.filter((token, index) => tokens.indexOf(token) === index);
+};
+
 export const getCultivarEffects = (cultivar) => {
   if (!cultivar) return [];
 
