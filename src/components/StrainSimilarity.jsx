@@ -118,8 +118,8 @@ function describeSimilarityScore(score = 0) {
 function geneticSimilarity(parentsA = [], parentsB = []) {
   if (!parentsA.length || !parentsB.length) return 0;
   const shared = parentsA.filter((p) => parentsB.includes(p));
-  if (shared.length >= Math.min(parentsA.length, parentsB.length)) return 1;
-  if (shared.length > 0) return 0.5;
+  if (shared.length >= Math.min(parentsA.length, parentsB.length)) return 0.5;
+  if (shared.length > 0) return 0.25;
   return 0;
 }
 
@@ -127,17 +127,6 @@ function scentSimilarity(listA = [], listB = []) {
   if (!listA.length || !listB.length) return 0;
   const shared = listA.filter((t) => listB.includes(t));
   return shared.length / Math.max(listA.length, listB.length);
-}
-
-function computeWeightedSimilarity(components) {
-  const available = components.filter((entry) => entry.available);
-  const totalWeight = available.reduce((sum, entry) => sum + entry.weight, 0);
-  if (totalWeight === 0) return 0;
-  const weightedSum = available.reduce(
-    (sum, entry) => sum + entry.value * entry.weight,
-    0
-  );
-  return weightedSum / totalWeight;
 }
 
 function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
@@ -183,23 +172,8 @@ function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
           ? aromaSim
           : 0;
 
-      const finalSimilarity = computeWeightedSimilarity([
-        {
-          value: weightedSimilarity,
-          weight: 0.6,
-          available: reference.normalizedTerpenes.length && s.normalizedTerpenes.length,
-        },
-        {
-          value: geneticSim,
-          weight: 0.25,
-          available: reference.parents.length && s.parents.length,
-        },
-        {
-          value: scentSim,
-          weight: 0.15,
-          available: smellAvailable || aromaAvailable,
-        },
-      ]);
+      const finalSimilarity =
+        0.75 * weightedSimilarity + 0.15 * scentSim + 0.1 * geneticSim;
 
       return {
         ...s,
@@ -279,7 +253,13 @@ export default function StrainSimilarity({
       includeDiscontinued
         ? strainsWithNormalizedTerpenes
         : strainsWithNormalizedTerpenes.filter(isActiveStrain)
-    ).filter((strain) => strain.normalizedTerpenes.length > 0);
+    ).filter(
+      (strain) =>
+        strain.normalizedTerpenes.length > 0 ||
+        strain.parents.length > 0 ||
+        strain.smellTokens.length > 0 ||
+        strain.aromaTokens.length > 0
+    );
 
     return filtered.sort((a, b) => {
       const nameA = a?.name || "";
@@ -508,6 +488,9 @@ export default function StrainSimilarity({
 
       <p id="strain-select-note" className="similarity-panel__description">
         Tippen Sie, um eine Referenzsorte zu finden. Die Suche filtert live und nutzt Terpenprofil, Genetik sowie Geruchs- und Aromadaten als Basis.
+      </p>
+      <p className="similarity-panel__description">
+        Gewichtung: 75&nbsp;% Terpene, 15&nbsp;% Aroma, 10&nbsp;% Genetik.
       </p>
 
       <fieldset className="similarity-panel__options">

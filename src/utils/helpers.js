@@ -146,7 +146,6 @@ const descriptorSynonyms = new Map([
   ["fruity", "fruchtig"],
   ["sweet", "suss"],
   ["suss", "suss"],
-  ["süß", "suss"],
   ["zitrus", "zitrus"],
   ["citrus", "zitrus"],
   ["lemon", "zitrus"],
@@ -170,7 +169,7 @@ export const parseDescriptor = (value = "") => {
   if (!raw.trim()) return [];
 
   const tokens = raw
-    .split(/[,;/|]+/)
+    .split(/[,;/-|]+/)
     .map((entry) =>
       normalizeDescriptorKey(entry.replace(/[()]/g, "").replace(/\s+/g, " "))
     )
