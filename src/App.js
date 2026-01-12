@@ -510,19 +510,11 @@ export default function CannabisKultivarFinderUseReducer() {
                 : [];
               const normalizedTerpenprofil =
                 normalizedTerpenprofilOrdered.slice(0, 5);
-              const parents = parseParents(k.genetics || k.genetik || "");
-              const smellTokens = parseDescriptor(k.smell || "");
-              const aromaTokens = parseDescriptor(
-                k.aroma || k.flavour || k.taste || ""
-              );
               return {
                 ...k,
                 normalizedWirkungen,
                 normalizedTerpenprofil,
                 normalizedTerpenprofilOrdered,
-                parents,
-                smellTokens,
-                aromaTokens,
               };
             })
           : [];
