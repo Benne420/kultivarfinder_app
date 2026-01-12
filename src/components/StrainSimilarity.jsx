@@ -6,6 +6,7 @@ function isActiveStrain(s = {}) {
   const status = (s.status || s.statut || s.aktiv || "").toString().toLowerCase();
   if (status) {
     if (status === "active" || status === "aktiv" || status === "true") return true;
+    // "inactive" and "discontinued" are not considered active
     return false;
   }
   if (s.active === true) return true;

@@ -1138,7 +1138,7 @@
     "wirkungen": [
       "entzündungshemmend",
       "antioxidativ",
-      "antimikrobiell"
+      "antimykotisch"
     ],
     "typ": "indica-dominant",
     "status": "discontinued",
@@ -1305,10 +1305,9 @@
     "cbd": "<1%",
     "terpengehalt": "1.17%",
     "terpenprofil": ["Caryophyllen", "β-Myrcen", "D-Limonen", "Linalool", "Humulen"],
-    "wirkungen": ["analgetisch", 
-                  "entzündungshemmend"],
+    "wirkungen": ["analgetisch", "entzündungshemmend"],
     "typ": "indica-dominant",
-    "status": "discontinued",
+    "status": "inactive",
     "produktlinie": "EVOLUTION",
     "Kürzel": "PLA",
     "genetics": "White Wedding x Kush Mints #11",
@@ -1322,13 +1321,9 @@
     "cbd": "<1%",
     "terpengehalt": "5.438%",
     "terpenprofil": ["D-Limonen", "β-Caryophyllen", "Germacren B", "Selina-3,7(11)-diene", "Selina 4,7(11)-diene"],
-    "wirkungen": ["entzündungshemmend", 
-                  "antioxidativ", 
-                  "antimykotisch", 
-                  "stresslösend"
-    ],
+    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
     "typ": "indica-dominant",
-    "status": "discontinued",
+    "status": "inactive",
     "produktlinie": "EVOLUTION",
     "Kürzel": "RZY",
     "genetics": "Rozay x Jet A",
@@ -1341,21 +1336,10 @@
     "thc": "25-33%",
     "cbd": "<1%",
     "terpengehalt": "5.446%",
-    "terpenprofil": [
-      "D-Limonen",
-      "β-Caryophyllen",
-      "Selinene",
-      "β-Ocimen",
-      "Germacren B"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "stresslösend"
-    ],
+    "terpenprofil": ["D-Limonen", "β-Caryophyllen", "Selinene", "β-Ocimen", "Germacren B"],
+    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
     "typ": "indica-dominant",
-    "status": "discontinued",
+    "status": "inactive",
     "produktlinie": "EVOLUTION",
     "Kürzel": "MGD",
     "genetics": "Bubblegum Sherb x Magic Marker",

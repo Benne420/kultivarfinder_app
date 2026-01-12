@@ -128,6 +128,7 @@ const isStatusIncluded = (k, includeDisc) => {
   const s = ((k && k.status) || "").toString().trim().toLowerCase();
   if (s === "active") return true;
   if (includeDisc && s === "discontinued") return true;
+  // "inactive" is never shown in regular filters - these are hidden until released
   return false;
 };
 
