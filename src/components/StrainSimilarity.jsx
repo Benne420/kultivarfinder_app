@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useEffect, useId } from "react";
-import { mapTerpeneToCanonical } from "../utils/helpers";
+import { mapTerpeneToCanonical, parseDescriptor, parseParents } from "../utils/helpers";
 
 /* helper: determine whether a strain is considered "active" (same logic as filters) */
 function isActiveStrain(s = {}) {
@@ -107,11 +107,46 @@ function describeSimilarity(overlap = { bucket: 0 }) {
   return null;
 }
 
+function describeSimilarityScore(score = 0) {
+  if (score >= 0.8) return "sehr hoch";
+  if (score >= 0.6) return "hoch";
+  if (score >= 0.4) return "mittel";
+  if (score >= 0.2) return "niedrig";
+  if (score > 0) return "sehr niedrig";
+  return null;
+}
+
+function geneticSimilarity(parentsA = [], parentsB = []) {
+  if (!parentsA.length || !parentsB.length) return 0;
+  const shared = parentsA.filter((p) => parentsB.includes(p));
+  if (shared.length >= Math.min(parentsA.length, parentsB.length)) return 0.5;
+  if (shared.length > 0) return 0.25;
+  return 0;
+}
+
+function scentSimilarity(listA = [], listB = []) {
+  if (!listA.length || !listB.length) return 0;
+  const shared = listA.filter((t) => listB.includes(t));
+  return shared.length / Math.max(listA.length, listB.length);
+}
+
 function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
-  if (!reference?.normalizedTerpenes?.length) return [];
+  const hasTerpenes = reference?.normalizedTerpenes?.length > 0;
+  const hasParents = reference?.parents?.length > 0;
+  const hasSmell = reference?.smellTokens?.length > 0;
+  const hasAroma = reference?.aromaTokens?.length > 0;
+
+  if (!hasTerpenes && !hasParents && !hasSmell && !hasAroma) return [];
 
   return allStrains
-    .filter((s) => s.name !== reference.name && s.normalizedTerpenes.length > 0)
+    .filter((s) => s.name !== reference.name)
+    .filter(
+      (s) =>
+        s.normalizedTerpenes.length > 0 ||
+        s.parents.length > 0 ||
+        s.smellTokens.length > 0 ||
+        s.aromaTokens.length > 0
+    )
     .map((s) => {
       const overlap = getTerpeneOverlap(
         reference.normalizedTerpenes,
@@ -124,17 +159,38 @@ function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
         s.normalizedTerpenes,
         aliasLookup
       );
+      const geneticSim = geneticSimilarity(reference.parents, s.parents);
+      const smellAvailable = reference.smellTokens.length && s.smellTokens.length;
+      const aromaAvailable = reference.aromaTokens.length && s.aromaTokens.length;
+      const smellSim = scentSimilarity(reference.smellTokens, s.smellTokens);
+      const aromaSim = scentSimilarity(reference.aromaTokens, s.aromaTokens);
+      const scentSim =
+        smellAvailable && aromaAvailable
+          ? (smellSim + aromaSim) / 2
+          : smellAvailable
+          ? smellSim
+          : aromaAvailable
+          ? aromaSim
+          : 0;
+
+      const finalSimilarity =
+        0.75 * weightedSimilarity + 0.15 * scentSim + 0.1 * geneticSim;
 
       return {
         ...s,
-        similarity: weightedSimilarity,
+        similarity: finalSimilarity,
         weightedSimilarity,
         cosineSimilarity: cosineScore,
         overlap,
-        similarityLabel: describeSimilarity(overlap),
+        geneticSimilarity: geneticSim,
+        scentSimilarity: scentSim,
+        similarityLabel: describeSimilarityScore(finalSimilarity) || describeSimilarity(overlap),
       };
     })
     .sort((a, b) => {
+      if (b.similarity !== a.similarity) {
+        return b.similarity - a.similarity;
+      }
       if (b.weightedSimilarity !== a.weightedSimilarity) {
         return b.weightedSimilarity - a.weightedSimilarity;
       }
@@ -179,6 +235,15 @@ export default function StrainSimilarity({
             [],
           aliasLookup
         ),
+        parents: Array.isArray(strain.parents)
+          ? strain.parents
+          : parseParents(strain.genetics || strain.genetik || ""),
+        smellTokens: Array.isArray(strain.smellTokens)
+          ? strain.smellTokens
+          : parseDescriptor(strain.smell || ""),
+        aromaTokens: Array.isArray(strain.aromaTokens)
+          ? strain.aromaTokens
+          : parseDescriptor(strain.aroma || strain.flavour || strain.taste || ""),
       })),
     [kultivare, aliasLookup]
   );
@@ -189,7 +254,13 @@ export default function StrainSimilarity({
       includeDiscontinued
         ? strainsWithNormalizedTerpenes
         : strainsWithNormalizedTerpenes.filter(isActiveStrain)
-    ).filter((strain) => strain.normalizedTerpenes.length > 0);
+    ).filter(
+      (strain) =>
+        strain.normalizedTerpenes.length > 0 ||
+        strain.parents.length > 0 ||
+        strain.smellTokens.length > 0 ||
+        strain.aromaTokens.length > 0
+    );
 
     return filtered.sort((a, b) => {
       const nameA = a?.name || "";
@@ -417,7 +488,10 @@ export default function StrainSimilarity({
       </div>
 
       <p id="strain-select-note" className="similarity-panel__description">
-        Tippen Sie, um eine Referenzsorte zu finden. Die Suche filtert live und nutzt das Terpenprofil als Basis.
+        Tippen Sie, um eine Referenzsorte zu finden. Die Suche filtert live und nutzt Terpenprofil, Genetik sowie Geruchs- und Aromadaten als Basis.
+      </p>
+      <p className="similarity-panel__description">
+        Gewichtung: 75&nbsp;% Terpene, 15&nbsp;% Aroma, 10&nbsp;% Genetik.
       </p>
 
       <fieldset className="similarity-panel__options">

@@ -33,6 +33,8 @@ import {
   sortTerpeneNames,
   getComparisonLayoutMetrics,
   COMPARISON_MAX_WIDTH_PX,
+  parseDescriptor,
+  parseParents,
 } from "./utils/helpers";
 import defaultTerpeneOptionsSource from "./data/default-terpene-options.json";
 import defaultWirkungenSource from "./data/default-wirkungen.json";
@@ -509,11 +511,19 @@ export default function CannabisKultivarFinderUseReducer() {
                 : [];
               const normalizedTerpenprofil =
                 normalizedTerpenprofilOrdered.slice(0, 5);
+              const parents = parseParents(k.genetics || k.genetik || "");
+              const smellTokens = parseDescriptor(k.smell || "");
+              const aromaTokens = parseDescriptor(
+                k.aroma || k.flavour || k.taste || ""
+              );
               return {
                 ...k,
                 normalizedWirkungen,
                 normalizedTerpenprofil,
                 normalizedTerpenprofilOrdered,
+                parents,
+                smellTokens,
+                aromaTokens,
               };
             })
           : [];
