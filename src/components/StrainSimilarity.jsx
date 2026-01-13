@@ -306,7 +306,7 @@ export default function StrainSimilarity({
       setSimilarStrains(similar);
       emitResults(reference, similar);
     },
-    [emitResults]
+    [aliasLookup, emitResults]
   );
 
   const handleSelect = useCallback(
