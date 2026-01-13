@@ -169,7 +169,7 @@ export const parseDescriptor = (value = "") => {
   if (!raw.trim()) return [];
 
   const tokens = raw
-    .split(/[,;/-|]+/)
+    .split(/[,;\/|\-]+/)
     .map((entry) =>
       normalizeDescriptorKey(entry.replace(/[()]/g, "").replace(/\s+/g, " "))
     )

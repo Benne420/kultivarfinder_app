@@ -5,7 +5,7 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Prevent variant cultivar JSONs from being committed to the public assets
-public/kultivare.json.bak
+# Backup files and variant cultivar JSONs are only kept in git history
+*.bak
 public/kultivare_new.json
 public/kultivare_normalized.json
