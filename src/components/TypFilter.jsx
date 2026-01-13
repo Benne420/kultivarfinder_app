@@ -2,12 +2,40 @@ import React from "react";
 
 export default function TypFilter({ typ, dispatch, typInfo, showHeading = true }) {
   const [isInfoOpen, setIsInfoOpen] = React.useState(false);
+  const closeButtonRef = React.useRef(null);
+  const openButtonRef = React.useRef(null);
+  const wasInfoOpenRef = React.useRef(false);
   const infoTitleId = "typ-info-title";
   const dialogId = "typ-info-dialog";
   const descriptionId = "typ-info-description";
 
   const openInfo = () => setIsInfoOpen(true);
   const closeInfo = () => setIsInfoOpen(false);
+
+  React.useEffect(() => {
+    if (!isInfoOpen) {
+      if (wasInfoOpenRef.current) {
+        openButtonRef.current?.focus();
+      }
+      wasInfoOpenRef.current = false;
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeInfo();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    closeButtonRef.current?.focus();
+    wasInfoOpenRef.current = true;
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isInfoOpen]);
 
   return (
     <div className="typ-button-group">
@@ -36,6 +64,7 @@ export default function TypFilter({ typ, dispatch, typInfo, showHeading = true }
           aria-haspopup="dialog"
           aria-controls={dialogId}
           aria-describedby={descriptionId}
+          ref={openButtonRef}
         >
           <span className="typ-info__button-icon" aria-hidden="true">
             ℹ️
@@ -57,7 +86,13 @@ export default function TypFilter({ typ, dispatch, typInfo, showHeading = true }
             role="document"
             onClick={(event) => event.stopPropagation()}
           >
-            <button type="button" className="modal-close" onClick={closeInfo} aria-label="Dialog schließen">
+            <button
+              type="button"
+              className="modal-close"
+              onClick={closeInfo}
+              aria-label="Dialog schließen"
+              ref={closeButtonRef}
+            >
               ×
             </button>
             <h4 id={infoTitleId} className="modal-title">
