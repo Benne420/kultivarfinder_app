@@ -321,11 +321,21 @@ export default function StrainSimilarity({
 
   const handleChange = (event) => {
     const nextQuery = event.target.value;
+    const normalizedQuery = nextQuery.trim().toLowerCase();
+    const normalizedSelectedName = selectedName.trim().toLowerCase();
     setQuery(nextQuery);
     setIsOpen(true);
     setActiveIndex(0);
-    if (!nextQuery) {
+    if (!normalizedQuery) {
       setSelectedName("");
+      setSimilarStrains([]);
+      emitResults(null, []);
+      return;
+    }
+    if (selectedName && normalizedQuery !== normalizedSelectedName) {
+      setSelectedName("");
+      setSimilarStrains([]);
+      emitResults(null, []);
     }
   };
 
