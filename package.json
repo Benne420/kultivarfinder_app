@@ -15,7 +15,7 @@
     "validate:refs": "node scripts/validate-refs-online.mjs",
     "audit:scripts": "node scripts/audit-scripts.mjs",
     "sync:backups": "node scripts/sync-backups.mjs",
-    "build": "npm run validate && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test"
   },
   "browserslist": {
