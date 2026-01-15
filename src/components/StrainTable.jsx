@@ -18,7 +18,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
   }
 
   const { name = "Unbekannt", thc, cbd, normalizedTerpenprofil, terpenprofil } = strain;
-  const geneticsValue = strain.genetics || strain.genetik;
+  const geneticsValue = (strain.genetics ?? strain.genetik ?? "").toString().trim();
   const pdfUrl = useMemo(() => toSafePdfPath(name), [name]);
   const terpeneList = useMemo(() => {
     if (Array.isArray(normalizedTerpenprofil) && normalizedTerpenprofil.length) {
