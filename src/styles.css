@@ -2586,7 +2586,8 @@ nav a:hover {
 }
 
 .strain-table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   background: rgba(255, 255, 255, 0.95);

@@ -1,6 +1,12 @@
 import { useMemo } from "react";
 
-export default function TerpeneChips({ list = [], onInfo, describedBy }) {
+export default function TerpeneChips({
+  list = [],
+  onInfo,
+  describedBy,
+  limit,
+  dominantCount = 1,
+}) {
   const orderedList = useMemo(() => {
     if (!Array.isArray(list)) return [];
 
@@ -16,7 +22,10 @@ export default function TerpeneChips({ list = [], onInfo, describedBy }) {
       });
   }, [list]);
 
-  if (orderedList.length === 0) {
+  const displayList =
+    typeof limit === "number" && limit > 0 ? orderedList.slice(0, limit) : orderedList;
+
+  if (displayList.length === 0) {
     return (
       <p className="terp-list__placeholder" role="status">
         Kein Terpenprofil hinterlegt. Die Angaben fehlen entweder im Datensatz
@@ -34,8 +43,8 @@ export default function TerpeneChips({ list = [], onInfo, describedBy }) {
   return (
     <div className="terp-list__wrapper" aria-describedby={describedBy}>
       <ul className="terp-list" aria-label="Terpenprofil">
-        {orderedList.map((t, idx) => {
-          const dominance = idx === 0 ? "dominant" : "supporting";
+        {displayList.map((t, idx) => {
+          const dominance = idx < dominantCount ? "dominant" : "supporting";
           return (
             <li key={`${t}-${idx}`}>
               <button
