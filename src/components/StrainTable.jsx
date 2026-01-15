@@ -103,7 +103,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
       <td className="hidden-sm" data-label="CBD">
         {cbd || "N/A"}
       </td>
-      <td className="hidden-sm" data-label="Genetik">
+      <td className="hidden-sm genetics-column" data-label="Genetik" title={geneticsValue || "–"}>
         {geneticsValue || "–"}
       </td>
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
@@ -225,7 +225,7 @@ export default function StrainTable({
               <th className="hidden-sm" scope="col">
                 CBD
               </th>
-              <th className="hidden-sm" scope="col">
+              <th className="hidden-sm genetics-column" scope="col">
                 Genetik
               </th>
               <th className="hidden-sm terpenprofil-header" scope="col">

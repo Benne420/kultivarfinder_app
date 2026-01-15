@@ -2613,6 +2613,10 @@ nav a:hover {
   text-align: center;
 }
 
+.strain-table .genetics-column {
+  width: 180px;
+}
+
 .strain-table th.terpenprofil-header,
 .strain-table td.terpenprofil-cell {
   text-align: center;
