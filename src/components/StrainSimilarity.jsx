@@ -119,7 +119,14 @@ function describeSimilarityScore(score = 0) {
 function geneticSimilarity(parentsA = [], parentsB = []) {
   if (!parentsA.length || !parentsB.length) return 0;
   const shared = parentsA.filter((p) => parentsB.includes(p));
-  if (shared.length >= Math.min(parentsA.length, parentsB.length)) return 0.5;
+  const sameLength = parentsA.length === parentsB.length;
+  const uniqueA = new Set(parentsA);
+  const uniqueB = new Set(parentsB);
+  const hasSameParents =
+    sameLength &&
+    uniqueA.size === uniqueB.size &&
+    Array.from(uniqueA).every((parent) => uniqueB.has(parent));
+  if (hasSameParents) return 0.5;
   if (shared.length > 0) return 0.25;
   return 0;
 }
