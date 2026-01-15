@@ -1,5 +1,10 @@
 import React, { useState, useMemo, useCallback, useEffect, useId } from "react";
-import { mapTerpeneToCanonical, parseDescriptor, parseParents } from "../utils/helpers";
+import {
+  mapTerpeneToCanonical,
+  normalizeDescriptorArray,
+  parseDescriptor,
+  parseParents,
+} from "../utils/helpers";
 
 /* helper: determine whether a strain is considered "active" (same logic as filters) */
 function isActiveStrain(s = {}) {
@@ -243,13 +248,13 @@ export default function StrainSimilarity({
           aliasLookup
         ),
         parents: Array.isArray(strain.parents)
-          ? strain.parents
+          ? normalizeDescriptorArray(strain.parents)
           : parseParents(strain.genetics || strain.genetik || ""),
         smellTokens: Array.isArray(strain.smellTokens)
-          ? strain.smellTokens
+          ? normalizeDescriptorArray(strain.smellTokens)
           : parseDescriptor(strain.smell || ""),
         aromaTokens: Array.isArray(strain.aromaTokens)
-          ? strain.aromaTokens
+          ? normalizeDescriptorArray(strain.aromaTokens)
           : parseDescriptor(strain.aroma || strain.flavour || strain.taste || ""),
       })),
     [kultivare, aliasLookup]

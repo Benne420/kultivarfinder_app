@@ -180,6 +180,19 @@ export const parseDescriptor = (value = "") => {
   return tokens.filter((token, index) => tokens.indexOf(token) === index);
 };
 
+export const normalizeDescriptorArray = (values = []) => {
+  if (!Array.isArray(values)) return [];
+
+  const tokens = values
+    .map((entry) =>
+      normalizeDescriptorKey((entry || "").toString().replace(/[()]/g, "").replace(/\s+/g, " "))
+    )
+    .filter(Boolean)
+    .map((key) => descriptorSynonyms.get(key) || key);
+
+  return tokens.filter((token, index) => tokens.indexOf(token) === index);
+};
+
 export const parseParents = (value = "") => {
   const raw = (value || "").toString();
   if (!raw.trim()) return [];
