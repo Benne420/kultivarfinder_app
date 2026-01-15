@@ -2697,7 +2697,7 @@ nav a:hover {
 }
 
 .strain-table .action-cell {
-  min-width: 200px;
+  min-width: 160px;
 }
 
 .strain-table .action-button {
@@ -2718,7 +2718,7 @@ nav a:hover {
   justify-content: center;
   text-align: center;
   font-weight: 700;
-  min-width: 180px;
+  min-width: 140px;
 }
 
 .strain-table .action-button:hover,
