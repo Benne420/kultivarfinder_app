@@ -2587,6 +2587,7 @@ nav a:hover {
 
 .strain-table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
   background: rgba(255, 255, 255, 0.95);
@@ -2599,14 +2600,21 @@ nav a:hover {
 .strain-table th,
 .strain-table td {
   vertical-align: top;
-  padding: 12px 16px;
+  padding: 10px 12px;
   border-bottom: 1px solid #e1e9f5;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .strain-table .comparison-column {
-  width: 120px;
+  width: 100px;
   text-align: center;
+}
+
+.strain-table .genetics-column {
+  width: 180px;
 }
 
 .strain-table th.terpenprofil-header,
@@ -2697,7 +2705,7 @@ nav a:hover {
 }
 
 .strain-table .action-cell {
-  min-width: 200px;
+  min-width: 140px;
 }
 
 .strain-table .action-button {
@@ -2718,7 +2726,7 @@ nav a:hover {
   justify-content: center;
   text-align: center;
   font-weight: 700;
-  min-width: 180px;
+  min-width: 120px;
 }
 
 .strain-table .action-button:hover,
