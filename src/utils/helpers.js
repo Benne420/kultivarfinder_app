@@ -138,6 +138,7 @@ const normalizeDescriptorKey = (value) =>
     .toString()
     .trim()
     .toLowerCase()
+    .replace(/ß/g, "ss")
     .normalize("NFKD")
     .replace(/\p{Diacritic}/gu, "");
 
