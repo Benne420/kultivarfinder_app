@@ -608,6 +608,13 @@ nav a:hover {
   border-radius: 10px;
 }
 
+.filters__disclaimer {
+  margin: 2px 0 6px;
+  font-size: 12px;
+  color: #546e7a;
+  line-height: 1.5;
+}
+
 .filters .select-row {
   display: flex;
   gap: 12px;
