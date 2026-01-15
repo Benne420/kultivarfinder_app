@@ -2602,6 +2602,7 @@ nav a:hover {
   padding: 10px 12px;
   border-bottom: 1px solid #e1e9f5;
   text-align: left;
+  white-space: nowrap;
 }
 
 .strain-table .comparison-column {
