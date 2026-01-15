@@ -18,6 +18,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
   }
 
   const { name = "Unbekannt", thc, cbd, normalizedTerpenprofil, terpenprofil } = strain;
+  const geneticsValue = strain.genetics || strain.genetik;
   const pdfUrl = useMemo(() => toSafePdfPath(name), [name]);
   const terpeneList = useMemo(() => {
     if (Array.isArray(normalizedTerpenprofil) && normalizedTerpenprofil.length) {
@@ -101,6 +102,9 @@ const StrainTableRow = React.memo(function StrainTableRow({
       </td>
       <td className="hidden-sm" data-label="CBD">
         {cbd || "N/A"}
+      </td>
+      <td className="hidden-sm" data-label="Genetik">
+        {geneticsValue || "–"}
       </td>
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
         <TerpeneChips
@@ -218,6 +222,9 @@ export default function StrainTable({
               <th scope="col">THC</th>
               <th className="hidden-sm" scope="col">
                 CBD
+              </th>
+              <th className="hidden-sm" scope="col">
+                Genetik
               </th>
               <th className="hidden-sm terpenprofil-header" scope="col">
                 Terpenprofil
