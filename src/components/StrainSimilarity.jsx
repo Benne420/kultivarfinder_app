@@ -221,6 +221,15 @@ function matchesQuery(name, query) {
   return terms.every((term) => normalized.includes(term));
 }
 
+const normalizeName = (value = "") =>
+  value
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/ß/g, "ss")
+    .normalize("NFKD")
+    .replace(/\p{Diacritic}/gu, "");
+
 export default function StrainSimilarity({
   kultivare = [],
   onApplySimilar,
@@ -260,26 +269,45 @@ export default function StrainSimilarity({
     [kultivare, aliasLookup]
   );
 
+  const parentNameSet = useMemo(() => {
+    const set = new Set();
+    strainsWithNormalizedTerpenes.forEach((strain) => {
+      strain.parents.forEach((parent) => set.add(parent));
+    });
+    return set;
+  }, [strainsWithNormalizedTerpenes]);
+
   // only consider active strains for dropdown / comparisons unless discontinued should be included
   const selectableStrains = useMemo(() => {
     const filtered = (
       includeDiscontinued
         ? strainsWithNormalizedTerpenes
-        : strainsWithNormalizedTerpenes.filter(isActiveStrain)
-    ).filter(
-      (strain) =>
+        : strainsWithNormalizedTerpenes.filter((strain) => {
+            if (isActiveStrain(strain)) {
+              return true;
+            }
+            const normalizedName = normalizeName(strain.name || "");
+            return normalizedName ? parentNameSet.has(normalizedName) : false;
+          })
+    ).filter((strain) => {
+      const hasSimilarityData =
         strain.normalizedTerpenes.length > 0 ||
         strain.parents.length > 0 ||
         strain.smellTokens.length > 0 ||
-        strain.aromaTokens.length > 0
-    );
+        strain.aromaTokens.length > 0;
+      if (hasSimilarityData) {
+        return true;
+      }
+      const normalizedName = normalizeName(strain.name || "");
+      return normalizedName ? parentNameSet.has(normalizedName) : false;
+    });
 
     return filtered.sort((a, b) => {
       const nameA = a?.name || "";
       const nameB = b?.name || "";
       return nameA.localeCompare(nameB, "de", { sensitivity: "base" });
     });
-  }, [includeDiscontinued, strainsWithNormalizedTerpenes]);
+  }, [includeDiscontinued, parentNameSet, strainsWithNormalizedTerpenes]);
 
   const filteredStrains = useMemo(() => {
     const trimmed = query.trim();

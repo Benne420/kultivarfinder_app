@@ -991,6 +991,10 @@ export default function CannabisKultivarFinderUseReducer() {
                 optionPrefix="wirkung"
                 resetLabel="Wirkungsfilter zurücksetzen"
               />
+              <p className="filters__disclaimer" role="note">
+                Hinweis: Die Wirkungsangaben sind rein beschreibend, dienen nur der Orientierung und stellen keine
+                medizinische Beratung oder Heilaussage dar.
+              </p>
 
               <div className="comparison-toolbar" role="region" aria-label="Vergleichsauswahl">
                 <p className="comparison-toolbar__hint">
