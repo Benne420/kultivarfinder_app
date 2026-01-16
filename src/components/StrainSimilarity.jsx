@@ -142,6 +142,15 @@ function scentSimilarity(listA = [], listB = []) {
   return shared.length / Math.max(listA.length, listB.length);
 }
 
+const normalizeName = (value = "") =>
+  value
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/ß/g, "ss")
+    .normalize("NFKD")
+    .replace(/\p{Diacritic}/gu, "");
+
 function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
   const hasTerpenes = reference?.normalizedTerpenes?.length > 0;
   const hasParents = reference?.parents?.length > 0;
@@ -153,13 +162,23 @@ function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
   return allStrains
     .filter((s) => s.name !== reference.name)
     .filter(
-      (s) =>
-        s.normalizedTerpenes.length > 0 ||
-        s.parents.length > 0 ||
-        s.smellTokens.length > 0 ||
-        s.aromaTokens.length > 0
+      (s) => {
+        const normalizedName = normalizeName(s.name || "");
+        const isParentMatch =
+          normalizedName && reference.parents.includes(normalizedName);
+        return (
+          isParentMatch ||
+          s.normalizedTerpenes.length > 0 ||
+          s.parents.length > 0 ||
+          s.smellTokens.length > 0 ||
+          s.aromaTokens.length > 0
+        );
+      }
     )
     .map((s) => {
+      const normalizedName = normalizeName(s.name || "");
+      const isParentMatch =
+        normalizedName && reference.parents.includes(normalizedName);
       const overlap = getTerpeneOverlap(
         reference.normalizedTerpenes,
         s.normalizedTerpenes,
@@ -185,8 +204,11 @@ function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
           ? aromaSim
           : 0;
 
-      const finalSimilarity =
+      const baseSimilarity =
         0.75 * weightedSimilarity + 0.15 * scentSim + 0.1 * geneticSim;
+      const finalSimilarity = isParentMatch
+        ? Math.max(baseSimilarity, 0.1)
+        : baseSimilarity;
 
       return {
         ...s,
@@ -196,7 +218,9 @@ function findSimilar(reference, allStrains, aliasLookup, limit = 5) {
         overlap,
         geneticSimilarity: geneticSim,
         scentSimilarity: scentSim,
-        similarityLabel: describeSimilarityScore(finalSimilarity) || describeSimilarity(overlap),
+        similarityLabel:
+          describeSimilarityScore(finalSimilarity) ||
+          (isParentMatch ? "Elternteil" : describeSimilarity(overlap)),
       };
     })
     .sort((a, b) => {
@@ -220,15 +244,6 @@ function matchesQuery(name, query) {
     .filter(Boolean);
   return terms.every((term) => normalized.includes(term));
 }
-
-const normalizeName = (value = "") =>
-  value
-    .toString()
-    .trim()
-    .toLowerCase()
-    .replace(/ß/g, "ss")
-    .normalize("NFKD")
-    .replace(/\p{Diacritic}/gu, "");
 
 export default function StrainSimilarity({
   kultivare = [],
