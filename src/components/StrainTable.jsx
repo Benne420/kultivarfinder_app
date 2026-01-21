@@ -148,6 +148,11 @@ export default function StrainTable({
   }, [strains]);
 
   const totalItems = Array.isArray(strains) ? strains.length : 0;
+  const columnCount = hasSimilarityColumn ? 6 : 5;
+  const columnSlots = useMemo(
+    () => Array.from({ length: columnCount }, (_, index) => index),
+    [columnCount]
+  );
 
   const visibleStrains = useMemo(() => {
     if (!Array.isArray(strains) || strains.length === 0) {
@@ -207,6 +212,11 @@ export default function StrainTable({
     <div className="strain-table-wrapper" ref={tableRef}>
       {visibleStrains && visibleStrains.length ? (
         <table className="strain-table">
+          <colgroup>
+            {columnSlots.map((slot) => (
+              <col key={slot} style={{ width: `${100 / columnCount}%` }} />
+            ))}
+          </colgroup>
           <thead>
             <tr>
               <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">

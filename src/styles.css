@@ -2619,8 +2619,6 @@ nav a:hover {
 }
 
 .strain-table .comparison-column {
-  min-width: 80px;
-  width: 90px;
   text-align: center;
 }
 
@@ -2721,8 +2719,7 @@ nav a:hover {
 }
 
 .strain-table .action-cell {
-  min-width: 120px;
-  width: 130px;
+  text-align: center;
 }
 
 .strain-table .action-button {
