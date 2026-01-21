@@ -17,8 +17,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
     return null;
   }
 
-  const { name = "Unbekannt", thc, cbd, normalizedTerpenprofil, terpenprofil } = strain;
-  const geneticsValue = (strain.genetics ?? strain.genetik ?? "").toString().trim();
+  const { name = "Unbekannt", thc, normalizedTerpenprofil, terpenprofil } = strain;
   const pdfUrl = useMemo(() => toSafePdfPath(name), [name]);
   const terpeneList = useMemo(() => {
     if (Array.isArray(normalizedTerpenprofil) && normalizedTerpenprofil.length) {
@@ -63,7 +62,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
           <span aria-hidden="true" />
         </label>
       </td>
-      <td data-label="Name">
+      <td className="name-cell" data-label="Name">
         <a
           className="link-button action-button strain-table__name-button"
           href={pdfUrl}
@@ -99,12 +98,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
       )}
       <td data-label="THC">
         <span className="thc-values">{thc || "N/A"}</span>
-      </td>
-      <td className="hidden-sm" data-label="CBD">
-        {cbd || "N/A"}
-      </td>
-      <td className="hidden-sm genetics-column" data-label="Genetik" title={geneticsValue || "–"}>
-        {geneticsValue || "–"}
       </td>
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
         <TerpeneChips
@@ -155,6 +148,11 @@ export default function StrainTable({
   }, [strains]);
 
   const totalItems = Array.isArray(strains) ? strains.length : 0;
+  const columnCount = hasSimilarityColumn ? 6 : 5;
+  const columnSlots = useMemo(
+    () => Array.from({ length: columnCount }, (_, index) => index),
+    [columnCount]
+  );
 
   const visibleStrains = useMemo(() => {
     if (!Array.isArray(strains) || strains.length === 0) {
@@ -214,6 +212,11 @@ export default function StrainTable({
     <div className="strain-table-wrapper" ref={tableRef}>
       {visibleStrains && visibleStrains.length ? (
         <table className="strain-table">
+          <colgroup>
+            {columnSlots.map((slot) => (
+              <col key={slot} style={{ width: `${100 / columnCount}%` }} />
+            ))}
+          </colgroup>
           <thead>
             <tr>
               <th className="comparison-column" scope="col" aria-label="Zur Vergleichsauswahl">
@@ -222,12 +225,6 @@ export default function StrainTable({
               <th scope="col">Name</th>
               {hasSimilarityColumn && <th className="similarity-column" scope="col">Übereinstimmung</th>}
               <th scope="col">THC</th>
-              <th className="hidden-sm" scope="col">
-                CBD
-              </th>
-              <th className="hidden-sm genetics-column" scope="col">
-                Genetik
-              </th>
               <th className="hidden-sm terpenprofil-header" scope="col">
                 Terpenprofil
               </th>

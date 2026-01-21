@@ -201,8 +201,8 @@ button,
   text-transform: uppercase;
 }
 .container {
-  width: min(var(--layout-max-width, 1200px), 94vw);
-  max-width: min(var(--layout-max-width, 1200px), 94vw);
+  width: min(var(--layout-max-width, 1400px), 96vw);
+  max-width: min(var(--layout-max-width, 1400px), 96vw);
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -567,9 +567,11 @@ nav a:hover {
 }
 
 .filter-section__title {
+  flex: 1;
   font-size: 16px;
   font-weight: 700;
   color: #0f1f33;
+  text-align: center;
 }
 
 .filter-section__chevron {
@@ -973,6 +975,7 @@ nav a:hover {
   font-weight: 700;
   letter-spacing: 0.01em;
   color: #263238;
+  text-align: center;
 }
 
 .comparison-column {
@@ -2483,8 +2486,8 @@ nav a:hover {
 }
 
 .modal--terpene-radar {
-  max-width: min(var(--layout-max-width, 1200px), 94vw);
-  width: min(var(--layout-max-width, 1200px), 94vw);
+  max-width: min(var(--layout-max-width, 1400px), 96vw);
+  width: min(var(--layout-max-width, 1400px), 96vw);
 }
 
 
@@ -2616,12 +2619,16 @@ nav a:hover {
 }
 
 .strain-table .comparison-column {
-  width: 100px;
   text-align: center;
 }
 
 .strain-table .genetics-column {
-  width: 180px;
+  min-width: 140px;
+  width: 160px;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: break-word;
 }
 
 .strain-table th.terpenprofil-header,
@@ -2712,7 +2719,14 @@ nav a:hover {
 }
 
 .strain-table .action-cell {
-  min-width: 140px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.strain-table .name-cell {
+  text-align: center;
 }
 
 .strain-table .action-button {
