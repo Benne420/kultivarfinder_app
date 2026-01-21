@@ -2624,6 +2624,10 @@ nav a:hover {
 .strain-table .genetics-column {
   min-width: 140px;
   width: 160px;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: break-word;
 }
 
 .strain-table th.terpenprofil-header,
