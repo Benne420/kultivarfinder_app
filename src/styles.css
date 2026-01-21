@@ -201,8 +201,8 @@ button,
   text-transform: uppercase;
 }
 .container {
-  width: min(var(--layout-max-width, 1200px), 94vw);
-  max-width: min(var(--layout-max-width, 1200px), 94vw);
+  width: min(var(--layout-max-width, 1400px), 96vw);
+  max-width: min(var(--layout-max-width, 1400px), 96vw);
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -567,9 +567,11 @@ nav a:hover {
 }
 
 .filter-section__title {
+  flex: 1;
   font-size: 16px;
   font-weight: 700;
   color: #0f1f33;
+  text-align: center;
 }
 
 .filter-section__chevron {
@@ -973,6 +975,7 @@ nav a:hover {
   font-weight: 700;
   letter-spacing: 0.01em;
   color: #263238;
+  text-align: center;
 }
 
 .comparison-column {
@@ -2483,8 +2486,8 @@ nav a:hover {
 }
 
 .modal--terpene-radar {
-  max-width: min(var(--layout-max-width, 1200px), 94vw);
-  width: min(var(--layout-max-width, 1200px), 94vw);
+  max-width: min(var(--layout-max-width, 1400px), 96vw);
+  width: min(var(--layout-max-width, 1400px), 96vw);
 }
 
 
