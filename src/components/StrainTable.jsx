@@ -17,7 +17,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
     return null;
   }
 
-  const { name = "Unbekannt", thc, cbd, normalizedTerpenprofil, terpenprofil } = strain;
+  const { name = "Unbekannt", thc, normalizedTerpenprofil, terpenprofil } = strain;
   const geneticsValue = (strain.genetics ?? strain.genetik ?? "").toString().trim();
   const pdfUrl = useMemo(() => toSafePdfPath(name), [name]);
   const terpeneList = useMemo(() => {
@@ -99,9 +99,6 @@ const StrainTableRow = React.memo(function StrainTableRow({
       )}
       <td data-label="THC">
         <span className="thc-values">{thc || "N/A"}</span>
-      </td>
-      <td className="hidden-sm" data-label="CBD">
-        {cbd || "N/A"}
       </td>
       <td className="hidden-sm genetics-column" data-label="Genetik" title={geneticsValue || "–"}>
         {geneticsValue || "–"}
@@ -222,9 +219,6 @@ export default function StrainTable({
               <th scope="col">Name</th>
               {hasSimilarityColumn && <th className="similarity-column" scope="col">Übereinstimmung</th>}
               <th scope="col">THC</th>
-              <th className="hidden-sm" scope="col">
-                CBD
-              </th>
               <th className="hidden-sm genetics-column" scope="col">
                 Genetik
               </th>
