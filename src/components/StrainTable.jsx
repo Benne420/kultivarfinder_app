@@ -62,7 +62,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
           <span aria-hidden="true" />
         </label>
       </td>
-      <td data-label="Name">
+      <td className="name-cell" data-label="Name">
         <a
           className="link-button action-button strain-table__name-button"
           href={pdfUrl}

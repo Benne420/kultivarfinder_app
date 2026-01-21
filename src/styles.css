@@ -2720,6 +2720,13 @@ nav a:hover {
 
 .strain-table .action-cell {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.strain-table .name-cell {
+  text-align: center;
 }
 
 .strain-table .action-button {
