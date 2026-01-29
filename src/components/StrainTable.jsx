@@ -96,10 +96,10 @@ const StrainTableRow = React.memo(function StrainTableRow({
           )}
         </td>
       )}
-      <td data-label="THC">
+      <td className="thc-cell" data-label="THC">
         <span className="thc-values">{thc || "N/A"}</span>
       </td>
-      <td className="hidden-sm" data-label="CBD">
+      <td className="hidden-sm cbd-cell" data-label="CBD">
         <span className="thc-values">{cbd || "N/A"}</span>
       </td>
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">

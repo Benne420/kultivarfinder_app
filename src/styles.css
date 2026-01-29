@@ -2774,6 +2774,14 @@ nav a:hover {
   justify-content: center;
 }
 
+.strain-table .comparison-column,
+.strain-table .name-cell,
+.strain-table .thc-cell,
+.strain-table .cbd-cell,
+.strain-table .action-cell {
+  vertical-align: middle;
+}
+
 .strain-table .name-cell {
   text-align: center;
 }
