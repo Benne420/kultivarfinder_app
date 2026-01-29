@@ -591,7 +591,7 @@ export default function CannabisKultivarFinderUseReducer() {
   const [selectedCultivars, setSelectedCultivars] = useState([]);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isComparisonDetailsOpen, setIsComparisonDetailsOpen] = useState(false);
-  const [viewMode, setViewMode] = useState("grid");
+  const [viewMode, setViewMode] = useState("list");
 
   const [viewportWidth, setViewportWidth] = useState(() => {
     if (typeof window === "undefined") {
