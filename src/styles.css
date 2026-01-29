@@ -2610,9 +2610,9 @@ nav a:hover {
 .strain-table th,
 .strain-table td {
   vertical-align: top;
-  padding: 10px 12px;
+  padding: 16px 20px;
   border-bottom: 1px solid #e1e9f5;
-  text-align: left;
+  text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
