@@ -1205,7 +1205,8 @@ nav a:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px 10px;
+  gap: 6px;
+  justify-content: center;
   margin: 0;
   padding: 0;
 }
@@ -2611,12 +2612,30 @@ nav a:hover {
 .strain-table td {
   vertical-align: top;
   padding: 12px 16px;
-  border-bottom: 1px solid #e1e9f5;
   text-align: center;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.strain-table tbody td {
+  border-bottom: none;
+}
+
+.strain-table tbody tr {
+  position: relative;
+}
+
+.strain-table tbody tr::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #e1e9f5;
+  pointer-events: none;
 }
 
 .strain-table .comparison-column {
@@ -2634,6 +2653,8 @@ nav a:hover {
 
 .strain-table th.terpenprofil-header,
 .strain-table td.terpenprofil-cell {
+  min-width: 240px;
+  width: 240px;
   text-align: center;
 }
 
@@ -2641,6 +2662,18 @@ nav a:hover {
   white-space: normal;
   overflow: visible;
   text-overflow: clip;
+}
+
+.strain-table td.terpenprofil-cell .terp-list {
+  align-content: flex-start;
+  gap: 4px;
+  overflow: visible;
+}
+
+.strain-table td.terpenprofil-cell .terp-chip {
+  padding: 2px 6px;
+  font-size: 10px;
+  line-height: 1.2;
 }
 
 .strain-table thead {
