@@ -104,7 +104,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
           list={terpeneList}
           onInfo={handleShowTerpeneInfo}
           describedBy={terpeneLegendId}
-          dominantCount={2}
+          dominantCount={1}
         />
       </td>
       <td data-label="Details" className="action-cell">

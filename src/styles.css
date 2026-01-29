@@ -2636,6 +2636,12 @@ nav a:hover {
   text-align: center;
 }
 
+.strain-table td.terpenprofil-cell {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
 .strain-table thead {
   background: #f5f8fd;
   color: #35506b;
