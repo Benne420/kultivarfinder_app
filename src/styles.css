@@ -2615,6 +2615,11 @@ nav a:hover {
   text-align: center;
   line-height: 1.2;
   white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.strain-table td:not(.terpenprofil-cell):not(.genetics-column) {
   overflow: hidden;
   text-overflow: ellipsis;
 }
