@@ -2800,6 +2800,10 @@ nav a:hover {
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
+.strain-table .action-cell .action-button {
+  margin: 0 auto;
+}
+
 .strain-table .strain-table__name-button {
   justify-content: center;
   text-align: center;
