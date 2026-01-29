@@ -665,6 +665,22 @@
     "code": "MAC"
   },
   {
+    "name": "Magic Gum Drops",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "5.446%",
+    "terpenprofil": ["D-Limonen", "β-Caryophyllen", "Selinene", "β-Ocimen", "Germacren B"],
+    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "EVOLUTION",
+    "Kürzel": "MGD",
+    "genetics": "Bubblegum Sherb x Magic Marker",
+    "smell": "süß, gassy",
+    "taste": "süß, Kaugummi, gassy",
+    "code": "MGD"
+  },
+  {
     "name": "Masterpiece",
     "thc": "27-33%",
     "cbd": "<1%",
@@ -845,6 +861,22 @@
     "smell": "Diesel, erdig, saure Kirschen",
     "taste": "Fruchtig, süß, beerig",
     "code": "POG"
+  },
+{
+    "name": "Platinum Kush",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "1.17%",
+    "terpenprofil": ["Caryophyllen", "β-Myrcen", "D-Limonen", "Linalool", "Humulen"],
+    "wirkungen": ["analgetisch", "entzündungshemmend"],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "EVOLUTION",
+    "Kürzel": "PLA",
+    "genetics": "White Wedding x Kush Mints #11",
+    "smell": "Beeren, Pinie, Diesel",
+    "taste": "fruchtig, würzig, cremig",
+    "code": "PLA"
   },
   {
     "name": "Platinum Pavé",
@@ -1300,22 +1332,6 @@
     "code": "ZRP"
   },
   {
-    "name": "Platinum Kush",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "1.17%",
-    "terpenprofil": ["Caryophyllen", "β-Myrcen", "D-Limonen", "Linalool", "Humulen"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "PLA",
-    "genetics": "White Wedding x Kush Mints #11",
-    "smell": "Beeren, Pinie, Diesel",
-    "taste": "fruchtig, würzig, cremig",
-    "code": "PLA"
-  },
-  {
     "name": "Red Rozay",
     "thc": "25-33%",
     "cbd": "<1%",
@@ -1330,21 +1346,5 @@
     "smell": "blumig, fruchtig, cremig, kerosin",
     "taste": "blumig, fruchtig, cremig, kerosin",
     "code": "RZY"
-  },
-  {
-    "name": "Magic Gum Drops",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "5.446%",
-    "terpenprofil": ["D-Limonen", "β-Caryophyllen", "Selinene", "β-Ocimen", "Germacren B"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "MGD",
-    "genetics": "Bubblegum Sherb x Magic Marker",
-    "smell": "süß, gassy",
-    "taste": "süß, Kaugummi, gassy",
-    "code": "MGD"
   }
 ]
