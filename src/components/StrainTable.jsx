@@ -17,7 +17,7 @@ const StrainTableRow = React.memo(function StrainTableRow({
     return null;
   }
 
-  const { name = "Unbekannt", thc, normalizedTerpenprofil, terpenprofil } = strain;
+  const { name = "Unbekannt", thc, cbd, normalizedTerpenprofil, terpenprofil } = strain;
   const pdfUrl = useMemo(() => toSafePdfPath(name), [name]);
   const terpeneList = useMemo(() => {
     if (Array.isArray(normalizedTerpenprofil) && normalizedTerpenprofil.length) {
@@ -99,6 +99,9 @@ const StrainTableRow = React.memo(function StrainTableRow({
       <td data-label="THC">
         <span className="thc-values">{thc || "N/A"}</span>
       </td>
+      <td className="hidden-sm" data-label="CBD">
+        <span className="thc-values">{cbd || "N/A"}</span>
+      </td>
       <td className="hidden-sm terpenprofil-cell" data-label="Terpenprofil">
         <TerpeneChips
           list={terpeneList}
@@ -147,7 +150,7 @@ export default function StrainTable({
   }, [strains]);
 
   const totalItems = Array.isArray(strains) ? strains.length : 0;
-  const columnCount = hasSimilarityColumn ? 6 : 5;
+  const columnCount = hasSimilarityColumn ? 7 : 6;
   const columnSlots = useMemo(
     () => Array.from({ length: columnCount }, (_, index) => index),
     [columnCount]
@@ -224,6 +227,7 @@ export default function StrainTable({
               <th scope="col">Name</th>
               {hasSimilarityColumn && <th className="similarity-column" scope="col">Übereinstimmung</th>}
               <th scope="col">THC</th>
+              <th className="hidden-sm" scope="col">CBD</th>
               <th className="hidden-sm terpenprofil-header" scope="col">
                 Terpenprofil
               </th>

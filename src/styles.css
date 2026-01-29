@@ -2653,6 +2653,10 @@ nav a:hover {
   z-index: 2;
 }
 
+.hidden-sm {
+  display: table-cell;
+}
+
 .strain-table tbody tr:hover {
   background: rgba(232, 241, 255, 0.45);
 }
@@ -2870,6 +2874,10 @@ nav a:hover {
   .strain-table th,
   .strain-table td {
     padding: 10px 12px;
+  }
+
+  .hidden-sm {
+    display: none !important;
   }
 }
 
