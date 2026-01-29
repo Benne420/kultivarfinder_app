@@ -2647,7 +2647,7 @@ nav a:hover {
 .strain-table td.terpenprofil-cell .terp-list {
   align-content: flex-start;
   gap: 4px;
-  max-height: 48px;
+  max-height: 36px;
   overflow: hidden;
 }
 
