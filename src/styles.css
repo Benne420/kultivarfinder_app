@@ -2610,9 +2610,10 @@ nav a:hover {
 .strain-table th,
 .strain-table td {
   vertical-align: top;
-  padding: 10px 12px;
+  padding: 12px 16px;
   border-bottom: 1px solid #e1e9f5;
-  text-align: left;
+  text-align: center;
+  line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2636,6 +2637,12 @@ nav a:hover {
   text-align: center;
 }
 
+.strain-table td.terpenprofil-cell {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
 .strain-table thead {
   background: #f5f8fd;
   color: #35506b;
@@ -2645,6 +2652,10 @@ nav a:hover {
   position: sticky;
   top: 0;
   z-index: 2;
+}
+
+.hidden-sm {
+  display: table-cell;
 }
 
 .strain-table tbody tr:hover {
@@ -2863,7 +2874,12 @@ nav a:hover {
 @media (max-width: 720px) {
   .strain-table th,
   .strain-table td {
-    padding: 10px 12px;
+    padding: 8px 10px;
+    line-height: 1.2;
+  }
+
+  .hidden-sm {
+    display: none !important;
   }
 }
 
