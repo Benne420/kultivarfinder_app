@@ -2645,8 +2645,14 @@ nav a:hover {
 }
 
 .strain-table td.terpenprofil-cell .terp-list {
-  max-height: 52px;
+  gap: 4px;
+  max-height: 40px;
   overflow: hidden;
+}
+
+.strain-table td.terpenprofil-cell .terp-chip {
+  padding: 2px 6px;
+  font-size: 10px;
 }
 
 .strain-table thead {
