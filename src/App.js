@@ -17,6 +17,7 @@ import {
   lazy,
   Suspense,
 } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import "@fontsource/montserrat";
 import "./styles.css";
 import FilterPanel from "./components/FilterPanel";
@@ -1121,6 +1122,7 @@ export default function CannabisKultivarFinderUseReducer() {
             />
           </Suspense>
         )}
+        <Analytics />
       </div>
     </TerpeneContext.Provider>
   );
