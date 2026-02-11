@@ -1,2 +1,17 @@
+# Verhindert, dass ChatGPT deine Seite für das Training nutzt
+User-agent: GPTBot
+Disallow: /
+
+# Verhindert, dass der ChatGPT-User (Agent) die Seite live scannt
+User-agent: ChatGPT-User
+Disallow: /
+
+# Schutz vor weiteren KI-Crawlern (Google Gemini, CCBot)
+User-agent: Google-Extended
+Disallow: /
+User-agent: CCBot
+Disallow: /
+
+# Optional: Alle anderen dürfen (oder "Disallow: /" für komplett privat)
 User-agent: *
 Disallow: /
