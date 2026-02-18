@@ -958,6 +958,22 @@
     "code": "PVB"
   },
   {
+    "name": "Red Rozay",
+    "thc": "25-33%",
+    "cbd": "<1%",
+    "terpengehalt": "5.438%",
+    "terpenprofil": ["D-Limonen", "β-Caryophyllen", "Germacren B", "Selinene"],
+    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "EVOLUTION",
+    "Kürzel": "RZY",
+    "genetics": "Rozay x Jet A",
+    "smell": "blumig, fruchtig, cremig, kerosin",
+    "taste": "blumig, fruchtig, cremig, kerosin",
+    "code": "RZY"
+  },
+  {
     "name": "Rose Gold Pavé",
     "thc": "22-33%",
     "cbd": "<1%",
@@ -1352,21 +1368,5 @@
     "smell": "Fruchtig, Saurer Apfel, Diesel",
     "taste": "Erdig, Diesel, Zitrone",
     "code": "ZRP"
-  },
-  {
-    "name": "Red Rozay",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "5.438%",
-    "terpenprofil": ["D-Limonen", "β-Caryophyllen", "Germacren B", "Selina-3,7(11)-diene", "Selina 4,7(11)-diene"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "RZY",
-    "genetics": "Rozay x Jet A",
-    "smell": "blumig, fruchtig, cremig, kerosin",
-    "taste": "blumig, fruchtig, cremig, kerosin",
-    "code": "RZY"
   }
 ]
