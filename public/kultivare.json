@@ -1006,6 +1006,28 @@
     "taste": "",
     "code": ""
   },
+   {
+    "name": "Scented Marker",
+    "thc": "20-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2.98%",
+    "terpenprofil": [
+      "Myrcen",
+      "Caryophyllen"
+    ],
+    "wirkungen": [
+      "entzündungshemmend",
+      "neuroprotektiv"
+    ],
+    "typ": "indica-dominant",
+    "status": "discontinued",
+    "produktlinie": "COMPOUND",
+    "Kürzel": "",
+    "genetics": "",
+    "smell": "",
+    "taste": "",
+    "code": ""
+  },
   {
     "name": "Scoops",
     "thc": "22-27%",
@@ -1339,7 +1361,7 @@
     "terpenprofil": ["D-Limonen", "β-Caryophyllen", "Germacren B", "Selina-3,7(11)-diene", "Selina 4,7(11)-diene"],
     "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
     "typ": "indica-dominant",
-    "status": "inactive",
+    "status": "active",
     "produktlinie": "EVOLUTION",
     "Kürzel": "RZY",
     "genetics": "Rozay x Jet A",
