@@ -1024,25 +1024,30 @@
   },
    {
     "name": "Scented Marker",
-    "thc": "20-30%",
+    "thc": "25-33%",
     "cbd": "<1%",
-    "terpengehalt": "2.98%",
+    "terpengehalt": "8.20%",
     "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen"
+      "Limonen",
+      "Caryophyllen",
+      "Linalool",
+      "Germacren B",
+      "Selinene"
     ],
     "wirkungen": [
       "entzündungshemmend",
-      "neuroprotektiv"
+      "antioxidativ",
+      "antimykotisch",
+      "stresslösend"
     ],
     "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "status": "active",
+    "produktlinie": "EVOLUTION",
+    "Kürzel": "SCM",
+    "genetics": "Scented Marker x Pineapple Fruz",
+    "smell": "fruchtig, süß, Diesel",
+    "taste": "Pinie, Zitrone",
+    "code": "SCM"
   },
   {
     "name": "Scoops",
