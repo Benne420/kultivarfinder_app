@@ -639,6 +639,33 @@
     "code": "LCG"
   },
   {
+    "name": "Lilac Mandarin",
+    "thc": "20-30%",
+    "cbd": "<1%",
+    "terpengehalt": "2.6%",
+    "terpenprofil": [
+      "Fenchon",
+      "Terpinolen",
+      "Caryophyllen",
+      "Myrcen",
+      "Limonen"
+    ],
+    "wirkungen": [
+      "analgetisch",
+      "antinozizeptiv",
+      "entzündungshemmend",
+      "analgetisch"
+    ],
+    "typ": "indica-dominant",
+    "status": "active",
+    "produktlinie": "HUALA",
+    "Kürzel": "LCM",
+    "genetics": "Lilac Diesel x Sunset Mandarin x NL KUSH",
+    "smell": "erdig, süß-sauer",
+    "taste": "erdig, süß-sauer",
+    "code": "LCM"
+  },
+  {
     "name": "MAC 1",
     "thc": "20-25%",
     "cbd": "<1%",
