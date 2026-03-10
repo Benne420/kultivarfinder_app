@@ -143,8 +143,14 @@ const mapTyp = (s) => {
   return t;
 };
 
-const uniqueOrdered = (items = []) =>
-  items.filter((value, index) => items.indexOf(value) === index);
+const uniqueOrdered = (items = []) => {
+  const seen = new Set();
+  return items.filter((value) => {
+    if (seen.has(value)) return false;
+    seen.add(value);
+    return true;
+  });
+};
 
 const canonicalizeSelectedTerpenes = (selectedTerpene, aliasLookup) =>
   uniqueOrdered(
