@@ -69,11 +69,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "HUALA",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "BTR",
+    "genetics": "Triangle Kush X ’88 G13 Hashplan",
+    "smell": "Erdiger Kush, Fruchtig, Sauer, Würzig",
+    "taste": "Würzig, Erdiger Kush, Fruchtig, Sauer",
+    "code": "BTR"
   },
   {
     "name": "Bling Blaow",
@@ -121,11 +121,11 @@
     "typ": "sativa-dominant",
     "status": "discontinued",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "BUL",
+    "genetics": "(Chem 91 x Star Fighter) x The White 91",
+    "smell": "Erdig, Benzin",
+    "taste": "Benzin, Zitrone, Pinie",
+    "code": "BUL"
   },
   {
     "name": "C-47",
@@ -195,11 +195,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "SUNGROWN",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "DOG",
+    "genetics": "Chem 91",
+    "smell": "Erdig, Diesel",
+    "taste": "Diesel",
+    "code": "DOG"
   },
   {
     "name": "Cinderella Kush",
@@ -438,7 +438,7 @@
     "name": "Grape Burger",
     "thc": "18-30%",
     "cbd": "<1%",
-    "terpengehalt": "2,77%",
+    "terpengehalt": "2.77%",
     "terpenprofil": [
       "Caryophyllen",
       "Limonen",
@@ -489,7 +489,7 @@
     "name": "Holy Mints",
     "thc": "18-30%",
     "cbd": "<1%",
-    "terpengehalt": "1,96%",
+    "terpengehalt": "1.96%",
     "terpenprofil": [
       "Caryophyllen",
       "Myrcen",
@@ -557,11 +557,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "SUNGROWN",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "JEL",
+    "genetics": "Gelato 41 x Sherbet Bx1",
+    "smell": "Kerosin, Fruchtig",
+    "taste": "Erdige Noten, Kerosin, fruchtig",
+    "code": "JEL"
   },
   {
     "name": "Lavender Cake",
@@ -582,11 +582,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "CURALEAF",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "LVC",
+    "genetics": "Purple Pheno Cake x Wedding Crasher",
+    "smell": "Lavendel, cremig",
+    "taste": "Blumig, süß, cremig",
+    "code": "LVC"
   },
   {
     "name": "Legendary Larry",
@@ -607,11 +607,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "SUNGROWN",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "LLY",
+    "genetics": "Legend OG x Larry OG F7",
+    "smell": "Erdig, Diesel, Zitrone",
+    "taste": "Erdig, Diesel, Zitrone",
+    "code": "LLY"
   },
   {
     "name": "Lemon Cherry Gelato",
@@ -642,7 +642,7 @@
     "name": "Lilac Mandarin",
     "thc": "20-30%",
     "cbd": "<1%",
-    "terpengehalt": "2.6%",
+    "terpengehalt": "2.60%",
     "terpenprofil": [
       "Fenchon",
       "Terpinolen",
@@ -653,8 +653,7 @@
     "wirkungen": [
       "analgetisch",
       "antinozizeptiv",
-      "entzündungshemmend",
-      "analgetisch"
+      "entzündungshemmend"
     ],
     "typ": "indica-dominant",
     "status": "active",
@@ -695,7 +694,7 @@
     "name": "Magic Gum Drops",
     "thc": "25-33%",
     "cbd": "<1%",
-    "terpengehalt": "5.446%",
+    "terpengehalt": "5.45%",
     "terpenprofil": ["Limonen", "Caryophyllen", "Selinene", "β-Ocimen", "Germacren B"],
     "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
     "typ": "indica-dominant",
@@ -752,11 +751,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "MWZ",
+    "genetics": "Spritzer x Grape Gas",
+    "smell": "Cremig, Marshmallow",
+    "taste": "Süß, cremig",
+    "code": "MWZ"
   },
   {
     "name": "Miracle Mints",
@@ -777,11 +776,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
+    "Kürzel": "MMI",
     "genetics": "Alien Cookies x Kush Mints #11",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "smell": "Kräuterartig",
+    "taste": "Erdig, holzig",
+    "code": "MMI"
   },
   {
     "name": "Modified Grapes",
@@ -866,7 +865,7 @@
     "name": "Pineapple God",
     "thc": "18-30%",
     "cbd": "<1%",
-    "terpengehalt": "2,79%",
+    "terpengehalt": "2.79%",
     "terpenprofil": [
       "Caryophyllen",
       "Myrcen",
@@ -909,7 +908,7 @@
     "name": "Platinum Pavé",
     "thc": "25-33%",
     "cbd": "<1%",
-    "terpengehalt": "4,57%",
+    "terpengehalt": "4.57%",
     "terpenprofil": [
       "Limonen",
       "Linalool",
@@ -951,11 +950,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "EVOLUTION",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "PLD",
+    "genetics": "Sundae Driver x Plum Wine OG",
+    "smell": "Süß, beerig",
+    "taste": "Süß, Beere, erdige Noten",
+    "code": "PLD"
   },
   {
     "name": "Private Banana",
@@ -988,7 +987,7 @@
     "name": "Red Rozay",
     "thc": "25-33%",
     "cbd": "<1%",
-    "terpengehalt": "5.438%",
+    "terpengehalt": "5.44%",
     "terpenprofil": ["Limonen", "Caryophyllen", "Germacren B", "Selinene"],
     "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
     "typ": "indica-dominant",
@@ -1021,11 +1020,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "RPV",
+    "genetics": "Pavé x Apples & Bananas",
+    "smell": "Kaugummi, Menthol, Zitrone, Kerosin",
+    "taste": "Süß, Menthol, Kerosin",
+    "code": "RPV"
   },
   {
     "name": "Rose Gold Runtz",
@@ -1043,11 +1042,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "COMPOUND",
-    "Kürzel": "",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": ""
+    "Kürzel": "RGR",
+    "genetics": "Apples & Bananas x White Runtz",
+    "smell": "Blumig, fruchtig, Kerosin",
+    "taste": "Cremig, fruchtig, blumig",
+    "code": "RGR"
   },
    {
     "name": "Scented Marker",
@@ -1401,7 +1400,11 @@
     "typ": "indica-dominant",
     "status": "discontinued",
     "produktlinie": "CURALEAF",
-    "Kürzel": ""
+    "Kürzel": "ZKS",
+    "genetics": "Animal Cookies x GG4",
+    "smell": "Süß, Zitrus, Pfeffer, Creme",
+    "taste": "Süß, Zitrus, Pfeffer, Creme",
+    "code": "ZKS"
   },
   {
     "name": "Zour Apple",
