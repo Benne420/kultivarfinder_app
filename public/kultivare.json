@@ -1,1434 +1,1407 @@
 [
-  {
-    "name": "Alien Mints",
-    "thc": "20-25%",
-    "cbd": "<1%",
-    "terpengehalt": "2.68%",
-    "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen",
-      "Linalool",
-      "Limonen",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "HUALA",
-    "Kürzel": "ALM",
-    "genetics": "Alien Cookies x Animal Mints",
-    "smell": "Erdig, würzig",
-    "taste": "Erdige Noten, fruchtig",
-    "code": "ALM"
-  },
-  {
-    "name": "Berlin Berries",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "3.64%",
-    "terpenprofil": [
-      "Limonen",
-      "Caryophyllen",
-      "Linalool",
-      "Selinene",
-      "Germacren B"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimikrobiell",
-      "entspannend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "BER",
-    "genetics": "Georgia Pie x Gastro Pop",
-    "smell": "Cremig, Süß, Beerig, Rote Früchte",
-    "taste": "Cremig, Süß, Beerig, Rote Früchte",
-    "code": "BER"
-  },
-  {
-    "name": "Black Triangle",
-    "thc": "18-27%",
-    "cbd": "<1%",
-    "terpengehalt": "2.25%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Selinene",
-      "Myrcen",
-      "Limonen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "HUALA",
-    "Kürzel": "BTR",
-    "genetics": "Triangle Kush X ’88 G13 Hashplan",
-    "smell": "Erdiger Kush, Fruchtig, Sauer, Würzig",
-    "taste": "Würzig, Erdiger Kush, Fruchtig, Sauer",
-    "code": "BTR"
-  },
-  {
-    "name": "Bling Blaow",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "3.39%",
-    "terpenprofil": [
-      "Limonen",
-      "Linalool",
-      "Caryophyllen",
-      "Selinene",
-      "Myrcen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "BBW",
-    "genetics": "Glitter Bomb x Gastro Pop",
-    "smell": "Candy, Blaubeere, Banane, Kiwi, Wermut",
-    "taste": "Candy, Fruchtig, Wermut",
-    "code": "BBW"
-  },
-  {
-    "name": "Bucket List",
-    "thc": "22-33%",
-    "cbd": "<1%",
-    "terpengehalt": "1.39%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Limonen",
-      "Humulen",
-      "Myrcen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "sativa-dominant",
-    "status": "discontinued",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "BUL",
-    "genetics": "(Chem 91 x Star Fighter) x The White 91",
-    "smell": "Erdig, Benzin",
-    "taste": "Benzin, Zitrone, Pinie",
-    "code": "BUL"
-  },
-  {
-    "name": "C-47",
-    "thc": "18-30%",
-    "cbd": "<1%",
-    "terpengehalt": "1.41%",
-    "terpenprofil": [
-      "Myrcen",
-      "Limonen",
-      "Caryophyllen",
-      "Pinen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "sativa-dominant",
-    "status": "discontinued",
-    "produktlinie": "HUALA",
-    "Kürzel": "C47",
-    "genetics": "Animal Face x Electric Grapefruit",
-    "smell": "Süß, würzig",
-    "taste": "Zitrone, Pinien, süß",
-    "code": "C47"
-  },
-   {
-    "name": "Cap Junky",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "2.45%",
-    "terpenprofil": [
-      "Selinene",
-      "Caryophyllen",
-      "Limonen",
-      "Humulen",
-      "Bisabolol"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "CAP",
-    "genetics": "Alien Cookies x Kush Mints #11",
-    "smell": "kräuterartig",
-    "taste": "erdig, holzig",
-    "code": "CAP"
-  },
-  {
-    "name": "Chemdog",
-    "thc": "18-27%",
-    "cbd": "<1%",
-    "terpengehalt": "1.40%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Limonen",
-      "Humulen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "SUNGROWN",
-    "Kürzel": "DOG",
-    "genetics": "Chem 91",
-    "smell": "Erdig, Diesel",
-    "taste": "Diesel",
-    "code": "DOG"
-  },
-  {
-    "name": "Cinderella Kush",
-    "thc": "22-27%",
-    "cbd": "<1%",
-    "terpengehalt": "1.76%",
-    "terpenprofil": [
-      "Limonen",
-      "Caryophyllen",
-      "Myrcen",
-      "Linalool",
-      "Guaiol"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "HUALA",
-    "Kürzel": "CIN",
-    "genetics": "Cinderella 99 x (GG4 x Critical Kush)",
-    "smell": "Erdiges Kush, leicht zitronig",
-    "taste": "Erdiges Kush, leicht zitronig",
-    "code": "CIN"
-  },
-  {
-    "name": "Frosted Fruit Cake",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "3.34%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Limonen",
-      "Linalool",
-      "Selinene",
-      "Myrcen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "anxiolytisch",
-      "antidepressiv",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "FFC",
-    "genetics": "Wedding Cake x Fruity Pebbles OG",
-    "smell": "cremig, süß, fruchtig, Kerosin",
-    "taste": "Fruchtig, würzig, cremig",
-    "code": "FFC"
-  },
-  {
-    "name": "Frosted Gumbo",
-    "thc": "27-30%",
-    "cbd": "<1%",
-    "terpengehalt": "3.34%",
-    "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen",
-      "Limonen",
-      "Farnesen",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "FRG",
-    "genetics": "Bubblegum x (Unknown x Gelato)",
-    "smell": "Süß, vanille, kerosin",
-    "taste": "Süß, vanille, kerosin",
-    "code": "FRG"
-  },
-  {
-    "name": "Frozen Lemon Mints",
-    "thc": "20-33%",
-    "cbd": "<1%",
-    "terpengehalt": "2.55%",
-    "terpenprofil": [
-      "Terpinolen",
-      "Caryophyllen",
-      "Limonen",
-      "Myrcen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "unterstützt Wundheilung"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "FLM",
-    "genetics": "Cap's Frozen Lemon x Kush Mints #11",
-    "smell": "Zitrus, cremig, Benzin",
-    "taste": "Zitrus, cremig, Benzin",
-    "code": "FLM"
-  },
-  {
-    "name": "Garlic Truffle",
-    "thc": "20-30%",
-    "cbd": "<1%",
-    "terpengehalt": "2.18%",
-    "terpenprofil": [
-      "Limonen",
-      "Caryophyllen",
-      "Myrcen",
-      "Humulen",
-      "Guaiol"
-    ],
-    "wirkungen": [
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "CURALEAF",
-    "Kürzel": "GCT",
-    "genetics": "GMO x Girls Scout Cookies",
-    "smell": "würzig, süß",
-    "taste": "erdig. süß",
-    "code": "GCT"
-  },
-  {
-    "name": "Gastro Pop",
-    "thc": "22-33%",
-    "cbd": "<1%",
-    "terpengehalt": "3.15%",
-    "terpenprofil": [
-      "Myrcen",
-      "Ocimen",
-      "Linalool",
-      "Caryophyllen",
-      "Selinene"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "GAP",
-    "genetics": "Apples & Bananas x Grape Gasoline",
-    "smell": "Kiwi, Blaubeere, Banane",
-    "taste": "Blaubeere, Pflaume, Kerosin",
-    "code": "GAP"
-  },
-  {
-    "name": "GG4",
-    "thc": "20-25%",
-    "cbd": "<1%",
-    "terpengehalt": "2.19%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Humulen",
-      "Limonen",
-      "Bisabolol",
-      "Myrcen"
-    ],
-    "wirkungen": [
-      "entspannend",
-      "schlaffördernd",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "NATURAL",
-    "Kürzel": "GG4",
-    "genetics": "(Chem's Sister x Sour Dubb) x Chocolate Diesel",
-    "smell": "Erdig, würzig, schokoladig",
-    "taste": "Erdige Noten, Schokolade, Gewürze",
-    "code": "GG4"
-  },
-  {
-    "name": "Glaced Apricot Gelato",
-    "thc": "18-33%",
-    "cbd": "<1%",
-    "terpengehalt": "1.93%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Terpinolen",
-      "Farnesen",
-      "Humulen",
-      "Limonen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "GAG",
-    "genetics": "Gelato 1 x Legend Orange Apricot F2",
-    "smell": "Aprikose, Orange, Cremig",
-    "taste": "Aprikose, Orange, Cremig, Kerosin",
-    "code": "GAG"
-  },
-  {
-    "name": "GMO",
-    "thc": "27-30%",
-    "cbd": "<1%",
-    "terpengehalt": "3.50%",
-    "terpenprofil": [
-      "Farnesen",
-      "Myrcen",
-      "Caryophyllen",
-      "Limonen",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "antioxidativ",
-      "entzündungshemmend",
-      "antimikrobiell"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "GMO",
-    "genetics": "Chem D x Girl Scout Cookies",
-    "smell": "Knoblauch, Zwiebeln",
-    "taste": "Knoblauch, Zwiebeln",
-    "code": "GMO"
-  },
-  {
-    "name": "Grape Burger",
-    "thc": "18-30%",
-    "cbd": "<1%",
-    "terpengehalt": "2.77%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Limonen",
-      "Myrcen",
-      "Ocimen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "HUALA",
-    "Kürzel": "GBG",
-    "genetics": "(GMO Cookies x Larry OG) x (Grape Ape x OG Kush)",
-    "smell": "Würzig, leicht herb, beerig",
-    "taste": "Süß, würzig, beerig",
-    "code": "GBG"
-  },
-  {
-    "name": "Grape Face",
-    "thc": "20-25%",
-    "cbd": "<1%",
-    "terpengehalt": "2.25%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Selinene",
-      "Myrcen",
-      "Limonen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "HUALA",
-    "Kürzel": "GRF",
-    "genetics": "Animal Face x Grape Fruit",
-    "smell": "Erdig, fruchtig, säuerlich",
-    "taste": "Diesel",
-    "code": "GRF"
-  },
-  {
-    "name": "Holy Mints",
-    "thc": "18-30%",
-    "cbd": "<1%",
-    "terpengehalt": "1.96%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Humulen",
-      "Limonen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend",
-      "anxiolytisch",
-      "antidepressiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "HUALA",
-    "Kürzel": "HOM",
-    "genetics": "Kush Mints x Edelweiß",
-    "smell": "Cremig, Diesel, minzig",
-    "taste": "Cremig, erdig, minzig",
-    "code": "HOM"
-  },
-  {
-    "name": "Ice Cream Cake Kush Mints",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "1.34%",
-    "terpenprofil": [
-      "Linalool",
-      "Caryophyllen",
-      "Limonen",
-      "Guaiol",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entspannend",
-      "anxiolytisch",
-      "krampflösend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "ICC",
-    "genetics": "Ice Cream Cake x Kush Mints #11",
-    "smell": "Orangen, Vanille",
-    "taste": "Zitrus, cremig",
-    "code": "ICC"
-  },
-  {
-    "name": "Jealousy",
-    "thc": "18-27%",
-    "cbd": "<1%",
-    "terpengehalt": "1.96%",
-    "terpenprofil": [
-      "Limonen",
-      "Caryophyllen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "SUNGROWN",
-    "Kürzel": "JEL",
-    "genetics": "Gelato 41 x Sherbet Bx1",
-    "smell": "Kerosin, Fruchtig",
-    "taste": "Erdige Noten, Kerosin, fruchtig",
-    "code": "JEL"
-  },
-  {
-    "name": "Lavender Cake",
-    "thc": "16-25%",
-    "cbd": "<1%",
-    "terpengehalt": "0.98%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Humulen",
-      "Guaiol",
-      "Bisabolol",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "CURALEAF",
-    "Kürzel": "LVC",
-    "genetics": "Purple Pheno Cake x Wedding Crasher",
-    "smell": "Lavendel, cremig",
-    "taste": "Blumig, süß, cremig",
-    "code": "LVC"
-  },
-  {
-    "name": "Legendary Larry",
-    "thc": "18-27%",
-    "cbd": "<1%",
-    "terpengehalt": "1.88%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Farnesen",
-      "Limonen",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "SUNGROWN",
-    "Kürzel": "LLY",
-    "genetics": "Legend OG x Larry OG F7",
-    "smell": "Erdig, Diesel, Zitrone",
-    "taste": "Erdig, Diesel, Zitrone",
-    "code": "LLY"
-  },
-  {
-    "name": "Lemon Cherry Gelato",
-    "thc": "16-22%",
-    "cbd": "<1%",
-    "terpengehalt": "1.08%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Limonen",
-      "Linalool",
-      "Humulen",
-      "Pinen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "LCG",
-    "genetics": "Sunset Sherbert x Girl Scout Cookies",
-    "smell": "Süß, Kirsche, Zitrone, Blumig, Kerosin",
-    "taste": "Süß, Zitronig",
-    "code": "LCG"
-  },
-  {
-    "name": "Lilac Mandarin",
-    "thc": "20-30%",
-    "cbd": "<1%",
-    "terpengehalt": "2.60%",
-    "terpenprofil": [
-      "Fenchon",
-      "Terpinolen",
-      "Caryophyllen",
-      "Myrcen",
-      "Limonen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "antinozizeptiv",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "HUALA",
-    "Kürzel": "LCM",
-    "genetics": "Lilac Diesel x Sunset Mandarin x NL KUSH",
-    "smell": "erdig, süß-sauer",
-    "taste": "erdig, süß-sauer",
-    "code": "LCM"
-  },
-  {
-    "name": "MAC 1",
-    "thc": "20-25%",
-    "cbd": "<1%",
-    "terpengehalt": "2.76%",
-    "terpenprofil": [
-      "Farnesen",
-      "Limonen",
-      "Caryophyllen",
-      "Pinen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "antioxidativ",
-      "entzündungshemmend",
-      "antimikrobiell"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "MAC",
-    "genetics": "Alien Cookies F2 x Miracle 15",
-    "smell": "Blumig, fruchtig, süß, erdig",
-    "taste": "Süß, blumig, erdig",
-    "code": "MAC"
-  },
-  {
-    "name": "Magic Gum Drops",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "5.45%",
-    "terpenprofil": ["Limonen", "Caryophyllen", "Selinene", "β-Ocimen", "Germacren B"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "MGD",
-    "genetics": "Bubblegum Sherb x Magic Marker",
-    "smell": "süß, gassy",
-    "taste": "süß, Kaugummi, gassy",
-    "code": "MGD"
-  },
-  {
-    "name": "Masterpiece",
-    "thc": "27-33%",
-    "cbd": "<1%",
-    "terpengehalt": "3.43%",
-    "terpenprofil": [
-      "Limonen",
-      "Myrcen",
-      "Linalool",
-      "Caryophyllen",
-      "Bulnesol"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "MSP",
-    "genetics": "Cap Junky x Platinum",
-    "smell": "Süß, sauer, blumig",
-    "taste": "Süß, sauer, blumig",
-    "code": "MSP"
-  },
-  {
-    "name": "Mellowz",
-    "thc": "18-25%",
-    "cbd": "<1%",
-    "terpengehalt": "2.14%",
-    "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen",
-      "Selinene",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "MWZ",
-    "genetics": "Spritzer x Grape Gas",
-    "smell": "Cremig, Marshmallow",
-    "taste": "Süß, cremig",
-    "code": "MWZ"
-  },
-  {
-    "name": "Miracle Mints",
-    "thc": "22-33%",
-    "cbd": "<1%",
-    "terpengehalt": "2.45%",
-    "terpenprofil": [
-      "Selinene",
-      "Caryophyllen",
-      "Limonen",
-      "Humulen",
-      "Bisabolol"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "MMI",
-    "genetics": "Alien Cookies x Kush Mints #11",
-    "smell": "Kräuterartig",
-    "taste": "Erdig, holzig",
-    "code": "MMI"
-  },
-  {
-    "name": "Modified Grapes",
-    "thc": "27-33%",
-    "cbd": "<1%",
-    "terpengehalt": "2.32%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Humulen",
-      "Limonen",
-      "Farnesen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "MFG",
-    "genetics": "GMO x Purple Punch",
-    "smell": "Fruchtig, süß, trauben",
-    "taste": "Süß, fruchtig, erdig, würzig",
-    "code": "MFG"
-  },
-  {
-    "name": "Peach Chementine",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "2.14%",
-    "terpenprofil": [
-      "Limonen",
-      "Myrcen",
-      "Caryophyllen",
-      "Farnesen",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "PCH",
-    "genetics": "Chem D x i95 x Mandarin Cookies x Peach Ringz",
-    "smell": "Süß, tropisch, Zitrus",
-    "taste": "Süß, tropisch, Zitrus",
-    "code": "PCH"
-  },
     {
-    "name": "Pineapple Fruz",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "5.45%",
-    "terpenprofil": [
-      "Limonen",
-      "Caryophyllen",
-      "Selinene",
-      "Ocimen",
-      "Germacren B"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "entspannend"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "PEX",
-    "genetics": "Animal Mints Bx1 x Zkittlez",
-    "smell": "süß, sauer, Ananas, exotisch",
-    "taste": "süß, sauer, Ananas, exotisch",
-    "code": "PEX"
-  },
-  {
-    "name": "Pineapple God",
-    "thc": "18-30%",
-    "cbd": "<1%",
-    "terpengehalt": "2.79%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Limonen",
-      "Humulen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend",
-      "anxiolytisch",
-      "antidepressiv"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "HUALA",
-    "Kürzel": "POG",
-    "genetics": "God Bud x Black Cherry Punch",
-    "smell": "Diesel, erdig, saure Kirschen",
-    "taste": "Fruchtig, süß, beerig",
-    "code": "POG"
-  },
-{
-    "name": "Platinum Kush",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "1.17%",
-    "terpenprofil": ["Caryophyllen", "Myrcen", "Limonen", "Linalool", "Humulen"],
-    "wirkungen": ["analgetisch", "entzündungshemmend"],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "PLA",
-    "genetics": "White Wedding x Kush Mints #11",
-    "smell": "Beeren, Pinie, Diesel",
-    "taste": "fruchtig, würzig, cremig",
-    "code": "PLA"
-  },
-  {
-    "name": "Platinum Pavé",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "4.57%",
-    "terpenprofil": [
-      "Limonen",
-      "Linalool",
-      "Myrcen",
-      "Caryophyllen",
-      "Germacren B"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend",
-      "anxiolytisch",
-      "antidepressiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "PPE",
-    "genetics": "Pavé x Spritzer",
-    "smell": "Kerosin, süß",
-    "taste": "Kerosin, süß",
-    "code": "PPE"
-  },
-  {
-    "name": "Plum Driver",
-    "thc": "20-25%",
-    "cbd": "<1%",
-    "terpengehalt": "1.40%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Linalool",
-      "Limonen",
-      "Myrcen",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "PLD",
-    "genetics": "Sundae Driver x Plum Wine OG",
-    "smell": "Süß, beerig",
-    "taste": "Süß, Beere, erdige Noten",
-    "code": "PLD"
-  },
-  {
-    "name": "Private Banana",
-    "thc": "18-22%",
-    "cbd": "<1%",
-    "terpengehalt": "1.55%",
-    "terpenprofil": [
-      "Limonen",
-      "Myrcen",
-      "Pinen",
-      "Linalool",
-      "Caryophyllen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "PVB",
-    "genetics": "Banana OG x Private Reserve",
-    "smell": "Diesel, Cremig, Fruchtig, Tropisch, Banane, würzig, zitronig",
-    "taste": "Kerosin, Würzig, Fruchtig",
-    "code": "PVB"
-  },
-  {
-    "name": "Red Rozay",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "5.44%",
-    "terpenprofil": ["Limonen", "Caryophyllen", "Germacren B", "Selinene"],
-    "wirkungen": ["entzündungshemmend", "antioxidativ", "antimykotisch", "stresslösend"],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "RZY",
-    "genetics": "Rozay x Jet A",
-    "smell": "blumig, fruchtig, cremig, kerosin",
-    "taste": "blumig, fruchtig, cremig, kerosin",
-    "code": "RZY"
-  },
-  {
-    "name": "Rose Gold Pavé",
-    "thc": "22-33%",
-    "cbd": "<1%",
-    "terpengehalt": "4.15%",
-    "terpenprofil": [
-      "Limonen",
-      "Linalool",
-      "Myrcen",
-      "Caryophyllen",
-      "Germacren B"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "analgetisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "RPV",
-    "genetics": "Pavé x Apples & Bananas",
-    "smell": "Kaugummi, Menthol, Zitrone, Kerosin",
-    "taste": "Süß, Menthol, Kerosin",
-    "code": "RPV"
-  },
-  {
-    "name": "Rose Gold Runtz",
-    "thc": "20-30%",
-    "cbd": "<1%",
-    "terpengehalt": "2.98%",
-    "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "RGR",
-    "genetics": "Apples & Bananas x White Runtz",
-    "smell": "Blumig, fruchtig, Kerosin",
-    "taste": "Cremig, fruchtig, blumig",
-    "code": "RGR"
-  },
-   {
-    "name": "Scented Marker",
-    "thc": "25-33%",
-    "cbd": "<1%",
-    "terpengehalt": "8.20%",
-    "terpenprofil": [
-      "Limonen",
-      "Caryophyllen",
-      "Linalool",
-      "Germacren B",
-      "Selinene"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch",
-      "stresslösend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "SCM",
-    "genetics": "Scented Marker x Pineapple Fruz",
-    "smell": "fruchtig, süß, Diesel",
-    "taste": "Pinie, Zitrone",
-    "code": "SCM"
-  },
-  {
-    "name": "Scoops",
-    "thc": "22-27%",
-    "cbd": "<1%",
-    "terpengehalt": "2.57%",
-    "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen",
-      "Limonen",
-      "Linalool",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "HUALA",
-    "Kürzel": "SCO",
-    "genetics": "(Gelato x Tina) x Cookies & Cream F2",
-    "smell": "Cremig, vanille, beerig",
-    "taste": "Cremig, süß, beerig",
-    "code": "SCO"
-  },
-  {
-    "name": "Spiced Earth Kush",
-    "thc": "18-27%",
-    "cbd": "<1%",
-    "terpengehalt": "1.86%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Limonen",
-      "Humulen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "anxiolytisch",
-      "antidepressiv",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "HUALA",
-    "Kürzel": "SEK",
-    "genetics": "Critical Mass x OG Kush",
-    "smell": "erdig, süß",
-    "taste": "erdig, süß",
-    "code": "SEK"
-  },
-  {
-    "name": "Star Struck",
-    "thc": "22-30%",
-    "cbd": "<1%",
-    "terpengehalt": "3.26%",
-    "terpenprofil": [
-      "Myrcen",
-      "Pinen",
-      "Caryophyllen",
-      "Limonen",
-      "Farnesen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "STR",
-    "genetics": "Stardawg × Arise",
-    "smell": "Zitronengras, Kiefer, Basilikum",
-    "taste": "Süß, sauer",
-    "code": "STR"
-  },
-  {
-    "name": "Super Lemon G",
-    "thc": "7 (CBD: 7%)",
-    "cbd": "7%",
-    "terpengehalt": "0.98%",
-    "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen",
-      "Limonen",
-      "Pinen",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "BALANCED",
-    "Kürzel": "SLG",
-    "genetics": "Super Lemon G x PF1 CBD",
-    "smell": "Süßlich, Zitronen, Orangen",
-    "taste": "Süßlich, Zitronen, Orangen",
-    "code": "SLG"
-  },
-  {
-    "name": "Tigerz Eye",
-    "thc": "20-33%",
-    "cbd": "<1%",
-    "terpengehalt": "1.46%",
-    "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen",
-      "Pinen",
-      "Limonen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "neuroprotektiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "COMPOUND",
-    "Kürzel": "TGY",
-    "genetics": "",
-    "smell": "",
-    "taste": "",
-    "code": "TGY"
-  },
-  {
-    "name": "Triangle Octane",
-    "thc": "27-33%",
-    "cbd": "<1%",
-    "terpengehalt": "3.45%",
-    "terpenprofil": [
-      "Myrcen",
-      "Caryophyllen",
-      "Limonen",
-      "Farnesen",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "NATURAL",
-    "Kürzel": "TGO",
-    "genetics": "High Octane x Triangle Kush",
-    "smell": "Diesel, Kerosin",
-    "taste": "Diesel, Kerosin",
-    "code": "TGO"
-  },
-  {
-    "name": "Tropicana Cookies",
-    "thc": "15-22%",
-    "cbd": "<1%",
-    "terpengehalt": "1.29%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Linalool",
-      "Humulen",
-      "Limonen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "NATURAL",
-    "Kürzel": "TRP",
-    "genetics": "Girl Scout Cookies x Tangie",
-    "smell": "Fruchtig, Zitrus, erdig, würzig",
-    "taste": "Angenehm Fruchtig, Zitrus",
-    "code": "TRP"
-  },
-  {
-    "name": "Unicorn Cake",
-    "thc": "22-33%",
-    "cbd": "<1%",
-    "terpengehalt": "2.55%",
-    "terpenprofil": [
-      "Farnesen",
-      "Caryophyllen",
-      "Myrcen",
-      "Humulen",
-      "Limonen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "antioxidativ",
-      "antimykotisch"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "UNC",
-    "genetics": "Unicorn Poop x Wedding Cake",
-    "smell": "Diesel, süß, cremig",
-    "taste": "Diesel, süß, cremig",
-    "code": "UNC"
-  },
-  {
-    "name": "Waffle Truffle",
-    "thc": "22-27%",
-    "cbd": "<1%",
-    "terpengehalt": "1.86%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Limonen",
-      "Humulen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend",
-      "anxiolytisch",
-      "antidepressiv"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "WTR",
-    "genetics": "White Truffle x Northern Lights",
-    "smell": "Cremig, schokoladig, würzig",
-    "taste": "Cremig, schokoladig, würzig",
-    "code": "WTR"
-  },
-  {
-    "name": "Wedding Pop Triangle",
-    "thc": "20-25%",
-    "cbd": "<1%",
-    "terpengehalt": "1.00%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Linalool",
-      "Limonen",
-      "Humulen",
-      "Myrcen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "CURALEAF",
-    "Kürzel": "WPT",
-    "genetics": "Wedding Pop x Triangle Kush",
-    "smell": "Pfeffer, Zitrus",
-    "taste": "Süß, Pfeffer, Zitrus",
-    "code": "WPT"
-  },
-  {
-    "name": "Wedding Singer",
-    "thc": "25-30%",
-    "cbd": "<1%",
-    "terpengehalt": "1.17%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Myrcen",
-      "Limonen",
-      "Linalool",
-      "Humulen"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "EVOLUTION",
-    "Kürzel": "WES",
-    "genetics": "White Wedding x Kush Mints #11",
-    "smell": "Beeren, Pinie, Diesel",
-    "taste": "Fruchtig, würzig, cremig",
-    "code": "WES"
-  },
-  {
-    "name": "Whiteout",
-    "thc": "20-27%",
-    "cbd": "<1%",
-    "terpengehalt": "2.00%",
-    "terpenprofil": [
-      "Limonen",
-      "Myrcen",
-      "Caryophyllen",
-      "Humulen",
-      "Linalool"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend",
-      "anxiolytisch",
-      "antidepressiv"
-    ],
-    "typ": "sativa-dominant",
-    "status": "active",
-    "produktlinie": "HUALA",
-    "Kürzel": "WOT",
-    "genetics": "Super Silver Haze × The White",
-    "smell": "Zitronig, Kräuternoten",
-    "taste": "Herb, zitronig",
-    "code": "WOT"
-  },
-  {
-    "name": "Zookies",
-    "thc": "20-25%",
-    "cbd": "<1%",
-    "terpengehalt": "0.64%",
-    "terpenprofil": [
-      "Caryophyllen",
-      "Linalool",
-      "Limonen",
-      "Fenchol",
-      "Bisabolol"
-    ],
-    "wirkungen": [
-      "analgetisch",
-      "entzündungshemmend"
-    ],
-    "typ": "indica-dominant",
-    "status": "discontinued",
-    "produktlinie": "CURALEAF",
-    "Kürzel": "ZKS",
-    "genetics": "Animal Cookies x GG4",
-    "smell": "Süß, Zitrus, Pfeffer, Creme",
-    "taste": "Süß, Zitrus, Pfeffer, Creme",
-    "code": "ZKS"
-  },
-  {
-    "name": "Zour Apple",
-    "thc": "20-25%",
-    "cbd": "<1%",
-    "terpengehalt": "2.37%",
-    "terpenprofil": [
-      "Terpinolen",
-      "Caryophyllen",
-      "Myrcen",
-      "Humulen",
-      "Pinen"
-    ],
-    "wirkungen": [
-      "entzündungshemmend",
-      "unterstützt Wundheilung"
-    ],
-    "typ": "indica-dominant",
-    "status": "active",
-    "produktlinie": "SUNGROWN",
-    "Kürzel": "ZRP",
-    "genetics": "Gorilla Glue 4 x Jack Herer",
-    "smell": "Fruchtig, Saurer Apfel, Diesel",
-    "taste": "Erdig, Diesel, Zitrone",
-    "code": "ZRP"
-  }
+        "name":  "Alien Mints",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.68%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Linalool",
+                             "Limonen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Alien Cookies x Animal Mints",
+        "smell":  "Erdig, würzig",
+        "taste":  "Erdige Noten, fruchtig",
+        "code":  "ALM"
+    },
+    {
+        "name":  "Berlin Berries",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.64%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Caryophyllen",
+                             "Linalool",
+                             "Selinene",
+                             "Germacren B"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimikrobiell",
+                          "entspannend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "Georgia Pie x Gastro Pop",
+        "smell":  "Cremig, Süß, Beerig, Rote Früchte",
+        "taste":  "Cremig, Süß, Beerig, Rote Früchte",
+        "code":  "BER"
+    },
+    {
+        "name":  "Black Triangle",
+        "thc":  "18-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.25%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Selinene",
+                             "Myrcen",
+                             "Limonen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "HUALA",
+        "genetics":  "Triangle Kush X ’88 G13 Hashplan",
+        "smell":  "Erdiger Kush, Fruchtig, Sauer, Würzig",
+        "taste":  "Würzig, Erdiger Kush, Fruchtig, Sauer",
+        "code":  "BTR"
+    },
+    {
+        "name":  "Bling Blaow",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.39%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Linalool",
+                             "Caryophyllen",
+                             "Selinene",
+                             "Myrcen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "entspannend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "Glitter Bomb x Gastro Pop",
+        "smell":  "Candy, Blaubeere, Banane, Kiwi, Wermut",
+        "taste":  "Candy, Fruchtig, Wermut",
+        "code":  "BBW"
+    },
+    {
+        "name":  "Bucket List",
+        "thc":  "22-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.39%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Limonen",
+                             "Humulen",
+                             "Myrcen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "(Chem 91 x Star Fighter) x The White 91",
+        "smell":  "Erdig, Benzin",
+        "taste":  "Benzin, Zitrone, Pinie",
+        "code":  "BUL"
+    },
+    {
+        "name":  "C-47",
+        "thc":  "18-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.41%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Limonen",
+                             "Caryophyllen",
+                             "Pinen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "HUALA",
+        "genetics":  "Animal Face x Electric Grapefruit",
+        "smell":  "Süß, würzig",
+        "taste":  "Zitrone, Pinien, süß",
+        "code":  "C47"
+    },
+    {
+        "name":  "Cap Junky",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.45%",
+        "terpenprofil":  [
+                             "Selinene",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Humulen",
+                             "Bisabolol"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Alien Cookies x Kush Mints #11",
+        "smell":  "kräuterartig",
+        "taste":  "erdig, holzig",
+        "code":  "CAP"
+    },
+    {
+        "name":  "Chemdog",
+        "thc":  "18-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.40%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Humulen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "SUNGROWN",
+        "genetics":  "Chem 91",
+        "smell":  "Erdig, Diesel",
+        "taste":  "Diesel",
+        "code":  "DOG"
+    },
+    {
+        "name":  "Cinderella Kush",
+        "thc":  "22-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.76%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Linalool",
+                             "Guaiol"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "entspannend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Cinderella 99 x (GG4 x Critical Kush)",
+        "smell":  "Erdiges Kush, leicht zitronig",
+        "taste":  "Erdiges Kush, leicht zitronig",
+        "code":  "CIN"
+    },
+    {
+        "name":  "Frosted Fruit Cake",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.34%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Limonen",
+                             "Linalool",
+                             "Selinene",
+                             "Myrcen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "anxiolytisch",
+                          "antidepressiv",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Wedding Cake x Fruity Pebbles OG",
+        "smell":  "cremig, süß, fruchtig, Kerosin",
+        "taste":  "Fruchtig, würzig, cremig",
+        "code":  "FFC"
+    },
+    {
+        "name":  "Frosted Gumbo",
+        "thc":  "27-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.34%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Farnesen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Bubblegum x (Unknown x Gelato)",
+        "smell":  "Süß, vanille, kerosin",
+        "taste":  "Süß, vanille, kerosin",
+        "code":  "FRG"
+    },
+    {
+        "name":  "Frozen Lemon Mints",
+        "thc":  "20-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.55%",
+        "terpenprofil":  [
+                             "Terpinolen",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Myrcen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "unterstützt Wundheilung"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Cap\u0027s Frozen Lemon x Kush Mints #11",
+        "smell":  "Zitrus, cremig, Benzin",
+        "taste":  "Zitrus, cremig, Benzin",
+        "code":  "FLM"
+    },
+    {
+        "name":  "Garlic Truffle",
+        "thc":  "20-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.18%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Humulen",
+                             "Guaiol"
+                         ],
+        "wirkungen":  [
+                          "antioxidativ",
+                          "antimykotisch",
+                          "entspannend",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "CURALEAF",
+        "genetics":  "GMO x Girls Scout Cookies",
+        "smell":  "würzig, süß",
+        "taste":  "erdig. süß",
+        "code":  "GCT"
+    },
+    {
+        "name":  "Gastro Pop",
+        "thc":  "22-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.15%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Ocimen",
+                             "Linalool",
+                             "Caryophyllen",
+                             "Selinene"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "Apples \u0026 Bananas x Grape Gasoline",
+        "smell":  "Kiwi, Blaubeere, Banane",
+        "taste":  "Blaubeere, Pflaume, Kerosin",
+        "code":  "GAP"
+    },
+    {
+        "name":  "GG4",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.19%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Humulen",
+                             "Limonen",
+                             "Bisabolol",
+                             "Myrcen"
+                         ],
+        "wirkungen":  [
+                          "entspannend",
+                          "schlaffördernd",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "NATURAL",
+        "genetics":  "(Chem\u0027s Sister x Sour Dubb) x Chocolate Diesel",
+        "smell":  "Erdig, würzig, schokoladig",
+        "taste":  "Erdige Noten, Schokolade, Gewürze",
+        "code":  "GG4"
+    },
+    {
+        "name":  "Glaced Apricot Gelato",
+        "thc":  "18-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.93%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Terpinolen",
+                             "Farnesen",
+                             "Humulen",
+                             "Limonen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "Gelato 1 x Legend Orange Apricot F2",
+        "smell":  "Aprikose, Orange, Cremig",
+        "taste":  "Aprikose, Orange, Cremig, Kerosin",
+        "code":  "GAG"
+    },
+    {
+        "name":  "GMO",
+        "thc":  "27-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.50%",
+        "terpenprofil":  [
+                             "Farnesen",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "antioxidativ",
+                          "entzündungshemmend",
+                          "antimikrobiell"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Chem D x Girl Scout Cookies",
+        "smell":  "Knoblauch, Zwiebeln",
+        "taste":  "Knoblauch, Zwiebeln",
+        "code":  "GMO"
+    },
+    {
+        "name":  "Grape Burger",
+        "thc":  "18-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.77%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Limonen",
+                             "Myrcen",
+                             "Ocimen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "entspannend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "HUALA",
+        "genetics":  "(GMO Cookies x Larry OG) x (Grape Ape x OG Kush)",
+        "smell":  "Würzig, leicht herb, beerig",
+        "taste":  "Süß, würzig, beerig",
+        "code":  "GBG"
+    },
+    {
+        "name":  "Grape Face",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.25%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Selinene",
+                             "Myrcen",
+                             "Limonen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Animal Face x Grape Fruit",
+        "smell":  "Erdig, fruchtig, säuerlich",
+        "taste":  "Diesel",
+        "code":  "GRF"
+    },
+    {
+        "name":  "Holy Mints",
+        "thc":  "18-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.96%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Humulen",
+                             "Limonen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend",
+                          "anxiolytisch",
+                          "antidepressiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "HUALA",
+        "genetics":  "Kush Mints x Edelweiß",
+        "smell":  "Cremig, Diesel, minzig",
+        "taste":  "Cremig, erdig, minzig",
+        "code":  "HOM"
+    },
+    {
+        "name":  "Ice Cream Cake Kush Mints",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.34%",
+        "terpenprofil":  [
+                             "Linalool",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Guaiol",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entspannend",
+                          "anxiolytisch",
+                          "krampflösend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Ice Cream Cake x Kush Mints #11",
+        "smell":  "Orangen, Vanille",
+        "taste":  "Zitrus, cremig",
+        "code":  "ICC"
+    },
+    {
+        "name":  "Jealousy",
+        "thc":  "18-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.96%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Caryophyllen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "SUNGROWN",
+        "genetics":  "Gelato 41 x Sherbet Bx1",
+        "smell":  "Kerosin, Fruchtig",
+        "taste":  "Erdige Noten, Kerosin, fruchtig",
+        "code":  "JEL"
+    },
+    {
+        "name":  "Lavender Cake",
+        "thc":  "16-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "0.98%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Humulen",
+                             "Guaiol",
+                             "Bisabolol",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "CURALEAF",
+        "genetics":  "Purple Pheno Cake x Wedding Crasher",
+        "smell":  "Lavendel, cremig",
+        "taste":  "Blumig, süß, cremig",
+        "code":  "LVC"
+    },
+    {
+        "name":  "Legendary Larry",
+        "thc":  "18-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.88%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Farnesen",
+                             "Limonen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "SUNGROWN",
+        "genetics":  "Legend OG x Larry OG F7",
+        "smell":  "Erdig, Diesel, Zitrone",
+        "taste":  "Erdig, Diesel, Zitrone",
+        "code":  "LLY"
+    },
+    {
+        "name":  "Lemon Cherry Gelato",
+        "thc":  "16-22%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.08%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Limonen",
+                             "Linalool",
+                             "Humulen",
+                             "Pinen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Sunset Sherbert x Girl Scout Cookies",
+        "smell":  "Süß, Kirsche, Zitrone, Blumig, Kerosin",
+        "taste":  "Süß, Zitronig",
+        "code":  "LCG"
+    },
+    {
+        "name":  "Lilac Mandarin",
+        "thc":  "20-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.60%",
+        "terpenprofil":  [
+                             "Fenchon",
+                             "Terpinolen",
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "antinozizeptiv",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Lilac Diesel x Sunset Mandarin x NL KUSH",
+        "smell":  "erdig, süß-sauer",
+        "taste":  "erdig, süß-sauer",
+        "code":  "LCM"
+    },
+    {
+        "name":  "MAC 1",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.76%",
+        "terpenprofil":  [
+                             "Farnesen",
+                             "Limonen",
+                             "Caryophyllen",
+                             "Pinen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "antioxidativ",
+                          "entzündungshemmend",
+                          "antimikrobiell"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Alien Cookies F2 x Miracle 15",
+        "smell":  "Blumig, fruchtig, süß, erdig",
+        "taste":  "Süß, blumig, erdig",
+        "code":  "MAC"
+    },
+    {
+        "name":  "Magic Gum Drops",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "5.45%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Caryophyllen",
+                             "Selinene",
+                             "β-Ocimen",
+                             "Germacren B"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "stresslösend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Bubblegum Sherb x Magic Marker",
+        "smell":  "süß, gassy",
+        "taste":  "süß, Kaugummi, gassy",
+        "code":  "MGD"
+    },
+    {
+        "name":  "Masterpiece",
+        "thc":  "27-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.43%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Myrcen",
+                             "Linalool",
+                             "Caryophyllen",
+                             "Bulnesol"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Cap Junky x Platinum",
+        "smell":  "Süß, sauer, blumig",
+        "taste":  "Süß, sauer, blumig",
+        "code":  "MSP"
+    },
+    {
+        "name":  "Mellowz",
+        "thc":  "18-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.14%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Selinene",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "Spritzer x Grape Gas",
+        "smell":  "Cremig, Marshmallow",
+        "taste":  "Süß, cremig",
+        "code":  "MWZ"
+    },
+    {
+        "name":  "Miracle Mints",
+        "thc":  "22-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.45%",
+        "terpenprofil":  [
+                             "Selinene",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Humulen",
+                             "Bisabolol"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Alien Cookies x Kush Mints #11",
+        "smell":  "Kräuterartig",
+        "taste":  "Erdig, holzig",
+        "code":  "MMI"
+    },
+    {
+        "name":  "Modified Grapes",
+        "thc":  "27-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.32%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Humulen",
+                             "Limonen",
+                             "Farnesen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "GMO x Purple Punch",
+        "smell":  "Fruchtig, süß, trauben",
+        "taste":  "Süß, fruchtig, erdig, würzig",
+        "code":  "MFG"
+    },
+    {
+        "name":  "Peach Chementine",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.14%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Farnesen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Chem D x i95 x Mandarin Cookies x Peach Ringz",
+        "smell":  "Süß, tropisch, Zitrus",
+        "taste":  "Süß, tropisch, Zitrus",
+        "code":  "PCH"
+    },
+    {
+        "name":  "Pineapple Fruz",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "5.45%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Caryophyllen",
+                             "Selinene",
+                             "Ocimen",
+                             "Germacren B"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "entspannend"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Animal Mints Bx1 x Zkittlez",
+        "smell":  "süß, sauer, Ananas, exotisch",
+        "taste":  "süß, sauer, Ananas, exotisch",
+        "code":  "PEX"
+    },
+    {
+        "name":  "Pineapple God",
+        "thc":  "18-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.79%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Humulen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend",
+                          "anxiolytisch",
+                          "antidepressiv"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "God Bud x Black Cherry Punch",
+        "smell":  "Diesel, erdig, saure Kirschen",
+        "taste":  "Fruchtig, süß, beerig",
+        "code":  "POG"
+    },
+    {
+        "name":  "Platinum Kush",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.17%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Linalool",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "White Wedding x Kush Mints #11",
+        "smell":  "Beeren, Pinie, Diesel",
+        "taste":  "fruchtig, würzig, cremig",
+        "code":  "PLA"
+    },
+    {
+        "name":  "Platinum Pavé",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "4.57%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Linalool",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Germacren B"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend",
+                          "anxiolytisch",
+                          "antidepressiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "Pavé x Spritzer",
+        "smell":  "Kerosin, süß",
+        "taste":  "Kerosin, süß",
+        "code":  "PPE"
+    },
+    {
+        "name":  "Plum Driver",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.40%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Linalool",
+                             "Limonen",
+                             "Myrcen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Sundae Driver x Plum Wine OG",
+        "smell":  "Süß, beerig",
+        "taste":  "Süß, Beere, erdige Noten",
+        "code":  "PLD"
+    },
+    {
+        "name":  "Private Banana",
+        "thc":  "18-22%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.55%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Myrcen",
+                             "Pinen",
+                             "Linalool",
+                             "Caryophyllen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Banana OG x Private Reserve",
+        "smell":  "Diesel, Cremig, Fruchtig, Tropisch, Banane, würzig, zitronig",
+        "taste":  "Kerosin, Würzig, Fruchtig",
+        "code":  "PVB"
+    },
+    {
+        "name":  "Red Rozay",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "5.44%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Caryophyllen",
+                             "Germacren B",
+                             "Selinene"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "stresslösend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Rozay x Jet A",
+        "smell":  "blumig, fruchtig, cremig, kerosin",
+        "taste":  "blumig, fruchtig, cremig, kerosin",
+        "code":  "RZY"
+    },
+    {
+        "name":  "Rose Gold Pavé",
+        "thc":  "22-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "4.15%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Linalool",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Germacren B"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "analgetisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "Pavé x Apples \u0026 Bananas",
+        "smell":  "Kaugummi, Menthol, Zitrone, Kerosin",
+        "taste":  "Süß, Menthol, Kerosin",
+        "code":  "RPV"
+    },
+    {
+        "name":  "Rose Gold Runtz",
+        "thc":  "20-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.98%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Caryophyllen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "Apples \u0026 Bananas x White Runtz",
+        "smell":  "Blumig, fruchtig, Kerosin",
+        "taste":  "Cremig, fruchtig, blumig",
+        "code":  "RGR"
+    },
+    {
+        "name":  "Scented Marker",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "8.20%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Caryophyllen",
+                             "Linalool",
+                             "Germacren B",
+                             "Selinene"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "stresslösend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Scented Marker x Pineapple Fruz",
+        "smell":  "fruchtig, süß, Diesel",
+        "taste":  "Pinie, Zitrone",
+        "code":  "SCM"
+    },
+    {
+        "name":  "Scoops",
+        "thc":  "22-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.57%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Linalool",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "(Gelato x Tina) x Cookies \u0026 Cream F2",
+        "smell":  "Cremig, vanille, beerig",
+        "taste":  "Cremig, süß, beerig",
+        "code":  "SCO"
+    },
+    {
+        "name":  "Spiced Earth Kush",
+        "thc":  "18-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.86%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Humulen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "anxiolytisch",
+                          "antidepressiv",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Critical Mass x OG Kush",
+        "smell":  "erdig, süß",
+        "taste":  "erdig, süß",
+        "code":  "SEK"
+    },
+    {
+        "name":  "Star Struck",
+        "thc":  "22-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.26%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Pinen",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Farnesen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Stardawg × Arise",
+        "smell":  "Zitronengras, Kiefer, Basilikum",
+        "taste":  "Süß, sauer",
+        "code":  "STR"
+    },
+    {
+        "name":  "Super Lemon G",
+        "thc":  "7 (CBD: 7%)",
+        "cbd":  "7%",
+        "terpengehalt":  "0.98%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Pinen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "BALANCED",
+        "genetics":  "Super Lemon G x PF1 CBD",
+        "smell":  "Süßlich, Zitronen, Orangen",
+        "taste":  "Süßlich, Zitronen, Orangen",
+        "code":  "SLG"
+    },
+    {
+        "name":  "Tigerz Eye",
+        "thc":  "20-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.46%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Pinen",
+                             "Limonen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "neuroprotektiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "COMPOUND",
+        "genetics":  "",
+        "smell":  "",
+        "taste":  "",
+        "code":  "TGY"
+    },
+    {
+        "name":  "Triangle Octane",
+        "thc":  "27-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.45%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Farnesen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "NATURAL",
+        "genetics":  "High Octane x Triangle Kush",
+        "smell":  "Diesel, Kerosin",
+        "taste":  "Diesel, Kerosin",
+        "code":  "TGO"
+    },
+    {
+        "name":  "Tropicana Cookies",
+        "thc":  "15-22%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.29%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Linalool",
+                             "Humulen",
+                             "Limonen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "NATURAL",
+        "genetics":  "Girl Scout Cookies x Tangie",
+        "smell":  "Fruchtig, Zitrus, erdig, würzig",
+        "taste":  "Angenehm Fruchtig, Zitrus",
+        "code":  "TRP"
+    },
+    {
+        "name":  "Unicorn Cake",
+        "thc":  "22-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.55%",
+        "terpenprofil":  [
+                             "Farnesen",
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Humulen",
+                             "Limonen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Unicorn Poop x Wedding Cake",
+        "smell":  "Diesel, süß, cremig",
+        "taste":  "Diesel, süß, cremig",
+        "code":  "UNC"
+    },
+    {
+        "name":  "Waffle Truffle",
+        "thc":  "22-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.86%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Humulen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend",
+                          "anxiolytisch",
+                          "antidepressiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "White Truffle x Northern Lights",
+        "smell":  "Cremig, schokoladig, würzig",
+        "taste":  "Cremig, schokoladig, würzig",
+        "code":  "WTR"
+    },
+    {
+        "name":  "Wedding Pop Triangle",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.00%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Linalool",
+                             "Limonen",
+                             "Humulen",
+                             "Myrcen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "CURALEAF",
+        "genetics":  "Wedding Pop x Triangle Kush",
+        "smell":  "Pfeffer, Zitrus",
+        "taste":  "Süß, Pfeffer, Zitrus",
+        "code":  "WPT"
+    },
+    {
+        "name":  "Wedding Singer",
+        "thc":  "25-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.17%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Linalool",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "White Wedding x Kush Mints #11",
+        "smell":  "Beeren, Pinie, Diesel",
+        "taste":  "Fruchtig, würzig, cremig",
+        "code":  "WES"
+    },
+    {
+        "name":  "Whiteout",
+        "thc":  "20-27%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.00%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Humulen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend",
+                          "anxiolytisch",
+                          "antidepressiv"
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Super Silver Haze × The White",
+        "smell":  "Zitronig, Kräuternoten",
+        "taste":  "Herb, zitronig",
+        "code":  "WOT"
+    },
+    {
+        "name":  "Zookies",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "0.64%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Linalool",
+                             "Limonen",
+                             "Fenchol",
+                             "Bisabolol"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "CURALEAF",
+        "genetics":  "Animal Cookies x GG4",
+        "smell":  "Süß, Zitrus, Pfeffer, Creme",
+        "taste":  "Süß, Zitrus, Pfeffer, Creme",
+        "code":  "ZKS"
+    },
+    {
+        "name":  "Zour Apple",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.37%",
+        "terpenprofil":  [
+                             "Terpinolen",
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Humulen",
+                             "Pinen"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "unterstützt Wundheilung"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "SUNGROWN",
+        "genetics":  "Gorilla Glue 4 x Jack Herer",
+        "smell":  "Fruchtig, Saurer Apfel, Diesel",
+        "taste":  "Erdig, Diesel, Zitrone",
+        "code":  "ZRP"
+    }
 ]
