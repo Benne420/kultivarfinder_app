@@ -6,15 +6,10 @@ import {
   parseParents,
 } from "../utils/helpers";
 
-/* helper: determine whether a strain is considered "active" (same logic as filters) */
-function isActiveStrain(s = {}) {
-  const status = (s.status || s.statut || s.aktiv || "").toString().toLowerCase();
-  if (status) {
-    if (status === "active" || status === "aktiv" || status === "true") return true;
-    // "inactive" and "discontinued" are not considered active
-    return false;
-  }
-  if (s.active === true) return true;
+function isStrainVisible(strain = {}, includeDiscontinued = false) {
+  const status = (strain.status || "").toString().trim().toLowerCase();
+  if (status === "active") return true;
+  if (includeDiscontinued && status === "discontinued") return true;
   return false;
 }
 
@@ -260,12 +255,9 @@ export default function StrainSimilarity({
     [kultivare, aliasLookup]
   );
 
-  // only consider active strains for dropdown / comparisons unless discontinued should be included
   const selectableStrains = useMemo(() => {
-    const filtered = (
-      includeDiscontinued
-        ? strainsWithNormalizedTerpenes
-        : strainsWithNormalizedTerpenes.filter(isActiveStrain)
+    const filtered = strainsWithNormalizedTerpenes.filter((strain) =>
+      isStrainVisible(strain, includeDiscontinued)
     ).filter(
       (strain) =>
         strain.normalizedTerpenes.length > 0 ||
@@ -363,7 +355,7 @@ export default function StrainSimilarity({
   useEffect(() => {
     if (!includeDiscontinued && selectedName) {
       const selected = kultivare.find((k) => k.name === selectedName);
-      if (selected && !isActiveStrain(selected)) {
+      if (selected && !isStrainVisible(selected, false)) {
         handleClear();
       }
     }
@@ -440,64 +432,78 @@ export default function StrainSimilarity({
 
   return (
     <section className="similarity-panel">
-      <h3 id="similarity-panel-title" className="similarity-panel__title">
-        Ähnliche Sorte finden
-      </h3>
+      <div className="similarity-panel__header">
+        <h3 id="similarity-panel-title" className="similarity-panel__title">
+          Ähnliche Sorte finden
+        </h3>
+        <p id="strain-select-note" className="similarity-panel__description">
+          Tippen Sie, um eine Referenzsorte zu finden. Die Suche filtert live und nutzt
+          Terpenprofil, Genetik sowie Geruchs- und Aromadaten als Basis.
+        </p>
+      </div>
+
       <div className="similarity-panel__controls">
-        <label className="similarity-panel__label" htmlFor="strain-combobox">
-          Sorte wählen
-        </label>
-        <div className="similarity-panel__combobox">
-          <input
-            id="strain-combobox"
-            className="similarity-panel__input"
-            type="text"
-            role="combobox"
-            aria-autocomplete="list"
-            aria-expanded={isOpen}
-            aria-controls={listboxId}
-            aria-activedescendant={activeDescendantId}
-            aria-labelledby="similarity-panel-title"
-            aria-describedby="strain-select-note"
-            placeholder="Sorte wählen …"
-            value={query}
-            onChange={handleChange}
-            onFocus={() => setIsOpen(true)}
-            onBlur={() => {
-              window.setTimeout(() => setIsOpen(false), 100);
-            }}
-            onKeyDown={handleKeyDown}
-          />
-          {isOpen && (
-            <ul className="similarity-panel__list" role="listbox" id={listboxId}>
-              {filteredStrains.length ? (
-                filteredStrains.map((strain, index) => {
-                  const isActive = index === activeIndex;
-                  return (
-                    <li
-                      key={strain.name}
-                      id={`${listboxId}-option-${index}`}
-                      role="option"
-                      aria-selected={isActive}
-                      className={`similarity-panel__option ${isActive ? "is-active" : ""}`.trim()}
-                      onMouseDown={(event) => {
-                        event.preventDefault();
-                        handleSelect(strain.name);
-                      }}
-                      onMouseEnter={() => setActiveIndex(index)}
-                    >
-                      {strain.name}
-                    </li>
-                  );
-                })
-              ) : (
-                <li className="similarity-panel__option is-empty" role="option" aria-selected="false">
-                  Keine Treffer
-                </li>
-              )}
-            </ul>
-          )}
+        <div className="similarity-panel__search-field">
+          <label className="similarity-panel__label" htmlFor="strain-combobox">
+            Sorte wählen
+          </label>
+          <div className="similarity-panel__combobox">
+            <input
+              id="strain-combobox"
+              className="similarity-panel__input"
+              type="text"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded={isOpen}
+              aria-controls={listboxId}
+              aria-activedescendant={activeDescendantId}
+              aria-labelledby="similarity-panel-title"
+              aria-describedby="strain-select-note"
+              placeholder="Sorte wählen …"
+              value={query}
+              onChange={handleChange}
+              onFocus={() => setIsOpen(true)}
+              onBlur={() => {
+                window.setTimeout(() => setIsOpen(false), 100);
+              }}
+              onKeyDown={handleKeyDown}
+            />
+            {isOpen && (
+              <ul className="similarity-panel__list" role="listbox" id={listboxId}>
+                {filteredStrains.length ? (
+                  filteredStrains.map((strain, index) => {
+                    const isActive = index === activeIndex;
+                    return (
+                      <li
+                        key={strain.name}
+                        id={`${listboxId}-option-${index}`}
+                        role="option"
+                        aria-selected={isActive}
+                        className={`similarity-panel__option ${isActive ? "is-active" : ""}`.trim()}
+                        onMouseDown={(event) => {
+                          event.preventDefault();
+                          handleSelect(strain.name);
+                        }}
+                        onMouseEnter={() => setActiveIndex(index)}
+                      >
+                        {strain.name}
+                      </li>
+                    );
+                  })
+                ) : (
+                  <li
+                    className="similarity-panel__option is-empty"
+                    role="option"
+                    aria-selected="false"
+                  >
+                    Keine Treffer
+                  </li>
+                )}
+              </ul>
+            )}
+          </div>
         </div>
+
         <button
           type="button"
           className="reset-btn similarity-panel__clear"
@@ -509,9 +515,6 @@ export default function StrainSimilarity({
         </button>
       </div>
 
-      <p id="strain-select-note" className="similarity-panel__description">
-        Tippen Sie, um eine Referenzsorte zu finden. Die Suche filtert live und nutzt Terpenprofil, Genetik sowie Geruchs- und Aromadaten als Basis.
-      </p>
       <p className="similarity-panel__description">
         Gewichtung: 75&nbsp;% Terpene, 15&nbsp;% Aroma, 10&nbsp;% Genetik.
       </p>

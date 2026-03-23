@@ -1701,49 +1701,82 @@ nav a:hover {
 
 .similarity-panel {
   margin: 0;
-  padding: 16px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  background: #ffffffcc;
-  box-shadow: 0 2px 6px rgba(55, 71, 79, 0.08);
+  padding: 20px;
+  border: 1px solid rgba(207, 216, 220, 0.9);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.94));
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.similarity-panel__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
 .similarity-panel__title {
-  text-align: center;
+  margin: 0;
+  text-align: left;
+}
+
+.similarity-panel__label {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #274252;
 }
 
 .similarity-panel__controls {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.similarity-panel__search-field {
+  display: flex;
+  flex: 1 1 320px;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: min(100%, 320px);
 }
 
 .similarity-panel__description {
   margin: 8px 0 0;
   font-size: 13px;
   color: #546e7a;
-  text-align: center;
+  text-align: left;
+  max-width: 72ch;
 }
 
 .similarity-panel__combobox {
   position: relative;
-  flex: 0 1 320px;
+  width: min(100%, 360px);
 }
 
 .similarity-panel__input {
   width: 100%;
-  padding: 10px 14px;
+  min-height: 46px;
+  padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid #b0bec5;
+  border: 1px solid #b9c6cf;
   background: #fff;
   font-size: 14px;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .similarity-panel__input:focus {
+  border-color: rgba(0, 85, 164, 0.55);
   outline: 2px solid rgba(0, 85, 164, 0.4);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 85, 164, 0.08);
+  transform: translateY(-1px);
 }
 
 .similarity-panel__list {
@@ -1784,7 +1817,8 @@ nav a:hover {
 
 .similarity-panel__clear {
   flex: 0 0 auto;
-  align-self: flex-start;
+  min-height: 46px;
+  align-self: flex-end;
 }
 
 .similarity-panel__clear:disabled {
@@ -1800,6 +1834,22 @@ nav a:hover {
 
 .similarity-panel__status {
   margin-top: 16px;
+}
+
+@media (max-width: 640px) {
+  .similarity-panel {
+    padding: 16px;
+  }
+
+  .similarity-panel__search-field,
+  .similarity-panel__combobox {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .similarity-panel__clear {
+    align-self: stretch;
+  }
 }
 
 .view-switcher {
