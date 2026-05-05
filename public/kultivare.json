@@ -23,6 +23,32 @@
         "taste":  "Erdige Noten, fruchtig",
         "code":  "ALM"
     },
+     {
+        "name":  "Animal Kush",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.10%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Limonen",
+                             "Myrce",
+                             "Farnesen",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "antimykotisch",
+                          "antioxidativ",
+                          "entzündungshemmend",
+                          "stresslösend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "HUALA",
+        "genetics":  "Kush Mints x Alien OG",
+        "smell":  "eridg, cremig, Minze",
+        "taste":  "eridg, cremig, Minze",
+        "code":  "AMK"
+    },
     {
         "name":  "Berlin Berries",
         "thc":  "25-33%",
@@ -218,6 +244,32 @@
         "smell":  "Erdiges Kush, leicht zitronig",
         "taste":  "Erdiges Kush, leicht zitronig",
         "code":  "CIN"
+    },
+    {
+        "name":  "Fight Club",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "3.30%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Linalool",
+                             "Farnesen"
+                         ],
+        "wirkungen":  [
+                          "antioxidativ",
+                          "antimykotisch",
+                          "entzündungshemmend",
+                          "stresslösend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "discontinued",
+        "produktlinie":  "HUALA",
+        "genetics":  "The Soap x Velvet Runtz",
+        "smell":  "minzig, süß, cremig",
+        "taste":  "minzig, süß, cremig",
+        "code":  "FTC"
     },
     {
         "name":  "Frosted Fruit Cake",
@@ -863,6 +915,32 @@
         "smell":  "Diesel, erdig, saure Kirschen",
         "taste":  "Fruchtig, süß, beerig",
         "code":  "POG"
+    },
+    {
+        "name":  "Pink Gasoline",
+        "thc":  "20-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.79%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Humulen",
+                             "Linalool"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend",
+                          "anxiolytisch",
+                          "antidepressiv"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "33 Splitter x Peach Ozz",
+        "smell":  "süß, herb, cremig",
+        "taste":  "süß, herb, cremig",
+        "code":  "PIG"
     },
     {
         "name":  "Platinum Kush",
