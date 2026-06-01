@@ -39,7 +39,7 @@
                           "antimykotisch",
                           "antioxidativ",
                           "entzündungshemmend",
-                          "stresslösend"
+                          "entspannend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
@@ -117,7 +117,7 @@
                           "entspannend"
                       ],
         "typ":  "indica-dominant",
-        "status":  "active",
+        "status":  "discontinued",
         "produktlinie":  "COMPOUND",
         "genetics":  "Glitter Bomb x Gastro Pop",
         "smell":  "Candy, Blaubeere, Banane, Kiwi, Wermut",
@@ -261,7 +261,7 @@
                           "antioxidativ",
                           "antimykotisch",
                           "entzündungshemmend",
-                          "stresslösend"
+                          "entspannend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
@@ -270,6 +270,31 @@
         "smell":  "minzig, süß, cremig",
         "taste":  "minzig, süß, cremig",
         "code":  "FTC"
+    },
+    {
+        "name":  "Fresh Water Taffy",
+        "thc":  "20-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.24%",
+        "terpenprofil":  [
+                             "Farnesen",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Terpinolen",
+                             "Limonen"
+                         ],
+        "wirkungen":  [
+                          "antioxidativ",
+                          "antimikrobiell",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Gushers x Gellati",
+        "smell":  "cremig, süß",
+        "taste":  "cremig, süß",
+        "code":  "FWT"
     },
     {
         "name":  "Frosted Fruit Cake",
@@ -731,7 +756,7 @@
                           "entzündungshemmend",
                           "antioxidativ",
                           "antimykotisch",
-                          "stresslösend"
+                          "entspannend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
@@ -757,7 +782,7 @@
                           "entzündungshemmend",
                           "antioxidativ",
                           "antimykotisch",
-                          "analgetisch"
+                          "entspannend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
@@ -1057,7 +1082,7 @@
                           "entzündungshemmend",
                           "antioxidativ",
                           "antimykotisch",
-                          "stresslösend"
+                          "entspannend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
@@ -1130,7 +1155,7 @@
                           "entzündungshemmend",
                           "antioxidativ",
                           "antimykotisch",
-                          "stresslösend"
+                          "entspannend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
