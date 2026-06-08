@@ -220,6 +220,32 @@
         "code":  "DOG"
     },
     {
+        "name":  "Cherry Bang Bang",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "4.26%",
+        "terpenprofil":  [
+                             "Limonen",
+                             "Linalool",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Ocimen"
+                         ],
+        "wirkungen":  [
+                          "antimykotisch",
+                          "antioxidativ",
+                          "entspannend",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "new",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Cherry Cosmo X Red Runtz",
+        "smell":  "fruchtig, Kirsche, beerig, candy",
+        "taste":  "Kirsche, candy, leich süß-säuerlich",
+        "code":  "CBB"
+    },
+    {
         "name":  "Cinderella Kush",
         "thc":  "22-27%",
         "cbd":  "<1%",
@@ -244,6 +270,30 @@
         "smell":  "Erdiges Kush, leicht zitronig",
         "taste":  "Erdiges Kush, leicht zitronig",
         "code":  "CIN"
+    },
+    {
+        "name":  "Durban Cherry",
+        "thc":  "22-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "2.39%",
+        "terpenprofil":  [
+                             "Terpinolen",
+                             "Myrcen",
+                             "Caryophyllen",
+                             "Ocimen",
+                             "Limonen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "entzündungshemmend"                          
+                      ],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Durban Poison xTrop Cherry",
+        "smell":  "fruchtig, Kirsche, zirtus, würzig",
+        "taste":  "fruchtig, Kirsche, zirtus, würzig",
+        "code":  "DBC"
     },
     {
         "name":  "Fight Club",
