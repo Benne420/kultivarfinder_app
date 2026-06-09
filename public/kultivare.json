@@ -447,6 +447,32 @@
         "code":  "GCT"
     },
     {
+        "name":  "Gas Leak",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.94%",
+        "terpenprofil":  [
+                             "Myrcen",
+                             "Pinen",
+                             "Caryophyllen",
+                             "Limonen",
+                             "Pinen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "anxiolytisch",
+                          "antidepressiv",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Tahoe OG x Fire OG",
+        "smell":  "Diesel, Kerosin, ergig, zitrus",
+        "taste":  "scharf, würzig, erdig, zitrus",
+        "code":  "GLE"
+    },
+    {
         "name":  "Gastro Pop",
         "thc":  "22-33%",
         "cbd":  "<1%",
@@ -1090,6 +1116,32 @@
         "smell":  "Süß, beerig",
         "taste":  "Süß, Beere, erdige Noten",
         "code":  "PLD"
+    },
+    {
+        "name":  "Pound Cake",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.40%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Linalool",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "anxiolytisch",
+                          "antidepressiv",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Sunset Sherbert x Undisclosed Cookies Cross",
+        "smell":  "süß, cremig, beerig, zitrus, Gebäck",
+        "taste":  "cremig, beerig, würzig, süßes Gebäck",
+        "code":  "LPC"
     },
     {
         "name":  "Private Banana",
