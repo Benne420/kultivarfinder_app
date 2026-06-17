@@ -791,6 +791,32 @@
         "taste":  "erdig, süß-sauer",
         "code":  "LCM"
     },
+     {
+        "name":  "London Pound Cake",
+        "thc":  "25-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "1.40%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Myrcen",
+                             "Limonen",
+                             "Linalool",
+                             "Humulen"
+                         ],
+        "wirkungen":  [
+                          "analgetisch",
+                          "anxiolytisch",
+                          "antidepressiv",
+                          "entzündungshemmend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Sunset Sherbert x Undisclosed Cookies Cross",
+        "smell":  "süß, cremig, beerig, zitrus, Gebäck",
+        "taste":  "cremig, beerig, würzig, süßes Gebäck",
+        "code":  "LPC"
+    },
     {
         "name":  "MAC 1",
         "thc":  "20-25%",
@@ -1116,32 +1142,6 @@
         "smell":  "Süß, beerig",
         "taste":  "Süß, Beere, erdige Noten",
         "code":  "PLD"
-    },
-    {
-        "name":  "London Pound Cake",
-        "thc":  "25-33%",
-        "cbd":  "<1%",
-        "terpengehalt":  "1.40%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Limonen",
-                             "Linalool",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "anxiolytisch",
-                          "antidepressiv",
-                          "entzündungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "EVOLUTION",
-        "genetics":  "Sunset Sherbert x Undisclosed Cookies Cross",
-        "smell":  "süß, cremig, beerig, zitrus, Gebäck",
-        "taste":  "cremig, beerig, würzig, süßes Gebäck",
-        "code":  "LPC"
     },
     {
         "name":  "Private Banana",
