@@ -11,6 +11,7 @@
   "scripts": {
     "start": "react-scripts start",
     "validate": "node scripts/validate.mjs",
+    "validate:data": "node scripts/validate.mjs",
     "validate:backups": "node scripts/validate-backups.mjs",
     "validate:refs": "node scripts/validate-refs-online.mjs",
     "audit:scripts": "node scripts/audit-scripts.mjs",
