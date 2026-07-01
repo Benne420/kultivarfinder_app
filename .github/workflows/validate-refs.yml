@@ -22,7 +22,7 @@ jobs:
         run: npm ci || npm i
 
       - name: Validate data (offline)
-        run: npm run validate:data
+        run: npm run validate
 
       - name: Validate references (online)
         run: SLOW_MS=300 npm run validate:refs
@@ -33,5 +33,3 @@ jobs:
         with:
           name: references-online-report
           path: reports/references-online-report.json
-
-
