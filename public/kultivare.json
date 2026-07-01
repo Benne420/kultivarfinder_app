@@ -220,30 +220,30 @@
         "code":  "DOG"
     },
     {
-        "name":  "Cherry Bang Bang",
-        "thc":  "25-33%",
-        "cbd":  "<1%",
-        "terpengehalt":  "4.26%",
-        "terpenprofil":  [
-                             "Limonen",
-                             "Linalool",
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Ocimen"
-                         ],
-        "wirkungen":  [
-                          "antimykotisch",
-                          "antioxidativ",
-                          "entspannend",
-                          "entzündungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "new",
-        "produktlinie":  "EVOLUTION",
-        "genetics":  "Cherry Cosmo X Red Runtz",
-        "smell":  "fruchtig, Kirsche, beerig, candy",
-        "taste":  "Kirsche, candy, leich süß-säuerlich",
-        "code":  "CBB"
+        "name": "Cherry Bang Bang",
+        "thc": "25-33%",
+        "cbd": "<1%",
+        "terpengehalt": "4.26%",
+        "terpenprofil": [
+            "Limonen",
+            "Linalool",
+            "Myrcen",
+            "Caryophyllen",
+            "Ocimen"
+        ],
+        "wirkungen": [
+            "entzündungshemmend",
+            "antioxidativ",
+            "antimykotisch",
+            "entspannend"
+        ],
+        "typ": "indica-dominant",
+        "status": "active",
+        "produktlinie": "EVOLUTION",
+        "genetics": "Cherry Cosmo x Red Runtz",
+        "smell": "Fruchtig, Kirsche, beerig, Candy",
+        "taste": "Kirsche, Candy, leicht süß-säuerlich",
+        "code": "CBB"
     },
     {
         "name":  "Cinderella Kush",
@@ -272,28 +272,28 @@
         "code":  "CIN"
     },
     {
-        "name":  "Durban Cherry",
-        "thc":  "22-30%",
-        "cbd":  "<1%",
-        "terpengehalt":  "2.39%",
-        "terpenprofil":  [
-                             "Terpinolen",
-                             "Myrcen",
-                             "Caryophyllen",
-                             "Ocimen",
-                             "Limonen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "entzündungshemmend"                          
-                      ],
-        "typ":  "sativa-dominant",
-        "status":  "active",
-        "produktlinie":  "HUALA",
-        "genetics":  "Durban Poison xTrop Cherry",
-        "smell":  "fruchtig, Kirsche, zirtus, würzig",
-        "taste":  "fruchtig, Kirsche, zirtus, würzig",
-        "code":  "DBC"
+        "name": "Durban Cherry",
+        "thc": "22-30%",
+        "cbd": "<1%",
+        "terpengehalt": "2.388%",
+        "terpenprofil": [
+            "Terpinolen",
+            "Myrcen",
+            "Caryophyllen",
+            "Ocimen",
+            "Limonen"
+        ],
+        "wirkungen": [
+            "entzündungshemmend",
+            "analgetisch"
+        ],
+        "typ": "sativa-dominant",
+        "status": "active",
+        "produktlinie": "HUALA",
+        "genetics": "Durban Poison x Trop Cherry",
+        "smell": "Fruchtig, Kirsche, Zitrus, würzig",
+        "taste": "Fruchtig, Kirsche, Zitrus, würzig",
+        "code": "DBC"
     },
     {
         "name":  "Fight Club",
@@ -571,6 +571,32 @@
         "code":  "GMO"
     },
     {
+        "name": "Goldkirsch",
+        "thc": "18-30%",
+        "cbd": "<1%",
+        "terpengehalt": "2.722%",
+        "terpenprofil": [
+            "Caryophyllen",
+            "Myrcen",
+            "Limonen",
+            "Humulen",
+            "Linalool"
+        ],
+        "wirkungen": [
+            "analgetisch",
+            "entzündungshemmend",
+            "anxiolytisch",
+            "antidepressiv"
+        ],
+        "typ": "sativa-dominant",
+        "status": "active",
+        "produktlinie": "HUALA",
+        "genetics": "God Bud x Black Cherry Punch",
+        "smell": "Erdig, Kirschen, dunkle Beeren",
+        "taste": "Fruchtig, süß, beerig",
+        "code": "GOL"
+    },
+    {
         "name":  "Grape Burger",
         "thc":  "18-30%",
         "cbd":  "<1%",
@@ -791,31 +817,31 @@
         "taste":  "erdig, süß-sauer",
         "code":  "LCM"
     },
-     {
-        "name":  "London Pound Cake",
-        "thc":  "25-33%",
-        "cbd":  "<1%",
-        "terpengehalt":  "1.40%",
-        "terpenprofil":  [
-                             "Caryophyllen",
-                             "Myrcen",
-                             "Limonen",
-                             "Linalool",
-                             "Humulen"
-                         ],
-        "wirkungen":  [
-                          "analgetisch",
-                          "anxiolytisch",
-                          "antidepressiv",
-                          "entzündungshemmend"
-                      ],
-        "typ":  "indica-dominant",
-        "status":  "active",
-        "produktlinie":  "EVOLUTION",
-        "genetics":  "Sunset Sherbert x Undisclosed Cookies Cross",
-        "smell":  "süß, cremig, beerig, zitrus, Gebäck",
-        "taste":  "cremig, beerig, würzig, süßes Gebäck",
-        "code":  "LPC"
+    {
+        "name": "London Pound Cake",
+        "thc": "25-33%",
+        "cbd": "<1%",
+        "terpengehalt": "1.38%",
+        "terpenprofil": [
+            "Caryophyllen",
+            "Myrcen",
+            "Limonen",
+            "Linalool",
+            "Humulen"
+        ],
+        "wirkungen": [
+            "analgetisch",
+            "entzündungshemmend",
+            "anxiolytisch",
+            "antidepressiv"
+        ],
+        "typ": "indica-dominant",
+        "status": "active",
+        "produktlinie": "EVOLUTION",
+        "genetics": "Sunset Sherbert x Undisclosed Cookies Cross",
+        "smell": "Süß, cremig, beerig, Zitrus, Gebäck",
+        "taste": "Cremig, beerig, würzig, süßes Gebäck",
+        "code": "LPC"
     },
     {
         "name":  "MAC 1",
@@ -964,6 +990,27 @@
         "smell":  "Fruchtig, süß, trauben",
         "taste":  "Süß, fruchtig, erdig, würzig",
         "code":  "MFG"
+    },
+    {
+        "name": "Orange Sherbert",
+        "thc": "20-30%",
+        "cbd": "<1%",
+        "terpengehalt": "1.28%",
+        "terpenprofil": [
+            "Caryophyllen",
+            "Limonen",
+            "Humulen",
+            "Linalool",
+            "Myrcen"
+        ],
+        "wirkungen": [],
+        "typ": "sativa-dominant",
+        "status": "active",
+        "produktlinie": "HUALA",
+        "genetics": "Agent Orange x Sunset Sherbert",
+        "smell": "Zitrus, Mandarine",
+        "taste": "Erdige Noten, cremig, beerig",
+        "code": "OSB"
     },
     {
         "name":  "Peach Chementine",
@@ -1168,6 +1215,53 @@
         "smell":  "Diesel, Cremig, Fruchtig, Tropisch, Banane, würzig, zitronig",
         "taste":  "Kerosin, Würzig, Fruchtig",
         "code":  "PVB"
+    },
+    {
+        "name": "Purple Gas Mask",
+        "thc": "20-33%",
+        "cbd": "<1%",
+        "terpengehalt": "3.01%",
+        "terpenprofil": [
+            "Limonen",
+            "Linalool",
+            "Germacren B",
+            "Caryophyllen",
+            "Selinene"
+        ],
+        "wirkungen": [
+            "entzündungshemmend",
+            "antioxidativ",
+            "antimykotisch",
+            "entspannend"
+        ],
+        "typ": "indica-dominant",
+        "status": "active",
+        "produktlinie": "EVOLUTION",
+        "genetics": "Purple Kush x Gas Mask",
+        "smell": "Skunkig, erdig",
+        "taste": "Süß, beerig",
+        "code": "PGM"
+    },
+    {
+        "name": "Purple Octane",
+        "thc": "20-30%",
+        "cbd": "<1%",
+        "terpengehalt": "1.64%",
+        "terpenprofil": [
+            "Caryophyllen",
+            "Humulen",
+            "Linalool",
+            "Myrcen",
+            "Limonen"
+        ],
+        "wirkungen": [],
+        "typ": "indica-dominant",
+        "status": "active",
+        "produktlinie": "HUALA",
+        "genetics": "(Biscotti x Sherb BX1) x Jealousy F2",
+        "smell": "Fruchtig, cremig, würzig",
+        "taste": "Würzig, erdig",
+        "code": "OCT"
     },
     {
         "name":  "Red Rozay",
@@ -1388,6 +1482,30 @@
         "smell":  "",
         "taste":  "",
         "code":  "TGY"
+    },
+    {
+        "name": "Triangle Mints",
+        "thc": "20-25%",
+        "cbd": "<1%",
+        "terpengehalt": "2.68%",
+        "terpenprofil": [
+            "Myrcen",
+            "Caryophyllen",
+            "Linalool",
+            "Limonen",
+            "Humulen"
+        ],
+        "wirkungen": [
+            "entzündungshemmend",
+            "neuroprotektiv"
+        ],
+        "typ": "indica-dominant",
+        "status": "active",
+        "produktlinie": "HUALA",
+        "genetics": "Triangle Kush x Animal Mints",
+        "smell": "Erdig, würzig",
+        "taste": "Erdige Noten, fruchtig",
+        "code": "TRM"
     },
     {
         "name":  "Triangle Octane",
