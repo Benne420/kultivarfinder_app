@@ -32,4 +32,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: references-online-report
-          path: reports/references-online-report.json
+          path: |
+            reports/references-online-report.json
+            public/kultivare.json
+            data/kultivare.json.bak
