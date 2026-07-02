@@ -571,6 +571,21 @@
         "code":  "GMO"
     },
     {
+        "name":  "Goldkirsch",
+        "thc":  "",
+        "cbd":  "",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "",
+        "status":  "inactive",
+        "produktlinie":  "",
+        "genetics":  "",
+        "smell":  "",
+        "taste":  "",
+        "code":  "GOL"
+    },
+    {
         "name":  "Grape Burger",
         "thc":  "18-30%",
         "cbd":  "<1%",
@@ -918,6 +933,21 @@
         "code":  "MWZ"
     },
     {
+        "name":  "Orange Sherbert",
+        "thc":  "",
+        "cbd":  "",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "",
+        "status":  "inactive",
+        "produktlinie":  "",
+        "genetics":  "",
+        "smell":  "",
+        "taste":  "",
+        "code":  "OSB"
+    },
+    {
         "name":  "Miracle Mints",
         "thc":  "22-33%",
         "cbd":  "<1%",
@@ -1195,6 +1225,21 @@
         "code":  "RZY"
     },
     {
+        "name":  "Purple Octane",
+        "thc":  "",
+        "cbd":  "",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "",
+        "status":  "inactive",
+        "produktlinie":  "",
+        "genetics":  "",
+        "smell":  "",
+        "taste":  "",
+        "code":  "OCT"
+    },
+    {
         "name":  "Rose Gold Pavé",
         "thc":  "22-33%",
         "cbd":  "<1%",
@@ -1388,6 +1433,21 @@
         "smell":  "",
         "taste":  "",
         "code":  "TGY"
+    },
+    {
+        "name":  "Triangle Mints",
+        "thc":  "",
+        "cbd":  "",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "",
+        "status":  "inactive",
+        "produktlinie":  "",
+        "genetics":  "",
+        "smell":  "",
+        "taste":  "",
+        "code":  "TRM"
     },
     {
         "name":  "Triangle Octane",
