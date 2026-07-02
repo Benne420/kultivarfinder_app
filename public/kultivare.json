@@ -943,21 +943,6 @@
         "code":  "MWZ"
     },
     {
-        "name":  "Orange Sherbert",
-        "thc":  "",
-        "cbd":  "",
-        "terpengehalt":  "",
-        "terpenprofil":  [],
-        "wirkungen":  [],
-        "typ":  "",
-        "status":  "inactive",
-        "produktlinie":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  "OSB"
-    },
-    {
         "name":  "Miracle Mints",
         "thc":  "22-33%",
         "cbd":  "<1%",
@@ -1301,21 +1286,6 @@
         "smell":  "blumig, fruchtig, cremig, kerosin",
         "taste":  "blumig, fruchtig, cremig, kerosin",
         "code":  "RZY"
-    },
-    {
-        "name":  "Purple Octane",
-        "thc":  "",
-        "cbd":  "",
-        "terpengehalt":  "",
-        "terpenprofil":  [],
-        "wirkungen":  [],
-        "typ":  "",
-        "status":  "inactive",
-        "produktlinie":  "",
-        "genetics":  "",
-        "smell":  "",
-        "taste":  "",
-        "code":  "OCT"
     },
     {
         "name":  "Rose Gold Pavé",
