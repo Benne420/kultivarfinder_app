@@ -23,7 +23,7 @@
         "taste":  "Erdige Noten, fruchtig",
         "code":  "ALM"
     },
-     {
+    {
         "name":  "Animal Kush",
         "thc":  "25-33%",
         "cbd":  "<1%",
@@ -48,6 +48,32 @@
         "smell":  "eridg, cremig, Minze",
         "taste":  "eridg, cremig, Minze",
         "code":  "AMK"
+    },
+    {
+        "name":  "Bakers Delight",
+        "thc":  "20-25%",
+        "cbd":  "<1%",
+        "terpengehalt":  "0.93%",
+        "terpenprofil":  [
+                             "Caryophyllen",
+                             "Caryophyllenoxid",
+                             "Humulen",
+                             "Guaiol",
+                             "Bisabolol"
+                         ],
+        "wirkungen":  [
+                          "entzündungshemmend",
+                          "antioxidativ",
+                          "antimykotisch",
+                          "entspannend"
+                      ],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Girl Scout Cookies x Sorbet",
+        "smell":  "süß-cremig, fruchtig",
+        "taste":  "süß-cremig, Gebäcknoten",
+        "code":  "BDL"
     },
     {
         "name":  "Berlin Berries",
