@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "name":  "Alien Mints",
         "thc":  "20-25%",
@@ -12,14 +12,14 @@
                              "Humulen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Alien Cookies x Animal Mints",
-        "smell":  "Erdig, würzig",
+        "smell":  "Erdig, wÃ¼rzig",
         "taste":  "Erdige Noten, fruchtig",
         "code":  "ALM"
     },
@@ -38,7 +38,7 @@
         "wirkungen":  [
                           "antimykotisch",
                           "antioxidativ",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "entspannend"
                       ],
         "typ":  "indica-dominant",
@@ -62,7 +62,7 @@
                              "Bisabolol"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -71,8 +71,8 @@
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Girl Scout Cookies x Sorbet",
-        "smell":  "süß-cremig, fruchtig",
-        "taste":  "süß-cremig, Gebäcknoten",
+        "smell":  "sÃ¼ÃŸ-cremig, fruchtig",
+        "taste":  "sÃ¼ÃŸ-cremig, GebÃ¤cknoten",
         "code":  "BDL"
     },
     {
@@ -88,7 +88,7 @@
                              "Germacren B"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimikrobiell",
                           "entspannend"
@@ -97,8 +97,8 @@
         "status":  "active",
         "produktlinie":  "COMPOUND",
         "genetics":  "Georgia Pie x Gastro Pop",
-        "smell":  "Cremig, Süß, Beerig, Rote Früchte",
-        "taste":  "Cremig, Süß, Beerig, Rote Früchte",
+        "smell":  "Cremig, SÃ¼ÃŸ, Beerig, Rote FrÃ¼chte",
+        "taste":  "Cremig, SÃ¼ÃŸ, Beerig, Rote FrÃ¼chte",
         "code":  "BER"
     },
     {
@@ -114,14 +114,14 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
         "produktlinie":  "HUALA",
-        "genetics":  "Triangle Kush X ’88 G13 Hashplan",
-        "smell":  "Erdiger Kush, Fruchtig, Sauer, Würzig",
-        "taste":  "Würzig, Erdiger Kush, Fruchtig, Sauer",
+        "genetics":  "Triangle Kush X â€™88 G13 Hashplan",
+        "smell":  "Erdiger Kush, Fruchtig, Sauer, WÃ¼rzig",
+        "taste":  "WÃ¼rzig, Erdiger Kush, Fruchtig, Sauer",
         "code":  "BTR"
     },
     {
@@ -137,7 +137,7 @@
                              "Myrcen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -164,7 +164,7 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "sativa-dominant",
         "status":  "discontinued",
@@ -186,15 +186,15 @@
                              "Pinen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "sativa-dominant",
         "status":  "discontinued",
         "produktlinie":  "HUALA",
         "genetics":  "Animal Face x Electric Grapefruit",
-        "smell":  "Süß, würzig",
-        "taste":  "Zitrone, Pinien, süß",
+        "smell":  "SÃ¼ÃŸ, wÃ¼rzig",
+        "taste":  "Zitrone, Pinien, sÃ¼ÃŸ",
         "code":  "C47"
     },
     {
@@ -211,13 +211,13 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Alien Cookies x Kush Mints #11",
-        "smell":  "kräuterartig",
+        "smell":  "krÃ¤uterartig",
         "taste":  "erdig, holzig",
         "code":  "CAP"
     },
@@ -235,7 +235,7 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
@@ -258,7 +258,7 @@
             "Ocimen"
         ],
         "wirkungen": [
-            "entzündungshemmend",
+            "entzÃ¼ndungshemmend",
             "antioxidativ",
             "antimykotisch",
             "entspannend"
@@ -268,7 +268,7 @@
         "produktlinie": "EVOLUTION",
         "genetics": "Cherry Cosmo x Red Runtz",
         "smell": "Fruchtig, Kirsche, beerig, Candy",
-        "taste": "Kirsche, Candy, leicht süß-säuerlich",
+        "taste": "Kirsche, Candy, leicht sÃ¼ÃŸ-sÃ¤uerlich",
         "code": "CBB"
     },
     {
@@ -284,7 +284,7 @@
                              "Guaiol"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -310,15 +310,15 @@
             "Limonen"
         ],
         "wirkungen": [
-            "entzündungshemmend",
+            "entzÃ¼ndungshemmend",
             "analgetisch"
         ],
         "typ": "sativa-dominant",
         "status": "active",
         "produktlinie": "HUALA",
         "genetics": "Durban Poison x Trop Cherry",
-        "smell": "Fruchtig, Kirsche, Zitrus, würzig",
-        "taste": "Fruchtig, Kirsche, Zitrus, würzig",
+        "smell": "Fruchtig, Kirsche, Zitrus, wÃ¼rzig",
+        "taste": "Fruchtig, Kirsche, Zitrus, wÃ¼rzig",
         "code": "DBC"
     },
     {
@@ -332,8 +332,8 @@
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Sunset Sherbert x Tina",
-        "smell":  "Herb-schwefelig, Cremig-sÃ¼ÃŸ, Zitrus, Beere",
-        "taste":  "Herb-schwefelig, Cremig-sÃ¼ÃŸ, Zitrus, Beere",
+        "smell":  "Herb-schwefelig, Cremig-süß, Zitrus, Beere",
+        "taste":  "Herb-schwefelig, Cremig-süß, Zitrus, Beere",
         "code":  "FL9"
     },
     {
@@ -351,15 +351,15 @@
         "wirkungen":  [
                           "antioxidativ",
                           "antimykotisch",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "entspannend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
         "produktlinie":  "HUALA",
         "genetics":  "The Soap x Velvet Runtz",
-        "smell":  "minzig, süß, cremig",
-        "taste":  "minzig, süß, cremig",
+        "smell":  "minzig, sÃ¼ÃŸ, cremig",
+        "taste":  "minzig, sÃ¼ÃŸ, cremig",
         "code":  "FTC"
     },
     {
@@ -377,14 +377,14 @@
         "wirkungen":  [
                           "antioxidativ",
                           "antimikrobiell",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Gushers x Gellati",
-        "smell":  "cremig, süß",
-        "taste":  "cremig, süß",
+        "smell":  "cremig, sÃ¼ÃŸ",
+        "taste":  "cremig, sÃ¼ÃŸ",
         "code":  "FWT"
     },
     {
@@ -403,14 +403,14 @@
                           "analgetisch",
                           "anxiolytisch",
                           "antidepressiv",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Wedding Cake x Fruity Pebbles OG",
-        "smell":  "cremig, süß, fruchtig, Kerosin",
-        "taste":  "Fruchtig, würzig, cremig",
+        "smell":  "cremig, sÃ¼ÃŸ, fruchtig, Kerosin",
+        "taste":  "Fruchtig, wÃ¼rzig, cremig",
         "code":  "FFC"
     },
     {
@@ -426,15 +426,15 @@
                              "Humulen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Bubblegum x (Unknown x Gelato)",
-        "smell":  "Süß, vanille, kerosin",
-        "taste":  "Süß, vanille, kerosin",
+        "smell":  "SÃ¼ÃŸ, vanille, kerosin",
+        "taste":  "SÃ¼ÃŸ, vanille, kerosin",
         "code":  "FRG"
     },
     {
@@ -450,8 +450,8 @@
                              "Linalool"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
-                          "unterstützt Wundheilung"
+                          "entzÃ¼ndungshemmend",
+                          "unterstÃ¼tzt Wundheilung"
                       ],
         "typ":  "sativa-dominant",
         "status":  "active",
@@ -477,14 +477,14 @@
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "CURALEAF",
         "genetics":  "GMO x Girls Scout Cookies",
-        "smell":  "würzig, süß",
-        "taste":  "erdig. süß",
+        "smell":  "wÃ¼rzig, sÃ¼ÃŸ",
+        "taste":  "erdig. sÃ¼ÃŸ",
         "code":  "GCT"
     },
     {
@@ -502,14 +502,14 @@
                           "analgetisch",
                           "anxiolytisch",
                           "antidepressiv",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Tahoe OG x Fire OG",
         "smell":  "Diesel, Kerosin, ergig, zitrus",
-        "taste":  "scharf, würzig, erdig, zitrus",
+        "taste":  "scharf, wÃ¼rzig, erdig, zitrus",
         "code":  "GLE"
     },
     {
@@ -525,7 +525,7 @@
                              "Selinene"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "indica-dominant",
@@ -550,15 +550,15 @@
                          ],
         "wirkungen":  [
                           "entspannend",
-                          "schlaffördernd",
+                          "schlaffÃ¶rdernd",
                           "analgetisch"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "NATURAL",
         "genetics":  "(Chem\u0027s Sister x Sour Dubb) x Chocolate Diesel",
-        "smell":  "Erdig, würzig, schokoladig",
-        "taste":  "Erdige Noten, Schokolade, Gewürze",
+        "smell":  "Erdig, wÃ¼rzig, schokoladig",
+        "taste":  "Erdige Noten, Schokolade, GewÃ¼rze",
         "code":  "GG4"
     },
     {
@@ -574,7 +574,7 @@
                              "Limonen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "analgetisch"
                       ],
         "typ":  "indica-dominant",
@@ -599,7 +599,7 @@
                          ],
         "wirkungen":  [
                           "antioxidativ",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antimikrobiell"
                       ],
         "typ":  "indica-dominant",
@@ -624,7 +624,7 @@
         ],
         "wirkungen": [
             "analgetisch",
-            "entzündungshemmend",
+            "entzÃ¼ndungshemmend",
             "anxiolytisch",
             "antidepressiv"
         ],
@@ -633,7 +633,7 @@
         "produktlinie": "HUALA",
         "genetics": "God Bud x Black Cherry Punch",
         "smell": "Erdig, Kirschen, dunkle Beeren",
-        "taste": "Fruchtig, süß, beerig",
+        "taste": "Fruchtig, sÃ¼ÃŸ, beerig",
         "code": "GOL"
     },
     {
@@ -649,7 +649,7 @@
                              "Linalool"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -658,8 +658,8 @@
         "status":  "discontinued",
         "produktlinie":  "HUALA",
         "genetics":  "(GMO Cookies x Larry OG) x (Grape Ape x OG Kush)",
-        "smell":  "Würzig, leicht herb, beerig",
-        "taste":  "Süß, würzig, beerig",
+        "smell":  "WÃ¼rzig, leicht herb, beerig",
+        "taste":  "SÃ¼ÃŸ, wÃ¼rzig, beerig",
         "code":  "GBG"
     },
     {
@@ -675,13 +675,13 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "sativa-dominant",
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Animal Face x Grape Fruit",
-        "smell":  "Erdig, fruchtig, säuerlich",
+        "smell":  "Erdig, fruchtig, sÃ¤uerlich",
         "taste":  "Diesel",
         "code":  "GRF"
     },
@@ -696,8 +696,8 @@
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Pure Guava x OZ Melon",
-        "smell":  "Bonbonartig, Cremig-sÃ¼ÃŸ, Mango, Herb-schwefelig",
-        "taste":  "Bonbonartig, Cremig-sÃ¼ÃŸ, Mango, Herb-schwefelig",
+        "smell":  "Bonbonartig, Cremig-süß, Mango, Herb-schwefelig",
+        "taste":  "Bonbonartig, Cremig-süß, Mango, Herb-schwefelig",
         "code":  "GVZ"
     },
     {
@@ -714,14 +714,14 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "anxiolytisch",
                           "antidepressiv"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
         "produktlinie":  "HUALA",
-        "genetics":  "Kush Mints x Edelweiß",
+        "genetics":  "Kush Mints x EdelweiÃŸ",
         "smell":  "Cremig, Diesel, minzig",
         "taste":  "Cremig, erdig, minzig",
         "code":  "HOM"
@@ -742,7 +742,7 @@
                           "analgetisch",
                           "entspannend",
                           "anxiolytisch",
-                          "krampflösend"
+                          "krampflÃ¶send"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
@@ -763,8 +763,8 @@
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Jack Herer x Super Skunk x Haze",
-        "smell":  "Zitrus, Erdig-herb, WÃ¼rzig, Kiefer",
-        "taste":  "Zitrus, WÃ¼rzig, Erdig-herb, Kiefer, KrÃ¤uter",
+        "smell":  "Zitrus, Erdig-herb, Würzig, Kiefer",
+        "taste":  "Zitrus, Würzig, Erdig-herb, Kiefer, Kräuter",
         "code":  "JFL"
     },
     {
@@ -778,8 +778,8 @@
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Donair Kush x Brents OG",
-        "smell":  "Erdig, WÃ¼rzig, SÃ¼ÃŸ, Orange, Herb-schwefelig",
-        "taste":  "Erdig, WÃ¼rzig, SÃ¼ÃŸ, Orange, Harzig, Herb-schwefelig",
+        "smell":  "Erdig, Würzig, Süß, Orange, Herb-schwefelig",
+        "taste":  "Erdig, Würzig, Süß, Orange, Harzig, Herb-schwefelig",
         "code":  "KBK"
     },
     {
@@ -792,7 +792,7 @@
                              "Caryophyllen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "analgetisch"
@@ -819,14 +819,14 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
         "produktlinie":  "CURALEAF",
         "genetics":  "Purple Pheno Cake x Wedding Crasher",
         "smell":  "Lavendel, cremig",
-        "taste":  "Blumig, süß, cremig",
+        "taste":  "Blumig, sÃ¼ÃŸ, cremig",
         "code":  "LVC"
     },
     {
@@ -842,7 +842,7 @@
                              "Humulen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "analgetisch"
                       ],
         "typ":  "indica-dominant",
@@ -866,15 +866,15 @@
                              "Pinen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "analgetisch"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Sunset Sherbert x Girl Scout Cookies",
-        "smell":  "Süß, Kirsche, Zitrone, Blumig, Kerosin",
-        "taste":  "Süß, Zitronig",
+        "smell":  "SÃ¼ÃŸ, Kirsche, Zitrone, Blumig, Kerosin",
+        "taste":  "SÃ¼ÃŸ, Zitronig",
         "code":  "LCG"
     },
     {
@@ -892,14 +892,14 @@
         "wirkungen":  [
                           "analgetisch",
                           "antinozizeptiv",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Lilac Diesel x Sunset Mandarin x NL KUSH",
-        "smell":  "erdig, süß-sauer",
-        "taste":  "erdig, süß-sauer",
+        "smell":  "erdig, sÃ¼ÃŸ-sauer",
+        "taste":  "erdig, sÃ¼ÃŸ-sauer",
         "code":  "LCM"
     },
     {
@@ -916,7 +916,7 @@
         ],
         "wirkungen": [
             "analgetisch",
-            "entzündungshemmend",
+            "entzÃ¼ndungshemmend",
             "anxiolytisch",
             "antidepressiv"
         ],
@@ -924,8 +924,8 @@
         "status": "active",
         "produktlinie": "EVOLUTION",
         "genetics": "Sunset Sherbert x Undisclosed Cookies Cross",
-        "smell": "Süß, cremig, beerig, Zitrus, Gebäck",
-        "taste": "Cremig, beerig, würzig, süßes Gebäck",
+        "smell": "SÃ¼ÃŸ, cremig, beerig, Zitrus, GebÃ¤ck",
+        "taste": "Cremig, beerig, wÃ¼rzig, sÃ¼ÃŸes GebÃ¤ck",
         "code": "LPC"
     },
     {
@@ -942,15 +942,15 @@
                          ],
         "wirkungen":  [
                           "antioxidativ",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antimikrobiell"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Alien Cookies F2 x Miracle 15",
-        "smell":  "Blumig, fruchtig, süß, erdig",
-        "taste":  "Süß, blumig, erdig",
+        "smell":  "Blumig, fruchtig, sÃ¼ÃŸ, erdig",
+        "taste":  "SÃ¼ÃŸ, blumig, erdig",
         "code":  "MAC"
     },
     {
@@ -966,7 +966,7 @@
                              "Germacren B"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -975,8 +975,8 @@
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Bubblegum Sherb x Magic Marker",
-        "smell":  "süß, gassy",
-        "taste":  "süß, Kaugummi, gassy",
+        "smell":  "sÃ¼ÃŸ, gassy",
+        "taste":  "sÃ¼ÃŸ, Kaugummi, gassy",
         "code":  "MGD"
     },
     {
@@ -992,7 +992,7 @@
                              "Bulnesol"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -1001,8 +1001,8 @@
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Cap Junky x Platinum",
-        "smell":  "Süß, sauer, blumig",
-        "taste":  "Süß, sauer, blumig",
+        "smell":  "SÃ¼ÃŸ, sauer, blumig",
+        "taste":  "SÃ¼ÃŸ, sauer, blumig",
         "code":  "MSP"
     },
     {
@@ -1017,7 +1017,7 @@
                              "Linalool"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "indica-dominant",
@@ -1025,7 +1025,7 @@
         "produktlinie":  "COMPOUND",
         "genetics":  "Spritzer x Grape Gas",
         "smell":  "Cremig, Marshmallow",
-        "taste":  "Süß, cremig",
+        "taste":  "SÃ¼ÃŸ, cremig",
         "code":  "MWZ"
     },
     {
@@ -1042,13 +1042,13 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Alien Cookies x Kush Mints #11",
-        "smell":  "Kräuterartig",
+        "smell":  "KrÃ¤uterartig",
         "taste":  "Erdig, holzig",
         "code":  "MMI"
     },
@@ -1065,15 +1065,15 @@
                              "Farnesen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "analgetisch"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "GMO x Purple Punch",
-        "smell":  "Fruchtig, süß, trauben",
-        "taste":  "Süß, fruchtig, erdig, würzig",
+        "smell":  "Fruchtig, sÃ¼ÃŸ, trauben",
+        "taste":  "SÃ¼ÃŸ, fruchtig, erdig, wÃ¼rzig",
         "code":  "MFG"
     },
     {
@@ -1110,7 +1110,7 @@
                              "Humulen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "analgetisch"
@@ -1119,8 +1119,8 @@
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Chem D x i95 x Mandarin Cookies x Peach Ringz",
-        "smell":  "Süß, tropisch, Zitrus",
-        "taste":  "Süß, tropisch, Zitrus",
+        "smell":  "SÃ¼ÃŸ, tropisch, Zitrus",
+        "taste":  "SÃ¼ÃŸ, tropisch, Zitrus",
         "code":  "PCH"
     },
     {
@@ -1136,7 +1136,7 @@
                              "Germacren B"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -1145,8 +1145,8 @@
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Animal Mints Bx1 x Zkittlez",
-        "smell":  "süß, sauer, Ananas, exotisch",
-        "taste":  "süß, sauer, Ananas, exotisch",
+        "smell":  "sÃ¼ÃŸ, sauer, Ananas, exotisch",
+        "taste":  "sÃ¼ÃŸ, sauer, Ananas, exotisch",
         "code":  "PEX"
     },
     {
@@ -1163,7 +1163,7 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "anxiolytisch",
                           "antidepressiv"
                       ],
@@ -1172,7 +1172,7 @@
         "produktlinie":  "HUALA",
         "genetics":  "God Bud x Black Cherry Punch",
         "smell":  "Diesel, erdig, saure Kirschen",
-        "taste":  "Fruchtig, süß, beerig",
+        "taste":  "Fruchtig, sÃ¼ÃŸ, beerig",
         "code":  "POG"
     },
     {
@@ -1189,7 +1189,7 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "anxiolytisch",
                           "antidepressiv"
                       ],
@@ -1197,8 +1197,8 @@
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "33 Splitter x Peach Ozz",
-        "smell":  "süß, herb, cremig",
-        "taste":  "süß, herb, cremig",
+        "smell":  "sÃ¼ÃŸ, herb, cremig",
+        "taste":  "sÃ¼ÃŸ, herb, cremig",
         "code":  "PIG"
     },
     {
@@ -1215,18 +1215,18 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Master Kush x Afghani",
         "smell":  "Beeren, Pinie, Diesel",
-        "taste":  "fruchtig, würzig, cremig",
+        "taste":  "fruchtig, wÃ¼rzig, cremig",
         "code":  "PLA"
     },
     {
-        "name":  "Platinum Pavé",
+        "name":  "Platinum PavÃ©",
         "thc":  "25-33%",
         "cbd":  "<1%",
         "terpengehalt":  "4.57%",
@@ -1239,16 +1239,16 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "anxiolytisch",
                           "antidepressiv"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "COMPOUND",
-        "genetics":  "Pavé x Spritzer",
-        "smell":  "Kerosin, süß",
-        "taste":  "Kerosin, süß",
+        "genetics":  "PavÃ© x Spritzer",
+        "smell":  "Kerosin, sÃ¼ÃŸ",
+        "taste":  "Kerosin, sÃ¼ÃŸ",
         "code":  "PPE"
     },
     {
@@ -1265,14 +1265,14 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Sundae Driver x Plum Wine OG",
-        "smell":  "Süß, beerig",
-        "taste":  "Süß, Beere, erdige Noten",
+        "smell":  "SÃ¼ÃŸ, beerig",
+        "taste":  "SÃ¼ÃŸ, Beere, erdige Noten",
         "code":  "PLD"
     },
     {
@@ -1288,7 +1288,7 @@
                              "Caryophyllen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "analgetisch"
@@ -1297,8 +1297,8 @@
         "status":  "discontinued",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Banana OG x Private Reserve",
-        "smell":  "Diesel, Cremig, Fruchtig, Tropisch, Banane, würzig, zitronig",
-        "taste":  "Kerosin, Würzig, Fruchtig",
+        "smell":  "Diesel, Cremig, Fruchtig, Tropisch, Banane, wÃ¼rzig, zitronig",
+        "taste":  "Kerosin, WÃ¼rzig, Fruchtig",
         "code":  "PVB"
     },
     {
@@ -1314,7 +1314,7 @@
             "Selinene"
         ],
         "wirkungen": [
-            "entzündungshemmend",
+            "entzÃ¼ndungshemmend",
             "antioxidativ",
             "antimykotisch",
             "entspannend"
@@ -1324,7 +1324,7 @@
         "produktlinie": "EVOLUTION",
         "genetics": "Purple Kush x Gas Mask",
         "smell": "Skunkig, erdig",
-        "taste": "Süß, beerig",
+        "taste": "SÃ¼ÃŸ, beerig",
         "code": "PGM"
     },
     {
@@ -1344,8 +1344,8 @@
         "status": "active",
         "produktlinie": "HUALA",
         "genetics": "(Biscotti x Sherb BX1) x Jealousy F2",
-        "smell": "Fruchtig, cremig, würzig",
-        "taste": "Würzig, erdig",
+        "smell": "Fruchtig, cremig, wÃ¼rzig",
+        "taste": "WÃ¼rzig, erdig",
         "code": "OCT"
     },
     {
@@ -1360,7 +1360,7 @@
                              "Selinene"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -1374,7 +1374,7 @@
         "code":  "RZY"
     },
     {
-        "name":  "Rose Gold Pavé",
+        "name":  "Rose Gold PavÃ©",
         "thc":  "22-33%",
         "cbd":  "<1%",
         "terpengehalt":  "4.15%",
@@ -1386,7 +1386,7 @@
                              "Germacren B"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "analgetisch"
@@ -1394,9 +1394,9 @@
         "typ":  "indica-dominant",
         "status":  "discontinued",
         "produktlinie":  "COMPOUND",
-        "genetics":  "Pavé x Apples \u0026 Bananas",
+        "genetics":  "PavÃ© x Apples \u0026 Bananas",
         "smell":  "Kaugummi, Menthol, Zitrone, Kerosin",
-        "taste":  "Süß, Menthol, Kerosin",
+        "taste":  "SÃ¼ÃŸ, Menthol, Kerosin",
         "code":  "RPV"
     },
     {
@@ -1409,7 +1409,7 @@
                              "Caryophyllen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "indica-dominant",
@@ -1433,7 +1433,7 @@
                              "Selinene"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch",
                           "entspannend"
@@ -1442,7 +1442,7 @@
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Scented Marker x Pineapple Fruz",
-        "smell":  "fruchtig, süß, Diesel",
+        "smell":  "fruchtig, sÃ¼ÃŸ, Diesel",
         "taste":  "Pinie, Zitrone",
         "code":  "SCM"
     },
@@ -1459,7 +1459,7 @@
                              "Humulen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "indica-dominant",
@@ -1467,7 +1467,7 @@
         "produktlinie":  "HUALA",
         "genetics":  "(Gelato x Tina) x Cookies \u0026 Cream F2",
         "smell":  "Cremig, vanille, beerig",
-        "taste":  "Cremig, süß, beerig",
+        "taste":  "Cremig, sÃ¼ÃŸ, beerig",
         "code":  "SCO"
     },
     {
@@ -1486,14 +1486,14 @@
                           "analgetisch",
                           "anxiolytisch",
                           "antidepressiv",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "HUALA",
         "genetics":  "Critical Mass x OG Kush",
-        "smell":  "erdig, süß",
-        "taste":  "erdig, süß",
+        "smell":  "erdig, sÃ¼ÃŸ",
+        "taste":  "erdig, sÃ¼ÃŸ",
         "code":  "SEK"
     },
     {
@@ -1524,15 +1524,15 @@
                              "Farnesen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "sativa-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
-        "genetics":  "Stardawg × Arise",
+        "genetics":  "Stardawg Ã— Arise",
         "smell":  "Zitronengras, Kiefer, Basilikum",
-        "taste":  "Süß, sauer",
+        "taste":  "SÃ¼ÃŸ, sauer",
         "code":  "STR"
     },
     {
@@ -1548,15 +1548,15 @@
                              "Humulen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "sativa-dominant",
         "status":  "active",
         "produktlinie":  "BALANCED",
         "genetics":  "Super Lemon G x PF1 CBD",
-        "smell":  "Süßlich, Zitronen, Orangen",
-        "taste":  "Süßlich, Zitronen, Orangen",
+        "smell":  "SÃ¼ÃŸlich, Zitronen, Orangen",
+        "taste":  "SÃ¼ÃŸlich, Zitronen, Orangen",
         "code":  "SLG"
     },
     {
@@ -1572,7 +1572,7 @@
                              "Linalool"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "neuroprotektiv"
                       ],
         "typ":  "indica-dominant",
@@ -1596,14 +1596,14 @@
             "Humulen"
         ],
         "wirkungen": [
-            "entzündungshemmend",
+            "entzÃ¼ndungshemmend",
             "neuroprotektiv"
         ],
         "typ": "indica-dominant",
         "status": "active",
         "produktlinie": "HUALA",
         "genetics": "Triangle Kush x Animal Mints",
-        "smell": "Erdig, würzig",
+        "smell": "Erdig, wÃ¼rzig",
         "taste": "Erdige Noten, fruchtig",
         "code": "TRM"
     },
@@ -1621,7 +1621,7 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
@@ -1644,13 +1644,13 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "sativa-dominant",
         "status":  "active",
         "produktlinie":  "NATURAL",
         "genetics":  "Girl Scout Cookies x Tangie",
-        "smell":  "Fruchtig, Zitrus, erdig, würzig",
+        "smell":  "Fruchtig, Zitrus, erdig, wÃ¼rzig",
         "taste":  "Angenehm Fruchtig, Zitrus",
         "code":  "TRP"
     },
@@ -1667,7 +1667,7 @@
                              "Limonen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "antioxidativ",
                           "antimykotisch"
                       ],
@@ -1675,8 +1675,8 @@
         "status":  "discontinued",
         "produktlinie":  "EVOLUTION",
         "genetics":  "Unicorn Poop x Wedding Cake",
-        "smell":  "Diesel, süß, cremig",
-        "taste":  "Diesel, süß, cremig",
+        "smell":  "Diesel, sÃ¼ÃŸ, cremig",
+        "taste":  "Diesel, sÃ¼ÃŸ, cremig",
         "code":  "UNC"
     },
     {
@@ -1693,7 +1693,7 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "anxiolytisch",
                           "antidepressiv"
                       ],
@@ -1701,8 +1701,8 @@
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "White Truffle x Northern Lights",
-        "smell":  "Cremig, schokoladig, würzig",
-        "taste":  "Cremig, schokoladig, würzig",
+        "smell":  "Cremig, schokoladig, wÃ¼rzig",
+        "taste":  "Cremig, schokoladig, wÃ¼rzig",
         "code":  "WTR"
     },
     {
@@ -1719,14 +1719,14 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "sativa-dominant",
         "status":  "active",
         "produktlinie":  "CURALEAF",
         "genetics":  "Wedding Pop x Triangle Kush",
         "smell":  "Pfeffer, Zitrus",
-        "taste":  "Süß, Pfeffer, Zitrus",
+        "taste":  "SÃ¼ÃŸ, Pfeffer, Zitrus",
         "code":  "WPT"
     },
     {
@@ -1743,14 +1743,14 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
         "produktlinie":  "EVOLUTION",
         "genetics":  "White Wedding x Kush Mints #11",
         "smell":  "Beeren, Pinie, Diesel",
-        "taste":  "Fruchtig, würzig, cremig",
+        "taste":  "Fruchtig, wÃ¼rzig, cremig",
         "code":  "WES"
     },
     {
@@ -1767,15 +1767,15 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend",
+                          "entzÃ¼ndungshemmend",
                           "anxiolytisch",
                           "antidepressiv"
                       ],
         "typ":  "sativa-dominant",
         "status":  "active",
         "produktlinie":  "HUALA",
-        "genetics":  "Super Silver Haze × The White",
-        "smell":  "Zitronig, Kräuternoten",
+        "genetics":  "Super Silver Haze Ã— The White",
+        "smell":  "Zitronig, KrÃ¤uternoten",
         "taste":  "Herb, zitronig",
         "code":  "WOT"
     },
@@ -1793,14 +1793,14 @@
                          ],
         "wirkungen":  [
                           "analgetisch",
-                          "entzündungshemmend"
+                          "entzÃ¼ndungshemmend"
                       ],
         "typ":  "indica-dominant",
         "status":  "discontinued",
         "produktlinie":  "CURALEAF",
         "genetics":  "Animal Cookies x GG4",
-        "smell":  "Süß, Zitrus, Pfeffer, Creme",
-        "taste":  "Süß, Zitrus, Pfeffer, Creme",
+        "smell":  "SÃ¼ÃŸ, Zitrus, Pfeffer, Creme",
+        "taste":  "SÃ¼ÃŸ, Zitrus, Pfeffer, Creme",
         "code":  "ZKS"
     },
     {
@@ -1816,8 +1816,8 @@
                              "Pinen"
                          ],
         "wirkungen":  [
-                          "entzündungshemmend",
-                          "unterstützt Wundheilung"
+                          "entzÃ¼ndungshemmend",
+                          "unterstÃ¼tzt Wundheilung"
                       ],
         "typ":  "indica-dominant",
         "status":  "active",
@@ -1828,3 +1828,5 @@
         "code":  "ZRP"
     }
 ]
+
+
