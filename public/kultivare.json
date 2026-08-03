@@ -322,6 +322,21 @@
         "code": "DBC"
     },
     {
+        "name":  "Falcon 9",
+        "thc":  "20-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Sunset Sherbert x Tina",
+        "smell":  "Herb-schwefelig, Cremig-sÃ¼ÃŸ, Zitrus, Beere",
+        "taste":  "Herb-schwefelig, Cremig-sÃ¼ÃŸ, Zitrus, Beere",
+        "code":  "FL9"
+    },
+    {
         "name":  "Fight Club",
         "thc":  "25-33%",
         "cbd":  "<1%",
@@ -671,6 +686,21 @@
         "code":  "GRF"
     },
     {
+        "name":  "Guavaz",
+        "thc":  "20-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Pure Guava x OZ Melon",
+        "smell":  "Bonbonartig, Cremig-sÃ¼ÃŸ, Mango, Herb-schwefelig",
+        "taste":  "Bonbonartig, Cremig-sÃ¼ÃŸ, Mango, Herb-schwefelig",
+        "code":  "GVZ"
+    },
+    {
         "name":  "Holy Mints",
         "thc":  "18-30%",
         "cbd":  "<1%",
@@ -721,6 +751,36 @@
         "smell":  "Orangen, Vanille",
         "taste":  "Zitrus, cremig",
         "code":  "ICC"
+    },
+    {
+        "name":  "Jack Flash",
+        "thc":  "20-33%",
+        "cbd":  "<1%",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Jack Herer x Super Skunk x Haze",
+        "smell":  "Zitrus, Erdig-herb, WÃ¼rzig, Kiefer",
+        "taste":  "Zitrus, WÃ¼rzig, Erdig-herb, Kiefer, KrÃ¤uter",
+        "code":  "JFL"
+    },
+    {
+        "name":  "Kebab Kush",
+        "thc":  "22-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "indica-dominant",
+        "status":  "active",
+        "produktlinie":  "HUALA",
+        "genetics":  "Donair Kush x Brents OG",
+        "smell":  "Erdig, WÃ¼rzig, SÃ¼ÃŸ, Orange, Herb-schwefelig",
+        "taste":  "Erdig, WÃ¼rzig, SÃ¼ÃŸ, Orange, Harzig, Herb-schwefelig",
+        "code":  "KBK"
     },
     {
         "name":  "Jealousy",
@@ -1435,6 +1495,21 @@
         "smell":  "erdig, süß",
         "taste":  "erdig, süß",
         "code":  "SEK"
+    },
+    {
+        "name":  "Strawberry Skrilla",
+        "thc":  "25-30%",
+        "cbd":  "<1%",
+        "terpengehalt":  "",
+        "terpenprofil":  [],
+        "wirkungen":  [],
+        "typ":  "sativa-dominant",
+        "status":  "active",
+        "produktlinie":  "EVOLUTION",
+        "genetics":  "Red Pop x Jokerz #31",
+        "smell":  "Bonbonartig, Erdbeere, Herb-schwefelig, Cola",
+        "taste":  "Bonbonartig, Erdbeere, Herb-schwefelig, Cola",
+        "code":  "SSK"
     },
     {
         "name":  "Star Struck",
