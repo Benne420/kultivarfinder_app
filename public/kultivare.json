@@ -1,9 +1,5 @@
 {
-    "Count":  76,
-    "Length":  76,
-    "LongLength":  76,
-    "Rank":  1,
-    "SyncRoot":  [
+
                      {
                          "name":  "Alien Mints",
                          "thc":  "20-25%",
@@ -1856,8 +1852,3 @@
                          "taste":  "Erdig, Diesel, Zitrone",
                          "code":  "ZRP"
                      }
-                 ],
-    "IsReadOnly":  false,
-    "IsFixedSize":  true,
-    "IsSynchronized":  false
-}
