@@ -434,7 +434,7 @@
                                            "neuroprotektiv"
                                        ],
                          "typ":  "indica-dominant",
-                         "status":  "active",
+                         "status":  "discontinued",
                          "produktlinie":  "EVOLUTION",
                          "genetics":  "Bubblegum x (Unknown x Gelato)",
                          "smell":  "Süß, vanille, kerosin",
@@ -682,7 +682,7 @@
                                            "entzündungshemmend"
                                        ],
                          "typ":  "sativa-dominant",
-                         "status":  "active",
+                         "status":  "discontinued",
                          "produktlinie":  "HUALA",
                          "genetics":  "Animal Face x Grape Fruit",
                          "smell":  "Erdig, fruchtig, säuerlich",
@@ -1014,7 +1014,7 @@
                                            "entspannend"
                                        ],
                          "typ":  "indica-dominant",
-                         "status":  "active",
+                         "status":  "discontinued",
                          "produktlinie":  "EVOLUTION",
                          "genetics":  "Cap Junky x Platinum",
                          "smell":  "Süß, sauer, blumig",
@@ -1386,7 +1386,7 @@
                                            "entspannend"
                                        ],
                          "typ":  "indica-dominant",
-                         "status":  "active",
+                         "status":  "discontinued",
                          "produktlinie":  "EVOLUTION",
                          "genetics":  "Rozay x Jet A",
                          "smell":  "blumig, fruchtig, cremig, kerosin",
@@ -1552,7 +1552,7 @@
                                            "neuroprotektiv"
                                        ],
                          "typ":  "sativa-dominant",
-                         "status":  "active",
+                         "status":  "discontinued",
                          "produktlinie":  "EVOLUTION",
                          "genetics":  "Stardawg × Arise",
                          "smell":  "Zitronengras, Kiefer, Basilikum",
@@ -1600,7 +1600,7 @@
                                            "neuroprotektiv"
                                        ],
                          "typ":  "indica-dominant",
-                         "status":  "discontinued",
+                         "status":  "active",
                          "produktlinie":  "COMPOUND",
                          "genetics":  "",
                          "smell":  "",
@@ -1671,7 +1671,7 @@
                                            "entzündungshemmend"
                                        ],
                          "typ":  "sativa-dominant",
-                         "status":  "active",
+                         "status":  "discontinued",
                          "produktlinie":  "NATURAL",
                          "genetics":  "Girl Scout Cookies x Tangie",
                          "smell":  "Fruchtig, Zitrus, erdig, würzig",
@@ -1796,7 +1796,7 @@
                                            "antidepressiv"
                                        ],
                          "typ":  "sativa-dominant",
-                         "status":  "active",
+                         "status":  "discontinued",
                          "produktlinie":  "HUALA",
                          "genetics":  "Super Silver Haze × The White",
                          "smell":  "Zitronig, Kräuternoten",
