@@ -19,8 +19,7 @@ export default function TerpeneChips({ list = [], onInfo, describedBy }) {
   if (orderedList.length === 0) {
     return (
       <p className="terp-list__placeholder" role="status">
-        Kein Terpenprofil hinterlegt. Die Angaben fehlen entweder im Datensatz
-        oder wurden vom Hersteller nicht bereitgestellt. Mehr zur Datengrundlage
+        Kein Terpenprofil hinterlegt. Mehr zur Datengrundlage
         erfahren Sie in der
         {" "}
         <a href="https://de.wikipedia.org/wiki/Terpene" rel="noreferrer" target="_blank">
