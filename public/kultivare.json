@@ -76,6 +76,32 @@
                          "code":  "BDL"
                      },
                      {
+                         "name":  "Banana Kush Mints",
+                         "thc":  "18-30%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "1.96%",
+                         "terpenprofil":  [
+                                              "Caryophyllen",
+                                              "Myrcen",
+                                              "Humulen",
+                                              "Limonen",
+                                              "Linalool"
+                                          ],
+                         "wirkungen":  [
+                                           "analgetisch",
+                                           "entzündungshemmend",
+                                           "anxiolytisch",
+                                           "antidepressiv"
+                                       ],
+                         "typ":  "indica-dominant",
+                         "status":  "active",
+                         "produktlinie":  "HUALA",
+                         "genetics":  "Kush Mints x Edelweiß",
+                         "smell":  "Cremig, Diesel, minzig",
+                         "taste":  "Cremig, erdig, minzig",
+                         "code":  "BKM"
+                     },
+                     {
                          "name":  "Berlin Berries",
                          "thc":  "25-33%",
                          "cbd":  "\u003c1%",
@@ -707,32 +733,6 @@
                          "smell":  "Bonbonartig, Cremig-süß, Mango, Herb-schwefelig",
                          "taste":  "Bonbonartig, Cremig-süß, Mango, Herb-schwefelig",
                          "code":  "GVZ"
-                     },
-                     {
-                         "name":  "Banana Kush Mints",
-                         "thc":  "18-30%",
-                         "cbd":  "\u003c1%",
-                         "terpengehalt":  "1.96%",
-                         "terpenprofil":  [
-                                              "Caryophyllen",
-                                              "Myrcen",
-                                              "Humulen",
-                                              "Limonen",
-                                              "Linalool"
-                                          ],
-                         "wirkungen":  [
-                                           "analgetisch",
-                                           "entzündungshemmend",
-                                           "anxiolytisch",
-                                           "antidepressiv"
-                                       ],
-                         "typ":  "indica-dominant",
-                         "status":  "active",
-                         "produktlinie":  "HUALA",
-                         "genetics":  "Kush Mints x Edelweiß",
-                         "smell":  "Cremig, Diesel, minzig",
-                         "taste":  "Cremig, erdig, minzig",
-                         "code":  "BKM"
                      },
                      {
                          "name":  "Ice Cream Cake Kush Mints",
