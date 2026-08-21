@@ -735,6 +735,32 @@
                          "code":  "GVZ"
                      },
                      {
+                         "name":  "Holy Mints",
+                         "thc":  "18-30%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "1.96%",
+                         "terpenprofil":  [
+                                              "Caryophyllen",
+                                              "Myrcen",
+                                              "Humulen",
+                                              "Limonen",
+                                              "Linalool"
+                                          ],
+                         "wirkungen":  [
+                                           "analgetisch",
+                                           "entzündungshemmend",
+                                           "anxiolytisch",
+                                           "antidepressiv"
+                                       ],
+                         "typ":  "indica-dominant",
+                         "status":  "active",
+                         "produktlinie":  "HUALA",
+                         "genetics":  "Kush Mints x Edelweiß",
+                         "smell":  "Cremig, Diesel, minzig",
+                         "taste":  "Cremig, erdig, minzig",
+                         "code":  "HOL"
+                     },
+                     {
                          "name":  "Ice Cream Cake Kush Mints",
                          "thc":  "25-33%",
                          "cbd":  "\u003c1%",
