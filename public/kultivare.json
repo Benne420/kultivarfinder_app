@@ -177,6 +177,42 @@
                          "code":  "BBW"
                      },
                      {
+                         "name":  "Blue Mojito",
+                         "thc":  "20-30%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "2.68%",
+                         "terpenprofil":  [
+                                              "Myrcen",
+                                              "Caryophyllen",
+                                              "Linalool",
+                                              "Limonen",
+                                              "Humulen"
+                                          ],
+                         "wirkungen":  ["entspannend"],
+                         "typ":  "indica-dominant",
+                         "status":  "active",
+                         "produktlinie":  "HUALA",
+                         "genetics":  "Blue Gelato x Double Burger",
+                         "smell":  "Beerig, Fruchtig-süß, Cremig, Würzig, Herb-schwefelig",
+                         "taste":  "Fruchtig, Cremig-süß, Herzhaft-würzig, Herb-schwefelig",
+                         "code":  "MOJ"
+                     },
+                     {
+                         "name":  "Blue Star",
+                         "thc":  "22-36%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "",
+                         "terpenprofil":  [],
+                         "wirkungen":  [],
+                         "typ":  "indica-dominant",
+                         "status":  "discontinued",
+                         "produktlinie":  "EVOLUTION",
+                         "genetics":  "Dark Star x Trop Cherry Bx",
+                         "smell":  "Süß-fruchtig, Kirsche, Cremig, Beere, Aprikose",
+                         "taste":  "Süß, Kirsche, Cremig, Beere, Aprikose",
+                         "code":  "BSR"
+                     },
+                     {
                          "name":  "Bucket List",
                          "thc":  "22-33%",
                          "cbd":  "\u003c1%",
@@ -346,6 +382,21 @@
                          "smell":  "Fruchtig, Kirsche, Zitrus, würzig",
                          "taste":  "Fruchtig, Kirsche, Zitrus, würzig",
                          "code":  "DBC"
+                     },
+                     {
+                         "name":  "Dosilato",
+                         "thc":  "16-30%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "1.46%",
+                         "terpenprofil":  ["Caryophyllen", "Limonen", "Nerolidol", "Linalool", "Humulen"],
+                         "wirkungen":  ["entspannend"],
+                         "typ":  "indica-dominant",
+                         "status":  "discontinued",
+                         "produktlinie":  "HUALA",
+                         "genetics":  "Dosidos x Gelato 41",
+                         "smell":  "Süß-cremig, Dessertartig, Würzig-erdig, Gasig",
+                         "taste":  "Cremig-süß, Dessertartig, Erdig-würzig, Gasig, Leicht-fruchtig",
+                         "code":  "DOL"
                      },
                      {
                          "name":  "Falcon 9",
@@ -1184,6 +1235,21 @@
                          "code":  "PCH"
                      },
                      {
+                         "name":  "Pineapple Bang Bang",
+                         "thc":  "25-36%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "",
+                         "terpenprofil":  [],
+                         "wirkungen":  [],
+                         "typ":  "sativa-dominant",
+                         "status":  "discontinued",
+                         "produktlinie":  "EVOLUTION",
+                         "genetics":  "Pineapple Fruz x Wild Cherry",
+                         "smell":  "Ananas, Tropische Früchte, Kirsche, Zitrus, Würzig-schwefelig",
+                         "taste":  "Ananas, Kirsche, Zitrus, Erdig, Herb-schwefelig",
+                         "code":  "PBB"
+                     },
+                     {
                          "name":  "Pineapple Fruz",
                          "thc":  "25-33%",
                          "cbd":  "\u003c1%",
@@ -1533,6 +1599,21 @@
                          "code":  "SCO"
                      },
                      {
+                         "name":  "Slurricane",
+                         "thc":  "16-30%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "1.55%",
+                         "terpenprofil":  ["Caryophyllen", "Limonen", "Linalool", "Myrcen", "Humulen"],
+                         "wirkungen":  ["entspannend"],
+                         "typ":  "indica-dominant",
+                         "status":  "active",
+                         "produktlinie":  "HUALA",
+                         "genetics":  "Dosidos x Purple Punch",
+                         "smell":  "Süß-fruchtig, Trauben, Reife Beere, Cremig-OG, Erdig-würzig, Leicht-gasig",
+                         "taste":  "Süß-fruchtig, Trauben-Beere, Cremig-erdig, Würzig-gasig",
+                         "code":  "SLU"
+                     },
+                     {
                          "name":  "Spiced Earth Kush",
                          "thc":  "18-27%",
                          "cbd":  "\u003c1%",
@@ -1630,28 +1711,51 @@
                          "code":  "SLG"
                      },
                      {
+                         "name":  "Tahoe OG",
+                         "thc":  "25-36%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "",
+                         "terpenprofil":  [],
+                         "wirkungen":  [],
+                         "typ":  "indica-dominant",
+                         "status":  "discontinued",
+                         "produktlinie":  "NATURAL",
+                         "genetics":  "SFV OG x OG Kush",
+                         "smell":  "Erdig, Würzig, Kiefernartig, Zitrus, Herb-schwefelig",
+                         "taste":  "Erdig, Würzig, Zitrus, Kiefernartig, Herb-schwefelig",
+                         "code":  "TOG"
+                     },
+                     {
                          "name":  "Tigerz Eye",
                          "thc":  "20-33%",
                          "cbd":  "\u003c1%",
-                         "terpengehalt":  "1.46%",
-                         "terpenprofil":  [
-                                              "Myrcen",
-                                              "Caryophyllen",
-                                              "Pinen",
-                                              "Limonen",
-                                              "Linalool"
-                                          ],
+                         "terpengehalt":  "",
+                         "terpenprofil":  [],
                          "wirkungen":  [
-                                           "entzündungshemmend",
-                                           "neuroprotektiv"
+                                           "entspannend"
                                        ],
                          "typ":  "indica-dominant",
-                         "status":  "active",
+                         "status":  "discontinued",
                          "produktlinie":  "COMPOUND",
-                         "genetics":  "",
-                         "smell":  "",
-                         "taste":  "",
+                         "genetics":  "Jokerz #31 x Gastro Pop",
+                         "smell":  "Fruchtig, Dunkle Trauben, Beeren, Süße Erde, Kerosinartig",
+                         "taste":  "Süß-fruchtig, Trauben, Beeren, Erdig, Kraftstoffartig",
                          "code":  "TGY"
+                     },
+                     {
+                         "name":  "Thunder Funk",
+                         "thc":  "25-36%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "",
+                         "terpenprofil":  [],
+                         "wirkungen":  [],
+                         "typ":  "indica-dominant",
+                         "status":  "discontinued",
+                         "produktlinie":  "EVOLUTION",
+                         "genetics":  "GMO x Ice Cream Cake",
+                         "smell":  "Erdig, Würzig, Herb-schwefelig, Cremig",
+                         "taste":  "Erdig, Würzig, Herb-schwefelig, Cremig-süß",
+                         "code":  "TFK"
                      },
                      {
                          "name":  "Triangle Mints",
@@ -1850,6 +1954,21 @@
                          "code":  "WOT"
                      },
                      {
+                         "name":  "ZMO",
+                         "thc":  "22-36%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "",
+                         "terpenprofil":  [],
+                         "wirkungen":  [],
+                         "typ":  "indica-dominant",
+                         "status":  "discontinued",
+                         "produktlinie":  "EVOLUTION",
+                         "genetics":  "Zkittlez x GMO",
+                         "smell":  "Fruchtig-süß, Beeren, Würzig-pfeffrig, Erdig, Herb-schwefelig",
+                         "taste":  "Süße Beeren, Sauer-zitrisch, Würzig-erdig, Herb-schwefelig",
+                         "code":  "ZMO"
+                     },
+                     {
                          "name":  "Zookies",
                          "thc":  "20-25%",
                          "cbd":  "\u003c1%",
@@ -1866,7 +1985,7 @@
                                            "entzündungshemmend"
                                        ],
                          "typ":  "indica-dominant",
-                         "status":  "discontinued",
+                         "status":  "active",
                          "produktlinie":  "CURALEAF",
                          "genetics":  "Animal Cookies x GG4",
                          "smell":  "Süß, Zitrus, Pfeffer, Creme",
