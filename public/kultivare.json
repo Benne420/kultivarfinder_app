@@ -1743,14 +1743,14 @@
                          "code":  "TGY"
                      },
                      {
-                         "name":  "Thunder Funk",
+                         "name":  "Thunderfunk",
                          "thc":  "25-36%",
                          "cbd":  "\u003c1%",
                          "terpengehalt":  "",
                          "terpenprofil":  [],
                          "wirkungen":  [],
                          "typ":  "indica-dominant",
-                         "status":  "discontinued",
+                         "status":  "active",
                          "produktlinie":  "EVOLUTION",
                          "genetics":  "GMO x Ice Cream Cake",
                          "smell":  "Erdig, Würzig, Herb-schwefelig, Cremig",
@@ -1967,6 +1967,21 @@
                          "smell":  "Fruchtig-süß, Beeren, Würzig-pfeffrig, Erdig, Herb-schwefelig",
                          "taste":  "Süße Beeren, Sauer-zitrisch, Würzig-erdig, Herb-schwefelig",
                          "code":  "ZMO"
+                     },
+                     {
+                         "name":  "Zoap",
+                         "thc":  "20-33%",
+                         "cbd":  "\u003c1%",
+                         "terpengehalt":  "",
+                         "terpenprofil":  [],
+                         "wirkungen":  [],
+                         "typ":  "indica-dominant",
+                         "status":  "active",
+                         "produktlinie":  "HUALA",
+                         "genetics":  "Rainbow Sherbet × Pink Guava",
+                         "smell":  "Süß-tropisch, Guave, Zitrus, floral, cremig-seifig",
+                         "taste":  "Guave, Beere, Zitrus, cremig, würzig",
+                         "code":  "ZOP"
                      },
                      {
                          "name":  "Zookies",
