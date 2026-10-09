@@ -1746,9 +1746,19 @@
                          "name":  "Thunderfunk",
                          "thc":  "25-36%",
                          "cbd":  "\u003c1%",
-                         "terpengehalt":  "",
-                         "terpenprofil":  [],
-                         "wirkungen":  [],
+                         "terpengehalt":  "2.46%",
+                         "terpenprofil":  ["Limonen",
+                                           "Caryophyllen",                                          
+                                           "Linalool",
+                                           "Myrcen",
+                                           "Humulen"
+                                        ],
+                         "wirkungen":  [
+                                        "entzündungshemmend",
+                                        "antioxidativ",
+                                        "antimykotisch",
+                                        "entspannend"
+                         ],
                          "typ":  "indica-dominant",
                          "status":  "active",
                          "produktlinie":  "EVOLUTION",
